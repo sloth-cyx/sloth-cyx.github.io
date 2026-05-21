@@ -6,15 +6,6 @@
         <description>Recent content in Categories on Sloth Libra</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <copyright>怠惰的天秤-sloth</copyright>
-        <lastBuildDate>Wed, 20 May 2026 20:29:12 +0800</lastBuildDate><atom:link href="http://localhost:1313/en/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Info</title>
-        <link>http://localhost:1313/en/categories/info/</link>
-        <pubDate>Wed, 20 May 2026 20:29:12 +0800</pubDate>
-        
-        <guid>http://localhost:1313/en/categories/info/</guid>
-        <description></description>
-        </item>
-        
+        <copyright>怠惰的天秤-sloth</copyright><atom:link href="http://localhost:1313/en/categories/index.xml" rel="self" type="application/rss+xml" />
     </channel>
 </rss>

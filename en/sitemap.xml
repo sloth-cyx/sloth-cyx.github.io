@@ -3,7 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/en/categories/</loc>
-    <lastmod>2026-05-20T20:29:12+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -15,27 +14,7 @@
                 href="http://localhost:1313/en/categories/"
                 />
   </url><url>
-    <loc>http://localhost:1313/en/p/hugo-stack-command/</loc>
-    <lastmod>2026-05-20T20:29:12+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/en/categories/info/</loc>
-    <lastmod>2026-05-20T20:29:12+08:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/en/post/</loc>
-    <lastmod>2026-05-20T20:29:12+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="http://localhost:1313/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/en/post/"
-                />
-  </url><url>
     <loc>http://localhost:1313/en/</loc>
-    <lastmod>2026-05-20T20:29:12+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
