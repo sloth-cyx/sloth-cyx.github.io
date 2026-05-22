@@ -1,16 +1,43 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <sitemap>
-    <loc>http://localhost:1313/zh-cn/sitemap.xml</loc>
-    
-      <lastmod>2026-05-20T22:38:53+08:00</lastmod>
-    
-  </sitemap>
-  
-  <sitemap>
-    <loc>http://localhost:1313/en/sitemap.xml</loc>
-    
-  </sitemap>
-  
-</sitemapindex>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://sloth-cyx.github.io/</loc>
+    <lastmod>2026-05-22T19:56:01+08:00</lastmod>
+  </url><url>
+    <loc>https://sloth-cyx.github.io/p/2026%E5%A6%AE%E5%A7%AC%E4%B8%AA%E4%BA%BA%E7%AE%80%E8%AF%84/</loc>
+    <lastmod>2026-05-22T19:56:01+08:00</lastmod>
+  </url><url>
+    <loc>https://sloth-cyx.github.io/categories/</loc>
+    <lastmod>2026-05-22T19:56:01+08:00</lastmod>
+  </url><url>
+    <loc>https://sloth-cyx.github.io/post/</loc>
+    <lastmod>2026-05-22T19:56:01+08:00</lastmod>
+  </url><url>
+    <loc>https://sloth-cyx.github.io/categories/%E5%A6%AE%E5%A7%AC/</loc>
+    <lastmod>2026-05-22T19:56:01+08:00</lastmod>
+  </url><url>
+    <loc>https://sloth-cyx.github.io/p/md%E5%86%99%E6%B3%95%E7%A4%BA%E4%BE%8B/</loc>
+    <lastmod>2026-05-20T22:38:53+08:00</lastmod>
+  </url><url>
+    <loc>https://sloth-cyx.github.io/categories/%E8%B5%84%E6%96%99/</loc>
+    <lastmod>2026-05-20T22:38:53+08:00</lastmod>
+  </url><url>
+    <loc>https://sloth-cyx.github.io/p/%E6%96%87%E7%AB%A0%E5%88%9B%E4%BD%9C%E4%B8%8E%E9%83%A8%E7%BD%B2/</loc>
+    <lastmod>2026-05-20T20:29:12+08:00</lastmod>
+  </url><url>
+    <loc>https://sloth-cyx.github.io/page/</loc>
+    <lastmod>2019-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://sloth-cyx.github.io/archives/</loc>
+    <lastmod>2019-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://sloth-cyx.github.io/tags/</loc>
+  </url><url>
+    <loc>https://sloth-cyx.github.io/%E5%85%B3%E4%BA%8E/</loc>
+  </url><url>
+    <loc>https://sloth-cyx.github.io/%E9%93%BE%E6%8E%A5/</loc>
+  </url><url>
+    <loc>https://sloth-cyx.github.io/search/</loc>
+  </url>
+</urlset>
