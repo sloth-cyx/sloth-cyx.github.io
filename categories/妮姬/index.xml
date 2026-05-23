@@ -13,21 +13,158 @@
         <pubDate>Sat, 23 May 2026 17:27:56 +0800</pubDate>
         
         <guid>https://sloth-cyx.github.io/p/%E5%A6%AE%E5%A7%AC%E8%B5%84%E6%BA%90%E8%AE%A1%E7%AE%97%E5%99%A8/</guid>
-        <description>&lt;h1 id=&#34;妮姬资源计算器&#34;&gt;妮姬资源计算器
+        <description>&lt;h1 id=&#34;妮姬资源计算器&#34;&gt;妮姬资源/计算器
 &lt;/h1&gt;&lt;h2 id=&#34;石头期望计算器&#34;&gt;石头期望计算器
-&lt;/h2&gt;&lt;!-- calcutor --&gt;
-&lt;h2 id=&#34;sr15所需收藏品期望&#34;&gt;SR15所需收藏品期望
-&lt;/h2&gt;&lt;!-- calcutor --&gt;
-&lt;h2 id=&#34;装备升级计算器&#34;&gt;装备升级计算器
-&lt;/h2&gt;&lt;!-- calcutor --&gt;
-&lt;h2 id=&#34;技能计算器&#34;&gt;技能计算器
+&lt;/h2&gt;&lt;div class=&#34;nikke-drop-calc&#34; style=&#34;max-width: 800px; margin: 20px auto; padding: 25px; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); font-family: -apple-system, sans-serif; background: #fff; color: #333;&#34;&gt;
+        
+    &lt;div style=&#34;margin: 20px 0; display: flex; align-items: center; gap: 10px;&#34;&gt;
+        &lt;label for=&#34;stage-select&#34; style=&#34;font-weight: bold; font-size: 14px; color: #4a5568; white-space: nowrap;&#34;&gt;当前克拉肯阶段：&lt;/label&gt;
+        &lt;select id=&#34;stage-select&#34; onchange=&#34;calculateDrops()&#34; style=&#34;flex: 1; padding: 8px 12px; border-radius: 6px; border: 1px solid #cbd5e0; font-size: 15px; background-color: #fff; cursor: pointer;&#34;&gt;
+            &lt;option value=&#34;7&#34;&gt;7阶段&lt;/option&gt;
+            &lt;option value=&#34;8&#34;&gt;8阶段&lt;/option&gt;
+            &lt;option value=&#34;9&#34; selected&gt;9阶段&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/div&gt;
+
+    &lt;div style=&#34;overflow-x: auto; margin-top: 20px;&#34;&gt;
+        &lt;table style=&#34;width: 100%; border-collapse: collapse; font-size: 14px; text-align: center; border: 1px solid #cbd5e0;&#34;&gt;
+            &lt;thead&gt;
+                &lt;tr style=&#34;background-color: #f7fafc; color: #4a5568; border-bottom: 2px solid #cbd5e0;&#34;&gt;
+                    &lt;th style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #edf2f7;&#34;&gt;时间周期&lt;/th&gt;
+                    &lt;th style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; color: #3182ce;&#34;&gt;订制模组 (石头)&lt;/th&gt;
+                    &lt;th style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; color: #dd6b20;&#34;&gt;模组零件 (碎片)&lt;/th&gt;
+                    &lt;th style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; color: #38a169; background-color: #f0fff4;&#34;&gt;总计 (石头+零件)&lt;/th&gt;
+                    &lt;th style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; color: #805ad5; background-color: #fdf0ff;&#34;&gt;自定密钥&lt;/th&gt;
+                &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+                &lt;tr style=&#34;background-color: #fff;&#34;&gt;
+                    &lt;td style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #f7fafc;&#34;&gt;每日期望&lt;/td&gt;
+                    &lt;td id=&#34;mod-day&#34; style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: 500; color: #3182ce;&#34;&gt;-&lt;/td&gt;
+                    &lt;td id=&#34;part-day&#34; style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: 500; color: #dd6b20;&#34;&gt;-&lt;/td&gt;
+                    &lt;td id=&#34;total-day&#34; style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; color: #38a169; background-color: #f0fff4;&#34;&gt;-&lt;/td&gt;
+                    &lt;td id=&#34;key-day&#34; style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: 500; color: #805ad5; background-color: #fdf0ff;&#34;&gt;-&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr style=&#34;background-color: #fff;&#34;&gt;
+                    &lt;td style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #f7fafc;&#34;&gt;每月 (34天)&lt;/td&gt;
+                    &lt;td id=&#34;mod-month&#34; style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: 500; color: #3182ce;&#34;&gt;-&lt;/td&gt;
+                    &lt;td id=&#34;part-month&#34; style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: 500; color: #dd6b20;&#34;&gt;-&lt;/td&gt;
+                    &lt;td id=&#34;total-month&#34; style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; color: #38a169; background-color: #e6fffa;&#34;&gt;-&lt;/td&gt;
+                    &lt;td id=&#34;key-month&#34; style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: 500; color: #805ad5; background-color: #fdf0ff;&#34;&gt;-&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+
+    &lt;h3 style=&#34;margin-top: 35px; text-align: center; color: #2d3748; border-bottom: 2px solid #edf2f7; padding-bottom: 10px; font-size: 16px;&#34;&gt;新旧克拉肯对比一览&lt;/h3&gt;
+    
+    &lt;div style=&#34;overflow-x: auto; margin-top: 15px;&#34;&gt;
+        &lt;table style=&#34;width: 100%; border-collapse: collapse; font-size: 13px; text-align: center; border: 1px solid #cbd5e0; white-space: nowrap;&#34;&gt;
+            &lt;thead&gt;
+                &lt;tr style=&#34;background-color: #f7fafc; color: #4a5568; border-bottom: 2px solid #cbd5e0;&#34;&gt;
+                    &lt;th style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #edf2f7;&#34;&gt;对比项&lt;/th&gt;
+                    &lt;th style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold;&#34;&gt;每日期望&lt;/th&gt;
+                    &lt;th style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold;&#34;&gt;每月期望&lt;/th&gt;
+                    &lt;th style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold;&#34;&gt;箱子&lt;/th&gt;
+                    &lt;th style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold;&#34;&gt;石头总计&lt;/th&gt;
+                    &lt;th style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold; color: #3182ce;&#34;&gt;提升率&lt;/th&gt;
+                    &lt;th style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold; color: #dd6b20;&#34;&gt;差距(数量)&lt;/th&gt;
+                &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody style=&#34;color: #4a5568;&#34;&gt;
+                &lt;tr style=&#34;background-color: #fff;&#34;&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #f7fafc;&#34;&gt;旧LV7 石头&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;2.28&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;77&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;38&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;115&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; color: #a0aec0;&#34;&gt;-&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; color: #a0aec0;&#34;&gt;-&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr style=&#34;background-color: #fff;&#34;&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #f7fafc;&#34;&gt;新LV7 石头&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;2.55&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;87&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;46&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;133&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; color: #3182ce;&#34;&gt;15%&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; color: #dd6b20; font-weight: 500;&#34;&gt;+18&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr style=&#34;background-color: #fff;&#34;&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #f7fafc;&#34;&gt;新LV8 石头&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;2.63&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;89&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;48&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;137&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; color: #3182ce;&#34;&gt;19%&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; color: #dd6b20; font-weight: 500;&#34;&gt;+22&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr style=&#34;background-color: #fff;&#34;&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #f7fafc;&#34;&gt;新LV9 石头&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;2.71&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;92&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;51&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;143&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; color: #3182ce;&#34;&gt;24%&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; color: #dd6b20; font-weight: 500;&#34;&gt;+28&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function calculateDrops() {
+    var stage = document.getElementById(&#34;stage-select&#34;).value;
+    
+    var config = {
+        &#34;7&#34;: { dropRate: 0.65, box: 0.45, key: 6 },
+        &#34;8&#34;: { dropRate: 0.67, box: 0.47, key: 6 },
+        &#34;9&#34;: { dropRate: 0.69, box: 0.50, key: 6 }
+    };
+    
+    var current = config[stage];
+    
+    var coeff = 1.309; 
+    var modDay = coeff * (3 * current.dropRate);
+    var modMonth = modDay * 34;
+    
+    var partDay = current.box * 3;
+    var partMonth = partDay * 34;
+    
+    var totalDay = modDay + partDay;
+    var totalMonth = modMonth + partMonth;
+    
+    var keyDay = current.key * 3;
+    var keyMonth = keyDay * 34;
+    
+    document.getElementById(&#34;mod-day&#34;).innerText = modDay.toFixed(2);
+    document.getElementById(&#34;mod-month&#34;).innerText = modMonth.toFixed(2);
+    
+    document.getElementById(&#34;part-day&#34;).innerText = partDay.toFixed(2);
+    document.getElementById(&#34;part-month&#34;).innerText = partMonth.toFixed(2);
+    
+    document.getElementById(&#34;total-day&#34;).innerText = totalDay.toFixed(2);
+    document.getElementById(&#34;total-month&#34;).innerText = totalMonth.toFixed(2);
+    
+    document.getElementById(&#34;key-day&#34;).innerText = keyDay.toFixed(0); 
+    document.getElementById(&#34;key-month&#34;).innerText = keyMonth.toFixed(0);
+}
+
+window.onload = function() {
+    calculateDrops();
+};
+&lt;/script&gt;
+&lt;h2 id=&#34;sr15所需收藏品狗粮期望&#34;&gt;SR15所需收藏品狗粮期望
+&lt;/h2&gt;&lt;h2 id=&#34;装备升级计算器&#34;&gt;装备升级计算器
+&lt;/h2&gt;&lt;h2 id=&#34;技能计算器&#34;&gt;技能计算器
 &lt;/h2&gt;&lt;div class=&#34;nikke-calculator&#34;&gt;
   &lt;div class=&#34;calc-card&#34;&gt;
     &lt;p class=&#34;subtitle&#34;&gt;代码手册拥有5种属性，继续细化则需另寻他日~也有可能永无他日~&lt;/p&gt;
 
     &lt;div class=&#34;grid&#34;&gt;
       &lt;div class=&#34;panel&#34;&gt;
-        &lt;h3&gt;角色培养需求&lt;/h3&gt;
+        &lt;h3&gt;点技能角色数量&lt;/h3&gt;
 
         &lt;div class=&#34;input-group&#34;&gt;
           &lt;label&gt;10/10/10 角色数量&lt;/label&gt;
@@ -373,7 +510,7 @@ inputs.forEach(input =&gt; {
 calculate();
 &lt;/script&gt;
 &lt;h2 id=&#34;词条概率&#34;&gt;词条概率
-&lt;/h2&gt;&lt;!-- calcutor --&gt;</description>
+&lt;/h2&gt;</description>
         </item>
         <item>
         <title>2026妮姬个人简评</title>
