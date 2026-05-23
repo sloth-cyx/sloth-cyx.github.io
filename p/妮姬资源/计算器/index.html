@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="石头期望计算器 当前克拉肯阶段： 7阶段 8阶段 9阶段 时间周期 订制模组 (石头) 模组零件 (碎片) 总计 (石头+零件) 自定密钥 每日期望 - - - - 每月期望 -">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="石头期望计算器 当前克拉肯阶段： 无 7阶段 8阶段 9阶段 时间周期 订制模组 (石头) 模组零件 (碎片) 总计 (石头+零件) 自定密钥 每日期望 - - - - 每月期望">
 <title>妮姬资源/计算器</title>
 
 <link rel='canonical' href='https://sloth-cyx.github.io/p/%E5%A6%AE%E5%A7%AC%E8%B5%84%E6%BA%90/%E8%AE%A1%E7%AE%97%E5%99%A8/'>
 
 <link rel="stylesheet" href="/scss/style.min.0304c6baf04e01a8fe70693791cb744d56a3578a3120a8796cefc66825aa39c7.css"><meta property='og:title' content="妮姬资源/计算器">
-<meta property='og:description' content="石头期望计算器 当前克拉肯阶段： 7阶段 8阶段 9阶段 时间周期 订制模组 (石头) 模组零件 (碎片) 总计 (石头+零件) 自定密钥 每日期望 - - - - 每月期望 -">
+<meta property='og:description' content="石头期望计算器 当前克拉肯阶段： 无 7阶段 8阶段 9阶段 时间周期 订制模组 (石头) 模组零件 (碎片) 总计 (石头+零件) 自定密钥 每日期望 - - - - 每月期望">
 <meta property='og:url' content='https://sloth-cyx.github.io/p/%E5%A6%AE%E5%A7%AC%E8%B5%84%E6%BA%90/%E8%AE%A1%E7%AE%97%E5%99%A8/'>
 <meta property='og:site_name' content='怠惰的天秤-sloth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-05-23T17:27:56&#43;08:00'/><meta property='article:modified_time' content='2026-05-23T17:27:56&#43;08:00'/>
 <meta name="twitter:title" content="妮姬资源/计算器">
-<meta name="twitter:description" content="石头期望计算器 当前克拉肯阶段： 7阶段 8阶段 9阶段 时间周期 订制模组 (石头) 模组零件 (碎片) 总计 (石头+零件) 自定密钥 每日期望 - - - - 每月期望 -">
+<meta name="twitter:description" content="石头期望计算器 当前克拉肯阶段： 无 7阶段 8阶段 9阶段 时间周期 订制模组 (石头) 模组零件 (碎片) 总计 (石头+零件) 自定密钥 每日期望 - - - - 每月期望">
     <link rel="shortcut icon" href="/libra.ico" />
 
   
@@ -349,98 +349,99 @@
     
     
     <h2 id="石头期望计算器">石头期望计算器
-</h2><div class="nikke-drop-calc" style="max-width: 800px; margin: 20px auto; padding: 25px; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); font-family: -apple-system, sans-serif; background: #fff; color: #333;">
+</h2><div class="nikke-drop-calc-section" style="width: 100%; margin: 2rem auto; max-width: 800px; font-family: -apple-system, sans-serif; background: #fff5f5; border: 1px solid #ebdada; border-radius: 12px; padding: 25px; color: #333; box-shadow: 0 4px 12px rgba(180,160,160,0.08);">
         
     <div style="margin: 20px 0; display: flex; align-items: center; gap: 10px;">
         <label for="stage-select" style="font-weight: bold; font-size: 14px; color: #4a5568; white-space: nowrap;">当前克拉肯阶段：</label>
-        <select id="stage-select" onchange="calculateDrops()" style="flex: 1; padding: 8px 12px; border-radius: 6px; border: 1px solid #cbd5e0; font-size: 15px; background-color: #fff; cursor: pointer;">
+        <select id="stage-select" onchange="calculateDrops()" style="flex: 1; padding: 8px 12px; border-radius: 6px; border: 1px solid #ebdada; font-size: 15px; background-color: #fff; color: #333; cursor: pointer; outline: none;">
+            <option value="0" selected>无</option>
             <option value="7">7阶段</option>
             <option value="8">8阶段</option>
-            <option value="9" selected>9阶段</option>
+            <option value="9">9阶段</option>
         </select>
     </div>
 
     <div style="overflow-x: auto; margin-top: 20px;">
-        <table style="width: 100%; border-collapse: collapse; font-size: 14px; text-align: center; border: 1px solid #cbd5e0;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 14px; text-align: center; border: 1px solid #e0a2a2;">
             <thead>
-                <tr style="background-color: #f7fafc; color: #4a5568; border-bottom: 2px solid #cbd5e0;">
-                    <th style="padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #edf2f7;">时间周期</th>
-                    <th style="padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; color: #3182ce;">订制模组 (石头)</th>
-                    <th style="padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; color: #dd6b20;">模组零件 (碎片)</th>
-                    <th style="padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; color: #38a169; background-color: #f0fff4;">总计 (石头+零件)</th>
-                    <th style="padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; color: #805ad5; background-color: #fdf0ff;">自定密钥</th>
+                <tr style="background-color: #ffe3e3; color: #4a5568;">
+                    <th style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold;">时间周期</th>
+                    <th style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold; color: #3182ce;">订制模组 (石头)</th>
+                    <th style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold; color: #dd6b20;">模组零件 (碎片)</th>
+                    <th style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold; color: #a13838;">总计 (石头+零件)</th>
+                    <th style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold; color: #805ad5;">自定密钥</th>
                 </tr>
             </thead>
             <tbody>
                 <tr style="background-color: #fff;">
-                    <td style="padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #f7fafc;">每日期望</td>
-                    <td id="mod-day" style="padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: 500; color: #3182ce;">-</td>
-                    <td id="part-day" style="padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: 500; color: #dd6b20;">-</td>
-                    <td id="total-day" style="padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; color: #38a169; background-color: #f0fff4;">-</td>
-                    <td id="key-day" style="padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: 500; color: #805ad5; background-color: #fdf0ff;">-</td>
+                    <td style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold; background-color: #ffe3e3;">每日期望</td>
+                    <td id="mod-day" style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: 500; color: #3182ce;">-</td>
+                    <td id="part-day" style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: 500; color: #dd6b20;">-</td>
+                    <td id="total-day" style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold; color: #a13838;">-</td>
+                    <td id="key-day" style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: 500; color: #805ad5;">-</td>
                 </tr>
                 <tr style="background-color: #fff;">
-                    <td style="padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #f7fafc;">每月期望</td>
-                    <td id="mod-month" style="padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: 500; color: #3182ce;">-</td>
-                    <td id="part-month" style="padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: 500; color: #dd6b20;">-</td>
-                    <td id="total-month" style="padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; color: #38a169; background-color: #f0fff4;">-</td>
-                    <td id="key-month" style="padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: 500; color: #805ad5; background-color: #fdf0ff;">-</td>
+                    <td style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold; background-color: #ffe3e3;">每月期望</td>
+                    <td id="mod-month" style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: 500; color: #3182ce;">-</td>
+                    <td id="part-month" style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: 500; color: #dd6b20;">-</td>
+                    <td id="total-month" style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold; color: #a13838;">-</td>
+                    <td id="key-month" style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: 500; color: #805ad5;">-</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <h3 style="margin-top: 35px; text-align: center; color: #2d3748; border-bottom: 2px solid #edf2f7; padding-bottom: 10px; font-size: 16px;">新旧克拉肯对比一览</h3>
+    <h3 style="margin-top: 35px; text-align: center; color: #2d3748; border-bottom: 2px solid #ebdada; padding-bottom: 10px; font-size: 16px;">新旧克拉肯对比一览</h3>
     
     <div style="overflow-x: auto; margin-top: 15px;">
-        <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: center; border: 1px solid #cbd5e0; white-space: nowrap;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: center; border: 1px solid #e0a2a2; white-space: nowrap;">
             <thead>
-                <tr style="background-color: #f7fafc; color: #4a5568; border-bottom: 2px solid #cbd5e0;">
-                    <th style="padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #edf2f7;">对比项</th>
-                    <th style="padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold;">每日期望</th>
-                    <th style="padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold;">每月期望</th>
-                    <th style="padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold;">箱子</th>
-                    <th style="padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold;">石头总计</th>
-                    <th style="padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold; color: #3182ce;">提升率</th>
-                    <th style="padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold; color: #dd6b20;">差距(数量)</th>
+                <tr style="background-color: #ffe3e3; color: #4a5568;">
+                    <th style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold;">对比项</th>
+                    <th style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold;">每日期望</th>
+                    <th style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold;">每月期望</th>
+                    <th style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold;">箱子</th>
+                    <th style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold;">石头总计</th>
+                    <th style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; color: #38a169;">提升率</th>
+                    <th style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; color: #38a169;">差距(数量)</th>
                 </tr>
             </thead>
             <tbody style="color: #4a5568;">
                 <tr style="background-color: #fff;">
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #f7fafc;">旧LV7 石头</td>
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0;">2.28</td>
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0;">77</td>
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0;">38</td>
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0;">115</td>
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0; color: #a0aec0;">-</td>
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0; color: #a0aec0;">-</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; background-color: #ffe3e3;">旧LV7 石头</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">2.28</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">77</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">38</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">115</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #a0aec0;">-</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #a0aec0;">-</td>
                 </tr>
                 <tr style="background-color: #fff;">
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #f7fafc;">新LV7 石头</td>
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0;">2.55</td>
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0;">87</td>
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0;">46</td>
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0;">133</td>
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0; color: #3182ce;">15%</td>
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0; color: #dd6b20; font-weight: 500;">+18</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; background-color: #ffe3e3;">新LV7 石头</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">2.55</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">87</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">46</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">133</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; color: #38a169;">15%</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; color: #38a169;">+18</td>
                 </tr>
                 <tr style="background-color: #fff;">
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #f7fafc;">新LV8 石头</td>
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0;">2.63</td>
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0;">89</td>
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0;">48</td>
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0;">137</td>
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0; color: #3182ce;">19%</td>
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0; color: #dd6b20; font-weight: 500;">+22</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; background-color: #ffe3e3;">新LV8 石头</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">2.63</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">89</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">48</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">137</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; color: #38a169;">19%</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; color: #38a169;">+22</td>
                 </tr>
                 <tr style="background-color: #fff;">
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #f7fafc;">新LV9 石头</td>
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0;">2.71</td>
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0;">92</td>
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0;">51</td>
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0;">143</td>
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0; color: #3182ce;">24%</td>
-                    <td style="padding: 10px 6px; border: 1px solid #cbd5e0; color: #dd6b20; font-weight: 500;">+28</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; background-color: #ffe3e3;">新LV9 石头</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">2.71</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">92</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">51</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">143</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; color: #38a169;">24%</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; color: #38a169;">+28</td>
                 </tr>
             </tbody>
         </table>
@@ -449,7 +450,17 @@
 
 <script>
 function calculateDrops() {
-    var stage = document.getElementById("stage-select").value;
+    var stageSelect = document.getElementById("stage-select");
+    var stage = stageSelect.value;
+    
+    
+    if (stage === "0") {
+        var fields = ["mod-day", "mod-month", "part-day", "part-month", "total-day", "total-month", "key-day", "key-month"];
+        fields.forEach(function(id) {
+            document.getElementById(id).innerText = "-";
+        });
+        return;
+    }
     
     var config = {
         "7": { dropRate: 0.65, box: 0.45, key: 6 },
@@ -484,6 +495,7 @@ function calculateDrops() {
     document.getElementById("key-day").innerText = keyDay.toFixed(0); 
     document.getElementById("key-month").innerText = keyMonth.toFixed(0);
 }
+
 
 window.onload = function() {
     calculateDrops();
@@ -540,8 +552,9 @@ window.onload = function() {
 </h2><div class="nikke-equipment-calc" style="max-width: 800px; margin: 20px auto; padding: 25px; border: 1px solid #dcd7cc; border-radius: 12px; box-shadow: 0 4px 16px rgba(139,126,116,0.1); font-family: -apple-system, sans-serif; background: #fdfaf4; color: #433e37;">
     
     <div style="background-color: #f3ede2; padding: 10px 15px; border-radius: 6px; font-size: 12px; color: #7d715e; margin-bottom: 25px; line-height: 1.6; border-left: 4px solid #b1a491;">
-        <strong>基准经验设定：</strong> T8狗粮 = 12,800 XP | T9狗粮 = 25,400 XP<br>
-        T9 → T10 消耗 = 1,592,000 XP | T10 0级 → 5级(满级) 消耗 = 2,388,000 XP
+        <strong>狗粮提供经验：</strong> T8狗粮 = 12,800 EXP | T9狗粮 = 25,400 EXP<br>
+        <strong>升级所需经验：</strong> T9 → T10 消耗 = 1,592,000 EXP | T10 0级 → 5级(满级) 消耗 = 2,388,000 EXP | T9 → T10(满级) 总计消耗 = 3,980,000 EXP<br>
+        <strong>注释：</strong> T10 0级 → 5级(满级) = 拉1.5个T10 | T9 → T10(满级) = 拉2.5个T10
     </div>
 
     <div style="margin-bottom: 30px; border: 1px solid #eadecb; padding: 15px; border-radius: 8px; background: #ffffff;">
@@ -573,58 +586,37 @@ window.onload = function() {
         </div>
     </div>
 
-    <div style="margin-bottom: 30px; border: 1px solid #eadecb; padding: 15px; border-radius: 8px; background: #ffffff;">
-        <h4 style="margin: 0 0 12px 0; font-size: 15px; color: #5a5245; display: flex; align-items: center; gap: 6px;">
-            <span style="background: #6a7f93; color: #fff; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold;">2</span>
-            计算【T9 ➔ T10】所需狗粮
-        </h4>
-        <div style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-            <label for="gear-need-t10-count" style="font-size: 13px; font-weight: bold; color: #6f6453; white-space: nowrap;">计划将几件 T9 升至 T10:</label>
-            <input type="number" id="gear-need-t10-count" value="0" min="0" oninput="calcGearInput2()" style="flex: 1; padding: 6px 10px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 14px; outline: none; background: #fdfdfb; color: #433e37;">
-        </div>
-        <div style="overflow-x: auto;">
-            <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: center; border: 1px solid #ccbfad;">
-                <thead>
-                    <tr style="background-color: #f7f3eb; color: #5a5245;">
-                        <th style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold;">总计所需经验值 (XP)</th>
-                        <th style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;">纯用 T9 狗粮 (个)</th>
-                        <th style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;">纯用 T8 狗粮 (个)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr style="background-color: #fff;">
-                        <td id="res2-xp" style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: 500; color: #5a5245;">0</td>
-                        <td id="res2-t9" style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;">0.0</td>
-                        <td id="res2-t8" style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;">0.0</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
     <div style="margin-bottom: 10px; border: 1px solid #eadecb; padding: 15px; border-radius: 8px; background: #ffffff;">
-        <h4 style="margin: 0 0 12px 0; font-size: 15px; color: #5a5245; display: flex; align-items: center; gap: 6px;">
-            <span style="background: #9c846b; color: #fff; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold;">3</span>
-            计算【T10 ➔ 满级】所需狗粮
+        <h4 style="margin: 0 0 15px 0; font-size: 15px; color: #5a5245; display: flex; align-items: center; gap: 6px;">
+            <span style="background: #6a7f93; color: #fff; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold;">2</span>
+            自定义装备强化方案计算（可组合输入）
         </h4>
-        <div style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-            <label for="gear-need-max-count" style="font-size: 13px; font-weight: bold; color: #6f6453; white-space: nowrap;">计划将几件 T10 升至满级:</label>
-            <input type="number" id="gear-need-max-count" value="0" min="0" oninput="calcGearInput3()" style="flex: 1; padding: 6px 10px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 14px; outline: none; background: #fdfdfb; color: #433e37;">
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 15px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <label for="combine-t9-t10" style="font-size: 12px; font-weight: bold; color: #6f6453; white-space: nowrap;">【T9 ➔ T10】件数:</label>
+                <input type="number" id="combine-t9-t10" value="0" min="0" oninput="calcCombinedGear()" style="width: 100%; padding: 5px 8px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 13px; outline: none; background: #fdfdfb; color: #433e37;">
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <label for="combine-t10-max" style="font-size: 12px; font-weight: bold; color: #6f6453; white-space: nowrap;">【T10 ➔ 满级】件数:</label>
+                <input type="number" id="combine-t10-max" value="0" min="0" oninput="calcCombinedGear()" style="width: 100%; padding: 5px 8px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 13px; outline: none; background: #fdfdfb; color: #433e37;">
+            </div>
         </div>
+
         <div style="overflow-x: auto;">
             <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: center; border: 1px solid #ccbfad;">
                 <thead>
                     <tr style="background-color: #f7f3eb; color: #5a5245;">
-                        <th style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold;">总计所需经验值 (XP)</th>
-                        <th style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;">纯用 T9 狗粮 (个)</th>
-                        <th style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;">纯用 T8 狗粮 (个)</th>
+                        <th style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold;">方案总需经验值 (EXP)</th>
+                        <th style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;">共需 T9 狗粮 (个)</th>
+                        <th style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;">共需 T8 狗粮 (个)</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr style="background-color: #fff;">
-                        <td id="res3-xp" style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: 500; color: #5a5245;">0</td>
-                        <td id="res3-t9" style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;">0.0</td>
-                        <td id="res3-t8" style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;">0.0</td>
+                        <td id="combine-res-xp" style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: 500; color: #5a5245;">0</td>
+                        <td id="combine-res-t9" style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;">0.0</td>
+                        <td id="combine-res-t8" style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;">0.0</td>
                     </tr>
                 </tbody>
             </table>
@@ -651,31 +643,25 @@ function calcGearInput1() {
     document.getElementById("res1-t9-to-max").innerText = (totalXp / NEED_TOTAL_MAX).toFixed(2);
 }
 
-function calcGearInput2() {
-    let count = parseFloat(document.getElementById("gear-need-t10-count").value) || 0;
-    if (count < 0) count = 0;
-    let requiredXp = count * NEED_T9_TO_T10;
+function calcCombinedGear() {
+    let countT9ToT10 = parseFloat(document.getElementById("combine-t9-t10").value) || 0;
+    let countT10ToMax = parseFloat(document.getElementById("combine-t10-max").value) || 0;
     
-    document.getElementById("res2-xp").innerText = requiredXp.toLocaleString();
-    document.getElementById("res2-t9").innerText = (requiredXp / XP_T9).toFixed(1);
-    document.getElementById("res2-t8").innerText = (requiredXp / XP_T8).toFixed(1);
-}
-
-function calcGearInput3() {
-    let count = parseFloat(document.getElementById("gear-need-max-count").value) || 0;
-    if (count < 0) count = 0;
-    let requiredXp = count * NEED_T10_TO_MAX;
+    if (countT9ToT10 < 0) countT9ToT10 = 0;
+    if (countT10ToMax < 0) countT10ToMax = 0;
     
-    document.getElementById("res3-xp").innerText = requiredXp.toLocaleString();
-    document.getElementById("res3-t9").innerText = (requiredXp / XP_T9).toFixed(1);
-    document.getElementById("res3-t8").innerText = (requiredXp / XP_T8).toFixed(1);
+    
+    let totalRequiredXp = (countT9ToT10 * NEED_T9_TO_T10) + (countT10ToMax * NEED_T10_TO_MAX);
+    
+    document.getElementById("combine-res-xp").innerText = totalRequiredXp.toLocaleString();
+    document.getElementById("combine-res-t9").innerText = (totalRequiredXp / XP_T9).toFixed(1);
+    document.getElementById("combine-res-t8").innerText = (totalRequiredXp / XP_T8).toFixed(1);
 }
 
 
 window.onload = function() {
     calcGearInput1();
-    calcGearInput2();
-    calcGearInput3();
+    calcCombinedGear();
 };
 </script>
 <h2 id="技能计算器">技能计算器

@@ -14,98 +14,99 @@
         
         <guid>https://sloth-cyx.github.io/p/%E5%A6%AE%E5%A7%AC%E8%B5%84%E6%BA%90/%E8%AE%A1%E7%AE%97%E5%99%A8/</guid>
         <description>&lt;h2 id=&#34;石头期望计算器&#34;&gt;石头期望计算器
-&lt;/h2&gt;&lt;div class=&#34;nikke-drop-calc&#34; style=&#34;max-width: 800px; margin: 20px auto; padding: 25px; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); font-family: -apple-system, sans-serif; background: #fff; color: #333;&#34;&gt;
+&lt;/h2&gt;&lt;div class=&#34;nikke-drop-calc-section&#34; style=&#34;width: 100%; margin: 2rem auto; max-width: 800px; font-family: -apple-system, sans-serif; background: #fff5f5; border: 1px solid #ebdada; border-radius: 12px; padding: 25px; color: #333; box-shadow: 0 4px 12px rgba(180,160,160,0.08);&#34;&gt;
         
     &lt;div style=&#34;margin: 20px 0; display: flex; align-items: center; gap: 10px;&#34;&gt;
         &lt;label for=&#34;stage-select&#34; style=&#34;font-weight: bold; font-size: 14px; color: #4a5568; white-space: nowrap;&#34;&gt;当前克拉肯阶段：&lt;/label&gt;
-        &lt;select id=&#34;stage-select&#34; onchange=&#34;calculateDrops()&#34; style=&#34;flex: 1; padding: 8px 12px; border-radius: 6px; border: 1px solid #cbd5e0; font-size: 15px; background-color: #fff; cursor: pointer;&#34;&gt;
+        &lt;select id=&#34;stage-select&#34; onchange=&#34;calculateDrops()&#34; style=&#34;flex: 1; padding: 8px 12px; border-radius: 6px; border: 1px solid #ebdada; font-size: 15px; background-color: #fff; color: #333; cursor: pointer; outline: none;&#34;&gt;
+            &lt;option value=&#34;0&#34; selected&gt;无&lt;/option&gt;
             &lt;option value=&#34;7&#34;&gt;7阶段&lt;/option&gt;
             &lt;option value=&#34;8&#34;&gt;8阶段&lt;/option&gt;
-            &lt;option value=&#34;9&#34; selected&gt;9阶段&lt;/option&gt;
+            &lt;option value=&#34;9&#34;&gt;9阶段&lt;/option&gt;
         &lt;/select&gt;
     &lt;/div&gt;
 
     &lt;div style=&#34;overflow-x: auto; margin-top: 20px;&#34;&gt;
-        &lt;table style=&#34;width: 100%; border-collapse: collapse; font-size: 14px; text-align: center; border: 1px solid #cbd5e0;&#34;&gt;
+        &lt;table style=&#34;width: 100%; border-collapse: collapse; font-size: 14px; text-align: center; border: 1px solid #e0a2a2;&#34;&gt;
             &lt;thead&gt;
-                &lt;tr style=&#34;background-color: #f7fafc; color: #4a5568; border-bottom: 2px solid #cbd5e0;&#34;&gt;
-                    &lt;th style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #edf2f7;&#34;&gt;时间周期&lt;/th&gt;
-                    &lt;th style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; color: #3182ce;&#34;&gt;订制模组 (石头)&lt;/th&gt;
-                    &lt;th style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; color: #dd6b20;&#34;&gt;模组零件 (碎片)&lt;/th&gt;
-                    &lt;th style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; color: #38a169; background-color: #f0fff4;&#34;&gt;总计 (石头+零件)&lt;/th&gt;
-                    &lt;th style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; color: #805ad5; background-color: #fdf0ff;&#34;&gt;自定密钥&lt;/th&gt;
+                &lt;tr style=&#34;background-color: #ffe3e3; color: #4a5568;&#34;&gt;
+                    &lt;th style=&#34;padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold;&#34;&gt;时间周期&lt;/th&gt;
+                    &lt;th style=&#34;padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold; color: #3182ce;&#34;&gt;订制模组 (石头)&lt;/th&gt;
+                    &lt;th style=&#34;padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold; color: #dd6b20;&#34;&gt;模组零件 (碎片)&lt;/th&gt;
+                    &lt;th style=&#34;padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold; color: #a13838;&#34;&gt;总计 (石头+零件)&lt;/th&gt;
+                    &lt;th style=&#34;padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold; color: #805ad5;&#34;&gt;自定密钥&lt;/th&gt;
                 &lt;/tr&gt;
             &lt;/thead&gt;
             &lt;tbody&gt;
                 &lt;tr style=&#34;background-color: #fff;&#34;&gt;
-                    &lt;td style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #f7fafc;&#34;&gt;每日期望&lt;/td&gt;
-                    &lt;td id=&#34;mod-day&#34; style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: 500; color: #3182ce;&#34;&gt;-&lt;/td&gt;
-                    &lt;td id=&#34;part-day&#34; style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: 500; color: #dd6b20;&#34;&gt;-&lt;/td&gt;
-                    &lt;td id=&#34;total-day&#34; style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; color: #38a169; background-color: #f0fff4;&#34;&gt;-&lt;/td&gt;
-                    &lt;td id=&#34;key-day&#34; style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: 500; color: #805ad5; background-color: #fdf0ff;&#34;&gt;-&lt;/td&gt;
+                    &lt;td style=&#34;padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold; background-color: #ffe3e3;&#34;&gt;每日期望&lt;/td&gt;
+                    &lt;td id=&#34;mod-day&#34; style=&#34;padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: 500; color: #3182ce;&#34;&gt;-&lt;/td&gt;
+                    &lt;td id=&#34;part-day&#34; style=&#34;padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: 500; color: #dd6b20;&#34;&gt;-&lt;/td&gt;
+                    &lt;td id=&#34;total-day&#34; style=&#34;padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold; color: #a13838;&#34;&gt;-&lt;/td&gt;
+                    &lt;td id=&#34;key-day&#34; style=&#34;padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: 500; color: #805ad5;&#34;&gt;-&lt;/td&gt;
                 &lt;/tr&gt;
                 &lt;tr style=&#34;background-color: #fff;&#34;&gt;
-                    &lt;td style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #f7fafc;&#34;&gt;每月期望&lt;/td&gt;
-                    &lt;td id=&#34;mod-month&#34; style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: 500; color: #3182ce;&#34;&gt;-&lt;/td&gt;
-                    &lt;td id=&#34;part-month&#34; style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: 500; color: #dd6b20;&#34;&gt;-&lt;/td&gt;
-                    &lt;td id=&#34;total-month&#34; style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; color: #38a169; background-color: #f0fff4;&#34;&gt;-&lt;/td&gt;
-                    &lt;td id=&#34;key-month&#34; style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: 500; color: #805ad5; background-color: #fdf0ff;&#34;&gt;-&lt;/td&gt;
+                    &lt;td style=&#34;padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold; background-color: #ffe3e3;&#34;&gt;每月期望&lt;/td&gt;
+                    &lt;td id=&#34;mod-month&#34; style=&#34;padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: 500; color: #3182ce;&#34;&gt;-&lt;/td&gt;
+                    &lt;td id=&#34;part-month&#34; style=&#34;padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: 500; color: #dd6b20;&#34;&gt;-&lt;/td&gt;
+                    &lt;td id=&#34;total-month&#34; style=&#34;padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold; color: #a13838;&#34;&gt;-&lt;/td&gt;
+                    &lt;td id=&#34;key-month&#34; style=&#34;padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: 500; color: #805ad5;&#34;&gt;-&lt;/td&gt;
                 &lt;/tr&gt;
             &lt;/tbody&gt;
         &lt;/table&gt;
     &lt;/div&gt;
 
-    &lt;h3 style=&#34;margin-top: 35px; text-align: center; color: #2d3748; border-bottom: 2px solid #edf2f7; padding-bottom: 10px; font-size: 16px;&#34;&gt;新旧克拉肯对比一览&lt;/h3&gt;
+    &lt;h3 style=&#34;margin-top: 35px; text-align: center; color: #2d3748; border-bottom: 2px solid #ebdada; padding-bottom: 10px; font-size: 16px;&#34;&gt;新旧克拉肯对比一览&lt;/h3&gt;
     
     &lt;div style=&#34;overflow-x: auto; margin-top: 15px;&#34;&gt;
-        &lt;table style=&#34;width: 100%; border-collapse: collapse; font-size: 13px; text-align: center; border: 1px solid #cbd5e0; white-space: nowrap;&#34;&gt;
+        &lt;table style=&#34;width: 100%; border-collapse: collapse; font-size: 13px; text-align: center; border: 1px solid #e0a2a2; white-space: nowrap;&#34;&gt;
             &lt;thead&gt;
-                &lt;tr style=&#34;background-color: #f7fafc; color: #4a5568; border-bottom: 2px solid #cbd5e0;&#34;&gt;
-                    &lt;th style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #edf2f7;&#34;&gt;对比项&lt;/th&gt;
-                    &lt;th style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold;&#34;&gt;每日期望&lt;/th&gt;
-                    &lt;th style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold;&#34;&gt;每月期望&lt;/th&gt;
-                    &lt;th style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold;&#34;&gt;箱子&lt;/th&gt;
-                    &lt;th style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold;&#34;&gt;石头总计&lt;/th&gt;
-                    &lt;th style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold; color: #3182ce;&#34;&gt;提升率&lt;/th&gt;
-                    &lt;th style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold; color: #dd6b20;&#34;&gt;差距(数量)&lt;/th&gt;
+                &lt;tr style=&#34;background-color: #ffe3e3; color: #4a5568;&#34;&gt;
+                    &lt;th style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold;&#34;&gt;对比项&lt;/th&gt;
+                    &lt;th style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold;&#34;&gt;每日期望&lt;/th&gt;
+                    &lt;th style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold;&#34;&gt;每月期望&lt;/th&gt;
+                    &lt;th style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold;&#34;&gt;箱子&lt;/th&gt;
+                    &lt;th style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold;&#34;&gt;石头总计&lt;/th&gt;
+                    &lt;th style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; color: #38a169;&#34;&gt;提升率&lt;/th&gt;
+                    &lt;th style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; color: #38a169;&#34;&gt;差距(数量)&lt;/th&gt;
                 &lt;/tr&gt;
             &lt;/thead&gt;
             &lt;tbody style=&#34;color: #4a5568;&#34;&gt;
                 &lt;tr style=&#34;background-color: #fff;&#34;&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #f7fafc;&#34;&gt;旧LV7 石头&lt;/td&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;2.28&lt;/td&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;77&lt;/td&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;38&lt;/td&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;115&lt;/td&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; color: #a0aec0;&#34;&gt;-&lt;/td&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; color: #a0aec0;&#34;&gt;-&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; background-color: #ffe3e3;&#34;&gt;旧LV7 石头&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;&#34;&gt;2.28&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;&#34;&gt;77&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;&#34;&gt;38&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;&#34;&gt;115&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; color: #a0aec0;&#34;&gt;-&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; color: #a0aec0;&#34;&gt;-&lt;/td&gt;
                 &lt;/tr&gt;
                 &lt;tr style=&#34;background-color: #fff;&#34;&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #f7fafc;&#34;&gt;新LV7 石头&lt;/td&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;2.55&lt;/td&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;87&lt;/td&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;46&lt;/td&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;133&lt;/td&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; color: #3182ce;&#34;&gt;15%&lt;/td&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; color: #dd6b20; font-weight: 500;&#34;&gt;+18&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; background-color: #ffe3e3;&#34;&gt;新LV7 石头&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;&#34;&gt;2.55&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;&#34;&gt;87&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;&#34;&gt;46&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;&#34;&gt;133&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; color: #38a169;&#34;&gt;15%&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; color: #38a169;&#34;&gt;+18&lt;/td&gt;
                 &lt;/tr&gt;
                 &lt;tr style=&#34;background-color: #fff;&#34;&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #f7fafc;&#34;&gt;新LV8 石头&lt;/td&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;2.63&lt;/td&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;89&lt;/td&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;48&lt;/td&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;137&lt;/td&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; color: #3182ce;&#34;&gt;19%&lt;/td&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; color: #dd6b20; font-weight: 500;&#34;&gt;+22&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; background-color: #ffe3e3;&#34;&gt;新LV8 石头&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;&#34;&gt;2.63&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;&#34;&gt;89&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;&#34;&gt;48&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;&#34;&gt;137&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; color: #38a169;&#34;&gt;19%&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; color: #38a169;&#34;&gt;+22&lt;/td&gt;
                 &lt;/tr&gt;
                 &lt;tr style=&#34;background-color: #fff;&#34;&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #f7fafc;&#34;&gt;新LV9 石头&lt;/td&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;2.71&lt;/td&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;92&lt;/td&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;51&lt;/td&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0;&#34;&gt;143&lt;/td&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; color: #3182ce;&#34;&gt;24%&lt;/td&gt;
-                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #cbd5e0; color: #dd6b20; font-weight: 500;&#34;&gt;+28&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; background-color: #ffe3e3;&#34;&gt;新LV9 石头&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;&#34;&gt;2.71&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;&#34;&gt;92&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;&#34;&gt;51&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;&#34;&gt;143&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; color: #38a169;&#34;&gt;24%&lt;/td&gt;
+                    &lt;td style=&#34;padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; color: #38a169;&#34;&gt;+28&lt;/td&gt;
                 &lt;/tr&gt;
             &lt;/tbody&gt;
         &lt;/table&gt;
@@ -114,7 +115,17 @@
 
 &lt;script&gt;
 function calculateDrops() {
-    var stage = document.getElementById(&#34;stage-select&#34;).value;
+    var stageSelect = document.getElementById(&#34;stage-select&#34;);
+    var stage = stageSelect.value;
+    
+    
+    if (stage === &#34;0&#34;) {
+        var fields = [&#34;mod-day&#34;, &#34;mod-month&#34;, &#34;part-day&#34;, &#34;part-month&#34;, &#34;total-day&#34;, &#34;total-month&#34;, &#34;key-day&#34;, &#34;key-month&#34;];
+        fields.forEach(function(id) {
+            document.getElementById(id).innerText = &#34;-&#34;;
+        });
+        return;
+    }
     
     var config = {
         &#34;7&#34;: { dropRate: 0.65, box: 0.45, key: 6 },
@@ -149,6 +160,7 @@ function calculateDrops() {
     document.getElementById(&#34;key-day&#34;).innerText = keyDay.toFixed(0); 
     document.getElementById(&#34;key-month&#34;).innerText = keyMonth.toFixed(0);
 }
+
 
 window.onload = function() {
     calculateDrops();
@@ -205,8 +217,9 @@ window.onload = function() {
 &lt;/h2&gt;&lt;div class=&#34;nikke-equipment-calc&#34; style=&#34;max-width: 800px; margin: 20px auto; padding: 25px; border: 1px solid #dcd7cc; border-radius: 12px; box-shadow: 0 4px 16px rgba(139,126,116,0.1); font-family: -apple-system, sans-serif; background: #fdfaf4; color: #433e37;&#34;&gt;
     
     &lt;div style=&#34;background-color: #f3ede2; padding: 10px 15px; border-radius: 6px; font-size: 12px; color: #7d715e; margin-bottom: 25px; line-height: 1.6; border-left: 4px solid #b1a491;&#34;&gt;
-        &lt;strong&gt;基准经验设定：&lt;/strong&gt; T8狗粮 = 12,800 XP | T9狗粮 = 25,400 XP&lt;br&gt;
-        T9 → T10 消耗 = 1,592,000 XP | T10 0级 → 5级(满级) 消耗 = 2,388,000 XP
+        &lt;strong&gt;狗粮提供经验：&lt;/strong&gt; T8狗粮 = 12,800 EXP | T9狗粮 = 25,400 EXP&lt;br&gt;
+        &lt;strong&gt;升级所需经验：&lt;/strong&gt; T9 → T10 消耗 = 1,592,000 EXP | T10 0级 → 5级(满级) 消耗 = 2,388,000 EXP | T9 → T10(满级) 总计消耗 = 3,980,000 EXP&lt;br&gt;
+        &lt;strong&gt;注释：&lt;/strong&gt; T10 0级 → 5级(满级) = 拉1.5个T10 | T9 → T10(满级) = 拉2.5个T10
     &lt;/div&gt;
 
     &lt;div style=&#34;margin-bottom: 30px; border: 1px solid #eadecb; padding: 15px; border-radius: 8px; background: #ffffff;&#34;&gt;
@@ -238,58 +251,37 @@ window.onload = function() {
         &lt;/div&gt;
     &lt;/div&gt;
 
-    &lt;div style=&#34;margin-bottom: 30px; border: 1px solid #eadecb; padding: 15px; border-radius: 8px; background: #ffffff;&#34;&gt;
-        &lt;h4 style=&#34;margin: 0 0 12px 0; font-size: 15px; color: #5a5245; display: flex; align-items: center; gap: 6px;&#34;&gt;
-            &lt;span style=&#34;background: #6a7f93; color: #fff; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold;&#34;&gt;2&lt;/span&gt;
-            计算【T9 ➔ T10】所需狗粮
-        &lt;/h4&gt;
-        &lt;div style=&#34;margin-bottom: 12px; display: flex; align-items: center; gap: 10px;&#34;&gt;
-            &lt;label for=&#34;gear-need-t10-count&#34; style=&#34;font-size: 13px; font-weight: bold; color: #6f6453; white-space: nowrap;&#34;&gt;计划将几件 T9 升至 T10:&lt;/label&gt;
-            &lt;input type=&#34;number&#34; id=&#34;gear-need-t10-count&#34; value=&#34;0&#34; min=&#34;0&#34; oninput=&#34;calcGearInput2()&#34; style=&#34;flex: 1; padding: 6px 10px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 14px; outline: none; background: #fdfdfb; color: #433e37;&#34;&gt;
-        &lt;/div&gt;
-        &lt;div style=&#34;overflow-x: auto;&#34;&gt;
-            &lt;table style=&#34;width: 100%; border-collapse: collapse; font-size: 13px; text-align: center; border: 1px solid #ccbfad;&#34;&gt;
-                &lt;thead&gt;
-                    &lt;tr style=&#34;background-color: #f7f3eb; color: #5a5245;&#34;&gt;
-                        &lt;th style=&#34;padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold;&#34;&gt;总计所需经验值 (XP)&lt;/th&gt;
-                        &lt;th style=&#34;padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;&#34;&gt;纯用 T9 狗粮 (个)&lt;/th&gt;
-                        &lt;th style=&#34;padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;&#34;&gt;纯用 T8 狗粮 (个)&lt;/th&gt;
-                    &lt;/tr&gt;
-                &lt;/thead&gt;
-                &lt;tbody&gt;
-                    &lt;tr style=&#34;background-color: #fff;&#34;&gt;
-                        &lt;td id=&#34;res2-xp&#34; style=&#34;padding: 10px 6px; border: 1px solid #ccbfad; font-weight: 500; color: #5a5245;&#34;&gt;0&lt;/td&gt;
-                        &lt;td id=&#34;res2-t9&#34; style=&#34;padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;&#34;&gt;0.0&lt;/td&gt;
-                        &lt;td id=&#34;res2-t8&#34; style=&#34;padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;&#34;&gt;0.0&lt;/td&gt;
-                    &lt;/tr&gt;
-                &lt;/tbody&gt;
-            &lt;/table&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-
     &lt;div style=&#34;margin-bottom: 10px; border: 1px solid #eadecb; padding: 15px; border-radius: 8px; background: #ffffff;&#34;&gt;
-        &lt;h4 style=&#34;margin: 0 0 12px 0; font-size: 15px; color: #5a5245; display: flex; align-items: center; gap: 6px;&#34;&gt;
-            &lt;span style=&#34;background: #9c846b; color: #fff; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold;&#34;&gt;3&lt;/span&gt;
-            计算【T10 ➔ 满级】所需狗粮
+        &lt;h4 style=&#34;margin: 0 0 15px 0; font-size: 15px; color: #5a5245; display: flex; align-items: center; gap: 6px;&#34;&gt;
+            &lt;span style=&#34;background: #6a7f93; color: #fff; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold;&#34;&gt;2&lt;/span&gt;
+            自定义装备强化方案计算（可组合输入）
         &lt;/h4&gt;
-        &lt;div style=&#34;margin-bottom: 12px; display: flex; align-items: center; gap: 10px;&#34;&gt;
-            &lt;label for=&#34;gear-need-max-count&#34; style=&#34;font-size: 13px; font-weight: bold; color: #6f6453; white-space: nowrap;&#34;&gt;计划将几件 T10 升至满级:&lt;/label&gt;
-            &lt;input type=&#34;number&#34; id=&#34;gear-need-max-count&#34; value=&#34;0&#34; min=&#34;0&#34; oninput=&#34;calcGearInput3()&#34; style=&#34;flex: 1; padding: 6px 10px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 14px; outline: none; background: #fdfdfb; color: #433e37;&#34;&gt;
+        
+        &lt;div style=&#34;display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 15px;&#34;&gt;
+            &lt;div style=&#34;display: flex; align-items: center; gap: 8px;&#34;&gt;
+                &lt;label for=&#34;combine-t9-t10&#34; style=&#34;font-size: 12px; font-weight: bold; color: #6f6453; white-space: nowrap;&#34;&gt;【T9 ➔ T10】件数:&lt;/label&gt;
+                &lt;input type=&#34;number&#34; id=&#34;combine-t9-t10&#34; value=&#34;0&#34; min=&#34;0&#34; oninput=&#34;calcCombinedGear()&#34; style=&#34;width: 100%; padding: 5px 8px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 13px; outline: none; background: #fdfdfb; color: #433e37;&#34;&gt;
+            &lt;/div&gt;
+            &lt;div style=&#34;display: flex; align-items: center; gap: 8px;&#34;&gt;
+                &lt;label for=&#34;combine-t10-max&#34; style=&#34;font-size: 12px; font-weight: bold; color: #6f6453; white-space: nowrap;&#34;&gt;【T10 ➔ 满级】件数:&lt;/label&gt;
+                &lt;input type=&#34;number&#34; id=&#34;combine-t10-max&#34; value=&#34;0&#34; min=&#34;0&#34; oninput=&#34;calcCombinedGear()&#34; style=&#34;width: 100%; padding: 5px 8px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 13px; outline: none; background: #fdfdfb; color: #433e37;&#34;&gt;
+            &lt;/div&gt;
         &lt;/div&gt;
+
         &lt;div style=&#34;overflow-x: auto;&#34;&gt;
             &lt;table style=&#34;width: 100%; border-collapse: collapse; font-size: 13px; text-align: center; border: 1px solid #ccbfad;&#34;&gt;
                 &lt;thead&gt;
                     &lt;tr style=&#34;background-color: #f7f3eb; color: #5a5245;&#34;&gt;
-                        &lt;th style=&#34;padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold;&#34;&gt;总计所需经验值 (XP)&lt;/th&gt;
-                        &lt;th style=&#34;padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;&#34;&gt;纯用 T9 狗粮 (个)&lt;/th&gt;
-                        &lt;th style=&#34;padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;&#34;&gt;纯用 T8 狗粮 (个)&lt;/th&gt;
+                        &lt;th style=&#34;padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold;&#34;&gt;方案总需经验值 (EXP)&lt;/th&gt;
+                        &lt;th style=&#34;padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;&#34;&gt;共需 T9 狗粮 (个)&lt;/th&gt;
+                        &lt;th style=&#34;padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;&#34;&gt;共需 T8 狗粮 (个)&lt;/th&gt;
                     &lt;/tr&gt;
                 &lt;/thead&gt;
                 &lt;tbody&gt;
                     &lt;tr style=&#34;background-color: #fff;&#34;&gt;
-                        &lt;td id=&#34;res3-xp&#34; style=&#34;padding: 10px 6px; border: 1px solid #ccbfad; font-weight: 500; color: #5a5245;&#34;&gt;0&lt;/td&gt;
-                        &lt;td id=&#34;res3-t9&#34; style=&#34;padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;&#34;&gt;0.0&lt;/td&gt;
-                        &lt;td id=&#34;res3-t8&#34; style=&#34;padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;&#34;&gt;0.0&lt;/td&gt;
+                        &lt;td id=&#34;combine-res-xp&#34; style=&#34;padding: 10px 6px; border: 1px solid #ccbfad; font-weight: 500; color: #5a5245;&#34;&gt;0&lt;/td&gt;
+                        &lt;td id=&#34;combine-res-t9&#34; style=&#34;padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;&#34;&gt;0.0&lt;/td&gt;
+                        &lt;td id=&#34;combine-res-t8&#34; style=&#34;padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;&#34;&gt;0.0&lt;/td&gt;
                     &lt;/tr&gt;
                 &lt;/tbody&gt;
             &lt;/table&gt;
@@ -316,31 +308,25 @@ function calcGearInput1() {
     document.getElementById(&#34;res1-t9-to-max&#34;).innerText = (totalXp / NEED_TOTAL_MAX).toFixed(2);
 }
 
-function calcGearInput2() {
-    let count = parseFloat(document.getElementById(&#34;gear-need-t10-count&#34;).value) || 0;
-    if (count &lt; 0) count = 0;
-    let requiredXp = count * NEED_T9_TO_T10;
+function calcCombinedGear() {
+    let countT9ToT10 = parseFloat(document.getElementById(&#34;combine-t9-t10&#34;).value) || 0;
+    let countT10ToMax = parseFloat(document.getElementById(&#34;combine-t10-max&#34;).value) || 0;
     
-    document.getElementById(&#34;res2-xp&#34;).innerText = requiredXp.toLocaleString();
-    document.getElementById(&#34;res2-t9&#34;).innerText = (requiredXp / XP_T9).toFixed(1);
-    document.getElementById(&#34;res2-t8&#34;).innerText = (requiredXp / XP_T8).toFixed(1);
-}
-
-function calcGearInput3() {
-    let count = parseFloat(document.getElementById(&#34;gear-need-max-count&#34;).value) || 0;
-    if (count &lt; 0) count = 0;
-    let requiredXp = count * NEED_T10_TO_MAX;
+    if (countT9ToT10 &lt; 0) countT9ToT10 = 0;
+    if (countT10ToMax &lt; 0) countT10ToMax = 0;
     
-    document.getElementById(&#34;res3-xp&#34;).innerText = requiredXp.toLocaleString();
-    document.getElementById(&#34;res3-t9&#34;).innerText = (requiredXp / XP_T9).toFixed(1);
-    document.getElementById(&#34;res3-t8&#34;).innerText = (requiredXp / XP_T8).toFixed(1);
+    
+    let totalRequiredXp = (countT9ToT10 * NEED_T9_TO_T10) + (countT10ToMax * NEED_T10_TO_MAX);
+    
+    document.getElementById(&#34;combine-res-xp&#34;).innerText = totalRequiredXp.toLocaleString();
+    document.getElementById(&#34;combine-res-t9&#34;).innerText = (totalRequiredXp / XP_T9).toFixed(1);
+    document.getElementById(&#34;combine-res-t8&#34;).innerText = (totalRequiredXp / XP_T8).toFixed(1);
 }
 
 
 window.onload = function() {
     calcGearInput1();
-    calcGearInput2();
-    calcGearInput3();
+    calcCombinedGear();
 };
 &lt;/script&gt;
 &lt;h2 id=&#34;技能计算器&#34;&gt;技能计算器
@@ -759,7 +745,7 @@ calculate();
 倘若已经拥有茨瓦伊珍藏品，茨瓦依本身提供63.63%暴击率+妮姬自带15%暴击率+敏特19.94%暴击率=98.57%暴击率！主C只要一条1阶段的暴击率词条就足以达到百暴！但要是2技能只点7，则主C需要9阶段或以上的暴击率词条才可以达成百暴。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;既然提到了茨瓦伊，NGA上有帖子统计过水百暴对重装白雪的收益，分别是米兰达，茨瓦伊，兔爱德，敏特组成的排列组合。
+&lt;li&gt;既然提到了茨瓦伊，NGA上有帖子统计过水百暴对重装白雪的收益，分别是米兰达，茨瓦伊，兔爱德，敏特组成的排列组合。&lt;br&gt;
 参考帖子：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://bbs.nga.cn/read.php?tid=46800971&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;​[评测] 水系百爆队 米兰达/学生妹 敏特/兔爱德 对重白提升&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
 &lt;strong&gt;&lt;code&gt;伤害排序：茨瓦伊+敏特 342.7e（手操）&amp;gt; 米兰达+敏特 339.1e &amp;gt; 茨瓦伊+敏特 318.6e（自动）&amp;gt; 米兰达+兔爱德 315.6e &amp;gt; 茨瓦伊+兔爱德 302.3e&lt;/code&gt;&lt;/strong&gt;&lt;/li&gt;
