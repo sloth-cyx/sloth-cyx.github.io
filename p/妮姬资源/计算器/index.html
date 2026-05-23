@@ -279,7 +279,7 @@
             <nav id="TableOfContents">
   <ol>
     <li><a href="#石头期望计算器">石头期望计算器</a></li>
-    <li><a href="#sr15所需收藏品狗粮期望">SR15所需收藏品狗粮期望</a></li>
+    <li><a href="#收藏品sr15升级期望">收藏品SR15升级期望</a></li>
     <li><a href="#装备升级计算器">装备升级计算器</a></li>
     <li><a href="#技能计算器">技能计算器</a></li>
     <li><a href="#词条概率">词条概率</a></li>
@@ -383,7 +383,7 @@
                     <td style="padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #f7fafc;">每月期望</td>
                     <td id="mod-month" style="padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: 500; color: #3182ce;">-</td>
                     <td id="part-month" style="padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: 500; color: #dd6b20;">-</td>
-                    <td id="total-month" style="padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; color: #38a169; background-color: #e6fffa;">-</td>
+                    <td id="total-month" style="padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; color: #38a169; background-color: #f0fff4;">-</td>
                     <td id="key-month" style="padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: 500; color: #805ad5; background-color: #fdf0ff;">-</td>
                 </tr>
             </tbody>
@@ -489,312 +489,335 @@ window.onload = function() {
     calculateDrops();
 };
 </script>
-<h2 id="sr15所需收藏品狗粮期望">SR15所需收藏品狗粮期望
-</h2><h2 id="装备升级计算器">装备升级计算器
-</h2><h2 id="技能计算器">技能计算器
-</h2><div class="nikke-calculator">
-  <div class="calc-card">
-    <p class="subtitle">代码手册拥有5种属性，继续细化则需另寻他日~也有可能永无他日~</p>
+<h2 id="收藏品sr15升级期望">收藏品SR15升级期望
+</h2><div class="nikke-collection-table" style="width: 100%; margin: 2.5rem auto; max-width: 800px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; padding: 15px; background: #8c624d; border-radius: 16px;">
+  <div class="table-card" style="background: #a1755e; border: 1px solid #b38770; border-radius: 12px; padding: 25px; color: #ffffff; box-shadow: 0 4px 20px rgba(70,45,35,0.25);">
 
-    <div class="grid">
-      <div class="panel">
-        <h3>点技能角色数量</h3>
+    <div style="background: #ffffff; border-radius: 8px; padding: 20px; border: 1px solid #b88d76; overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 13px; border: 1px solid #e3d3ca; white-space: nowrap;">
+        <thead>
+          <tr style="background-color: #f5ede8; color: #734a36;">
+            <th style="padding: 12px 10px; border: 1px solid #e3d3ca; font-weight: bold; text-align: center; width: 25%;">收藏品升级方式</th>
+            <th style="padding: 12px 10px; border: 1px solid #e3d3ca; font-weight: bold; text-align: center; width: 25%;">第一阶段期望</th>
+            <th style="padding: 12px 10px; border: 1px solid #e3d3ca; font-weight: bold; text-align: center; width: 25%;">第二阶段期望</th>
+            <th style="padding: 12px 10px; border: 1px solid #e3d3ca; font-weight: bold; text-align: center; width: 25%;">两阶段总计</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="mat-name" style="padding: 12px 10px; border: 1px solid #e3d3ca; font-weight: bold; color: #8c624d; text-align: center; background-color: #fdfbfa !important;">蓝色材料需求</td>
+            <td style="padding: 12px 10px; border: 1px solid #e3d3ca; text-align: center; color: #2d3748; background-color: #ffffff !important;">SR5蓝色 <span style="font-weight: 600; color: #3182ce;">150 个</span></td>
+            <td style="padding: 12px 10px; border: 1px solid #e3d3ca; text-align: center; color: #2d3748; background-color: #ffffff !important;">SR10蓝色 <span style="font-weight: 600; color: #3182ce;">150 个</span></td>
+            <td style="padding: 12px 10px; border: 1px solid #e3d3ca; text-align: center; font-weight: bold; color: #2b6cb0; background-color: #edf2f7 !important;">300 个蓝色</td>
+          </tr>
+          <tr>
+            <td class="mat-name" style="padding: 12px 10px; border: 1px solid #e3d3ca; font-weight: bold; color: #8c624d; text-align: center; background-color: #fdfbfa !important;">紫色材料需求</td>
+            <td style="padding: 12px 10px; border: 1px solid #e3d3ca; text-align: center; color: #2d3748; background-color: #fdfbfa !important;">SR6紫色 <span style="font-weight: 600; color: #805ad5;">60 个</span></td>
+            <td style="padding: 12px 10px; border: 1px solid #e3d3ca; text-align: center; color: #2d3748; background-color: #fdfbfa !important;">SR11紫色 <span style="font-weight: 600; color: #805ad5;">60 个</span></td>
+            <td style="padding: 12px 10px; border: 1px solid #e3d3ca; text-align: center; font-weight: bold; color: #6b46c1; background-color: #faf5ff !important;">120 个紫色</td>
+          </tr>
+          <tr>
+            <td class="mat-name" style="padding: 12px 10px; border: 1px solid #e3d3ca; font-weight: bold; color: #8c624d; text-align: center; background-color: #fdfbfa !important;">金色材料需求</td>
+            <td style="padding: 12px 10px; border: 1px solid #e3d3ca; text-align: center; color: #2d3748; background-color: #ffffff !important;">SR7金色 <span style="font-weight: 600; color: #dd6b20;">30 个</span></td>
+            <td style="padding: 12px 10px; border: 1px solid #e3d3ca; text-align: center; color: #2d3748; background-color: #ffffff !important;">SR12金色 <span style="font-weight: 600; color: #dd6b20;">30 个</span></td>
+            <td style="padding: 12px 10px; border: 1px solid #e3d3ca; text-align: center; font-weight: bold; color: #dd6b20; background-color: #fffaf0 !important;">60 个金色</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
+</div>
 
-        <div class="input-group">
-          <label>10/10/10 角色数量</label>
-          <input type="number" id="S101010" value="0" min="0">
+<style>
+ 
+.nikke-collection-table .table-card table tbody tr,
+.nikke-collection-table .table-card table tbody tr td {
+  border: 1px solid #e3d3ca !important;
+}
+</style>
+<h2 id="装备升级计算器">装备升级计算器
+</h2><div class="nikke-equipment-calc" style="max-width: 800px; margin: 20px auto; padding: 25px; border: 1px solid #dcd7cc; border-radius: 12px; box-shadow: 0 4px 16px rgba(139,126,116,0.1); font-family: -apple-system, sans-serif; background: #fdfaf4; color: #433e37;">
+    
+    <div style="background-color: #f3ede2; padding: 10px 15px; border-radius: 6px; font-size: 12px; color: #7d715e; margin-bottom: 25px; line-height: 1.6; border-left: 4px solid #b1a491;">
+        <strong>基准经验设定：</strong> T8狗粮 = 12,800 XP | T9狗粮 = 25,400 XP<br>
+        T9 → T10 消耗 = 1,592,000 XP | T10 0级 → 5级(满级) 消耗 = 2,388,000 XP
+    </div>
+
+    <div style="margin-bottom: 30px; border: 1px solid #eadecb; padding: 15px; border-radius: 8px; background: #ffffff;">
+        <h4 style="margin: 0 0 12px 0; font-size: 15px; color: #5a5245; display: flex; align-items: center; gap: 6px;">
+            <span style="background: #62796f; color: #fff; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold;">1</span>
+            通过当前库存计算可升级装备数
+        </h4>
+        <div style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+            <label for="gear-has-t9" style="font-size: 13px; font-weight: bold; color: #6f6453; white-space: nowrap;">目前拥有 T9 狗粮数量:</label>
+            <input type="number" id="gear-has-t9" value="0" min="0" oninput="calcGearInput1()" style="flex: 1; padding: 6px 10px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 14px; outline: none; background: #fdfdfb; color: #433e37;">
+        </div>
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: center; border: 1px solid #ccbfad;">
+                <thead>
+                    <tr style="background-color: #f7f3eb; color: #5a5245;">
+                        <th style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold;">T9 升级至 T10 (件)</th>
+                        <th style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold;">T10 升级至 满级 (件)</th>
+                        <th style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold;">T9 升级至 T10 满级 (件)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color: #fff;">
+                        <td id="res1-t9-to-t10" style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: 500; color: #5a5245;">0.00</td>
+                        <td id="res1-t10-to-max" style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: 500; color: #5a5245;">0.00</td>
+                        <td id="res1-t9-to-max" style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #5a5245;">0.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 30px; border: 1px solid #eadecb; padding: 15px; border-radius: 8px; background: #ffffff;">
+        <h4 style="margin: 0 0 12px 0; font-size: 15px; color: #5a5245; display: flex; align-items: center; gap: 6px;">
+            <span style="background: #6a7f93; color: #fff; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold;">2</span>
+            计算【T9 ➔ T10】所需狗粮
+        </h4>
+        <div style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+            <label for="gear-need-t10-count" style="font-size: 13px; font-weight: bold; color: #6f6453; white-space: nowrap;">计划将几件 T9 升至 T10:</label>
+            <input type="number" id="gear-need-t10-count" value="0" min="0" oninput="calcGearInput2()" style="flex: 1; padding: 6px 10px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 14px; outline: none; background: #fdfdfb; color: #433e37;">
+        </div>
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: center; border: 1px solid #ccbfad;">
+                <thead>
+                    <tr style="background-color: #f7f3eb; color: #5a5245;">
+                        <th style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold;">总计所需经验值 (XP)</th>
+                        <th style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;">纯用 T9 狗粮 (个)</th>
+                        <th style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;">纯用 T8 狗粮 (个)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color: #fff;">
+                        <td id="res2-xp" style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: 500; color: #5a5245;">0</td>
+                        <td id="res2-t9" style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;">0.0</td>
+                        <td id="res2-t8" style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;">0.0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 10px; border: 1px solid #eadecb; padding: 15px; border-radius: 8px; background: #ffffff;">
+        <h4 style="margin: 0 0 12px 0; font-size: 15px; color: #5a5245; display: flex; align-items: center; gap: 6px;">
+            <span style="background: #9c846b; color: #fff; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold;">3</span>
+            计算【T10 ➔ 满级】所需狗粮
+        </h4>
+        <div style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+            <label for="gear-need-max-count" style="font-size: 13px; font-weight: bold; color: #6f6453; white-space: nowrap;">计划将几件 T10 升至满级:</label>
+            <input type="number" id="gear-need-max-count" value="0" min="0" oninput="calcGearInput3()" style="flex: 1; padding: 6px 10px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 14px; outline: none; background: #fdfdfb; color: #433e37;">
+        </div>
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: center; border: 1px solid #ccbfad;">
+                <thead>
+                    <tr style="background-color: #f7f3eb; color: #5a5245;">
+                        <th style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold;">总计所需经验值 (XP)</th>
+                        <th style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;">纯用 T9 狗粮 (个)</th>
+                        <th style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;">纯用 T8 狗粮 (个)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color: #fff;">
+                        <td id="res3-xp" style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: 500; color: #5a5245;">0</td>
+                        <td id="res3-t9" style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;">0.0</td>
+                        <td id="res3-t8" style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;">0.0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+const XP_T8 = 12800;
+const XP_T9 = 25400;
+const NEED_T9_TO_T10 = 1592000;
+const NEED_T10_TO_MAX = 2388000;
+const NEED_TOTAL_MAX = NEED_T9_TO_T10 + NEED_T10_TO_MAX;
+
+function calcGearInput1() {
+    let hasT9 = parseFloat(document.getElementById("gear-has-t9").value) || 0;
+    if (hasT9 < 0) hasT9 = 0;
+    let totalXp = hasT9 * XP_T9;
+    
+    document.getElementById("res1-t9-to-t10").innerText = (totalXp / NEED_T9_TO_T10).toFixed(2);
+    document.getElementById("res1-t10-to-max").innerText = (totalXp / NEED_T10_TO_MAX).toFixed(2);
+    document.getElementById("res1-t9-to-max").innerText = (totalXp / NEED_TOTAL_MAX).toFixed(2);
+}
+
+function calcGearInput2() {
+    let count = parseFloat(document.getElementById("gear-need-t10-count").value) || 0;
+    if (count < 0) count = 0;
+    let requiredXp = count * NEED_T9_TO_T10;
+    
+    document.getElementById("res2-xp").innerText = requiredXp.toLocaleString();
+    document.getElementById("res2-t9").innerText = (requiredXp / XP_T9).toFixed(1);
+    document.getElementById("res2-t8").innerText = (requiredXp / XP_T8).toFixed(1);
+}
+
+function calcGearInput3() {
+    let count = parseFloat(document.getElementById("gear-need-max-count").value) || 0;
+    if (count < 0) count = 0;
+    let requiredXp = count * NEED_T10_TO_MAX;
+    
+    document.getElementById("res3-xp").innerText = requiredXp.toLocaleString();
+    document.getElementById("res3-t9").innerText = (requiredXp / XP_T9).toFixed(1);
+    document.getElementById("res3-t8").innerText = (requiredXp / XP_T8).toFixed(1);
+}
+
+
+window.onload = function() {
+    calcGearInput1();
+    calcGearInput2();
+    calcGearInput3();
+};
+</script>
+<h2 id="技能计算器">技能计算器
+</h2><div class="nikke-calculator" style="width: 100%; margin: 2rem auto; max-width: 800px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; padding: 15px; background: #4a5d53; border-radius: 16px;">
+  <div class="calc-card" style="background: #566c61; border: 1px solid #637d70; border-radius: 12px; padding: 25px; color: #ffffff; box-shadow: 0 4px 20px rgba(40,50,45,0.25);">
+    
+    <h3 style="margin-top: 0; text-align: center; color: #ffffff; border-bottom: 2px solid #6b8477; padding-bottom: 10px; font-size: 18px; letter-spacing: 1px;">代码手册拥有5种属性，现阶段不支持~继续细化改日再说，也有可能不做~</h3>
+
+    <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+      
+      <div class="panel" style="background: #ffffff; padding: 20px; border-radius: 8px; border: 1px solid #6b8477; color: #2d3748;">
+        <h3 style="margin-top: 0; margin-bottom: 15px; font-size: 15px; color: #4a5d53; border-left: 4px solid #566c61; padding-left: 8px; font-weight: bold;">点技能角色数量</h3>
+
+        <div class="input-group" style="display: flex; flex-direction: column; margin-bottom: 14px;">
+          <label style="margin-bottom: 6px; font-size: 13px; font-weight: bold; color: #4a5d53;">10/10/10 角色数量</label>
+          <input type="number" id="S101010" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 10px; font-size: 14px; color: #2d3748; font-weight: bold; outline: none;">
         </div>
 
-        <div class="input-group">
-          <label>10/7/10 或 7/10/10 角色数量</label>
-          <input type="number" id="S10710" value="0" min="0">
+        <div class="input-group" style="display: flex; flex-direction: column; margin-bottom: 14px;">
+          <label style="margin-bottom: 6px; font-size: 13px; font-weight: bold; color: #4a5d53;">10/7/10 或 7/10/10 角色数量</label>
+          <input type="number" id="S10710" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 10px; font-size: 14px; color: #2d3748; font-weight: bold; outline: none;">
         </div>
 
-        <div class="input-group">
-          <label>10/7/7 或 7/10/7 角色数量</label>
-          <input type="number" id="S1077" value="0" min="0">
+        <div class="input-group" style="display: flex; flex-direction: column; margin-bottom: 14px;">
+          <label style="margin-bottom: 6px; font-size: 13px; font-weight: bold; color: #4a5d53;">10/7/7 或 7/10/7 角色数量</label>
+          <input type="number" id="S1077" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 10px; font-size: 14px; color: #2d3748; font-weight: bold; outline: none;">
         </div>
 
-        <div class="input-group">
-          <label>7/7/10 角色数量</label>
-          <input type="number" id="S7710" value="0" min="0">
+        <div class="input-group" style="display: flex; flex-direction: column; margin-bottom: 14px;">
+          <label style="margin-bottom: 6px; font-size: 13px; font-weight: bold; color: #4a5d53;">7/7/10 角色数量</label>
+          <input type="number" id="S7710" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 10px; font-size: 14px; color: #2d3748; font-weight: bold; outline: none;">
         </div>
 
-        <div class="input-group">
-          <label>7/7/7 角色数量</label>
-          <input type="number" id="S777" value="0" min="0">
+        <div class="input-group" style="display: flex; flex-direction: column; margin-bottom: 6px;">
+          <label style="margin-bottom: 6px; font-size: 13px; font-weight: bold; color: #4a5d53;">7/7/7 角色数量</label>
+          <input type="number" id="S777" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 10px; font-size: 14px; color: #2d3748; font-weight: bold; outline: none;">
         </div>
       </div>
 
-      <div class="panel">
-        <h3>当前库存</h3>
+      <div class="panel" style="background: #ffffff; padding: 20px; border-radius: 8px; border: 1px solid #6b8477; color: #2d3748;">
+        <h3 style="margin-top: 0; margin-bottom: 15px; font-size: 15px; color: #4a5d53; border-left: 4px solid #566c61; padding-left: 8px; font-weight: bold;">库存</h3>
 
-        <div class="material-grid">
-          <div class="input-group">
-            <label>技能蓝书</label>
-            <input type="number" id="ownedSkillBlue" value="0" min="0">
+        <div class="material-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px;">
+          <div class="input-group" style="display: flex; flex-direction: column;">
+            <label style="margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;">技能蓝书</label>
+            <input type="number" id="ownedSkillBlue" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;">
           </div>
 
-          <div class="input-group">
-            <label>技能紫书</label>
-            <input type="number" id="ownedSkillPurple" value="0" min="0">
+          <div class="input-group" style="display: flex; flex-direction: column;">
+            <label style="margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;">技能紫书</label>
+            <input type="number" id="ownedSkillPurple" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;">
           </div>
 
-          <div class="input-group">
-            <label>技能金书</label>
-            <input type="number" id="ownedSkillGold" value="0" min="0">
+          <div class="input-group" style="display: flex; flex-direction: column;">
+            <label style="margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;">技能金书</label>
+            <input type="number" id="ownedSkillGold" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;">
           </div>
 
-          <div class="input-group">
-            <label>爆裂蓝书</label>
-            <input type="number" id="ownedBurstBlue" value="0" min="0">
+          <div class="input-group" style="display: flex; flex-direction: column;">
+            <label style="margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;">爆裂蓝书</label>
+            <input type="number" id="ownedBurstBlue" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;">
           </div>
 
-          <div class="input-group">
-            <label>爆裂紫书</label>
-            <input type="number" id="ownedBurstPurple" value="0" min="0">
+          <div class="input-group" style="display: flex; flex-direction: column;">
+            <label style="margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;">爆裂紫书</label>
+            <input type="number" id="ownedBurstPurple" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;">
           </div>
 
-          <div class="input-group">
-            <label>爆裂金书</label>
-            <input type="number" id="ownedBurstGold" value="0" min="0">
+          <div class="input-group" style="display: flex; flex-direction: column;">
+            <label style="margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;">爆裂金书</label>
+            <input type="number" id="ownedBurstGold" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;">
           </div>
 
-          <div class="input-group">
-            <label>代码手册</label>
-            <input type="number" id="ownedCode" value="0" min="0">
+          <div class="input-group" style="display: flex; flex-direction: column; grid-column: span 1;">
+            <label style="margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;">代码手册</label>
+            <input type="number" id="ownedCode" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;">
           </div>
         </div>
       </div>
     </div>
 
-    <div class="result-panel">
-      <h3>计算结果</h3>
+    <div class="result-panel" style="margin-top: 24px; background: #ffffff; border-radius: 8px; padding: 20px; border: 1px solid #6b8477; overflow-x: auto;">
+      <h3 style="margin-top: 0; margin-bottom: 15px; font-size: 15px; color: #4a5d53; text-align: center; font-weight: bold;">📊 资源计算结果</h3>
 
-      <div class="table-wrapper"><table>
+      <table style="width: 100%; border-collapse: collapse; font-size: 13px; border: 1px solid #cbdad2; white-space: nowrap;">
         <thead>
-          <tr>
-            <th>材料</th>
-            <th>消耗</th>
-            <th>库存</th>
-            <th>剩余</th>
+          <tr style="background-color: #e4ebe7; color: #4a5d53;">
+            <th style="padding: 12px 8px; border: 1px solid #cbdad2; font-weight: bold; text-align: center;">材料</th>
+            <th style="padding: 12px 8px; border: 1px solid #cbdad2; font-weight: bold; text-align: center;">消耗</th>
+            <th style="padding: 12px 8px; border: 1px solid #cbdad2; font-weight: bold; text-align: center;">库存</th>
+            <th style="padding: 12px 8px; border: 1px solid #cbdad2; font-weight: bold; text-align: center;">剩余</th>
           </tr>
         </thead>
         <tbody id="resultTable"></tbody>
-      </table></div>
+      </table>
     </div>
   </div>
 </div>
 
 <style>
-.nikke-calculator {
-  width: 100%;
-  margin: 2rem 0;
-  font-family: sans-serif;
+ 
+.nikke-calculator .calc-card .result-panel table tbody tr {
+  background-color: #ffffff !important;
 }
-
-.calc-card {
-  background: #111827;
-  border: 1px solid #2b3548;
-  border-radius: 20px;
-  padding: 24px;
-  color: white;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+.nikke-calculator .calc-card .result-panel table tbody tr:nth-child(even) {
+  background-color: #f7faf8 !important;
 }
-
-.calc-card h2 {
-  margin-top: 0;
-  font-size: 2rem;
-}
-
-.subtitle {
-  color: #9ca3af;
-  margin-bottom: 2rem;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 20px;
-}
-
-.panel {
-  background: #1f2937;
-  padding: 20px;
-  border-radius: 16px;
-}
-
-.panel h3 {
-  margin-top: 0;
-  margin-bottom: 1rem;
-}
-
-.material-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 12px;
-}
-
-.input-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 14px;
-}
-
-.input-group label {
-  margin-bottom: 6px;
-  font-size: 0.95rem;
-  color: #d1d5db;
-}
-
-.input-group input {
-  background: #fef08a;
-  border: none;
-  border-radius: 10px;
-  padding: 12px;
-  font-size: 1rem;
-  color: black;
-  font-weight: bold;
-}
-
-.result-panel {
-  margin-top: 24px;
-  background: #1f2937;
-  border-radius: 16px;
-  padding: 20px;
-}
-
-.result-panel h3 {
-  margin-top: 0;
-}
-
-.result-panel table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.result-panel th,
-.result-panel td {
-  padding: 12px;
-  border-bottom: 1px solid #374151;
-  text-align: center;
-}
-
-.result-panel th {
-  background: #111827;
+.nikke-calculator .calc-card .result-panel table td {
+  padding: 10px 6px;
+  border: 1px solid #cbdad2;
+  text-align: center;  
+  color: #2d3748;
 }
 
  
-.nikke-calculator .calc-card .result-panel table tbody tr {
-  background-color: #1f2937 !important;
-}
-
-.positive {
-  color: #4ade80;
+.nikke-calculator .positive {
+  color: #2f855a !important;  
   font-weight: bold;
 }
-
-.negative {
-  color: #f87171;
+.nikke-calculator .negative {
+  color: #c53030 !important;  
   font-weight: bold;
-}
-
-@media (max-width: 768px) {
-  .calc-card {
-    padding: 16px;
-  }
-
-  .result-panel {
-    overflow-x: auto;
-  }
 }
 </style>
 
 <script>
 const COSTS = {
-  S101010: {
-    skillBlue: 2188,
-    skillPurple: 1550,
-    skillGold: 630,
-    burstBlue: 1094,
-    burstPurple: 755,
-    burstGold: 315,
-    code: 1440
-  },
-  S10710: {
-    skillBlue: 1474,
-    skillPurple: 1045,
-    skillGold: 315,
-    burstBlue: 1094,
-    burstPurple: 775,
-    burstGold: 315,
-    code: 1135
-  },
-  S1077: {
-    skillBlue: 1474,
-    skillPurple: 1045,
-    skillGold: 315,
-    burstBlue: 380,
-    burstPurple: 270,
-    burstGold: 0,
-    code: 525
-  },
-  S7710: {
-    skillBlue: 760,
-    skillPurple: 540,
-    skillGold: 0,
-    burstBlue: 1094,
-    burstPurple: 775,
-    burstGold: 315,
-    code: 830
-  },
-  S777: {
-    skillBlue: 760,
-    skillPurple: 540,
-    skillGold: 0,
-    burstBlue: 380,
-    burstPurple: 270,
-    burstGold: 0,
-    code: 220
-  }
+  S101010: { skillBlue: 2188, skillPurple: 1550, skillGold: 630, burstBlue: 1094, burstPurple: 755, burstGold: 315, code: 1440 },
+  S10710:  { skillBlue: 1474, skillPurple: 1045, skillGold: 315, burstBlue: 1094, burstPurple: 775, burstGold: 315, code: 1135 },
+  S1077:   { skillBlue: 1474, skillPurple: 1045, skillGold: 315, burstBlue: 380,  burstPurple: 270, burstGold: 0,   code: 525  },
+  S7710:   { skillBlue: 760,  skillPurple: 540,  skillGold: 0,   burstBlue: 1094, burstPurple: 775, burstGold: 315, code: 830  },
+  S777:    { skillBlue: 760,  skillPurple: 540,  skillGold: 0,   burstBlue: 380,  burstPurple: 270, burstGold: 0,   code: 220  }
 };
 
 const materials = [
-  {
-    key: 'skillBlue',
-    name: '技能蓝书',
-    owned: 'ownedSkillBlue'
-  },
-  {
-    key: 'skillPurple',
-    name: '技能紫书',
-    owned: 'ownedSkillPurple'
-  },
-  {
-    key: 'skillGold',
-    name: '技能金书',
-    owned: 'ownedSkillGold'
-  },
-  {
-    key: 'burstBlue',
-    name: '爆裂蓝书',
-    owned: 'ownedBurstBlue'
-  },
-  {
-    key: 'burstPurple',
-    name: '爆裂紫书',
-    owned: 'ownedBurstPurple'
-  },
-  {
-    key: 'burstGold',
-    name: '爆裂金书',
-    owned: 'ownedBurstGold'
-  },
-  {
-    key: 'code',
-    name: '代码手册',
-    owned: 'ownedCode'
-  }
+  { key: 'skillBlue',   name: '技能蓝书', owned: 'ownedSkillBlue' },
+  { key: 'skillPurple', name: '技能紫书', owned: 'ownedSkillPurple' },
+  { key: 'skillGold',   name: '技能金书', owned: 'ownedSkillGold' },
+  { key: 'burstBlue',   name: '爆裂蓝书', owned: 'ownedBurstBlue' },
+  { key: 'burstPurple', name: '爆裂紫书', owned: 'ownedBurstPurple' },
+  { key: 'burstGold',   name: '爆裂金书', owned: 'ownedBurstGold' },
+  { key: 'code',        name: '代码手册', owned: 'ownedCode' }
 ];
 
 function getValue(id) {
@@ -823,11 +846,11 @@ function calculate() {
 
     html += `
       <tr>
-        <td>${mat.name}</td>
-        <td>${need.toLocaleString()}</td>
-        <td>${owned.toLocaleString()}</td>
-        <td class="${remain >= 0 ? 'positive' : 'negative'}">
-          ${remain.toLocaleString()}
+        <td style="font-weight: bold; color: #4a5d53; text-align: center;">${mat.name}</td>
+        <td style="text-align: center;">${need.toLocaleString()}</td>
+        <td style="text-align: center;">${owned.toLocaleString()}</td>
+        <td class="${remain >= 0 ? 'positive' : 'negative'}" style="text-align: center;">
+          ${remain >= 0 ? '+' : ''}${remain.toLocaleString()}
         </td>
       </tr>
     `;
@@ -836,15 +859,157 @@ function calculate() {
   document.getElementById('resultTable').innerHTML = html;
 }
 
-const inputs = document.querySelectorAll('input');
-inputs.forEach(input => {
+const containerInputs = document.querySelectorAll('.nikke-calculator input');
+containerInputs.forEach(input => {
   input.addEventListener('input', calculate);
 });
 
 calculate();
 </script>
 <h2 id="词条概率">词条概率
-</h2>
+</h2><div class="nikke-attributes-section" style="width: 100%; margin: 2.5rem auto; max-width: 900px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #e6eff6; border: 1px solid #cbdbe6; border-radius: 12px; padding: 25px; color: #2c3e50; box-shadow: 0 4px 16px rgba(180,200,215,0.25);">
+  
+  <div class="rules-notes" style="margin-top: 20px; background: #f0f4f8; border-radius: 6px; padding: 12px 15px; font-size: 12px; line-height: 1.6; color: #4a5568; border-left: 4px solid #63b3ed;">
+    📌 <strong>洗词条提示：</strong><br>
+    1. T9 企业装备进化为 Overlord (T10) 装备时，<strong>初始必给SSR等级11阶词条</strong>！<br>
+    2. 锁定词条的石头<strong>仅在点击锁定那一刻消耗一次</strong>。在后续的洗词条过程中，<strong>绝不会</strong>重复扣除已锁定词条的石头。
+  </div>
+
+  <div class="attr-table-wrapper" style="background: #ffffff; border-radius: 8px; padding: 18px; border: 1px solid #cbdbe6; margin-bottom: 20px; overflow-x: auto;">
+    <h4 style="margin-top: 0; margin-bottom: 12px; font-size: 14px; color: #2b6cb0; border-left: 4px solid #4299e1; padding-left: 8px; font-weight: bold;">词条选项获取概率与能力值范围</h4>
+    <table style="width: 100%; border-collapse: collapse; font-size: 12px; border: 1px solid #e1e8ed; white-space: nowrap;">
+      <thead>
+        <tr style="background-color: #f0f5fa; color: #2c3e50;">
+          <th style="padding: 10px; border: 1px solid #e1e8ed; font-weight: bold; text-align: left; background: #eaf2f9;">词条选项（获得机率）</th>
+          <th style="padding: 10px; border: 1px solid #e1e8ed; font-weight: bold; text-align: center; background: #eaf2f9;">N (60% 机率)</th>
+          <th style="padding: 10px; border: 1px solid #e1e8ed; font-weight: bold; text-align: center; background: #eaf2f9;">SR (35% 机率)</th>
+          <th style="padding: 10px; border: 1px solid #e1e8ed; font-weight: bold; text-align: center; background: #eaf2f9;">SSR (5% 机率)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight: bold; color: #2c3e50; padding: 10px; border: 1px solid #e1e8ed; background: #fcfdfe !important;">优越代码 (10%)</td>
+          <td style="text-align: center; background: #ffffff !important;">9.54% ~ 15.15%</td>
+          <td style="text-align: center; background: #ffffff !important;">16.55% ~ 22.15%</td>
+          <td style="text-align: center; font-weight: bold; color: #b7791f; background: #fffaf0 !important;">23.56% ~ 29.16%</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; color: #2c3e50; padding: 10px; border: 1px solid #e1e8ed; background: #fcfdfe !important;">命中率 (12%)</td>
+          <td style="text-align: center; background: #ffffff !important;">4.77% ~ 7.59%</td>
+          <td style="text-align: center; background: #ffffff !important;">8.29% ~ 11.11%</td>
+          <td style="text-align: center; font-weight: bold; color: #b7791f; background: #fffaf0 !important;">11.81% ~ 14.63%</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; color: #2c3e50; padding: 10px; border: 1px solid #e1e8ed; background: #fcfdfe !important;">最大弹药数 (12%)</td>
+          <td style="text-align: center; background: #ffffff !important;">27.84% ~ 44.28%</td>
+          <td style="text-align: center; background: #ffffff !important;">48.39% ~ 64.82%</td>
+          <td style="text-align: center; font-weight: bold; color: #b7791f; background: #fffaf0 !important;">68.93% ~ 85.37%</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; color: #2c3e50; padding: 10px; border: 1px solid #e1e8ed; background: #fcfdfe !important;">攻击力 (10%)</td>
+          <td style="text-align: center; background: #ffffff !important;">4.77% ~ 7.59%</td>
+          <td style="text-align: center; background: #ffffff !important;">8.29% ~ 11.11%</td>
+          <td style="text-align: center; font-weight: bold; color: #b7791f; background: #fffaf0 !important;">11.81% ~ 14.63%</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; color: #2c3e50; padding: 10px; border: 1px solid #e1e8ed; background: #fcfdfe !important;">蓄力伤害 (12%)</td>
+          <td style="text-align: center; background: #ffffff !important;">4.77% ~ 7.59%</td>
+          <td style="text-align: center; background: #ffffff !important;">8.29% ~ 11.11%</td>
+          <td style="text-align: center; font-weight: bold; color: #b7791f; background: #fffaf0 !important;">11.81% ~ 14.63%</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; color: #2c3e50; padding: 10px; border: 1px solid #e1e8ed; background: #fcfdfe !important;">蓄力速度 (12%)</td>
+          <td style="text-align: center; background: #ffffff !important;">1.98% ~ 3.16%</td>
+          <td style="text-align: center; background: #ffffff !important;">3.45% ~ 4.63%</td>
+          <td style="text-align: center; font-weight: bold; color: #b7791f; background: #fffaf0 !important;">4.92% ~ 6.09%</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; color: #2c3e50; padding: 10px; border: 1px solid #e1e8ed; background: #fcfdfe !important;">暴击伤害 (12%)</td>
+          <td style="text-align: center; background: #ffffff !important;">6.64% ~ 10.56%</td>
+          <td style="text-align: center; background: #ffffff !important;">11.54% ~ 15.56%</td>
+          <td style="text-align: center; font-weight: bold; color: #b7791f; background: #fffaf0 !important;">16.44% ~ 20.36%</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; color: #2c3e50; padding: 10px; border: 1px solid #e1e8ed; background: #fcfdfe !important;">暴击率 (10%)</td>
+          <td style="text-align: center; background: #ffffff !important;">2.30% ~ 3.66%</td>
+          <td style="text-align: center; background: #ffffff !important;">4.00% ~ 5.34%</td>
+          <td style="text-align: center; font-weight: bold; color: #b7791f; background: #fffaf0 !important;">5.70% ~ 7.07%</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; color: #2c3e50; padding: 10px; border: 1px solid #e1e8ed; background: #fcfdfe !important;">防御力 (10%)</td>
+          <td style="text-align: center; background: #ffffff !important;">4.77% ~ 7.59%</td>
+          <td style="text-align: center; background: #ffffff !important;">8.29% ~ 11.11%</td>
+          <td style="text-align: center; font-weight: bold; color: #b7791f; background: #fffaf0 !important;">11.81% ~ 14.63%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">
+    
+    <div class="attr-table-wrapper" style="background: #ffffff; border-radius: 8px; padding: 15px; border: 1px solid #cbdbe6; overflow-x: auto;">
+      <h4 style="margin-top: 0; margin-bottom: 10px; font-size: 13px; color: #2b6cb0; border-left: 4px solid #4299e1; padding-left: 6px; font-weight: bold;">🔓 词条位置解锁概率</h4>
+      <table style="width: 100%; border-collapse: collapse; font-size: 12px; border: 1px solid #e1e8ed;">
+        <thead>
+          <tr style="background-color: #f0f5fa; color: #2c3e50;">
+            <th style="padding: 8px; border: 1px solid #e1e8ed; text-align: center; font-weight: bold;">第一条词条</th>
+            <th style="padding: 8px; border: 1px solid #e1e8ed; text-align: center; font-weight: bold;">第二条词条</th>
+            <th style="padding: 8px; border: 1px solid #e1e8ed; text-align: center; font-weight: bold;">第三条词条</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align: center; padding: 12px 8px; font-weight: bold; color: #2f855a; background: #ffffff !important;">100% 出现</td>
+            <td style="text-align: center; padding: 12px 8px; font-weight: bold; color: #dd6b20; background: #ffffff !important;">50% 开启</td>
+            <td style="text-align: center; padding: 12px 8px; font-weight: bold; color: #e53e3e; background: #ffffff !important;">30% 开启</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="attr-table-wrapper" style="background: #ffffff; border-radius: 8px; padding: 15px; border: 1px solid #cbdbe6; overflow-x: auto;">
+      <h4 style="margin-top: 0; margin-bottom: 10px; font-size: 13px; color: #2b6cb0; border-left: 4px solid #4299e1; padding-left: 6px; font-weight: bold;">🔒 锁定词条石头消耗规则</h4>
+      <table style="width: 100%; border-collapse: collapse; font-size: 12px; border: 1px solid #e1e8ed;">
+        <thead>
+          <tr style="background-color: #f0f5fa; color: #2c3e50;">
+            <th style="padding: 8px; border: 1px solid #e1e8ed; text-align: center; font-weight: bold;">锁定数量</th>
+            <th style="padding: 8px; border: 1px solid #e1e8ed; text-align: center; font-weight: bold;">初次锁定消耗</th>
+            <th style="padding: 8px; border: 1px solid #e1e8ed; text-align: center; font-weight: bold;">后续每次洗词条消耗</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align: center; padding: 8px; background: #ffffff !important;">未锁定</td>
+            <td style="text-align: center; padding: 8px; color: #718096; background: #ffffff !important;">—</td>
+            <td style="text-align: center; padding: 8px; font-weight: bold; color: #2d3748; background: #ffffff !important;">1颗石头</td>
+          </tr>
+          <tr>
+            <td style="text-align: center; padding: 8px; background: #ffffff !important;">锁定 1 个</td>
+            <td style="text-align: center; padding: 8px; color: #2d3748; font-weight: bold; background: #ffffff !important;">2颗石头</td>
+            <td style="text-align: center; padding: 8px; font-weight: bold; color: #2d3748; background: #ffffff !important;">2颗石头</td>
+          </tr>
+          <tr>
+            <td style="text-align: center; padding: 8px; background: #ffffff !important;">锁定 2 个</td>
+            <td style="text-align: center; padding: 8px; color: #2d3748; font-weight: bold; background: #ffffff !important;">3颗石头</td>
+            <td style="text-align: center; padding: 8px; font-weight: bold; color: #2d3748; background: #ffffff !important;">3颗石头</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<style>
+ 
+.nikke-attributes-section .attr-table-wrapper table tbody tr {
+  background-color: #ffffff !important;
+}
+.nikke-attributes-section .attr-table-wrapper table td {
+  border: 1px solid #e1e8ed !important;
+}
+</style>
+
 </section>
 
 
