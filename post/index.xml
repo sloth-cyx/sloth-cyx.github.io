@@ -45,7 +45,7 @@
                     &lt;td id=&#34;key-day&#34; style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: 500; color: #805ad5; background-color: #fdf0ff;&#34;&gt;-&lt;/td&gt;
                 &lt;/tr&gt;
                 &lt;tr style=&#34;background-color: #fff;&#34;&gt;
-                    &lt;td style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #f7fafc;&#34;&gt;每月 (34天)&lt;/td&gt;
+                    &lt;td style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; background-color: #f7fafc;&#34;&gt;每月期望&lt;/td&gt;
                     &lt;td id=&#34;mod-month&#34; style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: 500; color: #3182ce;&#34;&gt;-&lt;/td&gt;
                     &lt;td id=&#34;part-month&#34; style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: 500; color: #dd6b20;&#34;&gt;-&lt;/td&gt;
                     &lt;td id=&#34;total-month&#34; style=&#34;padding: 12px 8px; border: 1px solid #cbd5e0; font-weight: bold; color: #38a169; background-color: #e6fffa;&#34;&gt;-&lt;/td&gt;
