@@ -549,24 +549,27 @@ window.onload = function() {
 }
 </style>
 <h2 id="装备升级计算器">装备升级计算器
-</h2><div class="nikke-equipment-calc" style="max-width: 800px; margin: 20px auto; padding: 25px; border: 1px solid #dcd7cc; border-radius: 12px; box-shadow: 0 4px 16px rgba(139,126,116,0.1); font-family: -apple-system, sans-serif; background: #fdfaf4; color: #433e37;">
+</h2><div class="nikke-equipment-calc" style="max-width: 800px; margin: 20px auto; padding: 25px; border: 1px solid #dcd7cc; border-radius: 12px; box-shadow: 0 4px 16px rgba(139,126,116,0.1); font-family: -apple-system, sans-serif; background: #fdfaf4; color: #433e37; box-sizing: border-box;">
     
     <div style="background-color: #f3ede2; padding: 10px 15px; border-radius: 6px; font-size: 12px; color: #7d715e; margin-bottom: 25px; line-height: 1.6; border-left: 4px solid #b1a491;">
         <strong>狗粮提供经验：</strong> T8狗粮 = 12,800 EXP | T9狗粮 = 25,400 EXP<br>
         <strong>升级所需经验：</strong> T9 → T10 消耗 = 1,592,000 EXP | T10 0级 → 5级(满级) 消耗 = 2,388,000 EXP | T9 → T10(满级) 总计消耗 = 3,980,000 EXP<br>
-        <strong>注释：</strong> T10 0级 → 5级(满级) = 拉1.5个T10 | T9 → T10(满级) = 拉2.5个T10
+        <strong>注释1：</strong> T9 → T10 = 62.7 T9狗粮数量 | T10 0级 → 5级(满级) = 94.01 T9狗粮数量<br>
+        <strong>注释2：</strong> T10 0级 → 5级(满级) = 拉1.5个T10 | T9 → T10(满级) = 拉2.5个T10
     </div>
 
-    <div style="margin-bottom: 30px; border: 1px solid #eadecb; padding: 15px; border-radius: 8px; background: #ffffff;">
+    <div style="margin-bottom: 30px; border: 1px solid #eadecb; padding: 15px; border-radius: 8px; background: #ffffff; box-sizing: border-box;">
         <h4 style="margin: 0 0 12px 0; font-size: 15px; color: #5a5245; display: flex; align-items: center; gap: 6px;">
-            <span style="background: #62796f; color: #fff; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold;">1</span>
+            <span style="background: #62796f; color: #fff; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; flex-shrink: 0;">1</span>
             通过当前库存计算可升级装备数
         </h4>
-        <div style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-            <label for="gear-has-t9" style="font-size: 13px; font-weight: bold; color: #6f6453; white-space: nowrap;">目前拥有 T9 狗粮数量:</label>
-            <input type="number" id="gear-has-t9" value="0" min="0" oninput="calcGearInput1()" style="flex: 1; padding: 6px 10px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 14px; outline: none; background: #fdfdfb; color: #433e37;">
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; margin-bottom: 15px; align-items: center;">
+            <label for="gear-has-t9" style="font-size: 13px; font-weight: bold; color: #6f6453;">目前拥有 T9 狗粮数量:</label>
+            <input type="number" id="gear-has-t9" value="0" min="0" oninput="calcGearInput1()" style="width: 100%; padding: 6px 10px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 14px; outline: none; background: #fdfdfb; color: #433e37; box-sizing: border-box;">
         </div>
-        <div style="overflow-x: auto;">
+
+        <div style="overflow-x: auto; width: 100%;">
             <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: center; border: 1px solid #ccbfad;">
                 <thead>
                     <tr style="background-color: #f7f3eb; color: #5a5245;">
@@ -586,24 +589,24 @@ window.onload = function() {
         </div>
     </div>
 
-    <div style="margin-bottom: 10px; border: 1px solid #eadecb; padding: 15px; border-radius: 8px; background: #ffffff;">
+    <div style="margin-bottom: 10px; border: 1px solid #eadecb; padding: 15px; border-radius: 8px; background: #ffffff; box-sizing: border-box;">
         <h4 style="margin: 0 0 15px 0; font-size: 15px; color: #5a5245; display: flex; align-items: center; gap: 6px;">
-            <span style="background: #6a7f93; color: #fff; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold;">2</span>
+            <span style="background: #6a7f93; color: #fff; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; flex-shrink: 0;">2</span>
             自定义装备强化方案计算（可组合输入）
         </h4>
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 15px;">
-            <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: center;">
                 <label for="combine-t9-t10" style="font-size: 12px; font-weight: bold; color: #6f6453; white-space: nowrap;">【T9 ➔ T10】件数:</label>
-                <input type="number" id="combine-t9-t10" value="0" min="0" oninput="calcCombinedGear()" style="width: 100%; padding: 5px 8px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 13px; outline: none; background: #fdfdfb; color: #433e37;">
+                <input type="number" id="combine-t9-t10" value="0" min="0" oninput="calcCombinedGear()" style="width: 100%; padding: 5px 8px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 13px; outline: none; background: #fdfdfb; color: #433e37; box-sizing: border-box;">
             </div>
-            <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: center;">
                 <label for="combine-t10-max" style="font-size: 12px; font-weight: bold; color: #6f6453; white-space: nowrap;">【T10 ➔ 满级】件数:</label>
-                <input type="number" id="combine-t10-max" value="0" min="0" oninput="calcCombinedGear()" style="width: 100%; padding: 5px 8px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 13px; outline: none; background: #fdfdfb; color: #433e37;">
+                <input type="number" id="combine-t10-max" value="0" min="0" oninput="calcCombinedGear()" style="width: 100%; padding: 5px 8px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 13px; outline: none; background: #fdfdfb; color: #433e37; box-sizing: border-box;">
             </div>
         </div>
 
-        <div style="overflow-x: auto;">
+        <div style="overflow-x: auto; width: 100%;">
             <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: center; border: 1px solid #ccbfad;">
                 <thead>
                     <tr style="background-color: #f7f3eb; color: #5a5245;">
@@ -624,9 +627,8 @@ window.onload = function() {
     </div>
 
 </div>
-
+// 基础数据常量
 <script>
-
 const XP_T8 = 12800;
 const XP_T9 = 25400;
 const NEED_T9_TO_T10 = 1592000;
@@ -650,14 +652,12 @@ function calcCombinedGear() {
     if (countT9ToT10 < 0) countT9ToT10 = 0;
     if (countT10ToMax < 0) countT10ToMax = 0;
     
-    
     let totalRequiredXp = (countT9ToT10 * NEED_T9_TO_T10) + (countT10ToMax * NEED_T10_TO_MAX);
     
     document.getElementById("combine-res-xp").innerText = totalRequiredXp.toLocaleString();
     document.getElementById("combine-res-t9").innerText = (totalRequiredXp / XP_T9).toFixed(1);
     document.getElementById("combine-res-t8").innerText = (totalRequiredXp / XP_T8).toFixed(1);
 }
-
 
 window.onload = function() {
     calcGearInput1();

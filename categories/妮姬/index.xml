@@ -214,24 +214,27 @@ window.onload = function() {
 }
 &lt;/style&gt;
 &lt;h2 id=&#34;装备升级计算器&#34;&gt;装备升级计算器
-&lt;/h2&gt;&lt;div class=&#34;nikke-equipment-calc&#34; style=&#34;max-width: 800px; margin: 20px auto; padding: 25px; border: 1px solid #dcd7cc; border-radius: 12px; box-shadow: 0 4px 16px rgba(139,126,116,0.1); font-family: -apple-system, sans-serif; background: #fdfaf4; color: #433e37;&#34;&gt;
+&lt;/h2&gt;&lt;div class=&#34;nikke-equipment-calc&#34; style=&#34;max-width: 800px; margin: 20px auto; padding: 25px; border: 1px solid #dcd7cc; border-radius: 12px; box-shadow: 0 4px 16px rgba(139,126,116,0.1); font-family: -apple-system, sans-serif; background: #fdfaf4; color: #433e37; box-sizing: border-box;&#34;&gt;
     
     &lt;div style=&#34;background-color: #f3ede2; padding: 10px 15px; border-radius: 6px; font-size: 12px; color: #7d715e; margin-bottom: 25px; line-height: 1.6; border-left: 4px solid #b1a491;&#34;&gt;
         &lt;strong&gt;狗粮提供经验：&lt;/strong&gt; T8狗粮 = 12,800 EXP | T9狗粮 = 25,400 EXP&lt;br&gt;
         &lt;strong&gt;升级所需经验：&lt;/strong&gt; T9 → T10 消耗 = 1,592,000 EXP | T10 0级 → 5级(满级) 消耗 = 2,388,000 EXP | T9 → T10(满级) 总计消耗 = 3,980,000 EXP&lt;br&gt;
-        &lt;strong&gt;注释：&lt;/strong&gt; T10 0级 → 5级(满级) = 拉1.5个T10 | T9 → T10(满级) = 拉2.5个T10
+        &lt;strong&gt;注释1：&lt;/strong&gt; T9 → T10 = 62.7 T9狗粮数量 | T10 0级 → 5级(满级) = 94.01 T9狗粮数量&lt;br&gt;
+        &lt;strong&gt;注释2：&lt;/strong&gt; T10 0级 → 5级(满级) = 拉1.5个T10 | T9 → T10(满级) = 拉2.5个T10
     &lt;/div&gt;
 
-    &lt;div style=&#34;margin-bottom: 30px; border: 1px solid #eadecb; padding: 15px; border-radius: 8px; background: #ffffff;&#34;&gt;
+    &lt;div style=&#34;margin-bottom: 30px; border: 1px solid #eadecb; padding: 15px; border-radius: 8px; background: #ffffff; box-sizing: border-box;&#34;&gt;
         &lt;h4 style=&#34;margin: 0 0 12px 0; font-size: 15px; color: #5a5245; display: flex; align-items: center; gap: 6px;&#34;&gt;
-            &lt;span style=&#34;background: #62796f; color: #fff; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold;&#34;&gt;1&lt;/span&gt;
+            &lt;span style=&#34;background: #62796f; color: #fff; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; flex-shrink: 0;&#34;&gt;1&lt;/span&gt;
             通过当前库存计算可升级装备数
         &lt;/h4&gt;
-        &lt;div style=&#34;margin-bottom: 12px; display: flex; align-items: center; gap: 10px;&#34;&gt;
-            &lt;label for=&#34;gear-has-t9&#34; style=&#34;font-size: 13px; font-weight: bold; color: #6f6453; white-space: nowrap;&#34;&gt;目前拥有 T9 狗粮数量:&lt;/label&gt;
-            &lt;input type=&#34;number&#34; id=&#34;gear-has-t9&#34; value=&#34;0&#34; min=&#34;0&#34; oninput=&#34;calcGearInput1()&#34; style=&#34;flex: 1; padding: 6px 10px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 14px; outline: none; background: #fdfdfb; color: #433e37;&#34;&gt;
+        
+        &lt;div style=&#34;display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; margin-bottom: 15px; align-items: center;&#34;&gt;
+            &lt;label for=&#34;gear-has-t9&#34; style=&#34;font-size: 13px; font-weight: bold; color: #6f6453;&#34;&gt;目前拥有 T9 狗粮数量:&lt;/label&gt;
+            &lt;input type=&#34;number&#34; id=&#34;gear-has-t9&#34; value=&#34;0&#34; min=&#34;0&#34; oninput=&#34;calcGearInput1()&#34; style=&#34;width: 100%; padding: 6px 10px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 14px; outline: none; background: #fdfdfb; color: #433e37; box-sizing: border-box;&#34;&gt;
         &lt;/div&gt;
-        &lt;div style=&#34;overflow-x: auto;&#34;&gt;
+
+        &lt;div style=&#34;overflow-x: auto; width: 100%;&#34;&gt;
             &lt;table style=&#34;width: 100%; border-collapse: collapse; font-size: 13px; text-align: center; border: 1px solid #ccbfad;&#34;&gt;
                 &lt;thead&gt;
                     &lt;tr style=&#34;background-color: #f7f3eb; color: #5a5245;&#34;&gt;
@@ -251,24 +254,24 @@ window.onload = function() {
         &lt;/div&gt;
     &lt;/div&gt;
 
-    &lt;div style=&#34;margin-bottom: 10px; border: 1px solid #eadecb; padding: 15px; border-radius: 8px; background: #ffffff;&#34;&gt;
+    &lt;div style=&#34;margin-bottom: 10px; border: 1px solid #eadecb; padding: 15px; border-radius: 8px; background: #ffffff; box-sizing: border-box;&#34;&gt;
         &lt;h4 style=&#34;margin: 0 0 15px 0; font-size: 15px; color: #5a5245; display: flex; align-items: center; gap: 6px;&#34;&gt;
-            &lt;span style=&#34;background: #6a7f93; color: #fff; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold;&#34;&gt;2&lt;/span&gt;
+            &lt;span style=&#34;background: #6a7f93; color: #fff; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; flex-shrink: 0;&#34;&gt;2&lt;/span&gt;
             自定义装备强化方案计算（可组合输入）
         &lt;/h4&gt;
         
         &lt;div style=&#34;display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 15px;&#34;&gt;
-            &lt;div style=&#34;display: flex; align-items: center; gap: 8px;&#34;&gt;
+            &lt;div style=&#34;display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: center;&#34;&gt;
                 &lt;label for=&#34;combine-t9-t10&#34; style=&#34;font-size: 12px; font-weight: bold; color: #6f6453; white-space: nowrap;&#34;&gt;【T9 ➔ T10】件数:&lt;/label&gt;
-                &lt;input type=&#34;number&#34; id=&#34;combine-t9-t10&#34; value=&#34;0&#34; min=&#34;0&#34; oninput=&#34;calcCombinedGear()&#34; style=&#34;width: 100%; padding: 5px 8px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 13px; outline: none; background: #fdfdfb; color: #433e37;&#34;&gt;
+                &lt;input type=&#34;number&#34; id=&#34;combine-t9-t10&#34; value=&#34;0&#34; min=&#34;0&#34; oninput=&#34;calcCombinedGear()&#34; style=&#34;width: 100%; padding: 5px 8px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 13px; outline: none; background: #fdfdfb; color: #433e37; box-sizing: border-box;&#34;&gt;
             &lt;/div&gt;
-            &lt;div style=&#34;display: flex; align-items: center; gap: 8px;&#34;&gt;
+            &lt;div style=&#34;display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: center;&#34;&gt;
                 &lt;label for=&#34;combine-t10-max&#34; style=&#34;font-size: 12px; font-weight: bold; color: #6f6453; white-space: nowrap;&#34;&gt;【T10 ➔ 满级】件数:&lt;/label&gt;
-                &lt;input type=&#34;number&#34; id=&#34;combine-t10-max&#34; value=&#34;0&#34; min=&#34;0&#34; oninput=&#34;calcCombinedGear()&#34; style=&#34;width: 100%; padding: 5px 8px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 13px; outline: none; background: #fdfdfb; color: #433e37;&#34;&gt;
+                &lt;input type=&#34;number&#34; id=&#34;combine-t10-max&#34; value=&#34;0&#34; min=&#34;0&#34; oninput=&#34;calcCombinedGear()&#34; style=&#34;width: 100%; padding: 5px 8px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 13px; outline: none; background: #fdfdfb; color: #433e37; box-sizing: border-box;&#34;&gt;
             &lt;/div&gt;
         &lt;/div&gt;
 
-        &lt;div style=&#34;overflow-x: auto;&#34;&gt;
+        &lt;div style=&#34;overflow-x: auto; width: 100%;&#34;&gt;
             &lt;table style=&#34;width: 100%; border-collapse: collapse; font-size: 13px; text-align: center; border: 1px solid #ccbfad;&#34;&gt;
                 &lt;thead&gt;
                     &lt;tr style=&#34;background-color: #f7f3eb; color: #5a5245;&#34;&gt;
@@ -289,9 +292,8 @@ window.onload = function() {
     &lt;/div&gt;
 
 &lt;/div&gt;
-
+// 基础数据常量
 &lt;script&gt;
-
 const XP_T8 = 12800;
 const XP_T9 = 25400;
 const NEED_T9_TO_T10 = 1592000;
@@ -315,14 +317,12 @@ function calcCombinedGear() {
     if (countT9ToT10 &lt; 0) countT9ToT10 = 0;
     if (countT10ToMax &lt; 0) countT10ToMax = 0;
     
-    
     let totalRequiredXp = (countT9ToT10 * NEED_T9_TO_T10) + (countT10ToMax * NEED_T10_TO_MAX);
     
     document.getElementById(&#34;combine-res-xp&#34;).innerText = totalRequiredXp.toLocaleString();
     document.getElementById(&#34;combine-res-t9&#34;).innerText = (totalRequiredXp / XP_T9).toFixed(1);
     document.getElementById(&#34;combine-res-t8&#34;).innerText = (totalRequiredXp / XP_T8).toFixed(1);
 }
-
 
 window.onload = function() {
     calcGearInput1();
