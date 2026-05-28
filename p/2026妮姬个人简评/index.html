@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="[!TIP]20260522 - 添加敏特 敏特 上场空间 推图 个突 竞技场 养成方向 养成 需求 技能等级 10-7-10 或 7-10-10 收藏品 SR5 装备等级 4T10，0-0-0-0 主词条 无 副词条 无 养成优先级：T3">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="[!TIP] 20260522 - 添加敏特 20260528 - 添加普利卡，更新敏特 敏特 上场空间 推图 个突 竞技场 养成方向 养成 需求 技能等级 10-7-10 或 7-10-10 收藏品 SR5 装备等级 4T10，0-0-0-0 主词条">
 <title>2026妮姬个人简评</title>
 
 <link rel='canonical' href='https://sloth-cyx.github.io/p/2026%E5%A6%AE%E5%A7%AC%E4%B8%AA%E4%BA%BA%E7%AE%80%E8%AF%84/'>
 
 <link rel="stylesheet" href="/scss/style.min.1d02c7677ccff39d0700529b50328e7b789a4c8ccf2cbd4359792edb00c3ce62.css"><meta property='og:title' content="2026妮姬个人简评">
-<meta property='og:description' content="[!TIP]20260522 - 添加敏特 敏特 上场空间 推图 个突 竞技场 养成方向 养成 需求 技能等级 10-7-10 或 7-10-10 收藏品 SR5 装备等级 4T10，0-0-0-0 主词条 无 副词条 无 养成优先级：T3">
+<meta property='og:description' content="[!TIP] 20260522 - 添加敏特 20260528 - 添加普利卡，更新敏特 敏特 上场空间 推图 个突 竞技场 养成方向 养成 需求 技能等级 10-7-10 或 7-10-10 收藏品 SR5 装备等级 4T10，0-0-0-0 主词条">
 <meta property='og:url' content='https://sloth-cyx.github.io/p/2026%E5%A6%AE%E5%A7%AC%E4%B8%AA%E4%BA%BA%E7%AE%80%E8%AF%84/'>
 <meta property='og:site_name' content='怠惰的天秤-sloth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-05-22T19:56:01&#43;08:00'/><meta property='article:modified_time' content='2026-05-22T19:56:01&#43;08:00'/>
 <meta name="twitter:title" content="2026妮姬个人简评">
-<meta name="twitter:description" content="[!TIP]20260522 - 添加敏特 敏特 上场空间 推图 个突 竞技场 养成方向 养成 需求 技能等级 10-7-10 或 7-10-10 收藏品 SR5 装备等级 4T10，0-0-0-0 主词条 无 副词条 无 养成优先级：T3">
+<meta name="twitter:description" content="[!TIP] 20260522 - 添加敏特 20260528 - 添加普利卡，更新敏特 敏特 上场空间 推图 个突 竞技场 养成方向 养成 需求 技能等级 10-7-10 或 7-10-10 收藏品 SR5 装备等级 4T10，0-0-0-0 主词条">
     <link rel="shortcut icon" href="/libra.ico" />
 
   
 
 <div class="loading">
+    
+    <div class="loading-bg"></div>
+
     <div class="sharingon">
         <div class="ring">
             <div class="to"></div>
@@ -31,6 +34,9 @@
 <style>
     .loading {
         position: fixed;
+         
+         
+         
         display: none;
         justify-content: center;
         align-items: center;
@@ -38,9 +44,38 @@
         left: 0;
         width: 100%;
         height: 100%;
-        z-index: 99;
+        z-index: 9999;
         zoom: 3.0;
-        background-color: #000000;
+        overflow: hidden;
+    }
+
+     
+    .loading-bg {
+        position: absolute;
+        inset: 0;
+
+        background: #000;
+
+        z-index: 0;
+    }
+
+     
+    .bgFadeout {
+        animation: bgFadeOut 1.5s forwards;
+    }
+
+    @keyframes bgFadeOut {
+        0% {
+            transform: scale(1);
+            opacity: 0.6;
+        }
+        90% {
+            opacity: 0.6;
+        }
+        100% {
+            transform: scale(1.5);
+            opacity: 0;
+        }
     }
     
      
@@ -58,7 +93,7 @@
         70% {
              
             transform: rotate(-1080deg) scale(1);
-            opacity: 0.8;
+            opacity: 1;
         }
 
         100% {
@@ -67,33 +102,22 @@
             opacity: 0;
         }
     }
-    
-    .scaleAndFadeout {
-        animation: scaleAndFadeOut 1.5s forwards;
-    }
-    
-     
-    @keyframes scaleAndFadeOut {
-        0% {
-            transform: scale(1);
-            opacity: 0.6;
-        }
-        90% {
-            opacity: 0.6;
-        }
-        100% {
-            transform: scale(1.5);
-            opacity: 0;
-        }
-    }
 
      
     .sharingon {
         position: relative;
+        z-index: 1;
         width: 6em;
         height: 6em;
         background-color: red;
-        border: 6px solid black;
+        border: 6px solid rgb(0, 0, 0);
+         
+         
+         
+        box-shadow:
+            0 0 25px rgba(255, 0, 0, 0.4),
+            0 0 60px rgba(255, 0, 0, 0.2);
+        border-radius: 50%;
         animation: rot 1s linear infinite;  
     }
 
@@ -154,7 +178,10 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
-        box-shadow: 0 0 20px 1px;
+        background: black;
+        box-shadow:
+            0 0 10px rgba(255, 0, 0, 0.7),
+            0 0 20px rgba(255, 0, 0, 0.4);
         width: 1em;
         height: 1em;
     }
@@ -171,7 +198,21 @@
 </style>
 
 <script>    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
+    
     function initLoading() {
         const isFirstVisit = !sessionStorage.getItem('visited');
         if (isFirstVisit) {
@@ -195,8 +236,8 @@
         sharingon.classList.add("loader-spin-out");
         
         
-        let loading = document.querySelector(".loading");
-        loading.classList.add("scaleAndFadeout");
+        let loading = document.querySelector(".loading-bg");
+        loading.classList.add("bgFadeout");
     }
     
     initLoading();
@@ -244,7 +285,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu1914182438044288195.png" width="300"
+                        <img src="/img/avatar2_hu3260391422873070556.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -529,7 +570,9 @@
     
     
     <blockquote>
-<p>[!TIP]20260522 - 添加敏特</p>
+<p>[!TIP]
+20260522 - 添加敏特<br>
+20260528 - 添加普利卡，更新敏特</p>
 </blockquote>
 <h2 id="敏特">敏特
 </h2><p><img src="/images/nikkeComment_2026/mintAvatar_300x300.png"
@@ -584,28 +627,30 @@
 <blockquote>
 <p>[!NOTE]</p>
 <ul>
-<li>10/10！必须夯！个人比较吃纤细型，指的是全身较为匀称，同时胸部不会比脸蛋大的那种类型（毕竟本命白兔）！</li>
+<li>10/10</li>
+<li>必须夯！个人比较吃纤细型，指的是全身较为匀称，同时胸部不会比脸蛋大的那种类型（毕竟本命白兔）！</li>
 <li>作为颜狗，敏特的人设就是靠脸吃饭的，属于一个愿打，一个愿挨了。</li>
 <li>PS：黑长直yyds！</li>
 </ul>
 </blockquote>
 <p><strong>简评：</strong></p>
 <ol>
-<li>敏特属于四保一类型的拐，其优秀的拐力只在双数回合才能表现，故目前仅适合搭配个突百暴队，又或者作为新手的通用拐上场。</li>
-<li>由于1技能和2技能只在双数回合才能提供拐，如果技能书不足/不想投入过多（个突1%-3%玩家）则需要看敏特进哪队来决定。</li>
+<li>敏特单走属于四保一类型的拐，其优秀的拐力只在双数回合才能表现，故目前适合搭配个突百暴队。在普莉卡出来后，搭配普莉卡作为偶像双子虽然强度也不低，但是没有一个很好的C适配；但是又能拐又能奶，是新人卡不多时候的其中一个推图选择。</li>
+<li>由于1技能和2技能只在单走时的双数回合才能提供拐，如果技能书不足/不想投入过多（个突0.5%-3%玩家）则需要看敏特进哪队来决定。</li>
 </ol>
 <ul>
-<li>10-7-10：通用拐<br>
+<li>10-7-10：通用拐【单走/搭配普莉卡】<br>
 1技能提供的攻击力相对2技能的偏科拐更为通用，适合新人。</li>
-<li>7-10-10：百暴拐<br>
-倘若已经拥有茨瓦伊珍藏品，茨瓦依本身提供63.63%暴击率+妮姬自带15%暴击率+敏特19.94%暴击率=98.57%暴击率！主C只要一条1阶段的暴击率词条就足以达到百暴！但要是2技能只点7，则主C需要9阶段或以上的暴击率词条才可以达成百暴。</li>
+<li>7-10-10：百暴拐【搭配茨瓦伊/米兰达】 <br>
+倘若已经拥有茨瓦伊珍藏品，茨瓦依本身提供63.63%暴击率+妮姬自带15%暴击率+敏特19.94%暴击率=98.57%暴击率！主C只要一条1阶段的暴击率词条就足以达到百暴！但要是2技能只点7，则主C需要9阶段或以上的暴击率词条才可以达成百暴。<br>
+<em>再者，如果敏特+普莉卡拐<strong>伊芙+尤莉亚珍藏品</strong>等自身携带高暴击的双C时，也可以选择这种点法。</em></li>
 </ul>
 <ol start="3">
 <li>既然提到了茨瓦伊，NGA上有帖子统计过水百暴对重装白雪的收益，分别是米兰达，茨瓦伊，兔爱德，敏特组成的排列组合。<br>
 参考帖子：<strong><a class="link" href="https://bbs.nga.cn/read.php?tid=46800971"  target="_blank" rel="noopener"
     >​[评测] 水系百爆队 米兰达/学生妹 敏特/兔爱德 对重白提升</a></strong><br>
 <strong><code>伤害排序：茨瓦伊+敏特 342.7e（手操）&gt; 米兰达+敏特 339.1e &gt; 茨瓦伊+敏特 318.6e（自动）&gt; 米兰达+兔爱德 315.6e &gt; 茨瓦伊+兔爱德 302.3e</code></strong></li>
-<li>由此可见，茨瓦伊+敏特，米兰达+兔爱德是比较好的的搭配，其原因是这两队能互补彼此的拐力短板，也可以从下图看见彼此重叠的伤害乘区。
+<li>由此可见，茨瓦伊+敏特，米兰达+兔爱德是比较好的的搭配，其原因是这两队能互补彼此的拐力短板，也可以从下图看见彼此重叠的伤害乘区。<br>
 <img src="/images/nikkeComment_2026/mintBuff.png"
 	
 	
@@ -617,7 +662,8 @@
 	
 ></li>
 <li>目前来看，茨瓦伊+敏特会在多判的情况下完胜米兰达+敏特；而单判的情况下，米兰达+敏特的高额加攻和暴伤也许能反超茨瓦伊+敏特！这就只能静待后续有无合适的个突来做测试。</li>
-<li>综合来说，敏特本质上是张个突卡；现阶段特别适合拐的C也就原皮白雪和重装白雪，意味着她只在<!-- raw HTML omitted -->铁甲<!-- raw HTML omitted -->和<!-- raw HTML omitted -->水冷<!-- raw HTML omitted -->个突才有上场空间，卷这两个属性个突（1%以上）可以适当继续升级收藏品和装备等级，技能点到10-10-10。</li>
+<li>综合来说，敏特本质上是张个突卡；现阶段搭配茨瓦伊/米兰达的情况特别适合拐的C也就原皮白雪和重装白雪，意味着她只在<!-- raw HTML omitted -->铁甲<!-- raw HTML omitted -->和<!-- raw HTML omitted -->水冷<!-- raw HTML omitted -->个突才有上场空间，卷这两个属性个突（0.5%以上）可以适当继续升级收藏品和装备等级，技能点到10-10-10。</li>
+<li>至于敏特+普莉卡，对于那些还没做好茨瓦伊/米兰达珍藏品的新手来说，则更适合作为他们的垃圾刀登场。偶像双子不仅能提供不错的拐力和生存能力，养成压力也相对较小。由于茨瓦伊+敏特没有减CD，队伍需要配置一个减CD的队员，所以普莉卡只能被放弃。</li>
 </ol>
 <p><img src="/images/nikkeComment_2026/mintPickup.jpg"
 	
@@ -631,7 +677,86 @@
 ></p>
 <hr>
 <h2 id="普莉卡">普莉卡
-</h2>
+</h2><!-- raw HTML omitted -->
+<p><strong>上场空间</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> 推图</li>
+<li><input checked="" disabled="" type="checkbox"> 个突</li>
+<li><input disabled="" type="checkbox"> 竞技场</li>
+</ul>
+<p><strong>养成方向</strong></p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align:center">养成</th>
+<th style="text-align:center">需求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">技能等级</td>
+<td style="text-align:center">7-7-7</td>
+</tr>
+<tr>
+<td style="text-align:center">收藏品</td>
+<td style="text-align:center">SR5</td>
+</tr>
+<tr>
+<td style="text-align:center">装备等级</td>
+<td style="text-align:center">4T10，0-0-0-0</td>
+</tr>
+<tr>
+<td style="text-align:center">主词条</td>
+<td style="text-align:center">无</td>
+</tr>
+<tr>
+<td style="text-align:center">副词条</td>
+<td style="text-align:center">无</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>养成优先级：T4</strong></p>
+<p><strong>XP打分</strong></p>
+<blockquote>
+<p>[!NOTE]</p>
+<ul>
+<li>9/10</li>
+<li>普莉卡的身材其实也是比较高挑，而且又有点锻炼的那种类型，整体比例很好看。<del>胸部也没有大过脸蛋</del>（误）。</li>
+<li>短发控蛮爱的，尤其在看到她那张同人带球图后，人妻感一下就上来了，美味。</li>
+</ul>
+</blockquote>
+<p><strong>简评：</strong></p>
+<ol>
+<li>首选，我们先把普莉卡如何搭配敏特的流程放上来。<br>
+<img src="/images/nikkeComment_2026/prikaSkillFlow.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="prikaSkillFlow.png"
+	
+	
+></li>
+<li>上述的图文可知，普莉卡只需要开第一次大，后续敏特就可以一直开大，且大招全是满状态，这是她作为绑定敏特的其中一个原因。</li>
+<li>敏特+普莉卡提供的拐量固然不错，但12233的配置刚需一个1号位减CD。但对于铁甲和水冷个突来说，敏特会更适配茨瓦伊/米兰达等百暴拐，导致普莉卡没位置，故仅适合新手的个突配队，或其他属性个突开发出来的新配队。<br>
+<em>当然，也有可能偶像双子去拐<strong>伊芙+尤莉亚珍藏品</strong>等自身携带高暴击的双C嘛，可能效果不错，就是拐力不搭嘎。</em></li>
+<li>普莉卡作为纯轴外的话，提供些许buff，但依旧不是个突3%以上玩家的首选。</li>
+<li>当然，普莉卡搭配敏特可以在泰塔上场，敏特的时候也说过，这个组合提供不错的拐力和生存，所以推图上是不错的选择；但目前泰塔有黑白兔，兔爱德等人存在的缘故，对有些等级的玩家来说，泰塔并没有那么缺人。</li>
+<li>综上所述，不难发现普莉卡其实是张新手向的卡，优先级对个突3%玩家来说相对较低。除非后续敏特+普莉卡能在个突上开发或有其他售后，到时候就再更新。</li>
+</ol>
+<p><img src="/images/nikkeComment_2026/prikaPickup.jpg"
+	
+	
+	
+	loading="lazy"
+	
+		alt="prikaPickup.jpg"
+	
+	
+></p>
+<hr>
+
 </section>
 
 

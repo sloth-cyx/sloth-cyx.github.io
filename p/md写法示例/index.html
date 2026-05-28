@@ -18,6 +18,9 @@
   
 
 <div class="loading">
+    
+    <div class="loading-bg"></div>
+
     <div class="sharingon">
         <div class="ring">
             <div class="to"></div>
@@ -31,6 +34,9 @@
 <style>
     .loading {
         position: fixed;
+         
+         
+         
         display: none;
         justify-content: center;
         align-items: center;
@@ -38,9 +44,38 @@
         left: 0;
         width: 100%;
         height: 100%;
-        z-index: 99;
+        z-index: 9999;
         zoom: 3.0;
-        background-color: #000000;
+        overflow: hidden;
+    }
+
+     
+    .loading-bg {
+        position: absolute;
+        inset: 0;
+
+        background: #000;
+
+        z-index: 0;
+    }
+
+     
+    .bgFadeout {
+        animation: bgFadeOut 1.5s forwards;
+    }
+
+    @keyframes bgFadeOut {
+        0% {
+            transform: scale(1);
+            opacity: 0.6;
+        }
+        90% {
+            opacity: 0.6;
+        }
+        100% {
+            transform: scale(1.5);
+            opacity: 0;
+        }
     }
     
      
@@ -58,7 +93,7 @@
         70% {
              
             transform: rotate(-1080deg) scale(1);
-            opacity: 0.8;
+            opacity: 1;
         }
 
         100% {
@@ -67,33 +102,22 @@
             opacity: 0;
         }
     }
-    
-    .scaleAndFadeout {
-        animation: scaleAndFadeOut 1.5s forwards;
-    }
-    
-     
-    @keyframes scaleAndFadeOut {
-        0% {
-            transform: scale(1);
-            opacity: 0.6;
-        }
-        90% {
-            opacity: 0.6;
-        }
-        100% {
-            transform: scale(1.5);
-            opacity: 0;
-        }
-    }
 
      
     .sharingon {
         position: relative;
+        z-index: 1;
         width: 6em;
         height: 6em;
         background-color: red;
-        border: 6px solid black;
+        border: 6px solid rgb(0, 0, 0);
+         
+         
+         
+        box-shadow:
+            0 0 25px rgba(255, 0, 0, 0.4),
+            0 0 60px rgba(255, 0, 0, 0.2);
+        border-radius: 50%;
         animation: rot 1s linear infinite;  
     }
 
@@ -154,7 +178,10 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
-        box-shadow: 0 0 20px 1px;
+        background: black;
+        box-shadow:
+            0 0 10px rgba(255, 0, 0, 0.7),
+            0 0 20px rgba(255, 0, 0, 0.4);
         width: 1em;
         height: 1em;
     }
@@ -171,7 +198,21 @@
 </style>
 
 <script>    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
+    
     function initLoading() {
         const isFirstVisit = !sessionStorage.getItem('visited');
         if (isFirstVisit) {
@@ -195,8 +236,8 @@
         sharingon.classList.add("loader-spin-out");
         
         
-        let loading = document.querySelector(".loading");
-        loading.classList.add("scaleAndFadeout");
+        let loading = document.querySelector(".loading-bg");
+        loading.classList.add("bgFadeout");
     }
     
     initLoading();
@@ -244,7 +285,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu1914182438044288195.png" width="300"
+                        <img src="/img/avatar2_hu3260391422873070556.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -556,6 +597,7 @@
 <p>Escape Character<br>
 *<br>
 -</p>
+<p>这是<del>strikethrough</del></p>
 <p>这里有个注释！你看不到吧！<!-- raw HTML omitted --></p>
 <p>表情 &#x1f604;</p>
 <p>下标 H<!-- raw HTML omitted -->2<!-- raw HTML omitted -->O</p>

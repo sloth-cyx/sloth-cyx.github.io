@@ -38,6 +38,7 @@
 &lt;p&gt;Escape Character&lt;br&gt;
 *&lt;br&gt;
 -&lt;/p&gt;
+&lt;p&gt;这是&lt;del&gt;strikethrough&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;这里有个注释！你看不到吧！&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;p&gt;表情 &amp;#x1f604;&lt;/p&gt;
 &lt;p&gt;下标 H&lt;!-- raw HTML omitted --&gt;2&lt;!-- raw HTML omitted --&gt;O&lt;/p&gt;

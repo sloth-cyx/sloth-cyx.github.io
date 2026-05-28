@@ -292,7 +292,7 @@ window.onload = function() {
     &lt;/div&gt;
 
 &lt;/div&gt;
-// 基础数据常量
+
 &lt;script&gt;
 const XP_T8 = 12800;
 const XP_T9 = 25400;
@@ -669,7 +669,9 @@ calculate();
         
         <guid>https://sloth-cyx.github.io/p/2026%E5%A6%AE%E5%A7%AC%E4%B8%AA%E4%BA%BA%E7%AE%80%E8%AF%84/</guid>
         <description>&lt;blockquote&gt;
-&lt;p&gt;[!TIP]20260522 - 添加敏特&lt;/p&gt;
+&lt;p&gt;[!TIP]
+20260522 - 添加敏特&lt;br&gt;
+20260528 - 添加普利卡，更新敏特&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;敏特&#34;&gt;敏特
 &lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_2026/mintAvatar_300x300.png&#34;
@@ -724,28 +726,30 @@ calculate();
 &lt;blockquote&gt;
 &lt;p&gt;[!NOTE]&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;10/10！必须夯！个人比较吃纤细型，指的是全身较为匀称，同时胸部不会比脸蛋大的那种类型（毕竟本命白兔）！&lt;/li&gt;
+&lt;li&gt;10/10&lt;/li&gt;
+&lt;li&gt;必须夯！个人比较吃纤细型，指的是全身较为匀称，同时胸部不会比脸蛋大的那种类型（毕竟本命白兔）！&lt;/li&gt;
 &lt;li&gt;作为颜狗，敏特的人设就是靠脸吃饭的，属于一个愿打，一个愿挨了。&lt;/li&gt;
 &lt;li&gt;PS：黑长直yyds！&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;简评：&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;敏特属于四保一类型的拐，其优秀的拐力只在双数回合才能表现，故目前仅适合搭配个突百暴队，又或者作为新手的通用拐上场。&lt;/li&gt;
-&lt;li&gt;由于1技能和2技能只在双数回合才能提供拐，如果技能书不足/不想投入过多（个突1%-3%玩家）则需要看敏特进哪队来决定。&lt;/li&gt;
+&lt;li&gt;敏特单走属于四保一类型的拐，其优秀的拐力只在双数回合才能表现，故目前适合搭配个突百暴队。在普莉卡出来后，搭配普莉卡作为偶像双子虽然强度也不低，但是没有一个很好的C适配；但是又能拐又能奶，是新人卡不多时候的其中一个推图选择。&lt;/li&gt;
+&lt;li&gt;由于1技能和2技能只在单走时的双数回合才能提供拐，如果技能书不足/不想投入过多（个突0.5%-3%玩家）则需要看敏特进哪队来决定。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;ul&gt;
-&lt;li&gt;10-7-10：通用拐&lt;br&gt;
+&lt;li&gt;10-7-10：通用拐【单走/搭配普莉卡】&lt;br&gt;
 1技能提供的攻击力相对2技能的偏科拐更为通用，适合新人。&lt;/li&gt;
-&lt;li&gt;7-10-10：百暴拐&lt;br&gt;
-倘若已经拥有茨瓦伊珍藏品，茨瓦依本身提供63.63%暴击率+妮姬自带15%暴击率+敏特19.94%暴击率=98.57%暴击率！主C只要一条1阶段的暴击率词条就足以达到百暴！但要是2技能只点7，则主C需要9阶段或以上的暴击率词条才可以达成百暴。&lt;/li&gt;
+&lt;li&gt;7-10-10：百暴拐【搭配茨瓦伊/米兰达】 &lt;br&gt;
+倘若已经拥有茨瓦伊珍藏品，茨瓦依本身提供63.63%暴击率+妮姬自带15%暴击率+敏特19.94%暴击率=98.57%暴击率！主C只要一条1阶段的暴击率词条就足以达到百暴！但要是2技能只点7，则主C需要9阶段或以上的暴击率词条才可以达成百暴。&lt;br&gt;
+&lt;em&gt;再者，如果敏特+普莉卡拐&lt;strong&gt;伊芙+尤莉亚珍藏品&lt;/strong&gt;等自身携带高暴击的双C时，也可以选择这种点法。&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;ol start=&#34;3&#34;&gt;
 &lt;li&gt;既然提到了茨瓦伊，NGA上有帖子统计过水百暴对重装白雪的收益，分别是米兰达，茨瓦伊，兔爱德，敏特组成的排列组合。&lt;br&gt;
 参考帖子：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://bbs.nga.cn/read.php?tid=46800971&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;​[评测] 水系百爆队 米兰达/学生妹 敏特/兔爱德 对重白提升&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
 &lt;strong&gt;&lt;code&gt;伤害排序：茨瓦伊+敏特 342.7e（手操）&amp;gt; 米兰达+敏特 339.1e &amp;gt; 茨瓦伊+敏特 318.6e（自动）&amp;gt; 米兰达+兔爱德 315.6e &amp;gt; 茨瓦伊+兔爱德 302.3e&lt;/code&gt;&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;由此可见，茨瓦伊+敏特，米兰达+兔爱德是比较好的的搭配，其原因是这两队能互补彼此的拐力短板，也可以从下图看见彼此重叠的伤害乘区。
+&lt;li&gt;由此可见，茨瓦伊+敏特，米兰达+兔爱德是比较好的的搭配，其原因是这两队能互补彼此的拐力短板，也可以从下图看见彼此重叠的伤害乘区。&lt;br&gt;
 &lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_2026/mintBuff.png&#34;
 	
 	
@@ -757,7 +761,8 @@ calculate();
 	
 &gt;&lt;/li&gt;
 &lt;li&gt;目前来看，茨瓦伊+敏特会在多判的情况下完胜米兰达+敏特；而单判的情况下，米兰达+敏特的高额加攻和暴伤也许能反超茨瓦伊+敏特！这就只能静待后续有无合适的个突来做测试。&lt;/li&gt;
-&lt;li&gt;综合来说，敏特本质上是张个突卡；现阶段特别适合拐的C也就原皮白雪和重装白雪，意味着她只在&lt;!-- raw HTML omitted --&gt;铁甲&lt;!-- raw HTML omitted --&gt;和&lt;!-- raw HTML omitted --&gt;水冷&lt;!-- raw HTML omitted --&gt;个突才有上场空间，卷这两个属性个突（1%以上）可以适当继续升级收藏品和装备等级，技能点到10-10-10。&lt;/li&gt;
+&lt;li&gt;综合来说，敏特本质上是张个突卡；现阶段搭配茨瓦伊/米兰达的情况特别适合拐的C也就原皮白雪和重装白雪，意味着她只在&lt;!-- raw HTML omitted --&gt;铁甲&lt;!-- raw HTML omitted --&gt;和&lt;!-- raw HTML omitted --&gt;水冷&lt;!-- raw HTML omitted --&gt;个突才有上场空间，卷这两个属性个突（0.5%以上）可以适当继续升级收藏品和装备等级，技能点到10-10-10。&lt;/li&gt;
+&lt;li&gt;至于敏特+普莉卡，对于那些还没做好茨瓦伊/米兰达珍藏品的新手来说，则更适合作为他们的垃圾刀登场。偶像双子不仅能提供不错的拐力和生存能力，养成压力也相对较小。由于茨瓦伊+敏特没有减CD，队伍需要配置一个减CD的队员，所以普莉卡只能被放弃。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_2026/mintPickup.jpg&#34;
 	
@@ -771,7 +776,86 @@ calculate();
 &gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;普莉卡&#34;&gt;普莉卡
-&lt;/h2&gt;</description>
+&lt;/h2&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;strong&gt;上场空间&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 推图&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 个突&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 竞技场&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;养成方向&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;养成&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;需求&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;技能等级&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;7-7-7&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;收藏品&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;SR5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;装备等级&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4T10，0-0-0-0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;主词条&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;无&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;副词条&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;无&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;养成优先级：T4&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;XP打分&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[!NOTE]&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;9/10&lt;/li&gt;
+&lt;li&gt;普莉卡的身材其实也是比较高挑，而且又有点锻炼的那种类型，整体比例很好看。&lt;del&gt;胸部也没有大过脸蛋&lt;/del&gt;（误）。&lt;/li&gt;
+&lt;li&gt;短发控蛮爱的，尤其在看到她那张同人带球图后，人妻感一下就上来了，美味。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;简评：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;首选，我们先把普莉卡如何搭配敏特的流程放上来。&lt;br&gt;
+&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_2026/prikaSkillFlow.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;prikaSkillFlow.png&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;li&gt;上述的图文可知，普莉卡只需要开第一次大，后续敏特就可以一直开大，且大招全是满状态，这是她作为绑定敏特的其中一个原因。&lt;/li&gt;
+&lt;li&gt;敏特+普莉卡提供的拐量固然不错，但12233的配置刚需一个1号位减CD。但对于铁甲和水冷个突来说，敏特会更适配茨瓦伊/米兰达等百暴拐，导致普莉卡没位置，故仅适合新手的个突配队，或其他属性个突开发出来的新配队。&lt;br&gt;
+&lt;em&gt;当然，也有可能偶像双子去拐&lt;strong&gt;伊芙+尤莉亚珍藏品&lt;/strong&gt;等自身携带高暴击的双C嘛，可能效果不错，就是拐力不搭嘎。&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;普莉卡作为纯轴外的话，提供些许buff，但依旧不是个突3%以上玩家的首选。&lt;/li&gt;
+&lt;li&gt;当然，普莉卡搭配敏特可以在泰塔上场，敏特的时候也说过，这个组合提供不错的拐力和生存，所以推图上是不错的选择；但目前泰塔有黑白兔，兔爱德等人存在的缘故，对有些等级的玩家来说，泰塔并没有那么缺人。&lt;/li&gt;
+&lt;li&gt;综上所述，不难发现普莉卡其实是张新手向的卡，优先级对个突3%玩家来说相对较低。除非后续敏特+普莉卡能在个突上开发或有其他售后，到时候就再更新。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_2026/prikaPickup.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;prikaPickup.jpg&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
         </item>
         
     </channel>

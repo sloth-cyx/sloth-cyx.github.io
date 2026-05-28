@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="兴趣使然，纯粹记录用。">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="兴趣使然，纯粹记录用。 特别鸣谢莱特雷-letere老师的教学，让我有个圆梦的机会。">
 <title>关于</title>
 
 <link rel='canonical' href='https://sloth-cyx.github.io/%E5%85%B3%E4%BA%8E/'>
 
 <link rel="stylesheet" href="/scss/style.min.1d02c7677ccff39d0700529b50328e7b789a4c8ccf2cbd4359792edb00c3ce62.css"><meta property='og:title' content="关于">
-<meta property='og:description' content="兴趣使然，纯粹记录用。">
+<meta property='og:description' content="兴趣使然，纯粹记录用。 特别鸣谢莱特雷-letere老师的教学，让我有个圆梦的机会。">
 <meta property='og:url' content='https://sloth-cyx.github.io/%E5%85%B3%E4%BA%8E/'>
 <meta property='og:site_name' content='怠惰的天秤-sloth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Page' />
 <meta name="twitter:title" content="关于">
-<meta name="twitter:description" content="兴趣使然，纯粹记录用。">
+<meta name="twitter:description" content="兴趣使然，纯粹记录用。 特别鸣谢莱特雷-letere老师的教学，让我有个圆梦的机会。">
     <link rel="shortcut icon" href="/libra.ico" />
 
   
 
 <div class="loading">
+    
+    <div class="loading-bg"></div>
+
     <div class="sharingon">
         <div class="ring">
             <div class="to"></div>
@@ -31,6 +34,9 @@
 <style>
     .loading {
         position: fixed;
+         
+         
+         
         display: none;
         justify-content: center;
         align-items: center;
@@ -38,9 +44,38 @@
         left: 0;
         width: 100%;
         height: 100%;
-        z-index: 99;
+        z-index: 9999;
         zoom: 3.0;
-        background-color: #000000;
+        overflow: hidden;
+    }
+
+     
+    .loading-bg {
+        position: absolute;
+        inset: 0;
+
+        background: #000;
+
+        z-index: 0;
+    }
+
+     
+    .bgFadeout {
+        animation: bgFadeOut 1.5s forwards;
+    }
+
+    @keyframes bgFadeOut {
+        0% {
+            transform: scale(1);
+            opacity: 0.6;
+        }
+        90% {
+            opacity: 0.6;
+        }
+        100% {
+            transform: scale(1.5);
+            opacity: 0;
+        }
     }
     
      
@@ -58,7 +93,7 @@
         70% {
              
             transform: rotate(-1080deg) scale(1);
-            opacity: 0.8;
+            opacity: 1;
         }
 
         100% {
@@ -67,33 +102,22 @@
             opacity: 0;
         }
     }
-    
-    .scaleAndFadeout {
-        animation: scaleAndFadeOut 1.5s forwards;
-    }
-    
-     
-    @keyframes scaleAndFadeOut {
-        0% {
-            transform: scale(1);
-            opacity: 0.6;
-        }
-        90% {
-            opacity: 0.6;
-        }
-        100% {
-            transform: scale(1.5);
-            opacity: 0;
-        }
-    }
 
      
     .sharingon {
         position: relative;
+        z-index: 1;
         width: 6em;
         height: 6em;
         background-color: red;
-        border: 6px solid black;
+        border: 6px solid rgb(0, 0, 0);
+         
+         
+         
+        box-shadow:
+            0 0 25px rgba(255, 0, 0, 0.4),
+            0 0 60px rgba(255, 0, 0, 0.2);
+        border-radius: 50%;
         animation: rot 1s linear infinite;  
     }
 
@@ -154,7 +178,10 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
-        box-shadow: 0 0 20px 1px;
+        background: black;
+        box-shadow:
+            0 0 10px rgba(255, 0, 0, 0.7),
+            0 0 20px rgba(255, 0, 0, 0.4);
         width: 1em;
         height: 1em;
     }
@@ -171,7 +198,21 @@
 </style>
 
 <script>    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
+    
     function initLoading() {
         const isFirstVisit = !sessionStorage.getItem('visited');
         if (isFirstVisit) {
@@ -195,8 +236,8 @@
         sharingon.classList.add("loader-spin-out");
         
         
-        let loading = document.querySelector(".loading");
-        loading.classList.add("scaleAndFadeout");
+        let loading = document.querySelector(".loading-bg");
+        loading.classList.add("bgFadeout");
     }
     
     initLoading();
@@ -244,7 +285,7 @@
                     
                     
                         
-                        <img src="/img/avatar_hu1914182438044288195.png" width="300"
+                        <img src="/img/avatar2_hu3260391422873070556.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -469,7 +510,8 @@
     <section class="article-content">
     
     
-    <p>兴趣使然，纯粹记录用。</p>
+    <p>兴趣使然，纯粹记录用。
+特别鸣谢<strong>莱特雷-letere</strong>老师的教学，让我有个圆梦的机会。</p>
 
 </section>
 
