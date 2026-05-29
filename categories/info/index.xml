@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>咨询 on 怠惰的天秤-sloth</title>
+        <link>http://localhost:1313/categories/info/</link>
+        <description>Recent content in 咨询 on 怠惰的天秤-sloth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>怠惰的天秤-sloth</copyright><atom:link href="http://localhost:1313/categories/info/index.xml" rel="self" type="application/rss+xml" />
+    </channel>
+</rss>

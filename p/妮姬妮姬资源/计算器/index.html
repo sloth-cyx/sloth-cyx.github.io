@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="~个人用的资源规划计算器~">
+<title>【妮姬】妮姬资源/计算器</title>
+
+<link rel='canonical' href='https://sloth-cyx.github.io/p/%E5%A6%AE%E5%A7%AC%E5%A6%AE%E5%A7%AC%E8%B5%84%E6%BA%90/%E8%AE%A1%E7%AE%97%E5%99%A8/'>
+
+<link rel="stylesheet" href="/scss/style.min.6d30e12c15c67c4b383d1743bc3b8c9774ba267bafadd5db1b9d128147d2a0a4.css"><meta property='og:title' content="【妮姬】妮姬资源/计算器">
+<meta property='og:description' content="~个人用的资源规划计算器~">
+<meta property='og:url' content='https://sloth-cyx.github.io/p/%E5%A6%AE%E5%A7%AC%E5%A6%AE%E5%A7%AC%E8%B5%84%E6%BA%90/%E8%AE%A1%E7%AE%97%E5%99%A8/'>
+<meta property='og:site_name' content='怠惰的天秤-sloth'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-05-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-05-23T00:00:00&#43;00:00'/><meta property='og:image' content='https://sloth-cyx.github.io/images/nikkeCalculator/bunnyGirl_bg.png' />
+<meta name="twitter:title" content="【妮姬】妮姬资源/计算器">
+<meta name="twitter:description" content="~个人用的资源规划计算器~"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://sloth-cyx.github.io/images/nikkeCalculator/bunnyGirl_bg.png' />
+    <link rel="shortcut icon" href="/libra.ico" />
+
+  
+
+<div class="loading">
+    
+    <div class="loading-bg"></div>
+
+    <div class="sharingon">
+        <div class="ring">
+            <div class="to"></div>
+            <div class="to"></div>
+            <div class="to"></div>
+            <div class="circle"></div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .loading {
+        position: fixed;
+         
+         
+         
+        display: none;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        zoom: 3.0;
+        overflow: hidden;
+    }
+
+     
+    .loading-bg {
+        position: absolute;
+        inset: 0;
+
+        background: #000;
+
+        z-index: 0;
+    }
+
+     
+    .bgFadeout {
+        animation: bgFadeOut 1.5s forwards;
+    }
+
+    @keyframes bgFadeOut {
+        0% {
+            transform: scale(1);
+            opacity: 0.6;
+        }
+        90% {
+            opacity: 0.6;
+        }
+        100% {
+            transform: scale(1.5);
+            opacity: 0;
+        }
+    }
+    
+     
+    .loader-spin-out {
+         
+        animation: spinAndShrink 1.5s forwards ease-in-out !important;
+    }
+
+    @keyframes spinAndShrink {
+        0% {
+            transform: rotate(0deg) scale(1);
+            opacity: 1;
+        }
+
+        70% {
+             
+            transform: rotate(-1080deg) scale(1);
+            opacity: 1;
+        }
+
+        100% {
+             
+            transform: scale(1.5);
+            opacity: 0;
+        }
+    }
+
+     
+    .sharingon {
+        position: relative;
+        z-index: 1;
+        width: 6em;
+        height: 6em;
+        background-color: red;
+        border: 6px solid rgb(0, 0, 0);
+         
+         
+         
+        box-shadow:
+            0 0 25px rgba(255, 0, 0, 0.4),
+            0 0 60px rgba(255, 0, 0, 0.2);
+        border-radius: 50%;
+        animation: rot 1s linear infinite;  
+    }
+
+    .ring {
+        position: absolute;
+        content: "";
+        left: 50%;
+        top: 50%;
+        width: 3.5em;
+        height: 3.5em;
+        border: 4px solid rgb(110, 13 ,13 ,0.5);
+        transform: translate(-50%,-50%);
+    }
+
+    .sharingon, .ring, .to,.circle {
+        border-radius: 50%;
+    }
+
+    .to,.circle {
+        position: absolute;
+        content: "";
+        width: 0.9em;
+        height: 0.9em;
+        background-color: black;
+    }
+
+    .to:nth-child(1) {
+        top: -0.5em;
+        left: 50%;
+        transform: translate(-40%);
+    }
+
+    .to::before {
+        content: "";
+        position: absolute;
+        top: -0.5em;
+        right: -0.2em;
+        width: 1.1em;
+        height: 0.9em;
+        box-sizing: border-box;
+        border-left: 16px solid black;
+        border-radius: 100% 0 0;
+    }
+
+    .to:nth-child(2) {
+        bottom: 0.5em;
+        left: -0.35em;
+        transform: rotate(-120deg);
+    }
+
+    .to:nth-child(3) {
+        bottom: 0.5em;
+        right: -0.35em;
+        transform: rotate(120deg);
+    }
+
+    .circle {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background: black;
+        box-shadow:
+            0 0 10px rgba(255, 0, 0, 0.7),
+            0 0 20px rgba(255, 0, 0, 0.4);
+        width: 1em;
+        height: 1em;
+    }
+
+    @keyframes rot {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<script>    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    function initLoading() {
+        const isFirstVisit = !sessionStorage.getItem('visited');
+        if (isFirstVisit) {
+            let loading = document.querySelector(".loading");
+            loading.style.display = "flex";
+            document.addEventListener('DOMContentLoaded', function() {
+                
+                loadFinish();
+                
+                setTimeout(() => {
+                    loading.style.display = "none";
+                }, 1500)
+                sessionStorage.setItem('visited', 'true');
+            });
+        }
+    }
+    
+    function loadFinish() {
+        
+        let sharingon = document.querySelector(".sharingon");
+        sharingon.classList.add("loader-spin-out");
+        
+        
+        let loading = document.querySelector(".loading-bg");
+        loading.classList.add("bgFadeout");
+    }
+    
+    initLoading();
+</script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky 
+
+post-sidebar">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar2_hu3260391422873070556.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🫰</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">怠惰的天秤-sloth</a></h1>
+            <h2 class="site-description">让你事故死哦~Baby！</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/197975297'
+                        target="_blank"
+                        title="Bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-bilibili"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 10a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4v-6" /><path d="M8 3l2 3" /><path d="M16 3l-2 3" /><path d="M9 13v-2" /><path d="M15 11v2" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/sloth-cyx'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.lofter.com/blog/raymondchua'
+                        target="_blank"
+                        title="Lofter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-letter-l"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M7 4v16h10" /></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#石头期望计算器">石头期望计算器</a></li>
+    <li><a href="#收藏品sr15升级期望">收藏品SR15升级期望</a></li>
+    <li><a href="#装备升级计算器">装备升级计算器</a></li>
+    <li><a href="#技能计算器">技能计算器</a></li>
+    <li><a href="#词条概率">词条概率</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E5%A6%AE%E5%A7%AC%E5%A6%AE%E5%A7%AC%E8%B5%84%E6%BA%90/%E8%AE%A1%E7%AE%97%E5%99%A8/">
+                
+                    <img src="/images/nikkeCalculator/bunnyGirl_bg.png" loading="lazy" alt="Featured image of post 【妮姬】妮姬资源/计算器" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+
+    <div class="article-title-wrapper" style="text-align: center;">
+        <h2 class="article-title">
+            <a href="/p/%E5%A6%AE%E5%A7%AC%E5%A6%AE%E5%A7%AC%E8%B5%84%E6%BA%90/%E8%AE%A1%E7%AE%97%E5%99%A8/">【妮姬】妮姬资源/计算器</a>
+        </h2>
+
+        
+        <h3 class="article-subtitle">
+            ~个人用的资源规划计算器~
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time" style="display: flex; flex-direction: row; justify-content: left; align-items: left; gap: 15px;">
+        
+        
+        <div style="display: flex; align-items: left; gap: 5px;">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+            <time class="article-time--published">2026-05-23</time>
+        </div>
+        
+
+        
+
+        
+        
+    </footer>
+    
+
+    
+
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="石头期望计算器">石头期望计算器
+</h2><div class="nikke-drop-calc-section" style="width: 100%; margin: 2rem auto; max-width: 800px; font-family: -apple-system, sans-serif; background: #fff5f5; border: 1px solid #ebdada; border-radius: 12px; padding: 25px; color: #333; box-shadow: 0 4px 12px rgba(180,160,160,0.08);">
+        
+    <div style="margin: 20px 0; display: flex; align-items: center; gap: 10px;">
+        <label for="stage-select" style="font-weight: bold; font-size: 14px; color: #4a5568; white-space: nowrap;">当前克拉肯阶段：</label>
+        <select id="stage-select" onchange="calculateDrops()" style="flex: 1; padding: 8px 12px; border-radius: 6px; border: 1px solid #ebdada; font-size: 15px; background-color: #fff; color: #333; cursor: pointer; outline: none;">
+            <option value="0" selected>无</option>
+            <option value="7">7阶段</option>
+            <option value="8">8阶段</option>
+            <option value="9">9阶段</option>
+        </select>
+    </div>
+
+    <div style="overflow-x: auto; margin-top: 20px;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 14px; text-align: center; border: 1px solid #e0a2a2;">
+            <thead>
+                <tr style="background-color: #ffe3e3; color: #4a5568;">
+                    <th style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold;">时间周期</th>
+                    <th style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold; color: #3182ce;">订制模组 (石头)</th>
+                    <th style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold; color: #dd6b20;">模组零件 (碎片)</th>
+                    <th style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold; color: #a13838;">总计 (石头+零件)</th>
+                    <th style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold; color: #805ad5;">自定密钥</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background-color: #fff;">
+                    <td style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold; background-color: #ffe3e3;">每日期望</td>
+                    <td id="mod-day" style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: 500; color: #3182ce;">-</td>
+                    <td id="part-day" style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: 500; color: #dd6b20;">-</td>
+                    <td id="total-day" style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold; color: #a13838;">-</td>
+                    <td id="key-day" style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: 500; color: #805ad5;">-</td>
+                </tr>
+                <tr style="background-color: #fff;">
+                    <td style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold; background-color: #ffe3e3;">每月期望</td>
+                    <td id="mod-month" style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: 500; color: #3182ce;">-</td>
+                    <td id="part-month" style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: 500; color: #dd6b20;">-</td>
+                    <td id="total-month" style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: bold; color: #a13838;">-</td>
+                    <td id="key-month" style="padding: 12px 8px; border: 1px solid #e0a2a2; font-weight: 500; color: #805ad5;">-</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3 style="margin-top: 35px; text-align: center; color: #2d3748; border-bottom: 2px solid #ebdada; padding-bottom: 10px; font-size: 16px;">新旧克拉肯对比一览</h3>
+    
+    <div style="overflow-x: auto; margin-top: 15px;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: center; border: 1px solid #e0a2a2; white-space: nowrap;">
+            <thead>
+                <tr style="background-color: #ffe3e3; color: #4a5568;">
+                    <th style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold;">对比项</th>
+                    <th style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold;">每日期望</th>
+                    <th style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold;">每月期望</th>
+                    <th style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold;">箱子</th>
+                    <th style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold;">石头总计</th>
+                    <th style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; color: #38a169;">提升率</th>
+                    <th style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; color: #38a169;">差距(数量)</th>
+                </tr>
+            </thead>
+            <tbody style="color: #4a5568;">
+                <tr style="background-color: #fff;">
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; background-color: #ffe3e3;">旧LV7 石头</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">2.28</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">77</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">38</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">115</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #a0aec0;">-</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #a0aec0;">-</td>
+                </tr>
+                <tr style="background-color: #fff;">
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; background-color: #ffe3e3;">新LV7 石头</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">2.55</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">87</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">46</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">133</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; color: #38a169;">15%</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; color: #38a169;">+18</td>
+                </tr>
+                <tr style="background-color: #fff;">
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; background-color: #ffe3e3;">新LV8 石头</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">2.63</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">89</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">48</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">137</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; color: #38a169;">19%</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; color: #38a169;">+22</td>
+                </tr>
+                <tr style="background-color: #fff;">
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; background-color: #ffe3e3;">新LV9 石头</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">2.71</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">92</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">51</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; color: #333;">143</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; color: #38a169;">24%</td>
+                    <td style="padding: 10px 6px; border: 1px solid #e0a2a2; font-weight: bold; color: #38a169;">+28</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+function calculateDrops() {
+    var stageSelect = document.getElementById("stage-select");
+    var stage = stageSelect.value;
+    
+    
+    if (stage === "0") {
+        var fields = ["mod-day", "mod-month", "part-day", "part-month", "total-day", "total-month", "key-day", "key-month"];
+        fields.forEach(function(id) {
+            document.getElementById(id).innerText = "-";
+        });
+        return;
+    }
+    
+    var config = {
+        "7": { dropRate: 0.65, box: 0.45, key: 6 },
+        "8": { dropRate: 0.67, box: 0.47, key: 6 },
+        "9": { dropRate: 0.69, box: 0.50, key: 6 }
+    };
+    
+    var current = config[stage];
+    
+    var coeff = 1.309; 
+    var modDay = coeff * (3 * current.dropRate);
+    var modMonth = modDay * 34;
+    
+    var partDay = current.box * 3;
+    var partMonth = partDay * 34;
+    
+    var totalDay = modDay + partDay;
+    var totalMonth = modMonth + partMonth;
+    
+    var keyDay = current.key * 3;
+    var keyMonth = keyDay * 34;
+    
+    document.getElementById("mod-day").innerText = modDay.toFixed(2);
+    document.getElementById("mod-month").innerText = modMonth.toFixed(2);
+    
+    document.getElementById("part-day").innerText = partDay.toFixed(2);
+    document.getElementById("part-month").innerText = partMonth.toFixed(2);
+    
+    document.getElementById("total-day").innerText = totalDay.toFixed(2);
+    document.getElementById("total-month").innerText = totalMonth.toFixed(2);
+    
+    document.getElementById("key-day").innerText = keyDay.toFixed(0); 
+    document.getElementById("key-month").innerText = keyMonth.toFixed(0);
+}
+
+
+window.onload = function() {
+    calculateDrops();
+};
+</script>
+<h2 id="收藏品sr15升级期望">收藏品SR15升级期望
+</h2><div class="nikke-collection-table" style="width: 100%; margin: 2.5rem auto; max-width: 800px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; padding: 15px; background: #8c624d; border-radius: 16px;">
+  <div class="table-card" style="background: #a1755e; border: 1px solid #b38770; border-radius: 12px; padding: 25px; color: #ffffff; box-shadow: 0 4px 20px rgba(70,45,35,0.25);">
+
+    <div style="background: #ffffff; border-radius: 8px; padding: 20px; border: 1px solid #b88d76; overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 13px; border: 1px solid #e3d3ca; white-space: nowrap;">
+        <thead>
+          <tr style="background-color: #f5ede8; color: #734a36;">
+            <th style="padding: 12px 10px; border: 1px solid #e3d3ca; font-weight: bold; text-align: center; width: 25%;">收藏品升级方式</th>
+            <th style="padding: 12px 10px; border: 1px solid #e3d3ca; font-weight: bold; text-align: center; width: 25%;">第一阶段期望</th>
+            <th style="padding: 12px 10px; border: 1px solid #e3d3ca; font-weight: bold; text-align: center; width: 25%;">第二阶段期望</th>
+            <th style="padding: 12px 10px; border: 1px solid #e3d3ca; font-weight: bold; text-align: center; width: 25%;">两阶段总计</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="mat-name" style="padding: 12px 10px; border: 1px solid #e3d3ca; font-weight: bold; color: #8c624d; text-align: center; background-color: #fdfbfa !important;">蓝色材料需求</td>
+            <td style="padding: 12px 10px; border: 1px solid #e3d3ca; text-align: center; color: #2d3748; background-color: #ffffff !important;">SR5蓝色 <span style="font-weight: 600; color: #3182ce;">150 个</span></td>
+            <td style="padding: 12px 10px; border: 1px solid #e3d3ca; text-align: center; color: #2d3748; background-color: #ffffff !important;">SR10蓝色 <span style="font-weight: 600; color: #3182ce;">150 个</span></td>
+            <td style="padding: 12px 10px; border: 1px solid #e3d3ca; text-align: center; font-weight: bold; color: #2b6cb0; background-color: #edf2f7 !important;">300 个蓝色</td>
+          </tr>
+          <tr>
+            <td class="mat-name" style="padding: 12px 10px; border: 1px solid #e3d3ca; font-weight: bold; color: #8c624d; text-align: center; background-color: #fdfbfa !important;">紫色材料需求</td>
+            <td style="padding: 12px 10px; border: 1px solid #e3d3ca; text-align: center; color: #2d3748; background-color: #fdfbfa !important;">SR6紫色 <span style="font-weight: 600; color: #805ad5;">60 个</span></td>
+            <td style="padding: 12px 10px; border: 1px solid #e3d3ca; text-align: center; color: #2d3748; background-color: #fdfbfa !important;">SR11紫色 <span style="font-weight: 600; color: #805ad5;">60 个</span></td>
+            <td style="padding: 12px 10px; border: 1px solid #e3d3ca; text-align: center; font-weight: bold; color: #6b46c1; background-color: #faf5ff !important;">120 个紫色</td>
+          </tr>
+          <tr>
+            <td class="mat-name" style="padding: 12px 10px; border: 1px solid #e3d3ca; font-weight: bold; color: #8c624d; text-align: center; background-color: #fdfbfa !important;">金色材料需求</td>
+            <td style="padding: 12px 10px; border: 1px solid #e3d3ca; text-align: center; color: #2d3748; background-color: #ffffff !important;">SR7金色 <span style="font-weight: 600; color: #dd6b20;">30 个</span></td>
+            <td style="padding: 12px 10px; border: 1px solid #e3d3ca; text-align: center; color: #2d3748; background-color: #ffffff !important;">SR12金色 <span style="font-weight: 600; color: #dd6b20;">30 个</span></td>
+            <td style="padding: 12px 10px; border: 1px solid #e3d3ca; text-align: center; font-weight: bold; color: #dd6b20; background-color: #fffaf0 !important;">60 个金色</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
+</div>
+
+<style>
+ 
+.nikke-collection-table .table-card table tbody tr,
+.nikke-collection-table .table-card table tbody tr td {
+  border: 1px solid #e3d3ca !important;
+}
+</style>
+<h2 id="装备升级计算器">装备升级计算器
+</h2><div class="nikke-equipment-calc" style="max-width: 800px; margin: 20px auto; padding: 25px; border: 1px solid #dcd7cc; border-radius: 12px; box-shadow: 0 4px 16px rgba(139,126,116,0.1); font-family: -apple-system, sans-serif; background: #fdfaf4; color: #433e37; box-sizing: border-box;">
+    
+    <div style="background-color: #f3ede2; padding: 10px 15px; border-radius: 6px; font-size: 12px; color: #7d715e; margin-bottom: 25px; line-height: 1.6; border-left: 4px solid #b1a491;">
+        <strong>狗粮提供经验：</strong> T8狗粮 = 12,800 EXP | T9狗粮 = 25,400 EXP<br>
+        <strong>升级所需经验：</strong> T9 → T10 消耗 = 1,592,000 EXP | T10 0级 → 5级(满级) 消耗 = 2,388,000 EXP | T9 → T10(满级) 总计消耗 = 3,980,000 EXP<br>
+        <strong>注释1：</strong> T9 → T10 = 62.7 T9狗粮数量 | T10 0级 → 5级(满级) = 94.01 T9狗粮数量<br>
+        <strong>注释2：</strong> T10 0级 → 5级(满级) = 拉1.5个T10 | T9 → T10(满级) = 拉2.5个T10
+    </div>
+
+    <div style="margin-bottom: 30px; border: 1px solid #eadecb; padding: 15px; border-radius: 8px; background: #ffffff; box-sizing: border-box;">
+        <h4 style="margin: 0 0 12px 0; font-size: 15px; color: #5a5245; display: flex; align-items: center; gap: 6px;">
+            <span style="background: #62796f; color: #fff; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; flex-shrink: 0;">1</span>
+            通过当前库存计算可升级装备数
+        </h4>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; margin-bottom: 15px; align-items: center;">
+            <label for="gear-has-t9" style="font-size: 13px; font-weight: bold; color: #6f6453;">目前拥有 T9 狗粮数量:</label>
+            <input type="number" id="gear-has-t9" value="0" min="0" oninput="calcGearInput1()" style="width: 100%; padding: 6px 10px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 14px; outline: none; background: #fdfdfb; color: #433e37; box-sizing: border-box;">
+        </div>
+
+        <div style="overflow-x: auto; width: 100%;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: center; border: 1px solid #ccbfad;">
+                <thead>
+                    <tr style="background-color: #f7f3eb; color: #5a5245;">
+                        <th style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold;">T9 升级至 T10 (件)</th>
+                        <th style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold;">T10 升级至 满级 (件)</th>
+                        <th style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold;">T9 升级至 T10 满级 (件)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color: #fff;">
+                        <td id="res1-t9-to-t10" style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: 500; color: #5a5245;">0.00</td>
+                        <td id="res1-t10-to-max" style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: 500; color: #5a5245;">0.00</td>
+                        <td id="res1-t9-to-max" style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #5a5245;">0.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div style="margin-bottom: 10px; border: 1px solid #eadecb; padding: 15px; border-radius: 8px; background: #ffffff; box-sizing: border-box;">
+        <h4 style="margin: 0 0 15px 0; font-size: 15px; color: #5a5245; display: flex; align-items: center; gap: 6px;">
+            <span style="background: #6a7f93; color: #fff; width: 20px; height: 20px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; flex-shrink: 0;">2</span>
+            自定义装备强化方案计算（可组合输入）
+        </h4>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 15px;">
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: center;">
+                <label for="combine-t9-t10" style="font-size: 12px; font-weight: bold; color: #6f6453; white-space: nowrap;">【T9 ➔ T10】件数:</label>
+                <input type="number" id="combine-t9-t10" value="0" min="0" oninput="calcCombinedGear()" style="width: 100%; padding: 5px 8px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 13px; outline: none; background: #fdfdfb; color: #433e37; box-sizing: border-box;">
+            </div>
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: center;">
+                <label for="combine-t10-max" style="font-size: 12px; font-weight: bold; color: #6f6453; white-space: nowrap;">【T10 ➔ 满级】件数:</label>
+                <input type="number" id="combine-t10-max" value="0" min="0" oninput="calcCombinedGear()" style="width: 100%; padding: 5px 8px; border-radius: 4px; border: 1px solid #ccbfad; font-size: 13px; outline: none; background: #fdfdfb; color: #433e37; box-sizing: border-box;">
+            </div>
+        </div>
+
+        <div style="overflow-x: auto; width: 100%;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: center; border: 1px solid #ccbfad;">
+                <thead>
+                    <tr style="background-color: #f7f3eb; color: #5a5245;">
+                        <th style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold;">方案总需经验值 (EXP)</th>
+                        <th style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;">共需 T9 狗粮 (个)</th>
+                        <th style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;">共需 T8 狗粮 (个)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color: #fff;">
+                        <td id="combine-res-xp" style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: 500; color: #5a5245;">0</td>
+                        <td id="combine-res-t9" style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;">0.0</td>
+                        <td id="combine-res-t8" style="padding: 10px 6px; border: 1px solid #ccbfad; font-weight: bold; color: #756249;">0.0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script>
+const XP_T8 = 12800;
+const XP_T9 = 25400;
+const NEED_T9_TO_T10 = 1592000;
+const NEED_T10_TO_MAX = 2388000;
+const NEED_TOTAL_MAX = NEED_T9_TO_T10 + NEED_T10_TO_MAX;
+
+function calcGearInput1() {
+    let hasT9 = parseFloat(document.getElementById("gear-has-t9").value) || 0;
+    if (hasT9 < 0) hasT9 = 0;
+    let totalXp = hasT9 * XP_T9;
+    
+    document.getElementById("res1-t9-to-t10").innerText = (totalXp / NEED_T9_TO_T10).toFixed(2);
+    document.getElementById("res1-t10-to-max").innerText = (totalXp / NEED_T10_TO_MAX).toFixed(2);
+    document.getElementById("res1-t9-to-max").innerText = (totalXp / NEED_TOTAL_MAX).toFixed(2);
+}
+
+function calcCombinedGear() {
+    let countT9ToT10 = parseFloat(document.getElementById("combine-t9-t10").value) || 0;
+    let countT10ToMax = parseFloat(document.getElementById("combine-t10-max").value) || 0;
+    
+    if (countT9ToT10 < 0) countT9ToT10 = 0;
+    if (countT10ToMax < 0) countT10ToMax = 0;
+    
+    let totalRequiredXp = (countT9ToT10 * NEED_T9_TO_T10) + (countT10ToMax * NEED_T10_TO_MAX);
+    
+    document.getElementById("combine-res-xp").innerText = totalRequiredXp.toLocaleString();
+    document.getElementById("combine-res-t9").innerText = (totalRequiredXp / XP_T9).toFixed(1);
+    document.getElementById("combine-res-t8").innerText = (totalRequiredXp / XP_T8).toFixed(1);
+}
+
+window.onload = function() {
+    calcGearInput1();
+    calcCombinedGear();
+};
+</script>
+<h2 id="技能计算器">技能计算器
+</h2><div class="nikke-calculator" style="width: 100%; margin: 2rem auto; max-width: 800px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; padding: 15px; background: #4a5d53; border-radius: 16px;">
+  <div class="calc-card" style="background: #566c61; border: 1px solid #637d70; border-radius: 12px; padding: 25px; color: #ffffff; box-shadow: 0 4px 20px rgba(40,50,45,0.25);">
+    
+    <h3 style="margin-top: 0; text-align: center; color: #ffffff; border-bottom: 2px solid #6b8477; padding-bottom: 10px; font-size: 18px; letter-spacing: 1px;">代码手册拥有5种属性，现阶段不支持~继续细化改日再说，也有可能不做~</h3>
+
+    <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+      
+      <div class="panel" style="background: #ffffff; padding: 20px; border-radius: 8px; border: 1px solid #6b8477; color: #2d3748;">
+        <h3 style="margin-top: 0; margin-bottom: 15px; font-size: 15px; color: #4a5d53; border-left: 4px solid #566c61; padding-left: 8px; font-weight: bold;">点技能角色数量</h3>
+
+        <div class="input-group" style="display: flex; flex-direction: column; margin-bottom: 14px;">
+          <label style="margin-bottom: 6px; font-size: 13px; font-weight: bold; color: #4a5d53;">10/10/10 角色数量</label>
+          <input type="number" id="S101010" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 10px; font-size: 14px; color: #2d3748; font-weight: bold; outline: none;">
+        </div>
+
+        <div class="input-group" style="display: flex; flex-direction: column; margin-bottom: 14px;">
+          <label style="margin-bottom: 6px; font-size: 13px; font-weight: bold; color: #4a5d53;">10/7/10 或 7/10/10 角色数量</label>
+          <input type="number" id="S10710" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 10px; font-size: 14px; color: #2d3748; font-weight: bold; outline: none;">
+        </div>
+
+        <div class="input-group" style="display: flex; flex-direction: column; margin-bottom: 14px;">
+          <label style="margin-bottom: 6px; font-size: 13px; font-weight: bold; color: #4a5d53;">10/7/7 或 7/10/7 角色数量</label>
+          <input type="number" id="S1077" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 10px; font-size: 14px; color: #2d3748; font-weight: bold; outline: none;">
+        </div>
+
+        <div class="input-group" style="display: flex; flex-direction: column; margin-bottom: 14px;">
+          <label style="margin-bottom: 6px; font-size: 13px; font-weight: bold; color: #4a5d53;">7/7/10 角色数量</label>
+          <input type="number" id="S7710" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 10px; font-size: 14px; color: #2d3748; font-weight: bold; outline: none;">
+        </div>
+
+        <div class="input-group" style="display: flex; flex-direction: column; margin-bottom: 6px;">
+          <label style="margin-bottom: 6px; font-size: 13px; font-weight: bold; color: #4a5d53;">7/7/7 角色数量</label>
+          <input type="number" id="S777" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 10px; font-size: 14px; color: #2d3748; font-weight: bold; outline: none;">
+        </div>
+      </div>
+
+      <div class="panel" style="background: #ffffff; padding: 20px; border-radius: 8px; border: 1px solid #6b8477; color: #2d3748;">
+        <h3 style="margin-top: 0; margin-bottom: 15px; font-size: 15px; color: #4a5d53; border-left: 4px solid #566c61; padding-left: 8px; font-weight: bold;">库存</h3>
+
+        <div class="material-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px;">
+          <div class="input-group" style="display: flex; flex-direction: column;">
+            <label style="margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;">技能蓝书</label>
+            <input type="number" id="ownedSkillBlue" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;">
+          </div>
+
+          <div class="input-group" style="display: flex; flex-direction: column;">
+            <label style="margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;">技能紫书</label>
+            <input type="number" id="ownedSkillPurple" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;">
+          </div>
+
+          <div class="input-group" style="display: flex; flex-direction: column;">
+            <label style="margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;">技能金书</label>
+            <input type="number" id="ownedSkillGold" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;">
+          </div>
+
+          <div class="input-group" style="display: flex; flex-direction: column;">
+            <label style="margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;">爆裂蓝书</label>
+            <input type="number" id="ownedBurstBlue" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;">
+          </div>
+
+          <div class="input-group" style="display: flex; flex-direction: column;">
+            <label style="margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;">爆裂紫书</label>
+            <input type="number" id="ownedBurstPurple" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;">
+          </div>
+
+          <div class="input-group" style="display: flex; flex-direction: column;">
+            <label style="margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;">爆裂金书</label>
+            <input type="number" id="ownedBurstGold" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;">
+          </div>
+
+          <div class="input-group" style="display: flex; flex-direction: column; grid-column: span 1;">
+            <label style="margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;">代码手册</label>
+            <input type="number" id="ownedCode" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-panel" style="margin-top: 24px; background: #ffffff; border-radius: 8px; padding: 20px; border: 1px solid #6b8477; overflow-x: auto;">
+      <h3 style="margin-top: 0; margin-bottom: 15px; font-size: 15px; color: #4a5d53; text-align: center; font-weight: bold;">📊 资源计算结果</h3>
+
+      <table style="width: 100%; border-collapse: collapse; font-size: 13px; border: 1px solid #cbdad2; white-space: nowrap;">
+        <thead>
+          <tr style="background-color: #e4ebe7; color: #4a5d53;">
+            <th style="padding: 12px 8px; border: 1px solid #cbdad2; font-weight: bold; text-align: center;">材料</th>
+            <th style="padding: 12px 8px; border: 1px solid #cbdad2; font-weight: bold; text-align: center;">消耗</th>
+            <th style="padding: 12px 8px; border: 1px solid #cbdad2; font-weight: bold; text-align: center;">库存</th>
+            <th style="padding: 12px 8px; border: 1px solid #cbdad2; font-weight: bold; text-align: center;">剩余</th>
+          </tr>
+        </thead>
+        <tbody id="resultTable"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<style>
+ 
+.nikke-calculator .calc-card .result-panel table tbody tr {
+  background-color: #ffffff !important;
+}
+.nikke-calculator .calc-card .result-panel table tbody tr:nth-child(even) {
+  background-color: #f7faf8 !important;
+}
+.nikke-calculator .calc-card .result-panel table td {
+  padding: 10px 6px;
+  border: 1px solid #cbdad2;
+  text-align: center;  
+  color: #2d3748;
+}
+
+ 
+.nikke-calculator .positive {
+  color: #2f855a !important;  
+  font-weight: bold;
+}
+.nikke-calculator .negative {
+  color: #c53030 !important;  
+  font-weight: bold;
+}
+</style>
+
+<script>
+const COSTS = {
+  S101010: { skillBlue: 2188, skillPurple: 1550, skillGold: 630, burstBlue: 1094, burstPurple: 755, burstGold: 315, code: 1440 },
+  S10710:  { skillBlue: 1474, skillPurple: 1045, skillGold: 315, burstBlue: 1094, burstPurple: 775, burstGold: 315, code: 1135 },
+  S1077:   { skillBlue: 1474, skillPurple: 1045, skillGold: 315, burstBlue: 380,  burstPurple: 270, burstGold: 0,   code: 525  },
+  S7710:   { skillBlue: 760,  skillPurple: 540,  skillGold: 0,   burstBlue: 1094, burstPurple: 775, burstGold: 315, code: 830  },
+  S777:    { skillBlue: 760,  skillPurple: 540,  skillGold: 0,   burstBlue: 380,  burstPurple: 270, burstGold: 0,   code: 220  }
+};
+
+const materials = [
+  { key: 'skillBlue',   name: '技能蓝书', owned: 'ownedSkillBlue' },
+  { key: 'skillPurple', name: '技能紫书', owned: 'ownedSkillPurple' },
+  { key: 'skillGold',   name: '技能金书', owned: 'ownedSkillGold' },
+  { key: 'burstBlue',   name: '爆裂蓝书', owned: 'ownedBurstBlue' },
+  { key: 'burstPurple', name: '爆裂紫书', owned: 'ownedBurstPurple' },
+  { key: 'burstGold',   name: '爆裂金书', owned: 'ownedBurstGold' },
+  { key: 'code',        name: '代码手册', owned: 'ownedCode' }
+];
+
+function getValue(id) {
+  return Number(document.getElementById(id).value) || 0;
+}
+
+function calculate() {
+  const S101010 = getValue('S101010');
+  const S10710 = getValue('S10710');
+  const S1077 = getValue('S1077');
+  const S7710 = getValue('S7710');
+  const S777 = getValue('S777');
+
+  let html = '';
+
+  materials.forEach(mat => {
+    const need =
+      (COSTS.S101010[mat.key] * S101010) +
+      (COSTS.S10710[mat.key] * S10710) +
+      (COSTS.S1077[mat.key] * S1077) +
+      (COSTS.S7710[mat.key] * S7710) +
+      (COSTS.S777[mat.key] * S777);
+
+    const owned = getValue(mat.owned);
+    const remain = owned - need;
+
+    html += `
+      <tr>
+        <td style="font-weight: bold; color: #4a5d53; text-align: center;">${mat.name}</td>
+        <td style="text-align: center;">${need.toLocaleString()}</td>
+        <td style="text-align: center;">${owned.toLocaleString()}</td>
+        <td class="${remain >= 0 ? 'positive' : 'negative'}" style="text-align: center;">
+          ${remain >= 0 ? '+' : ''}${remain.toLocaleString()}
+        </td>
+      </tr>
+    `;
+  });
+
+  document.getElementById('resultTable').innerHTML = html;
+}
+
+const containerInputs = document.querySelectorAll('.nikke-calculator input');
+containerInputs.forEach(input => {
+  input.addEventListener('input', calculate);
+});
+
+calculate();
+</script>
+<h2 id="词条概率">词条概率
+</h2><div class="nikke-attributes-section" style="width: 100%; margin: 2.5rem auto; max-width: 900px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #e6eff6; border: 1px solid #cbdbe6; border-radius: 12px; padding: 25px; color: #2c3e50; box-shadow: 0 4px 16px rgba(180,200,215,0.25);">
+  
+  <div class="rules-notes" style="margin-top: 20px; background: #f0f4f8; border-radius: 6px; padding: 12px 15px; font-size: 12px; line-height: 1.6; color: #4a5568; border-left: 4px solid #63b3ed;">
+    📌 <strong>洗词条提示：</strong><br>
+    1. T9 企业装备进化为 Overlord (T10) 装备时，<strong>初始必给SSR等级11阶词条</strong>！<br>
+    2. 锁定词条的石头<strong>仅在点击锁定那一刻消耗一次</strong>。在后续的洗词条过程中，<strong>绝不会</strong>重复扣除已锁定词条的石头。
+  </div>
+
+  <div class="attr-table-wrapper" style="background: #ffffff; border-radius: 8px; padding: 18px; border: 1px solid #cbdbe6; margin-bottom: 20px; overflow-x: auto;">
+    <h4 style="margin-top: 0; margin-bottom: 12px; font-size: 14px; color: #2b6cb0; border-left: 4px solid #4299e1; padding-left: 8px; font-weight: bold;">词条选项获取概率与能力值范围</h4>
+    <table style="width: 100%; border-collapse: collapse; font-size: 12px; border: 1px solid #e1e8ed; white-space: nowrap;">
+      <thead>
+        <tr style="background-color: #f0f5fa; color: #2c3e50;">
+          <th style="padding: 10px; border: 1px solid #e1e8ed; font-weight: bold; text-align: left; background: #eaf2f9;">词条选项（获得机率）</th>
+          <th style="padding: 10px; border: 1px solid #e1e8ed; font-weight: bold; text-align: center; background: #eaf2f9;">N (60% 机率)</th>
+          <th style="padding: 10px; border: 1px solid #e1e8ed; font-weight: bold; text-align: center; background: #eaf2f9;">SR (35% 机率)</th>
+          <th style="padding: 10px; border: 1px solid #e1e8ed; font-weight: bold; text-align: center; background: #eaf2f9;">SSR (5% 机率)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight: bold; color: #2c3e50; padding: 10px; border: 1px solid #e1e8ed; background: #fcfdfe !important;">优越代码 (10%)</td>
+          <td style="text-align: center; background: #ffffff !important;">9.54% ~ 15.15%</td>
+          <td style="text-align: center; background: #ffffff !important;">16.55% ~ 22.15%</td>
+          <td style="text-align: center; font-weight: bold; color: #b7791f; background: #fffaf0 !important;">23.56% ~ 29.16%</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; color: #2c3e50; padding: 10px; border: 1px solid #e1e8ed; background: #fcfdfe !important;">命中率 (12%)</td>
+          <td style="text-align: center; background: #ffffff !important;">4.77% ~ 7.59%</td>
+          <td style="text-align: center; background: #ffffff !important;">8.29% ~ 11.11%</td>
+          <td style="text-align: center; font-weight: bold; color: #b7791f; background: #fffaf0 !important;">11.81% ~ 14.63%</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; color: #2c3e50; padding: 10px; border: 1px solid #e1e8ed; background: #fcfdfe !important;">最大弹药数 (12%)</td>
+          <td style="text-align: center; background: #ffffff !important;">27.84% ~ 44.28%</td>
+          <td style="text-align: center; background: #ffffff !important;">48.39% ~ 64.82%</td>
+          <td style="text-align: center; font-weight: bold; color: #b7791f; background: #fffaf0 !important;">68.93% ~ 85.37%</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; color: #2c3e50; padding: 10px; border: 1px solid #e1e8ed; background: #fcfdfe !important;">攻击力 (10%)</td>
+          <td style="text-align: center; background: #ffffff !important;">4.77% ~ 7.59%</td>
+          <td style="text-align: center; background: #ffffff !important;">8.29% ~ 11.11%</td>
+          <td style="text-align: center; font-weight: bold; color: #b7791f; background: #fffaf0 !important;">11.81% ~ 14.63%</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; color: #2c3e50; padding: 10px; border: 1px solid #e1e8ed; background: #fcfdfe !important;">蓄力伤害 (12%)</td>
+          <td style="text-align: center; background: #ffffff !important;">4.77% ~ 7.59%</td>
+          <td style="text-align: center; background: #ffffff !important;">8.29% ~ 11.11%</td>
+          <td style="text-align: center; font-weight: bold; color: #b7791f; background: #fffaf0 !important;">11.81% ~ 14.63%</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; color: #2c3e50; padding: 10px; border: 1px solid #e1e8ed; background: #fcfdfe !important;">蓄力速度 (12%)</td>
+          <td style="text-align: center; background: #ffffff !important;">1.98% ~ 3.16%</td>
+          <td style="text-align: center; background: #ffffff !important;">3.45% ~ 4.63%</td>
+          <td style="text-align: center; font-weight: bold; color: #b7791f; background: #fffaf0 !important;">4.92% ~ 6.09%</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; color: #2c3e50; padding: 10px; border: 1px solid #e1e8ed; background: #fcfdfe !important;">暴击伤害 (12%)</td>
+          <td style="text-align: center; background: #ffffff !important;">6.64% ~ 10.56%</td>
+          <td style="text-align: center; background: #ffffff !important;">11.54% ~ 15.56%</td>
+          <td style="text-align: center; font-weight: bold; color: #b7791f; background: #fffaf0 !important;">16.44% ~ 20.36%</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; color: #2c3e50; padding: 10px; border: 1px solid #e1e8ed; background: #fcfdfe !important;">暴击率 (10%)</td>
+          <td style="text-align: center; background: #ffffff !important;">2.30% ~ 3.66%</td>
+          <td style="text-align: center; background: #ffffff !important;">4.00% ~ 5.34%</td>
+          <td style="text-align: center; font-weight: bold; color: #b7791f; background: #fffaf0 !important;">5.70% ~ 7.07%</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold; color: #2c3e50; padding: 10px; border: 1px solid #e1e8ed; background: #fcfdfe !important;">防御力 (10%)</td>
+          <td style="text-align: center; background: #ffffff !important;">4.77% ~ 7.59%</td>
+          <td style="text-align: center; background: #ffffff !important;">8.29% ~ 11.11%</td>
+          <td style="text-align: center; font-weight: bold; color: #b7791f; background: #fffaf0 !important;">11.81% ~ 14.63%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sub-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">
+    
+    <div class="attr-table-wrapper" style="background: #ffffff; border-radius: 8px; padding: 15px; border: 1px solid #cbdbe6; overflow-x: auto;">
+      <h4 style="margin-top: 0; margin-bottom: 10px; font-size: 13px; color: #2b6cb0; border-left: 4px solid #4299e1; padding-left: 6px; font-weight: bold;">🔓 词条位置解锁概率</h4>
+      <table style="width: 100%; border-collapse: collapse; font-size: 12px; border: 1px solid #e1e8ed;">
+        <thead>
+          <tr style="background-color: #f0f5fa; color: #2c3e50;">
+            <th style="padding: 8px; border: 1px solid #e1e8ed; text-align: center; font-weight: bold;">第一条词条</th>
+            <th style="padding: 8px; border: 1px solid #e1e8ed; text-align: center; font-weight: bold;">第二条词条</th>
+            <th style="padding: 8px; border: 1px solid #e1e8ed; text-align: center; font-weight: bold;">第三条词条</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align: center; padding: 12px 8px; font-weight: bold; color: #2f855a; background: #ffffff !important;">100% 出现</td>
+            <td style="text-align: center; padding: 12px 8px; font-weight: bold; color: #dd6b20; background: #ffffff !important;">50% 开启</td>
+            <td style="text-align: center; padding: 12px 8px; font-weight: bold; color: #e53e3e; background: #ffffff !important;">30% 开启</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="attr-table-wrapper" style="background: #ffffff; border-radius: 8px; padding: 15px; border: 1px solid #cbdbe6; overflow-x: auto;">
+      <h4 style="margin-top: 0; margin-bottom: 10px; font-size: 13px; color: #2b6cb0; border-left: 4px solid #4299e1; padding-left: 6px; font-weight: bold;">🔒 锁定词条石头消耗规则</h4>
+      <table style="width: 100%; border-collapse: collapse; font-size: 12px; border: 1px solid #e1e8ed;">
+        <thead>
+          <tr style="background-color: #f0f5fa; color: #2c3e50;">
+            <th style="padding: 8px; border: 1px solid #e1e8ed; text-align: center; font-weight: bold;">锁定数量</th>
+            <th style="padding: 8px; border: 1px solid #e1e8ed; text-align: center; font-weight: bold;">初次锁定消耗</th>
+            <th style="padding: 8px; border: 1px solid #e1e8ed; text-align: center; font-weight: bold;">后续每次洗词条消耗</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align: center; padding: 8px; background: #ffffff !important;">未锁定</td>
+            <td style="text-align: center; padding: 8px; color: #718096; background: #ffffff !important;">—</td>
+            <td style="text-align: center; padding: 8px; font-weight: bold; color: #2d3748; background: #ffffff !important;">1颗石头</td>
+          </tr>
+          <tr>
+            <td style="text-align: center; padding: 8px; background: #ffffff !important;">锁定 1 个</td>
+            <td style="text-align: center; padding: 8px; color: #2d3748; font-weight: bold; background: #ffffff !important;">2颗石头</td>
+            <td style="text-align: center; padding: 8px; font-weight: bold; color: #2d3748; background: #ffffff !important;">2颗石头</td>
+          </tr>
+          <tr>
+            <td style="text-align: center; padding: 8px; background: #ffffff !important;">锁定 2 个</td>
+            <td style="text-align: center; padding: 8px; color: #2d3748; font-weight: bold; background: #ffffff !important;">3颗石头</td>
+            <td style="text-align: center; padding: 8px; font-weight: bold; color: #2d3748; background: #ffffff !important;">3颗石头</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<style>
+ 
+.nikke-attributes-section .attr-table-wrapper table tbody tr {
+  background-color: #ffffff !important;
+}
+.nikke-attributes-section .attr-table-wrapper table td {
+  border: 1px solid #e1e8ed !important;
+}
+</style>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>禁止转载。如需引用，请注明文章链接。</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%A6%AE%E5%A7%AC%E5%BE%80%E5%B9%B4%E5%A6%AE%E5%A7%AC%E4%B8%AA%E4%BA%BA%E7%AE%80%E8%AF%84/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/images/nikkeComment_previous/arcana_bg.png" loading="lazy" data-key="" data-hash="/images/nikkeComment_previous/arcana_bg.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【妮姬】往年妮姬个人简评</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%A6%AE%E5%A7%AC2026%E5%A6%AE%E5%A7%AC%E4%B8%AA%E4%BA%BA%E7%AE%80%E8%AF%84/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/images/nikkeComment_2026/nikkeComment_2026_bg.png" loading="lazy" data-key="" data-hash="/images/nikkeComment_2026/nikkeComment_2026_bg.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【妮姬】2026妮姬个人简评</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2026 怠惰的天秤-sloth
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+
+
+
+
+
+<div id="particles-js"></div>
+
+<style>
+    #particles-js {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    #TableOfContents>ul,
+    ol {
+
+        ul,
+        ol {
+            display: none;
+        }
+
+        .open {
+            display: block;
+        }
+    }
+
+    #backTopBtn {
+        display: none;
+        position: fixed;
+        bottom: 30px;
+        z-index: 99;
+        cursor: pointer;
+        width: 35px;
+        height: 35px;
+        background-image: url('https://sloth-cyx.github.io/icons/backTop.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        transition: transform 0.2s ease;
+    }
+
+    #backTopBtn:hover {
+        transform: translateY(-3px);
+    }
+</style>
+
+<script src="https://sloth-cyx.github.io/background/sakura.js"></script>
+<script src="https://sloth-cyx.github.io/background/particles.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        
+        
+        function initParticles() {
+            
+            const container = document.getElementById('particles-js');
+            if (container && container.childNodes.length === 0) {
+                if (typeof particlesJS !== "undefined") {
+                    particlesJS.load('particles-js', 'https:\/\/sloth-cyx.github.io\/background\/particlesjs-config.json', function () {});
+                }
+            }
+        }
+
+        function checkBackground() {
+            const isDark = document.documentElement.getAttribute('data-scheme') === 'dark';
+            
+            
+            if (isDark) {
+                initParticles();
+            }
+        }
+
+        
+        window.addEventListener('load', () => {
+            
+            if (typeof Sakura !== "undefined") new Sakura('body');
+            
+            checkBackground();
+        });
+
+        
+        const observer = new MutationObserver(checkBackground);
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-scheme'] });
+            
+        
+        let toc = document.querySelector(".widget--toc");
+        if (toc) {
+            window.addEventListener('scroll', function () {
+                let openUl = document.querySelectorAll(".open");
+                if (openUl.length > 0) { openUl.forEach((ul) => { ul.classList.remove("open") }) }
+                let currentLi = document.querySelector(".active-class");
+                if (!currentLi) return;
+                if (currentLi.children.length > 1) { currentLi.children[1].classList.add("open") }
+                let ul = currentLi.parentElement;
+                do {
+                    ul.classList.add("open");
+                    ul = ul.parentElement.parentElement
+                } while (ul !== undefined && (ul.localName === 'ul' || ul.localName === 'ol'))
+            });
+        }
+
+        
+        let rightSideBar = document.querySelector(".right-sidebar");
+        if (rightSideBar) {
+            let btn = document.createElement("div");
+            btn.id = "backTopBtn";
+            btn.onclick = function () { window.scrollTo({ top: 0, behavior: "smooth" }); };
+            rightSideBar.appendChild(btn);
+            window.addEventListener('scroll', function () {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) { btn.style.display = "block"; }
+                else { btn.style.display = "none"; }
+            });
+        }
+
+        
+        let blockquotes = document.querySelectorAll("blockquote");
+        blockquotes.forEach(function (bq) {
+            
+            let text = bq.textContent || bq.innerText;
+            let alertType = "";
+
+            
+            if (text.includes("[!NOTE]")) { alertType = "note"; }
+            else if (text.includes("[!TIP]")) { alertType = "tip"; }
+            else if (text.includes("[!WARN]")) { alertType = "warn"; }
+            else if (text.includes("[!ERROR]")) { alertType = "error"; }
+
+            if (alertType) {
+                
+                bq.classList.add("alert", "alert-" + alertType);
+
+                
+                let pTag = bq.querySelector("p");
+                if (pTag) {
+                    
+                    let token = "[!" + alertType.toUpperCase() + "]";
+                    if (pTag.innerText.startsWith(token)) {
+                        pTag.innerText = pTag.innerText.substring(token.length).trim();
+                    } else {
+                        
+                        pTag.innerText = pTag.innerText.replace(/\[!(NOTE|TIP|WARN|ERROR)\]/g, "").trim();
+                    }
+                }
+            }
+        });
+    });
+</script>
+    </body>
+</html>
