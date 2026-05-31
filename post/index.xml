@@ -1046,7 +1046,11 @@ calculate();
 	
 &gt;&lt;/li&gt;
 &lt;li&gt;目前来看，茨瓦伊+敏特会在多判的情况下完胜米兰达+敏特；而单判的情况下，米兰达+敏特的高额加攻和暴伤也许能反超茨瓦伊+敏特！这就只能静待后续有无合适的个突来做测试。&lt;/li&gt;
-&lt;li&gt;综合来说，敏特本质上是张个突卡；现阶段搭配茨瓦伊/米兰达的情况特别适合拐的C也就原皮白雪和重装白雪，意味着她只在&lt;!-- raw HTML omitted --&gt;铁甲&lt;!-- raw HTML omitted --&gt;和&lt;!-- raw HTML omitted --&gt;水冷&lt;!-- raw HTML omitted --&gt;个突才有上场空间，卷这两个属性个突（1%以上）可以技能点到10-10-10，再往上走才适当的继续升级收藏品和装备等级。&lt;/li&gt;
+&lt;li&gt;综合来说，敏特本质上是张个突卡；现阶段搭配茨瓦伊/米兰达的情况特别适合拐的C也就原皮白雪和重装白雪，意味着她只在&lt;strong&gt;&lt;span style=&#34;background-color: yellow; padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
+    铁甲
+&lt;/span&gt;&lt;/strong&gt;和&lt;strong&gt;&lt;span style=&#34;background-color: rgb(0, 195, 255); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
+    水冷
+&lt;/span&gt;&lt;/strong&gt;个突才有上场空间，卷这两个属性个突（1%以上）可以技能点到10-10-10，再往上走才适当的继续升级收藏品和装备等级。&lt;/li&gt;
 &lt;li&gt;至于敏特+普莉卡，对于那些还没做好茨瓦伊/米兰达珍藏品的新手来说，则更适合作为他们的垃圾刀登场。偶像双子不仅能提供不错的拐力和生存能力，养成压力也相对较小。百暴队由于茨瓦伊/米兰达+敏特没有减CD，队伍需要配置一个减CD的队员，所以普莉卡是不能作为百暴队成员入队的。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_2026/mintPickup.jpg&#34;
@@ -1123,7 +1127,9 @@ calculate();
 	
 &gt;&lt;/li&gt;
 &lt;li&gt;上述的图文可知，普莉卡只需要开第一次大，后续敏特就可以一直开大，且大招全是满状态，这是她作为双子绑定敏特的其中一个原因。&lt;/li&gt;
-&lt;li&gt;敏特+普莉卡提供的拐量固然不错（攻伤区有合适的C是皇马级别的数值怪，具体可参考&lt;strong&gt;妮姬组合拐力统计表&lt;/strong&gt;这篇文章），但12233的配置刚需一个1号位减CD。但对于铁甲和水冷个突来说，敏特可能会更适配茨瓦伊/米兰达等百暴拐，导致普莉卡没位置，这部分还需要更多开发来验证。&lt;br&gt;
+&lt;li&gt;敏特+普莉卡提供的拐量固然不错（攻伤区有合适的C是皇马级别的数值怪，具体可参考&lt;strong&gt;&lt;span style=&#34;background-color: rgb(94, 255, 0); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
+    妮姬组合拐力统计表
+&lt;/span&gt;&lt;/strong&gt;这篇文章），但12233的配置刚需一个1号位减CD。但对于铁甲和水冷个突来说，敏特可能会更适配茨瓦伊/米兰达等百暴拐，导致普莉卡没位置，这部分还需要更多开发来验证。&lt;br&gt;
 &lt;em&gt;当然，也有可能偶像双子去拐&lt;strong&gt;伊芙+尤莉亚珍藏品&lt;/strong&gt;等自身携带高暴击的双C嘛，可能效果不错，就是拐力不搭嘎。&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;普莉卡作为纯轴外的话，提供些许buff，但依旧不是个突3%以上玩家的首选。&lt;/li&gt;
 &lt;li&gt;当然，普莉卡搭配敏特可以在泰塔上场；敏特的时候也说过，这个组合提供不错的拐力和生存，所以推图上是不错的选择。但目前泰塔有黑白兔，兔爱德等人存在的缘故，对有些等级的玩家来说，泰塔并没有那么缺人。&lt;/li&gt;
@@ -1178,7 +1184,16 @@ calculate();
 &lt;p&gt;表情 &amp;#x1f604;&lt;/p&gt;
 &lt;p&gt;下标 H&lt;!-- raw HTML omitted --&gt;2&lt;!-- raw HTML omitted --&gt;O&lt;/p&gt;
 &lt;p&gt;上标 X&lt;!-- raw HTML omitted --&gt;2&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;高亮文字&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;高亮文字（失效）&lt;!-- raw HTML omitted --&gt;&lt;br&gt;
+&lt;span style=&#34;background-color: yellow; padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
+    高亮文字（黄）
+&lt;/span&gt;&lt;br&gt;
+&lt;span style=&#34;background-color: rgb(0, 195, 255); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
+    高亮文字（蓝）
+&lt;/span&gt;&lt;br&gt;
+&lt;span style=&#34;background-color: rgb(255, 60, 0); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: rgb(255, 255, 255);&#34;&gt;
+    高亮文字（蓝）
+&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;换行1使用两个空格&lt;br&gt;
 换行2使用br&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;p&gt;脚注&lt;br&gt;
@@ -1299,7 +1314,7 @@ calculate();
 	
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;嵌入（旧）&lt;/p&gt;
+&lt;p&gt;嵌入（失效）&lt;/p&gt;
 &lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;嵌入（新）
 &lt;div class=&#34;bilibili-video-container&#34; style=&#34;position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.15);&#34;&gt;
