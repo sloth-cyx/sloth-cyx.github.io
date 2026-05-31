@@ -695,6 +695,13 @@ window.onload = function() {
   background-color: #f7faf8 !important;
 }
 
+ 
+.nikke-calculator .panel h3 {
+  border-left: none !important;  
+  padding-left: 0 !important;    
+  text-align: center !important;  
+}
+
 .nikke-calculator .calc-card .result-panel table td {
   padding: 10px 6px;
   border: 1px solid #cbdad2;
