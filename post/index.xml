@@ -285,7 +285,7 @@
         &lt;/table&gt;
     &lt;/div&gt;
 
-    &lt;h3 style=&#34;margin-top: 35px; text-align: center; color: #2d3748; border-bottom: 2px solid #ebdada; padding-bottom: 10px; font-size: 16px;&#34;&gt;新旧克拉肯对比一览&lt;/h3&gt;
+    &lt;h3 style=&#34;margin: 0 auto 15px auto; text-align: center; color: #2d3748; border-bottom: 2px solid #ebdada; padding-bottom: 10px; font-size: 16px;&#34;&gt;新旧克拉肯对比一览&lt;/h3&gt;
     
     &lt;div style=&#34;overflow-x: auto; margin-top: 15px;&#34;&gt;
         &lt;table style=&#34;width: 100%; border-collapse: collapse; font-size: 13px; text-align: center; border: 1px solid #e0a2a2; white-space: nowrap;&#34;&gt;
@@ -341,6 +341,15 @@
         &lt;/table&gt;
     &lt;/div&gt;
 &lt;/div&gt;
+
+&lt;style&gt;
+ 
+.nikke-drop-calc-section h3 {
+  border-left: none !important;  
+  padding-left: 0 !important;    
+  text-align: center !important;  
+}
+&lt;/style&gt;
 
 &lt;script&gt;
 function calculateDrops() {
@@ -696,6 +705,13 @@ window.onload = function() {
 }
 
  
+.nikke-calculator .calc-card h3 {
+  border-left: none !important;  
+  padding-left: 0 !important;    
+  text-align: center !important;  
+}
+
+ 
 .nikke-calculator .panel h3 {
   border-left: none !important;  
   padding-left: 0 !important;    
@@ -795,7 +811,7 @@ calculate();
   &lt;/div&gt;
 
   &lt;div class=&#34;attr-table-wrapper&#34; style=&#34;background: #ffffff; border-radius: 8px; padding: 18px; border: 1px solid #cbdbe6; margin-bottom: 20px; overflow-x: auto;&#34;&gt;
-    &lt;h4 style=&#34;margin-top: 0; margin-bottom: 12px; font-size: 14px; color: #2b6cb0; border-left: 4px solid #4299e1; padding-left: 8px; font-weight: bold;&#34;&gt;词条选项获取概率与能力值范围&lt;/h4&gt;
+    &lt;h4 style=&#34;margin-top: 0; margin-bottom: 12px; font-size: 14px; color: #2b6cb0; border-left: 4px solid #4299e1; padding-left: 8px; font-weight: bold; text-align: center;&#34;&gt;词条选项获取概率与能力值范围&lt;/h4&gt;
     &lt;table style=&#34;width: 100%; border-collapse: collapse; font-size: 12px; border: 1px solid #e1e8ed; white-space: nowrap;&#34;&gt;
       &lt;thead&gt;
         &lt;tr style=&#34;background-color: #f0f5fa; color: #2c3e50;&#34;&gt;
@@ -867,7 +883,7 @@ calculate();
   &lt;div class=&#34;sub-grid&#34; style=&#34;display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;&#34;&gt;
     
     &lt;div class=&#34;attr-table-wrapper&#34; style=&#34;background: #ffffff; border-radius: 8px; padding: 15px; border: 1px solid #cbdbe6; overflow-x: auto;&#34;&gt;
-      &lt;h4 style=&#34;margin-top: 0; margin-bottom: 10px; font-size: 13px; color: #2b6cb0; border-left: 4px solid #4299e1; padding-left: 6px; font-weight: bold;&#34;&gt;🔓 词条位置解锁概率&lt;/h4&gt;
+      &lt;h4 style=&#34;margin-top: 0; margin-bottom: 10px; font-size: 13px; color: #2b6cb0; border-left: 4px solid #4299e1; padding-left: 6px; font-weight: bold; text-align: center;&#34;&gt;🔓 词条位置解锁概率&lt;/h4&gt;
       &lt;table style=&#34;width: 100%; border-collapse: collapse; font-size: 12px; border: 1px solid #e1e8ed;&#34;&gt;
         &lt;thead&gt;
           &lt;tr style=&#34;background-color: #f0f5fa; color: #2c3e50;&#34;&gt;
@@ -887,7 +903,7 @@ calculate();
     &lt;/div&gt;
     
     &lt;div class=&#34;attr-table-wrapper&#34; style=&#34;background: #ffffff; border-radius: 8px; padding: 15px; border: 1px solid #cbdbe6; overflow-x: auto;&#34;&gt;
-      &lt;h4 style=&#34;margin-top: 0; margin-bottom: 10px; font-size: 13px; color: #2b6cb0; border-left: 4px solid #4299e1; padding-left: 6px; font-weight: bold;&#34;&gt;🔒 锁定词条石头消耗规则&lt;/h4&gt;
+      &lt;h4 style=&#34;margin-top: 0; margin-bottom: 10px; font-size: 13px; color: #2b6cb0; border-left: 4px solid #4299e1; padding-left: 6px; font-weight: bold; text-align: center;&#34;&gt;🔒 锁定词条石头消耗规则&lt;/h4&gt;
       &lt;table style=&#34;width: 100%; border-collapse: collapse; font-size: 12px; border: 1px solid #e1e8ed;&#34;&gt;
         &lt;thead&gt;
           &lt;tr style=&#34;background-color: #f0f5fa; color: #2c3e50;&#34;&gt;
