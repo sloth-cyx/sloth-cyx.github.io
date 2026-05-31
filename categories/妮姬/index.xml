@@ -652,6 +652,29 @@ window.onload = function() {
         &lt;tbody id=&#34;resultTable&#34;&gt;&lt;/tbody&gt;
       &lt;/table&gt;
     &lt;/div&gt;
+
+    &lt;div class=&#34;panel&#34; style=&#34;background: #ffffff; padding: 20px; border-radius: 8px; border: 1px solid #6b8477; margin-top: 20px; color: #2d3748;&#34;&gt;
+      &lt;h3 style=&#34;margin-top: 0; margin-bottom: 15px; font-size: 15px; color: #4a5d53; text-align: center; font-weight: bold;&#34;&gt;每月技能资源获取数量&lt;/h3&gt;
+      
+      &lt;table style=&#34;width: 100%; border-collapse: collapse; font-size: 13px; border: 1px solid #cbdad2;&#34;&gt;
+        &lt;thead&gt;
+          &lt;tr style=&#34;background-color: #e4ebe7; color: #4a5d53;&#34;&gt;
+            &lt;th style=&#34;padding: 10px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;材料&lt;/th&gt;
+            &lt;th style=&#34;padding: 10px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;小活动*2&lt;/th&gt;
+            &lt;th style=&#34;padding: 10px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;大活动*1&lt;/th&gt;
+            &lt;th style=&#34;padding: 10px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;小活动*大活动&lt;/th&gt;
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody style=&#34;text-align: center;&#34;&gt;
+          &lt;tr&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;技能蓝书&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;4300&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;4204&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;4454&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;技能紫书&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;3120&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;3028&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;3218&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;技能金书&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;784&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;784&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;814&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;爆裂蓝书&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;2240&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;2102&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;2272&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;爆裂紫书&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;1630&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;1514&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;1644&lt;/td&gt;&lt;/tr&gt;
+          &lt;tr&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;爆裂金书&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;422&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;392&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;422&lt;/td&gt;&lt;/tr&gt;
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
