@@ -815,7 +815,7 @@ window.onload = function() {
     &lt;section class=&#34;nsc-panel nsc-result-panel&#34;&gt;
       &lt;div class=&#34;nsc-panel-title&#34;&gt;📊 资源计算结果&lt;/div&gt;
       &lt;div class=&#34;nsc-table-wrap&#34;&gt;
-        &lt;table class=&#34;nsc-table&#34;&gt;
+        &lt;table class=&#34;nsc-table nsc-result-table&#34;&gt;
           &lt;thead&gt;
             &lt;tr&gt;
               &lt;th&gt;材料&lt;/th&gt;
@@ -832,7 +832,7 @@ window.onload = function() {
     &lt;section class=&#34;nsc-panel nsc-month-panel&#34;&gt;
       &lt;div class=&#34;nsc-panel-title&#34;&gt;每月技能资源获取数量&lt;/div&gt;
       &lt;div class=&#34;nsc-table-wrap&#34;&gt;
-        &lt;table class=&#34;nsc-table&#34;&gt;
+        &lt;table class=&#34;nsc-table nsc-month-table&#34;&gt;
           &lt;thead&gt;
             &lt;tr&gt;
               &lt;th&gt;材料&lt;/th&gt;
@@ -983,25 +983,46 @@ window.onload = function() {
 
 .nsc-table-wrap {
   width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .nsc-table {
   width: 100%;
-  min-width: 420px;
+  table-layout: fixed;
   border-collapse: collapse;
   border: 1px solid #cbdad2;
   color: #2d3748;
   font-size: 13px;
-  white-space: nowrap;
 }
 
 .nsc-table th,
 .nsc-table td {
-  padding: 10px 8px;
+  padding: 10px 6px;
   border: 1px solid #cbdad2;
   text-align: center;
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+}
+
+.nsc-result-table th:first-child,
+.nsc-result-table td:first-child {
+  width: 34%;
+}
+
+.nsc-result-table th:not(:first-child),
+.nsc-result-table td:not(:first-child) {
+  width: 22%;
+}
+
+.nsc-month-table th:first-child,
+.nsc-month-table td:first-child {
+  width: 30%;
+}
+
+.nsc-month-table th:not(:first-child),
+.nsc-month-table td:not(:first-child) {
+  width: 23.333%;
 }
 
 .nsc-table th {
@@ -1057,6 +1078,15 @@ window.onload = function() {
   .nsc-material-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .nsc-table {
+    font-size: 11px;
+  }
+
+  .nsc-table th,
+  .nsc-table td {
+    padding: 7px 3px;
+  }
 }
 
 @media (max-width: 420px) {
@@ -1072,13 +1102,26 @@ window.onload = function() {
   .nsc-material-grid {
     grid-template-columns: minmax(0, 1fr);
   }
+
+  .nsc-table {
+    font-size: 10px;
+  }
+
+  .nsc-table th,
+  .nsc-table td {
+    padding: 6px 2px;
+  }
+
+  .nsc-month-table {
+    font-size: 9px;
+  }
 }
 &lt;/style&gt;
 
 &lt;script&gt;
 (function () {
   const COSTS = {
-    S101010: { skillBlue: 2188, skillPurple: 1550, skillGold: 630, burstBlue: 1094, burstPurple: 775, burstGold: 315, code: 1440 },
+    S101010: { skillBlue: 2188, skillPurple: 1550, skillGold: 630, burstBlue: 1094, burstPurple: 755, burstGold: 315, code: 1440 },
     S10710:  { skillBlue: 1474, skillPurple: 1045, skillGold: 315, burstBlue: 1094, burstPurple: 775, burstGold: 315, code: 1135 },
     S1077:   { skillBlue: 1474, skillPurple: 1045, skillGold: 315, burstBlue: 380,  burstPurple: 270, burstGold: 0,   code: 525  },
     S7710:   { skillBlue: 760,  skillPurple: 540,  skillGold: 0,   burstBlue: 1094, burstPurple: 775, burstGold: 315, code: 830  },
