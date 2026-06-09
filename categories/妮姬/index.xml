@@ -736,238 +736,409 @@ window.onload = function() {
 };
 &lt;/script&gt;
 &lt;h2 id=&#34;技能计算器&#34;&gt;技能计算器
-&lt;/h2&gt;&lt;div class=&#34;nikke-calculator&#34; style=&#34;width: 100%; margin: 2rem auto; max-width: 800px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; padding: 15px; background: #4a5d53; border-radius: 16px;&#34;&gt;
-  &lt;div class=&#34;calc-card&#34; style=&#34;background: #566c61; border: 1px solid #637d70; border-radius: 12px; padding: 25px; color: #ffffff; box-shadow: 0 4px 20px rgba(40,50,45,0.25);&#34;&gt;
-    
-    &lt;h3 style=&#34;margin-top: 0; text-align: center; color: #ffffff; border-bottom: 2px solid #6b8477; padding-bottom: 10px; font-size: 18px; letter-spacing: 1px;&#34;&gt;代码手册拥有5种属性，现阶段不支持~继续细化改日再说，也有可能不做~&lt;/h3&gt;
+&lt;/h2&gt;&lt;div class=&#34;nikke-skill-calculator&#34;&gt;
+  &lt;div class=&#34;nsc-card&#34;&gt;
+    &lt;div class=&#34;nsc-notice&#34;&gt;代码手册拥有5种属性，现阶段不支持~继续细化改日再说，也有可能不做~&lt;/div&gt;
 
-    &lt;div class=&#34;grid&#34; style=&#34;display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;&#34;&gt;
-      
-      &lt;div class=&#34;panel&#34; style=&#34;background: #ffffff; padding: 20px; border-radius: 8px; border: 1px solid #6b8477; color: #2d3748;&#34;&gt;
-        &lt;h3 style=&#34;margin-top: 0; margin-bottom: 15px; font-size: 15px; color: #4a5d53; border-left: 4px solid #566c61; padding-left: 8px; font-weight: bold;&#34;&gt;点技能角色数量&lt;/h3&gt;
+    &lt;div class=&#34;nsc-main-grid&#34;&gt;
+      &lt;section class=&#34;nsc-panel&#34;&gt;
+        &lt;div class=&#34;nsc-panel-title&#34;&gt;点技能角色数量&lt;/div&gt;
 
-        &lt;div class=&#34;input-group&#34; style=&#34;display: flex; flex-direction: column; margin-bottom: 14px;&#34;&gt;
-          &lt;label style=&#34;margin-bottom: 6px; font-size: 13px; font-weight: bold; color: #4a5d53;&#34;&gt;10/10/10 角色数量&lt;/label&gt;
-          &lt;input type=&#34;number&#34; id=&#34;S101010&#34; value=&#34;0&#34; min=&#34;0&#34; style=&#34;background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 10px; font-size: 14px; color: #2d3748; font-weight: bold; outline: none;&#34;&gt;
+        &lt;div class=&#34;nsc-input-group&#34;&gt;
+          &lt;label for=&#34;S101010&#34;&gt;10/10/10 角色数量&lt;/label&gt;
+          &lt;input type=&#34;number&#34; id=&#34;S101010&#34; value=&#34;0&#34; min=&#34;0&#34;&gt;
         &lt;/div&gt;
 
-        &lt;div class=&#34;input-group&#34; style=&#34;display: flex; flex-direction: column; margin-bottom: 14px;&#34;&gt;
-          &lt;label style=&#34;margin-bottom: 6px; font-size: 13px; font-weight: bold; color: #4a5d53;&#34;&gt;10/7/10 或 7/10/10 角色数量&lt;/label&gt;
-          &lt;input type=&#34;number&#34; id=&#34;S10710&#34; value=&#34;0&#34; min=&#34;0&#34; style=&#34;background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 10px; font-size: 14px; color: #2d3748; font-weight: bold; outline: none;&#34;&gt;
+        &lt;div class=&#34;nsc-input-group&#34;&gt;
+          &lt;label for=&#34;S10710&#34;&gt;10/7/10 或 7/10/10 角色数量&lt;/label&gt;
+          &lt;input type=&#34;number&#34; id=&#34;S10710&#34; value=&#34;0&#34; min=&#34;0&#34;&gt;
         &lt;/div&gt;
 
-        &lt;div class=&#34;input-group&#34; style=&#34;display: flex; flex-direction: column; margin-bottom: 14px;&#34;&gt;
-          &lt;label style=&#34;margin-bottom: 6px; font-size: 13px; font-weight: bold; color: #4a5d53;&#34;&gt;10/7/7 或 7/10/7 角色数量&lt;/label&gt;
-          &lt;input type=&#34;number&#34; id=&#34;S1077&#34; value=&#34;0&#34; min=&#34;0&#34; style=&#34;background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 10px; font-size: 14px; color: #2d3748; font-weight: bold; outline: none;&#34;&gt;
+        &lt;div class=&#34;nsc-input-group&#34;&gt;
+          &lt;label for=&#34;S1077&#34;&gt;10/7/7 或 7/10/7 角色数量&lt;/label&gt;
+          &lt;input type=&#34;number&#34; id=&#34;S1077&#34; value=&#34;0&#34; min=&#34;0&#34;&gt;
         &lt;/div&gt;
 
-        &lt;div class=&#34;input-group&#34; style=&#34;display: flex; flex-direction: column; margin-bottom: 14px;&#34;&gt;
-          &lt;label style=&#34;margin-bottom: 6px; font-size: 13px; font-weight: bold; color: #4a5d53;&#34;&gt;7/7/10 角色数量&lt;/label&gt;
-          &lt;input type=&#34;number&#34; id=&#34;S7710&#34; value=&#34;0&#34; min=&#34;0&#34; style=&#34;background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 10px; font-size: 14px; color: #2d3748; font-weight: bold; outline: none;&#34;&gt;
+        &lt;div class=&#34;nsc-input-group&#34;&gt;
+          &lt;label for=&#34;S7710&#34;&gt;7/7/10 角色数量&lt;/label&gt;
+          &lt;input type=&#34;number&#34; id=&#34;S7710&#34; value=&#34;0&#34; min=&#34;0&#34;&gt;
         &lt;/div&gt;
 
-        &lt;div class=&#34;input-group&#34; style=&#34;display: flex; flex-direction: column; margin-bottom: 6px;&#34;&gt;
-          &lt;label style=&#34;margin-bottom: 6px; font-size: 13px; font-weight: bold; color: #4a5d53;&#34;&gt;7/7/7 角色数量&lt;/label&gt;
-          &lt;input type=&#34;number&#34; id=&#34;S777&#34; value=&#34;0&#34; min=&#34;0&#34; style=&#34;background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 10px; font-size: 14px; color: #2d3748; font-weight: bold; outline: none;&#34;&gt;
+        &lt;div class=&#34;nsc-input-group&#34;&gt;
+          &lt;label for=&#34;S777&#34;&gt;7/7/7 角色数量&lt;/label&gt;
+          &lt;input type=&#34;number&#34; id=&#34;S777&#34; value=&#34;0&#34; min=&#34;0&#34;&gt;
         &lt;/div&gt;
+      &lt;/section&gt;
+
+      &lt;section class=&#34;nsc-panel&#34;&gt;
+        &lt;div class=&#34;nsc-panel-title&#34;&gt;库存&lt;/div&gt;
+
+        &lt;div class=&#34;nsc-material-grid&#34;&gt;
+          &lt;div class=&#34;nsc-input-group&#34;&gt;
+            &lt;label for=&#34;ownedSkillBlue&#34;&gt;技能蓝书&lt;/label&gt;
+            &lt;input type=&#34;number&#34; id=&#34;ownedSkillBlue&#34; value=&#34;0&#34; min=&#34;0&#34;&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&#34;nsc-input-group&#34;&gt;
+            &lt;label for=&#34;ownedSkillPurple&#34;&gt;技能紫书&lt;/label&gt;
+            &lt;input type=&#34;number&#34; id=&#34;ownedSkillPurple&#34; value=&#34;0&#34; min=&#34;0&#34;&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&#34;nsc-input-group&#34;&gt;
+            &lt;label for=&#34;ownedSkillGold&#34;&gt;技能金书&lt;/label&gt;
+            &lt;input type=&#34;number&#34; id=&#34;ownedSkillGold&#34; value=&#34;0&#34; min=&#34;0&#34;&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&#34;nsc-input-group&#34;&gt;
+            &lt;label for=&#34;ownedBurstBlue&#34;&gt;爆裂蓝书&lt;/label&gt;
+            &lt;input type=&#34;number&#34; id=&#34;ownedBurstBlue&#34; value=&#34;0&#34; min=&#34;0&#34;&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&#34;nsc-input-group&#34;&gt;
+            &lt;label for=&#34;ownedBurstPurple&#34;&gt;爆裂紫书&lt;/label&gt;
+            &lt;input type=&#34;number&#34; id=&#34;ownedBurstPurple&#34; value=&#34;0&#34; min=&#34;0&#34;&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&#34;nsc-input-group&#34;&gt;
+            &lt;label for=&#34;ownedBurstGold&#34;&gt;爆裂金书&lt;/label&gt;
+            &lt;input type=&#34;number&#34; id=&#34;ownedBurstGold&#34; value=&#34;0&#34; min=&#34;0&#34;&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&#34;nsc-input-group&#34;&gt;
+            &lt;label for=&#34;ownedCode&#34;&gt;代码手册&lt;/label&gt;
+            &lt;input type=&#34;number&#34; id=&#34;ownedCode&#34; value=&#34;0&#34; min=&#34;0&#34;&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/div&gt;
+
+    &lt;section class=&#34;nsc-panel nsc-result-panel&#34;&gt;
+      &lt;div class=&#34;nsc-panel-title&#34;&gt;📊 资源计算结果&lt;/div&gt;
+      &lt;div class=&#34;nsc-table-wrap&#34;&gt;
+        &lt;table class=&#34;nsc-table&#34;&gt;
+          &lt;thead&gt;
+            &lt;tr&gt;
+              &lt;th&gt;材料&lt;/th&gt;
+              &lt;th&gt;消耗&lt;/th&gt;
+              &lt;th&gt;库存&lt;/th&gt;
+              &lt;th&gt;剩余&lt;/th&gt;
+            &lt;/tr&gt;
+          &lt;/thead&gt;
+          &lt;tbody id=&#34;resultTable&#34;&gt;&lt;/tbody&gt;
+        &lt;/table&gt;
       &lt;/div&gt;
+    &lt;/section&gt;
 
-      &lt;div class=&#34;panel&#34; style=&#34;background: #ffffff; padding: 20px; border-radius: 8px; border: 1px solid #6b8477; color: #2d3748;&#34;&gt;
-        &lt;h3 style=&#34;margin-top: 0; margin-bottom: 15px; font-size: 15px; color: #4a5d53; border-left: 4px solid #566c61; padding-left: 8px; font-weight: bold;&#34;&gt;库存&lt;/h3&gt;
-
-        &lt;div class=&#34;material-grid&#34; style=&#34;display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px;&#34;&gt;
-          &lt;div class=&#34;input-group&#34; style=&#34;display: flex; flex-direction: column;&#34;&gt;
-            &lt;label style=&#34;margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;&#34;&gt;技能蓝书&lt;/label&gt;
-            &lt;input type=&#34;number&#34; id=&#34;ownedSkillBlue&#34; value=&#34;0&#34; min=&#34;0&#34; style=&#34;background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;&#34;&gt;
-          &lt;/div&gt;
-
-          &lt;div class=&#34;input-group&#34; style=&#34;display: flex; flex-direction: column;&#34;&gt;
-            &lt;label style=&#34;margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;&#34;&gt;技能紫书&lt;/label&gt;
-            &lt;input type=&#34;number&#34; id=&#34;ownedSkillPurple&#34; value=&#34;0&#34; min=&#34;0&#34; style=&#34;background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;&#34;&gt;
-          &lt;/div&gt;
-
-          &lt;div class=&#34;input-group&#34; style=&#34;display: flex; flex-direction: column;&#34;&gt;
-            &lt;label style=&#34;margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;&#34;&gt;技能金书&lt;/label&gt;
-            &lt;input type=&#34;number&#34; id=&#34;ownedSkillGold&#34; value=&#34;0&#34; min=&#34;0&#34; style=&#34;background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;&#34;&gt;
-          &lt;/div&gt;
-
-          &lt;div class=&#34;input-group&#34; style=&#34;display: flex; flex-direction: column;&#34;&gt;
-            &lt;label style=&#34;margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;&#34;&gt;爆裂蓝书&lt;/label&gt;
-            &lt;input type=&#34;number&#34; id=&#34;ownedBurstBlue&#34; value=&#34;0&#34; min=&#34;0&#34; style=&#34;background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;&#34;&gt;
-          &lt;/div&gt;
-
-          &lt;div class=&#34;input-group&#34; style=&#34;display: flex; flex-direction: column;&#34;&gt;
-            &lt;label style=&#34;margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;&#34;&gt;爆裂紫书&lt;/label&gt;
-            &lt;input type=&#34;number&#34; id=&#34;ownedBurstPurple&#34; value=&#34;0&#34; min=&#34;0&#34; style=&#34;background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;&#34;&gt;
-          &lt;/div&gt;
-
-          &lt;div class=&#34;input-group&#34; style=&#34;display: flex; flex-direction: column;&#34;&gt;
-            &lt;label style=&#34;margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;&#34;&gt;爆裂金书&lt;/label&gt;
-            &lt;input type=&#34;number&#34; id=&#34;ownedBurstGold&#34; value=&#34;0&#34; min=&#34;0&#34; style=&#34;background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;&#34;&gt;
-          &lt;/div&gt;
-
-          &lt;div class=&#34;input-group&#34; style=&#34;display: flex; flex-direction: column; grid-column: span 1;&#34;&gt;
-            &lt;label style=&#34;margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;&#34;&gt;代码手册&lt;/label&gt;
-            &lt;input type=&#34;number&#34; id=&#34;ownedCode&#34; value=&#34;0&#34; min=&#34;0&#34; style=&#34;background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;&#34;&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
+    &lt;section class=&#34;nsc-panel nsc-month-panel&#34;&gt;
+      &lt;div class=&#34;nsc-panel-title&#34;&gt;每月技能资源获取数量&lt;/div&gt;
+      &lt;div class=&#34;nsc-table-wrap&#34;&gt;
+        &lt;table class=&#34;nsc-table&#34;&gt;
+          &lt;thead&gt;
+            &lt;tr&gt;
+              &lt;th&gt;材料&lt;/th&gt;
+              &lt;th&gt;小活动*2&lt;/th&gt;
+              &lt;th&gt;大活动*1&lt;/th&gt;
+              &lt;th&gt;小活动*大活动&lt;/th&gt;
+            &lt;/tr&gt;
+          &lt;/thead&gt;
+          &lt;tbody&gt;
+            &lt;tr&gt;&lt;td&gt;技能蓝书&lt;/td&gt;&lt;td&gt;4300&lt;/td&gt;&lt;td&gt;4204&lt;/td&gt;&lt;td&gt;4454&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;技能紫书&lt;/td&gt;&lt;td&gt;3120&lt;/td&gt;&lt;td&gt;3028&lt;/td&gt;&lt;td&gt;3218&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;技能金书&lt;/td&gt;&lt;td&gt;784&lt;/td&gt;&lt;td&gt;784&lt;/td&gt;&lt;td&gt;814&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;爆裂蓝书&lt;/td&gt;&lt;td&gt;2240&lt;/td&gt;&lt;td&gt;2102&lt;/td&gt;&lt;td&gt;2272&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;爆裂紫书&lt;/td&gt;&lt;td&gt;1630&lt;/td&gt;&lt;td&gt;1514&lt;/td&gt;&lt;td&gt;1644&lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;爆裂金书&lt;/td&gt;&lt;td&gt;422&lt;/td&gt;&lt;td&gt;392&lt;/td&gt;&lt;td&gt;422&lt;/td&gt;&lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
       &lt;/div&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&#34;result-panel&#34; style=&#34;margin-top: 24px; background: #ffffff; border-radius: 8px; padding: 20px; border: 1px solid #6b8477; overflow-x: auto;&#34;&gt;
-      &lt;h3 style=&#34;margin-top: 0; margin-bottom: 15px; font-size: 15px; color: #4a5d53; text-align: center; font-weight: bold;&#34;&gt;📊 资源计算结果&lt;/h3&gt;
-
-      &lt;table style=&#34;width: 100%; border-collapse: collapse; font-size: 13px; border: 1px solid #cbdad2; white-space: nowrap;&#34;&gt;
-        &lt;thead&gt;
-          &lt;tr style=&#34;background-color: #e4ebe7; color: #4a5d53;&#34;&gt;
-            &lt;th style=&#34;padding: 12px 8px; border: 1px solid #cbdad2; font-weight: bold; text-align: center;&#34;&gt;材料&lt;/th&gt;
-            &lt;th style=&#34;padding: 12px 8px; border: 1px solid #cbdad2; font-weight: bold; text-align: center;&#34;&gt;消耗&lt;/th&gt;
-            &lt;th style=&#34;padding: 12px 8px; border: 1px solid #cbdad2; font-weight: bold; text-align: center;&#34;&gt;库存&lt;/th&gt;
-            &lt;th style=&#34;padding: 12px 8px; border: 1px solid #cbdad2; font-weight: bold; text-align: center;&#34;&gt;剩余&lt;/th&gt;
-          &lt;/tr&gt;
-        &lt;/thead&gt;
-        &lt;tbody id=&#34;resultTable&#34;&gt;&lt;/tbody&gt;
-      &lt;/table&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&#34;panel&#34; style=&#34;background: #ffffff; padding: 20px; border-radius: 8px; border: 1px solid #6b8477; margin-top: 20px; color: #2d3748;&#34;&gt;
-      &lt;h3 style=&#34;margin-top: 0; margin-bottom: 15px; font-size: 15px; color: #4a5d53; text-align: center; font-weight: bold;&#34;&gt;每月技能资源获取数量&lt;/h3&gt;
-      
-      &lt;table style=&#34;width: 100%; border-collapse: collapse; font-size: 13px; border: 1px solid #cbdad2;&#34;&gt;
-        &lt;thead&gt;
-          &lt;tr style=&#34;background-color: #e4ebe7; color: #4a5d53;&#34;&gt;
-            &lt;th style=&#34;padding: 10px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;材料&lt;/th&gt;
-            &lt;th style=&#34;padding: 10px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;小活动*2&lt;/th&gt;
-            &lt;th style=&#34;padding: 10px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;大活动*1&lt;/th&gt;
-            &lt;th style=&#34;padding: 10px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;小活动*大活动&lt;/th&gt;
-          &lt;/tr&gt;
-        &lt;/thead&gt;
-        &lt;tbody style=&#34;text-align: center;&#34;&gt;
-          &lt;tr&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;技能蓝书&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;4300&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;4204&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;4454&lt;/td&gt;&lt;/tr&gt;
-          &lt;tr&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;技能紫书&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;3120&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;3028&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;3218&lt;/td&gt;&lt;/tr&gt;
-          &lt;tr&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;技能金书&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;784&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;784&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;814&lt;/td&gt;&lt;/tr&gt;
-          &lt;tr&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;爆裂蓝书&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;2240&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;2102&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;2272&lt;/td&gt;&lt;/tr&gt;
-          &lt;tr&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;爆裂紫书&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;1630&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;1514&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;1644&lt;/td&gt;&lt;/tr&gt;
-          &lt;tr&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;爆裂金书&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;422&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;392&lt;/td&gt;&lt;td style=&#34;padding: 8px; border: 1px solid #cbdad2; text-align: center;&#34;&gt;422&lt;/td&gt;&lt;/tr&gt;
-        &lt;/tbody&gt;
-      &lt;/table&gt;
-    &lt;/div&gt;
+    &lt;/section&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;style&gt;
- 
-.nikke-calculator .calc-card .result-panel table tbody tr {
-  background-color: #ffffff !important;
+.nikke-skill-calculator,
+.nikke-skill-calculator * {
+  box-sizing: border-box;
 }
-.nikke-calculator .calc-card .result-panel table tbody tr:nth-child(even) {
-  background-color: #f7faf8 !important;
+
+.nikke-skill-calculator {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 15px;
+  background: #4a5d53;
+  border-radius: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: hidden;
+}
+
+.nsc-card {
+  background: #566c61;
+  border: 1px solid #637d70;
+  border-radius: 12px;
+  padding: 25px;
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(40, 50, 45, 0.25);
 }
 
  
-.nikke-calculator .calc-card .panel table tbody tr {
-  background-color: #ffffff !important;
-}
-.nikke-calculator .calc-card .panel table tbody tr:nth-child(even) {
-  background-color: #f7faf8 !important;
-}
-
- 
-.nikke-calculator .calc-card h3 {
-  border-left: none !important;  
-  padding-left: 0 !important;    
-  text-align: center !important;  
+.nsc-notice,
+.nsc-panel-title {
+  border-left: none !important;
+  border-inline-start: none !important;
+  padding-left: 0 !important;
+  padding-inline-start: 0 !important;
 }
 
- 
-.nikke-calculator .panel h3 {
-  border-left: none !important;  
-  padding-left: 0 !important;    
-  text-align: center !important;  
+.nsc-notice {
+  margin: 0 0 20px;
+  padding-bottom: 12px !important;
+  border-bottom: 2px solid #6b8477;
+  color: #ffffff;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.65;
+  letter-spacing: 1px;
 }
 
-.nikke-calculator .calc-card .result-panel table td {
-  padding: 10px 6px;
-  border: 1px solid #cbdad2;
-  text-align: center;  
+.nsc-main-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.nsc-panel {
+  min-width: 0;
+  width: 100%;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #6b8477;
+  border-radius: 8px;
   color: #2d3748;
 }
 
- 
-.nikke-calculator .positive {
-  color: #2f855a !important;  
-  font-weight: bold;
+.nsc-panel-title {
+  margin: 0 0 15px;
+  color: #4a5d53;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
 }
-.nikke-calculator .negative {
-  color: #c53030 !important;  
-  font-weight: bold;
+
+.nsc-input-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin-bottom: 14px;
+}
+
+.nsc-input-group:last-child {
+  margin-bottom: 0;
+}
+
+.nsc-input-group label {
+  margin-bottom: 6px;
+  color: #4a5d53;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.nsc-material-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.nsc-material-grid label {
+  color: #566c61;
+  font-size: 12px;
+}
+
+.nikke-skill-calculator input {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  padding: 10px;
+  background: #f4f7f5;
+  border: 1px solid #cbdad2;
+  border-radius: 6px;
+  color: #2d3748;
+  font-size: 14px;
+  font-weight: 700;
+  outline: none;
+}
+
+.nsc-material-grid input {
+  padding: 8px;
+  font-size: 13px;
+}
+
+.nsc-result-panel,
+.nsc-month-panel {
+  margin-top: 24px;
+}
+
+.nsc-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nsc-table {
+  width: 100%;
+  min-width: 420px;
+  border-collapse: collapse;
+  border: 1px solid #cbdad2;
+  color: #2d3748;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.nsc-table th,
+.nsc-table td {
+  padding: 10px 8px;
+  border: 1px solid #cbdad2;
+  text-align: center;
+}
+
+.nsc-table th {
+  background: #e4ebe7;
+  color: #4a5d53;
+  font-weight: 700;
+}
+
+ 
+.nsc-table tbody tr {
+  background: #ffffff !important;
+}
+
+.nsc-table tbody tr:nth-child(even) {
+  background: #f7faf8 !important;
+}
+
+.nsc-material-name {
+  color: #4a5d53;
+  font-weight: 700;
+}
+
+.nsc-positive {
+  color: #2f855a !important;
+  font-weight: 700;
+}
+
+.nsc-negative {
+  color: #c53030 !important;
+  font-weight: 700;
+}
+
+@media (max-width: 720px) {
+  .nikke-skill-calculator {
+    max-width: 100%;
+    margin: 1.5rem auto;
+    padding: 10px;
+    border-radius: 14px;
+  }
+
+  .nsc-card {
+    padding: 14px;
+  }
+
+  .nsc-notice {
+    font-size: 16px;
+  }
+
+  .nsc-main-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .nsc-material-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 420px) {
+  .nikke-skill-calculator {
+    padding: 8px;
+  }
+
+  .nsc-card,
+  .nsc-panel {
+    padding: 14px;
+  }
+
+  .nsc-material-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 &lt;/style&gt;
 
 &lt;script&gt;
-const COSTS = {
-  S101010: { skillBlue: 2188, skillPurple: 1550, skillGold: 630, burstBlue: 1094, burstPurple: 755, burstGold: 315, code: 1440 },
-  S10710:  { skillBlue: 1474, skillPurple: 1045, skillGold: 315, burstBlue: 1094, burstPurple: 775, burstGold: 315, code: 1135 },
-  S1077:   { skillBlue: 1474, skillPurple: 1045, skillGold: 315, burstBlue: 380,  burstPurple: 270, burstGold: 0,   code: 525  },
-  S7710:   { skillBlue: 760,  skillPurple: 540,  skillGold: 0,   burstBlue: 1094, burstPurple: 775, burstGold: 315, code: 830  },
-  S777:    { skillBlue: 760,  skillPurple: 540,  skillGold: 0,   burstBlue: 380,  burstPurple: 270, burstGold: 0,   code: 220  }
-};
+(function () {
+  const COSTS = {
+    S101010: { skillBlue: 2188, skillPurple: 1550, skillGold: 630, burstBlue: 1094, burstPurple: 775, burstGold: 315, code: 1440 },
+    S10710:  { skillBlue: 1474, skillPurple: 1045, skillGold: 315, burstBlue: 1094, burstPurple: 775, burstGold: 315, code: 1135 },
+    S1077:   { skillBlue: 1474, skillPurple: 1045, skillGold: 315, burstBlue: 380,  burstPurple: 270, burstGold: 0,   code: 525  },
+    S7710:   { skillBlue: 760,  skillPurple: 540,  skillGold: 0,   burstBlue: 1094, burstPurple: 775, burstGold: 315, code: 830  },
+    S777:    { skillBlue: 760,  skillPurple: 540,  skillGold: 0,   burstBlue: 380,  burstPurple: 270, burstGold: 0,   code: 220  }
+  };
 
-const materials = [
-  { key: &#39;skillBlue&#39;,   name: &#39;技能蓝书&#39;, owned: &#39;ownedSkillBlue&#39; },
-  { key: &#39;skillPurple&#39;, name: &#39;技能紫书&#39;, owned: &#39;ownedSkillPurple&#39; },
-  { key: &#39;skillGold&#39;,   name: &#39;技能金书&#39;, owned: &#39;ownedSkillGold&#39; },
-  { key: &#39;burstBlue&#39;,   name: &#39;爆裂蓝书&#39;, owned: &#39;ownedBurstBlue&#39; },
-  { key: &#39;burstPurple&#39;, name: &#39;爆裂紫书&#39;, owned: &#39;ownedBurstPurple&#39; },
-  { key: &#39;burstGold&#39;,   name: &#39;爆裂金书&#39;, owned: &#39;ownedBurstGold&#39; },
-  { key: &#39;code&#39;,        name: &#39;代码手册&#39;, owned: &#39;ownedCode&#39; }
-];
+  const materials = [
+    { key: &#39;skillBlue&#39;,   name: &#39;技能蓝书&#39;, owned: &#39;ownedSkillBlue&#39; },
+    { key: &#39;skillPurple&#39;, name: &#39;技能紫书&#39;, owned: &#39;ownedSkillPurple&#39; },
+    { key: &#39;skillGold&#39;,   name: &#39;技能金书&#39;, owned: &#39;ownedSkillGold&#39; },
+    { key: &#39;burstBlue&#39;,   name: &#39;爆裂蓝书&#39;, owned: &#39;ownedBurstBlue&#39; },
+    { key: &#39;burstPurple&#39;, name: &#39;爆裂紫书&#39;, owned: &#39;ownedBurstPurple&#39; },
+    { key: &#39;burstGold&#39;,   name: &#39;爆裂金书&#39;, owned: &#39;ownedBurstGold&#39; },
+    { key: &#39;code&#39;,        name: &#39;代码手册&#39;, owned: &#39;ownedCode&#39; }
+  ];
 
-function getValue(id) {
-  return Number(document.getElementById(id).value) || 0;
-}
+  function getValue(id) {
+    const el = document.getElementById(id);
+    return el ? Number(el.value) || 0 : 0;
+  }
 
-function calculate() {
-  const S101010 = getValue(&#39;S101010&#39;);
-  const S10710 = getValue(&#39;S10710&#39;);
-  const S1077 = getValue(&#39;S1077&#39;);
-  const S7710 = getValue(&#39;S7710&#39;);
-  const S777 = getValue(&#39;S777&#39;);
+  function calculate() {
+    const resultTable = document.getElementById(&#39;resultTable&#39;);
+    if (!resultTable) return;
 
-  let html = &#39;&#39;;
+    const counts = {
+      S101010: getValue(&#39;S101010&#39;),
+      S10710: getValue(&#39;S10710&#39;),
+      S1077: getValue(&#39;S1077&#39;),
+      S7710: getValue(&#39;S7710&#39;),
+      S777: getValue(&#39;S777&#39;)
+    };
 
-  materials.forEach(mat =&gt; {
-    const need =
-      (COSTS.S101010[mat.key] * S101010) +
-      (COSTS.S10710[mat.key] * S10710) +
-      (COSTS.S1077[mat.key] * S1077) +
-      (COSTS.S7710[mat.key] * S7710) +
-      (COSTS.S777[mat.key] * S777);
+    resultTable.innerHTML = materials.map(mat =&gt; {
+      const need = Object.keys(counts).reduce((sum, key) =&gt; {
+        return sum + COSTS[key][mat.key] * counts[key];
+      }, 0);
 
-    const owned = getValue(mat.owned);
-    const remain = owned - need;
+      const owned = getValue(mat.owned);
+      const remain = owned - need;
+      const remainClass = remain &gt;= 0 ? &#39;nsc-positive&#39; : &#39;nsc-negative&#39;;
+      const remainText = `${remain &gt;= 0 ? &#39;+&#39; : &#39;&#39;}${remain.toLocaleString()}`;
 
-    html += `
-      &lt;tr&gt;
-        &lt;td style=&#34;font-weight: bold; color: #4a5d53; text-align: center;&#34;&gt;${mat.name}&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;${need.toLocaleString()}&lt;/td&gt;
-        &lt;td style=&#34;text-align: center;&#34;&gt;${owned.toLocaleString()}&lt;/td&gt;
-        &lt;td class=&#34;${remain &gt;= 0 ? &#39;positive&#39; : &#39;negative&#39;}&#34; style=&#34;text-align: center;&#34;&gt;
-          ${remain &gt;= 0 ? &#39;+&#39; : &#39;&#39;}${remain.toLocaleString()}
-        &lt;/td&gt;
-      &lt;/tr&gt;
-    `;
+      return `
+        &lt;tr&gt;
+          &lt;td class=&#34;nsc-material-name&#34;&gt;${mat.name}&lt;/td&gt;
+          &lt;td&gt;${need.toLocaleString()}&lt;/td&gt;
+          &lt;td&gt;${owned.toLocaleString()}&lt;/td&gt;
+          &lt;td class=&#34;${remainClass}&#34;&gt;${remainText}&lt;/td&gt;
+        &lt;/tr&gt;
+      `;
+    }).join(&#39;&#39;);
+  }
+
+  document.querySelectorAll(&#39;.nikke-skill-calculator input&#39;).forEach(input =&gt; {
+    input.addEventListener(&#39;input&#39;, calculate);
   });
 
-  document.getElementById(&#39;resultTable&#39;).innerHTML = html;
-}
-
-const containerInputs = document.querySelectorAll(&#39;.nikke-calculator input&#39;);
-containerInputs.forEach(input =&gt; {
-  input.addEventListener(&#39;input&#39;, calculate);
-});
-
-calculate();
+  calculate();
+})();
 &lt;/script&gt;
 &lt;h2 id=&#34;词条概率&#34;&gt;词条概率
 &lt;/h2&gt;&lt;div class=&#34;nikke-attributes-section&#34; style=&#34;width: 100%; margin: 2.5rem auto; max-width: 900px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #e6eff6; border: 1px solid #cbdbe6; border-radius: 12px; padding: 25px; color: #2c3e50; box-shadow: 0 4px 16px rgba(180,200,215,0.25);&#34;&gt;

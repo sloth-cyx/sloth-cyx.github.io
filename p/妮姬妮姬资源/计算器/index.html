@@ -915,238 +915,409 @@ window.onload = function() {
 };
 </script>
 <h2 id="技能计算器">技能计算器
-</h2><div class="nikke-calculator" style="width: 100%; margin: 2rem auto; max-width: 800px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; padding: 15px; background: #4a5d53; border-radius: 16px;">
-  <div class="calc-card" style="background: #566c61; border: 1px solid #637d70; border-radius: 12px; padding: 25px; color: #ffffff; box-shadow: 0 4px 20px rgba(40,50,45,0.25);">
-    
-    <h3 style="margin-top: 0; text-align: center; color: #ffffff; border-bottom: 2px solid #6b8477; padding-bottom: 10px; font-size: 18px; letter-spacing: 1px;">代码手册拥有5种属性，现阶段不支持~继续细化改日再说，也有可能不做~</h3>
+</h2><div class="nikke-skill-calculator">
+  <div class="nsc-card">
+    <div class="nsc-notice">代码手册拥有5种属性，现阶段不支持~继续细化改日再说，也有可能不做~</div>
 
-    <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-      
-      <div class="panel" style="background: #ffffff; padding: 20px; border-radius: 8px; border: 1px solid #6b8477; color: #2d3748;">
-        <h3 style="margin-top: 0; margin-bottom: 15px; font-size: 15px; color: #4a5d53; border-left: 4px solid #566c61; padding-left: 8px; font-weight: bold;">点技能角色数量</h3>
+    <div class="nsc-main-grid">
+      <section class="nsc-panel">
+        <div class="nsc-panel-title">点技能角色数量</div>
 
-        <div class="input-group" style="display: flex; flex-direction: column; margin-bottom: 14px;">
-          <label style="margin-bottom: 6px; font-size: 13px; font-weight: bold; color: #4a5d53;">10/10/10 角色数量</label>
-          <input type="number" id="S101010" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 10px; font-size: 14px; color: #2d3748; font-weight: bold; outline: none;">
+        <div class="nsc-input-group">
+          <label for="S101010">10/10/10 角色数量</label>
+          <input type="number" id="S101010" value="0" min="0">
         </div>
 
-        <div class="input-group" style="display: flex; flex-direction: column; margin-bottom: 14px;">
-          <label style="margin-bottom: 6px; font-size: 13px; font-weight: bold; color: #4a5d53;">10/7/10 或 7/10/10 角色数量</label>
-          <input type="number" id="S10710" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 10px; font-size: 14px; color: #2d3748; font-weight: bold; outline: none;">
+        <div class="nsc-input-group">
+          <label for="S10710">10/7/10 或 7/10/10 角色数量</label>
+          <input type="number" id="S10710" value="0" min="0">
         </div>
 
-        <div class="input-group" style="display: flex; flex-direction: column; margin-bottom: 14px;">
-          <label style="margin-bottom: 6px; font-size: 13px; font-weight: bold; color: #4a5d53;">10/7/7 或 7/10/7 角色数量</label>
-          <input type="number" id="S1077" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 10px; font-size: 14px; color: #2d3748; font-weight: bold; outline: none;">
+        <div class="nsc-input-group">
+          <label for="S1077">10/7/7 或 7/10/7 角色数量</label>
+          <input type="number" id="S1077" value="0" min="0">
         </div>
 
-        <div class="input-group" style="display: flex; flex-direction: column; margin-bottom: 14px;">
-          <label style="margin-bottom: 6px; font-size: 13px; font-weight: bold; color: #4a5d53;">7/7/10 角色数量</label>
-          <input type="number" id="S7710" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 10px; font-size: 14px; color: #2d3748; font-weight: bold; outline: none;">
+        <div class="nsc-input-group">
+          <label for="S7710">7/7/10 角色数量</label>
+          <input type="number" id="S7710" value="0" min="0">
         </div>
 
-        <div class="input-group" style="display: flex; flex-direction: column; margin-bottom: 6px;">
-          <label style="margin-bottom: 6px; font-size: 13px; font-weight: bold; color: #4a5d53;">7/7/7 角色数量</label>
-          <input type="number" id="S777" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 10px; font-size: 14px; color: #2d3748; font-weight: bold; outline: none;">
+        <div class="nsc-input-group">
+          <label for="S777">7/7/7 角色数量</label>
+          <input type="number" id="S777" value="0" min="0">
         </div>
+      </section>
+
+      <section class="nsc-panel">
+        <div class="nsc-panel-title">库存</div>
+
+        <div class="nsc-material-grid">
+          <div class="nsc-input-group">
+            <label for="ownedSkillBlue">技能蓝书</label>
+            <input type="number" id="ownedSkillBlue" value="0" min="0">
+          </div>
+
+          <div class="nsc-input-group">
+            <label for="ownedSkillPurple">技能紫书</label>
+            <input type="number" id="ownedSkillPurple" value="0" min="0">
+          </div>
+
+          <div class="nsc-input-group">
+            <label for="ownedSkillGold">技能金书</label>
+            <input type="number" id="ownedSkillGold" value="0" min="0">
+          </div>
+
+          <div class="nsc-input-group">
+            <label for="ownedBurstBlue">爆裂蓝书</label>
+            <input type="number" id="ownedBurstBlue" value="0" min="0">
+          </div>
+
+          <div class="nsc-input-group">
+            <label for="ownedBurstPurple">爆裂紫书</label>
+            <input type="number" id="ownedBurstPurple" value="0" min="0">
+          </div>
+
+          <div class="nsc-input-group">
+            <label for="ownedBurstGold">爆裂金书</label>
+            <input type="number" id="ownedBurstGold" value="0" min="0">
+          </div>
+
+          <div class="nsc-input-group">
+            <label for="ownedCode">代码手册</label>
+            <input type="number" id="ownedCode" value="0" min="0">
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="nsc-panel nsc-result-panel">
+      <div class="nsc-panel-title">📊 资源计算结果</div>
+      <div class="nsc-table-wrap">
+        <table class="nsc-table">
+          <thead>
+            <tr>
+              <th>材料</th>
+              <th>消耗</th>
+              <th>库存</th>
+              <th>剩余</th>
+            </tr>
+          </thead>
+          <tbody id="resultTable"></tbody>
+        </table>
       </div>
+    </section>
 
-      <div class="panel" style="background: #ffffff; padding: 20px; border-radius: 8px; border: 1px solid #6b8477; color: #2d3748;">
-        <h3 style="margin-top: 0; margin-bottom: 15px; font-size: 15px; color: #4a5d53; border-left: 4px solid #566c61; padding-left: 8px; font-weight: bold;">库存</h3>
-
-        <div class="material-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px;">
-          <div class="input-group" style="display: flex; flex-direction: column;">
-            <label style="margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;">技能蓝书</label>
-            <input type="number" id="ownedSkillBlue" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;">
-          </div>
-
-          <div class="input-group" style="display: flex; flex-direction: column;">
-            <label style="margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;">技能紫书</label>
-            <input type="number" id="ownedSkillPurple" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;">
-          </div>
-
-          <div class="input-group" style="display: flex; flex-direction: column;">
-            <label style="margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;">技能金书</label>
-            <input type="number" id="ownedSkillGold" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;">
-          </div>
-
-          <div class="input-group" style="display: flex; flex-direction: column;">
-            <label style="margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;">爆裂蓝书</label>
-            <input type="number" id="ownedBurstBlue" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;">
-          </div>
-
-          <div class="input-group" style="display: flex; flex-direction: column;">
-            <label style="margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;">爆裂紫书</label>
-            <input type="number" id="ownedBurstPurple" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;">
-          </div>
-
-          <div class="input-group" style="display: flex; flex-direction: column;">
-            <label style="margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;">爆裂金书</label>
-            <input type="number" id="ownedBurstGold" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;">
-          </div>
-
-          <div class="input-group" style="display: flex; flex-direction: column; grid-column: span 1;">
-            <label style="margin-bottom: 4px; font-size: 12px; font-weight: bold; color: #566c61;">代码手册</label>
-            <input type="number" id="ownedCode" value="0" min="0" style="background: #f4f7f5; border: 1px solid #cbdad2; border-radius: 6px; padding: 8px; font-size: 13px; color: #2d3748; font-weight: bold; outline: none;">
-          </div>
-        </div>
+    <section class="nsc-panel nsc-month-panel">
+      <div class="nsc-panel-title">每月技能资源获取数量</div>
+      <div class="nsc-table-wrap">
+        <table class="nsc-table">
+          <thead>
+            <tr>
+              <th>材料</th>
+              <th>小活动*2</th>
+              <th>大活动*1</th>
+              <th>小活动*大活动</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>技能蓝书</td><td>4300</td><td>4204</td><td>4454</td></tr>
+            <tr><td>技能紫书</td><td>3120</td><td>3028</td><td>3218</td></tr>
+            <tr><td>技能金书</td><td>784</td><td>784</td><td>814</td></tr>
+            <tr><td>爆裂蓝书</td><td>2240</td><td>2102</td><td>2272</td></tr>
+            <tr><td>爆裂紫书</td><td>1630</td><td>1514</td><td>1644</td></tr>
+            <tr><td>爆裂金书</td><td>422</td><td>392</td><td>422</td></tr>
+          </tbody>
+        </table>
       </div>
-    </div>
-
-    <div class="result-panel" style="margin-top: 24px; background: #ffffff; border-radius: 8px; padding: 20px; border: 1px solid #6b8477; overflow-x: auto;">
-      <h3 style="margin-top: 0; margin-bottom: 15px; font-size: 15px; color: #4a5d53; text-align: center; font-weight: bold;">📊 资源计算结果</h3>
-
-      <table style="width: 100%; border-collapse: collapse; font-size: 13px; border: 1px solid #cbdad2; white-space: nowrap;">
-        <thead>
-          <tr style="background-color: #e4ebe7; color: #4a5d53;">
-            <th style="padding: 12px 8px; border: 1px solid #cbdad2; font-weight: bold; text-align: center;">材料</th>
-            <th style="padding: 12px 8px; border: 1px solid #cbdad2; font-weight: bold; text-align: center;">消耗</th>
-            <th style="padding: 12px 8px; border: 1px solid #cbdad2; font-weight: bold; text-align: center;">库存</th>
-            <th style="padding: 12px 8px; border: 1px solid #cbdad2; font-weight: bold; text-align: center;">剩余</th>
-          </tr>
-        </thead>
-        <tbody id="resultTable"></tbody>
-      </table>
-    </div>
-
-    <div class="panel" style="background: #ffffff; padding: 20px; border-radius: 8px; border: 1px solid #6b8477; margin-top: 20px; color: #2d3748;">
-      <h3 style="margin-top: 0; margin-bottom: 15px; font-size: 15px; color: #4a5d53; text-align: center; font-weight: bold;">每月技能资源获取数量</h3>
-      
-      <table style="width: 100%; border-collapse: collapse; font-size: 13px; border: 1px solid #cbdad2;">
-        <thead>
-          <tr style="background-color: #e4ebe7; color: #4a5d53;">
-            <th style="padding: 10px; border: 1px solid #cbdad2; text-align: center;">材料</th>
-            <th style="padding: 10px; border: 1px solid #cbdad2; text-align: center;">小活动*2</th>
-            <th style="padding: 10px; border: 1px solid #cbdad2; text-align: center;">大活动*1</th>
-            <th style="padding: 10px; border: 1px solid #cbdad2; text-align: center;">小活动*大活动</th>
-          </tr>
-        </thead>
-        <tbody style="text-align: center;">
-          <tr><td style="padding: 8px; border: 1px solid #cbdad2; text-align: center;">技能蓝书</td><td style="padding: 8px; border: 1px solid #cbdad2; text-align: center;">4300</td><td style="padding: 8px; border: 1px solid #cbdad2; text-align: center;">4204</td><td style="padding: 8px; border: 1px solid #cbdad2; text-align: center;">4454</td></tr>
-          <tr><td style="padding: 8px; border: 1px solid #cbdad2; text-align: center;">技能紫书</td><td style="padding: 8px; border: 1px solid #cbdad2; text-align: center;">3120</td><td style="padding: 8px; border: 1px solid #cbdad2; text-align: center;">3028</td><td style="padding: 8px; border: 1px solid #cbdad2; text-align: center;">3218</td></tr>
-          <tr><td style="padding: 8px; border: 1px solid #cbdad2; text-align: center;">技能金书</td><td style="padding: 8px; border: 1px solid #cbdad2; text-align: center;">784</td><td style="padding: 8px; border: 1px solid #cbdad2; text-align: center;">784</td><td style="padding: 8px; border: 1px solid #cbdad2; text-align: center;">814</td></tr>
-          <tr><td style="padding: 8px; border: 1px solid #cbdad2; text-align: center;">爆裂蓝书</td><td style="padding: 8px; border: 1px solid #cbdad2; text-align: center;">2240</td><td style="padding: 8px; border: 1px solid #cbdad2; text-align: center;">2102</td><td style="padding: 8px; border: 1px solid #cbdad2; text-align: center;">2272</td></tr>
-          <tr><td style="padding: 8px; border: 1px solid #cbdad2; text-align: center;">爆裂紫书</td><td style="padding: 8px; border: 1px solid #cbdad2; text-align: center;">1630</td><td style="padding: 8px; border: 1px solid #cbdad2; text-align: center;">1514</td><td style="padding: 8px; border: 1px solid #cbdad2; text-align: center;">1644</td></tr>
-          <tr><td style="padding: 8px; border: 1px solid #cbdad2; text-align: center;">爆裂金书</td><td style="padding: 8px; border: 1px solid #cbdad2; text-align: center;">422</td><td style="padding: 8px; border: 1px solid #cbdad2; text-align: center;">392</td><td style="padding: 8px; border: 1px solid #cbdad2; text-align: center;">422</td></tr>
-        </tbody>
-      </table>
-    </div>
+    </section>
   </div>
 </div>
 
 <style>
- 
-.nikke-calculator .calc-card .result-panel table tbody tr {
-  background-color: #ffffff !important;
+.nikke-skill-calculator,
+.nikke-skill-calculator * {
+  box-sizing: border-box;
 }
-.nikke-calculator .calc-card .result-panel table tbody tr:nth-child(even) {
-  background-color: #f7faf8 !important;
+
+.nikke-skill-calculator {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 15px;
+  background: #4a5d53;
+  border-radius: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: hidden;
+}
+
+.nsc-card {
+  background: #566c61;
+  border: 1px solid #637d70;
+  border-radius: 12px;
+  padding: 25px;
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(40, 50, 45, 0.25);
 }
 
  
-.nikke-calculator .calc-card .panel table tbody tr {
-  background-color: #ffffff !important;
-}
-.nikke-calculator .calc-card .panel table tbody tr:nth-child(even) {
-  background-color: #f7faf8 !important;
-}
-
- 
-.nikke-calculator .calc-card h3 {
-  border-left: none !important;  
-  padding-left: 0 !important;    
-  text-align: center !important;  
+.nsc-notice,
+.nsc-panel-title {
+  border-left: none !important;
+  border-inline-start: none !important;
+  padding-left: 0 !important;
+  padding-inline-start: 0 !important;
 }
 
- 
-.nikke-calculator .panel h3 {
-  border-left: none !important;  
-  padding-left: 0 !important;    
-  text-align: center !important;  
+.nsc-notice {
+  margin: 0 0 20px;
+  padding-bottom: 12px !important;
+  border-bottom: 2px solid #6b8477;
+  color: #ffffff;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.65;
+  letter-spacing: 1px;
 }
 
-.nikke-calculator .calc-card .result-panel table td {
-  padding: 10px 6px;
-  border: 1px solid #cbdad2;
-  text-align: center;  
+.nsc-main-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.nsc-panel {
+  min-width: 0;
+  width: 100%;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #6b8477;
+  border-radius: 8px;
   color: #2d3748;
 }
 
- 
-.nikke-calculator .positive {
-  color: #2f855a !important;  
-  font-weight: bold;
+.nsc-panel-title {
+  margin: 0 0 15px;
+  color: #4a5d53;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
 }
-.nikke-calculator .negative {
-  color: #c53030 !important;  
-  font-weight: bold;
+
+.nsc-input-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin-bottom: 14px;
+}
+
+.nsc-input-group:last-child {
+  margin-bottom: 0;
+}
+
+.nsc-input-group label {
+  margin-bottom: 6px;
+  color: #4a5d53;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.nsc-material-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.nsc-material-grid label {
+  color: #566c61;
+  font-size: 12px;
+}
+
+.nikke-skill-calculator input {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  padding: 10px;
+  background: #f4f7f5;
+  border: 1px solid #cbdad2;
+  border-radius: 6px;
+  color: #2d3748;
+  font-size: 14px;
+  font-weight: 700;
+  outline: none;
+}
+
+.nsc-material-grid input {
+  padding: 8px;
+  font-size: 13px;
+}
+
+.nsc-result-panel,
+.nsc-month-panel {
+  margin-top: 24px;
+}
+
+.nsc-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nsc-table {
+  width: 100%;
+  min-width: 420px;
+  border-collapse: collapse;
+  border: 1px solid #cbdad2;
+  color: #2d3748;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.nsc-table th,
+.nsc-table td {
+  padding: 10px 8px;
+  border: 1px solid #cbdad2;
+  text-align: center;
+}
+
+.nsc-table th {
+  background: #e4ebe7;
+  color: #4a5d53;
+  font-weight: 700;
+}
+
+ 
+.nsc-table tbody tr {
+  background: #ffffff !important;
+}
+
+.nsc-table tbody tr:nth-child(even) {
+  background: #f7faf8 !important;
+}
+
+.nsc-material-name {
+  color: #4a5d53;
+  font-weight: 700;
+}
+
+.nsc-positive {
+  color: #2f855a !important;
+  font-weight: 700;
+}
+
+.nsc-negative {
+  color: #c53030 !important;
+  font-weight: 700;
+}
+
+@media (max-width: 720px) {
+  .nikke-skill-calculator {
+    max-width: 100%;
+    margin: 1.5rem auto;
+    padding: 10px;
+    border-radius: 14px;
+  }
+
+  .nsc-card {
+    padding: 14px;
+  }
+
+  .nsc-notice {
+    font-size: 16px;
+  }
+
+  .nsc-main-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .nsc-material-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 420px) {
+  .nikke-skill-calculator {
+    padding: 8px;
+  }
+
+  .nsc-card,
+  .nsc-panel {
+    padding: 14px;
+  }
+
+  .nsc-material-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 </style>
 
 <script>
-const COSTS = {
-  S101010: { skillBlue: 2188, skillPurple: 1550, skillGold: 630, burstBlue: 1094, burstPurple: 755, burstGold: 315, code: 1440 },
-  S10710:  { skillBlue: 1474, skillPurple: 1045, skillGold: 315, burstBlue: 1094, burstPurple: 775, burstGold: 315, code: 1135 },
-  S1077:   { skillBlue: 1474, skillPurple: 1045, skillGold: 315, burstBlue: 380,  burstPurple: 270, burstGold: 0,   code: 525  },
-  S7710:   { skillBlue: 760,  skillPurple: 540,  skillGold: 0,   burstBlue: 1094, burstPurple: 775, burstGold: 315, code: 830  },
-  S777:    { skillBlue: 760,  skillPurple: 540,  skillGold: 0,   burstBlue: 380,  burstPurple: 270, burstGold: 0,   code: 220  }
-};
+(function () {
+  const COSTS = {
+    S101010: { skillBlue: 2188, skillPurple: 1550, skillGold: 630, burstBlue: 1094, burstPurple: 775, burstGold: 315, code: 1440 },
+    S10710:  { skillBlue: 1474, skillPurple: 1045, skillGold: 315, burstBlue: 1094, burstPurple: 775, burstGold: 315, code: 1135 },
+    S1077:   { skillBlue: 1474, skillPurple: 1045, skillGold: 315, burstBlue: 380,  burstPurple: 270, burstGold: 0,   code: 525  },
+    S7710:   { skillBlue: 760,  skillPurple: 540,  skillGold: 0,   burstBlue: 1094, burstPurple: 775, burstGold: 315, code: 830  },
+    S777:    { skillBlue: 760,  skillPurple: 540,  skillGold: 0,   burstBlue: 380,  burstPurple: 270, burstGold: 0,   code: 220  }
+  };
 
-const materials = [
-  { key: 'skillBlue',   name: '技能蓝书', owned: 'ownedSkillBlue' },
-  { key: 'skillPurple', name: '技能紫书', owned: 'ownedSkillPurple' },
-  { key: 'skillGold',   name: '技能金书', owned: 'ownedSkillGold' },
-  { key: 'burstBlue',   name: '爆裂蓝书', owned: 'ownedBurstBlue' },
-  { key: 'burstPurple', name: '爆裂紫书', owned: 'ownedBurstPurple' },
-  { key: 'burstGold',   name: '爆裂金书', owned: 'ownedBurstGold' },
-  { key: 'code',        name: '代码手册', owned: 'ownedCode' }
-];
+  const materials = [
+    { key: 'skillBlue',   name: '技能蓝书', owned: 'ownedSkillBlue' },
+    { key: 'skillPurple', name: '技能紫书', owned: 'ownedSkillPurple' },
+    { key: 'skillGold',   name: '技能金书', owned: 'ownedSkillGold' },
+    { key: 'burstBlue',   name: '爆裂蓝书', owned: 'ownedBurstBlue' },
+    { key: 'burstPurple', name: '爆裂紫书', owned: 'ownedBurstPurple' },
+    { key: 'burstGold',   name: '爆裂金书', owned: 'ownedBurstGold' },
+    { key: 'code',        name: '代码手册', owned: 'ownedCode' }
+  ];
 
-function getValue(id) {
-  return Number(document.getElementById(id).value) || 0;
-}
+  function getValue(id) {
+    const el = document.getElementById(id);
+    return el ? Number(el.value) || 0 : 0;
+  }
 
-function calculate() {
-  const S101010 = getValue('S101010');
-  const S10710 = getValue('S10710');
-  const S1077 = getValue('S1077');
-  const S7710 = getValue('S7710');
-  const S777 = getValue('S777');
+  function calculate() {
+    const resultTable = document.getElementById('resultTable');
+    if (!resultTable) return;
 
-  let html = '';
+    const counts = {
+      S101010: getValue('S101010'),
+      S10710: getValue('S10710'),
+      S1077: getValue('S1077'),
+      S7710: getValue('S7710'),
+      S777: getValue('S777')
+    };
 
-  materials.forEach(mat => {
-    const need =
-      (COSTS.S101010[mat.key] * S101010) +
-      (COSTS.S10710[mat.key] * S10710) +
-      (COSTS.S1077[mat.key] * S1077) +
-      (COSTS.S7710[mat.key] * S7710) +
-      (COSTS.S777[mat.key] * S777);
+    resultTable.innerHTML = materials.map(mat => {
+      const need = Object.keys(counts).reduce((sum, key) => {
+        return sum + COSTS[key][mat.key] * counts[key];
+      }, 0);
 
-    const owned = getValue(mat.owned);
-    const remain = owned - need;
+      const owned = getValue(mat.owned);
+      const remain = owned - need;
+      const remainClass = remain >= 0 ? 'nsc-positive' : 'nsc-negative';
+      const remainText = `${remain >= 0 ? '+' : ''}${remain.toLocaleString()}`;
 
-    html += `
-      <tr>
-        <td style="font-weight: bold; color: #4a5d53; text-align: center;">${mat.name}</td>
-        <td style="text-align: center;">${need.toLocaleString()}</td>
-        <td style="text-align: center;">${owned.toLocaleString()}</td>
-        <td class="${remain >= 0 ? 'positive' : 'negative'}" style="text-align: center;">
-          ${remain >= 0 ? '+' : ''}${remain.toLocaleString()}
-        </td>
-      </tr>
-    `;
+      return `
+        <tr>
+          <td class="nsc-material-name">${mat.name}</td>
+          <td>${need.toLocaleString()}</td>
+          <td>${owned.toLocaleString()}</td>
+          <td class="${remainClass}">${remainText}</td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  document.querySelectorAll('.nikke-skill-calculator input').forEach(input => {
+    input.addEventListener('input', calculate);
   });
 
-  document.getElementById('resultTable').innerHTML = html;
-}
-
-const containerInputs = document.querySelectorAll('.nikke-calculator input');
-containerInputs.forEach(input => {
-  input.addEventListener('input', calculate);
-});
-
-calculate();
+  calculate();
+})();
 </script>
 <h2 id="词条概率">词条概率
 </h2><div class="nikke-attributes-section" style="width: 100%; margin: 2.5rem auto; max-width: 900px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #e6eff6; border: 1px solid #cbdbe6; border-radius: 12px; padding: 25px; color: #2c3e50; box-shadow: 0 4px 16px rgba(180,200,215,0.25);">
