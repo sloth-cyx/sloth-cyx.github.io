@@ -6,11 +6,11 @@
 
 <link rel='canonical' href='https://sloth-cyx.github.io/tags/'>
 
-<link rel="stylesheet" href="/scss/style.min.6d30e12c15c67c4b383d1743bc3b8c9774ba267bafadd5db1b9d128147d2a0a4.css"><meta property='og:title' content="Tags">
+<link rel="stylesheet" href="/scss/style.min.8d6e7c59f80ad513fa3c42b45c22c43bb0ccb9d4ed4e958da321c5e33249e077.css"><meta property='og:title' content="Tags">
 <meta property='og:description' content="演示说明">
 <meta property='og:url' content='https://sloth-cyx.github.io/tags/'>
 <meta property='og:site_name' content='怠惰的天秤-sloth'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2026-06-13T20:24:21&#43;08:00 '/>
+<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2026-06-14T00:04:40&#43;08:00 '/>
 <meta name="twitter:title" content="Tags">
 <meta name="twitter:description" content="演示说明"><link rel="alternate" type="application/rss&#43;xml" href="https://sloth-cyx.github.io/tags/index.xml">
     <link rel="shortcut icon" href="/libra.ico" />
@@ -2016,6 +2016,7 @@
             else if (text.includes("[!TIP]")) { alertType = "tip"; }
             else if (text.includes("[!WARN]")) { alertType = "warn"; }
             else if (text.includes("[!ERROR]")) { alertType = "error"; }
+            else if (text.includes("[!VIOLET]")) { alertType = "violet"; }
 
             if (alertType) {
                 
@@ -2030,7 +2031,7 @@
                         pTag.innerText = pTag.innerText.substring(token.length).trim();
                     } else {
                         
-                        pTag.innerText = pTag.innerText.replace(/\[!(NOTE|TIP|WARN|ERROR)\]/g, "").trim();
+                        pTag.innerText = pTag.innerText.replace(/\[!(NOTE|TIP|WARN|ERROR|VIOLET)\]/g, "").trim();
                     }
                 }
             }

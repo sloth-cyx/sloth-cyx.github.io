@@ -227,13 +227,8 @@
         <pubDate>Fri, 29 May 2026 00:00:00 +0000</pubDate>
         
         <guid>https://sloth-cyx.github.io/p/%E5%A6%AE%E5%A7%AC%E5%BE%80%E5%B9%B4%E5%A6%AE%E5%A7%AC%E4%B8%AA%E4%BA%BA%E7%AE%80%E8%AF%84/</guid>
-        <description>&lt;img src="https://sloth-cyx.github.io/images/nikkeComment_previous/arcana_bg.png" alt="Featured image of post 【妮姬】往年妮姬个人简评" /&gt;&lt;blockquote&gt;
-&lt;p&gt;[!TIP]
-20260601 - 添加泷奈&lt;br&gt;
-20260605 - 添加茨瓦伊【珍藏品】&lt;br&gt;
-20260613 - 添加阿尔卡娜&lt;br&gt;
-20260613 - 添加战术贝斯蒂&lt;/p&gt;
-&lt;/blockquote&gt;
+        <description>&lt;img src="https://sloth-cyx.github.io/images/nikkeComment_previous/arcana_bg.png" alt="Featured image of post 【妮姬】往年妮姬个人简评" /&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;h2 id=&#34;泷奈&#34;&gt;泷奈
 &lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_previous/inoueAvatar_300x300.png&#34;
 	
@@ -285,7 +280,7 @@
 &lt;p&gt;&lt;strong&gt;养成优先级：T3&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;XP打分&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;[!NOTE]&lt;/p&gt;
+&lt;p&gt;[!WARN]&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;2/10&lt;/li&gt;
 &lt;li&gt;作为联动角色，如果SU能把角色更好的还原出来，说不动能拿到至少5-7分的及格分。&lt;/li&gt;
@@ -297,7 +292,7 @@
 &lt;ol&gt;
 &lt;li&gt;泷奈的全部技能都在为真伤服务，出类拔萃的真伤拐力让泷奈在推图拥有一席之地，目前搭配泷奈，战贝，艾达王得以抵达&lt;strong&gt;越战最高上限&lt;/strong&gt;，也就是55%（56%没法进图）。&lt;/li&gt;
 &lt;li&gt;不过这种强势是建立在&lt;strong&gt;推图越战的特殊性&lt;/strong&gt;上。真伤队在个突一般出分都不高，因为个突锁400等级（不会有所谓的越战因素构成的高防御），加上大多boss都没有很高的防御力，除非是定制高防boss如奥图露亚等。&lt;/li&gt;
-&lt;li&gt;个突基本只在&lt;strong&gt;&lt;span style=&#34;background-color: yellow; padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
+&lt;li&gt;个突基本只在&lt;strong&gt;&lt;span style=&#34;background-color: rgb(255, 174, 0); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
     铁甲
 &lt;/span&gt;&lt;/strong&gt;高防个突，和&lt;strong&gt;&lt;span style=&#34;background-color: rgb(140, 0, 255); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: rgb(255, 255, 255);&#34;&gt;
     电击
@@ -368,7 +363,7 @@
 &lt;p&gt;&lt;strong&gt;养成优先级：T4&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;XP打分&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;[!NOTE]&lt;/p&gt;
+&lt;p&gt;[!VIOLET]&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;6/10&lt;/li&gt;
 &lt;li&gt;原皮茨瓦伊设计上说不上来有多符合我的审美，上本身还好，下半身全副装甲看起来像学生吗？&lt;/li&gt;
@@ -383,10 +378,12 @@
 &lt;li&gt;当然这个组合也有限制，敏特的暴击率仅覆盖双数回合，所以茨瓦伊+敏特只有在&lt;strong&gt;双数回合&lt;/strong&gt;可以达成百暴。由于这个特殊性，带两个C是亏的（因为另一个C在单数回合亏伤害），反而是&lt;strong&gt;四保一&lt;/strong&gt;最好（一个大C和一个辅C可以最大化利好这种配置）。&lt;/li&gt;
 &lt;li&gt;于是，在进行S37个突水优过激派时，重装白雪成为了第二个契合茨瓦依的主C。&lt;/li&gt;
 &lt;li&gt;茨瓦伊相对米兰达的好处在于对于重装白雪这种&lt;strong&gt;快照&lt;/strong&gt;百暴C来说，茨瓦依的百暴是&lt;strong&gt;覆盖全爆裂10秒&lt;/strong&gt;的，不像米兰达只能提供一发百暴。但也有缺点，茨瓦伊这种穿透拐总会有&lt;strong&gt;伤害占比&lt;/strong&gt;问题，不如米兰达提供的攻击力和暴伤拐能覆盖全部伤害类型。&lt;br&gt;
-&lt;em&gt;例如重装白雪的穿透伤害占比仅约15%，而米兰达提供的攻击力加成却能作用于100%的伤害，因此在多数环境下依然具备竞争力。&lt;/em&gt;&lt;/li&gt;
+&lt;em&gt;&lt;span style=&#34;background-color: yellow; padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
+    例如重装白雪的穿透伤害占比仅约15%，而米兰达提供的攻击力加成却能作用于100%的伤害，因此在多数环境下依然具备竞争力。
+&lt;/span&gt;&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;那为什么S37的水冷个突中茨瓦伊会比米兰达更合适？其原因就在过激派存在核心和多判，这大幅放大了穿透收益，同时让茨瓦伊全爆裂期间的百暴优势得到完整发挥。若换成单判环境，两者优劣则未必如此明显。&lt;/li&gt;
 &lt;li&gt;而且，我个人认为茨瓦伊在铁甲个突也未必搭配原皮白雪，而是机制上更加契合的小红帽（因为小红帽的穿透占伤害占比100%，每一下平A都是穿透），而原皮白雪继续搭配米兰达，这就能出两队百爆了。当然，问题也就出在小红帽数值跟不上了，对于四保一的那个一，小红帽是有心无力的，以及有没有过激派这种环境的个突（核心，多判），这套思路仍有待验证。&lt;/li&gt;
-&lt;li&gt;综上所述，茨瓦伊现阶段仅在&lt;strong&gt;&lt;span style=&#34;background-color: yellow; padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
+&lt;li&gt;综上所述，茨瓦伊现阶段仅在&lt;strong&gt;&lt;span style=&#34;background-color: rgb(255, 174, 0); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
     铁甲
 &lt;/span&gt;&lt;/strong&gt;和&lt;strong&gt;&lt;span style=&#34;background-color: rgb(0, 195, 255); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
     水冷
@@ -451,26 +448,29 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;&lt;strong&gt;养成优先级：T1【电击个突】&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;养成优先级：T1【仅限电击个突】&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;XP打分&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;[!NOTE]&lt;/p&gt;
+&lt;p&gt;[!VIOLET]&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;10/10&lt;/li&gt;
 &lt;li&gt;看似保守， 但若隐若现的内衬透出来的效果超级大加分；不色却更色。这让本来不喜欢巨乳的我也能接受，巨乳细腰阿嘶&amp;hellip;赛高！&lt;/li&gt;
-&lt;li&gt;无敌的性格，开朗主动，对爷主打一个喜欢，结婚。虽然背负的东西很沉重，但却更加让人怜爱，也因此才显得她的这个性格多么的宝贵和高洁。&lt;/li&gt;
+&lt;li&gt;无敌的性格，开朗主动，对爷主打一个喜欢，结婚！虽然背负的东西很沉重，但却更加让人怜爱，也因此才显得她的这个性格多么的宝贵和高洁。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;简评：&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;阿尔卡娜是一张极其特殊的卡，她的横空出世不仅提拔了伊莎贝尔，让其从1红一跃成为3红以上的输出角色，让阿尔卡娜有了伊莎贝尔的人形珍藏品之称；更是让灰姑娘成为了牢不可破的电击最大C，成为了&lt;strong&gt;&lt;span style=&#34;background-color: rgb(140, 0, 255); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: rgb(255, 255, 255);&#34;&gt;
+&lt;li&gt;阿尔卡娜是一张极其特殊的卡，她的横空出世不仅提拔了伊莎贝尔，使其从1红一跃成为3红以上的输出角色，让阿尔卡娜获得了伊莎贝尔的&lt;strong&gt;人形珍藏品&lt;/strong&gt;之称；更是让灰姑娘成为了牢不可破的电击最大C，成为了&lt;strong&gt;&lt;span style=&#34;background-color: rgb(140, 0, 255); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: rgb(255, 255, 255);&#34;&gt;
     电击
 &lt;/span&gt;最大刀&lt;/strong&gt;不可忽视的存在。&lt;/li&gt;
 &lt;li&gt;一项一项来说，阿尔卡娜的机制注定绑定需要&lt;strong&gt;减全爆裂时间&lt;/strong&gt;的电击C，而伊莎贝尔成为了不二人选。暴力的180%基准加攻和180%的攻伤加成把伊莎贝尔一下子就提到了电击前3C的级别（由于伊莎贝尔是旧时代的产物，意味着没有什么自拐能力，吃拐率反而得以提高）。而伊莎贝尔自身的暴击率加成和易伤能力也恰好和阿尔卡娜的拐力错开，两人搭配相得益彰，成为了卷电击个突必须要练的卡。&lt;/li&gt;
-&lt;li&gt;接下来解析一下灰姑娘，灰姑娘的伤害大头源于&lt;strong&gt;开启爆裂技能时&lt;/strong&gt;的技能伤害，而这部分属于&lt;strong&gt;快照&lt;/strong&gt;伤害，意味着灰姑娘的大招吃不到&lt;strong&gt;全爆裂开始时&lt;/strong&gt;的buff（例如超阿的攻击力和攻伤都在全爆裂开始时才提供）。快照意味着一旦启动，后续的伤害也不会变动，不会发生例如前4下伤害没buff，而后6下伤害有buff的这种情况，这也是灰姑娘的一个痛点。&lt;/li&gt;
+&lt;li&gt;接下来解析一下灰姑娘，灰姑娘的伤害大头源于&lt;strong&gt;开启爆裂技能时&lt;/strong&gt;的技能伤害，而这部分属于&lt;strong&gt;快照&lt;/strong&gt;伤害，意味着灰姑娘的大招吃不到&lt;strong&gt;全爆裂开始时&lt;/strong&gt;的buff（例如超阿的攻击力和攻伤都在全爆裂开始时才提供）。&lt;br&gt;
+&lt;strong&gt;快照意思为一旦启动了第一下伤害，这一下伤害的buff会被定格记录，因此后续的追加伤害buff量也不会变动；不会发生例如前4下伤害没buff，而后6下伤害有buff的这种情况，这也是灰姑娘的一个痛点。&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;而阿尔卡娜+伊莎贝尔这个组合却能&lt;strong&gt;缩短&lt;/strong&gt;全爆裂时间，这导致了灰姑娘的大招能吃到全爆裂开始时的buff！&lt;br&gt;
-&lt;em&gt;例子 - &lt;strong&gt;超阿+阿尔卡娜+伊莎贝尔+灰姑娘+皇冠&lt;/strong&gt;：伊莎贝尔开第一波大，全爆裂结束时超阿的buff还有5秒，如果充能够快（3-4秒能完成），那么灰姑娘的大招是可以吃到上一轮超阿的残余buff，甚至阿尔卡娜还有提供不少全爆裂结束后的buff，这些buff大大的提高了灰姑娘的大招收益！&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;甚至充能再快点甚至还能吃到伊莎贝尔的易伤buff！来自参考视频的评论区：由于伊莎贝尔的大招是分三段触发的，第三段触发易伤时，实际全爆裂时间已经过了1-2秒了；全爆裂结束时，伊莎贝拉易伤仍然存在2.5秒。&lt;br&gt;
+&lt;em&gt;&lt;span style=&#34;background-color: yellow; padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
+    例子 - **超阿+阿尔卡娜+伊莎贝尔+灰姑娘+皇冠**：伊莎贝尔开第一波大，全爆裂结束时超阿的buff还有5秒，如果充能够快（3-4秒能完成），那么灰姑娘的大招是可以吃到上一轮超阿的残余buff，甚至阿尔卡娜还有提供不少全爆裂结束后的buff，这些buff大大的提高了灰姑娘的大招收益！
+&lt;/span&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;甚至充能再快点甚至还能吃到伊莎贝尔的易伤buff&amp;hellip;来自参考视频的评论区：由于伊莎贝尔的大招是分三段触发的，第三段触发易伤时，实际全爆裂时间已经过了1-2秒了；全爆裂结束时，伊莎贝拉易伤仍然存在2.5秒。&lt;br&gt;
 参考视频：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV165Gd6WENq&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;【NIKKE】灰姑娘配队杂谈——从快照机制说起。&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;而且阿尔卡娜的减CD和伊莎贝尔的减全爆裂时间也能把原本三分钟内正常循环的13-14次爆裂提高到18次左右，灰姑娘本来只开6-7次爆裂一下次提高到了9次！还记得说过灰姑娘的伤害大头来源于大招伤害么？这是极其恐怖的加成。&lt;/li&gt;
@@ -539,12 +539,12 @@
 &lt;p&gt;&lt;strong&gt;养成优先级：T2&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;XP打分&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;[!NOTE]&lt;/p&gt;
+&lt;p&gt;[!ERROR]&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;7/10&lt;/li&gt;
 &lt;li&gt;小小的身体里蕴含着巨大的能量，这句话形容贝斯蒂再适合不过；小只害羞却有着罗刹火力的一面把反差感拉满。&lt;/li&gt;
 &lt;li&gt;外部的装甲斗篷和内里的清凉小性感也再一次的体现这角色想要强调的“反差感”。&lt;/li&gt;
-&lt;li&gt;&lt;del&gt;老实说贝斯蒂真有点料吧。&lt;/del&gt;&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;老讲道理贝斯蒂真算有点料吧。&lt;/del&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;简评：&lt;/strong&gt;&lt;/p&gt;
@@ -1502,12 +1502,8 @@ window.onload = function() {
         <pubDate>Fri, 22 May 2026 00:00:00 +0000</pubDate>
         
         <guid>https://sloth-cyx.github.io/p/%E5%A6%AE%E5%A7%AC2026%E5%A6%AE%E5%A7%AC%E4%B8%AA%E4%BA%BA%E7%AE%80%E8%AF%84/</guid>
-        <description>&lt;img src="https://sloth-cyx.github.io/images/nikkeComment_2026/nikkeComment_2026_bg.png" alt="Featured image of post 【妮姬】2026妮姬个人简评" /&gt;&lt;blockquote&gt;
-&lt;p&gt;[!TIP]
-20260522 - 添加敏特&lt;br&gt;
-20260528 - 添加普利卡&lt;br&gt;
-20260611 - 添加方舟黑色游侠&lt;/p&gt;
-&lt;/blockquote&gt;
+        <description>&lt;img src="https://sloth-cyx.github.io/images/nikkeComment_2026/nikkeComment_2026_bg.png" alt="Featured image of post 【妮姬】2026妮姬个人简评" /&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;h2 id=&#34;敏特&#34;&gt;敏特
 &lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_2026/mintAvatar_300x300.png&#34;
 	
@@ -1559,7 +1555,7 @@ window.onload = function() {
 &lt;p&gt;&lt;strong&gt;养成优先级：T1&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;XP打分&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;[!NOTE]&lt;/p&gt;
+&lt;p&gt;[!WARN]&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;10/10&lt;/li&gt;
 &lt;li&gt;必须夯！个人比较吃纤细型，指的是全身较为匀称，同时胸部不会比脸蛋大的那种类型（毕竟本命白兔）！&lt;/li&gt;
@@ -1582,10 +1578,12 @@ window.onload = function() {
 &lt;li&gt;NGA上有帖子统计过水百暴对重装白雪的收益，分别是米兰达，茨瓦伊，兔爱德，敏特组成的排列组合。&lt;br&gt;
 参考帖子：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://bbs.nga.cn/read.php?tid=46800971&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;​[评测] 水系百爆队 米兰达/学生妹 敏特/兔爱德 对重白提升&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
-&lt;strong&gt;&lt;code&gt;伤害排序：茨瓦伊+敏特 342.7e（手操）&amp;gt; 米兰达+敏特 339.1e &amp;gt; 茨瓦伊+敏特 318.6e（自动）&amp;gt; 米兰达+兔爱德 315.6e &amp;gt; 茨瓦伊+兔爱德 302.3e&lt;/code&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;em&gt;&lt;span style=&#34;background-color: yellow; padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
+    伤害排序：茨瓦伊+敏特 342.7e（手操）&gt; 米兰达+敏特 339.1e &gt; 茨瓦伊+敏特 318.6e（自动）&gt; 米兰达+兔爱德 315.6e &gt; 茨瓦伊+兔爱德 302.3e
+&lt;/span&gt;&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;由此可见，茨瓦伊+敏特是比较好的搭配，其原因就在敏特能帮助茨瓦伊覆盖其他伤害乘区，而兔爱德大量的拐力集中在攻伤区，和茨瓦伊本身的拐力乘区是一样的。&lt;/li&gt;
 &lt;li&gt;目前来看，茨瓦伊+敏特会在多判的情况下完胜米兰达+敏特；而单判的情况下，米兰达+敏特的高额加攻和暴伤也许能反超茨瓦伊+敏特！这就只能静待后续有无合适的个突来做测试。&lt;/li&gt;
-&lt;li&gt;综上所述，敏特本质上是张泛用性极强的辅助卡；搭配茨瓦伊/米兰达的情况下特别契合原皮白雪和重装白雪，意味着她在&lt;strong&gt;&lt;span style=&#34;background-color: yellow; padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
+&lt;li&gt;综上所述，敏特本质上是张泛用性极强的辅助卡；搭配茨瓦伊/米兰达的情况下特别契合原皮白雪和重装白雪，意味着她在&lt;strong&gt;&lt;span style=&#34;background-color: rgb(255, 174, 0); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
     铁甲
 &lt;/span&gt;&lt;/strong&gt;和&lt;strong&gt;&lt;span style=&#34;background-color: rgb(0, 195, 255); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
     水冷
@@ -1657,7 +1655,7 @@ window.onload = function() {
 &lt;p&gt;[!NOTE]&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;8/10&lt;/li&gt;
-&lt;li&gt;普莉卡的身材其实也是比较高挑，而且又有点锻炼的那种类型，整体比例很好看。&lt;del&gt;胸部也没有大过脸蛋&lt;/del&gt;（误）。&lt;/li&gt;
+&lt;li&gt;普莉卡的身材其实也是比较高挑，而且又有点锻炼的那种类型，整体比例很好看。&lt;del&gt;胸部也没有大过脸蛋。&lt;/del&gt;&lt;/li&gt;
 &lt;li&gt;短发控蛮爱的，尤其在看到她那张同人带球图后，人妻感一下就上来了，美味。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
@@ -1733,10 +1731,10 @@ window.onload = function() {
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;&lt;strong&gt;养成优先级：T2【风压个突】&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;养成优先级：T2【仅限风压个突】&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;XP打分&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;[!NOTE]&lt;/p&gt;
+&lt;p&gt;[!TIP]&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;8/10&lt;/li&gt;
 &lt;li&gt;浅蓝色长马尾搭配贴身的黑色皮革&amp;amp;黑丝，凸显出身材的匀称，不大不小刚刚好。&lt;/li&gt;
@@ -1789,6 +1787,9 @@ window.onload = function() {
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;[!ERROR]这是一段ERROR引用&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[!VIOLET]这是一段VIOLET引用&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;em&gt;斜体&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;加粗&lt;/strong&gt;&lt;/p&gt;

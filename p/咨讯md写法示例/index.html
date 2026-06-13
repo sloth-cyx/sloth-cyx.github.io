@@ -6,11 +6,11 @@
 
 <link rel='canonical' href='https://sloth-cyx.github.io/p/%E5%92%A8%E8%AE%AFmd%E5%86%99%E6%B3%95%E7%A4%BA%E4%BE%8B/'>
 
-<link rel="stylesheet" href="/scss/style.min.6d30e12c15c67c4b383d1743bc3b8c9774ba267bafadd5db1b9d128147d2a0a4.css"><meta property='og:title' content="【咨讯】MD写法示例">
+<link rel="stylesheet" href="/scss/style.min.8d6e7c59f80ad513fa3c42b45c22c43bb0ccb9d4ed4e958da321c5e33249e077.css"><meta property='og:title' content="【咨讯】MD写法示例">
 <meta property='og:description' content="~Markdown的写法效果展示，不是教学~">
 <meta property='og:url' content='https://sloth-cyx.github.io/p/%E5%92%A8%E8%AE%AFmd%E5%86%99%E6%B3%95%E7%A4%BA%E4%BE%8B/'>
 <meta property='og:site_name' content='怠惰的天秤-sloth'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-05-20T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-06-13T20:24:21&#43;08:00'/><meta property='og:image' content='https://sloth-cyx.github.io/images/mdWritting/mdWritting_bg.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-05-20T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-06-14T00:04:40&#43;08:00'/><meta property='og:image' content='https://sloth-cyx.github.io/images/mdWritting/mdWritting_bg.png' />
 <meta name="twitter:title" content="【咨讯】MD写法示例">
 <meta name="twitter:description" content="~Markdown的写法效果展示，不是教学~"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://sloth-cyx.github.io/images/mdWritting/mdWritting_bg.png' />
@@ -570,7 +570,7 @@ post-sidebar">
         
         <div style="display: flex; align-items: left; gap: 5px;">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 7v5l3 3" /></svg> 
-            <time class="article-time--lastmod">2026-06-13</time>
+            <time class="article-time--lastmod">2026-06-14</time>
         </div>
         
 
@@ -606,6 +606,9 @@ post-sidebar">
 </blockquote>
 <blockquote>
 <p>[!ERROR]这是一段ERROR引用</p>
+</blockquote>
+<blockquote>
+<p>[!VIOLET]这是一段VIOLET引用</p>
 </blockquote>
 <p><em>斜体</em></p>
 <p><strong>加粗</strong></p>
@@ -801,7 +804,7 @@ post-sidebar">
     <section class="article-lastmod">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 7v5l3 3" /></svg>
         <span>
-            最后更新于 2026-06-13
+            最后更新于 2026-06-14
         </span>
     </section></footer>
 
@@ -1087,6 +1090,7 @@ post-sidebar">
             else if (text.includes("[!TIP]")) { alertType = "tip"; }
             else if (text.includes("[!WARN]")) { alertType = "warn"; }
             else if (text.includes("[!ERROR]")) { alertType = "error"; }
+            else if (text.includes("[!VIOLET]")) { alertType = "violet"; }
 
             if (alertType) {
                 
@@ -1101,7 +1105,7 @@ post-sidebar">
                         pTag.innerText = pTag.innerText.substring(token.length).trim();
                     } else {
                         
-                        pTag.innerText = pTag.innerText.replace(/\[!(NOTE|TIP|WARN|ERROR)\]/g, "").trim();
+                        pTag.innerText = pTag.innerText.replace(/\[!(NOTE|TIP|WARN|ERROR|VIOLET)\]/g, "").trim();
                     }
                 }
             }

@@ -31,6 +31,9 @@
 &lt;blockquote&gt;
 &lt;p&gt;[!ERROR]这是一段ERROR引用&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[!VIOLET]这是一段VIOLET引用&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;em&gt;斜体&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;加粗&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;行内代码&lt;/code&gt;&lt;/p&gt;
