@@ -10,10 +10,10 @@
 <meta property='og:description' content="~个人用的资源规划计算器~">
 <meta property='og:url' content='https://sloth-cyx.github.io/p/%E5%A6%AE%E5%A7%AC%E5%A6%AE%E5%A7%AC%E8%B5%84%E6%BA%90/%E8%AE%A1%E7%AE%97%E5%99%A8/'>
 <meta property='og:site_name' content='怠惰的天秤-sloth'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-05-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-06-13T20:24:21&#43;08:00'/><meta property='og:image' content='https://sloth-cyx.github.io/images/nikkeCalculator/2x2_day_bg.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-05-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-06-17T13:30:23&#43;08:00'/><meta property='og:image' content='https://sloth-cyx.github.io/images/nikkeCalculator/nikkeCalculator_bg.png' />
 <meta name="twitter:title" content="【妮姬】妮姬资源/计算器">
 <meta name="twitter:description" content="~个人用的资源规划计算器~"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://sloth-cyx.github.io/images/nikkeCalculator/2x2_day_bg.png' />
+    <meta name="twitter:image" content='https://sloth-cyx.github.io/images/nikkeCalculator/nikkeCalculator_bg.png' />
     <link rel="shortcut icon" href="/libra.ico" />
 
   
@@ -509,7 +509,8 @@ post-sidebar">
     <li><a href="#收藏品sr15升级期望">收藏品SR15升级期望</a></li>
     <li><a href="#装备升级计算器">装备升级计算器</a></li>
     <li><a href="#技能计算器">技能计算器</a></li>
-    <li><a href="#词条概率">词条概率</a></li>
+    <li><a href="#词条期望计算器">词条期望计算器</a></li>
+    <li><a href="#全爆裂伤害计算器beta">全爆裂伤害计算器（Beta）</a></li>
   </ol>
 </nav>
         </div>
@@ -526,7 +527,7 @@ post-sidebar">
         <div class="article-image">
             <a href="/p/%E5%A6%AE%E5%A7%AC%E5%A6%AE%E5%A7%AC%E8%B5%84%E6%BA%90/%E8%AE%A1%E7%AE%97%E5%99%A8/">
                 
-                    <img src="/images/nikkeCalculator/2x2_day_bg.png" loading="lazy" alt="Featured image of post 【妮姬】妮姬资源/计算器" />
+                    <img src="/images/nikkeCalculator/nikkeCalculator_bg.png" loading="lazy" alt="Featured image of post 【妮姬】妮姬资源/计算器" />
                 
             </a>
         </div>
@@ -570,7 +571,7 @@ post-sidebar">
         
         <div style="display: flex; align-items: left; gap: 5px;">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 7v5l3 3" /></svg> 
-            <time class="article-time--lastmod">2026-06-13</time>
+            <time class="article-time--lastmod">2026-06-17</time>
         </div>
         
 
@@ -1362,9 +1363,81 @@ window.onload = function() {
   calculate();
 })();
 </script>
-<h2 id="词条概率">词条概率
+<h2 id="词条期望计算器">词条期望计算器
 </h2><div class="nikke-attributes-section" style="width: 100%; margin: 2.5rem auto; max-width: 900px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #e6eff6; border: 1px solid #cbdbe6; border-radius: 12px; padding: 25px; color: #2c3e50; box-shadow: 0 4px 16px rgba(180,200,215,0.25);">
   
+  <div class="attr-calc-card">
+    <div class="attr-section-title">词条期望计算器</div>
+    <div class="attr-calc-note">
+      选择目标词条后自动计算命中概率、期望洗词条次数、石头消耗与锁子消耗。已锁定词条视为已经拥有，不参与命中概率计算。<br>
+      「石头锁定」会计算一次性锁定成本；「石头已锁」只计算后续洗词条增加的每次石头成本。
+    </div>
+
+    <div class="attr-slot-grid">
+      <div class="attr-slot-card">
+        <div class="slot-title">第一格</span></div>
+        <label>目标词条</label>
+        <select id="attrSlot1" class="attr-select"></select>
+        <label>锁定方式</label>
+        <select id="lockSlot1" class="attr-select lock-select" disabled>
+          <option value="none">没锁</option>
+          <option value="stoneDone">石头已锁</option>
+          <option value="stone">石头锁定</option>
+          <option value="key">锁子锁定</option>
+        </select>
+      </div>
+
+      <div class="attr-slot-card">
+        <div class="slot-title">第二格</div>
+        <label>目标词条</label>
+        <select id="attrSlot2" class="attr-select"></select>
+        <label>锁定方式</label>
+        <select id="lockSlot2" class="attr-select lock-select" disabled>
+          <option value="none">没锁</option>
+          <option value="stoneDone">石头已锁</option>
+          <option value="stone">石头锁定</option>
+          <option value="key">锁子锁定</option>
+        </select>
+      </div>
+
+      <div class="attr-slot-card">
+        <div class="slot-title">第三格</div>
+        <label>目标词条</label>
+        <select id="attrSlot3" class="attr-select"></select>
+        <label>锁定方式</label>
+        <select id="lockSlot3" class="attr-select lock-select" disabled>
+          <option value="none">没锁</option>
+          <option value="stoneDone">石头已锁</option>
+          <option value="stone">石头锁定</option>
+          <option value="key">锁子锁定</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="attr-result-grid">
+      <div class="attr-result-box">
+        <div class="result-label">概率</div>
+        <div class="result-value" id="attrTotalRate">—</div>
+      </div>
+      <div class="attr-result-box">
+        <div class="result-label">期望洗词条次数</div>
+        <div class="result-value" id="attrExpectedRuns">—</div>
+      </div>
+      <div class="attr-result-box">
+        <div class="result-label">石头消耗</div>
+        <div class="result-value" id="attrStoneCost">—</div>
+      </div>
+      <div class="attr-result-box">
+        <div class="result-label">锁子消耗</div>
+        <div class="result-value" id="attrKeyCost">—</div>
+      </div>
+    </div>
+
+    <div class="attr-warning-box" id="attrWarningText"></div>
+    <div class="attr-formula-box" id="attrFormulaText">请选择至少一个未锁定的目标词条。</div>
+  </div>
+
+
   <div class="rules-notes" style="margin-top: 20px; background: #f0f4f8; border-radius: 6px; padding: 12px 15px; font-size: 12px; line-height: 1.6; color: #4a5568; border-left: 4px solid #63b3ed;">
     📌 <strong>洗词条提示：</strong><br>
     1. T9 企业装备进化为 Overlord (T10) 装备时，<strong>初始必给SSR等级11阶词条</strong>！<br>
@@ -1396,7 +1469,7 @@ window.onload = function() {
           <td style="text-align: center; font-weight: bold; color: #b7791f; background: #fffaf0 !important;">11.81% ~ 14.63%</td>
         </tr>
         <tr>
-          <td style="font-weight: bold; color: #2c3e50; padding: 10px; border: 1px solid #e1e8ed; background: #fcfdfe !important;">最大弹药数 (12%)</td>
+          <td style="font-weight: bold; color: #2c3e50; padding: 10px; border: 1px solid #e1e8ed; background: #fcfdfe !important;">最大装弹数 (12%)</td>
           <td style="text-align: center; background: #ffffff !important;">27.84% ~ 44.28%</td>
           <td style="text-align: center; background: #ffffff !important;">48.39% ~ 64.82%</td>
           <td style="text-align: center; font-weight: bold; color: #b7791f; background: #fffaf0 !important;">68.93% ~ 85.37%</td>
@@ -1506,6 +1579,1115 @@ window.onload = function() {
 }
 </style>
 
+<style>
+.nikke-attributes-section,
+.nikke-attributes-section * {
+  box-sizing: border-box;
+}
+
+.nikke-attributes-section h1,
+.nikke-attributes-section h2,
+.nikke-attributes-section h3,
+.nikke-attributes-section h4,
+.nikke-attributes-section h5,
+.nikke-attributes-section h6 {
+  border-inline-start: none !important;
+  padding-inline-start: 0 !important;
+}
+
+.nikke-attributes-section .attr-calc-card {
+  background: #ffffff;
+  border: 1px solid #cbdbe6;
+  border-radius: 8px;
+  padding: 18px;
+  margin-bottom: 20px;
+}
+
+.nikke-attributes-section .attr-section-title {
+  margin: 0 0 12px;
+  color: #2b6cb0;
+  font-size: 15px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.nikke-attributes-section .attr-calc-note {
+  background: #f0f4f8;
+  border-left: 4px solid #63b3ed;
+  border-radius: 6px;
+  color: #4a5568;
+  font-size: 12px;
+  line-height: 1.6;
+  margin-bottom: 14px;
+  padding: 10px 12px;
+}
+
+.nikke-attributes-section .attr-slot-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.nikke-attributes-section .attr-slot-card {
+  background: #f8fbfd;
+  border: 1px solid #dbe7ef;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.nikke-attributes-section .slot-title {
+  color: #2c3e50;
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.nikke-attributes-section .slot-title span {
+  color: #2b6cb0;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.nikke-attributes-section .attr-slot-card label {
+  color: #4a5568;
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 8px 0 4px;
+}
+
+.nikke-attributes-section .attr-select {
+  appearance: auto;
+  background: #ffffff;
+  border: 1px solid #cbdbe6;
+  border-radius: 6px;
+  color: #2c3e50;
+  font-size: 13px;
+  font-weight: 700;
+  outline: none;
+  padding: 8px;
+  width: 100%;
+}
+
+.nikke-attributes-section .attr-select:disabled {
+  background: #edf2f7;
+  color: #a0aec0;
+  cursor: not-allowed;
+}
+
+.nikke-attributes-section .attr-result-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.nikke-attributes-section .attr-result-box {
+  background: #f0f5fa;
+  border: 1px solid #dbe7ef;
+  border-radius: 8px;
+  padding: 10px 8px;
+  text-align: center;
+}
+
+.nikke-attributes-section .result-label {
+  color: #4a5568;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.nikke-attributes-section .result-value {
+  color: #2b6cb0;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+
+
+.nikke-attributes-section .attr-select.attr-error {
+  border-color: #e53e3e !important;
+  background: #fff5f5 !important;
+}
+
+.nikke-attributes-section .attr-warning-box {
+  background: #fff5f5;
+  border: 1px solid #feb2b2;
+  border-radius: 6px;
+  color: #9b2c2c;
+  display: none;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.6;
+  margin-top: 12px;
+  padding: 10px 12px;
+}
+
+.nikke-attributes-section .attr-formula-box {
+  background: #fffaf0;
+  border: 1px solid #f6d98f;
+  border-radius: 6px;
+  color: #744210;
+  font-size: 12px;
+  line-height: 1.6;
+  margin-top: 12px;
+  padding: 10px 12px;
+}
+
+@media (max-width: 768px) {
+  .nikke-attributes-section {
+    padding: 14px !important;
+  }
+
+  .nikke-attributes-section .attr-calc-card,
+  .nikke-attributes-section .attr-table-wrapper {
+    padding: 14px !important;
+  }
+
+  .nikke-attributes-section .attr-slot-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .nikke-attributes-section .attr-result-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .nikke-attributes-section .attr-select {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 420px) {
+  .nikke-attributes-section .attr-result-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+</style>
+
+<script>
+(function () {
+  const ATTR_OPTIONS = [
+    { value: '', name: '空', rate: 0 },
+    { value: 'atk', name: '攻击力', rate: 0.10 },
+    { value: 'element', name: '优越代码', rate: 0.10 },
+    { value: 'ammo', name: '最大装弹数', rate: 0.12 },
+    { value: 'critRate', name: '暴击率', rate: 0.10 },
+    { value: 'critDmg', name: '暴击伤害', rate: 0.12 },
+    { value: 'chargeSpeed', name: '蓄力速度', rate: 0.12 },
+    { value: 'chargeDmg', name: '蓄力伤害', rate: 0.12 },
+    { value: 'def', name: '防御力', rate: 0.10 },
+    { value: 'hit', name: '命中率', rate: 0.12 }
+  ];
+  const SLOT_RATES = [1, 0.5, 0.3];
+  const STONE_PER_ROLL = [1, 2, 3];
+  const STONE_LOCK_COST = [0, 2, 5];
+  const KEY_PER_ROLL = [0, 20, 50];
+
+  const attrSelects = [
+    document.getElementById('attrSlot1'),
+    document.getElementById('attrSlot2'),
+    document.getElementById('attrSlot3')
+  ];
+
+  const lockSelects = [
+    document.getElementById('lockSlot1'),
+    document.getElementById('lockSlot2'),
+    document.getElementById('lockSlot3')
+  ];
+
+  function formatNumber(num) {
+    if (!Number.isFinite(num)) return '—';
+    if (Math.abs(num - Math.round(num)) < 0.000001) return Math.round(num).toLocaleString();
+    return num.toLocaleString(undefined, { maximumFractionDigits: 2 });
+  }
+
+  function formatRate(rate) {
+    if (!Number.isFinite(rate)) return '—';
+    const percent = rate * 100;
+    if (percent >= 1) return percent.toLocaleString(undefined, { maximumFractionDigits: 4 }) + '%';
+    return percent.toLocaleString(undefined, { maximumFractionDigits: 6 }) + '%';
+  }
+
+  function getAttr(value) {
+    return ATTR_OPTIONS.find(item => item.value === value) || ATTR_OPTIONS[0];
+  }
+
+  function initOptions() {
+    const html = ATTR_OPTIONS.map(item => `<option value="${item.value}">${item.name}</option>`).join('');
+    attrSelects.forEach(select => {
+      select.innerHTML = html;
+    });
+  }
+
+  function validateDuplicateAttrs() {
+    const selectedMap = {};
+    const duplicates = [];
+
+    attrSelects.forEach(select => {
+      select.classList.remove('attr-error');
+      if (!select.value) return;
+      if (!selectedMap[select.value]) selectedMap[select.value] = [];
+      selectedMap[select.value].push(select);
+    });
+
+    Object.keys(selectedMap).forEach(value => {
+      if (selectedMap[value].length > 1) {
+        const attr = getAttr(value);
+        duplicates.push(attr.name);
+        selectedMap[value].forEach(select => select.classList.add('attr-error'));
+      }
+    });
+
+    const warningBox = document.getElementById('attrWarningText');
+    if (duplicates.length > 0) {
+      warningBox.style.display = 'block';
+      warningBox.textContent = '同一件装备不能重复选择相同词条：' + duplicates.join('、') + '。请更换其中一个格子的目标词条。';
+      return false;
+    }
+
+    warningBox.style.display = 'none';
+    warningBox.textContent = '';
+    return true;
+  }
+
+  function calculateAttributes() {
+    if (!validateDuplicateAttrs()) {
+      document.getElementById('attrTotalRate').textContent = '—';
+      document.getElementById('attrExpectedRuns').textContent = '—';
+      document.getElementById('attrStoneCost').textContent = '—';
+      document.getElementById('attrKeyCost').textContent = '—';
+      document.getElementById('attrFormulaText').textContent = '请先修正重复词条后再计算。';
+      return;
+    }
+
+    let totalRate = 1;
+    let targetCount = 0;
+    let lockedCount = 0;
+    let stoneLockedCount = 0;
+    let stoneDoneCount = 0;
+    let keyLockedCount = 0;
+    const formulaParts = [];
+
+    attrSelects.forEach((attrSelect, index) => {
+      const attr = getAttr(attrSelect.value);
+      const lockSelect = lockSelects[index];
+
+      if (!attr.value) {
+        lockSelect.value = 'none';
+        lockSelect.disabled = true;
+        return;
+      }
+
+      lockSelect.disabled = false;
+      const lockType = lockSelect.value;
+
+      if (lockType !== 'none') {
+        lockedCount += 1;
+        if (lockType === 'stone') stoneLockedCount += 1;
+        if (lockType === 'stoneDone') stoneDoneCount += 1;
+        if (lockType === 'key') keyLockedCount += 1;
+        const lockLabel = lockType === 'stone' ? '石头锁定' : (lockType === 'stoneDone' ? '石头已锁' : '锁子锁定');
+        formulaParts.push(`第${index + 1}格「${attr.name}」${lockLabel}，不参与概率计算`);
+        return;
+      }
+
+      const slotRate = SLOT_RATES[index];
+      const hitRate = slotRate * attr.rate;
+      totalRate *= hitRate;
+      targetCount += 1;
+      formulaParts.push(`第${index + 1}格「${attr.name}」：${formatRate(slotRate)} × ${formatRate(attr.rate)} = ${formatRate(hitRate)}`);
+    });
+
+    if (lockedCount > 2) {
+      document.getElementById('attrTotalRate').textContent = '—';
+      document.getElementById('attrExpectedRuns').textContent = '—';
+      document.getElementById('attrStoneCost').textContent = '—';
+      document.getElementById('attrKeyCost').textContent = '—';
+      document.getElementById('attrFormulaText').textContent = '游戏内最多只能锁定 2 个词条，请减少锁定数量。';
+      return;
+    }
+
+    if (targetCount === 0) {
+      document.getElementById('attrTotalRate').textContent = '—';
+      document.getElementById('attrExpectedRuns').textContent = '0 次';
+      document.getElementById('attrStoneCost').textContent = '0 颗';
+      document.getElementById('attrKeyCost').textContent = '0 个';
+      document.getElementById('attrFormulaText').textContent = formulaParts.length ? '当前只有已锁定词条，没有需要继续洗的目标。' : '请选择至少一个未锁定的目标词条。';
+      return;
+    }
+
+    const expectedRuns = 1 / totalRate;
+    const stonePerRoll = STONE_PER_ROLL[lockedCount];
+    const stoneLockCost = STONE_LOCK_COST[stoneLockedCount];
+    const keyPerRoll = KEY_PER_ROLL[keyLockedCount];
+    const stoneCost = expectedRuns * stonePerRoll + stoneLockCost;
+    const keyCost = expectedRuns * keyPerRoll;
+
+    document.getElementById('attrTotalRate').textContent = formatRate(totalRate);
+    document.getElementById('attrExpectedRuns').textContent = formatNumber(expectedRuns) + ' 次';
+    document.getElementById('attrStoneCost').textContent = formatNumber(stoneCost) + ' 颗';
+    document.getElementById('attrKeyCost').textContent = formatNumber(keyCost) + ' 个';
+
+    formulaParts.push(`锁定数量：${lockedCount} 个；每次洗词条消耗 ${stonePerRoll} 颗石头`);
+    if (stoneLockedCount > 0) formulaParts.push(`石头锁定：${stoneLockedCount} 个；一次性消耗 ${stoneLockCost} 颗石头`);
+    if (stoneDoneCount > 0) formulaParts.push(`石头已锁：${stoneDoneCount} 个；不再计算一次性锁定成本，但会增加每次洗词条石头消耗`);
+    if (keyLockedCount > 0) formulaParts.push(`锁子锁定：${keyLockedCount} 个；每次洗词条消耗 ${keyPerRoll} 个锁子`);
+    formulaParts.push(`期望石头 = ${formatNumber(expectedRuns)} × ${stonePerRoll} + ${stoneLockCost} = ${formatNumber(stoneCost)} 颗`);
+    if (keyPerRoll > 0) formulaParts.push(`期望锁子 = ${formatNumber(expectedRuns)} × ${keyPerRoll} = ${formatNumber(keyCost)} 个`);
+
+    document.getElementById('attrFormulaText').innerHTML = formulaParts.join('<br>');
+  }
+
+  initOptions();
+  attrSelects.forEach(select => select.addEventListener('change', calculateAttributes));
+  lockSelects.forEach(select => select.addEventListener('change', calculateAttributes));
+  calculateAttributes();
+})();
+</script>
+<h2 id="全爆裂伤害计算器beta">全爆裂伤害计算器（Beta）
+</h2><div class="nikke-dmg-calc dark-dmg-calc">
+  <div class="dmg-header">
+    <div class="dmg-kicker">NIKKE DAMAGE TOOL</div>
+    <div class="dmg-title">妮姬全爆裂 10 秒伤害计算器</div>
+    <div class="dmg-desc">公共 buff 统一填写；不同伤害段只填写自己能吃到的buff。</div>
+  </div>
+
+  <div class="dmg-card dmg-baseline-card">
+    <div class="dmg-section-title">固定基准：红莲 10 秒伤害</div>
+    <div class="baseline-grid">
+      <div class="baseline-box"><div class="baseline-label">红莲武器伤害</div><div class="baseline-value" id="scarletWeaponDamage">—</div></div>
+      <div class="baseline-box"><div class="baseline-label">红莲技能伤害</div><div class="baseline-value" id="scarletSkillDamage">—</div></div>
+      <div class="baseline-box"><div class="baseline-label">红莲合计伤害</div><div class="baseline-value" id="scarletTotalDamage">—</div></div>
+    </div>
+    <div class="formula-note" id="scarletNote">红莲数据固定，不参与下方输入修改。</div>
+  </div>
+
+  <div class="dmg-card">
+    <div class="dmg-section-title">公共参数</div>
+    <div class="segment-note">这里填写所有伤害段都能吃到的参数。武器/普攻和技能伤害buff请在各自伤害段落中填写。</div><br>
+    <div class="segment-grid public-grid">
+      <label class="seg-field"><span>基础攻击力</span><input type="number" id="pubBaseAtk" value="0" min="0" step="1"></label>
+      <label class="seg-field"><span>攻击力 buff %</span><input type="number" id="pubAtkBuff" value="0" step="0.01"></label>
+      <label class="seg-field"><span>暴击伤害 buff %</span><input type="number" id="pubCritDmgBuff" value="0" step="0.01"></label>
+      <label class="seg-field"><span>暴击率 buff %</span><input type="number" id="pubCritRateBuff" value="0" step="0.01"></label>
+      <label class="seg-field"><span>优越伤害 buff %</span><input type="number" id="pubElementBuff" value="0" step="0.01"></label>
+      <label class="seg-field"><span>所受伤害 buff %</span><input type="number" id="pubTakenBuff" value="0" step="0.01"></label>
+    </div>
+  </div>
+
+  <div class="dmg-card">
+    <div class="section-row">
+      <div class="dmg-section-title no-margin">伤害段落</div>
+      <button type="button" id="addSegmentBtn" class="add-btn">+ 添加伤害</button>
+    </div>
+    <div class="segment-note">武器/普攻：核心伤害、蓄力伤害、攻击伤害为本段专属。技能伤害：分摊伤害、攻击伤害为本段专属。</div>
+    <div id="segments"></div>
+  </div>
+
+  <div class="dmg-card result-card">
+    <div class="dmg-section-title">计算结果</div>
+    <div class="result-grid">
+      <div class="result-box"><div class="result-label">角色 10 秒总伤害</div><div class="result-value" id="totalDamage">—</div></div>
+      <div class="result-box"><div class="result-label">相当于红莲</div><div class="result-value accent" id="scarletRatio">—</div></div>
+      <div class="result-box"><div class="result-label">差值</div><div class="result-value" id="damageDiff">—</div></div>
+    </div>
+    <div class="formula-box" id="formulaText">添加伤害段落并输入倍率后开始计算。</div>
+  </div>
+</div>
+
+<style>
+.nikke-dmg-calc,
+.nikke-dmg-calc * {
+  box-sizing: border-box;
+}
+
+.nikke-dmg-calc h1,
+.nikke-dmg-calc h2,
+.nikke-dmg-calc h3,
+.nikke-dmg-calc h4,
+.nikke-dmg-calc h5,
+.nikke-dmg-calc h6 {
+  border-inline-start: none !important;
+  padding-inline-start: 0 !important;
+}
+
+.dark-dmg-calc {
+  width: 100%;
+  max-width: min(100%, 760px);
+  margin: 1.25rem auto;
+  padding: clamp(10px, 2.2vw, 16px);
+  container-type: inline-size;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #e7eef7;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(96, 165, 250, .20), transparent 30%),
+    radial-gradient(circle at 88% 8%, rgba(245, 158, 11, .10), transparent 26%),
+    linear-gradient(135deg, #111827, #172033 56%, #0f172a);
+  border: 1px solid rgba(148,163,184,.22);
+  border-radius: clamp(12px, 2vw, 16px);
+  box-shadow: 0 10px 26px rgba(0,0,0,.28);
+  overflow: hidden;
+}
+
+.dark-dmg-calc .dmg-header {
+  text-align: center;
+  margin-bottom: clamp(10px, 2vw, 14px);
+  padding: 4px 6px 0;
+}
+
+.dark-dmg-calc .dmg-kicker {
+  color: #93c5fd;
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: 1.7px;
+}
+
+.dark-dmg-calc .dmg-title {
+  color: #f8fafc;
+  font-size: clamp(17px, 3.6vw, 21px);
+  font-weight: 950;
+  line-height: 1.35;
+  margin-top: 6px;
+}
+
+.dark-dmg-calc .dmg-desc {
+  color: #b6c5d8;
+  font-size: 12px;
+  line-height: 1.6;
+  margin-top: 7px;
+}
+
+.dark-dmg-calc .dmg-card {
+  background: rgba(248,250,252,.95);
+  border: 1px solid rgba(186,210,235,.36);
+  border-radius: clamp(10px, 2vw, 13px);
+  padding: clamp(12px, 2.4vw, 15px);
+  margin-top: clamp(10px, 2vw, 12px);
+  color: #263244;
+  box-shadow: 0 5px 16px rgba(2,6,23,.14);
+}
+
+.dark-dmg-calc .dmg-section-title {
+  color: #24527a;
+  font-size: clamp(13px, 2.4vw, 14px);
+  font-weight: 950;
+  line-height: 1.4;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.dark-dmg-calc .no-margin {
+  margin: 0;
+}
+
+.dark-dmg-calc .baseline-grid,
+.dark-dmg-calc .result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(6px, 1.5vw, 9px);
+}
+
+.dark-dmg-calc .baseline-box,
+.dark-dmg-calc .result-box {
+  background: #edf4fb;
+  border: 1px solid #cbdff0;
+  border-radius: 12px;
+  padding: clamp(8px, 1.8vw, 11px) clamp(6px, 1.6vw, 9px);
+  text-align: center;
+  min-width: 0;
+}
+
+.dark-dmg-calc .baseline-box.highlight {
+  background: #edf4fb;
+  border-color: #cbdff0;
+}
+
+.dark-dmg-calc .baseline-label,
+.dark-dmg-calc .result-label {
+  color: #5b6b80;
+  font-size: clamp(10px, 1.9vw, 11px);
+  font-weight: 850;
+  line-height: 1.35;
+  margin-bottom: 6px;
+}
+
+.dark-dmg-calc .baseline-value,
+.dark-dmg-calc .result-value {
+  color: #11324d;
+  font-size: clamp(15px, 3vw, 18px);
+  font-weight: 950;
+  line-height: 1.25;
+  word-break: break-word;
+}
+
+.dark-dmg-calc .result-value.accent {
+  color: #d97706;
+  font-size: clamp(17px, 3.6vw, 21px);
+}
+
+.dark-dmg-calc .formula-note,
+.dark-dmg-calc .segment-note,
+.dark-dmg-calc .formula-box {
+  font-size: 12px;
+  line-height: 1.65;
+  border-radius: 9px;
+  padding: 9px 11px;
+  margin-top: 10px;
+}
+
+.dark-dmg-calc .formula-note,
+.dark-dmg-calc .segment-note {
+  background: #ecf6ff;
+  color: #526779;
+  border-left: 4px solid #58a6ff;
+}
+
+.dark-dmg-calc .formula-box {
+  background: #fff7ed;
+  color: #7c3f12;
+  border: 1px solid #f0c27a;
+}
+
+.dark-dmg-calc .section-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.dark-dmg-calc .add-btn,
+.dark-dmg-calc .remove-btn {
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 950;
+  padding: 8px 14px;
+  color: #fff;
+  background: linear-gradient(135deg, #2563eb, #0ea5e9);
+  box-shadow: 0 4px 12px rgba(37,99,235,.24);
+  white-space: nowrap;
+}
+
+.dark-dmg-calc .remove-btn {
+  background: linear-gradient(135deg, #b91c1c, #ef4444);
+  padding: 7px 12px;
+  box-shadow: none;
+}
+
+.dark-dmg-calc .segment-card {
+  background: #f8fbff;
+  border: 1px solid #d7e6f5;
+  border-radius: 13px;
+  padding: 13px;
+  margin-top: 12px;
+}
+
+.dark-dmg-calc .segment-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 11px;
+}
+
+.dark-dmg-calc .segment-name {
+  color: #173a59;
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.dark-dmg-calc .segment-block-title {
+  color: #24527a;
+  font-size: 12px;
+  font-weight: 950;
+  margin: 13px 0 8px;
+  padding-top: 11px;
+  border-top: 1px dashed #c8dbea;
+}
+
+.dark-dmg-calc .segment-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.dark-dmg-calc .segment-grid.public-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.dark-dmg-calc .segment-grid.main-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.dark-dmg-calc .seg-field {
+  min-width: 0;
+}
+
+.dark-dmg-calc .seg-field span {
+  display: block;
+  color: #4f6275;
+  font-size: clamp(10px, 1.9vw, 11px);
+  font-weight: 850;
+  line-height: 1.35;
+  margin-bottom: 5px;
+}
+
+.dark-dmg-calc .seg-field input,
+.dark-dmg-calc .seg-field select {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #c7d9ea;
+  background: #ffffff;
+  color: #263244;
+  border-radius: 9px;
+  padding: 8px 9px;
+  font-size: 13px;
+  font-weight: 780;
+  outline: none;
+}
+
+.dark-dmg-calc .seg-field input:focus,
+.dark-dmg-calc .seg-field select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,.16);
+}
+
+.dark-dmg-calc .seg-output {
+  margin-top: 12px;
+  background: #eaf5ff;
+  border-radius: 10px;
+  padding: 10px 11px;
+  color: #143a5a;
+  font-size: 12px;
+  font-weight: 950;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.dark-dmg-calc .hidden {
+  display: none !important;
+}
+
+
+
+@container (max-width: 700px) {
+  .dark-dmg-calc .baseline-grid,
+  .dark-dmg-calc .result-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .dark-dmg-calc .baseline-label,
+  .dark-dmg-calc .result-label {
+    font-size: 10px;
+    white-space: nowrap;
+  }
+  .dark-dmg-calc .baseline-value,
+  .dark-dmg-calc .result-value {
+    font-size: clamp(14px, 3.3cqw, 17px);
+    letter-spacing: -0.3px;
+  }
+  .dark-dmg-calc .formula-note,
+  .dark-dmg-calc .segment-note,
+  .dark-dmg-calc .formula-box {
+    font-size: 11px;
+    padding: 8px 10px;
+  }
+}
+
+@container (max-width: 560px) {
+  .dark-dmg-calc .baseline-box,
+  .dark-dmg-calc .result-box {
+    padding: 10px 8px;
+  }
+}
+
+@media (max-width: 860px) {
+  .dark-dmg-calc {
+    max-width: 100%;
+    margin: 1.25rem auto;
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .dark-dmg-calc .dmg-title {
+    font-size: 19px;
+  }
+
+  .dark-dmg-calc .dmg-card {
+    padding: 14px;
+    border-radius: 13px;
+  }
+
+  .dark-dmg-calc .segment-grid,
+  .dark-dmg-calc .segment-grid.public-grid,
+  .dark-dmg-calc .segment-grid.main-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dark-dmg-calc .baseline-grid,
+  .dark-dmg-calc .result-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .dark-dmg-calc .baseline-value,
+  .dark-dmg-calc .result-value {
+    font-size: 16px;
+  }
+
+  .dark-dmg-calc .result-value.accent {
+    font-size: clamp(15px, 3vw, 18px);
+  }
+
+  .dark-dmg-calc .seg-field input,
+  .dark-dmg-calc .seg-field select {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 620px) {
+  .dark-dmg-calc {
+    padding: 12px;
+  }
+
+  .dark-dmg-calc .dmg-header {
+    margin-bottom: 12px;
+  }
+
+
+  .dark-dmg-calc .baseline-box,
+  .dark-dmg-calc .result-box {
+    padding: 11px 9px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dark-dmg-calc {
+    margin: 1rem auto;
+    padding: 10px;
+    border-radius: clamp(10px, 2vw, 13px);
+  }
+
+  .dark-dmg-calc .dmg-card {
+    padding: 12px;
+  }
+
+  .dark-dmg-calc .section-row,
+  .dark-dmg-calc .segment-top {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dark-dmg-calc .add-btn,
+  .dark-dmg-calc .remove-btn {
+    width: 100%;
+  }
+
+  .dark-dmg-calc .segment-grid,
+  .dark-dmg-calc .segment-grid.public-grid,
+  .dark-dmg-calc .segment-grid.main-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+ 
+.dark-dmg-calc .baseline-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.dark-dmg-calc .baseline-label,
+.dark-dmg-calc .result-label {
+  font-size: clamp(9px, 1.45vw, 11px);
+}
+.dark-dmg-calc .baseline-value,
+.dark-dmg-calc .result-value {
+  font-size: clamp(14px, 2.1vw, 17px);
+  letter-spacing: -0.02em;
+}
+.dark-dmg-calc .result-value.accent {
+  font-size: clamp(16px, 2.2vw, 19px);
+}
+@media (max-width: 560px) {
+  .dark-dmg-calc {
+    width: calc(100% - 10px);
+    padding: 10px;
+  }
+  .dark-dmg-calc .dmg-card {
+    padding: 10px;
+  }
+  .dark-dmg-calc .baseline-grid,
+  .dark-dmg-calc .result-grid {
+    gap: 6px;
+  }
+  .dark-dmg-calc .baseline-box,
+  .dark-dmg-calc .result-box {
+    padding: 7px 4px;
+    border-radius: 10px;
+  }
+}
+
+ 
+.dark-dmg-calc .baseline-box.highlight {
+  background: #edf4fb !important;
+  border-color: #cbdff0 !important;
+}
+.dark-dmg-calc .baseline-grid,
+.dark-dmg-calc .result-grid {
+  width: 100%;
+}
+.dark-dmg-calc .baseline-box,
+.dark-dmg-calc .result-box {
+  overflow: hidden;
+}
+
+ 
+.dark-dmg-calc .baseline-grid,
+.dark-dmg-calc .result-grid {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 8px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+.dark-dmg-calc .baseline-box,
+.dark-dmg-calc .result-box {
+  flex: 1 1 0 !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  transform: none !important;
+  margin: 0 !important;
+}
+.dark-dmg-calc .baseline-label,
+.dark-dmg-calc .result-label,
+.dark-dmg-calc .baseline-value,
+.dark-dmg-calc .result-value {
+  max-width: 100% !important;
+  overflow-wrap: anywhere !important;
+  word-break: keep-all !important;
+}
+@media (max-width: 520px) {
+  .dark-dmg-calc .baseline-grid,
+  .dark-dmg-calc .result-grid {
+    gap: 5px !important;
+  }
+  .dark-dmg-calc .baseline-box,
+  .dark-dmg-calc .result-box {
+    padding: 7px 3px !important;
+  }
+  .dark-dmg-calc .baseline-label,
+  .dark-dmg-calc .result-label {
+    font-size: 9px !important;
+  }
+  .dark-dmg-calc .baseline-value,
+  .dark-dmg-calc .result-value {
+    font-size: 13px !important;
+    letter-spacing: -0.05em !important;
+  }
+}
+
+</style>
+
+<script>
+(function(){
+  const TEN_SECONDS = 10;
+  const scarletCommon = {
+    baseAtk: 95139, atkBuff: 115.75, critDmgBuff: 6.61, critRateBuff: 19.57,
+    coreBuff: 0, elementBuff: 0, chargeBuff: 0, takenBuff: 0, sharedBuff: 0, atkDmgBuff: 0
+  };
+  const scarletWeapon = { type: 'weapon', multiplier: 27.08, rps: 12, magazine: 20, reload: 2.3, coreBuff: 0, chargeBuff: 0, sharedBuff: 0, atkDmgBuff: 0 };
+  const scarletSkill = { type: 'skill', multiplier: 849.15, times: 1, coreBuff: 0, chargeBuff: 0, sharedBuff: 0, atkDmgBuff: 0 };
+
+  let segmentId = 0;
+  const $ = id => document.getElementById(id);
+  function pct(v){ return (Number(v) || 0) / 100; }
+  function fmt(n){ if(!Number.isFinite(n)) return '—'; return Math.round(n).toLocaleString(); }
+  function fmt2(n){ if(!Number.isFinite(n)) return '—'; return n.toLocaleString(undefined, { maximumFractionDigits: 3 }); }
+
+  function multipliers(common, seg){
+    const critRate = 0.15 + pct(common.critRateBuff);
+    const critDmg = 0.5 + pct(common.critDmgBuff);
+    const critExpected = critRate * critDmg;
+    const coreBuff = seg.type === 'weapon' ? pct(seg.coreBuff) : 0;
+    const chargeBuff = seg.type === 'weapon' ? pct(seg.chargeBuff) : 0;
+    const sharedBuff = seg.type === 'skill' ? pct(seg.sharedBuff) : 0;
+    const atkDmgBuff = pct(seg.atkDmgBuff);
+    return {
+      critRate,
+      critDmg,
+      critExpected,
+      correction: 1 + critExpected + 0.5 + (1 + coreBuff) + 0.3,
+      element: 1.1 + pct(common.elementBuff),
+      charge: 1 + chargeBuff,
+      vulnerability: 1 + pct(common.takenBuff) + sharedBuff,
+      atkDmg: 1 + atkDmgBuff
+    };
+  }
+
+  function damagePerHit(common, seg){
+    const m = multipliers(common, seg);
+    const atk = common.baseAtk * (1 + pct(common.atkBuff)) * pct(seg.multiplier);
+    return atk * m.correction * m.element * m.charge * m.vulnerability * m.atkDmg;
+  }
+
+  function bulletsInTenSeconds(rps, magazine, reload){
+    rps = Number(rps) || 0; magazine = Number(magazine) || 0; reload = Number(reload) || 0;
+    if(rps <= 0 || magazine <= 0) return 0;
+    let time = TEN_SECONDS, bullets = 0;
+    while(time > 0.000001){
+      const fireTime = Math.min(time, magazine / rps);
+      bullets += fireTime * rps;
+      time -= fireTime;
+      if(time <= 0.000001) break;
+      time -= reload;
+    }
+    return Math.max(0, bullets);
+  }
+
+  function calcSegment(common, seg){
+    const perHit = damagePerHit(common, seg);
+    if(seg.type === 'weapon'){
+      const bullets = bulletsInTenSeconds(seg.rps, seg.magazine, seg.reload);
+      return { total: perHit * bullets, count: bullets, perHit };
+    }
+    const times = Number(seg.times) || 0;
+    return { total: perHit * times, count: times, perHit };
+  }
+
+  function calcScarlet(){
+    const w = calcSegment(scarletCommon, scarletWeapon);
+    const s = calcSegment(scarletCommon, scarletSkill);
+    const total = w.total + s.total;
+    $('scarletWeaponDamage').textContent = fmt(w.total);
+    $('scarletSkillDamage').textContent = fmt(s.total);
+    $('scarletTotalDamage').textContent = fmt(total);
+    const m = multipliers(scarletCommon, scarletWeapon);
+    $('scarletNote').textContent = `武器约 ${fmt2(w.count)} 发；技能 ${fmt2(s.count)} 次。暴击期望 = ${fmt2(m.critRate * 100)}% × ${fmt2(m.critDmg * 100)}% = ${fmt2(m.critExpected)}。`;
+    return total;
+  }
+  const scarletTotal = calcScarlet();
+
+  function readPublic(){
+    return {
+      baseAtk: Number($('pubBaseAtk').value) || 0,
+      atkBuff: Number($('pubAtkBuff').value) || 0,
+      critDmgBuff: Number($('pubCritDmgBuff').value) || 0,
+      critRateBuff: Number($('pubCritRateBuff').value) || 0,
+      elementBuff: Number($('pubElementBuff').value) || 0,
+      takenBuff: Number($('pubTakenBuff').value) || 0
+    };
+  }
+
+  function segmentTemplate(id){
+    return `
+      <div class="segment-card" data-seg-id="${id}">
+        <div class="segment-top">
+          <div class="segment-name">伤害段落 #${id}</div>
+          <button type="button" class="remove-btn">删除</button>
+        </div>
+
+        <div class="segment-grid main-grid">
+          <label class="seg-field"><span>类型</span><select class="seg-type"><option value="weapon">武器 / 普攻</option><option value="skill">技能伤害</option></select></label>
+          <label class="seg-field"><span>倍率 %</span><input type="number" class="seg-multiplier" value="0" step="0.01"></label>
+          <label class="seg-field weapon-only"><span>子弹数 / 秒</span><input type="number" class="seg-rps" value="0" step="0.01"></label>
+          <label class="seg-field weapon-only"><span>最大装弹数</span><input type="number" class="seg-magazine" value="0" step="1"></label>
+          <label class="seg-field weapon-only"><span>换弹速度 秒</span><input type="number" class="seg-reload" value="0" step="0.01"></label>
+          <label class="seg-field skill-only hidden"><span>10秒内触发次数</span><input type="number" class="seg-times" value="1" step="0.01"></label>
+        </div>
+
+        <div class="segment-block-title weapon-buff-title">武器/普攻 buff</div>
+        <div class="segment-grid weapon-buff-grid">
+          <label class="seg-field"><span>核心伤害 buff %</span><input type="number" class="seg-core-buff" value="0" step="0.01"></label>
+          <label class="seg-field"><span>蓄力伤害 buff %</span><input type="number" class="seg-charge-buff" value="0" step="0.01"></label>
+          <label class="seg-field"><span>攻击伤害 buff %</span><input type="number" class="seg-atk-dmg-buff weapon-atk-dmg" value="0" step="0.01"></label>
+        </div>
+
+        <div class="segment-block-title skill-buff-title hidden">技能伤害 buff</div>
+        <div class="segment-grid skill-buff-grid hidden">
+          <label class="seg-field"><span>分摊伤害 buff %</span><input type="number" class="seg-shared-buff" value="0" step="0.01"></label>
+          <label class="seg-field"><span>攻击伤害 buff %</span><input type="number" class="seg-atk-dmg-buff skill-atk-dmg" value="0" step="0.01"></label>
+        </div>
+
+        <div class="seg-output">本段：<span class="seg-damage">0</span></div>
+      </div>`;
+  }
+
+  function addSegment(){
+    segmentId += 1;
+    $('segments').insertAdjacentHTML('beforeend', segmentTemplate(segmentId));
+    bindSegment($('segments').lastElementChild);
+    calculateAll();
+  }
+
+  function bindSegment(card){
+    const typeSelect = card.querySelector('.seg-type');
+    const refreshVisibility = () => {
+      const isWeapon = typeSelect.value === 'weapon';
+      card.querySelectorAll('.weapon-only').forEach(el => el.classList.toggle('hidden', !isWeapon));
+      card.querySelectorAll('.skill-only').forEach(el => el.classList.toggle('hidden', isWeapon));
+      card.querySelector('.weapon-buff-title').classList.toggle('hidden', !isWeapon);
+      card.querySelector('.weapon-buff-grid').classList.toggle('hidden', !isWeapon);
+      card.querySelector('.skill-buff-title').classList.toggle('hidden', isWeapon);
+      card.querySelector('.skill-buff-grid').classList.toggle('hidden', isWeapon);
+    };
+    typeSelect.addEventListener('change', () => { refreshVisibility(); calculateAll(); });
+    card.querySelectorAll('input, select').forEach(el => el.addEventListener('input', calculateAll));
+    card.querySelector('.remove-btn').addEventListener('click', () => { card.remove(); calculateAll(); });
+    refreshVisibility();
+  }
+
+  function readSegments(){
+    return Array.from(document.querySelectorAll('.segment-card')).map(card => {
+      const type = card.querySelector('.seg-type').value;
+      const atkDmgInput = type === 'weapon' ? card.querySelector('.weapon-atk-dmg') : card.querySelector('.skill-atk-dmg');
+      return {
+        card,
+        type,
+        multiplier: Number(card.querySelector('.seg-multiplier').value) || 0,
+        rps: Number(card.querySelector('.seg-rps')?.value) || 0,
+        magazine: Number(card.querySelector('.seg-magazine')?.value) || 0,
+        reload: Number(card.querySelector('.seg-reload')?.value) || 0,
+        times: Number(card.querySelector('.seg-times')?.value) || 0,
+        coreBuff: Number(card.querySelector('.seg-core-buff')?.value) || 0,
+        chargeBuff: Number(card.querySelector('.seg-charge-buff')?.value) || 0,
+        sharedBuff: Number(card.querySelector('.seg-shared-buff')?.value) || 0,
+        atkDmgBuff: Number(atkDmgInput?.value) || 0
+      };
+    });
+  }
+
+  function calculateAll(){
+    const common = readPublic();
+    const segs = readSegments();
+    let total = 0;
+    const parts = [];
+    segs.forEach((seg, idx) => {
+      const res = calcSegment(common, seg);
+      total += res.total;
+      seg.card.querySelector('.seg-damage').textContent = fmt(res.total);
+      const m = multipliers(common, seg);
+      const label = seg.type === 'weapon' ? `武器：约 ${fmt2(res.count)} 发` : `技能伤害：${fmt2(res.count)} 次`;
+      const extra = seg.type === 'weapon'
+        ? `核心 ${fmt2(seg.coreBuff)}%，蓄伤 ${fmt2(seg.chargeBuff)}%，攻伤 ${fmt2(seg.atkDmgBuff)}%`
+        : `分摊 ${fmt2(seg.sharedBuff)}%，攻伤 ${fmt2(seg.atkDmgBuff)}%`;
+      parts.push(`#${idx+1} ${label}，单次伤害 ${fmt(res.perHit)}，本段 ${fmt(res.total)}；专属 buff：${extra}；暴击期望 ${fmt2(m.critRate * 100)}% × ${fmt2(m.critDmg * 100)}% = ${fmt2(m.critExpected)}`);
+    });
+    $('totalDamage').textContent = fmt(total);
+    const ratio = scarletTotal > 0 ? total / scarletTotal : 0;
+    $('scarletRatio').textContent = fmt2(ratio) + ' 红莲';
+    const diff = total - scarletTotal;
+    $('damageDiff').textContent = (diff >= 0 ? '+' : '') + fmt(diff);
+    $('formulaText').innerHTML = parts.length ? parts.join('<br>') : '添加伤害段落并输入倍率后开始计算。';
+  }
+
+  ['pubBaseAtk','pubAtkBuff','pubCritDmgBuff','pubCritRateBuff','pubElementBuff','pubTakenBuff'].forEach(id => {
+    $(id).addEventListener('input', calculateAll);
+  });
+  $('addSegmentBtn').addEventListener('click', addSegment);
+  addSegment();
+})();
+</script>
+
 </section>
 
 
@@ -1527,7 +2709,7 @@ window.onload = function() {
     <section class="article-lastmod">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 7v5l3 3" /></svg>
         <span>
-            最后更新于 2026-06-13
+            最后更新于 2026-06-17
         </span>
     </section></footer>
 
@@ -1546,12 +2728,31 @@ window.onload = function() {
             
                 
 <article class="has-image">
+    <a href="/p/%E5%A6%AE%E5%A7%AC%E5%A6%AE%E6%B8%B8%E5%B0%8F%E8%AF%BE%E5%A0%82/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/images/nikkeTrivia/nikkeTrivia_bg.png" loading="lazy" data-key="" data-hash="/images/nikkeTrivia/nikkeTrivia_bg.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【妮姬】妮游小课堂</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
     <a href="/p/%E5%A6%AE%E5%A7%AC%E5%A6%AE%E5%A7%AC%E7%BB%84%E5%90%88%E6%8B%90%E5%8A%9B%E7%BB%9F%E8%AE%A1%E8%A1%A8/">
         
         
             <div class="article-image">
                 
-                    <img src="/images/nikkeTwinsBuffComparison/bunnyGirl_bg.png" loading="lazy" data-key="" data-hash="/images/nikkeTwinsBuffComparison/bunnyGirl_bg.png"/>
+                    <img src="/images/nikkeTwinsBuffComparison/nikkeTwinsBuffComparison_bg.png" loading="lazy" data-key="" data-hash="/images/nikkeTwinsBuffComparison/nikkeTwinsBuffComparison_bg.png"/>
                 
             </div>
         
@@ -1570,7 +2771,7 @@ window.onload = function() {
         
             <div class="article-image">
                 
-                    <img src="/images/nikkeComment_previous/arcana_bg.png" loading="lazy" data-key="" data-hash="/images/nikkeComment_previous/arcana_bg.png"/>
+                    <img src="/images/nikkeComment_previous/nikkeComment_previous_bg.png" loading="lazy" data-key="" data-hash="/images/nikkeComment_previous/nikkeComment_previous_bg.png"/>
                 
             </div>
         

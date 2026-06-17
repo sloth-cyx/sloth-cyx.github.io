@@ -7,18 +7,364 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>怠惰的天秤-sloth</copyright>
-        <lastBuildDate>Sun, 31 May 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://sloth-cyx.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 16 Jun 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://sloth-cyx.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【妮姬】妮游小课堂</title>
+        <link>https://sloth-cyx.github.io/p/%E5%A6%AE%E5%A7%AC%E5%A6%AE%E6%B8%B8%E5%B0%8F%E8%AF%BE%E5%A0%82/</link>
+        <pubDate>Tue, 16 Jun 2026 00:00:00 +0000</pubDate>
+        
+        <guid>https://sloth-cyx.github.io/p/%E5%A6%AE%E5%A7%AC%E5%A6%AE%E6%B8%B8%E5%B0%8F%E8%AF%BE%E5%A0%82/</guid>
+        <description>&lt;img src="https://sloth-cyx.github.io/images/nikkeTrivia/nikkeTrivia_bg.png" alt="Featured image of post 【妮姬】妮游小课堂" /&gt;&lt;h2 id=&#34;大百科&#34;&gt;大百科
+&lt;/h2&gt;&lt;h3 id=&#34;妮姬伤害计算公式&#34;&gt;妮姬伤害计算公式
+&lt;/h3&gt;&lt;p&gt;⭐ &lt;strong&gt;最终伤害&lt;/strong&gt; = 基础伤害区 × 补正区 × 属性克制增伤区 × 蓄力增伤区 × 额外增伤区 × 易伤区&lt;/p&gt;
+&lt;p&gt;🔴 &lt;strong&gt;基础伤害区：&lt;/strong&gt;（（角色基础攻击）×（攻击力buff）-（莱彻/妮姬防御力））× 武器/技能倍率&lt;br&gt;
+🟠 &lt;strong&gt;补正区：&lt;/strong&gt;（1 +（暴击伤害：基础0.5）+ 弱点补正/核心1 + 距离补正0.3 + 全爆裂补正0.5）&lt;br&gt;
+🟡 &lt;strong&gt;属性克制增伤区：&lt;/strong&gt; 基础1.1&lt;br&gt;
+🟢 &lt;strong&gt;蓄力增伤区：&lt;/strong&gt; 基础为2.5或3.5，不同角色情况不同&lt;br&gt;
+🔵 &lt;strong&gt;额外增伤区：&lt;/strong&gt;（1 +（部位破坏：视怪物不同情况不同）+ 其他增伤（例如海伦技能））&lt;br&gt;
+🟣 &lt;strong&gt;易伤区：&lt;/strong&gt;（1 + 所受伤害/分摊伤害）&lt;/p&gt;
+&lt;p&gt;参考帖子：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://bbs.nga.cn/read.php?tid=34243415&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;【攻略】(11.14更新防御算法) 关于nikke伤害计算公式的推导及结论&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;伤害乘区&#34;&gt;伤害乘区
+&lt;/h3&gt;&lt;p&gt;⚠️ &lt;strong&gt;&lt;mark&gt;同一乘区为互相加算。&lt;/mark&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;攻击力：&lt;/strong&gt; 攻击力&lt;br&gt;
+&lt;strong&gt;攻伤区：&lt;/strong&gt; 攻击伤害，零件伤害，穿透伤害，持续伤害，阻挡部位攻击伤害，无视防御力伤害，发射体附着伤害，发射体爆炸伤害，依次攻击伤害&lt;br&gt;
+&lt;strong&gt;易伤区：&lt;/strong&gt; 所受伤害，分摊伤害&lt;br&gt;
+&lt;strong&gt;补正区：&lt;/strong&gt; 核心伤害，暴击伤害&lt;br&gt;
+&lt;strong&gt;蓄伤区：&lt;/strong&gt; 蓄力伤害&lt;br&gt;
+&lt;strong&gt;优越区：&lt;/strong&gt; 优越代码攻击伤害&lt;/p&gt;
+&lt;h3 id=&#34;基准攻击力&#34;&gt;基准攻击力
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;后现代妮姬里很多攻击拐都有&lt;strong&gt;以施展者为基准的攻击力XX%提升&lt;/strong&gt;的说明，这里解释一下，这是指以妮姬面板的攻击力 × 相应的%提升，吃✅&lt;strong&gt;装备等级，收藏品等级，好感度，突破数，循环室等级&lt;/strong&gt;；但❌&lt;strong&gt;不吃词条&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;这是因为基准拐&lt;strong&gt;结算发生在加载词条前&lt;/strong&gt;，词条是在进入游戏时黑屏loading时加载的。&lt;/li&gt;
+&lt;li&gt;那么这些妮姬不像丽塔一样直接让火力型妮姬加攻XX%，要怎么换算过来呢？以下述的例子展开：
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;妮姬类型&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;1级攻击力&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;400级攻击力&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;差距&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;火力型&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2525&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;92243&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;辅助型&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2425&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;77190&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0.84个火力型&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;防御型&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2425&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;62137&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0.67个火力型&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;li&gt;以皇冠为例，她提供64.51%基准加攻，实际上对火力型来说就是64.51% × 0.67 = 43.22%攻击加成。这部分由于每个人拿的数据不同，结果会有些许差异，都在接受范围内（辅助型 0.83~0.85，防御型 0.66~0.70）。&lt;/li&gt;
+&lt;li&gt;NGA上也有进阶帖子，省流就是&lt;strong&gt;基准攻击50%以上尽量拉满&lt;/strong&gt;（SR15 &amp;amp; T10 | 5-5-5-0），25%~35%考虑拉满，25%以下慎重拉满。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;参考帖子：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://bbs.nga.cn/read.php?tid=46737810&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;【攻略】 进阶基础课：以施展者为基准的攻击力——辅助数值差距的源头&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;武器射速&#34;&gt;武器射速
+&lt;/h3&gt;&lt;p&gt;参考来源：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://media.discordapp.net/attachments/1046881062111952976/1471111543457447936/image.png?ex=6a328a63&amp;amp;is=6a3138e3&amp;amp;hm=539b1f028e584841aab564d64bd5c9a2ce2a72e91e1366ae8484f4dad521f5db&amp;amp;=&amp;amp;format=webp&amp;amp;quality=lossless&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Discord&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;数据&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;步枪&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;机枪&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;冲锋枪&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;霰弹枪&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;射速（子弹数/N帧）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;720&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4200&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1440&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;90&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;理论射速（发/秒）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;12&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;70&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;24&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;每发所需帧数 (60 FPS)&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;40&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;实际射速（60 FPS）（发/秒）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;12&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;60&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;20&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;开启修正后射速（60 FPS）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;12&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;60&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;24&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;每发所需帧数（30 FPS）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;实际射速（30 FPS）（发/秒）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;10&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;30&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;15&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;开启修正后射速（30 FPS）&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;12&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;54&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;24&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;60 FPS相较理论值的射速损失&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0.00%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;14.29%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;16.67%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0.00%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;30 FPS相较60 FPS的射速损失&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;16.67%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;50.00%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;25.00%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0.00%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;&lt;strong&gt;相较60 FPS的理论增益&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0.00%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;16.67%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;20.00%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0.00%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;📌 &lt;mark&gt;相较60 FPS的理论增益&lt;/mark&gt;：如果完全消除帧率导致的射速损失，理论上还能比当前60FPS提升多少。公式为（理论射速/实际射速（60 FPS）（发/秒））- 1。&lt;br&gt;
+📌 以机枪为例，（70/60）- 1 = 16.67%；如果机枪能够达到理论射速70发/秒，那么会比现在60FPS环境下的60发/秒多16.67%的输出。&lt;/p&gt;
+&lt;h3 id=&#34;装弹蓄速词条&#34;&gt;装弹&amp;amp;蓄速词条
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;同档次的词条会先相加，再转换成实际数值，之后进行四舍五入。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;不同档次的词条会分别转换成实际数值，然后各自进行四舍五入。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;将各个实际数值相加，得到最终属性。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;以&lt;strong&gt;装弹&lt;/strong&gt;为例，爱丽丝基础弹药量为 &lt;strong&gt;6发&lt;/strong&gt;，身上拥有2条40.17%，1条60.71%，1条77.15%的装弹词条；那么实际获得的弹药量是多少？&lt;/li&gt;
+&lt;li&gt;正确计算方法：&lt;br&gt;
+  6（基础弹药量）× 40.17% × 2 = 4.82 → 四舍五入为5发&lt;br&gt;
+  6（基础弹药量）× 60.71% × 1 = 3.64 → 四舍五入为4发&lt;br&gt;
+  6（基础弹药量）× 77.15% × 1 = 4.63 → 四舍五入为5发&lt;/li&gt;
+&lt;li&gt;因此爱丽丝的实际弹药量为：6 + 5 + 4 + 5 = &lt;strong&gt;20发&lt;/strong&gt;；若不了解则会算成100% + 40.17% × 2 + 60.71% + 77.15% = 319.09% × 6 = 19.15 → 四舍五入为&lt;strong&gt;19发&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;蓄力速度&lt;/strong&gt;同样遵循这个计算原则，需要注意的是，蓄力速度的计算本质上是 &lt;strong&gt;减少蓄力时间&lt;/strong&gt;。目前推测蓄力时间会 &lt;strong&gt;四舍五入到0.01秒&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;蓄速例子：5.51% × 1秒（基础蓄力时间）= 0.0551秒 → 四舍五入为0.06秒&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;参考帖子：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://forum.gamer.com.tw/G2.php?bsn=36390&amp;amp;sn=646&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;【攻略】2/21 公式修復(照舊制)，備戰競技場蓄速詞條需知 (T10詞條進位研究)&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
+参考帖子：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://nga.178.com/read.php?tid=43103602&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;【攻略】 由装备词条开始的数值计算研究，小心词条不要白洗了，效果甚至可能不升反降【1/24更新完善】&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;小知识&#34;&gt;小知识
+&lt;/h2&gt;&lt;h3 id=&#34;pve&#34;&gt;PVE
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;准心是蓝色时代表有距离补正，是红色时则代表锁定核心。&lt;/li&gt;
+&lt;li&gt;霰弹枪的弹丸数量算在命中次数里。&lt;/li&gt;
+&lt;li&gt;核心算零件，常驻核心的话佩戴零件魔法就会有常驻的31.9%攻伤；非常适合小红帽等大招不需要换弹且穿透打得到核心的妮姬。  &lt;!-- 参考帖子：**[【攻略】4月10日聯盟突襲 Hard模式全攻略 - 科普系列：魔方选择](https://forum.gamer.com.tw/C.php?bsn=36390&amp;snA=21561)**   --&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;pvp&#34;&gt;PVP
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;进攻时，狙击枪会打对面5号位。&lt;/li&gt;
+&lt;li&gt;防守时，霰弹枪会打对面5号位。&lt;/li&gt;
+&lt;li&gt;发射器RL在拥有4%左右蓄力速度的情况下会产生质变，低于3%没有较大影响。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;调和魔方&#34;&gt;调和魔方
+&lt;/h3&gt;&lt;p&gt;调和魔方优越数值：&lt;strong&gt;5级 8.48%&lt;/strong&gt; | &lt;strong&gt;9级 10.60%&lt;/strong&gt; | &lt;strong&gt;11级 14.84%&lt;/strong&gt; | &lt;strong&gt;13级 16.96%&lt;/strong&gt; | &lt;strong&gt;15级 19.09%&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;参考来源：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://bbs.nga.cn/read.php?tid=35942545&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;【数据】常用数据(t10词条概率/魔方升级效果/技能升级消耗)&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;调和魔方&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;LV1&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;LV2&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;LV3&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;遗迹突击魔方：&lt;strong&gt;命中率&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2.54%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3.81%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5.08%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;战术突击魔方：&lt;strong&gt;蓄力伤害&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2.54%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3.81%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5.08%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;遗迹巨熊魔方：&lt;strong&gt;换弹速度&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;14.84%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;22.27%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;29.69%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;主线使用，优先15级&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;战术巨熊魔方：&lt;strong&gt;回弹&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;10回1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;10回2&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;10回3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;PVE使用，适合机枪&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;遗迹促进魔方：&lt;strong&gt;蓄力速度&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1.06%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1.59%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2.12%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;PVP使用，适合调速&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;战术促进魔方：&lt;strong&gt;装弹数&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;14.84%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;22.27%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;29.69%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;遗迹量子魔方：&lt;strong&gt;充能速度&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2.33%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3.50%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4.66%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;PVP使用，适合调速&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;体力神器魔方：&lt;strong&gt;最大体力&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4.84%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;7.27%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;9.69%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;PVP使用，泛用性高&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;遗迹强韧魔方：&lt;strong&gt;防御力&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;24.20%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;36.35%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;48.45%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;遗迹治疗魔方：&lt;strong&gt;治疗量&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;8.06%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;12.12%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;16.16%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;遗迹回火魔方：&lt;strong&gt;减伤&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4.84%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;7.27%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;9.69%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;PVP使用，主C必带&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;遗迹辅助魔方：&lt;strong&gt;20%最大体力&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;6.07%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;9.10%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;12.14%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;遗迹毁灭魔方：&lt;strong&gt;零件伤害&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;15.95%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;23.92%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;31.90%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;PVE使用，环境高伤&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;遗迹穿透魔方：&lt;strong&gt;穿透伤害&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;7.07%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;10.60%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;14.14%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;遗迹粉碎魔方：&lt;strong&gt;无视防御力伤害&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;7.07%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;10.60%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;14.14%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;遗迹掩体魔方：&lt;strong&gt;掩体体力&lt;/strong&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;7.26%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;尚无资料&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;尚无资料&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;黑票商店&#34;&gt;黑票商店
+&lt;/h3&gt;&lt;p&gt;3.5周年后，黑票商店只剩两个位置，4.5周年会填满，那5周年会更新还是游戏结束就不得而知了。&lt;/p&gt;
+&lt;p&gt;参考来源：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://forum.gamer.com.tw/C.php?bsn=36390&amp;amp;snA=11148&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;【情報】3.5周年積分商店/軀體標籤/黑票更新 阿維斯塔軀體標籤&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeTrivia/dailySilverTicketProduct.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;dailySilverTicketProduct.jpg&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>【妮姬】妮姬组合拐力统计表</title>
         <link>https://sloth-cyx.github.io/p/%E5%A6%AE%E5%A7%AC%E5%A6%AE%E5%A7%AC%E7%BB%84%E5%90%88%E6%8B%90%E5%8A%9B%E7%BB%9F%E8%AE%A1%E8%A1%A8/</link>
         <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
         
         <guid>https://sloth-cyx.github.io/p/%E5%A6%AE%E5%A7%AC%E5%A6%AE%E5%A7%AC%E7%BB%84%E5%90%88%E6%8B%90%E5%8A%9B%E7%BB%9F%E8%AE%A1%E8%A1%A8/</guid>
-        <description>&lt;img src="https://sloth-cyx.github.io/images/nikkeTwinsBuffComparison/bunnyGirl_bg.png" alt="Featured image of post 【妮姬】妮姬组合拐力统计表" /&gt;&lt;p&gt;鉴于妮姬这次新出的偶像双子拐力不错，想要统计一下和皇冠+其他拐的区别，就做了这个统计。&lt;/p&gt;
+        <description>&lt;img src="https://sloth-cyx.github.io/images/nikkeTwinsBuffComparison/nikkeTwinsBuffComparison_bg.png" alt="Featured image of post 【妮姬】妮姬组合拐力统计表" /&gt;&lt;p&gt;鉴于妮姬这次新出的偶像双子拐力不错，想要统计一下和皇冠+其他拐的区别，就做了这个统计。&lt;/p&gt;
 &lt;h2 id=&#34;偶像双子&#34;&gt;偶像双子
 &lt;/h2&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;乘区&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;伤害乘区&lt;/th&gt;
 &lt;th style=&#34;text-align:center&#34;&gt;通用&lt;/th&gt;
 &lt;th style=&#34;text-align:center&#34;&gt;拐穿透C&lt;/th&gt;
 &lt;th style=&#34;text-align:center&#34;&gt;拐爆炸C&lt;/th&gt;
@@ -28,10 +374,10 @@
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;攻击力&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;55.27%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;54.62%&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;攻伤区&lt;/td&gt;
@@ -45,42 +391,42 @@
 &lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;暴伤区&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;补正区&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;45.05%&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;暴击率&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;19.94%&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;额外区：蓄伤&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;25.00%&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;额外区：回血&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;3.04%&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;额外区：装弹&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;40.00%&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -88,7 +434,7 @@
 &lt;/h2&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;乘区&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;伤害乘区&lt;/th&gt;
 &lt;th style=&#34;text-align:center&#34;&gt;通用&lt;/th&gt;
 &lt;th style=&#34;text-align:center&#34;&gt;皇冠无回血&lt;/th&gt;
 &lt;/tr&gt;
@@ -96,8 +442,8 @@
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;攻击力&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;68.77%&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;66.83%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;攻伤区&lt;/td&gt;
@@ -107,27 +453,27 @@
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;易伤区&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;10.01%&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;暴伤区&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;补正区&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;暴击率&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;额外区：蓝盾&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;10.45%&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;额外区：换弹&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;96.33%&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -135,7 +481,7 @@
 &lt;/h2&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;乘区&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;伤害乘区&lt;/th&gt;
 &lt;th style=&#34;text-align:center&#34;&gt;通用&lt;/th&gt;
 &lt;th style=&#34;text-align:center&#34;&gt;皇冠无回血&lt;/th&gt;
 &lt;/tr&gt;
@@ -143,8 +489,8 @@
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;攻击力&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;74.93%&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;72.64%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;攻伤区&lt;/td&gt;
@@ -154,27 +500,27 @@
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;易伤区&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;暴伤区&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;补正区&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;暴击率&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;20.05%&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;额外区：蓝盾&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;10.45%&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;额外区：换弹&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;60.21%~75.28%&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -182,7 +528,7 @@
 &lt;/h2&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;乘区&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;伤害乘区&lt;/th&gt;
 &lt;th style=&#34;text-align:center&#34;&gt;通用&lt;/th&gt;
 &lt;th style=&#34;text-align:center&#34;&gt;皇冠无回血&lt;/th&gt;
 &lt;/tr&gt;
@@ -190,8 +536,8 @@
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;攻击力&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;126.08%&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;123.19%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;攻伤区&lt;/td&gt;
@@ -201,22 +547,22 @@
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;易伤区&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;暴伤区&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;补正区&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;40.04%&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;暴击率&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;20.05%&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;额外区：换弹&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;90.29%&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -228,7 +574,14 @@
         <pubDate>Fri, 29 May 2026 00:00:00 +0000</pubDate>
         
         <guid>https://sloth-cyx.github.io/p/%E5%A6%AE%E5%A7%AC%E5%BE%80%E6%9C%9F%E5%A6%AE%E5%A7%AC%E4%B8%AA%E4%BA%BA%E7%AE%80%E8%AF%84/</guid>
-        <description>&lt;img src="https://sloth-cyx.github.io/images/nikkeComment_previous/arcana_bg.png" alt="Featured image of post 【妮姬】往期妮姬个人简评" /&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;#%e6%b3%b7%e5%a5%88&#34; &gt;&lt;strong&gt;20260601 - 添加泷奈&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
+        <description>&lt;img src="https://sloth-cyx.github.io/images/nikkeComment_previous/nikkeComment_previous_bg.png" alt="Featured image of post 【妮姬】往期妮姬个人简评" /&gt;&lt;!-- 
+T0 - 超级人权，各个场合都会优先选择
+T1 - 泛用性/拐力/伤害高或皆是，不吃环境
+T2 - 泛用性/拐力/伤害较T1降1档，较吃环境
+T3 - 泛用性/拐力/伤害低，属于对策卡/偏科生，有可替代选项，如有米兰达就不急茨瓦伊
+T4 - 无任何性价比，属于对策垃圾卡，如风压水樱花 
+--&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;#%e6%b3%b7%e5%a5%88&#34; &gt;&lt;strong&gt;20260601 - 添加泷奈&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
 &lt;a class=&#34;link&#34; href=&#34;#%e8%8c%a8%e7%93%a6%e4%bc%8a&#34; &gt;&lt;strong&gt;20260605 - 添加茨瓦伊&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
 &lt;a class=&#34;link&#34; href=&#34;#%e9%98%bf%e5%b0%94%e5%8d%a1%e5%a8%9c&#34; &gt;&lt;strong&gt;20260613 - 添加阿尔卡娜&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
 &lt;a class=&#34;link&#34; href=&#34;#%e6%88%98%e6%9c%af%e8%b4%9d%e6%96%af%e8%92%82&#34; &gt;&lt;strong&gt;20260613 - 添加战术贝斯蒂&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
@@ -365,7 +718,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;&lt;strong&gt;养成优先级：T4&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;养成优先级：T3&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;XP打分&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;[!VIOLET]&lt;/p&gt;
@@ -377,7 +730,7 @@
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;要点：&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;茨瓦伊属于高暴击+穿透拐，她的技能提供了18.63%+(15%*3)= 63.63%暴击率，配合妮姬自带的15%的暴击率，总计可达&lt;strong&gt;78.63%的暴击率&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;茨瓦伊属于高暴击+穿透拐，她的技能提供了18.63% +（15% × 3）= 63.63%暴击率，配合妮姬自带的15%的暴击率，总计可达&lt;strong&gt;78.63%的暴击率&lt;/strong&gt;。&lt;/li&gt;
 &lt;li&gt;在敏特实装之前，茨瓦伊只能搭配原皮白雪登场。由于原皮白雪自带26.1%的暴击率，两者组合能够&lt;strong&gt;稳定达成百暴&lt;/strong&gt;，成为新一代的铁甲百暴队。&lt;/li&gt;
 &lt;li&gt;敏特实装后，其自带的19.94%的暴击率搭配茨瓦伊正好非常接近百暴，只需要主C携带&lt;strong&gt;任何一阶的暴击词条&lt;/strong&gt;就可达成百暴条件。敏特也带给了茨瓦伊本身没有的攻击力和暴伤乘区，所以两人的相性非常好。&lt;/li&gt;
 &lt;li&gt;当然这个组合也有限制，敏特的暴击率仅覆盖双数回合，所以茨瓦伊+敏特只有在&lt;strong&gt;双数回合&lt;/strong&gt;可以达成百暴。由于这个特殊性，带两个C是亏的（因为另一个C在单数回合亏伤害），反而是&lt;strong&gt;四保一&lt;/strong&gt;最好（一个大C和一个辅C可以最大化利好这种配置）。&lt;/li&gt;
@@ -390,7 +743,7 @@
     铁甲
 &lt;/span&gt;&lt;/strong&gt;和&lt;strong&gt;&lt;span style=&#34;background-color: rgb(0, 195, 255); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
     水冷
-&lt;/span&gt;&lt;/strong&gt;就业。对于已经拥有米兰达的个突玩家来说，茨瓦伊的提升幅度不高，故优先级不高排在&lt;strong&gt;T4&lt;/strong&gt;；个突前排玩家（1%以上）适当提高优先级和练度。&lt;/li&gt;
+&lt;/span&gt;&lt;/strong&gt;就业。对于已经拥有米兰达的个突玩家来说，茨瓦伊的提升幅度不高，故优先级不高排在&lt;strong&gt;T3&lt;/strong&gt;；个突前排玩家（1%以上）适当提高优先级和练度。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_previous/zweiPickup.jpg&#34;
 	
@@ -533,7 +886,7 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;副词条&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;🟥 &lt;strong&gt;PVP&lt;/strong&gt;：暴击、暴伤&lt;br&gt;🟩 &lt;strong&gt;PVE&lt;/strong&gt;：装弹、优越&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;🟥 &lt;strong&gt;PVP&lt;/strong&gt;：暴击，暴伤&lt;br&gt;🟩 &lt;strong&gt;PVE&lt;/strong&gt;：装弹，优越&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -619,7 +972,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;&lt;strong&gt;养成优先级：T2【仅限风压个突】&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;养成优先级：T1.5【仅限风压个突】&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;XP打分&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;[!TIP]&lt;/p&gt;
@@ -641,7 +994,7 @@
 &lt;li&gt;虽然蓄力攻击伤害普遍上并不被看好，但VV给的数值之高引起了质变；以水母为例，她自身的250%蓄力伤害加上100.8%足足有40%的提升，虽然要考虑普攻在全部伤害占比的问题，但无疑也是不错的拐量了。&lt;br&gt;
 &lt;em&gt;&lt;mark&gt;在这个最大刀里，主C娜由塔黑莲水母都能吃到这个蓄力伤害加成！虽然黑莲的伤害大头在技能伤害，但娜由塔和水母的普攻伤害占比不错，加上VV拐的小美人鱼部分，总伤已经超过娜马（但这个配队仅适合联盟战，个突需要5个队伍，能不能组成这个队伍还是个问号，有待考证）。&lt;/mark&gt;&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;轴内&lt;/strong&gt;VV是个副C，虽然能极大的增强小美人鱼伤害的同时自己也能打出不俗的输出，但作为代价失去了&lt;strong&gt;攻击力&amp;amp;蓄力伤害&lt;/strong&gt;的拐力。VV的两种定位无疑增加了VV+小美人鱼的灵活性（甚至硫磺火老师还开发出了百暴美人鱼的打法）。&lt;/li&gt;
-&lt;li&gt;综上所述，VV在风压场合是个非常好用的辅助卡，联盟战不仅可以解放马斯特，个突里和小美人鱼的搭配也非常灵活&lt;strong&gt;不吃环境&lt;/strong&gt;（点名某方舟**游侠），属于卷风个突玩家（1%以上）必练的一张&lt;strong&gt;T1&lt;/strong&gt;卡。&lt;/li&gt;
+&lt;li&gt;综上所述，VV在风压场合是个非常好用的辅助卡，联盟战不仅可以解放马斯特，个突里和小美人鱼的搭配也非常灵活&lt;strong&gt;不吃环境&lt;/strong&gt;（点名某方舟**游侠），故在T2的基础上升半档，优先级为&lt;strong&gt;T1.5&lt;/strong&gt;。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_previous/velvetPickup.jpg&#34;
 	
@@ -698,7 +1051,7 @@
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;副词条&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;🟥 &lt;strong&gt;追上限&lt;/strong&gt;：4蓄速&lt;br&gt;🟩 &lt;strong&gt;追下限&lt;/strong&gt;：1装弹2+蓄速&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;🟥 &lt;strong&gt;追上限&lt;/strong&gt;：4蓄速&lt;br&gt;🟩 &lt;strong&gt;追下限&lt;/strong&gt;：1+装弹2+蓄速&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -717,17 +1070,17 @@
 &lt;li&gt;目前&lt;strong&gt;&lt;span style=&#34;background-color: rgb(94, 255, 0); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
     风压
 &lt;/span&gt;&lt;/strong&gt;第一大C，集伤害，充能，蓄速拐于一身的女人。&lt;/li&gt;
-&lt;li&gt;莉贝雷利奥（以下简称水母）所有的机制都围绕一个机制，&lt;strong&gt;蓄速&lt;/strong&gt;。水母的蓄速拐就是给攻击力最低的&lt;strong&gt;基本爆裂3&lt;/strong&gt;队友，所以只能组11233或12233的阵容。&lt;/li&gt;
+&lt;li&gt;莉贝雷利奥（以下简称水母）所有的机制都围绕一个机制，&lt;strong&gt;蓄速&lt;/strong&gt;。水母的蓄速拐（1.5秒 × 0.1274 = 0.19秒）只给攻击力最低的&lt;strong&gt;基本爆裂3&lt;/strong&gt;队友包括自己，所以只能组11233或12233的阵容。&lt;/li&gt;
 &lt;li&gt;这里稍微解释一下，基本爆裂3为&lt;strong&gt;图标上是爆裂3&lt;/strong&gt;的妮姬，所以小红帽不算，而超毗作为1号位使用的时候也会抢走水母的蓄速buff，导致另一个3号位吃不到，比如黑莲。&lt;strong&gt;3号位的拐更是要极力避免&lt;/strong&gt;，比如初音【珍藏品】也会抢走本应属于黑莲的buff。这些毒点导致水母其实有不少配队限制。&lt;/li&gt;
 &lt;li&gt;重点说一下皇冠，皇冠由于给开大的队友加攻，会导致皇冠+黑莲+水母的配队&lt;strong&gt;黑莲第一个开大&lt;/strong&gt;的话，如果黑莲和水母的练度差距不大，大概&lt;strong&gt;第一次爆裂黑莲是吃不到水母的蓄速buff&lt;/strong&gt;的。参考下述的流程，记住皇冠buff15秒，充能够快会有上轮残余buff：&lt;br&gt;
 &lt;em&gt;&lt;mark&gt;黑莲开大（皇冠+黑莲&amp;gt;水母=&lt;strong&gt;吃不到蓄速&lt;/strong&gt;）&amp;gt;水母开大（水母+皇冠&amp;gt;黑莲+皇冠=黑莲吃蓄速）&amp;gt;黑莲开大（水母+皇冠&amp;gt;黑莲+皇冠=黑莲吃蓄速）&amp;gt;水母开大（水母+皇冠&amp;gt;黑莲+皇冠=黑莲吃蓄速）&amp;hellip;以此循环，所以最好水母&lt;strong&gt;先开大&lt;/strong&gt;。&lt;/mark&gt;&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;接下来说说水母自己的蓄速提升，虽然水母技能不吃任何蓄速改动包括debuff，但词条是吃的，也不影响她的基准蓄速拐，具体流程：&lt;br&gt;
-&lt;strong&gt;基准蓄速拐结算（吃面板） -&amp;gt; Loading页面加载词条 -&amp;gt; 进游戏水母免疫蓄速变动&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;具体说说蓄速词条的水母的提升。首先，水母&lt;strong&gt;每一下普通攻击是有追加攻击&lt;/strong&gt;的，水母全爆裂开始时的160%攻击力提升是3秒，水母的基础蓄力时间是&lt;strong&gt;1.5秒&lt;/strong&gt;；就算水母掐着点进入全爆裂时直接在0.1秒射，但剩下的2.9秒依旧无法让水母完成2下&lt;strong&gt;总计3秒&lt;/strong&gt;的普攻。&lt;/li&gt;
-&lt;li&gt;第一个质变点，&lt;strong&gt;6-8%的蓄速增加&lt;/strong&gt;（1.5秒*0.06=0.09，四舍五入0.1秒）让水母得以达到&lt;strong&gt;1.4秒&lt;/strong&gt;的蓄速；一样情况水母掐着点进入全爆裂时直接在0.1秒射，但这次剩下的2.9秒可以让水母完成2下&lt;strong&gt;总计2.8秒&lt;/strong&gt;的普攻+追加伤害，尤其水母的追加伤害&lt;strong&gt;不是快照&lt;/strong&gt;，所以追加伤害吃得到160%攻击力对伤害的提升有着不小的作用（但水母似乎还是需要3-4条蓄速词条才能确保追加伤害吃满160%攻击力buff）。这也让水母最后一下普攻的追加伤害能更加稳定的吃到全爆裂的buff。&lt;br&gt;
-参考帖子：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://forum.gamer.com.tw/G2.php?bsn=36390&amp;amp;sn=646&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;【攻略】2/21 公式修復(照舊制)，備戰競技場蓄速詞條需知 (T10詞條進位研究)&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;第二个质变点，&lt;strong&gt;17%的蓄速增加&lt;/strong&gt;（1.5秒*0.17=0.255，四舍五入0.26秒）让水母从全爆裂10秒的6-7发普攻增加至8-9发，这可是有&lt;strong&gt;33%的提升&lt;/strong&gt;（当然实测数据有没有理论这么漂亮就不好说了，没看到有类似数据结果）。但是，为了达到这17%的蓄速，词条里的&lt;strong&gt;追上限&lt;/strong&gt;才会推荐4蓄速，而显而易见的，这更加的&lt;strong&gt;牺牲了水母的配队限制&lt;/strong&gt;，导致她必须待在&lt;strong&gt;换弹速度非常高&lt;/strong&gt;的队伍如皇初，女仆双子等。&lt;/li&gt;
+&lt;strong&gt;基准蓄速拐结算（吃面板） -&amp;gt; Loading页面加载词条 -&amp;gt; 进游戏水母技能发动（免疫蓄速变动）&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;具体说说蓄速词条的水母的提升。首先，水母&lt;strong&gt;每一下普通攻击是有追加伤害&lt;/strong&gt;的，水母全爆裂开始时的160%攻击力提升是3秒，水母的基础蓄力时间是&lt;strong&gt;1.5秒&lt;/strong&gt;；就算水母掐着点进入全爆裂时直接在0.1秒射，但剩下的2.9秒依旧无法让水母完成2下&lt;strong&gt;总计3秒&lt;/strong&gt;的普攻。&lt;/li&gt;
+&lt;li&gt;第一个质变点，&lt;strong&gt;6-8%的蓄速增加&lt;/strong&gt;（1.5秒 × 0.06 = 0.09，四舍五入0.1秒）让水母得以达到&lt;strong&gt;1.4秒&lt;/strong&gt;的蓄速；一样情况水母掐着点进入全爆裂时直接在0.1秒射，但这次剩下的2.9秒可以让水母完成2下&lt;strong&gt;总计2.8秒&lt;/strong&gt;的普攻，尤其水母的追加伤害&lt;strong&gt;不是快照&lt;/strong&gt;，所以追加伤害吃得到160%攻击力对伤害的提升有着不小的作用（但水母似乎还是需要3-4条蓄速词条才能确保第3个普攻的追加伤害吃满160%攻击力buff）。这也让水母全爆裂结束的最后一下普攻追加伤害能更加稳定的吃到全爆裂的buff。具体算法可参考&lt;strong&gt;&lt;span style=&#34;background-color: rgb(0, 0, 0); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: rgb(255, 255, 255);&#34;&gt;
+    妮游小课堂：大百科 - 装弹&amp;蓄速词条
+&lt;/span&gt;&lt;/strong&gt;  这篇文章。&lt;/li&gt;
+&lt;li&gt;第二个质变点，&lt;strong&gt;17%的蓄速增加&lt;/strong&gt;（1.5秒 × 0.17 = 0.255，四舍五入0.26秒）让水母从全爆裂10秒的6-7发普攻增加至8-9发，这可是有&lt;strong&gt;33%的提升&lt;/strong&gt;（当然实测数据有没有理论这么漂亮就不好说了，没看到有类似数据结果）。但是，为了达到这17%的蓄速&lt;strong&gt;追上限&lt;/strong&gt;，这无疑&lt;strong&gt;牺牲了水母的配队灵活性&lt;/strong&gt;，导致她必须待在&lt;strong&gt;换弹速度非常高&lt;/strong&gt;的队伍如皇初，女仆双子等。&lt;/li&gt;
 &lt;li&gt;相对的，&lt;strong&gt;追下限&lt;/strong&gt;虽然只让水母从原本的全爆裂6-7发普攻增加至7-8发，但装弹无疑让水母的配置&lt;strong&gt;更加灵活&lt;/strong&gt;的同时也不那么依赖换弹队。&lt;/li&gt;
 &lt;li&gt;由于追加伤害的存在，水母在PVE和PVP的&lt;strong&gt;充能&lt;/strong&gt;都是&lt;strong&gt;非常顶&lt;/strong&gt;的。蓄速拐+充能高的特点也让她得以在跨属的个突中使用，其中最为经典的便是&lt;strong&gt;跨属分摊队&lt;/strong&gt;，还有&lt;strong&gt;&lt;span style=&#34;background-color: rgb(0, 195, 255); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
     水冷
@@ -736,7 +1089,7 @@
 &lt;/span&gt;&lt;/strong&gt;个突的&lt;strong&gt;超尼&lt;/strong&gt;（尤其超尼也是一个极其依赖蓄速追上限的角色）。&lt;/li&gt;
 &lt;li&gt;综上所述，水母是个PVE和PVP都有上场空间的角色，甚至PVE还有诸多功能性以及跨属性带来的实用性让她一跃登顶成为&lt;strong&gt;&lt;span style=&#34;background-color: rgb(94, 255, 0); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
     风压
-&lt;/span&gt;&lt;/strong&gt;最强角色&lt;strong&gt;没有之一&lt;/strong&gt;，&lt;strong&gt;T1&lt;/strong&gt;优先级实至名归。但想要真正毕业的话，养成压力极其大，甚至还会增加配队难度，&lt;strong&gt;仅推荐风压个突前排玩家继续往上养成&lt;/strong&gt;，普通个突玩家4攻4优1+装弹已经很好了。&lt;/li&gt;
+&lt;/span&gt;&lt;/strong&gt;最强角色&lt;strong&gt;没有之一&lt;/strong&gt;，&lt;strong&gt;T1&lt;/strong&gt;优先级实至名归。但想要追上限的话，养成压力极其大，甚至还会增加配队难度。这里&lt;strong&gt;仅推荐风压个突前排玩家&lt;/strong&gt;追11-12词条，普通个突玩家4攻4优1+装弹已经很好了。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_previous/liberalioPickup.jpg&#34;
 	
@@ -757,7 +1110,7 @@
         <pubDate>Sat, 23 May 2026 00:00:00 +0000</pubDate>
         
         <guid>https://sloth-cyx.github.io/p/%E5%A6%AE%E5%A7%AC%E5%A6%AE%E5%A7%AC%E8%B5%84%E6%BA%90/%E8%AE%A1%E7%AE%97%E5%99%A8/</guid>
-        <description>&lt;img src="https://sloth-cyx.github.io/images/nikkeCalculator/2x2_day_bg.png" alt="Featured image of post 【妮姬】妮姬资源/计算器" /&gt;&lt;h2 id=&#34;石头期望计算器&#34;&gt;石头期望计算器
+        <description>&lt;img src="https://sloth-cyx.github.io/images/nikkeCalculator/nikkeCalculator_bg.png" alt="Featured image of post 【妮姬】妮姬资源/计算器" /&gt;&lt;h2 id=&#34;石头期望计算器&#34;&gt;石头期望计算器
 &lt;/h2&gt;&lt;div class=&#34;nikke-drop-calc-section&#34; style=&#34;width: 100%; margin: 2rem auto; max-width: 800px; font-family: -apple-system, sans-serif; background: #fff5f5; border: 1px solid #ebdada; border-radius: 12px; padding: 25px; color: #333; box-shadow: 0 4px 12px rgba(180,160,160,0.08);&#34;&gt;
         
     &lt;div style=&#34;margin: 20px 0; display: flex; align-items: center; gap: 10px;&#34;&gt;
@@ -1530,9 +1883,81 @@ window.onload = function() {
   calculate();
 })();
 &lt;/script&gt;
-&lt;h2 id=&#34;词条概率&#34;&gt;词条概率
+&lt;h2 id=&#34;词条期望计算器&#34;&gt;词条期望计算器
 &lt;/h2&gt;&lt;div class=&#34;nikke-attributes-section&#34; style=&#34;width: 100%; margin: 2.5rem auto; max-width: 900px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #e6eff6; border: 1px solid #cbdbe6; border-radius: 12px; padding: 25px; color: #2c3e50; box-shadow: 0 4px 16px rgba(180,200,215,0.25);&#34;&gt;
   
+  &lt;div class=&#34;attr-calc-card&#34;&gt;
+    &lt;div class=&#34;attr-section-title&#34;&gt;词条期望计算器&lt;/div&gt;
+    &lt;div class=&#34;attr-calc-note&#34;&gt;
+      选择目标词条后自动计算命中概率、期望洗词条次数、石头消耗与锁子消耗。已锁定词条视为已经拥有，不参与命中概率计算。&lt;br&gt;
+      「石头锁定」会计算一次性锁定成本；「石头已锁」只计算后续洗词条增加的每次石头成本。
+    &lt;/div&gt;
+
+    &lt;div class=&#34;attr-slot-grid&#34;&gt;
+      &lt;div class=&#34;attr-slot-card&#34;&gt;
+        &lt;div class=&#34;slot-title&#34;&gt;第一格&lt;/span&gt;&lt;/div&gt;
+        &lt;label&gt;目标词条&lt;/label&gt;
+        &lt;select id=&#34;attrSlot1&#34; class=&#34;attr-select&#34;&gt;&lt;/select&gt;
+        &lt;label&gt;锁定方式&lt;/label&gt;
+        &lt;select id=&#34;lockSlot1&#34; class=&#34;attr-select lock-select&#34; disabled&gt;
+          &lt;option value=&#34;none&#34;&gt;没锁&lt;/option&gt;
+          &lt;option value=&#34;stoneDone&#34;&gt;石头已锁&lt;/option&gt;
+          &lt;option value=&#34;stone&#34;&gt;石头锁定&lt;/option&gt;
+          &lt;option value=&#34;key&#34;&gt;锁子锁定&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&#34;attr-slot-card&#34;&gt;
+        &lt;div class=&#34;slot-title&#34;&gt;第二格&lt;/div&gt;
+        &lt;label&gt;目标词条&lt;/label&gt;
+        &lt;select id=&#34;attrSlot2&#34; class=&#34;attr-select&#34;&gt;&lt;/select&gt;
+        &lt;label&gt;锁定方式&lt;/label&gt;
+        &lt;select id=&#34;lockSlot2&#34; class=&#34;attr-select lock-select&#34; disabled&gt;
+          &lt;option value=&#34;none&#34;&gt;没锁&lt;/option&gt;
+          &lt;option value=&#34;stoneDone&#34;&gt;石头已锁&lt;/option&gt;
+          &lt;option value=&#34;stone&#34;&gt;石头锁定&lt;/option&gt;
+          &lt;option value=&#34;key&#34;&gt;锁子锁定&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&#34;attr-slot-card&#34;&gt;
+        &lt;div class=&#34;slot-title&#34;&gt;第三格&lt;/div&gt;
+        &lt;label&gt;目标词条&lt;/label&gt;
+        &lt;select id=&#34;attrSlot3&#34; class=&#34;attr-select&#34;&gt;&lt;/select&gt;
+        &lt;label&gt;锁定方式&lt;/label&gt;
+        &lt;select id=&#34;lockSlot3&#34; class=&#34;attr-select lock-select&#34; disabled&gt;
+          &lt;option value=&#34;none&#34;&gt;没锁&lt;/option&gt;
+          &lt;option value=&#34;stoneDone&#34;&gt;石头已锁&lt;/option&gt;
+          &lt;option value=&#34;stone&#34;&gt;石头锁定&lt;/option&gt;
+          &lt;option value=&#34;key&#34;&gt;锁子锁定&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;attr-result-grid&#34;&gt;
+      &lt;div class=&#34;attr-result-box&#34;&gt;
+        &lt;div class=&#34;result-label&#34;&gt;概率&lt;/div&gt;
+        &lt;div class=&#34;result-value&#34; id=&#34;attrTotalRate&#34;&gt;—&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;attr-result-box&#34;&gt;
+        &lt;div class=&#34;result-label&#34;&gt;期望洗词条次数&lt;/div&gt;
+        &lt;div class=&#34;result-value&#34; id=&#34;attrExpectedRuns&#34;&gt;—&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;attr-result-box&#34;&gt;
+        &lt;div class=&#34;result-label&#34;&gt;石头消耗&lt;/div&gt;
+        &lt;div class=&#34;result-value&#34; id=&#34;attrStoneCost&#34;&gt;—&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;attr-result-box&#34;&gt;
+        &lt;div class=&#34;result-label&#34;&gt;锁子消耗&lt;/div&gt;
+        &lt;div class=&#34;result-value&#34; id=&#34;attrKeyCost&#34;&gt;—&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;attr-warning-box&#34; id=&#34;attrWarningText&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;attr-formula-box&#34; id=&#34;attrFormulaText&#34;&gt;请选择至少一个未锁定的目标词条。&lt;/div&gt;
+  &lt;/div&gt;
+
+
   &lt;div class=&#34;rules-notes&#34; style=&#34;margin-top: 20px; background: #f0f4f8; border-radius: 6px; padding: 12px 15px; font-size: 12px; line-height: 1.6; color: #4a5568; border-left: 4px solid #63b3ed;&#34;&gt;
     📌 &lt;strong&gt;洗词条提示：&lt;/strong&gt;&lt;br&gt;
     1. T9 企业装备进化为 Overlord (T10) 装备时，&lt;strong&gt;初始必给SSR等级11阶词条&lt;/strong&gt;！&lt;br&gt;
@@ -1564,7 +1989,7 @@ window.onload = function() {
           &lt;td style=&#34;text-align: center; font-weight: bold; color: #b7791f; background: #fffaf0 !important;&#34;&gt;11.81% ~ 14.63%&lt;/td&gt;
         &lt;/tr&gt;
         &lt;tr&gt;
-          &lt;td style=&#34;font-weight: bold; color: #2c3e50; padding: 10px; border: 1px solid #e1e8ed; background: #fcfdfe !important;&#34;&gt;最大弹药数 (12%)&lt;/td&gt;
+          &lt;td style=&#34;font-weight: bold; color: #2c3e50; padding: 10px; border: 1px solid #e1e8ed; background: #fcfdfe !important;&#34;&gt;最大装弹数 (12%)&lt;/td&gt;
           &lt;td style=&#34;text-align: center; background: #ffffff !important;&#34;&gt;27.84% ~ 44.28%&lt;/td&gt;
           &lt;td style=&#34;text-align: center; background: #ffffff !important;&#34;&gt;48.39% ~ 64.82%&lt;/td&gt;
           &lt;td style=&#34;text-align: center; font-weight: bold; color: #b7791f; background: #fffaf0 !important;&#34;&gt;68.93% ~ 85.37%&lt;/td&gt;
@@ -1673,6 +2098,1115 @@ window.onload = function() {
   border: 1px solid #e1e8ed !important;
 }
 &lt;/style&gt;
+
+&lt;style&gt;
+.nikke-attributes-section,
+.nikke-attributes-section * {
+  box-sizing: border-box;
+}
+
+.nikke-attributes-section h1,
+.nikke-attributes-section h2,
+.nikke-attributes-section h3,
+.nikke-attributes-section h4,
+.nikke-attributes-section h5,
+.nikke-attributes-section h6 {
+  border-inline-start: none !important;
+  padding-inline-start: 0 !important;
+}
+
+.nikke-attributes-section .attr-calc-card {
+  background: #ffffff;
+  border: 1px solid #cbdbe6;
+  border-radius: 8px;
+  padding: 18px;
+  margin-bottom: 20px;
+}
+
+.nikke-attributes-section .attr-section-title {
+  margin: 0 0 12px;
+  color: #2b6cb0;
+  font-size: 15px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.nikke-attributes-section .attr-calc-note {
+  background: #f0f4f8;
+  border-left: 4px solid #63b3ed;
+  border-radius: 6px;
+  color: #4a5568;
+  font-size: 12px;
+  line-height: 1.6;
+  margin-bottom: 14px;
+  padding: 10px 12px;
+}
+
+.nikke-attributes-section .attr-slot-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.nikke-attributes-section .attr-slot-card {
+  background: #f8fbfd;
+  border: 1px solid #dbe7ef;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.nikke-attributes-section .slot-title {
+  color: #2c3e50;
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.nikke-attributes-section .slot-title span {
+  color: #2b6cb0;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.nikke-attributes-section .attr-slot-card label {
+  color: #4a5568;
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 8px 0 4px;
+}
+
+.nikke-attributes-section .attr-select {
+  appearance: auto;
+  background: #ffffff;
+  border: 1px solid #cbdbe6;
+  border-radius: 6px;
+  color: #2c3e50;
+  font-size: 13px;
+  font-weight: 700;
+  outline: none;
+  padding: 8px;
+  width: 100%;
+}
+
+.nikke-attributes-section .attr-select:disabled {
+  background: #edf2f7;
+  color: #a0aec0;
+  cursor: not-allowed;
+}
+
+.nikke-attributes-section .attr-result-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.nikke-attributes-section .attr-result-box {
+  background: #f0f5fa;
+  border: 1px solid #dbe7ef;
+  border-radius: 8px;
+  padding: 10px 8px;
+  text-align: center;
+}
+
+.nikke-attributes-section .result-label {
+  color: #4a5568;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.nikke-attributes-section .result-value {
+  color: #2b6cb0;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+
+
+.nikke-attributes-section .attr-select.attr-error {
+  border-color: #e53e3e !important;
+  background: #fff5f5 !important;
+}
+
+.nikke-attributes-section .attr-warning-box {
+  background: #fff5f5;
+  border: 1px solid #feb2b2;
+  border-radius: 6px;
+  color: #9b2c2c;
+  display: none;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.6;
+  margin-top: 12px;
+  padding: 10px 12px;
+}
+
+.nikke-attributes-section .attr-formula-box {
+  background: #fffaf0;
+  border: 1px solid #f6d98f;
+  border-radius: 6px;
+  color: #744210;
+  font-size: 12px;
+  line-height: 1.6;
+  margin-top: 12px;
+  padding: 10px 12px;
+}
+
+@media (max-width: 768px) {
+  .nikke-attributes-section {
+    padding: 14px !important;
+  }
+
+  .nikke-attributes-section .attr-calc-card,
+  .nikke-attributes-section .attr-table-wrapper {
+    padding: 14px !important;
+  }
+
+  .nikke-attributes-section .attr-slot-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .nikke-attributes-section .attr-result-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .nikke-attributes-section .attr-select {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 420px) {
+  .nikke-attributes-section .attr-result-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+&lt;/style&gt;
+
+&lt;script&gt;
+(function () {
+  const ATTR_OPTIONS = [
+    { value: &#39;&#39;, name: &#39;空&#39;, rate: 0 },
+    { value: &#39;atk&#39;, name: &#39;攻击力&#39;, rate: 0.10 },
+    { value: &#39;element&#39;, name: &#39;优越代码&#39;, rate: 0.10 },
+    { value: &#39;ammo&#39;, name: &#39;最大装弹数&#39;, rate: 0.12 },
+    { value: &#39;critRate&#39;, name: &#39;暴击率&#39;, rate: 0.10 },
+    { value: &#39;critDmg&#39;, name: &#39;暴击伤害&#39;, rate: 0.12 },
+    { value: &#39;chargeSpeed&#39;, name: &#39;蓄力速度&#39;, rate: 0.12 },
+    { value: &#39;chargeDmg&#39;, name: &#39;蓄力伤害&#39;, rate: 0.12 },
+    { value: &#39;def&#39;, name: &#39;防御力&#39;, rate: 0.10 },
+    { value: &#39;hit&#39;, name: &#39;命中率&#39;, rate: 0.12 }
+  ];
+  const SLOT_RATES = [1, 0.5, 0.3];
+  const STONE_PER_ROLL = [1, 2, 3];
+  const STONE_LOCK_COST = [0, 2, 5];
+  const KEY_PER_ROLL = [0, 20, 50];
+
+  const attrSelects = [
+    document.getElementById(&#39;attrSlot1&#39;),
+    document.getElementById(&#39;attrSlot2&#39;),
+    document.getElementById(&#39;attrSlot3&#39;)
+  ];
+
+  const lockSelects = [
+    document.getElementById(&#39;lockSlot1&#39;),
+    document.getElementById(&#39;lockSlot2&#39;),
+    document.getElementById(&#39;lockSlot3&#39;)
+  ];
+
+  function formatNumber(num) {
+    if (!Number.isFinite(num)) return &#39;—&#39;;
+    if (Math.abs(num - Math.round(num)) &lt; 0.000001) return Math.round(num).toLocaleString();
+    return num.toLocaleString(undefined, { maximumFractionDigits: 2 });
+  }
+
+  function formatRate(rate) {
+    if (!Number.isFinite(rate)) return &#39;—&#39;;
+    const percent = rate * 100;
+    if (percent &gt;= 1) return percent.toLocaleString(undefined, { maximumFractionDigits: 4 }) + &#39;%&#39;;
+    return percent.toLocaleString(undefined, { maximumFractionDigits: 6 }) + &#39;%&#39;;
+  }
+
+  function getAttr(value) {
+    return ATTR_OPTIONS.find(item =&gt; item.value === value) || ATTR_OPTIONS[0];
+  }
+
+  function initOptions() {
+    const html = ATTR_OPTIONS.map(item =&gt; `&lt;option value=&#34;${item.value}&#34;&gt;${item.name}&lt;/option&gt;`).join(&#39;&#39;);
+    attrSelects.forEach(select =&gt; {
+      select.innerHTML = html;
+    });
+  }
+
+  function validateDuplicateAttrs() {
+    const selectedMap = {};
+    const duplicates = [];
+
+    attrSelects.forEach(select =&gt; {
+      select.classList.remove(&#39;attr-error&#39;);
+      if (!select.value) return;
+      if (!selectedMap[select.value]) selectedMap[select.value] = [];
+      selectedMap[select.value].push(select);
+    });
+
+    Object.keys(selectedMap).forEach(value =&gt; {
+      if (selectedMap[value].length &gt; 1) {
+        const attr = getAttr(value);
+        duplicates.push(attr.name);
+        selectedMap[value].forEach(select =&gt; select.classList.add(&#39;attr-error&#39;));
+      }
+    });
+
+    const warningBox = document.getElementById(&#39;attrWarningText&#39;);
+    if (duplicates.length &gt; 0) {
+      warningBox.style.display = &#39;block&#39;;
+      warningBox.textContent = &#39;同一件装备不能重复选择相同词条：&#39; + duplicates.join(&#39;、&#39;) + &#39;。请更换其中一个格子的目标词条。&#39;;
+      return false;
+    }
+
+    warningBox.style.display = &#39;none&#39;;
+    warningBox.textContent = &#39;&#39;;
+    return true;
+  }
+
+  function calculateAttributes() {
+    if (!validateDuplicateAttrs()) {
+      document.getElementById(&#39;attrTotalRate&#39;).textContent = &#39;—&#39;;
+      document.getElementById(&#39;attrExpectedRuns&#39;).textContent = &#39;—&#39;;
+      document.getElementById(&#39;attrStoneCost&#39;).textContent = &#39;—&#39;;
+      document.getElementById(&#39;attrKeyCost&#39;).textContent = &#39;—&#39;;
+      document.getElementById(&#39;attrFormulaText&#39;).textContent = &#39;请先修正重复词条后再计算。&#39;;
+      return;
+    }
+
+    let totalRate = 1;
+    let targetCount = 0;
+    let lockedCount = 0;
+    let stoneLockedCount = 0;
+    let stoneDoneCount = 0;
+    let keyLockedCount = 0;
+    const formulaParts = [];
+
+    attrSelects.forEach((attrSelect, index) =&gt; {
+      const attr = getAttr(attrSelect.value);
+      const lockSelect = lockSelects[index];
+
+      if (!attr.value) {
+        lockSelect.value = &#39;none&#39;;
+        lockSelect.disabled = true;
+        return;
+      }
+
+      lockSelect.disabled = false;
+      const lockType = lockSelect.value;
+
+      if (lockType !== &#39;none&#39;) {
+        lockedCount += 1;
+        if (lockType === &#39;stone&#39;) stoneLockedCount += 1;
+        if (lockType === &#39;stoneDone&#39;) stoneDoneCount += 1;
+        if (lockType === &#39;key&#39;) keyLockedCount += 1;
+        const lockLabel = lockType === &#39;stone&#39; ? &#39;石头锁定&#39; : (lockType === &#39;stoneDone&#39; ? &#39;石头已锁&#39; : &#39;锁子锁定&#39;);
+        formulaParts.push(`第${index + 1}格「${attr.name}」${lockLabel}，不参与概率计算`);
+        return;
+      }
+
+      const slotRate = SLOT_RATES[index];
+      const hitRate = slotRate * attr.rate;
+      totalRate *= hitRate;
+      targetCount += 1;
+      formulaParts.push(`第${index + 1}格「${attr.name}」：${formatRate(slotRate)} × ${formatRate(attr.rate)} = ${formatRate(hitRate)}`);
+    });
+
+    if (lockedCount &gt; 2) {
+      document.getElementById(&#39;attrTotalRate&#39;).textContent = &#39;—&#39;;
+      document.getElementById(&#39;attrExpectedRuns&#39;).textContent = &#39;—&#39;;
+      document.getElementById(&#39;attrStoneCost&#39;).textContent = &#39;—&#39;;
+      document.getElementById(&#39;attrKeyCost&#39;).textContent = &#39;—&#39;;
+      document.getElementById(&#39;attrFormulaText&#39;).textContent = &#39;游戏内最多只能锁定 2 个词条，请减少锁定数量。&#39;;
+      return;
+    }
+
+    if (targetCount === 0) {
+      document.getElementById(&#39;attrTotalRate&#39;).textContent = &#39;—&#39;;
+      document.getElementById(&#39;attrExpectedRuns&#39;).textContent = &#39;0 次&#39;;
+      document.getElementById(&#39;attrStoneCost&#39;).textContent = &#39;0 颗&#39;;
+      document.getElementById(&#39;attrKeyCost&#39;).textContent = &#39;0 个&#39;;
+      document.getElementById(&#39;attrFormulaText&#39;).textContent = formulaParts.length ? &#39;当前只有已锁定词条，没有需要继续洗的目标。&#39; : &#39;请选择至少一个未锁定的目标词条。&#39;;
+      return;
+    }
+
+    const expectedRuns = 1 / totalRate;
+    const stonePerRoll = STONE_PER_ROLL[lockedCount];
+    const stoneLockCost = STONE_LOCK_COST[stoneLockedCount];
+    const keyPerRoll = KEY_PER_ROLL[keyLockedCount];
+    const stoneCost = expectedRuns * stonePerRoll + stoneLockCost;
+    const keyCost = expectedRuns * keyPerRoll;
+
+    document.getElementById(&#39;attrTotalRate&#39;).textContent = formatRate(totalRate);
+    document.getElementById(&#39;attrExpectedRuns&#39;).textContent = formatNumber(expectedRuns) + &#39; 次&#39;;
+    document.getElementById(&#39;attrStoneCost&#39;).textContent = formatNumber(stoneCost) + &#39; 颗&#39;;
+    document.getElementById(&#39;attrKeyCost&#39;).textContent = formatNumber(keyCost) + &#39; 个&#39;;
+
+    formulaParts.push(`锁定数量：${lockedCount} 个；每次洗词条消耗 ${stonePerRoll} 颗石头`);
+    if (stoneLockedCount &gt; 0) formulaParts.push(`石头锁定：${stoneLockedCount} 个；一次性消耗 ${stoneLockCost} 颗石头`);
+    if (stoneDoneCount &gt; 0) formulaParts.push(`石头已锁：${stoneDoneCount} 个；不再计算一次性锁定成本，但会增加每次洗词条石头消耗`);
+    if (keyLockedCount &gt; 0) formulaParts.push(`锁子锁定：${keyLockedCount} 个；每次洗词条消耗 ${keyPerRoll} 个锁子`);
+    formulaParts.push(`期望石头 = ${formatNumber(expectedRuns)} × ${stonePerRoll} + ${stoneLockCost} = ${formatNumber(stoneCost)} 颗`);
+    if (keyPerRoll &gt; 0) formulaParts.push(`期望锁子 = ${formatNumber(expectedRuns)} × ${keyPerRoll} = ${formatNumber(keyCost)} 个`);
+
+    document.getElementById(&#39;attrFormulaText&#39;).innerHTML = formulaParts.join(&#39;&lt;br&gt;&#39;);
+  }
+
+  initOptions();
+  attrSelects.forEach(select =&gt; select.addEventListener(&#39;change&#39;, calculateAttributes));
+  lockSelects.forEach(select =&gt; select.addEventListener(&#39;change&#39;, calculateAttributes));
+  calculateAttributes();
+})();
+&lt;/script&gt;
+&lt;h2 id=&#34;全爆裂伤害计算器beta&#34;&gt;全爆裂伤害计算器（Beta）
+&lt;/h2&gt;&lt;div class=&#34;nikke-dmg-calc dark-dmg-calc&#34;&gt;
+  &lt;div class=&#34;dmg-header&#34;&gt;
+    &lt;div class=&#34;dmg-kicker&#34;&gt;NIKKE DAMAGE TOOL&lt;/div&gt;
+    &lt;div class=&#34;dmg-title&#34;&gt;妮姬全爆裂 10 秒伤害计算器&lt;/div&gt;
+    &lt;div class=&#34;dmg-desc&#34;&gt;公共 buff 统一填写；不同伤害段只填写自己能吃到的buff。&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;dmg-card dmg-baseline-card&#34;&gt;
+    &lt;div class=&#34;dmg-section-title&#34;&gt;固定基准：红莲 10 秒伤害&lt;/div&gt;
+    &lt;div class=&#34;baseline-grid&#34;&gt;
+      &lt;div class=&#34;baseline-box&#34;&gt;&lt;div class=&#34;baseline-label&#34;&gt;红莲武器伤害&lt;/div&gt;&lt;div class=&#34;baseline-value&#34; id=&#34;scarletWeaponDamage&#34;&gt;—&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&#34;baseline-box&#34;&gt;&lt;div class=&#34;baseline-label&#34;&gt;红莲技能伤害&lt;/div&gt;&lt;div class=&#34;baseline-value&#34; id=&#34;scarletSkillDamage&#34;&gt;—&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&#34;baseline-box&#34;&gt;&lt;div class=&#34;baseline-label&#34;&gt;红莲合计伤害&lt;/div&gt;&lt;div class=&#34;baseline-value&#34; id=&#34;scarletTotalDamage&#34;&gt;—&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;formula-note&#34; id=&#34;scarletNote&#34;&gt;红莲数据固定，不参与下方输入修改。&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;dmg-card&#34;&gt;
+    &lt;div class=&#34;dmg-section-title&#34;&gt;公共参数&lt;/div&gt;
+    &lt;div class=&#34;segment-note&#34;&gt;这里填写所有伤害段都能吃到的参数。武器/普攻和技能伤害buff请在各自伤害段落中填写。&lt;/div&gt;&lt;br&gt;
+    &lt;div class=&#34;segment-grid public-grid&#34;&gt;
+      &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;基础攻击力&lt;/span&gt;&lt;input type=&#34;number&#34; id=&#34;pubBaseAtk&#34; value=&#34;0&#34; min=&#34;0&#34; step=&#34;1&#34;&gt;&lt;/label&gt;
+      &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;攻击力 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; id=&#34;pubAtkBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+      &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;暴击伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; id=&#34;pubCritDmgBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+      &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;暴击率 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; id=&#34;pubCritRateBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+      &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;优越伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; id=&#34;pubElementBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+      &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;所受伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; id=&#34;pubTakenBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;dmg-card&#34;&gt;
+    &lt;div class=&#34;section-row&#34;&gt;
+      &lt;div class=&#34;dmg-section-title no-margin&#34;&gt;伤害段落&lt;/div&gt;
+      &lt;button type=&#34;button&#34; id=&#34;addSegmentBtn&#34; class=&#34;add-btn&#34;&gt;+ 添加伤害&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;segment-note&#34;&gt;武器/普攻：核心伤害、蓄力伤害、攻击伤害为本段专属。技能伤害：分摊伤害、攻击伤害为本段专属。&lt;/div&gt;
+    &lt;div id=&#34;segments&#34;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;dmg-card result-card&#34;&gt;
+    &lt;div class=&#34;dmg-section-title&#34;&gt;计算结果&lt;/div&gt;
+    &lt;div class=&#34;result-grid&#34;&gt;
+      &lt;div class=&#34;result-box&#34;&gt;&lt;div class=&#34;result-label&#34;&gt;角色 10 秒总伤害&lt;/div&gt;&lt;div class=&#34;result-value&#34; id=&#34;totalDamage&#34;&gt;—&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&#34;result-box&#34;&gt;&lt;div class=&#34;result-label&#34;&gt;相当于红莲&lt;/div&gt;&lt;div class=&#34;result-value accent&#34; id=&#34;scarletRatio&#34;&gt;—&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&#34;result-box&#34;&gt;&lt;div class=&#34;result-label&#34;&gt;差值&lt;/div&gt;&lt;div class=&#34;result-value&#34; id=&#34;damageDiff&#34;&gt;—&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;formula-box&#34; id=&#34;formulaText&#34;&gt;添加伤害段落并输入倍率后开始计算。&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.nikke-dmg-calc,
+.nikke-dmg-calc * {
+  box-sizing: border-box;
+}
+
+.nikke-dmg-calc h1,
+.nikke-dmg-calc h2,
+.nikke-dmg-calc h3,
+.nikke-dmg-calc h4,
+.nikke-dmg-calc h5,
+.nikke-dmg-calc h6 {
+  border-inline-start: none !important;
+  padding-inline-start: 0 !important;
+}
+
+.dark-dmg-calc {
+  width: 100%;
+  max-width: min(100%, 760px);
+  margin: 1.25rem auto;
+  padding: clamp(10px, 2.2vw, 16px);
+  container-type: inline-size;
+  font-family: -apple-system, BlinkMacSystemFont, &#34;Segoe UI&#34;, sans-serif;
+  color: #e7eef7;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(96, 165, 250, .20), transparent 30%),
+    radial-gradient(circle at 88% 8%, rgba(245, 158, 11, .10), transparent 26%),
+    linear-gradient(135deg, #111827, #172033 56%, #0f172a);
+  border: 1px solid rgba(148,163,184,.22);
+  border-radius: clamp(12px, 2vw, 16px);
+  box-shadow: 0 10px 26px rgba(0,0,0,.28);
+  overflow: hidden;
+}
+
+.dark-dmg-calc .dmg-header {
+  text-align: center;
+  margin-bottom: clamp(10px, 2vw, 14px);
+  padding: 4px 6px 0;
+}
+
+.dark-dmg-calc .dmg-kicker {
+  color: #93c5fd;
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: 1.7px;
+}
+
+.dark-dmg-calc .dmg-title {
+  color: #f8fafc;
+  font-size: clamp(17px, 3.6vw, 21px);
+  font-weight: 950;
+  line-height: 1.35;
+  margin-top: 6px;
+}
+
+.dark-dmg-calc .dmg-desc {
+  color: #b6c5d8;
+  font-size: 12px;
+  line-height: 1.6;
+  margin-top: 7px;
+}
+
+.dark-dmg-calc .dmg-card {
+  background: rgba(248,250,252,.95);
+  border: 1px solid rgba(186,210,235,.36);
+  border-radius: clamp(10px, 2vw, 13px);
+  padding: clamp(12px, 2.4vw, 15px);
+  margin-top: clamp(10px, 2vw, 12px);
+  color: #263244;
+  box-shadow: 0 5px 16px rgba(2,6,23,.14);
+}
+
+.dark-dmg-calc .dmg-section-title {
+  color: #24527a;
+  font-size: clamp(13px, 2.4vw, 14px);
+  font-weight: 950;
+  line-height: 1.4;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.dark-dmg-calc .no-margin {
+  margin: 0;
+}
+
+.dark-dmg-calc .baseline-grid,
+.dark-dmg-calc .result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(6px, 1.5vw, 9px);
+}
+
+.dark-dmg-calc .baseline-box,
+.dark-dmg-calc .result-box {
+  background: #edf4fb;
+  border: 1px solid #cbdff0;
+  border-radius: 12px;
+  padding: clamp(8px, 1.8vw, 11px) clamp(6px, 1.6vw, 9px);
+  text-align: center;
+  min-width: 0;
+}
+
+.dark-dmg-calc .baseline-box.highlight {
+  background: #edf4fb;
+  border-color: #cbdff0;
+}
+
+.dark-dmg-calc .baseline-label,
+.dark-dmg-calc .result-label {
+  color: #5b6b80;
+  font-size: clamp(10px, 1.9vw, 11px);
+  font-weight: 850;
+  line-height: 1.35;
+  margin-bottom: 6px;
+}
+
+.dark-dmg-calc .baseline-value,
+.dark-dmg-calc .result-value {
+  color: #11324d;
+  font-size: clamp(15px, 3vw, 18px);
+  font-weight: 950;
+  line-height: 1.25;
+  word-break: break-word;
+}
+
+.dark-dmg-calc .result-value.accent {
+  color: #d97706;
+  font-size: clamp(17px, 3.6vw, 21px);
+}
+
+.dark-dmg-calc .formula-note,
+.dark-dmg-calc .segment-note,
+.dark-dmg-calc .formula-box {
+  font-size: 12px;
+  line-height: 1.65;
+  border-radius: 9px;
+  padding: 9px 11px;
+  margin-top: 10px;
+}
+
+.dark-dmg-calc .formula-note,
+.dark-dmg-calc .segment-note {
+  background: #ecf6ff;
+  color: #526779;
+  border-left: 4px solid #58a6ff;
+}
+
+.dark-dmg-calc .formula-box {
+  background: #fff7ed;
+  color: #7c3f12;
+  border: 1px solid #f0c27a;
+}
+
+.dark-dmg-calc .section-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.dark-dmg-calc .add-btn,
+.dark-dmg-calc .remove-btn {
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 950;
+  padding: 8px 14px;
+  color: #fff;
+  background: linear-gradient(135deg, #2563eb, #0ea5e9);
+  box-shadow: 0 4px 12px rgba(37,99,235,.24);
+  white-space: nowrap;
+}
+
+.dark-dmg-calc .remove-btn {
+  background: linear-gradient(135deg, #b91c1c, #ef4444);
+  padding: 7px 12px;
+  box-shadow: none;
+}
+
+.dark-dmg-calc .segment-card {
+  background: #f8fbff;
+  border: 1px solid #d7e6f5;
+  border-radius: 13px;
+  padding: 13px;
+  margin-top: 12px;
+}
+
+.dark-dmg-calc .segment-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 11px;
+}
+
+.dark-dmg-calc .segment-name {
+  color: #173a59;
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.dark-dmg-calc .segment-block-title {
+  color: #24527a;
+  font-size: 12px;
+  font-weight: 950;
+  margin: 13px 0 8px;
+  padding-top: 11px;
+  border-top: 1px dashed #c8dbea;
+}
+
+.dark-dmg-calc .segment-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.dark-dmg-calc .segment-grid.public-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.dark-dmg-calc .segment-grid.main-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.dark-dmg-calc .seg-field {
+  min-width: 0;
+}
+
+.dark-dmg-calc .seg-field span {
+  display: block;
+  color: #4f6275;
+  font-size: clamp(10px, 1.9vw, 11px);
+  font-weight: 850;
+  line-height: 1.35;
+  margin-bottom: 5px;
+}
+
+.dark-dmg-calc .seg-field input,
+.dark-dmg-calc .seg-field select {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #c7d9ea;
+  background: #ffffff;
+  color: #263244;
+  border-radius: 9px;
+  padding: 8px 9px;
+  font-size: 13px;
+  font-weight: 780;
+  outline: none;
+}
+
+.dark-dmg-calc .seg-field input:focus,
+.dark-dmg-calc .seg-field select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,.16);
+}
+
+.dark-dmg-calc .seg-output {
+  margin-top: 12px;
+  background: #eaf5ff;
+  border-radius: 10px;
+  padding: 10px 11px;
+  color: #143a5a;
+  font-size: 12px;
+  font-weight: 950;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.dark-dmg-calc .hidden {
+  display: none !important;
+}
+
+
+
+@container (max-width: 700px) {
+  .dark-dmg-calc .baseline-grid,
+  .dark-dmg-calc .result-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .dark-dmg-calc .baseline-label,
+  .dark-dmg-calc .result-label {
+    font-size: 10px;
+    white-space: nowrap;
+  }
+  .dark-dmg-calc .baseline-value,
+  .dark-dmg-calc .result-value {
+    font-size: clamp(14px, 3.3cqw, 17px);
+    letter-spacing: -0.3px;
+  }
+  .dark-dmg-calc .formula-note,
+  .dark-dmg-calc .segment-note,
+  .dark-dmg-calc .formula-box {
+    font-size: 11px;
+    padding: 8px 10px;
+  }
+}
+
+@container (max-width: 560px) {
+  .dark-dmg-calc .baseline-box,
+  .dark-dmg-calc .result-box {
+    padding: 10px 8px;
+  }
+}
+
+@media (max-width: 860px) {
+  .dark-dmg-calc {
+    max-width: 100%;
+    margin: 1.25rem auto;
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .dark-dmg-calc .dmg-title {
+    font-size: 19px;
+  }
+
+  .dark-dmg-calc .dmg-card {
+    padding: 14px;
+    border-radius: 13px;
+  }
+
+  .dark-dmg-calc .segment-grid,
+  .dark-dmg-calc .segment-grid.public-grid,
+  .dark-dmg-calc .segment-grid.main-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dark-dmg-calc .baseline-grid,
+  .dark-dmg-calc .result-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .dark-dmg-calc .baseline-value,
+  .dark-dmg-calc .result-value {
+    font-size: 16px;
+  }
+
+  .dark-dmg-calc .result-value.accent {
+    font-size: clamp(15px, 3vw, 18px);
+  }
+
+  .dark-dmg-calc .seg-field input,
+  .dark-dmg-calc .seg-field select {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 620px) {
+  .dark-dmg-calc {
+    padding: 12px;
+  }
+
+  .dark-dmg-calc .dmg-header {
+    margin-bottom: 12px;
+  }
+
+
+  .dark-dmg-calc .baseline-box,
+  .dark-dmg-calc .result-box {
+    padding: 11px 9px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dark-dmg-calc {
+    margin: 1rem auto;
+    padding: 10px;
+    border-radius: clamp(10px, 2vw, 13px);
+  }
+
+  .dark-dmg-calc .dmg-card {
+    padding: 12px;
+  }
+
+  .dark-dmg-calc .section-row,
+  .dark-dmg-calc .segment-top {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dark-dmg-calc .add-btn,
+  .dark-dmg-calc .remove-btn {
+    width: 100%;
+  }
+
+  .dark-dmg-calc .segment-grid,
+  .dark-dmg-calc .segment-grid.public-grid,
+  .dark-dmg-calc .segment-grid.main-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+ 
+.dark-dmg-calc .baseline-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.dark-dmg-calc .baseline-label,
+.dark-dmg-calc .result-label {
+  font-size: clamp(9px, 1.45vw, 11px);
+}
+.dark-dmg-calc .baseline-value,
+.dark-dmg-calc .result-value {
+  font-size: clamp(14px, 2.1vw, 17px);
+  letter-spacing: -0.02em;
+}
+.dark-dmg-calc .result-value.accent {
+  font-size: clamp(16px, 2.2vw, 19px);
+}
+@media (max-width: 560px) {
+  .dark-dmg-calc {
+    width: calc(100% - 10px);
+    padding: 10px;
+  }
+  .dark-dmg-calc .dmg-card {
+    padding: 10px;
+  }
+  .dark-dmg-calc .baseline-grid,
+  .dark-dmg-calc .result-grid {
+    gap: 6px;
+  }
+  .dark-dmg-calc .baseline-box,
+  .dark-dmg-calc .result-box {
+    padding: 7px 4px;
+    border-radius: 10px;
+  }
+}
+
+ 
+.dark-dmg-calc .baseline-box.highlight {
+  background: #edf4fb !important;
+  border-color: #cbdff0 !important;
+}
+.dark-dmg-calc .baseline-grid,
+.dark-dmg-calc .result-grid {
+  width: 100%;
+}
+.dark-dmg-calc .baseline-box,
+.dark-dmg-calc .result-box {
+  overflow: hidden;
+}
+
+ 
+.dark-dmg-calc .baseline-grid,
+.dark-dmg-calc .result-grid {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 8px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+.dark-dmg-calc .baseline-box,
+.dark-dmg-calc .result-box {
+  flex: 1 1 0 !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  transform: none !important;
+  margin: 0 !important;
+}
+.dark-dmg-calc .baseline-label,
+.dark-dmg-calc .result-label,
+.dark-dmg-calc .baseline-value,
+.dark-dmg-calc .result-value {
+  max-width: 100% !important;
+  overflow-wrap: anywhere !important;
+  word-break: keep-all !important;
+}
+@media (max-width: 520px) {
+  .dark-dmg-calc .baseline-grid,
+  .dark-dmg-calc .result-grid {
+    gap: 5px !important;
+  }
+  .dark-dmg-calc .baseline-box,
+  .dark-dmg-calc .result-box {
+    padding: 7px 3px !important;
+  }
+  .dark-dmg-calc .baseline-label,
+  .dark-dmg-calc .result-label {
+    font-size: 9px !important;
+  }
+  .dark-dmg-calc .baseline-value,
+  .dark-dmg-calc .result-value {
+    font-size: 13px !important;
+    letter-spacing: -0.05em !important;
+  }
+}
+
+&lt;/style&gt;
+
+&lt;script&gt;
+(function(){
+  const TEN_SECONDS = 10;
+  const scarletCommon = {
+    baseAtk: 95139, atkBuff: 115.75, critDmgBuff: 6.61, critRateBuff: 19.57,
+    coreBuff: 0, elementBuff: 0, chargeBuff: 0, takenBuff: 0, sharedBuff: 0, atkDmgBuff: 0
+  };
+  const scarletWeapon = { type: &#39;weapon&#39;, multiplier: 27.08, rps: 12, magazine: 20, reload: 2.3, coreBuff: 0, chargeBuff: 0, sharedBuff: 0, atkDmgBuff: 0 };
+  const scarletSkill = { type: &#39;skill&#39;, multiplier: 849.15, times: 1, coreBuff: 0, chargeBuff: 0, sharedBuff: 0, atkDmgBuff: 0 };
+
+  let segmentId = 0;
+  const $ = id =&gt; document.getElementById(id);
+  function pct(v){ return (Number(v) || 0) / 100; }
+  function fmt(n){ if(!Number.isFinite(n)) return &#39;—&#39;; return Math.round(n).toLocaleString(); }
+  function fmt2(n){ if(!Number.isFinite(n)) return &#39;—&#39;; return n.toLocaleString(undefined, { maximumFractionDigits: 3 }); }
+
+  function multipliers(common, seg){
+    const critRate = 0.15 + pct(common.critRateBuff);
+    const critDmg = 0.5 + pct(common.critDmgBuff);
+    const critExpected = critRate * critDmg;
+    const coreBuff = seg.type === &#39;weapon&#39; ? pct(seg.coreBuff) : 0;
+    const chargeBuff = seg.type === &#39;weapon&#39; ? pct(seg.chargeBuff) : 0;
+    const sharedBuff = seg.type === &#39;skill&#39; ? pct(seg.sharedBuff) : 0;
+    const atkDmgBuff = pct(seg.atkDmgBuff);
+    return {
+      critRate,
+      critDmg,
+      critExpected,
+      correction: 1 + critExpected + 0.5 + (1 + coreBuff) + 0.3,
+      element: 1.1 + pct(common.elementBuff),
+      charge: 1 + chargeBuff,
+      vulnerability: 1 + pct(common.takenBuff) + sharedBuff,
+      atkDmg: 1 + atkDmgBuff
+    };
+  }
+
+  function damagePerHit(common, seg){
+    const m = multipliers(common, seg);
+    const atk = common.baseAtk * (1 + pct(common.atkBuff)) * pct(seg.multiplier);
+    return atk * m.correction * m.element * m.charge * m.vulnerability * m.atkDmg;
+  }
+
+  function bulletsInTenSeconds(rps, magazine, reload){
+    rps = Number(rps) || 0; magazine = Number(magazine) || 0; reload = Number(reload) || 0;
+    if(rps &lt;= 0 || magazine &lt;= 0) return 0;
+    let time = TEN_SECONDS, bullets = 0;
+    while(time &gt; 0.000001){
+      const fireTime = Math.min(time, magazine / rps);
+      bullets += fireTime * rps;
+      time -= fireTime;
+      if(time &lt;= 0.000001) break;
+      time -= reload;
+    }
+    return Math.max(0, bullets);
+  }
+
+  function calcSegment(common, seg){
+    const perHit = damagePerHit(common, seg);
+    if(seg.type === &#39;weapon&#39;){
+      const bullets = bulletsInTenSeconds(seg.rps, seg.magazine, seg.reload);
+      return { total: perHit * bullets, count: bullets, perHit };
+    }
+    const times = Number(seg.times) || 0;
+    return { total: perHit * times, count: times, perHit };
+  }
+
+  function calcScarlet(){
+    const w = calcSegment(scarletCommon, scarletWeapon);
+    const s = calcSegment(scarletCommon, scarletSkill);
+    const total = w.total + s.total;
+    $(&#39;scarletWeaponDamage&#39;).textContent = fmt(w.total);
+    $(&#39;scarletSkillDamage&#39;).textContent = fmt(s.total);
+    $(&#39;scarletTotalDamage&#39;).textContent = fmt(total);
+    const m = multipliers(scarletCommon, scarletWeapon);
+    $(&#39;scarletNote&#39;).textContent = `武器约 ${fmt2(w.count)} 发；技能 ${fmt2(s.count)} 次。暴击期望 = ${fmt2(m.critRate * 100)}% × ${fmt2(m.critDmg * 100)}% = ${fmt2(m.critExpected)}。`;
+    return total;
+  }
+  const scarletTotal = calcScarlet();
+
+  function readPublic(){
+    return {
+      baseAtk: Number($(&#39;pubBaseAtk&#39;).value) || 0,
+      atkBuff: Number($(&#39;pubAtkBuff&#39;).value) || 0,
+      critDmgBuff: Number($(&#39;pubCritDmgBuff&#39;).value) || 0,
+      critRateBuff: Number($(&#39;pubCritRateBuff&#39;).value) || 0,
+      elementBuff: Number($(&#39;pubElementBuff&#39;).value) || 0,
+      takenBuff: Number($(&#39;pubTakenBuff&#39;).value) || 0
+    };
+  }
+
+  function segmentTemplate(id){
+    return `
+      &lt;div class=&#34;segment-card&#34; data-seg-id=&#34;${id}&#34;&gt;
+        &lt;div class=&#34;segment-top&#34;&gt;
+          &lt;div class=&#34;segment-name&#34;&gt;伤害段落 #${id}&lt;/div&gt;
+          &lt;button type=&#34;button&#34; class=&#34;remove-btn&#34;&gt;删除&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&#34;segment-grid main-grid&#34;&gt;
+          &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;类型&lt;/span&gt;&lt;select class=&#34;seg-type&#34;&gt;&lt;option value=&#34;weapon&#34;&gt;武器 / 普攻&lt;/option&gt;&lt;option value=&#34;skill&#34;&gt;技能伤害&lt;/option&gt;&lt;/select&gt;&lt;/label&gt;
+          &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;倍率 %&lt;/span&gt;&lt;input type=&#34;number&#34; class=&#34;seg-multiplier&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+          &lt;label class=&#34;seg-field weapon-only&#34;&gt;&lt;span&gt;子弹数 / 秒&lt;/span&gt;&lt;input type=&#34;number&#34; class=&#34;seg-rps&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+          &lt;label class=&#34;seg-field weapon-only&#34;&gt;&lt;span&gt;最大装弹数&lt;/span&gt;&lt;input type=&#34;number&#34; class=&#34;seg-magazine&#34; value=&#34;0&#34; step=&#34;1&#34;&gt;&lt;/label&gt;
+          &lt;label class=&#34;seg-field weapon-only&#34;&gt;&lt;span&gt;换弹速度 秒&lt;/span&gt;&lt;input type=&#34;number&#34; class=&#34;seg-reload&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+          &lt;label class=&#34;seg-field skill-only hidden&#34;&gt;&lt;span&gt;10秒内触发次数&lt;/span&gt;&lt;input type=&#34;number&#34; class=&#34;seg-times&#34; value=&#34;1&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&#34;segment-block-title weapon-buff-title&#34;&gt;武器/普攻 buff&lt;/div&gt;
+        &lt;div class=&#34;segment-grid weapon-buff-grid&#34;&gt;
+          &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;核心伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; class=&#34;seg-core-buff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+          &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;蓄力伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; class=&#34;seg-charge-buff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+          &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;攻击伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; class=&#34;seg-atk-dmg-buff weapon-atk-dmg&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&#34;segment-block-title skill-buff-title hidden&#34;&gt;技能伤害 buff&lt;/div&gt;
+        &lt;div class=&#34;segment-grid skill-buff-grid hidden&#34;&gt;
+          &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;分摊伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; class=&#34;seg-shared-buff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+          &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;攻击伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; class=&#34;seg-atk-dmg-buff skill-atk-dmg&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&#34;seg-output&#34;&gt;本段：&lt;span class=&#34;seg-damage&#34;&gt;0&lt;/span&gt;&lt;/div&gt;
+      &lt;/div&gt;`;
+  }
+
+  function addSegment(){
+    segmentId += 1;
+    $(&#39;segments&#39;).insertAdjacentHTML(&#39;beforeend&#39;, segmentTemplate(segmentId));
+    bindSegment($(&#39;segments&#39;).lastElementChild);
+    calculateAll();
+  }
+
+  function bindSegment(card){
+    const typeSelect = card.querySelector(&#39;.seg-type&#39;);
+    const refreshVisibility = () =&gt; {
+      const isWeapon = typeSelect.value === &#39;weapon&#39;;
+      card.querySelectorAll(&#39;.weapon-only&#39;).forEach(el =&gt; el.classList.toggle(&#39;hidden&#39;, !isWeapon));
+      card.querySelectorAll(&#39;.skill-only&#39;).forEach(el =&gt; el.classList.toggle(&#39;hidden&#39;, isWeapon));
+      card.querySelector(&#39;.weapon-buff-title&#39;).classList.toggle(&#39;hidden&#39;, !isWeapon);
+      card.querySelector(&#39;.weapon-buff-grid&#39;).classList.toggle(&#39;hidden&#39;, !isWeapon);
+      card.querySelector(&#39;.skill-buff-title&#39;).classList.toggle(&#39;hidden&#39;, isWeapon);
+      card.querySelector(&#39;.skill-buff-grid&#39;).classList.toggle(&#39;hidden&#39;, isWeapon);
+    };
+    typeSelect.addEventListener(&#39;change&#39;, () =&gt; { refreshVisibility(); calculateAll(); });
+    card.querySelectorAll(&#39;input, select&#39;).forEach(el =&gt; el.addEventListener(&#39;input&#39;, calculateAll));
+    card.querySelector(&#39;.remove-btn&#39;).addEventListener(&#39;click&#39;, () =&gt; { card.remove(); calculateAll(); });
+    refreshVisibility();
+  }
+
+  function readSegments(){
+    return Array.from(document.querySelectorAll(&#39;.segment-card&#39;)).map(card =&gt; {
+      const type = card.querySelector(&#39;.seg-type&#39;).value;
+      const atkDmgInput = type === &#39;weapon&#39; ? card.querySelector(&#39;.weapon-atk-dmg&#39;) : card.querySelector(&#39;.skill-atk-dmg&#39;);
+      return {
+        card,
+        type,
+        multiplier: Number(card.querySelector(&#39;.seg-multiplier&#39;).value) || 0,
+        rps: Number(card.querySelector(&#39;.seg-rps&#39;)?.value) || 0,
+        magazine: Number(card.querySelector(&#39;.seg-magazine&#39;)?.value) || 0,
+        reload: Number(card.querySelector(&#39;.seg-reload&#39;)?.value) || 0,
+        times: Number(card.querySelector(&#39;.seg-times&#39;)?.value) || 0,
+        coreBuff: Number(card.querySelector(&#39;.seg-core-buff&#39;)?.value) || 0,
+        chargeBuff: Number(card.querySelector(&#39;.seg-charge-buff&#39;)?.value) || 0,
+        sharedBuff: Number(card.querySelector(&#39;.seg-shared-buff&#39;)?.value) || 0,
+        atkDmgBuff: Number(atkDmgInput?.value) || 0
+      };
+    });
+  }
+
+  function calculateAll(){
+    const common = readPublic();
+    const segs = readSegments();
+    let total = 0;
+    const parts = [];
+    segs.forEach((seg, idx) =&gt; {
+      const res = calcSegment(common, seg);
+      total += res.total;
+      seg.card.querySelector(&#39;.seg-damage&#39;).textContent = fmt(res.total);
+      const m = multipliers(common, seg);
+      const label = seg.type === &#39;weapon&#39; ? `武器：约 ${fmt2(res.count)} 发` : `技能伤害：${fmt2(res.count)} 次`;
+      const extra = seg.type === &#39;weapon&#39;
+        ? `核心 ${fmt2(seg.coreBuff)}%，蓄伤 ${fmt2(seg.chargeBuff)}%，攻伤 ${fmt2(seg.atkDmgBuff)}%`
+        : `分摊 ${fmt2(seg.sharedBuff)}%，攻伤 ${fmt2(seg.atkDmgBuff)}%`;
+      parts.push(`#${idx+1} ${label}，单次伤害 ${fmt(res.perHit)}，本段 ${fmt(res.total)}；专属 buff：${extra}；暴击期望 ${fmt2(m.critRate * 100)}% × ${fmt2(m.critDmg * 100)}% = ${fmt2(m.critExpected)}`);
+    });
+    $(&#39;totalDamage&#39;).textContent = fmt(total);
+    const ratio = scarletTotal &gt; 0 ? total / scarletTotal : 0;
+    $(&#39;scarletRatio&#39;).textContent = fmt2(ratio) + &#39; 红莲&#39;;
+    const diff = total - scarletTotal;
+    $(&#39;damageDiff&#39;).textContent = (diff &gt;= 0 ? &#39;+&#39; : &#39;&#39;) + fmt(diff);
+    $(&#39;formulaText&#39;).innerHTML = parts.length ? parts.join(&#39;&lt;br&gt;&#39;) : &#39;添加伤害段落并输入倍率后开始计算。&#39;;
+  }
+
+  [&#39;pubBaseAtk&#39;,&#39;pubAtkBuff&#39;,&#39;pubCritDmgBuff&#39;,&#39;pubCritRateBuff&#39;,&#39;pubElementBuff&#39;,&#39;pubTakenBuff&#39;].forEach(id =&gt; {
+    $(id).addEventListener(&#39;input&#39;, calculateAll);
+  });
+  $(&#39;addSegmentBtn&#39;).addEventListener(&#39;click&#39;, addSegment);
+  addSegment();
+})();
+&lt;/script&gt;
 </description>
         </item>
         <item>
@@ -1681,7 +3215,14 @@ window.onload = function() {
         <pubDate>Fri, 22 May 2026 00:00:00 +0000</pubDate>
         
         <guid>https://sloth-cyx.github.io/p/%E5%A6%AE%E5%A7%AC2026%E5%A6%AE%E5%A7%AC%E4%B8%AA%E4%BA%BA%E7%AE%80%E8%AF%84/</guid>
-        <description>&lt;img src="https://sloth-cyx.github.io/images/nikkeComment_2026/nikkeComment_2026_bg.png" alt="Featured image of post 【妮姬】2026妮姬个人简评" /&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;#%e6%95%8f%e7%89%b9&#34; &gt;&lt;strong&gt;20260522 - 添加敏特&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
+        <description>&lt;img src="https://sloth-cyx.github.io/images/nikkeComment_2026/nikkeComment_2026_bg.png" alt="Featured image of post 【妮姬】2026妮姬个人简评" /&gt;&lt;!-- 
+T0 - 超级人权，各个场合都会优先选择
+T1 - 泛用性/拐力/伤害高或皆是，不吃环境
+T2 - 泛用性/拐力/伤害较T1降1档，较吃环境
+T3 - 泛用性/拐力/伤害低，属于对策卡/偏科生，有可替代选项，如有米兰达就不急茨瓦伊
+T4 - 无任何性价比，属于对策垃圾卡，如风压水樱花 
+--&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;#%e6%95%8f%e7%89%b9&#34; &gt;&lt;strong&gt;20260522 - 添加敏特&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
 &lt;a class=&#34;link&#34; href=&#34;#%e6%99%ae%e8%8e%89%e5%8d%a1&#34; &gt;&lt;strong&gt;20260528 - 添加普莉卡&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
 &lt;a class=&#34;link&#34; href=&#34;#%e6%96%b9%e8%88%9f%e9%bb%91%e8%89%b2%e6%b8%b8%e4%be%a0&#34; &gt;&lt;strong&gt;20260611 - 添加方舟黑色游侠&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;敏特&#34;&gt;敏特
@@ -1752,7 +3293,7 @@ window.onload = function() {
 &lt;li&gt;&lt;strong&gt;10-7-10：通用拐【搭配普莉卡/米兰达/垃圾刀】&lt;/strong&gt;&lt;br&gt;
 1技能提供的攻击力相对2技能的偏科拐更为通用，适合绝大部分阵容。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;7-10-10：百暴拐【搭配茨瓦伊】&lt;/strong&gt; &lt;br&gt;
-茨瓦依珍藏品本身提供63.63%暴击率+妮姬自带15%暴击率+敏特19.94%暴击率=98.57%暴击率！主C只要一条&lt;strong&gt;1阶段的暴击率词条&lt;/strong&gt;就足以达到百暴！但要是2技能只点7，则主C需要&lt;strong&gt;9阶段或以上的暴击率词条&lt;/strong&gt;才可以达成百暴。&lt;/li&gt;
+茨瓦依珍藏品本身提供63.63%暴击率 + 妮姬自带15%暴击率 + 敏特19.94%暴击率 = 98.57%暴击率！主C只要一条&lt;strong&gt;1阶段的暴击率词条&lt;/strong&gt;就足以达到百暴！但要是2技能只点7，则主C需要&lt;strong&gt;9阶段或以上的暴击率词条&lt;/strong&gt;才可以达成百暴。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;ol start=&#34;3&#34;&gt;
 &lt;li&gt;NGA上有帖子统计过水百暴对重装白雪的收益，分别是米兰达，茨瓦伊，兔爱德，敏特组成的排列组合。&lt;br&gt;
@@ -1761,7 +3302,7 @@ window.onload = function() {
 &lt;em&gt;&lt;mark&gt;伤害排序：茨瓦伊+敏特 342.7e（手操）&amp;gt; 米兰达+敏特 339.1e &amp;gt; 茨瓦伊+敏特 318.6e（自动）&amp;gt; 米兰达+兔爱德 315.6e &amp;gt; 茨瓦伊+兔爱德 302.3e&lt;/mark&gt;&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;由此可见，茨瓦伊+敏特是比较好的搭配，其原因就在敏特能帮助茨瓦伊覆盖其他伤害乘区，而兔爱德大量的拐力集中在攻伤区，和茨瓦伊本身的拐力乘区是一样的。&lt;/li&gt;
 &lt;li&gt;目前来看，茨瓦伊+敏特会在多判的情况下完胜米兰达+敏特；而单判的情况下，米兰达+敏特的高额加攻和暴伤也许能反超茨瓦伊+敏特！这就只能静待后续有无合适的个突来做测试。&lt;/li&gt;
-&lt;li&gt;综上所述，敏特本质上是张&lt;strong&gt;泛用性极强&lt;/strong&gt;的辅助卡；搭配茨瓦伊/米兰达的情况下特别契合原皮白雪和重装白雪，意味着她在&lt;strong&gt;&lt;span style=&#34;background-color: rgb(255, 174, 0); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
+&lt;li&gt;综上所述，敏特本质上是张&lt;strong&gt;泛用性极强&lt;/strong&gt;的&lt;strong&gt;T1&lt;/strong&gt;辅助卡；搭配茨瓦伊/米兰达的情况下特别契合原皮白雪和重装白雪，意味着她在&lt;strong&gt;&lt;span style=&#34;background-color: rgb(255, 174, 0); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
     铁甲
 &lt;/span&gt;&lt;/strong&gt;和&lt;strong&gt;&lt;span style=&#34;background-color: rgb(0, 195, 255); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
     水冷
@@ -1827,7 +3368,7 @@ window.onload = function() {
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;&lt;strong&gt;养成优先级：T4&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;养成优先级：T2&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;XP打分&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;[!NOTE]&lt;/p&gt;
@@ -1857,7 +3398,7 @@ window.onload = function() {
 &lt;li&gt;以目前S37的水冷个突来看，在没有茨瓦伊解放敏特的情况下，偶像双子组成的穿透队表现相当不错，把这个垃圾刀上下限都提升了不少。这也印证了在&lt;a class=&#34;link&#34; href=&#34;#%e6%95%8f%e7%89%b9&#34; &gt;&lt;strong&gt;敏特篇&lt;/strong&gt;&lt;/a&gt;提供的思路是可行的。&lt;/li&gt;
 &lt;li&gt;普莉卡作为纯轴外的话，虽然提供些许轴外buff，但依旧&lt;strong&gt;不是&lt;/strong&gt;个突3%以上玩家的首选。&lt;/li&gt;
 &lt;li&gt;当然，普莉卡搭配敏特可以在泰塔上场；&lt;a class=&#34;link&#34; href=&#34;#%e6%95%8f%e7%89%b9&#34; &gt;&lt;strong&gt;敏特篇&lt;/strong&gt;&lt;/a&gt;也说过，这个组合提供不错的拐力和生存，所以推图上是不错的选择。但目前泰塔有黑白兔，兔爱德等成熟体系的存在，对中后期玩家来说，&lt;strong&gt;泰塔并没有那么缺人&lt;/strong&gt;。&lt;/li&gt;
-&lt;li&gt;综上所述，不难发现普莉卡+敏特其实是张偏通用的新双子卡；虽然普莉卡&lt;strong&gt;单卡价值有限&lt;/strong&gt;，&lt;strong&gt;但胜在养成成本较低&lt;/strong&gt;，属于优先级不高但想用可以随时拉的卡。&lt;/li&gt;
+&lt;li&gt;综上所述，不难发现普莉卡+敏特其实是张偏通用的新双子卡；虽然普莉卡&lt;strong&gt;单卡价值有限&lt;/strong&gt;，&lt;strong&gt;但胜在养成成本较低&lt;/strong&gt;且和敏特搭配可以在个突/联盟战跨属使用，因此优先级给到&lt;strong&gt;T2&lt;/strong&gt;。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_2026/prikaPickup.jpg&#34;
 	
@@ -1909,7 +3450,7 @@ window.onload = function() {
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;&lt;strong&gt;养成优先级：T2.5【仅限风压个突】&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;养成优先级：T2【仅限风压个突】&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;XP打分&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;[!TIP]&lt;/p&gt;
@@ -1924,11 +3465,11 @@ window.onload = function() {
 &lt;li&gt;黑色游侠是张不错的&lt;strong&gt;&lt;span style=&#34;background-color: rgb(94, 255, 0); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
     风压
 &lt;/span&gt;&lt;/strong&gt;个突C，据LGG测试，没零件&lt;strong&gt;2.9&lt;/strong&gt;红，有零件&lt;strong&gt;3.7&lt;/strong&gt;红。&lt;/li&gt;
-&lt;li&gt;由于自拐（156.19%攻击力+272.93%dot）极高，导致吃拐率差，搭配队友优先&lt;strong&gt;其他乘区&lt;/strong&gt;的辅助，比如易伤拐（如水罗/白兔等），百暴（米兰达）。&lt;/li&gt;
+&lt;li&gt;由于自拐（156.19%攻击力 + 272.93%dot）极高，导致吃拐率差，搭配队友优先&lt;strong&gt;其他乘区&lt;/strong&gt;的辅助，比如易伤拐（如水罗/白兔等），百暴（米兰达）。&lt;/li&gt;
 &lt;li&gt;也由于自身自带的高额攻击力，黑色游侠就算不进米兰达百暴也&lt;strong&gt;不差&lt;/strong&gt;，毕竟攻击力也可以作用于普攻。&lt;/li&gt;
 &lt;li&gt;现在黑色游侠存在一个bug，也就是开启大招时变身开激活的dot会迟一秒启动，导致最后1dot吃不到全爆裂加成，会比理论上损失7-8%伤害。但也可能是类似初音开大的“机制”。&lt;/li&gt;
 &lt;li&gt;当然，黑色游侠也存在类似于草莓糖的&lt;strong&gt;C带拐&lt;/strong&gt;机制，也就是她可以拐风压步枪的dot伤害（77.5%）；但这个拐力有些微妙，不如草莓糖易伤泛用。&lt;/li&gt;
-&lt;li&gt;综上所述，黑色游侠是张不错的风压个突对策卡，对于追求风压的玩家（1%以上）可以达到&lt;strong&gt;T2.5&lt;/strong&gt;优先级，不追求风压自然不练。&lt;/li&gt;
+&lt;li&gt;综上所述，黑色游侠是张不错的风压个突对策卡，对于追求风压的玩家（1%以上）可以达到&lt;strong&gt;T2&lt;/strong&gt;优先级，不追求风压自然不用练。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_2026/arkRangerBlackPickup.jpg&#34;
 	
@@ -1978,7 +3519,16 @@ window.onload = function() {
 -&lt;/p&gt;
 &lt;p&gt;这是&lt;del&gt;strikethrough&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;这里有个注释！你看不到吧！&lt;!-- 被找到了！--&gt;&lt;/p&gt;
-&lt;p&gt;表情 &amp;#x1f604;&lt;/p&gt;
+&lt;p&gt;表情 &amp;#x1f604;&lt;br&gt;
+可参考：&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://emojipedia.org/?utm_source=chatgpt.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://emojipedia.org/?utm_source=chatgpt.com&lt;/a&gt;&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://getemoji.com/?utm_source=chatgpt.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://getemoji.com/?utm_source=chatgpt.com&lt;/a&gt;&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://unicode.org/emoji/charts/full-emoji-list.html?utm_source=chatgpt.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://unicode.org/emoji/charts/full-emoji-list.html?utm_source=chatgpt.com&lt;/a&gt;&lt;br&gt;
+Win + ;&lt;br&gt;
+然后可以搜索star，diamond，warning，target，book，fire等&lt;/p&gt;
 &lt;p&gt;一些颜色方块&lt;br&gt;
 🟥 红色
 🟧 橙色
@@ -2005,6 +3555,15 @@ window.onload = function() {
 ▫ 小白方块
 ◼ 黑方块
 ◻ 白方块&lt;/p&gt;
+&lt;p&gt;一些小东西&lt;br&gt;
+💎 核心投资
+⭐ 推荐
+🔥 高优先级
+⚠️ 注意事项
+❌ 不推荐
+✅ 推荐
+📌 重点
+🎯 毕业词条&lt;/p&gt;
 &lt;p&gt;下标 H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;
 &lt;p&gt;上标 X&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
 &lt;p&gt;&lt;mark&gt;高亮文字（修好了，renderer要tab）&lt;/mark&gt;&lt;br&gt;
@@ -2073,6 +3632,27 @@ window.onload = function() {
   这是使用了两个全角空格的效果，中文文章开头完美缩进两个汉字。&lt;br&gt;
     这是使用了四个不断行空格的效果。&lt;/p&gt;
 &lt;p&gt;表格&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;姓名&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;年龄&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;成绩&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;张三&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;19&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;99&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;李四&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;18&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;100&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;

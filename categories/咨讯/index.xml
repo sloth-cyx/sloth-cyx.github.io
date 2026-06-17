@@ -43,7 +43,16 @@
 -&lt;/p&gt;
 &lt;p&gt;这是&lt;del&gt;strikethrough&lt;/del&gt;&lt;/p&gt;
 &lt;p&gt;这里有个注释！你看不到吧！&lt;!-- 被找到了！--&gt;&lt;/p&gt;
-&lt;p&gt;表情 &amp;#x1f604;&lt;/p&gt;
+&lt;p&gt;表情 &amp;#x1f604;&lt;br&gt;
+可参考：&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://emojipedia.org/?utm_source=chatgpt.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://emojipedia.org/?utm_source=chatgpt.com&lt;/a&gt;&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://getemoji.com/?utm_source=chatgpt.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://getemoji.com/?utm_source=chatgpt.com&lt;/a&gt;&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://unicode.org/emoji/charts/full-emoji-list.html?utm_source=chatgpt.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://unicode.org/emoji/charts/full-emoji-list.html?utm_source=chatgpt.com&lt;/a&gt;&lt;br&gt;
+Win + ;&lt;br&gt;
+然后可以搜索star，diamond，warning，target，book，fire等&lt;/p&gt;
 &lt;p&gt;一些颜色方块&lt;br&gt;
 🟥 红色
 🟧 橙色
@@ -70,6 +79,15 @@
 ▫ 小白方块
 ◼ 黑方块
 ◻ 白方块&lt;/p&gt;
+&lt;p&gt;一些小东西&lt;br&gt;
+💎 核心投资
+⭐ 推荐
+🔥 高优先级
+⚠️ 注意事项
+❌ 不推荐
+✅ 推荐
+📌 重点
+🎯 毕业词条&lt;/p&gt;
 &lt;p&gt;下标 H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;
 &lt;p&gt;上标 X&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
 &lt;p&gt;&lt;mark&gt;高亮文字（修好了，renderer要tab）&lt;/mark&gt;&lt;br&gt;
@@ -138,6 +156,27 @@
   这是使用了两个全角空格的效果，中文文章开头完美缩进两个汉字。&lt;br&gt;
     这是使用了四个不断行空格的效果。&lt;/p&gt;
 &lt;p&gt;表格&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;姓名&lt;/th&gt;
+&lt;th style=&#34;text-align:right&#34;&gt;年龄&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;成绩&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;张三&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;19&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;99&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;李四&lt;/td&gt;
+&lt;td style=&#34;text-align:right&#34;&gt;18&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;100&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
