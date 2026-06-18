@@ -2742,7 +2742,7 @@ window.onload = function() {
     return `
       &lt;div class=&#34;bcmp-buff-pair ${cls || &#39;&#39;}&#34;&gt;
         &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;${label} %&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;${key}&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
-        &lt;label class=&#34;bcmp-field bcmp-duration-field&#34;&gt;&lt;span&gt;时间&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;${key}Duration&#34; value=&#34;0&#34; min=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+        &lt;label class=&#34;bcmp-field bcmp-duration-field&#34;&gt;&lt;span&gt;时间&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;${key}Duration&#34; value=&#34;10&#34; min=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
       &lt;/div&gt;`;
   }
 
