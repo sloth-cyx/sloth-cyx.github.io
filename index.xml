@@ -2473,7 +2473,7 @@ window.onload = function() {
   &lt;/div&gt;
 
   &lt;div class=&#34;bcmp-top-note&#34;&gt;
-    公式沿用：攻击力 × 补正区 × 优越区 × 蓄伤区 × 易伤区 × 攻伤区。
+    公式沿用：攻击力 × 补正区 × 优越区 × 蓄伤区 × 易伤区 × 攻伤区。每个 buff 可单独填写持续时间；武器/普攻可额外勾选距离补正。
   &lt;/div&gt;
 
   &lt;div class=&#34;bcmp-sets&#34; id=&#34;bcmpSets&#34;&gt;&lt;/div&gt;
@@ -2662,11 +2662,34 @@ window.onload = function() {
   line-height: 1.35;
 }
 
+
+.nikke-buff-cmp .bcmp-buff-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+.nikke-buff-cmp .bcmp-buff-pair {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 88px;
+  gap: 7px;
+  align-items: end;
+}
+.nikke-buff-cmp .bcmp-buff-pair .bcmp-field span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nikke-buff-cmp .bcmp-duration-field span {
+  color: #8338ec;
+}
+
 .nikke-buff-cmp .hidden { display: none !important; }
 
 @container (max-width: 680px) {
   .nikke-buff-cmp .bcmp-grid,
-  .nikke-buff-cmp .bcmp-main-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .nikke-buff-cmp .bcmp-main-grid,
+  .nikke-buff-cmp .bcmp-buff-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
   .nikke-buff-cmp .bcmp-result-flex { gap: 6px; }
   .nikke-buff-cmp .bcmp-result-box { padding: 8px 4px; }
 }
@@ -2681,7 +2704,9 @@ window.onload = function() {
   .nikke-buff-cmp .bcmp-remove-btn,
   .nikke-buff-cmp .bcmp-delete-set-btn { width: 100%; }
   .nikke-buff-cmp .bcmp-grid,
-  .nikke-buff-cmp .bcmp-main-grid { grid-template-columns: minmax(0,1fr); }
+  .nikke-buff-cmp .bcmp-main-grid,
+  .nikke-buff-cmp .bcmp-buff-grid { grid-template-columns: minmax(0,1fr); }
+  .nikke-buff-cmp .bcmp-buff-pair { grid-template-columns: minmax(0, 1fr) 82px; }
   .nikke-buff-cmp .bcmp-field input,
   .nikke-buff-cmp .bcmp-field select { font-size: 16px; }
   .nikke-buff-cmp .bcmp-result-label { font-size: 9px; }
@@ -2691,24 +2716,50 @@ window.onload = function() {
 
 &lt;script&gt;
 (function(){
-  const TEN_SECONDS = 10;
   let setId = 0;
   let segmentSeq = 0;
-  const root = document.getElementById(&#39;nikkeBuffCmp&#39;);
   const setsRoot = document.getElementById(&#39;bcmpSets&#39;);
 
   function pct(v){ return (Number(v) || 0) / 100; }
+  function num(v){ return Number(v) || 0; }
   function fmt(n){ if(!Number.isFinite(n)) return &#39;—&#39;; return Math.round(n).toLocaleString(); }
   function fmt2(n){ if(!Number.isFinite(n)) return &#39;—&#39;; return n.toLocaleString(undefined, { maximumFractionDigits: 3 }); }
   function fmtPct(n){ if(!Number.isFinite(n)) return &#39;—&#39;; return (n &gt;= 0 ? &#39;+&#39; : &#39;&#39;) + n.toLocaleString(undefined, { maximumFractionDigits: 2 }) + &#39;%&#39;; }
 
-  function multipliers(common, seg){
-    const critRate = 0.15 + pct(common.critRateBuff);
-    const critDmg = 0.5 + pct(common.critDmgBuff);
+  const BUFFS = [
+    [&#39;atkBuff&#39;, &#39;攻击力 buff&#39;],
+    [&#39;elementBuff&#39;, &#39;优越伤害 buff&#39;],
+    [&#39;critRateBuff&#39;, &#39;暴击率 buff&#39;],
+    [&#39;critDmgBuff&#39;, &#39;暴击伤害 buff&#39;],
+    [&#39;atkDmgBuff&#39;, &#39;攻击伤害 buff&#39;],
+    [&#39;coreBuff&#39;, &#39;核心伤害 buff&#39;],
+    [&#39;takenBuff&#39;, &#39;所受伤害 buff&#39;],
+    [&#39;sharedBuff&#39;, &#39;分摊伤害 buff&#39;],
+    [&#39;chargeBuff&#39;, &#39;蓄力伤害 buff&#39;, &#39;weapon&#39;]
+  ];
+
+  function buffPair(key, label, cls){
+    return `
+      &lt;div class=&#34;bcmp-buff-pair ${cls || &#39;&#39;}&#34;&gt;
+        &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;${label} %&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;${key}&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+        &lt;label class=&#34;bcmp-field bcmp-duration-field&#34;&gt;&lt;span&gt;时间&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;${key}Duration&#34; value=&#34;0&#34; min=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+      &lt;/div&gt;`;
+  }
+
+  function activeBuff(seg, key, t){
+    const value = pct(seg[key]);
+    const duration = num(seg[key + &#39;Duration&#39;]);
+    return duration &gt; 0 &amp;&amp; t &lt; duration ? value : 0;
+  }
+
+  function multipliers(common, seg, t){
+    const critRate = 0.15 + activeBuff(seg, &#39;critRateBuff&#39;, t);
+    const critDmg = 0.5 + activeBuff(seg, &#39;critDmgBuff&#39;, t);
     const critExpected = critRate * critDmg;
-    const coreBuff = seg.type === &#39;weapon&#39; ? pct(seg.coreBuff) : 0;
-    const chargeBuff = seg.type === &#39;weapon&#39; ? pct(seg.chargeBuff) : 0;
-    const sharedBuff = seg.type === &#39;skill&#39; ? pct(seg.sharedBuff) : 0;
+    const coreBuff = activeBuff(seg, &#39;coreBuff&#39;, t);
+    const chargeBuff = seg.type === &#39;weapon&#39; ? activeBuff(seg, &#39;chargeBuff&#39;, t) : 0;
+    const sharedBuff = activeBuff(seg, &#39;sharedBuff&#39;, t);
+    const atkDmgBuff = activeBuff(seg, &#39;atkDmgBuff&#39;, t);
     const distanceBonus = seg.type === &#39;weapon&#39; &amp;&amp; seg.distanceBonus ? 0.3 : 0;
     return {
       critRate,
@@ -2716,41 +2767,77 @@ window.onload = function() {
       critExpected,
       distanceBonus,
       correction: 1 + critExpected + 0.5 + (1 + coreBuff) + distanceBonus,
-      element: 1.1 + pct(common.elementBuff),
+      element: 1.1 + activeBuff(seg, &#39;elementBuff&#39;, t),
       charge: 1 + chargeBuff,
-      vulnerability: 1 + pct(common.takenBuff) + sharedBuff,
-      atkDmg: 1 + pct(seg.atkDmgBuff)
+      vulnerability: 1 + activeBuff(seg, &#39;takenBuff&#39;, t) + sharedBuff,
+      atkDmg: 1 + atkDmgBuff,
+      atkBuff: activeBuff(seg, &#39;atkBuff&#39;, t)
     };
   }
 
-  function damagePerHit(common, seg){
-    const m = multipliers(common, seg);
-    const atk = common.baseAtk * (1 + pct(common.atkBuff)) * pct(seg.multiplier);
+  function damagePerHit(common, seg, t){
+    const m = multipliers(common, seg, t);
+    const atk = common.baseAtk * (1 + m.atkBuff) * pct(seg.multiplier);
     return atk * m.correction * m.element * m.charge * m.vulnerability * m.atkDmg;
   }
 
-  function bulletsInTenSeconds(rps, magazine, reload){
-    rps = Number(rps) || 0; magazine = Number(magazine) || 0; reload = Number(reload) || 0;
-    if(rps &lt;= 0 || magazine &lt;= 0) return 0;
-    let time = TEN_SECONDS, bullets = 0;
-    while(time &gt; 0.000001){
-      const fireTime = Math.min(time, magazine / rps);
-      bullets += fireTime * rps;
-      time -= fireTime;
-      if(time &lt;= 0.000001) break;
-      time -= reload;
+  function relevantBreakpoints(seg){
+    const duration = Math.max(0, num(seg.duration));
+    const points = new Set([0, duration]);
+    BUFFS.forEach(([key, , type]) =&gt; {
+      if(type &amp;&amp; type !== seg.type) return;
+      const d = num(seg[key + &#39;Duration&#39;]);
+      if(d &gt; 0 &amp;&amp; d &lt; duration) points.add(d);
+    });
+    return Array.from(points).sort((a,b)=&gt;a-b);
+  }
+
+  function bulletsInWindow(rps, magazine, reload, start, end){
+    rps = num(rps); magazine = num(magazine); reload = num(reload);
+    if(rps &lt;= 0 || magazine &lt;= 0 || end &lt;= start) return 0;
+    const fireDur = magazine / rps;
+    const cycle = fireDur + Math.max(0, reload);
+    if(cycle &lt;= 0) return 0;
+    let bullets = 0;
+    const firstCycle = Math.floor(start / cycle) - 1;
+    for(let i = Math.max(0, firstCycle); ; i++){
+      const cStart = i * cycle;
+      const fStart = cStart;
+      const fEnd = cStart + fireDur;
+      if(fStart &gt;= end) break;
+      const overlap = Math.max(0, Math.min(end, fEnd) - Math.max(start, fStart));
+      bullets += overlap * rps;
+      if(cStart &gt; end + cycle) break;
     }
-    return Math.max(0, bullets);
+    return bullets;
   }
 
   function calcSegment(common, seg){
-    const perHit = damagePerHit(common, seg);
-    if(seg.type === &#39;weapon&#39;){
-      const bullets = bulletsInTenSeconds(seg.rps, seg.magazine, seg.reload);
-      return { total: perHit * bullets, count: bullets, perHit };
+    const duration = Math.max(0, num(seg.duration));
+    const points = relevantBreakpoints(seg);
+    let total = 0;
+    let count = 0;
+    const slices = [];
+
+    for(let i = 0; i &lt; points.length - 1; i++){
+      const start = points[i];
+      const end = points[i + 1];
+      if(end &lt;= start) continue;
+      const t = start + 0.000001;
+      const perHit = damagePerHit(common, seg, t);
+      let c = 0;
+      if(seg.type === &#39;weapon&#39;){
+        c = bulletsInWindow(seg.rps, seg.magazine, seg.reload, start, end);
+      } else {
+        c = duration &gt; 0 ? num(seg.times) * ((end - start) / duration) : 0;
+      }
+      const dmg = perHit * c;
+      total += dmg;
+      count += c;
+      slices.push({ start, end, count: c, perHit, total: dmg });
     }
-    const times = Number(seg.times) || 0;
-    return { total: perHit * times, count: times, perHit };
+
+    return { total, count, perHit: count &gt; 0 ? total / count : 0, slices };
   }
 
   function setTemplate(id, isBase){
@@ -2758,33 +2845,26 @@ window.onload = function() {
       &lt;div class=&#34;bcmp-set&#34; data-set-id=&#34;${id}&#34; data-base=&#34;${isBase ? &#39;1&#39; : &#39;0&#39;}&#34;&gt;
         &lt;div class=&#34;bcmp-set-head&#34;&gt;
           &lt;div class=&#34;bcmp-set-title&#34;&gt;${isBase ? &#39;基准 Set #1&#39; : &#39;对比 Set #&#39; + id}&lt;/div&gt;
-          &lt;div&gt;
-            ${isBase ? &#39;&lt;button type=&#34;button&#34; class=&#34;bcmp-copy-btn&#34;&gt;复制&lt;/button&gt;&#39; : &#39;&lt;button type=&#34;button&#34; class=&#34;bcmp-delete-set-btn&#34;&gt;删除Set&lt;/button&gt;&#39;}
-          &lt;/div&gt;
+          &lt;div&gt;${isBase ? &#39;&lt;button type=&#34;button&#34; class=&#34;bcmp-copy-btn&#34;&gt;复制&lt;/button&gt;&#39; : &#39;&lt;button type=&#34;button&#34; class=&#34;bcmp-delete-set-btn&#34;&gt;删除Set&lt;/button&gt;&#39;}&lt;/div&gt;
         &lt;/div&gt;
 
-        &lt;div class=&#34;bcmp-subtitle&#34;&gt;公共参数&lt;/div&gt;
-        &lt;div class=&#34;bcmp-note&#34;&gt;这里填写本Set所有伤害段都能吃到的参数。&lt;/div&gt;
+        &lt;div class=&#34;bcmp-subtitle&#34;&gt;基础参数&lt;/div&gt;
+        &lt;div class=&#34;bcmp-note&#34;&gt;这里只保留基础攻击力。每个 buff 都在伤害段落里填写数值与持续时间；时间为 0 秒时视为没有该 buff。&lt;/div&gt;
         &lt;br&gt;
         &lt;div class=&#34;bcmp-grid bcmp-public-grid&#34;&gt;
           &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;基础攻击力&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;baseAtk&#34; value=&#34;0&#34; min=&#34;0&#34; step=&#34;1&#34;&gt;&lt;/label&gt;
-          &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;攻击力 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;atkBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
-          &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;暴击伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;critDmgBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
-          &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;暴击率 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;critRateBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
-          &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;优越伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;elementBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
-          &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;所受伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;takenBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
         &lt;/div&gt;
 
         &lt;div class=&#34;bcmp-subtitle&#34;&gt;伤害段落&lt;/div&gt;
         &lt;div class=&#34;bcmp-section-row&#34;&gt;
-          &lt;div class=&#34;bcmp-note&#34; style=&#34;margin-top:0; flex:1;&#34;&gt;武器/普攻：距离补正、核心伤害、蓄力伤害、攻击伤害（ex：穿透伤害）。技能伤害：分摊伤害、攻击伤害（ex：持续伤害）。&lt;/div&gt;
+          &lt;div class=&#34;bcmp-note&#34; style=&#34;margin-top:0; flex:1;&#34;&gt;每个段落代表一段完整时间轴。每个 buff 都有独立持续时间；武器/普攻可填写蓄力伤害并勾选距离补正，技能伤害不会吃距离补正。&lt;/div&gt;
           &lt;button type=&#34;button&#34; class=&#34;bcmp-btn bcmp-add-seg&#34;&gt;添加&lt;/button&gt;
         &lt;/div&gt;
         &lt;div class=&#34;bcmp-segments&#34;&gt;&lt;/div&gt;
 
         &lt;div class=&#34;bcmp-subtitle&#34;&gt;本 Set 结果&lt;/div&gt;
         &lt;div class=&#34;bcmp-result-flex&#34;&gt;
-          &lt;div class=&#34;bcmp-result-box&#34;&gt;&lt;div class=&#34;bcmp-result-label&#34;&gt;10秒总伤害&lt;/div&gt;&lt;div class=&#34;bcmp-result-value set-total&#34;&gt;0&lt;/div&gt;&lt;/div&gt;
+          &lt;div class=&#34;bcmp-result-box&#34;&gt;&lt;div class=&#34;bcmp-result-label&#34;&gt;总伤害&lt;/div&gt;&lt;div class=&#34;bcmp-result-value set-total&#34;&gt;0&lt;/div&gt;&lt;/div&gt;
           &lt;div class=&#34;bcmp-result-box bcmp-accent&#34;&gt;&lt;div class=&#34;bcmp-result-label&#34;&gt;对比基准&lt;/div&gt;&lt;div class=&#34;bcmp-result-value set-growth&#34;&gt;基准&lt;/div&gt;&lt;/div&gt;
           &lt;div class=&#34;bcmp-result-box&#34;&gt;&lt;div class=&#34;bcmp-result-label&#34;&gt;伤害差值&lt;/div&gt;&lt;div class=&#34;bcmp-result-value set-diff&#34;&gt;0&lt;/div&gt;&lt;/div&gt;
         &lt;/div&gt;
@@ -2803,25 +2883,26 @@ window.onload = function() {
 
         &lt;div class=&#34;bcmp-main-grid&#34;&gt;
           &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;类型&lt;/span&gt;&lt;select data-key=&#34;type&#34; class=&#34;seg-type&#34;&gt;&lt;option value=&#34;weapon&#34;&gt;武器 / 普攻&lt;/option&gt;&lt;option value=&#34;skill&#34;&gt;技能伤害&lt;/option&gt;&lt;/select&gt;&lt;/label&gt;
+          &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;段落总时间 秒&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;duration&#34; value=&#34;10&#34; min=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
           &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;倍率 %&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;multiplier&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
           &lt;label class=&#34;bcmp-field weapon-only&#34;&gt;&lt;span&gt;子弹数 / 秒&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;rps&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
           &lt;label class=&#34;bcmp-field weapon-only&#34;&gt;&lt;span&gt;最大装弹数&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;magazine&#34; value=&#34;0&#34; step=&#34;1&#34;&gt;&lt;/label&gt;
           &lt;label class=&#34;bcmp-field weapon-only&#34;&gt;&lt;span&gt;换弹速度 秒&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;reload&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+          &lt;div class=&#34;weapon-only&#34;&gt;${buffPair(&#39;chargeBuff&#39;, &#39;蓄力伤害&#39;)}&lt;/div&gt;
           &lt;label class=&#34;bcmp-check-field weapon-only&#34;&gt;&lt;input type=&#34;checkbox&#34; data-key=&#34;distanceBonus&#34;&gt;&lt;span&gt;距离补正 +0.3&lt;/span&gt;&lt;/label&gt;
-          &lt;label class=&#34;bcmp-field skill-only hidden&#34;&gt;&lt;span&gt;10秒内触发次数&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;times&#34; value=&#34;1&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+          &lt;label class=&#34;bcmp-field skill-only hidden&#34;&gt;&lt;span&gt;段落总触发次数&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;times&#34; value=&#34;1&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
         &lt;/div&gt;
 
-        &lt;div class=&#34;bcmp-block-title weapon-buff-title&#34;&gt;武器/普攻 buff&lt;/div&gt;
-        &lt;div class=&#34;bcmp-grid weapon-buff-grid&#34;&gt;
-          &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;核心伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;coreBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
-          &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;蓄力伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;chargeBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
-          &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;攻击伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;atkDmgBuffWeapon&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
-        &lt;/div&gt;
-
-        &lt;div class=&#34;bcmp-block-title skill-buff-title hidden&#34;&gt;技能伤害 buff&lt;/div&gt;
-        &lt;div class=&#34;bcmp-grid skill-buff-grid hidden&#34;&gt;
-          &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;分摊伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;sharedBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
-          &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;攻击伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;atkDmgBuffSkill&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+        &lt;div class=&#34;bcmp-block-title&#34;&gt;Buff 设置&lt;/div&gt;
+        &lt;div class=&#34;bcmp-buff-grid&#34;&gt;
+          ${buffPair(&#39;atkBuff&#39;, &#39;攻击力&#39;)}
+          ${buffPair(&#39;elementBuff&#39;, &#39;优越伤害&#39;)}
+          ${buffPair(&#39;critRateBuff&#39;, &#39;暴击率&#39;)}
+          ${buffPair(&#39;critDmgBuff&#39;, &#39;暴击伤害&#39;)}
+          ${buffPair(&#39;atkDmgBuff&#39;, &#39;攻击伤害&#39;)}
+          ${buffPair(&#39;coreBuff&#39;, &#39;核心伤害&#39;)}
+          ${buffPair(&#39;takenBuff&#39;, &#39;所受伤害&#39;)}
+          ${buffPair(&#39;sharedBuff&#39;, &#39;分摊伤害&#39;)}
         &lt;/div&gt;
 
         &lt;div class=&#34;bcmp-seg-output&#34;&gt;本段：&lt;span class=&#34;seg-damage&#34;&gt;0&lt;/span&gt;&lt;/div&gt;
@@ -2829,44 +2910,35 @@ window.onload = function() {
   }
 
   function readCommon(setEl){
-    const read = key =&gt; Number(setEl.querySelector(`[data-key=&#34;${key}&#34;]`)?.value) || 0;
-    return {
-      baseAtk: read(&#39;baseAtk&#39;),
-      atkBuff: read(&#39;atkBuff&#39;),
-      critDmgBuff: read(&#39;critDmgBuff&#39;),
-      critRateBuff: read(&#39;critRateBuff&#39;),
-      elementBuff: read(&#39;elementBuff&#39;),
-      takenBuff: read(&#39;takenBuff&#39;)
-    };
+    return { baseAtk: num(setEl.querySelector(&#39;.bcmp-public-grid [data-key=&#34;baseAtk&#34;]&#39;)?.value) };
   }
 
   function readSegment(segEl){
-    const read = key =&gt; Number(segEl.querySelector(`[data-key=&#34;${key}&#34;]`)?.value) || 0;
-    const type = segEl.querySelector(&#39;[data-key=&#34;type&#34;]&#39;).value;
+    const read = key =&gt; num(segEl.querySelector(`[data-key=&#34;${key}&#34;]`)?.value);
     const checked = key =&gt; !!segEl.querySelector(`[data-key=&#34;${key}&#34;]`)?.checked;
-    return {
+    const type = segEl.querySelector(&#39;[data-key=&#34;type&#34;]&#39;).value;
+    const seg = {
       type,
+      duration: read(&#39;duration&#39;),
       multiplier: read(&#39;multiplier&#39;),
       rps: read(&#39;rps&#39;),
       magazine: read(&#39;magazine&#39;),
       reload: read(&#39;reload&#39;),
       distanceBonus: type === &#39;weapon&#39; ? checked(&#39;distanceBonus&#39;) : false,
-      times: read(&#39;times&#39;),
-      coreBuff: read(&#39;coreBuff&#39;),
-      chargeBuff: read(&#39;chargeBuff&#39;),
-      sharedBuff: read(&#39;sharedBuff&#39;),
-      atkDmgBuff: type === &#39;weapon&#39; ? read(&#39;atkDmgBuffWeapon&#39;) : read(&#39;atkDmgBuffSkill&#39;)
+      times: read(&#39;times&#39;)
     };
+    BUFFS.forEach(([key]) =&gt; {
+      seg[key] = read(key);
+      seg[key + &#39;Duration&#39;] = read(key + &#39;Duration&#39;);
+    });
+    return seg;
   }
 
   function refreshSegmentVisibility(segEl){
     const isWeapon = segEl.querySelector(&#39;[data-key=&#34;type&#34;]&#39;).value === &#39;weapon&#39;;
     segEl.querySelectorAll(&#39;.weapon-only&#39;).forEach(el =&gt; el.classList.toggle(&#39;hidden&#39;, !isWeapon));
     segEl.querySelectorAll(&#39;.skill-only&#39;).forEach(el =&gt; el.classList.toggle(&#39;hidden&#39;, isWeapon));
-    segEl.querySelector(&#39;.weapon-buff-title&#39;).classList.toggle(&#39;hidden&#39;, !isWeapon);
-    segEl.querySelector(&#39;.weapon-buff-grid&#39;).classList.toggle(&#39;hidden&#39;, !isWeapon);
-    segEl.querySelector(&#39;.skill-buff-title&#39;).classList.toggle(&#39;hidden&#39;, isWeapon);
-    segEl.querySelector(&#39;.skill-buff-grid&#39;).classList.toggle(&#39;hidden&#39;, isWeapon);
+
   }
 
   function bindSegment(segEl){
@@ -2908,9 +2980,10 @@ window.onload = function() {
   }
 
   function collectSetData(setEl){
-    const common = readCommon(setEl);
-    const segments = Array.from(setEl.querySelectorAll(&#39;.bcmp-segment&#39;)).map(readSegment);
-    return { common, segments };
+    return {
+      common: readCommon(setEl),
+      segments: Array.from(setEl.querySelectorAll(&#39;.bcmp-segment&#39;)).map(readSegment)
+    };
   }
 
   function fillSet(setEl, data){
@@ -2926,14 +2999,14 @@ window.onload = function() {
 
   function fillSegment(segEl, data){
     segEl.querySelector(&#39;[data-key=&#34;type&#34;]&#39;).value = data.type || &#39;weapon&#39;;
+
+    
+    if(data.atkDmgBuff === undefined) {
+      data.atkDmgBuff = data.type === &#39;skill&#39; ? data.atkDmgBuffSkill : data.atkDmgBuffWeapon;
+      data.atkDmgBuffDuration = data.type === &#39;skill&#39; ? data.atkDmgBuffSkillDuration : data.atkDmgBuffWeaponDuration;
+    }
+
     Object.entries(data).forEach(([key, val]) =&gt; {
-      if(key === &#39;atkDmgBuff&#39;) {
-        const w = segEl.querySelector(&#39;[data-key=&#34;atkDmgBuffWeapon&#34;]&#39;);
-        const s = segEl.querySelector(&#39;[data-key=&#34;atkDmgBuffSkill&#34;]&#39;);
-        if(data.type === &#39;weapon&#39; &amp;&amp; w) w.value = val;
-        if(data.type === &#39;skill&#39; &amp;&amp; s) s.value = val;
-        return;
-      }
       const input = segEl.querySelector(`[data-key=&#34;${key}&#34;]`);
       if(input) {
         if(input.type === &#39;checkbox&#39;) input.checked = !!val;
@@ -2941,6 +3014,14 @@ window.onload = function() {
       }
     });
     refreshSegmentVisibility(segEl);
+  }
+
+  function buffSummary(seg){
+    return BUFFS
+      .filter(([key, , type]) =&gt; !type || type === seg.type)
+      .filter(([key]) =&gt; num(seg[key]) !== 0 &amp;&amp; num(seg[key + &#39;Duration&#39;]) &gt; 0)
+      .map(([key, label]) =&gt; `${label}${fmt2(seg[key])}%/${fmt2(seg[key + &#39;Duration&#39;])}秒`)
+      .join(&#39;，&#39;) || &#39;无&#39;;
   }
 
   function calculateSet(setEl){
@@ -2952,12 +3033,12 @@ window.onload = function() {
       const res = calcSegment(common, seg);
       total += res.total;
       segEl.querySelector(&#39;.seg-damage&#39;).textContent = fmt(res.total);
-      const m = multipliers(common, seg);
-      const label = seg.type === &#39;weapon&#39; ? `武器约 ${fmt2(res.count)} 发` : `技能伤害 ${fmt2(res.count)} 次`;
-      const extra = seg.type === &#39;weapon&#39;
-        ? `距离补正 ${seg.distanceBonus ? &#39;+0.3&#39; : &#39;无&#39;}，核心 ${fmt2(seg.coreBuff)}%，蓄伤 ${fmt2(seg.chargeBuff)}%，攻伤 ${fmt2(seg.atkDmgBuff)}%`
-        : `分摊 ${fmt2(seg.sharedBuff)}%，攻伤 ${fmt2(seg.atkDmgBuff)}%`;
-      parts.push(`#${idx + 1} ${label}，单次 ${fmt(res.perHit)}，本段 ${fmt(res.total)}；专属 buff：${extra}；暴击期望 ${fmt2(m.critRate * 100)}% × ${fmt2(m.critDmg * 100)}% = ${fmt2(m.critExpected)}`);
+      const label = seg.type === &#39;weapon&#39;
+        ? `武器 ${fmt2(seg.duration)}秒约 ${fmt2(res.count)} 发`
+        : `技能伤害 ${fmt2(seg.duration)}秒内 ${fmt2(res.count)} 次`;
+      const sliceInfo = res.slices.length &gt; 1 ? `；自动拆成 ${res.slices.length} 段计算` : &#39;&#39;;
+      const extra = seg.type === &#39;weapon&#39; ? `距离补正 ${seg.distanceBonus ? &#39;+0.3&#39; : &#39;无&#39;}` : &#39;技能无距离补正&#39;;
+      parts.push(`#${idx + 1} ${label}，平均单次 ${fmt(res.perHit)}，本段 ${fmt(res.total)}${sliceInfo}；${extra}；Buff：${buffSummary(seg)}`);
     });
     setEl.dataset.total = String(total);
     setEl.querySelector(&#39;.set-total&#39;).textContent = fmt(total);
