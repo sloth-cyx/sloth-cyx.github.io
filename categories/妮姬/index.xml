@@ -2465,564 +2465,243 @@ window.onload = function() {
   calculateAttributes();
 })();
 &lt;/script&gt;
-&lt;h2 id=&#34;全爆裂伤害计算器beta&#34;&gt;全爆裂伤害计算器（Beta）
-&lt;/h2&gt;&lt;div class=&#34;nikke-dmg-calc dark-dmg-calc&#34;&gt;
-  &lt;div class=&#34;dmg-header&#34;&gt;
-    &lt;div class=&#34;dmg-kicker&#34;&gt;NIKKE DAMAGE TOOL&lt;/div&gt;
-    &lt;div class=&#34;dmg-title&#34;&gt;妮姬全爆裂 10 秒伤害计算器&lt;/div&gt;
-    &lt;div class=&#34;dmg-desc&#34;&gt;公共 buff 统一填写；不同伤害段只填写自己能吃到的buff。&lt;/div&gt;
+&lt;h2 id=&#34;全爆裂拐力计算器beta&#34;&gt;全爆裂拐力计算器（Beta）
+&lt;/h2&gt;&lt;div class=&#34;nikke-buff-cmp&#34; id=&#34;nikkeBuffCmp&#34;&gt;
+  &lt;div class=&#34;bcmp-header&#34;&gt;
+    &lt;div class=&#34;bcmp-kicker&#34;&gt;NIKKE BUFF TOOL&lt;/div&gt;
+    &lt;div class=&#34;bcmp-title&#34;&gt;全爆裂拐力计算器&lt;/div&gt;
+    &lt;div class=&#34;bcmp-desc&#34;&gt;第一组作为基准；复制后在新组加入不同 buff，比较全爆裂10秒伤害提升。&lt;/div&gt;
   &lt;/div&gt;
 
-  &lt;div class=&#34;dmg-card dmg-baseline-card&#34;&gt;
-    &lt;div class=&#34;dmg-section-title&#34;&gt;固定基准：红莲 10 秒伤害&lt;/div&gt;
-    &lt;div class=&#34;baseline-grid&#34;&gt;
-      &lt;div class=&#34;baseline-box&#34;&gt;&lt;div class=&#34;baseline-label&#34;&gt;红莲武器伤害&lt;/div&gt;&lt;div class=&#34;baseline-value&#34; id=&#34;scarletWeaponDamage&#34;&gt;—&lt;/div&gt;&lt;/div&gt;
-      &lt;div class=&#34;baseline-box&#34;&gt;&lt;div class=&#34;baseline-label&#34;&gt;红莲技能伤害&lt;/div&gt;&lt;div class=&#34;baseline-value&#34; id=&#34;scarletSkillDamage&#34;&gt;—&lt;/div&gt;&lt;/div&gt;
-      &lt;div class=&#34;baseline-box&#34;&gt;&lt;div class=&#34;baseline-label&#34;&gt;红莲合计伤害&lt;/div&gt;&lt;div class=&#34;baseline-value&#34; id=&#34;scarletTotalDamage&#34;&gt;—&lt;/div&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;formula-note&#34; id=&#34;scarletNote&#34;&gt;红莲数据固定，不参与下方输入修改。&lt;/div&gt;
+  &lt;div class=&#34;bcmp-top-note&#34;&gt;
+    公式沿用：攻击力 × 补正区 × 优越区 × 蓄伤区 × 易伤区 × 攻伤区。
   &lt;/div&gt;
 
-  &lt;div class=&#34;dmg-card&#34;&gt;
-    &lt;div class=&#34;dmg-section-title&#34;&gt;公共参数&lt;/div&gt;
-    &lt;div class=&#34;segment-note&#34;&gt;这里填写所有伤害段都能吃到的参数。武器/普攻和技能伤害buff请在各自伤害段落中填写。&lt;/div&gt;&lt;br&gt;
-    &lt;div class=&#34;segment-grid public-grid&#34;&gt;
-      &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;基础攻击力&lt;/span&gt;&lt;input type=&#34;number&#34; id=&#34;pubBaseAtk&#34; value=&#34;0&#34; min=&#34;0&#34; step=&#34;1&#34;&gt;&lt;/label&gt;
-      &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;攻击力 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; id=&#34;pubAtkBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
-      &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;暴击伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; id=&#34;pubCritDmgBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
-      &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;暴击率 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; id=&#34;pubCritRateBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
-      &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;优越伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; id=&#34;pubElementBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
-      &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;所受伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; id=&#34;pubTakenBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-
-  &lt;div class=&#34;dmg-card&#34;&gt;
-    &lt;div class=&#34;section-row&#34;&gt;
-      &lt;div class=&#34;dmg-section-title no-margin&#34;&gt;伤害段落&lt;/div&gt;
-      &lt;button type=&#34;button&#34; id=&#34;addSegmentBtn&#34; class=&#34;add-btn&#34;&gt;+ 添加伤害&lt;/button&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;segment-note&#34;&gt;武器/普攻：核心伤害、蓄力伤害、攻击伤害为本段专属。技能伤害：分摊伤害、攻击伤害为本段专属。&lt;/div&gt;
-    &lt;div id=&#34;segments&#34;&gt;&lt;/div&gt;
-  &lt;/div&gt;
-
-  &lt;div class=&#34;dmg-card result-card&#34;&gt;
-    &lt;div class=&#34;dmg-section-title&#34;&gt;计算结果&lt;/div&gt;
-    &lt;div class=&#34;result-grid&#34;&gt;
-      &lt;div class=&#34;result-box&#34;&gt;&lt;div class=&#34;result-label&#34;&gt;角色 10 秒总伤害&lt;/div&gt;&lt;div class=&#34;result-value&#34; id=&#34;totalDamage&#34;&gt;—&lt;/div&gt;&lt;/div&gt;
-      &lt;div class=&#34;result-box&#34;&gt;&lt;div class=&#34;result-label&#34;&gt;相当于红莲&lt;/div&gt;&lt;div class=&#34;result-value accent&#34; id=&#34;scarletRatio&#34;&gt;—&lt;/div&gt;&lt;/div&gt;
-      &lt;div class=&#34;result-box&#34;&gt;&lt;div class=&#34;result-label&#34;&gt;差值&lt;/div&gt;&lt;div class=&#34;result-value&#34; id=&#34;damageDiff&#34;&gt;—&lt;/div&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;formula-box&#34; id=&#34;formulaText&#34;&gt;添加伤害段落并输入倍率后开始计算。&lt;/div&gt;
-  &lt;/div&gt;
+  &lt;div class=&#34;bcmp-sets&#34; id=&#34;bcmpSets&#34;&gt;&lt;/div&gt;
 &lt;/div&gt;
 
+
 &lt;style&gt;
-.nikke-dmg-calc,
-.nikke-dmg-calc * {
-  box-sizing: border-box;
-}
+.nikke-buff-cmp,
+.nikke-buff-cmp * { box-sizing: border-box; }
+.nikke-buff-cmp h1,
+.nikke-buff-cmp h2,
+.nikke-buff-cmp h3,
+.nikke-buff-cmp h4,
+.nikke-buff-cmp h5,
+.nikke-buff-cmp h6 { border-inline-start: none !important; padding-inline-start: 0 !important; }
 
-.nikke-dmg-calc h1,
-.nikke-dmg-calc h2,
-.nikke-dmg-calc h3,
-.nikke-dmg-calc h4,
-.nikke-dmg-calc h5,
-.nikke-dmg-calc h6 {
-  border-inline-start: none !important;
-  padding-inline-start: 0 !important;
-}
-
-.dark-dmg-calc {
+.nikke-buff-cmp {
   width: 100%;
-  max-width: min(100%, 760px);
+  max-width: min(100%, 780px);
   margin: 1.25rem auto;
-  padding: clamp(10px, 2.2vw, 16px);
+  padding: clamp(10px, 2vw, 16px);
   container-type: inline-size;
   font-family: -apple-system, BlinkMacSystemFont, &#34;Segoe UI&#34;, sans-serif;
-  color: #e7eef7;
-  background:
-    radial-gradient(circle at 12% 0%, rgba(96, 165, 250, .20), transparent 30%),
-    radial-gradient(circle at 88% 8%, rgba(245, 158, 11, .10), transparent 26%),
-    linear-gradient(135deg, #111827, #172033 56%, #0f172a);
-  border: 1px solid rgba(148,163,184,.22);
-  border-radius: clamp(12px, 2vw, 16px);
-  box-shadow: 0 10px 26px rgba(0,0,0,.28);
+  color: #f7f3e9;
+  background: #2b2d42;
+  border: 3px solid #1b1d2f;
+  border-radius: clamp(10px, 2vw, 14px);
+  box-shadow: 0 10px 0 #1b1d2f, 0 18px 28px rgba(27,29,47,.28);
   overflow: hidden;
 }
 
-.dark-dmg-calc .dmg-header {
-  text-align: center;
-  margin-bottom: clamp(10px, 2vw, 14px);
-  padding: 4px 6px 0;
-}
+.nikke-buff-cmp .bcmp-header { text-align: center; padding: 5px 6px 4px; }
+.nikke-buff-cmp .bcmp-kicker { color: #06d6a0; font-size: 10px; font-weight: 950; letter-spacing: 1.8px; text-transform: uppercase; }
+.nikke-buff-cmp .bcmp-title { color: #ffd166; font-size: clamp(18px, 3.4vw, 23px); font-weight: 950; line-height: 1.35; margin-top: 6px; text-shadow: 2px 2px 0 #1b1d2f; }
+.nikke-buff-cmp .bcmp-desc { color: #b8c0ff; font-size: 12px; line-height: 1.65; margin-top: 7px; }
 
-.dark-dmg-calc .dmg-kicker {
-  color: #93c5fd;
-  font-size: 10px;
-  font-weight: 950;
-  letter-spacing: 1.7px;
-}
-
-.dark-dmg-calc .dmg-title {
-  color: #f8fafc;
-  font-size: clamp(17px, 3.6vw, 21px);
-  font-weight: 950;
-  line-height: 1.35;
-  margin-top: 6px;
-}
-
-.dark-dmg-calc .dmg-desc {
-  color: #b6c5d8;
+.nikke-buff-cmp .bcmp-top-note,
+.nikke-buff-cmp .bcmp-note,
+.nikke-buff-cmp .bcmp-formula {
   font-size: 12px;
-  line-height: 1.6;
-  margin-top: 7px;
+  line-height: 1.65;
+  border-radius: 8px;
+  padding: 9px 11px;
+  margin-top: 12px;
+}
+.nikke-buff-cmp .bcmp-top-note,
+.nikke-buff-cmp .bcmp-note {
+  background: #f7f3e9;
+  color: #3d405b;
+  border: 2px solid #ff9f1c;
+  border-left: 6px solid #ff9f1c;
+}
+.nikke-buff-cmp .bcmp-formula {
+  background: #fff3b0;
+  color: #3d405b;
+  border: 2px solid #ff9f1c;
 }
 
-.dark-dmg-calc .dmg-card {
-  background: rgba(248,250,252,.95);
-  border: 1px solid rgba(186,210,235,.36);
-  border-radius: clamp(10px, 2vw, 13px);
-  padding: clamp(12px, 2.4vw, 15px);
-  margin-top: clamp(10px, 2vw, 12px);
-  color: #263244;
-  box-shadow: 0 5px 16px rgba(2,6,23,.14);
-}
-
-.dark-dmg-calc .dmg-section-title {
-  color: #24527a;
-  font-size: clamp(13px, 2.4vw, 14px);
-  font-weight: 950;
-  line-height: 1.4;
-  text-align: center;
-  margin-bottom: 12px;
-}
-
-.dark-dmg-calc .no-margin {
-  margin: 0;
-}
-
-.dark-dmg-calc .baseline-grid,
-.dark-dmg-calc .result-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(6px, 1.5vw, 9px);
-}
-
-.dark-dmg-calc .baseline-box,
-.dark-dmg-calc .result-box {
-  background: #edf4fb;
-  border: 1px solid #cbdff0;
+.nikke-buff-cmp .bcmp-set {
+  background: #f7f3e9;
+  color: #2b2d42;
+  border: 3px solid #1b1d2f;
   border-radius: 12px;
-  padding: clamp(8px, 1.8vw, 11px) clamp(6px, 1.6vw, 9px);
-  text-align: center;
+  padding: clamp(12px, 2.3vw, 16px);
+  margin-top: 14px;
+  box-shadow: 0 6px 0 #1b1d2f;
   min-width: 0;
 }
 
-.dark-dmg-calc .baseline-box.highlight {
-  background: #edf4fb;
-  border-color: #cbdff0;
-}
-
-.dark-dmg-calc .baseline-label,
-.dark-dmg-calc .result-label {
-  color: #5b6b80;
-  font-size: clamp(10px, 1.9vw, 11px);
-  font-weight: 850;
-  line-height: 1.35;
-  margin-bottom: 6px;
-}
-
-.dark-dmg-calc .baseline-value,
-.dark-dmg-calc .result-value {
-  color: #11324d;
-  font-size: clamp(15px, 3vw, 18px);
-  font-weight: 950;
-  line-height: 1.25;
-  word-break: break-word;
-}
-
-.dark-dmg-calc .result-value.accent {
-  color: #d97706;
-  font-size: clamp(17px, 3.6vw, 21px);
-}
-
-.dark-dmg-calc .formula-note,
-.dark-dmg-calc .segment-note,
-.dark-dmg-calc .formula-box {
-  font-size: 12px;
-  line-height: 1.65;
-  border-radius: 9px;
-  padding: 9px 11px;
-  margin-top: 10px;
-}
-
-.dark-dmg-calc .formula-note,
-.dark-dmg-calc .segment-note {
-  background: #ecf6ff;
-  color: #526779;
-  border-left: 4px solid #58a6ff;
-}
-
-.dark-dmg-calc .formula-box {
-  background: #fff7ed;
-  color: #7c3f12;
-  border: 1px solid #f0c27a;
-}
-
-.dark-dmg-calc .section-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.dark-dmg-calc .add-btn,
-.dark-dmg-calc .remove-btn {
-  border: none;
-  border-radius: 999px;
-  cursor: pointer;
-  font-weight: 950;
-  padding: 8px 14px;
-  color: #fff;
-  background: linear-gradient(135deg, #2563eb, #0ea5e9);
-  box-shadow: 0 4px 12px rgba(37,99,235,.24);
-  white-space: nowrap;
-}
-
-.dark-dmg-calc .remove-btn {
-  background: linear-gradient(135deg, #b91c1c, #ef4444);
-  padding: 7px 12px;
-  box-shadow: none;
-}
-
-.dark-dmg-calc .segment-card {
-  background: #f8fbff;
-  border: 1px solid #d7e6f5;
-  border-radius: 13px;
-  padding: 13px;
-  margin-top: 12px;
-}
-
-.dark-dmg-calc .segment-top {
+.nikke-buff-cmp .bcmp-set-head,
+.nikke-buff-cmp .bcmp-section-row,
+.nikke-buff-cmp .bcmp-seg-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  margin-bottom: 11px;
 }
+.nikke-buff-cmp .bcmp-set-title { color: #8338ec; font-size: 15px; font-weight: 950; line-height: 1.35; }
+.nikke-buff-cmp .bcmp-subtitle { color: #118ab2; font-size: 13px; font-weight: 950; margin: 15px 0 9px; padding-top: 12px; border-top: 2px dashed #b8c0ff; }
+.nikke-buff-cmp .bcmp-subtitle:first-of-type { border-top: none; padding-top: 0; }
 
-.dark-dmg-calc .segment-name {
-  color: #173a59;
-  font-size: 13px;
+.nikke-buff-cmp .bcmp-btn,
+.nikke-buff-cmp .bcmp-copy-btn,
+.nikke-buff-cmp .bcmp-remove-btn,
+.nikke-buff-cmp .bcmp-delete-set-btn {
+  border: 2px solid #1b1d2f;
+  border-radius: 8px;
+  cursor: pointer;
   font-weight: 950;
+  padding: 8px 13px;
+  color: #ffffff;
+  background: #118ab2;
+  box-shadow: 0 4px 0 #1b1d2f;
+  white-space: nowrap;
 }
+.nikke-buff-cmp .bcmp-copy-btn { background: #06d6a0; color: #1b1d2f; }
+.nikke-buff-cmp .bcmp-remove-btn,
+.nikke-buff-cmp .bcmp-delete-set-btn { background: #ef476f; color: #ffffff; padding: 7px 12px; }
+.nikke-buff-cmp .bcmp-btn:active,
+.nikke-buff-cmp .bcmp-copy-btn:active,
+.nikke-buff-cmp .bcmp-remove-btn:active,
+.nikke-buff-cmp .bcmp-delete-set-btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #1b1d2f; }
 
-.dark-dmg-calc .segment-block-title {
-  color: #24527a;
-  font-size: 12px;
-  font-weight: 950;
-  margin: 13px 0 8px;
-  padding-top: 11px;
-  border-top: 1px dashed #c8dbea;
-}
-
-.dark-dmg-calc .segment-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 9px;
-}
-
-.dark-dmg-calc .segment-grid.public-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.dark-dmg-calc .segment-grid.main-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.dark-dmg-calc .seg-field {
-  min-width: 0;
-}
-
-.dark-dmg-calc .seg-field span {
-  display: block;
-  color: #4f6275;
-  font-size: clamp(10px, 1.9vw, 11px);
-  font-weight: 850;
-  line-height: 1.35;
-  margin-bottom: 5px;
-}
-
-.dark-dmg-calc .seg-field input,
-.dark-dmg-calc .seg-field select {
+.nikke-buff-cmp .bcmp-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 9px; }
+.nikke-buff-cmp .bcmp-main-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 9px; }
+.nikke-buff-cmp .bcmp-field { min-width: 0; }
+.nikke-buff-cmp .bcmp-field span { display: block; color: #3d405b; font-size: 11px; font-weight: 850; line-height: 1.35; margin-bottom: 5px; }
+.nikke-buff-cmp .bcmp-field input,
+.nikke-buff-cmp .bcmp-field select {
   width: 100%;
   min-width: 0;
-  border: 1px solid #c7d9ea;
+  border: 2px solid #8d99ae;
   background: #ffffff;
-  color: #263244;
-  border-radius: 9px;
+  color: #2b2d42;
+  border-radius: 8px;
   padding: 8px 9px;
   font-size: 13px;
   font-weight: 780;
   outline: none;
 }
+.nikke-buff-cmp .bcmp-field input:focus,
+.nikke-buff-cmp .bcmp-field select:focus { border-color: #8338ec; box-shadow: 0 0 0 3px rgba(131,56,236,.18); }
 
-.dark-dmg-calc .seg-field input:focus,
-.dark-dmg-calc .seg-field select:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59,130,246,.16);
+.nikke-buff-cmp .bcmp-segment {
+  background: #e9f5db;
+  border: 2px solid #06d6a0;
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 11px;
 }
+.nikke-buff-cmp .bcmp-seg-title { color: #8338ec; font-size: 13px; font-weight: 950; }
+.nikke-buff-cmp .bcmp-block-title { color: #118ab2; font-size: 12px; font-weight: 950; margin: 13px 0 8px; padding-top: 11px; border-top: 2px dashed #8d99ae; }
+.nikke-buff-cmp .bcmp-seg-output { margin-top: 11px; background: #fff3b0; border: 2px solid #ffd166; border-radius: 10px; padding: 10px; color: #3d405b; font-size: 12px; font-weight: 950; line-height: 1.55; text-align: center; }
 
-.dark-dmg-calc .seg-output {
-  margin-top: 12px;
-  background: #eaf5ff;
-  border-radius: 10px;
-  padding: 10px 11px;
-  color: #143a5a;
-  font-size: 12px;
-  font-weight: 950;
-  line-height: 1.55;
-  text-align: center;
-}
-
-.dark-dmg-calc .hidden {
-  display: none !important;
-}
-
-
-
-@container (max-width: 700px) {
-  .dark-dmg-calc .baseline-grid,
-  .dark-dmg-calc .result-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .dark-dmg-calc .baseline-label,
-  .dark-dmg-calc .result-label {
-    font-size: 10px;
-    white-space: nowrap;
-  }
-  .dark-dmg-calc .baseline-value,
-  .dark-dmg-calc .result-value {
-    font-size: clamp(14px, 3.3cqw, 17px);
-    letter-spacing: -0.3px;
-  }
-  .dark-dmg-calc .formula-note,
-  .dark-dmg-calc .segment-note,
-  .dark-dmg-calc .formula-box {
-    font-size: 11px;
-    padding: 8px 10px;
-  }
-}
-
-@container (max-width: 560px) {
-  .dark-dmg-calc .baseline-box,
-  .dark-dmg-calc .result-box {
-    padding: 10px 8px;
-  }
-}
-
-@media (max-width: 860px) {
-  .dark-dmg-calc {
-    max-width: 100%;
-    margin: 1.25rem auto;
-    padding: 14px;
-    border-radius: 16px;
-  }
-
-  .dark-dmg-calc .dmg-title {
-    font-size: 19px;
-  }
-
-  .dark-dmg-calc .dmg-card {
-    padding: 14px;
-    border-radius: 13px;
-  }
-
-  .dark-dmg-calc .segment-grid,
-  .dark-dmg-calc .segment-grid.public-grid,
-  .dark-dmg-calc .segment-grid.main-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .dark-dmg-calc .baseline-grid,
-  .dark-dmg-calc .result-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .dark-dmg-calc .baseline-value,
-  .dark-dmg-calc .result-value {
-    font-size: 16px;
-  }
-
-  .dark-dmg-calc .result-value.accent {
-    font-size: clamp(15px, 3vw, 18px);
-  }
-
-  .dark-dmg-calc .seg-field input,
-  .dark-dmg-calc .seg-field select {
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 620px) {
-  .dark-dmg-calc {
-    padding: 12px;
-  }
-
-  .dark-dmg-calc .dmg-header {
-    margin-bottom: 12px;
-  }
-
-
-  .dark-dmg-calc .baseline-box,
-  .dark-dmg-calc .result-box {
-    padding: 11px 9px;
-  }
-}
-
-@media (max-width: 480px) {
-  .dark-dmg-calc {
-    margin: 1rem auto;
-    padding: 10px;
-    border-radius: clamp(10px, 2vw, 13px);
-  }
-
-  .dark-dmg-calc .dmg-card {
-    padding: 12px;
-  }
-
-  .dark-dmg-calc .section-row,
-  .dark-dmg-calc .segment-top {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .dark-dmg-calc .add-btn,
-  .dark-dmg-calc .remove-btn {
-    width: 100%;
-  }
-
-  .dark-dmg-calc .segment-grid,
-  .dark-dmg-calc .segment-grid.public-grid,
-  .dark-dmg-calc .segment-grid.main-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
- 
-.dark-dmg-calc .baseline-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-.dark-dmg-calc .baseline-label,
-.dark-dmg-calc .result-label {
-  font-size: clamp(9px, 1.45vw, 11px);
-}
-.dark-dmg-calc .baseline-value,
-.dark-dmg-calc .result-value {
-  font-size: clamp(14px, 2.1vw, 17px);
-  letter-spacing: -0.02em;
-}
-.dark-dmg-calc .result-value.accent {
-  font-size: clamp(16px, 2.2vw, 19px);
-}
-@media (max-width: 560px) {
-  .dark-dmg-calc {
-    width: calc(100% - 10px);
-    padding: 10px;
-  }
-  .dark-dmg-calc .dmg-card {
-    padding: 10px;
-  }
-  .dark-dmg-calc .baseline-grid,
-  .dark-dmg-calc .result-grid {
-    gap: 6px;
-  }
-  .dark-dmg-calc .baseline-box,
-  .dark-dmg-calc .result-box {
-    padding: 7px 4px;
-    border-radius: 10px;
-  }
-}
-
- 
-.dark-dmg-calc .baseline-box.highlight {
-  background: #edf4fb !important;
-  border-color: #cbdff0 !important;
-}
-.dark-dmg-calc .baseline-grid,
-.dark-dmg-calc .result-grid {
+.nikke-buff-cmp .bcmp-result-flex {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
   width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  margin-top: 12px;
 }
-.dark-dmg-calc .baseline-box,
-.dark-dmg-calc .result-box {
+.nikke-buff-cmp .bcmp-result-box {
+  flex: 1 1 0;
+  width: 0;
+  min-width: 0;
+  background: #fefae0;
+  border: 2px solid #ffd166;
+  border-radius: 10px;
+  padding: 9px 5px;
+  text-align: center;
   overflow: hidden;
 }
+.nikke-buff-cmp .bcmp-result-box.bcmp-accent { background: #3d405b; border-color: #8338ec; }
+.nikke-buff-cmp .bcmp-result-box.bcmp-accent .bcmp-result-label { color: #b8c0ff; }
+.nikke-buff-cmp .bcmp-result-label { color: #3d405b; font-size: clamp(9px, 1.5vw, 11px); font-weight: 850; line-height: 1.35; margin-bottom: 5px; white-space: nowrap; }
+.nikke-buff-cmp .bcmp-result-value { color: #118ab2; font-size: clamp(14px, 2.2vw, 17px); font-weight: 950; line-height: 1.25; overflow-wrap: anywhere; letter-spacing: -0.03em; }
+.nikke-buff-cmp .bcmp-accent .bcmp-result-value { color: #ffd166; }
+.nikke-buff-cmp .bcmp-positive { color: #06d6a0 !important; }
+.nikke-buff-cmp .bcmp-negative { color: #ef476f !important; }
 
- 
-.dark-dmg-calc .baseline-grid,
-.dark-dmg-calc .result-grid {
-  display: flex !important;
-  flex-wrap: nowrap !important;
-  gap: 8px !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  overflow: hidden !important;
+.nikke-buff-cmp .bcmp-check-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 8px 9px;
+  border: 2px solid #8d99ae;
+  background: #ffffff;
+  color: #2b2d42;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 850;
+  cursor: pointer;
 }
-.dark-dmg-calc .baseline-box,
-.dark-dmg-calc .result-box {
-  flex: 1 1 0 !important;
-  width: 0 !important;
-  min-width: 0 !important;
-  max-width: 100% !important;
-  transform: none !important;
-  margin: 0 !important;
+.nikke-buff-cmp .bcmp-check-field input {
+  width: auto;
+  min-width: auto;
+  margin: 0;
+  accent-color: #118ab2;
 }
-.dark-dmg-calc .baseline-label,
-.dark-dmg-calc .result-label,
-.dark-dmg-calc .baseline-value,
-.dark-dmg-calc .result-value {
-  max-width: 100% !important;
-  overflow-wrap: anywhere !important;
-  word-break: keep-all !important;
-}
-@media (max-width: 520px) {
-  .dark-dmg-calc .baseline-grid,
-  .dark-dmg-calc .result-grid {
-    gap: 5px !important;
-  }
-  .dark-dmg-calc .baseline-box,
-  .dark-dmg-calc .result-box {
-    padding: 7px 3px !important;
-  }
-  .dark-dmg-calc .baseline-label,
-  .dark-dmg-calc .result-label {
-    font-size: 9px !important;
-  }
-  .dark-dmg-calc .baseline-value,
-  .dark-dmg-calc .result-value {
-    font-size: 13px !important;
-    letter-spacing: -0.05em !important;
-  }
+.nikke-buff-cmp .bcmp-check-field span {
+  margin: 0;
+  color: #3d405b;
+  line-height: 1.35;
 }
 
+.nikke-buff-cmp .hidden { display: none !important; }
+
+@container (max-width: 680px) {
+  .nikke-buff-cmp .bcmp-grid,
+  .nikke-buff-cmp .bcmp-main-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .nikke-buff-cmp .bcmp-result-flex { gap: 6px; }
+  .nikke-buff-cmp .bcmp-result-box { padding: 8px 4px; }
+}
+@media (max-width: 560px) {
+  .nikke-buff-cmp { width: calc(100% - 8px); padding: 10px; }
+  .nikke-buff-cmp .bcmp-set { padding: 11px; }
+  .nikke-buff-cmp .bcmp-set-head,
+  .nikke-buff-cmp .bcmp-section-row,
+  .nikke-buff-cmp .bcmp-seg-head { flex-direction: column; align-items: stretch; }
+  .nikke-buff-cmp .bcmp-btn,
+  .nikke-buff-cmp .bcmp-copy-btn,
+  .nikke-buff-cmp .bcmp-remove-btn,
+  .nikke-buff-cmp .bcmp-delete-set-btn { width: 100%; }
+  .nikke-buff-cmp .bcmp-grid,
+  .nikke-buff-cmp .bcmp-main-grid { grid-template-columns: minmax(0,1fr); }
+  .nikke-buff-cmp .bcmp-field input,
+  .nikke-buff-cmp .bcmp-field select { font-size: 16px; }
+  .nikke-buff-cmp .bcmp-result-label { font-size: 9px; }
+  .nikke-buff-cmp .bcmp-result-value { font-size: 13px; }
+}
 &lt;/style&gt;
 
 &lt;script&gt;
 (function(){
   const TEN_SECONDS = 10;
-  const scarletCommon = {
-    baseAtk: 95139, atkBuff: 115.75, critDmgBuff: 6.61, critRateBuff: 19.57,
-    coreBuff: 0, elementBuff: 0, chargeBuff: 0, takenBuff: 0, sharedBuff: 0, atkDmgBuff: 0
-  };
-  const scarletWeapon = { type: &#39;weapon&#39;, multiplier: 27.08, rps: 12, magazine: 20, reload: 2.3, coreBuff: 0, chargeBuff: 0, sharedBuff: 0, atkDmgBuff: 0 };
-  const scarletSkill = { type: &#39;skill&#39;, multiplier: 849.15, times: 1, coreBuff: 0, chargeBuff: 0, sharedBuff: 0, atkDmgBuff: 0 };
+  let setId = 0;
+  let segmentSeq = 0;
+  const root = document.getElementById(&#39;nikkeBuffCmp&#39;);
+  const setsRoot = document.getElementById(&#39;bcmpSets&#39;);
 
-  let segmentId = 0;
-  const $ = id =&gt; document.getElementById(id);
   function pct(v){ return (Number(v) || 0) / 100; }
   function fmt(n){ if(!Number.isFinite(n)) return &#39;—&#39;; return Math.round(n).toLocaleString(); }
   function fmt2(n){ if(!Number.isFinite(n)) return &#39;—&#39;; return n.toLocaleString(undefined, { maximumFractionDigits: 3 }); }
+  function fmtPct(n){ if(!Number.isFinite(n)) return &#39;—&#39;; return (n &gt;= 0 ? &#39;+&#39; : &#39;&#39;) + n.toLocaleString(undefined, { maximumFractionDigits: 2 }) + &#39;%&#39;; }
 
   function multipliers(common, seg){
     const critRate = 0.15 + pct(common.critRateBuff);
@@ -3031,16 +2710,17 @@ window.onload = function() {
     const coreBuff = seg.type === &#39;weapon&#39; ? pct(seg.coreBuff) : 0;
     const chargeBuff = seg.type === &#39;weapon&#39; ? pct(seg.chargeBuff) : 0;
     const sharedBuff = seg.type === &#39;skill&#39; ? pct(seg.sharedBuff) : 0;
-    const atkDmgBuff = pct(seg.atkDmgBuff);
+    const distanceBonus = seg.type === &#39;weapon&#39; &amp;&amp; seg.distanceBonus ? 0.3 : 0;
     return {
       critRate,
       critDmg,
       critExpected,
-      correction: 1 + critExpected + 0.5 + (1 + coreBuff) + 0.3,
+      distanceBonus,
+      correction: 1 + critExpected + 0.5 + (1 + coreBuff) + distanceBonus,
       element: 1.1 + pct(common.elementBuff),
       charge: 1 + chargeBuff,
       vulnerability: 1 + pct(common.takenBuff) + sharedBuff,
-      atkDmg: 1 + atkDmgBuff
+      atkDmg: 1 + pct(seg.atkDmgBuff)
     };
   }
 
@@ -3074,137 +2754,243 @@ window.onload = function() {
     return { total: perHit * times, count: times, perHit };
   }
 
-  function calcScarlet(){
-    const w = calcSegment(scarletCommon, scarletWeapon);
-    const s = calcSegment(scarletCommon, scarletSkill);
-    const total = w.total + s.total;
-    $(&#39;scarletWeaponDamage&#39;).textContent = fmt(w.total);
-    $(&#39;scarletSkillDamage&#39;).textContent = fmt(s.total);
-    $(&#39;scarletTotalDamage&#39;).textContent = fmt(total);
-    const m = multipliers(scarletCommon, scarletWeapon);
-    $(&#39;scarletNote&#39;).textContent = `武器约 ${fmt2(w.count)} 发；技能 ${fmt2(s.count)} 次。暴击期望 = ${fmt2(m.critRate * 100)}% × ${fmt2(m.critDmg * 100)}% = ${fmt2(m.critExpected)}。`;
-    return total;
-  }
-  const scarletTotal = calcScarlet();
-
-  function readPublic(){
-    return {
-      baseAtk: Number($(&#39;pubBaseAtk&#39;).value) || 0,
-      atkBuff: Number($(&#39;pubAtkBuff&#39;).value) || 0,
-      critDmgBuff: Number($(&#39;pubCritDmgBuff&#39;).value) || 0,
-      critRateBuff: Number($(&#39;pubCritRateBuff&#39;).value) || 0,
-      elementBuff: Number($(&#39;pubElementBuff&#39;).value) || 0,
-      takenBuff: Number($(&#39;pubTakenBuff&#39;).value) || 0
-    };
-  }
-
-  function segmentTemplate(id){
+  function setTemplate(id, isBase){
     return `
-      &lt;div class=&#34;segment-card&#34; data-seg-id=&#34;${id}&#34;&gt;
-        &lt;div class=&#34;segment-top&#34;&gt;
-          &lt;div class=&#34;segment-name&#34;&gt;伤害段落 #${id}&lt;/div&gt;
-          &lt;button type=&#34;button&#34; class=&#34;remove-btn&#34;&gt;删除&lt;/button&gt;
+      &lt;div class=&#34;bcmp-set&#34; data-set-id=&#34;${id}&#34; data-base=&#34;${isBase ? &#39;1&#39; : &#39;0&#39;}&#34;&gt;
+        &lt;div class=&#34;bcmp-set-head&#34;&gt;
+          &lt;div class=&#34;bcmp-set-title&#34;&gt;${isBase ? &#39;基准 Set #1&#39; : &#39;对比 Set #&#39; + id}&lt;/div&gt;
+          &lt;div&gt;
+            ${isBase ? &#39;&lt;button type=&#34;button&#34; class=&#34;bcmp-copy-btn&#34;&gt;复制&lt;/button&gt;&#39; : &#39;&lt;button type=&#34;button&#34; class=&#34;bcmp-delete-set-btn&#34;&gt;删除Set&lt;/button&gt;&#39;}
+          &lt;/div&gt;
         &lt;/div&gt;
 
-        &lt;div class=&#34;segment-grid main-grid&#34;&gt;
-          &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;类型&lt;/span&gt;&lt;select class=&#34;seg-type&#34;&gt;&lt;option value=&#34;weapon&#34;&gt;武器 / 普攻&lt;/option&gt;&lt;option value=&#34;skill&#34;&gt;技能伤害&lt;/option&gt;&lt;/select&gt;&lt;/label&gt;
-          &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;倍率 %&lt;/span&gt;&lt;input type=&#34;number&#34; class=&#34;seg-multiplier&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
-          &lt;label class=&#34;seg-field weapon-only&#34;&gt;&lt;span&gt;子弹数 / 秒&lt;/span&gt;&lt;input type=&#34;number&#34; class=&#34;seg-rps&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
-          &lt;label class=&#34;seg-field weapon-only&#34;&gt;&lt;span&gt;最大装弹数&lt;/span&gt;&lt;input type=&#34;number&#34; class=&#34;seg-magazine&#34; value=&#34;0&#34; step=&#34;1&#34;&gt;&lt;/label&gt;
-          &lt;label class=&#34;seg-field weapon-only&#34;&gt;&lt;span&gt;换弹速度 秒&lt;/span&gt;&lt;input type=&#34;number&#34; class=&#34;seg-reload&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
-          &lt;label class=&#34;seg-field skill-only hidden&#34;&gt;&lt;span&gt;10秒内触发次数&lt;/span&gt;&lt;input type=&#34;number&#34; class=&#34;seg-times&#34; value=&#34;1&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+        &lt;div class=&#34;bcmp-subtitle&#34;&gt;公共参数&lt;/div&gt;
+        &lt;div class=&#34;bcmp-note&#34;&gt;这里填写本Set所有伤害段都能吃到的参数。&lt;/div&gt;
+        &lt;br&gt;
+        &lt;div class=&#34;bcmp-grid bcmp-public-grid&#34;&gt;
+          &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;基础攻击力&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;baseAtk&#34; value=&#34;0&#34; min=&#34;0&#34; step=&#34;1&#34;&gt;&lt;/label&gt;
+          &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;攻击力 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;atkBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+          &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;暴击伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;critDmgBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+          &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;暴击率 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;critRateBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+          &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;优越伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;elementBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+          &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;所受伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;takenBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
         &lt;/div&gt;
 
-        &lt;div class=&#34;segment-block-title weapon-buff-title&#34;&gt;武器/普攻 buff&lt;/div&gt;
-        &lt;div class=&#34;segment-grid weapon-buff-grid&#34;&gt;
-          &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;核心伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; class=&#34;seg-core-buff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
-          &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;蓄力伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; class=&#34;seg-charge-buff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
-          &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;攻击伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; class=&#34;seg-atk-dmg-buff weapon-atk-dmg&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+        &lt;div class=&#34;bcmp-subtitle&#34;&gt;伤害段落&lt;/div&gt;
+        &lt;div class=&#34;bcmp-section-row&#34;&gt;
+          &lt;div class=&#34;bcmp-note&#34; style=&#34;margin-top:0; flex:1;&#34;&gt;武器/普攻：距离补正、核心伤害、蓄力伤害、攻击伤害（ex：穿透伤害）。技能伤害：分摊伤害、攻击伤害（ex：持续伤害）。&lt;/div&gt;
+          &lt;button type=&#34;button&#34; class=&#34;bcmp-btn bcmp-add-seg&#34;&gt;添加&lt;/button&gt;
         &lt;/div&gt;
+        &lt;div class=&#34;bcmp-segments&#34;&gt;&lt;/div&gt;
 
-        &lt;div class=&#34;segment-block-title skill-buff-title hidden&#34;&gt;技能伤害 buff&lt;/div&gt;
-        &lt;div class=&#34;segment-grid skill-buff-grid hidden&#34;&gt;
-          &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;分摊伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; class=&#34;seg-shared-buff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
-          &lt;label class=&#34;seg-field&#34;&gt;&lt;span&gt;攻击伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; class=&#34;seg-atk-dmg-buff skill-atk-dmg&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+        &lt;div class=&#34;bcmp-subtitle&#34;&gt;本 Set 结果&lt;/div&gt;
+        &lt;div class=&#34;bcmp-result-flex&#34;&gt;
+          &lt;div class=&#34;bcmp-result-box&#34;&gt;&lt;div class=&#34;bcmp-result-label&#34;&gt;10秒总伤害&lt;/div&gt;&lt;div class=&#34;bcmp-result-value set-total&#34;&gt;0&lt;/div&gt;&lt;/div&gt;
+          &lt;div class=&#34;bcmp-result-box bcmp-accent&#34;&gt;&lt;div class=&#34;bcmp-result-label&#34;&gt;对比基准&lt;/div&gt;&lt;div class=&#34;bcmp-result-value set-growth&#34;&gt;基准&lt;/div&gt;&lt;/div&gt;
+          &lt;div class=&#34;bcmp-result-box&#34;&gt;&lt;div class=&#34;bcmp-result-label&#34;&gt;伤害差值&lt;/div&gt;&lt;div class=&#34;bcmp-result-value set-diff&#34;&gt;0&lt;/div&gt;&lt;/div&gt;
         &lt;/div&gt;
-
-        &lt;div class=&#34;seg-output&#34;&gt;本段：&lt;span class=&#34;seg-damage&#34;&gt;0&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&#34;bcmp-formula set-formula&#34;&gt;添加伤害段落并输入倍率后开始计算。&lt;/div&gt;
       &lt;/div&gt;`;
   }
 
-  function addSegment(){
-    segmentId += 1;
-    $(&#39;segments&#39;).insertAdjacentHTML(&#39;beforeend&#39;, segmentTemplate(segmentId));
-    bindSegment($(&#39;segments&#39;).lastElementChild);
+  function segmentTemplate(){
+    segmentSeq += 1;
+    return `
+      &lt;div class=&#34;bcmp-segment&#34;&gt;
+        &lt;div class=&#34;bcmp-seg-head&#34;&gt;
+          &lt;div class=&#34;bcmp-seg-title&#34;&gt;伤害段落 #${segmentSeq}&lt;/div&gt;
+          &lt;button type=&#34;button&#34; class=&#34;bcmp-remove-btn&#34;&gt;删除&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&#34;bcmp-main-grid&#34;&gt;
+          &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;类型&lt;/span&gt;&lt;select data-key=&#34;type&#34; class=&#34;seg-type&#34;&gt;&lt;option value=&#34;weapon&#34;&gt;武器 / 普攻&lt;/option&gt;&lt;option value=&#34;skill&#34;&gt;技能伤害&lt;/option&gt;&lt;/select&gt;&lt;/label&gt;
+          &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;倍率 %&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;multiplier&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+          &lt;label class=&#34;bcmp-field weapon-only&#34;&gt;&lt;span&gt;子弹数 / 秒&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;rps&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+          &lt;label class=&#34;bcmp-field weapon-only&#34;&gt;&lt;span&gt;最大装弹数&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;magazine&#34; value=&#34;0&#34; step=&#34;1&#34;&gt;&lt;/label&gt;
+          &lt;label class=&#34;bcmp-field weapon-only&#34;&gt;&lt;span&gt;换弹速度 秒&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;reload&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+          &lt;label class=&#34;bcmp-check-field weapon-only&#34;&gt;&lt;input type=&#34;checkbox&#34; data-key=&#34;distanceBonus&#34;&gt;&lt;span&gt;距离补正 +0.3&lt;/span&gt;&lt;/label&gt;
+          &lt;label class=&#34;bcmp-field skill-only hidden&#34;&gt;&lt;span&gt;10秒内触发次数&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;times&#34; value=&#34;1&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&#34;bcmp-block-title weapon-buff-title&#34;&gt;武器/普攻 buff&lt;/div&gt;
+        &lt;div class=&#34;bcmp-grid weapon-buff-grid&#34;&gt;
+          &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;核心伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;coreBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+          &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;蓄力伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;chargeBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+          &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;攻击伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;atkDmgBuffWeapon&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&#34;bcmp-block-title skill-buff-title hidden&#34;&gt;技能伤害 buff&lt;/div&gt;
+        &lt;div class=&#34;bcmp-grid skill-buff-grid hidden&#34;&gt;
+          &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;分摊伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;sharedBuff&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+          &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;攻击伤害 buff %&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;atkDmgBuffSkill&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&#34;bcmp-seg-output&#34;&gt;本段：&lt;span class=&#34;seg-damage&#34;&gt;0&lt;/span&gt;&lt;/div&gt;
+      &lt;/div&gt;`;
+  }
+
+  function readCommon(setEl){
+    const read = key =&gt; Number(setEl.querySelector(`[data-key=&#34;${key}&#34;]`)?.value) || 0;
+    return {
+      baseAtk: read(&#39;baseAtk&#39;),
+      atkBuff: read(&#39;atkBuff&#39;),
+      critDmgBuff: read(&#39;critDmgBuff&#39;),
+      critRateBuff: read(&#39;critRateBuff&#39;),
+      elementBuff: read(&#39;elementBuff&#39;),
+      takenBuff: read(&#39;takenBuff&#39;)
+    };
+  }
+
+  function readSegment(segEl){
+    const read = key =&gt; Number(segEl.querySelector(`[data-key=&#34;${key}&#34;]`)?.value) || 0;
+    const type = segEl.querySelector(&#39;[data-key=&#34;type&#34;]&#39;).value;
+    const checked = key =&gt; !!segEl.querySelector(`[data-key=&#34;${key}&#34;]`)?.checked;
+    return {
+      type,
+      multiplier: read(&#39;multiplier&#39;),
+      rps: read(&#39;rps&#39;),
+      magazine: read(&#39;magazine&#39;),
+      reload: read(&#39;reload&#39;),
+      distanceBonus: type === &#39;weapon&#39; ? checked(&#39;distanceBonus&#39;) : false,
+      times: read(&#39;times&#39;),
+      coreBuff: read(&#39;coreBuff&#39;),
+      chargeBuff: read(&#39;chargeBuff&#39;),
+      sharedBuff: read(&#39;sharedBuff&#39;),
+      atkDmgBuff: type === &#39;weapon&#39; ? read(&#39;atkDmgBuffWeapon&#39;) : read(&#39;atkDmgBuffSkill&#39;)
+    };
+  }
+
+  function refreshSegmentVisibility(segEl){
+    const isWeapon = segEl.querySelector(&#39;[data-key=&#34;type&#34;]&#39;).value === &#39;weapon&#39;;
+    segEl.querySelectorAll(&#39;.weapon-only&#39;).forEach(el =&gt; el.classList.toggle(&#39;hidden&#39;, !isWeapon));
+    segEl.querySelectorAll(&#39;.skill-only&#39;).forEach(el =&gt; el.classList.toggle(&#39;hidden&#39;, isWeapon));
+    segEl.querySelector(&#39;.weapon-buff-title&#39;).classList.toggle(&#39;hidden&#39;, !isWeapon);
+    segEl.querySelector(&#39;.weapon-buff-grid&#39;).classList.toggle(&#39;hidden&#39;, !isWeapon);
+    segEl.querySelector(&#39;.skill-buff-title&#39;).classList.toggle(&#39;hidden&#39;, isWeapon);
+    segEl.querySelector(&#39;.skill-buff-grid&#39;).classList.toggle(&#39;hidden&#39;, isWeapon);
+  }
+
+  function bindSegment(segEl){
+    segEl.querySelectorAll(&#39;input, select&#39;).forEach(el =&gt; {
+      el.addEventListener(&#39;input&#39;, calculateAll);
+      el.addEventListener(&#39;change&#39;, () =&gt; { refreshSegmentVisibility(segEl); calculateAll(); });
+    });
+    segEl.querySelector(&#39;.bcmp-remove-btn&#39;).addEventListener(&#39;click&#39;, () =&gt; { segEl.remove(); calculateAll(); });
+    refreshSegmentVisibility(segEl);
+  }
+
+  function addSegmentToSet(setEl, data){
+    const holder = setEl.querySelector(&#39;.bcmp-segments&#39;);
+    holder.insertAdjacentHTML(&#39;beforeend&#39;, segmentTemplate());
+    const segEl = holder.lastElementChild;
+    bindSegment(segEl);
+    if(data) fillSegment(segEl, data);
     calculateAll();
   }
 
-  function bindSegment(card){
-    const typeSelect = card.querySelector(&#39;.seg-type&#39;);
-    const refreshVisibility = () =&gt; {
-      const isWeapon = typeSelect.value === &#39;weapon&#39;;
-      card.querySelectorAll(&#39;.weapon-only&#39;).forEach(el =&gt; el.classList.toggle(&#39;hidden&#39;, !isWeapon));
-      card.querySelectorAll(&#39;.skill-only&#39;).forEach(el =&gt; el.classList.toggle(&#39;hidden&#39;, isWeapon));
-      card.querySelector(&#39;.weapon-buff-title&#39;).classList.toggle(&#39;hidden&#39;, !isWeapon);
-      card.querySelector(&#39;.weapon-buff-grid&#39;).classList.toggle(&#39;hidden&#39;, !isWeapon);
-      card.querySelector(&#39;.skill-buff-title&#39;).classList.toggle(&#39;hidden&#39;, isWeapon);
-      card.querySelector(&#39;.skill-buff-grid&#39;).classList.toggle(&#39;hidden&#39;, isWeapon);
-    };
-    typeSelect.addEventListener(&#39;change&#39;, () =&gt; { refreshVisibility(); calculateAll(); });
-    card.querySelectorAll(&#39;input, select&#39;).forEach(el =&gt; el.addEventListener(&#39;input&#39;, calculateAll));
-    card.querySelector(&#39;.remove-btn&#39;).addEventListener(&#39;click&#39;, () =&gt; { card.remove(); calculateAll(); });
-    refreshVisibility();
+  function createSet(isBase, sourceData){
+    setId += 1;
+    setsRoot.insertAdjacentHTML(&#39;beforeend&#39;, setTemplate(setId, isBase));
+    const setEl = setsRoot.lastElementChild;
+    bindSet(setEl);
+    if(sourceData) fillSet(setEl, sourceData);
+    if(!sourceData) addSegmentToSet(setEl);
+    calculateAll();
+    return setEl;
   }
 
-  function readSegments(){
-    return Array.from(document.querySelectorAll(&#39;.segment-card&#39;)).map(card =&gt; {
-      const type = card.querySelector(&#39;.seg-type&#39;).value;
-      const atkDmgInput = type === &#39;weapon&#39; ? card.querySelector(&#39;.weapon-atk-dmg&#39;) : card.querySelector(&#39;.skill-atk-dmg&#39;);
-      return {
-        card,
-        type,
-        multiplier: Number(card.querySelector(&#39;.seg-multiplier&#39;).value) || 0,
-        rps: Number(card.querySelector(&#39;.seg-rps&#39;)?.value) || 0,
-        magazine: Number(card.querySelector(&#39;.seg-magazine&#39;)?.value) || 0,
-        reload: Number(card.querySelector(&#39;.seg-reload&#39;)?.value) || 0,
-        times: Number(card.querySelector(&#39;.seg-times&#39;)?.value) || 0,
-        coreBuff: Number(card.querySelector(&#39;.seg-core-buff&#39;)?.value) || 0,
-        chargeBuff: Number(card.querySelector(&#39;.seg-charge-buff&#39;)?.value) || 0,
-        sharedBuff: Number(card.querySelector(&#39;.seg-shared-buff&#39;)?.value) || 0,
-        atkDmgBuff: Number(atkDmgInput?.value) || 0
-      };
+  function bindSet(setEl){
+    setEl.querySelectorAll(&#39;.bcmp-public-grid input&#39;).forEach(el =&gt; el.addEventListener(&#39;input&#39;, calculateAll));
+    setEl.querySelector(&#39;.bcmp-add-seg&#39;).addEventListener(&#39;click&#39;, () =&gt; addSegmentToSet(setEl));
+    const copyBtn = setEl.querySelector(&#39;.bcmp-copy-btn&#39;);
+    if(copyBtn) copyBtn.addEventListener(&#39;click&#39;, () =&gt; createSet(false, collectSetData(setEl)));
+    const delBtn = setEl.querySelector(&#39;.bcmp-delete-set-btn&#39;);
+    if(delBtn) delBtn.addEventListener(&#39;click&#39;, () =&gt; { setEl.remove(); calculateAll(); });
+  }
+
+  function collectSetData(setEl){
+    const common = readCommon(setEl);
+    const segments = Array.from(setEl.querySelectorAll(&#39;.bcmp-segment&#39;)).map(readSegment);
+    return { common, segments };
+  }
+
+  function fillSet(setEl, data){
+    Object.entries(data.common || {}).forEach(([key, val]) =&gt; {
+      const input = setEl.querySelector(`.bcmp-public-grid [data-key=&#34;${key}&#34;]`);
+      if(input) input.value = val;
     });
+    const holder = setEl.querySelector(&#39;.bcmp-segments&#39;);
+    holder.innerHTML = &#39;&#39;;
+    (data.segments || []).forEach(seg =&gt; addSegmentToSet(setEl, seg));
+    if(!(data.segments || []).length) addSegmentToSet(setEl);
+  }
+
+  function fillSegment(segEl, data){
+    segEl.querySelector(&#39;[data-key=&#34;type&#34;]&#39;).value = data.type || &#39;weapon&#39;;
+    Object.entries(data).forEach(([key, val]) =&gt; {
+      if(key === &#39;atkDmgBuff&#39;) {
+        const w = segEl.querySelector(&#39;[data-key=&#34;atkDmgBuffWeapon&#34;]&#39;);
+        const s = segEl.querySelector(&#39;[data-key=&#34;atkDmgBuffSkill&#34;]&#39;);
+        if(data.type === &#39;weapon&#39; &amp;&amp; w) w.value = val;
+        if(data.type === &#39;skill&#39; &amp;&amp; s) s.value = val;
+        return;
+      }
+      const input = segEl.querySelector(`[data-key=&#34;${key}&#34;]`);
+      if(input) {
+        if(input.type === &#39;checkbox&#39;) input.checked = !!val;
+        else input.value = val;
+      }
+    });
+    refreshSegmentVisibility(segEl);
+  }
+
+  function calculateSet(setEl){
+    const common = readCommon(setEl);
+    let total = 0;
+    const parts = [];
+    Array.from(setEl.querySelectorAll(&#39;.bcmp-segment&#39;)).forEach((segEl, idx) =&gt; {
+      const seg = readSegment(segEl);
+      const res = calcSegment(common, seg);
+      total += res.total;
+      segEl.querySelector(&#39;.seg-damage&#39;).textContent = fmt(res.total);
+      const m = multipliers(common, seg);
+      const label = seg.type === &#39;weapon&#39; ? `武器约 ${fmt2(res.count)} 发` : `技能伤害 ${fmt2(res.count)} 次`;
+      const extra = seg.type === &#39;weapon&#39;
+        ? `距离补正 ${seg.distanceBonus ? &#39;+0.3&#39; : &#39;无&#39;}，核心 ${fmt2(seg.coreBuff)}%，蓄伤 ${fmt2(seg.chargeBuff)}%，攻伤 ${fmt2(seg.atkDmgBuff)}%`
+        : `分摊 ${fmt2(seg.sharedBuff)}%，攻伤 ${fmt2(seg.atkDmgBuff)}%`;
+      parts.push(`#${idx + 1} ${label}，单次 ${fmt(res.perHit)}，本段 ${fmt(res.total)}；专属 buff：${extra}；暴击期望 ${fmt2(m.critRate * 100)}% × ${fmt2(m.critDmg * 100)}% = ${fmt2(m.critExpected)}`);
+    });
+    setEl.dataset.total = String(total);
+    setEl.querySelector(&#39;.set-total&#39;).textContent = fmt(total);
+    setEl.querySelector(&#39;.set-formula&#39;).innerHTML = parts.length ? parts.join(&#39;&lt;br&gt;&#39;) : &#39;添加伤害段落并输入倍率后开始计算。&#39;;
+    return total;
   }
 
   function calculateAll(){
-    const common = readPublic();
-    const segs = readSegments();
-    let total = 0;
-    const parts = [];
-    segs.forEach((seg, idx) =&gt; {
-      const res = calcSegment(common, seg);
-      total += res.total;
-      seg.card.querySelector(&#39;.seg-damage&#39;).textContent = fmt(res.total);
-      const m = multipliers(common, seg);
-      const label = seg.type === &#39;weapon&#39; ? `武器：约 ${fmt2(res.count)} 发` : `技能伤害：${fmt2(res.count)} 次`;
-      const extra = seg.type === &#39;weapon&#39;
-        ? `核心 ${fmt2(seg.coreBuff)}%，蓄伤 ${fmt2(seg.chargeBuff)}%，攻伤 ${fmt2(seg.atkDmgBuff)}%`
-        : `分摊 ${fmt2(seg.sharedBuff)}%，攻伤 ${fmt2(seg.atkDmgBuff)}%`;
-      parts.push(`#${idx+1} ${label}，单次伤害 ${fmt(res.perHit)}，本段 ${fmt(res.total)}；专属 buff：${extra}；暴击期望 ${fmt2(m.critRate * 100)}% × ${fmt2(m.critDmg * 100)}% = ${fmt2(m.critExpected)}`);
+    const sets = Array.from(setsRoot.querySelectorAll(&#39;.bcmp-set&#39;));
+    const totals = sets.map(calculateSet);
+    const base = totals[0] || 0;
+    sets.forEach((setEl, idx) =&gt; {
+      const total = totals[idx] || 0;
+      const diff = total - base;
+      const growth = base &gt; 0 ? ((total / base) - 1) * 100 : NaN;
+      const growthEl = setEl.querySelector(&#39;.set-growth&#39;);
+      const diffEl = setEl.querySelector(&#39;.set-diff&#39;);
+      if(idx === 0){
+        growthEl.textContent = &#39;基准&#39;;
+        growthEl.className = &#39;bcmp-result-value set-growth&#39;;
+        diffEl.textContent = &#39;0&#39;;
+        diffEl.className = &#39;bcmp-result-value set-diff&#39;;
+      } else {
+        growthEl.textContent = Number.isFinite(growth) ? fmtPct(growth) : &#39;—&#39;;
+        diffEl.textContent = (diff &gt;= 0 ? &#39;+&#39; : &#39;&#39;) + fmt(diff);
+        growthEl.className = &#39;bcmp-result-value set-growth &#39; + (growth &gt;= 0 ? &#39;bcmp-positive&#39; : &#39;bcmp-negative&#39;);
+        diffEl.className = &#39;bcmp-result-value set-diff &#39; + (diff &gt;= 0 ? &#39;bcmp-positive&#39; : &#39;bcmp-negative&#39;);
+      }
     });
-    $(&#39;totalDamage&#39;).textContent = fmt(total);
-    const ratio = scarletTotal &gt; 0 ? total / scarletTotal : 0;
-    $(&#39;scarletRatio&#39;).textContent = fmt2(ratio) + &#39; 红莲&#39;;
-    const diff = total - scarletTotal;
-    $(&#39;damageDiff&#39;).textContent = (diff &gt;= 0 ? &#39;+&#39; : &#39;&#39;) + fmt(diff);
-    $(&#39;formulaText&#39;).innerHTML = parts.length ? parts.join(&#39;&lt;br&gt;&#39;) : &#39;添加伤害段落并输入倍率后开始计算。&#39;;
   }
 
-  [&#39;pubBaseAtk&#39;,&#39;pubAtkBuff&#39;,&#39;pubCritDmgBuff&#39;,&#39;pubCritRateBuff&#39;,&#39;pubElementBuff&#39;,&#39;pubTakenBuff&#39;].forEach(id =&gt; {
-    $(id).addEventListener(&#39;input&#39;, calculateAll);
-  });
-  $(&#39;addSegmentBtn&#39;).addEventListener(&#39;click&#39;, addSegment);
-  addSegment();
+  createSet(true);
 })();
 &lt;/script&gt;
 </description>
@@ -3442,11 +3228,11 @@ T4 - 无任何性价比，属于对策垃圾卡，如风压水樱花
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;主词条&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;4优越4暴伤&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4攻击4优越&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;副词条&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;攻击&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;暴伤&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -3466,7 +3252,9 @@ T4 - 无任何性价比，属于对策垃圾卡，如风压水樱花
     风压
 &lt;/span&gt;&lt;/strong&gt;个突C，据LGG测试，没零件&lt;strong&gt;2.9&lt;/strong&gt;红，有零件&lt;strong&gt;3.7&lt;/strong&gt;红。&lt;/li&gt;
 &lt;li&gt;由于自拐（156.19%攻击力 + 272.93%dot）极高，导致吃拐率差，搭配队友优先&lt;strong&gt;其他乘区&lt;/strong&gt;的辅助，比如易伤拐（如水罗/白兔等），百暴（米兰达）。&lt;/li&gt;
-&lt;li&gt;也由于自身自带的高额攻击力，黑色游侠就算不进米兰达百暴也&lt;strong&gt;不差&lt;/strong&gt;，毕竟攻击力也可以作用于普攻。&lt;/li&gt;
+&lt;li&gt;也由于自身自带的高额攻击力，黑色游侠就算不进米兰达百暴也&lt;strong&gt;不差&lt;/strong&gt;，毕竟攻击力也可以作用于普攻（且普攻还有距离补正）。&lt;/li&gt;
+&lt;li&gt;以上两点也说明了黑色游侠理论上存在两种配队，百暴队和dot队。由于dot需要额外再练一个水樱花/玛娜，导致成本较高，所以对于&lt;strong&gt;普通个突玩家&lt;/strong&gt;而言大概率黑色游侠会进入&lt;strong&gt;百暴队&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;对于前排玩家，百暴队更有可能组娜由塔，而且水樱花大概率也练了，那么dot队可能是前排玩家抢分的关键，这点有待实测。&lt;/li&gt;
 &lt;li&gt;现在黑色游侠存在一个bug，也就是开启大招时变身开激活的dot会迟一秒启动，导致最后1dot吃不到全爆裂加成，会比理论上损失7-8%伤害。但也可能是类似初音开大的“机制”。&lt;/li&gt;
 &lt;li&gt;当然，黑色游侠也存在类似于草莓糖的&lt;strong&gt;C带拐&lt;/strong&gt;机制，也就是她可以拐风压步枪的dot伤害（77.5%）；但这个拐力有些微妙，不如草莓糖易伤泛用。&lt;/li&gt;
 &lt;li&gt;综上所述，黑色游侠是张不错的风压个突对策卡，对于追求风压的玩家（1%以上）可以达到&lt;strong&gt;T2&lt;/strong&gt;优先级，不追求风压自然不用练。&lt;/li&gt;

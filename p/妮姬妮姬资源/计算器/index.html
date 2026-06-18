@@ -10,7 +10,7 @@
 <meta property='og:description' content="~个人用的资源规划计算器~">
 <meta property='og:url' content='https://sloth-cyx.github.io/p/%E5%A6%AE%E5%A7%AC%E5%A6%AE%E5%A7%AC%E8%B5%84%E6%BA%90/%E8%AE%A1%E7%AE%97%E5%99%A8/'>
 <meta property='og:site_name' content='怠惰的天秤-sloth'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-05-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-06-17T13:30:23&#43;08:00'/><meta property='og:image' content='https://sloth-cyx.github.io/images/nikkeCalculator/nikkeCalculator_bg.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-05-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-06-18T18:28:32&#43;08:00'/><meta property='og:image' content='https://sloth-cyx.github.io/images/nikkeCalculator/nikkeCalculator_bg.png' />
 <meta name="twitter:title" content="【妮姬】妮姬资源/计算器">
 <meta name="twitter:description" content="~个人用的资源规划计算器~"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://sloth-cyx.github.io/images/nikkeCalculator/nikkeCalculator_bg.png' />
@@ -510,7 +510,7 @@ post-sidebar">
     <li><a href="#装备升级计算器">装备升级计算器</a></li>
     <li><a href="#技能计算器">技能计算器</a></li>
     <li><a href="#词条期望计算器">词条期望计算器</a></li>
-    <li><a href="#全爆裂伤害计算器beta">全爆裂伤害计算器（Beta）</a></li>
+    <li><a href="#全爆裂拐力计算器beta">全爆裂拐力计算器（Beta）</a></li>
   </ol>
 </nav>
         </div>
@@ -571,7 +571,7 @@ post-sidebar">
         
         <div style="display: flex; align-items: left; gap: 5px;">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 7v5l3 3" /></svg> 
-            <time class="article-time--lastmod">2026-06-17</time>
+            <time class="article-time--lastmod">2026-06-18</time>
         </div>
         
 
@@ -1945,564 +1945,243 @@ window.onload = function() {
   calculateAttributes();
 })();
 </script>
-<h2 id="全爆裂伤害计算器beta">全爆裂伤害计算器（Beta）
-</h2><div class="nikke-dmg-calc dark-dmg-calc">
-  <div class="dmg-header">
-    <div class="dmg-kicker">NIKKE DAMAGE TOOL</div>
-    <div class="dmg-title">妮姬全爆裂 10 秒伤害计算器</div>
-    <div class="dmg-desc">公共 buff 统一填写；不同伤害段只填写自己能吃到的buff。</div>
+<h2 id="全爆裂拐力计算器beta">全爆裂拐力计算器（Beta）
+</h2><div class="nikke-buff-cmp" id="nikkeBuffCmp">
+  <div class="bcmp-header">
+    <div class="bcmp-kicker">NIKKE BUFF TOOL</div>
+    <div class="bcmp-title">全爆裂拐力计算器</div>
+    <div class="bcmp-desc">第一组作为基准；复制后在新组加入不同 buff，比较全爆裂10秒伤害提升。</div>
   </div>
 
-  <div class="dmg-card dmg-baseline-card">
-    <div class="dmg-section-title">固定基准：红莲 10 秒伤害</div>
-    <div class="baseline-grid">
-      <div class="baseline-box"><div class="baseline-label">红莲武器伤害</div><div class="baseline-value" id="scarletWeaponDamage">—</div></div>
-      <div class="baseline-box"><div class="baseline-label">红莲技能伤害</div><div class="baseline-value" id="scarletSkillDamage">—</div></div>
-      <div class="baseline-box"><div class="baseline-label">红莲合计伤害</div><div class="baseline-value" id="scarletTotalDamage">—</div></div>
-    </div>
-    <div class="formula-note" id="scarletNote">红莲数据固定，不参与下方输入修改。</div>
+  <div class="bcmp-top-note">
+    公式沿用：攻击力 × 补正区 × 优越区 × 蓄伤区 × 易伤区 × 攻伤区。
   </div>
 
-  <div class="dmg-card">
-    <div class="dmg-section-title">公共参数</div>
-    <div class="segment-note">这里填写所有伤害段都能吃到的参数。武器/普攻和技能伤害buff请在各自伤害段落中填写。</div><br>
-    <div class="segment-grid public-grid">
-      <label class="seg-field"><span>基础攻击力</span><input type="number" id="pubBaseAtk" value="0" min="0" step="1"></label>
-      <label class="seg-field"><span>攻击力 buff %</span><input type="number" id="pubAtkBuff" value="0" step="0.01"></label>
-      <label class="seg-field"><span>暴击伤害 buff %</span><input type="number" id="pubCritDmgBuff" value="0" step="0.01"></label>
-      <label class="seg-field"><span>暴击率 buff %</span><input type="number" id="pubCritRateBuff" value="0" step="0.01"></label>
-      <label class="seg-field"><span>优越伤害 buff %</span><input type="number" id="pubElementBuff" value="0" step="0.01"></label>
-      <label class="seg-field"><span>所受伤害 buff %</span><input type="number" id="pubTakenBuff" value="0" step="0.01"></label>
-    </div>
-  </div>
-
-  <div class="dmg-card">
-    <div class="section-row">
-      <div class="dmg-section-title no-margin">伤害段落</div>
-      <button type="button" id="addSegmentBtn" class="add-btn">+ 添加伤害</button>
-    </div>
-    <div class="segment-note">武器/普攻：核心伤害、蓄力伤害、攻击伤害为本段专属。技能伤害：分摊伤害、攻击伤害为本段专属。</div>
-    <div id="segments"></div>
-  </div>
-
-  <div class="dmg-card result-card">
-    <div class="dmg-section-title">计算结果</div>
-    <div class="result-grid">
-      <div class="result-box"><div class="result-label">角色 10 秒总伤害</div><div class="result-value" id="totalDamage">—</div></div>
-      <div class="result-box"><div class="result-label">相当于红莲</div><div class="result-value accent" id="scarletRatio">—</div></div>
-      <div class="result-box"><div class="result-label">差值</div><div class="result-value" id="damageDiff">—</div></div>
-    </div>
-    <div class="formula-box" id="formulaText">添加伤害段落并输入倍率后开始计算。</div>
-  </div>
+  <div class="bcmp-sets" id="bcmpSets"></div>
 </div>
 
+
 <style>
-.nikke-dmg-calc,
-.nikke-dmg-calc * {
-  box-sizing: border-box;
-}
+.nikke-buff-cmp,
+.nikke-buff-cmp * { box-sizing: border-box; }
+.nikke-buff-cmp h1,
+.nikke-buff-cmp h2,
+.nikke-buff-cmp h3,
+.nikke-buff-cmp h4,
+.nikke-buff-cmp h5,
+.nikke-buff-cmp h6 { border-inline-start: none !important; padding-inline-start: 0 !important; }
 
-.nikke-dmg-calc h1,
-.nikke-dmg-calc h2,
-.nikke-dmg-calc h3,
-.nikke-dmg-calc h4,
-.nikke-dmg-calc h5,
-.nikke-dmg-calc h6 {
-  border-inline-start: none !important;
-  padding-inline-start: 0 !important;
-}
-
-.dark-dmg-calc {
+.nikke-buff-cmp {
   width: 100%;
-  max-width: min(100%, 760px);
+  max-width: min(100%, 780px);
   margin: 1.25rem auto;
-  padding: clamp(10px, 2.2vw, 16px);
+  padding: clamp(10px, 2vw, 16px);
   container-type: inline-size;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #e7eef7;
-  background:
-    radial-gradient(circle at 12% 0%, rgba(96, 165, 250, .20), transparent 30%),
-    radial-gradient(circle at 88% 8%, rgba(245, 158, 11, .10), transparent 26%),
-    linear-gradient(135deg, #111827, #172033 56%, #0f172a);
-  border: 1px solid rgba(148,163,184,.22);
-  border-radius: clamp(12px, 2vw, 16px);
-  box-shadow: 0 10px 26px rgba(0,0,0,.28);
+  color: #f7f3e9;
+  background: #2b2d42;
+  border: 3px solid #1b1d2f;
+  border-radius: clamp(10px, 2vw, 14px);
+  box-shadow: 0 10px 0 #1b1d2f, 0 18px 28px rgba(27,29,47,.28);
   overflow: hidden;
 }
 
-.dark-dmg-calc .dmg-header {
-  text-align: center;
-  margin-bottom: clamp(10px, 2vw, 14px);
-  padding: 4px 6px 0;
-}
+.nikke-buff-cmp .bcmp-header { text-align: center; padding: 5px 6px 4px; }
+.nikke-buff-cmp .bcmp-kicker { color: #06d6a0; font-size: 10px; font-weight: 950; letter-spacing: 1.8px; text-transform: uppercase; }
+.nikke-buff-cmp .bcmp-title { color: #ffd166; font-size: clamp(18px, 3.4vw, 23px); font-weight: 950; line-height: 1.35; margin-top: 6px; text-shadow: 2px 2px 0 #1b1d2f; }
+.nikke-buff-cmp .bcmp-desc { color: #b8c0ff; font-size: 12px; line-height: 1.65; margin-top: 7px; }
 
-.dark-dmg-calc .dmg-kicker {
-  color: #93c5fd;
-  font-size: 10px;
-  font-weight: 950;
-  letter-spacing: 1.7px;
-}
-
-.dark-dmg-calc .dmg-title {
-  color: #f8fafc;
-  font-size: clamp(17px, 3.6vw, 21px);
-  font-weight: 950;
-  line-height: 1.35;
-  margin-top: 6px;
-}
-
-.dark-dmg-calc .dmg-desc {
-  color: #b6c5d8;
+.nikke-buff-cmp .bcmp-top-note,
+.nikke-buff-cmp .bcmp-note,
+.nikke-buff-cmp .bcmp-formula {
   font-size: 12px;
-  line-height: 1.6;
-  margin-top: 7px;
+  line-height: 1.65;
+  border-radius: 8px;
+  padding: 9px 11px;
+  margin-top: 12px;
+}
+.nikke-buff-cmp .bcmp-top-note,
+.nikke-buff-cmp .bcmp-note {
+  background: #f7f3e9;
+  color: #3d405b;
+  border: 2px solid #ff9f1c;
+  border-left: 6px solid #ff9f1c;
+}
+.nikke-buff-cmp .bcmp-formula {
+  background: #fff3b0;
+  color: #3d405b;
+  border: 2px solid #ff9f1c;
 }
 
-.dark-dmg-calc .dmg-card {
-  background: rgba(248,250,252,.95);
-  border: 1px solid rgba(186,210,235,.36);
-  border-radius: clamp(10px, 2vw, 13px);
-  padding: clamp(12px, 2.4vw, 15px);
-  margin-top: clamp(10px, 2vw, 12px);
-  color: #263244;
-  box-shadow: 0 5px 16px rgba(2,6,23,.14);
-}
-
-.dark-dmg-calc .dmg-section-title {
-  color: #24527a;
-  font-size: clamp(13px, 2.4vw, 14px);
-  font-weight: 950;
-  line-height: 1.4;
-  text-align: center;
-  margin-bottom: 12px;
-}
-
-.dark-dmg-calc .no-margin {
-  margin: 0;
-}
-
-.dark-dmg-calc .baseline-grid,
-.dark-dmg-calc .result-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(6px, 1.5vw, 9px);
-}
-
-.dark-dmg-calc .baseline-box,
-.dark-dmg-calc .result-box {
-  background: #edf4fb;
-  border: 1px solid #cbdff0;
+.nikke-buff-cmp .bcmp-set {
+  background: #f7f3e9;
+  color: #2b2d42;
+  border: 3px solid #1b1d2f;
   border-radius: 12px;
-  padding: clamp(8px, 1.8vw, 11px) clamp(6px, 1.6vw, 9px);
-  text-align: center;
+  padding: clamp(12px, 2.3vw, 16px);
+  margin-top: 14px;
+  box-shadow: 0 6px 0 #1b1d2f;
   min-width: 0;
 }
 
-.dark-dmg-calc .baseline-box.highlight {
-  background: #edf4fb;
-  border-color: #cbdff0;
-}
-
-.dark-dmg-calc .baseline-label,
-.dark-dmg-calc .result-label {
-  color: #5b6b80;
-  font-size: clamp(10px, 1.9vw, 11px);
-  font-weight: 850;
-  line-height: 1.35;
-  margin-bottom: 6px;
-}
-
-.dark-dmg-calc .baseline-value,
-.dark-dmg-calc .result-value {
-  color: #11324d;
-  font-size: clamp(15px, 3vw, 18px);
-  font-weight: 950;
-  line-height: 1.25;
-  word-break: break-word;
-}
-
-.dark-dmg-calc .result-value.accent {
-  color: #d97706;
-  font-size: clamp(17px, 3.6vw, 21px);
-}
-
-.dark-dmg-calc .formula-note,
-.dark-dmg-calc .segment-note,
-.dark-dmg-calc .formula-box {
-  font-size: 12px;
-  line-height: 1.65;
-  border-radius: 9px;
-  padding: 9px 11px;
-  margin-top: 10px;
-}
-
-.dark-dmg-calc .formula-note,
-.dark-dmg-calc .segment-note {
-  background: #ecf6ff;
-  color: #526779;
-  border-left: 4px solid #58a6ff;
-}
-
-.dark-dmg-calc .formula-box {
-  background: #fff7ed;
-  color: #7c3f12;
-  border: 1px solid #f0c27a;
-}
-
-.dark-dmg-calc .section-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.dark-dmg-calc .add-btn,
-.dark-dmg-calc .remove-btn {
-  border: none;
-  border-radius: 999px;
-  cursor: pointer;
-  font-weight: 950;
-  padding: 8px 14px;
-  color: #fff;
-  background: linear-gradient(135deg, #2563eb, #0ea5e9);
-  box-shadow: 0 4px 12px rgba(37,99,235,.24);
-  white-space: nowrap;
-}
-
-.dark-dmg-calc .remove-btn {
-  background: linear-gradient(135deg, #b91c1c, #ef4444);
-  padding: 7px 12px;
-  box-shadow: none;
-}
-
-.dark-dmg-calc .segment-card {
-  background: #f8fbff;
-  border: 1px solid #d7e6f5;
-  border-radius: 13px;
-  padding: 13px;
-  margin-top: 12px;
-}
-
-.dark-dmg-calc .segment-top {
+.nikke-buff-cmp .bcmp-set-head,
+.nikke-buff-cmp .bcmp-section-row,
+.nikke-buff-cmp .bcmp-seg-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  margin-bottom: 11px;
 }
+.nikke-buff-cmp .bcmp-set-title { color: #8338ec; font-size: 15px; font-weight: 950; line-height: 1.35; }
+.nikke-buff-cmp .bcmp-subtitle { color: #118ab2; font-size: 13px; font-weight: 950; margin: 15px 0 9px; padding-top: 12px; border-top: 2px dashed #b8c0ff; }
+.nikke-buff-cmp .bcmp-subtitle:first-of-type { border-top: none; padding-top: 0; }
 
-.dark-dmg-calc .segment-name {
-  color: #173a59;
-  font-size: 13px;
+.nikke-buff-cmp .bcmp-btn,
+.nikke-buff-cmp .bcmp-copy-btn,
+.nikke-buff-cmp .bcmp-remove-btn,
+.nikke-buff-cmp .bcmp-delete-set-btn {
+  border: 2px solid #1b1d2f;
+  border-radius: 8px;
+  cursor: pointer;
   font-weight: 950;
+  padding: 8px 13px;
+  color: #ffffff;
+  background: #118ab2;
+  box-shadow: 0 4px 0 #1b1d2f;
+  white-space: nowrap;
 }
+.nikke-buff-cmp .bcmp-copy-btn { background: #06d6a0; color: #1b1d2f; }
+.nikke-buff-cmp .bcmp-remove-btn,
+.nikke-buff-cmp .bcmp-delete-set-btn { background: #ef476f; color: #ffffff; padding: 7px 12px; }
+.nikke-buff-cmp .bcmp-btn:active,
+.nikke-buff-cmp .bcmp-copy-btn:active,
+.nikke-buff-cmp .bcmp-remove-btn:active,
+.nikke-buff-cmp .bcmp-delete-set-btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #1b1d2f; }
 
-.dark-dmg-calc .segment-block-title {
-  color: #24527a;
-  font-size: 12px;
-  font-weight: 950;
-  margin: 13px 0 8px;
-  padding-top: 11px;
-  border-top: 1px dashed #c8dbea;
-}
-
-.dark-dmg-calc .segment-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 9px;
-}
-
-.dark-dmg-calc .segment-grid.public-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.dark-dmg-calc .segment-grid.main-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.dark-dmg-calc .seg-field {
-  min-width: 0;
-}
-
-.dark-dmg-calc .seg-field span {
-  display: block;
-  color: #4f6275;
-  font-size: clamp(10px, 1.9vw, 11px);
-  font-weight: 850;
-  line-height: 1.35;
-  margin-bottom: 5px;
-}
-
-.dark-dmg-calc .seg-field input,
-.dark-dmg-calc .seg-field select {
+.nikke-buff-cmp .bcmp-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 9px; }
+.nikke-buff-cmp .bcmp-main-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 9px; }
+.nikke-buff-cmp .bcmp-field { min-width: 0; }
+.nikke-buff-cmp .bcmp-field span { display: block; color: #3d405b; font-size: 11px; font-weight: 850; line-height: 1.35; margin-bottom: 5px; }
+.nikke-buff-cmp .bcmp-field input,
+.nikke-buff-cmp .bcmp-field select {
   width: 100%;
   min-width: 0;
-  border: 1px solid #c7d9ea;
+  border: 2px solid #8d99ae;
   background: #ffffff;
-  color: #263244;
-  border-radius: 9px;
+  color: #2b2d42;
+  border-radius: 8px;
   padding: 8px 9px;
   font-size: 13px;
   font-weight: 780;
   outline: none;
 }
+.nikke-buff-cmp .bcmp-field input:focus,
+.nikke-buff-cmp .bcmp-field select:focus { border-color: #8338ec; box-shadow: 0 0 0 3px rgba(131,56,236,.18); }
 
-.dark-dmg-calc .seg-field input:focus,
-.dark-dmg-calc .seg-field select:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59,130,246,.16);
+.nikke-buff-cmp .bcmp-segment {
+  background: #e9f5db;
+  border: 2px solid #06d6a0;
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 11px;
 }
+.nikke-buff-cmp .bcmp-seg-title { color: #8338ec; font-size: 13px; font-weight: 950; }
+.nikke-buff-cmp .bcmp-block-title { color: #118ab2; font-size: 12px; font-weight: 950; margin: 13px 0 8px; padding-top: 11px; border-top: 2px dashed #8d99ae; }
+.nikke-buff-cmp .bcmp-seg-output { margin-top: 11px; background: #fff3b0; border: 2px solid #ffd166; border-radius: 10px; padding: 10px; color: #3d405b; font-size: 12px; font-weight: 950; line-height: 1.55; text-align: center; }
 
-.dark-dmg-calc .seg-output {
-  margin-top: 12px;
-  background: #eaf5ff;
-  border-radius: 10px;
-  padding: 10px 11px;
-  color: #143a5a;
-  font-size: 12px;
-  font-weight: 950;
-  line-height: 1.55;
-  text-align: center;
-}
-
-.dark-dmg-calc .hidden {
-  display: none !important;
-}
-
-
-
-@container (max-width: 700px) {
-  .dark-dmg-calc .baseline-grid,
-  .dark-dmg-calc .result-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .dark-dmg-calc .baseline-label,
-  .dark-dmg-calc .result-label {
-    font-size: 10px;
-    white-space: nowrap;
-  }
-  .dark-dmg-calc .baseline-value,
-  .dark-dmg-calc .result-value {
-    font-size: clamp(14px, 3.3cqw, 17px);
-    letter-spacing: -0.3px;
-  }
-  .dark-dmg-calc .formula-note,
-  .dark-dmg-calc .segment-note,
-  .dark-dmg-calc .formula-box {
-    font-size: 11px;
-    padding: 8px 10px;
-  }
-}
-
-@container (max-width: 560px) {
-  .dark-dmg-calc .baseline-box,
-  .dark-dmg-calc .result-box {
-    padding: 10px 8px;
-  }
-}
-
-@media (max-width: 860px) {
-  .dark-dmg-calc {
-    max-width: 100%;
-    margin: 1.25rem auto;
-    padding: 14px;
-    border-radius: 16px;
-  }
-
-  .dark-dmg-calc .dmg-title {
-    font-size: 19px;
-  }
-
-  .dark-dmg-calc .dmg-card {
-    padding: 14px;
-    border-radius: 13px;
-  }
-
-  .dark-dmg-calc .segment-grid,
-  .dark-dmg-calc .segment-grid.public-grid,
-  .dark-dmg-calc .segment-grid.main-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .dark-dmg-calc .baseline-grid,
-  .dark-dmg-calc .result-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .dark-dmg-calc .baseline-value,
-  .dark-dmg-calc .result-value {
-    font-size: 16px;
-  }
-
-  .dark-dmg-calc .result-value.accent {
-    font-size: clamp(15px, 3vw, 18px);
-  }
-
-  .dark-dmg-calc .seg-field input,
-  .dark-dmg-calc .seg-field select {
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 620px) {
-  .dark-dmg-calc {
-    padding: 12px;
-  }
-
-  .dark-dmg-calc .dmg-header {
-    margin-bottom: 12px;
-  }
-
-
-  .dark-dmg-calc .baseline-box,
-  .dark-dmg-calc .result-box {
-    padding: 11px 9px;
-  }
-}
-
-@media (max-width: 480px) {
-  .dark-dmg-calc {
-    margin: 1rem auto;
-    padding: 10px;
-    border-radius: clamp(10px, 2vw, 13px);
-  }
-
-  .dark-dmg-calc .dmg-card {
-    padding: 12px;
-  }
-
-  .dark-dmg-calc .section-row,
-  .dark-dmg-calc .segment-top {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .dark-dmg-calc .add-btn,
-  .dark-dmg-calc .remove-btn {
-    width: 100%;
-  }
-
-  .dark-dmg-calc .segment-grid,
-  .dark-dmg-calc .segment-grid.public-grid,
-  .dark-dmg-calc .segment-grid.main-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
- 
-.dark-dmg-calc .baseline-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-.dark-dmg-calc .baseline-label,
-.dark-dmg-calc .result-label {
-  font-size: clamp(9px, 1.45vw, 11px);
-}
-.dark-dmg-calc .baseline-value,
-.dark-dmg-calc .result-value {
-  font-size: clamp(14px, 2.1vw, 17px);
-  letter-spacing: -0.02em;
-}
-.dark-dmg-calc .result-value.accent {
-  font-size: clamp(16px, 2.2vw, 19px);
-}
-@media (max-width: 560px) {
-  .dark-dmg-calc {
-    width: calc(100% - 10px);
-    padding: 10px;
-  }
-  .dark-dmg-calc .dmg-card {
-    padding: 10px;
-  }
-  .dark-dmg-calc .baseline-grid,
-  .dark-dmg-calc .result-grid {
-    gap: 6px;
-  }
-  .dark-dmg-calc .baseline-box,
-  .dark-dmg-calc .result-box {
-    padding: 7px 4px;
-    border-radius: 10px;
-  }
-}
-
- 
-.dark-dmg-calc .baseline-box.highlight {
-  background: #edf4fb !important;
-  border-color: #cbdff0 !important;
-}
-.dark-dmg-calc .baseline-grid,
-.dark-dmg-calc .result-grid {
+.nikke-buff-cmp .bcmp-result-flex {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
   width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  margin-top: 12px;
 }
-.dark-dmg-calc .baseline-box,
-.dark-dmg-calc .result-box {
+.nikke-buff-cmp .bcmp-result-box {
+  flex: 1 1 0;
+  width: 0;
+  min-width: 0;
+  background: #fefae0;
+  border: 2px solid #ffd166;
+  border-radius: 10px;
+  padding: 9px 5px;
+  text-align: center;
   overflow: hidden;
 }
+.nikke-buff-cmp .bcmp-result-box.bcmp-accent { background: #3d405b; border-color: #8338ec; }
+.nikke-buff-cmp .bcmp-result-box.bcmp-accent .bcmp-result-label { color: #b8c0ff; }
+.nikke-buff-cmp .bcmp-result-label { color: #3d405b; font-size: clamp(9px, 1.5vw, 11px); font-weight: 850; line-height: 1.35; margin-bottom: 5px; white-space: nowrap; }
+.nikke-buff-cmp .bcmp-result-value { color: #118ab2; font-size: clamp(14px, 2.2vw, 17px); font-weight: 950; line-height: 1.25; overflow-wrap: anywhere; letter-spacing: -0.03em; }
+.nikke-buff-cmp .bcmp-accent .bcmp-result-value { color: #ffd166; }
+.nikke-buff-cmp .bcmp-positive { color: #06d6a0 !important; }
+.nikke-buff-cmp .bcmp-negative { color: #ef476f !important; }
 
- 
-.dark-dmg-calc .baseline-grid,
-.dark-dmg-calc .result-grid {
-  display: flex !important;
-  flex-wrap: nowrap !important;
-  gap: 8px !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  overflow: hidden !important;
+.nikke-buff-cmp .bcmp-check-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 8px 9px;
+  border: 2px solid #8d99ae;
+  background: #ffffff;
+  color: #2b2d42;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 850;
+  cursor: pointer;
 }
-.dark-dmg-calc .baseline-box,
-.dark-dmg-calc .result-box {
-  flex: 1 1 0 !important;
-  width: 0 !important;
-  min-width: 0 !important;
-  max-width: 100% !important;
-  transform: none !important;
-  margin: 0 !important;
+.nikke-buff-cmp .bcmp-check-field input {
+  width: auto;
+  min-width: auto;
+  margin: 0;
+  accent-color: #118ab2;
 }
-.dark-dmg-calc .baseline-label,
-.dark-dmg-calc .result-label,
-.dark-dmg-calc .baseline-value,
-.dark-dmg-calc .result-value {
-  max-width: 100% !important;
-  overflow-wrap: anywhere !important;
-  word-break: keep-all !important;
-}
-@media (max-width: 520px) {
-  .dark-dmg-calc .baseline-grid,
-  .dark-dmg-calc .result-grid {
-    gap: 5px !important;
-  }
-  .dark-dmg-calc .baseline-box,
-  .dark-dmg-calc .result-box {
-    padding: 7px 3px !important;
-  }
-  .dark-dmg-calc .baseline-label,
-  .dark-dmg-calc .result-label {
-    font-size: 9px !important;
-  }
-  .dark-dmg-calc .baseline-value,
-  .dark-dmg-calc .result-value {
-    font-size: 13px !important;
-    letter-spacing: -0.05em !important;
-  }
+.nikke-buff-cmp .bcmp-check-field span {
+  margin: 0;
+  color: #3d405b;
+  line-height: 1.35;
 }
 
+.nikke-buff-cmp .hidden { display: none !important; }
+
+@container (max-width: 680px) {
+  .nikke-buff-cmp .bcmp-grid,
+  .nikke-buff-cmp .bcmp-main-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .nikke-buff-cmp .bcmp-result-flex { gap: 6px; }
+  .nikke-buff-cmp .bcmp-result-box { padding: 8px 4px; }
+}
+@media (max-width: 560px) {
+  .nikke-buff-cmp { width: calc(100% - 8px); padding: 10px; }
+  .nikke-buff-cmp .bcmp-set { padding: 11px; }
+  .nikke-buff-cmp .bcmp-set-head,
+  .nikke-buff-cmp .bcmp-section-row,
+  .nikke-buff-cmp .bcmp-seg-head { flex-direction: column; align-items: stretch; }
+  .nikke-buff-cmp .bcmp-btn,
+  .nikke-buff-cmp .bcmp-copy-btn,
+  .nikke-buff-cmp .bcmp-remove-btn,
+  .nikke-buff-cmp .bcmp-delete-set-btn { width: 100%; }
+  .nikke-buff-cmp .bcmp-grid,
+  .nikke-buff-cmp .bcmp-main-grid { grid-template-columns: minmax(0,1fr); }
+  .nikke-buff-cmp .bcmp-field input,
+  .nikke-buff-cmp .bcmp-field select { font-size: 16px; }
+  .nikke-buff-cmp .bcmp-result-label { font-size: 9px; }
+  .nikke-buff-cmp .bcmp-result-value { font-size: 13px; }
+}
 </style>
 
 <script>
 (function(){
   const TEN_SECONDS = 10;
-  const scarletCommon = {
-    baseAtk: 95139, atkBuff: 115.75, critDmgBuff: 6.61, critRateBuff: 19.57,
-    coreBuff: 0, elementBuff: 0, chargeBuff: 0, takenBuff: 0, sharedBuff: 0, atkDmgBuff: 0
-  };
-  const scarletWeapon = { type: 'weapon', multiplier: 27.08, rps: 12, magazine: 20, reload: 2.3, coreBuff: 0, chargeBuff: 0, sharedBuff: 0, atkDmgBuff: 0 };
-  const scarletSkill = { type: 'skill', multiplier: 849.15, times: 1, coreBuff: 0, chargeBuff: 0, sharedBuff: 0, atkDmgBuff: 0 };
+  let setId = 0;
+  let segmentSeq = 0;
+  const root = document.getElementById('nikkeBuffCmp');
+  const setsRoot = document.getElementById('bcmpSets');
 
-  let segmentId = 0;
-  const $ = id => document.getElementById(id);
   function pct(v){ return (Number(v) || 0) / 100; }
   function fmt(n){ if(!Number.isFinite(n)) return '—'; return Math.round(n).toLocaleString(); }
   function fmt2(n){ if(!Number.isFinite(n)) return '—'; return n.toLocaleString(undefined, { maximumFractionDigits: 3 }); }
+  function fmtPct(n){ if(!Number.isFinite(n)) return '—'; return (n >= 0 ? '+' : '') + n.toLocaleString(undefined, { maximumFractionDigits: 2 }) + '%'; }
 
   function multipliers(common, seg){
     const critRate = 0.15 + pct(common.critRateBuff);
@@ -2511,16 +2190,17 @@ window.onload = function() {
     const coreBuff = seg.type === 'weapon' ? pct(seg.coreBuff) : 0;
     const chargeBuff = seg.type === 'weapon' ? pct(seg.chargeBuff) : 0;
     const sharedBuff = seg.type === 'skill' ? pct(seg.sharedBuff) : 0;
-    const atkDmgBuff = pct(seg.atkDmgBuff);
+    const distanceBonus = seg.type === 'weapon' && seg.distanceBonus ? 0.3 : 0;
     return {
       critRate,
       critDmg,
       critExpected,
-      correction: 1 + critExpected + 0.5 + (1 + coreBuff) + 0.3,
+      distanceBonus,
+      correction: 1 + critExpected + 0.5 + (1 + coreBuff) + distanceBonus,
       element: 1.1 + pct(common.elementBuff),
       charge: 1 + chargeBuff,
       vulnerability: 1 + pct(common.takenBuff) + sharedBuff,
-      atkDmg: 1 + atkDmgBuff
+      atkDmg: 1 + pct(seg.atkDmgBuff)
     };
   }
 
@@ -2554,137 +2234,243 @@ window.onload = function() {
     return { total: perHit * times, count: times, perHit };
   }
 
-  function calcScarlet(){
-    const w = calcSegment(scarletCommon, scarletWeapon);
-    const s = calcSegment(scarletCommon, scarletSkill);
-    const total = w.total + s.total;
-    $('scarletWeaponDamage').textContent = fmt(w.total);
-    $('scarletSkillDamage').textContent = fmt(s.total);
-    $('scarletTotalDamage').textContent = fmt(total);
-    const m = multipliers(scarletCommon, scarletWeapon);
-    $('scarletNote').textContent = `武器约 ${fmt2(w.count)} 发；技能 ${fmt2(s.count)} 次。暴击期望 = ${fmt2(m.critRate * 100)}% × ${fmt2(m.critDmg * 100)}% = ${fmt2(m.critExpected)}。`;
-    return total;
-  }
-  const scarletTotal = calcScarlet();
-
-  function readPublic(){
-    return {
-      baseAtk: Number($('pubBaseAtk').value) || 0,
-      atkBuff: Number($('pubAtkBuff').value) || 0,
-      critDmgBuff: Number($('pubCritDmgBuff').value) || 0,
-      critRateBuff: Number($('pubCritRateBuff').value) || 0,
-      elementBuff: Number($('pubElementBuff').value) || 0,
-      takenBuff: Number($('pubTakenBuff').value) || 0
-    };
-  }
-
-  function segmentTemplate(id){
+  function setTemplate(id, isBase){
     return `
-      <div class="segment-card" data-seg-id="${id}">
-        <div class="segment-top">
-          <div class="segment-name">伤害段落 #${id}</div>
-          <button type="button" class="remove-btn">删除</button>
+      <div class="bcmp-set" data-set-id="${id}" data-base="${isBase ? '1' : '0'}">
+        <div class="bcmp-set-head">
+          <div class="bcmp-set-title">${isBase ? '基准 Set #1' : '对比 Set #' + id}</div>
+          <div>
+            ${isBase ? '<button type="button" class="bcmp-copy-btn">复制</button>' : '<button type="button" class="bcmp-delete-set-btn">删除Set</button>'}
+          </div>
         </div>
 
-        <div class="segment-grid main-grid">
-          <label class="seg-field"><span>类型</span><select class="seg-type"><option value="weapon">武器 / 普攻</option><option value="skill">技能伤害</option></select></label>
-          <label class="seg-field"><span>倍率 %</span><input type="number" class="seg-multiplier" value="0" step="0.01"></label>
-          <label class="seg-field weapon-only"><span>子弹数 / 秒</span><input type="number" class="seg-rps" value="0" step="0.01"></label>
-          <label class="seg-field weapon-only"><span>最大装弹数</span><input type="number" class="seg-magazine" value="0" step="1"></label>
-          <label class="seg-field weapon-only"><span>换弹速度 秒</span><input type="number" class="seg-reload" value="0" step="0.01"></label>
-          <label class="seg-field skill-only hidden"><span>10秒内触发次数</span><input type="number" class="seg-times" value="1" step="0.01"></label>
+        <div class="bcmp-subtitle">公共参数</div>
+        <div class="bcmp-note">这里填写本Set所有伤害段都能吃到的参数。</div>
+        <br>
+        <div class="bcmp-grid bcmp-public-grid">
+          <label class="bcmp-field"><span>基础攻击力</span><input type="number" data-key="baseAtk" value="0" min="0" step="1"></label>
+          <label class="bcmp-field"><span>攻击力 buff %</span><input type="number" data-key="atkBuff" value="0" step="0.01"></label>
+          <label class="bcmp-field"><span>暴击伤害 buff %</span><input type="number" data-key="critDmgBuff" value="0" step="0.01"></label>
+          <label class="bcmp-field"><span>暴击率 buff %</span><input type="number" data-key="critRateBuff" value="0" step="0.01"></label>
+          <label class="bcmp-field"><span>优越伤害 buff %</span><input type="number" data-key="elementBuff" value="0" step="0.01"></label>
+          <label class="bcmp-field"><span>所受伤害 buff %</span><input type="number" data-key="takenBuff" value="0" step="0.01"></label>
         </div>
 
-        <div class="segment-block-title weapon-buff-title">武器/普攻 buff</div>
-        <div class="segment-grid weapon-buff-grid">
-          <label class="seg-field"><span>核心伤害 buff %</span><input type="number" class="seg-core-buff" value="0" step="0.01"></label>
-          <label class="seg-field"><span>蓄力伤害 buff %</span><input type="number" class="seg-charge-buff" value="0" step="0.01"></label>
-          <label class="seg-field"><span>攻击伤害 buff %</span><input type="number" class="seg-atk-dmg-buff weapon-atk-dmg" value="0" step="0.01"></label>
+        <div class="bcmp-subtitle">伤害段落</div>
+        <div class="bcmp-section-row">
+          <div class="bcmp-note" style="margin-top:0; flex:1;">武器/普攻：距离补正、核心伤害、蓄力伤害、攻击伤害（ex：穿透伤害）。技能伤害：分摊伤害、攻击伤害（ex：持续伤害）。</div>
+          <button type="button" class="bcmp-btn bcmp-add-seg">添加</button>
         </div>
+        <div class="bcmp-segments"></div>
 
-        <div class="segment-block-title skill-buff-title hidden">技能伤害 buff</div>
-        <div class="segment-grid skill-buff-grid hidden">
-          <label class="seg-field"><span>分摊伤害 buff %</span><input type="number" class="seg-shared-buff" value="0" step="0.01"></label>
-          <label class="seg-field"><span>攻击伤害 buff %</span><input type="number" class="seg-atk-dmg-buff skill-atk-dmg" value="0" step="0.01"></label>
+        <div class="bcmp-subtitle">本 Set 结果</div>
+        <div class="bcmp-result-flex">
+          <div class="bcmp-result-box"><div class="bcmp-result-label">10秒总伤害</div><div class="bcmp-result-value set-total">0</div></div>
+          <div class="bcmp-result-box bcmp-accent"><div class="bcmp-result-label">对比基准</div><div class="bcmp-result-value set-growth">基准</div></div>
+          <div class="bcmp-result-box"><div class="bcmp-result-label">伤害差值</div><div class="bcmp-result-value set-diff">0</div></div>
         </div>
-
-        <div class="seg-output">本段：<span class="seg-damage">0</span></div>
+        <div class="bcmp-formula set-formula">添加伤害段落并输入倍率后开始计算。</div>
       </div>`;
   }
 
-  function addSegment(){
-    segmentId += 1;
-    $('segments').insertAdjacentHTML('beforeend', segmentTemplate(segmentId));
-    bindSegment($('segments').lastElementChild);
+  function segmentTemplate(){
+    segmentSeq += 1;
+    return `
+      <div class="bcmp-segment">
+        <div class="bcmp-seg-head">
+          <div class="bcmp-seg-title">伤害段落 #${segmentSeq}</div>
+          <button type="button" class="bcmp-remove-btn">删除</button>
+        </div>
+
+        <div class="bcmp-main-grid">
+          <label class="bcmp-field"><span>类型</span><select data-key="type" class="seg-type"><option value="weapon">武器 / 普攻</option><option value="skill">技能伤害</option></select></label>
+          <label class="bcmp-field"><span>倍率 %</span><input type="number" data-key="multiplier" value="0" step="0.01"></label>
+          <label class="bcmp-field weapon-only"><span>子弹数 / 秒</span><input type="number" data-key="rps" value="0" step="0.01"></label>
+          <label class="bcmp-field weapon-only"><span>最大装弹数</span><input type="number" data-key="magazine" value="0" step="1"></label>
+          <label class="bcmp-field weapon-only"><span>换弹速度 秒</span><input type="number" data-key="reload" value="0" step="0.01"></label>
+          <label class="bcmp-check-field weapon-only"><input type="checkbox" data-key="distanceBonus"><span>距离补正 +0.3</span></label>
+          <label class="bcmp-field skill-only hidden"><span>10秒内触发次数</span><input type="number" data-key="times" value="1" step="0.01"></label>
+        </div>
+
+        <div class="bcmp-block-title weapon-buff-title">武器/普攻 buff</div>
+        <div class="bcmp-grid weapon-buff-grid">
+          <label class="bcmp-field"><span>核心伤害 buff %</span><input type="number" data-key="coreBuff" value="0" step="0.01"></label>
+          <label class="bcmp-field"><span>蓄力伤害 buff %</span><input type="number" data-key="chargeBuff" value="0" step="0.01"></label>
+          <label class="bcmp-field"><span>攻击伤害 buff %</span><input type="number" data-key="atkDmgBuffWeapon" value="0" step="0.01"></label>
+        </div>
+
+        <div class="bcmp-block-title skill-buff-title hidden">技能伤害 buff</div>
+        <div class="bcmp-grid skill-buff-grid hidden">
+          <label class="bcmp-field"><span>分摊伤害 buff %</span><input type="number" data-key="sharedBuff" value="0" step="0.01"></label>
+          <label class="bcmp-field"><span>攻击伤害 buff %</span><input type="number" data-key="atkDmgBuffSkill" value="0" step="0.01"></label>
+        </div>
+
+        <div class="bcmp-seg-output">本段：<span class="seg-damage">0</span></div>
+      </div>`;
+  }
+
+  function readCommon(setEl){
+    const read = key => Number(setEl.querySelector(`[data-key="${key}"]`)?.value) || 0;
+    return {
+      baseAtk: read('baseAtk'),
+      atkBuff: read('atkBuff'),
+      critDmgBuff: read('critDmgBuff'),
+      critRateBuff: read('critRateBuff'),
+      elementBuff: read('elementBuff'),
+      takenBuff: read('takenBuff')
+    };
+  }
+
+  function readSegment(segEl){
+    const read = key => Number(segEl.querySelector(`[data-key="${key}"]`)?.value) || 0;
+    const type = segEl.querySelector('[data-key="type"]').value;
+    const checked = key => !!segEl.querySelector(`[data-key="${key}"]`)?.checked;
+    return {
+      type,
+      multiplier: read('multiplier'),
+      rps: read('rps'),
+      magazine: read('magazine'),
+      reload: read('reload'),
+      distanceBonus: type === 'weapon' ? checked('distanceBonus') : false,
+      times: read('times'),
+      coreBuff: read('coreBuff'),
+      chargeBuff: read('chargeBuff'),
+      sharedBuff: read('sharedBuff'),
+      atkDmgBuff: type === 'weapon' ? read('atkDmgBuffWeapon') : read('atkDmgBuffSkill')
+    };
+  }
+
+  function refreshSegmentVisibility(segEl){
+    const isWeapon = segEl.querySelector('[data-key="type"]').value === 'weapon';
+    segEl.querySelectorAll('.weapon-only').forEach(el => el.classList.toggle('hidden', !isWeapon));
+    segEl.querySelectorAll('.skill-only').forEach(el => el.classList.toggle('hidden', isWeapon));
+    segEl.querySelector('.weapon-buff-title').classList.toggle('hidden', !isWeapon);
+    segEl.querySelector('.weapon-buff-grid').classList.toggle('hidden', !isWeapon);
+    segEl.querySelector('.skill-buff-title').classList.toggle('hidden', isWeapon);
+    segEl.querySelector('.skill-buff-grid').classList.toggle('hidden', isWeapon);
+  }
+
+  function bindSegment(segEl){
+    segEl.querySelectorAll('input, select').forEach(el => {
+      el.addEventListener('input', calculateAll);
+      el.addEventListener('change', () => { refreshSegmentVisibility(segEl); calculateAll(); });
+    });
+    segEl.querySelector('.bcmp-remove-btn').addEventListener('click', () => { segEl.remove(); calculateAll(); });
+    refreshSegmentVisibility(segEl);
+  }
+
+  function addSegmentToSet(setEl, data){
+    const holder = setEl.querySelector('.bcmp-segments');
+    holder.insertAdjacentHTML('beforeend', segmentTemplate());
+    const segEl = holder.lastElementChild;
+    bindSegment(segEl);
+    if(data) fillSegment(segEl, data);
     calculateAll();
   }
 
-  function bindSegment(card){
-    const typeSelect = card.querySelector('.seg-type');
-    const refreshVisibility = () => {
-      const isWeapon = typeSelect.value === 'weapon';
-      card.querySelectorAll('.weapon-only').forEach(el => el.classList.toggle('hidden', !isWeapon));
-      card.querySelectorAll('.skill-only').forEach(el => el.classList.toggle('hidden', isWeapon));
-      card.querySelector('.weapon-buff-title').classList.toggle('hidden', !isWeapon);
-      card.querySelector('.weapon-buff-grid').classList.toggle('hidden', !isWeapon);
-      card.querySelector('.skill-buff-title').classList.toggle('hidden', isWeapon);
-      card.querySelector('.skill-buff-grid').classList.toggle('hidden', isWeapon);
-    };
-    typeSelect.addEventListener('change', () => { refreshVisibility(); calculateAll(); });
-    card.querySelectorAll('input, select').forEach(el => el.addEventListener('input', calculateAll));
-    card.querySelector('.remove-btn').addEventListener('click', () => { card.remove(); calculateAll(); });
-    refreshVisibility();
+  function createSet(isBase, sourceData){
+    setId += 1;
+    setsRoot.insertAdjacentHTML('beforeend', setTemplate(setId, isBase));
+    const setEl = setsRoot.lastElementChild;
+    bindSet(setEl);
+    if(sourceData) fillSet(setEl, sourceData);
+    if(!sourceData) addSegmentToSet(setEl);
+    calculateAll();
+    return setEl;
   }
 
-  function readSegments(){
-    return Array.from(document.querySelectorAll('.segment-card')).map(card => {
-      const type = card.querySelector('.seg-type').value;
-      const atkDmgInput = type === 'weapon' ? card.querySelector('.weapon-atk-dmg') : card.querySelector('.skill-atk-dmg');
-      return {
-        card,
-        type,
-        multiplier: Number(card.querySelector('.seg-multiplier').value) || 0,
-        rps: Number(card.querySelector('.seg-rps')?.value) || 0,
-        magazine: Number(card.querySelector('.seg-magazine')?.value) || 0,
-        reload: Number(card.querySelector('.seg-reload')?.value) || 0,
-        times: Number(card.querySelector('.seg-times')?.value) || 0,
-        coreBuff: Number(card.querySelector('.seg-core-buff')?.value) || 0,
-        chargeBuff: Number(card.querySelector('.seg-charge-buff')?.value) || 0,
-        sharedBuff: Number(card.querySelector('.seg-shared-buff')?.value) || 0,
-        atkDmgBuff: Number(atkDmgInput?.value) || 0
-      };
+  function bindSet(setEl){
+    setEl.querySelectorAll('.bcmp-public-grid input').forEach(el => el.addEventListener('input', calculateAll));
+    setEl.querySelector('.bcmp-add-seg').addEventListener('click', () => addSegmentToSet(setEl));
+    const copyBtn = setEl.querySelector('.bcmp-copy-btn');
+    if(copyBtn) copyBtn.addEventListener('click', () => createSet(false, collectSetData(setEl)));
+    const delBtn = setEl.querySelector('.bcmp-delete-set-btn');
+    if(delBtn) delBtn.addEventListener('click', () => { setEl.remove(); calculateAll(); });
+  }
+
+  function collectSetData(setEl){
+    const common = readCommon(setEl);
+    const segments = Array.from(setEl.querySelectorAll('.bcmp-segment')).map(readSegment);
+    return { common, segments };
+  }
+
+  function fillSet(setEl, data){
+    Object.entries(data.common || {}).forEach(([key, val]) => {
+      const input = setEl.querySelector(`.bcmp-public-grid [data-key="${key}"]`);
+      if(input) input.value = val;
     });
+    const holder = setEl.querySelector('.bcmp-segments');
+    holder.innerHTML = '';
+    (data.segments || []).forEach(seg => addSegmentToSet(setEl, seg));
+    if(!(data.segments || []).length) addSegmentToSet(setEl);
+  }
+
+  function fillSegment(segEl, data){
+    segEl.querySelector('[data-key="type"]').value = data.type || 'weapon';
+    Object.entries(data).forEach(([key, val]) => {
+      if(key === 'atkDmgBuff') {
+        const w = segEl.querySelector('[data-key="atkDmgBuffWeapon"]');
+        const s = segEl.querySelector('[data-key="atkDmgBuffSkill"]');
+        if(data.type === 'weapon' && w) w.value = val;
+        if(data.type === 'skill' && s) s.value = val;
+        return;
+      }
+      const input = segEl.querySelector(`[data-key="${key}"]`);
+      if(input) {
+        if(input.type === 'checkbox') input.checked = !!val;
+        else input.value = val;
+      }
+    });
+    refreshSegmentVisibility(segEl);
+  }
+
+  function calculateSet(setEl){
+    const common = readCommon(setEl);
+    let total = 0;
+    const parts = [];
+    Array.from(setEl.querySelectorAll('.bcmp-segment')).forEach((segEl, idx) => {
+      const seg = readSegment(segEl);
+      const res = calcSegment(common, seg);
+      total += res.total;
+      segEl.querySelector('.seg-damage').textContent = fmt(res.total);
+      const m = multipliers(common, seg);
+      const label = seg.type === 'weapon' ? `武器约 ${fmt2(res.count)} 发` : `技能伤害 ${fmt2(res.count)} 次`;
+      const extra = seg.type === 'weapon'
+        ? `距离补正 ${seg.distanceBonus ? '+0.3' : '无'}，核心 ${fmt2(seg.coreBuff)}%，蓄伤 ${fmt2(seg.chargeBuff)}%，攻伤 ${fmt2(seg.atkDmgBuff)}%`
+        : `分摊 ${fmt2(seg.sharedBuff)}%，攻伤 ${fmt2(seg.atkDmgBuff)}%`;
+      parts.push(`#${idx + 1} ${label}，单次 ${fmt(res.perHit)}，本段 ${fmt(res.total)}；专属 buff：${extra}；暴击期望 ${fmt2(m.critRate * 100)}% × ${fmt2(m.critDmg * 100)}% = ${fmt2(m.critExpected)}`);
+    });
+    setEl.dataset.total = String(total);
+    setEl.querySelector('.set-total').textContent = fmt(total);
+    setEl.querySelector('.set-formula').innerHTML = parts.length ? parts.join('<br>') : '添加伤害段落并输入倍率后开始计算。';
+    return total;
   }
 
   function calculateAll(){
-    const common = readPublic();
-    const segs = readSegments();
-    let total = 0;
-    const parts = [];
-    segs.forEach((seg, idx) => {
-      const res = calcSegment(common, seg);
-      total += res.total;
-      seg.card.querySelector('.seg-damage').textContent = fmt(res.total);
-      const m = multipliers(common, seg);
-      const label = seg.type === 'weapon' ? `武器：约 ${fmt2(res.count)} 发` : `技能伤害：${fmt2(res.count)} 次`;
-      const extra = seg.type === 'weapon'
-        ? `核心 ${fmt2(seg.coreBuff)}%，蓄伤 ${fmt2(seg.chargeBuff)}%，攻伤 ${fmt2(seg.atkDmgBuff)}%`
-        : `分摊 ${fmt2(seg.sharedBuff)}%，攻伤 ${fmt2(seg.atkDmgBuff)}%`;
-      parts.push(`#${idx+1} ${label}，单次伤害 ${fmt(res.perHit)}，本段 ${fmt(res.total)}；专属 buff：${extra}；暴击期望 ${fmt2(m.critRate * 100)}% × ${fmt2(m.critDmg * 100)}% = ${fmt2(m.critExpected)}`);
+    const sets = Array.from(setsRoot.querySelectorAll('.bcmp-set'));
+    const totals = sets.map(calculateSet);
+    const base = totals[0] || 0;
+    sets.forEach((setEl, idx) => {
+      const total = totals[idx] || 0;
+      const diff = total - base;
+      const growth = base > 0 ? ((total / base) - 1) * 100 : NaN;
+      const growthEl = setEl.querySelector('.set-growth');
+      const diffEl = setEl.querySelector('.set-diff');
+      if(idx === 0){
+        growthEl.textContent = '基准';
+        growthEl.className = 'bcmp-result-value set-growth';
+        diffEl.textContent = '0';
+        diffEl.className = 'bcmp-result-value set-diff';
+      } else {
+        growthEl.textContent = Number.isFinite(growth) ? fmtPct(growth) : '—';
+        diffEl.textContent = (diff >= 0 ? '+' : '') + fmt(diff);
+        growthEl.className = 'bcmp-result-value set-growth ' + (growth >= 0 ? 'bcmp-positive' : 'bcmp-negative');
+        diffEl.className = 'bcmp-result-value set-diff ' + (diff >= 0 ? 'bcmp-positive' : 'bcmp-negative');
+      }
     });
-    $('totalDamage').textContent = fmt(total);
-    const ratio = scarletTotal > 0 ? total / scarletTotal : 0;
-    $('scarletRatio').textContent = fmt2(ratio) + ' 红莲';
-    const diff = total - scarletTotal;
-    $('damageDiff').textContent = (diff >= 0 ? '+' : '') + fmt(diff);
-    $('formulaText').innerHTML = parts.length ? parts.join('<br>') : '添加伤害段落并输入倍率后开始计算。';
   }
 
-  ['pubBaseAtk','pubAtkBuff','pubCritDmgBuff','pubCritRateBuff','pubElementBuff','pubTakenBuff'].forEach(id => {
-    $(id).addEventListener('input', calculateAll);
-  });
-  $('addSegmentBtn').addEventListener('click', addSegment);
-  addSegment();
+  createSet(true);
 })();
 </script>
 
@@ -2709,7 +2495,7 @@ window.onload = function() {
     <section class="article-lastmod">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 7v5l3 3" /></svg>
         <span>
-            最后更新于 2026-06-17
+            最后更新于 2026-06-18
         </span>
     </section></footer>
 
