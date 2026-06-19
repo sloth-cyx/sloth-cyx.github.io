@@ -10,7 +10,7 @@
 <meta property='og:description' content="~统计双子/皇冠+其他的拐力~">
 <meta property='og:url' content='https://sloth-cyx.github.io/p/%E5%A6%AE%E5%A7%AC%E5%A6%AE%E5%A7%AC%E7%BB%84%E5%90%88%E6%8B%90%E5%8A%9B%E7%BB%9F%E8%AE%A1%E8%A1%A8/'>
 <meta property='og:site_name' content='怠惰的天秤-sloth'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-05-31T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-06-17T13:30:23&#43;08:00'/><meta property='og:image' content='https://sloth-cyx.github.io/images/nikkeTwinsBuffComparison/nikkeTwinsBuffComparison_bg.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-05-31T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-06-19T13:02:32&#43;08:00'/><meta property='og:image' content='https://sloth-cyx.github.io/images/nikkeTwinsBuffComparison/nikkeTwinsBuffComparison_bg.png' />
 <meta name="twitter:title" content="【妮姬】妮姬组合拐力统计表">
 <meta name="twitter:description" content="~统计双子/皇冠+其他的拐力~"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://sloth-cyx.github.io/images/nikkeTwinsBuffComparison/nikkeTwinsBuffComparison_bg.png' />
@@ -509,6 +509,7 @@ post-sidebar">
     <li><a href="#皇冠初音">皇冠+初音</a></li>
     <li><a href="#皇冠马斯特皇冠开大">皇冠+马斯特（皇冠开大）</a></li>
     <li><a href="#皇冠马斯特马斯特三层开大">皇冠+马斯特（马斯特三层开大）</a></li>
+    <li><a href="#全爆裂拐力计算器beta">全爆裂拐力计算器（Beta）</a></li>
   </ol>
 </nav>
         </div>
@@ -569,7 +570,7 @@ post-sidebar">
         
         <div style="display: flex; align-items: left; gap: 5px;">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 7v5l3 3" /></svg> 
-            <time class="article-time--lastmod">2026-06-17</time>
+            <time class="article-time--lastmod">2026-06-19</time>
         </div>
         
 
@@ -795,6 +796,893 @@ post-sidebar">
 </tr>
 </tbody>
 </table></div>
+<h2 id="全爆裂拐力计算器beta">全爆裂拐力计算器（Beta）
+</h2><div class="nikke-buff-cmp" id="nikkeBuffCmp">
+  <div class="bcmp-header">
+    <div class="bcmp-kicker">NIKKE BUFF TOOL</div>
+    <div class="bcmp-title">全爆裂拐力计算器</div>
+    <div class="bcmp-desc">第一组作为基准；复制后在新组加入不同 buff，比较全爆裂10秒伤害提升。</div>
+  </div>
+
+  <div class="bcmp-top-note">
+    公式沿用：攻击力 × 补正区 × 优越区 × 蓄伤区 × 易伤区 × 攻伤区。武器/普攻可选择武器类型；同类型武器段会共用第一段的弹匣与换弹设置。
+  </div>
+
+  <div class="bcmp-sets" id="bcmpSets"></div>
+  <button type="button" id="bcmpExportResultsBtn" class="bcmp-export-results-btn hidden">导出全部对比结果</button>
+</div>
+
+
+<style>
+.nikke-buff-cmp,
+.nikke-buff-cmp * { box-sizing: border-box; }
+.nikke-buff-cmp h1,
+.nikke-buff-cmp h2,
+.nikke-buff-cmp h3,
+.nikke-buff-cmp h4,
+.nikke-buff-cmp h5,
+.nikke-buff-cmp h6 { border-inline-start: none !important; padding-inline-start: 0 !important; }
+
+.nikke-buff-cmp {
+  width: 100%;
+  max-width: min(100%, 780px);
+  margin: 1.25rem auto;
+  padding: clamp(10px, 2vw, 16px);
+  container-type: inline-size;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #f7f3e9;
+  background: #2b2d42;
+  border: 3px solid #1b1d2f;
+  border-radius: clamp(10px, 2vw, 14px);
+  box-shadow: 0 10px 0 #1b1d2f, 0 18px 28px rgba(27,29,47,.28);
+  overflow: hidden;
+}
+
+.nikke-buff-cmp .bcmp-header { text-align: center; padding: 5px 6px 4px; }
+.nikke-buff-cmp .bcmp-kicker { color: #06d6a0; font-size: 10px; font-weight: 950; letter-spacing: 1.8px; text-transform: uppercase; }
+.nikke-buff-cmp .bcmp-title { color: #ffd166; font-size: clamp(18px, 3.4vw, 23px); font-weight: 950; line-height: 1.35; margin-top: 6px; text-shadow: 2px 2px 0 #1b1d2f; }
+.nikke-buff-cmp .bcmp-desc { color: #b8c0ff; font-size: 12px; line-height: 1.65; margin-top: 7px; }
+
+.nikke-buff-cmp .bcmp-top-note,
+.nikke-buff-cmp .bcmp-note,
+.nikke-buff-cmp .bcmp-formula {
+  font-size: 12px;
+  line-height: 1.65;
+  border-radius: 8px;
+  padding: 9px 11px;
+  margin-top: 12px;
+}
+.nikke-buff-cmp .bcmp-top-note,
+.nikke-buff-cmp .bcmp-note {
+  background: #f7f3e9;
+  color: #3d405b;
+  border: 2px solid #ff9f1c;
+  border-left: 6px solid #ff9f1c;
+}
+.nikke-buff-cmp .bcmp-formula {
+  background: #fff3b0;
+  color: #3d405b;
+  border: 2px solid #ff9f1c;
+}
+
+.nikke-buff-cmp .bcmp-set {
+  background: #f7f3e9;
+  color: #2b2d42;
+  border: 3px solid #1b1d2f;
+  border-radius: 12px;
+  padding: clamp(12px, 2.3vw, 16px);
+  margin-top: 14px;
+  box-shadow: 0 6px 0 #1b1d2f;
+  min-width: 0;
+}
+
+.nikke-buff-cmp .bcmp-set-head,
+.nikke-buff-cmp .bcmp-section-row,
+.nikke-buff-cmp .bcmp-seg-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.nikke-buff-cmp .bcmp-set-title { color: #8338ec; font-size: 15px; font-weight: 950; line-height: 1.35; }
+.nikke-buff-cmp .bcmp-subtitle { color: #118ab2; font-size: 13px; font-weight: 950; margin: 15px 0 9px; padding-top: 12px; border-top: 2px dashed #b8c0ff; }
+.nikke-buff-cmp .bcmp-subtitle:first-of-type { border-top: none; padding-top: 0; }
+
+.nikke-buff-cmp .bcmp-btn,
+.nikke-buff-cmp .bcmp-copy-btn,
+.nikke-buff-cmp .bcmp-remove-btn,
+.nikke-buff-cmp .bcmp-delete-set-btn,
+.nikke-buff-cmp .bcmp-import-btn,
+.nikke-buff-cmp .bcmp-export-btn,
+.nikke-buff-cmp .bcmp-export-results-btn {
+  border: 2px solid #1b1d2f;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 950;
+  padding: 8px 13px;
+  color: #ffffff;
+  background: #118ab2;
+  box-shadow: 0 4px 0 #1b1d2f;
+  white-space: nowrap;
+}
+.nikke-buff-cmp .bcmp-copy-btn { background: #06d6a0; color: #1b1d2f; }
+.nikke-buff-cmp .bcmp-import-btn { background: #ffd166; color: #1b1d2f; }
+.nikke-buff-cmp .bcmp-export-btn { background: #9f6de6; color: #1b1d2f; }
+.nikke-buff-cmp .bcmp-export-results-btn {
+  display: block;
+  width: 100%;
+  margin-top: 14px;
+  background: #ff9f1c;
+  color: #1b1d2f;
+}
+.nikke-buff-cmp .bcmp-remove-btn,
+.nikke-buff-cmp .bcmp-delete-set-btn { background: #ef476f; color: #ffffff; padding: 7px 12px; }
+.nikke-buff-cmp .bcmp-export-btn { background: #9f6de6; color: #1b1d2f; padding: 7px 12px; }
+.nikke-buff-cmp .bcmp-import-btn { background: #ff9f1c; color: #1b1d2f; padding: 7px 12px; }
+.nikke-buff-cmp .bcmp-export-results-btn { background: #ff5c8a; color: #ffffff; padding: 7px 12px; }
+.nikke-buff-cmp .bcmp-btn:active,
+.nikke-buff-cmp .bcmp-copy-btn:active,
+.nikke-buff-cmp .bcmp-remove-btn:active,
+.nikke-buff-cmp .bcmp-delete-set-btn:active,
+.nikke-buff-cmp .bcmp-import-btn:active,
+.nikke-buff-cmp .bcmp-export-btn:active,
+.nikke-buff-cmp .bcmp-export-results-btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #1b1d2f; }
+
+.nikke-buff-cmp .bcmp-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 9px; }
+.nikke-buff-cmp .bcmp-main-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 9px; }
+
+.nikke-buff-cmp .bcmp-set-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+.nikke-buff-cmp .bcmp-set-note-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 9px;
+  margin-top: 12px;
+}
+
+.nikke-buff-cmp .bcmp-field { min-width: 0; }
+.nikke-buff-cmp .bcmp-field span { display: block; color: #3d405b; font-size: 11px; font-weight: 850; line-height: 1.35; margin-bottom: 5px; }
+.nikke-buff-cmp .bcmp-field input,
+.nikke-buff-cmp .bcmp-field select {
+  width: 100%;
+  min-width: 0;
+  border: 2px solid #8d99ae;
+  background: #ffffff;
+  color: #2b2d42;
+  border-radius: 8px;
+  padding: 8px 9px;
+  font-size: 13px;
+  font-weight: 780;
+  outline: none;
+}
+.nikke-buff-cmp .bcmp-field input:focus,
+.nikke-buff-cmp .bcmp-field select:focus { border-color: #8338ec; box-shadow: 0 0 0 3px rgba(131,56,236,.18); }
+
+.nikke-buff-cmp .bcmp-segment {
+  background: #e9f5db;
+  border: 2px solid #06d6a0;
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 11px;
+}
+.nikke-buff-cmp .bcmp-seg-title { color: #8338ec; font-size: 13px; font-weight: 950; }
+.nikke-buff-cmp .bcmp-block-title { color: #118ab2; font-size: 12px; font-weight: 950; margin: 13px 0 8px; padding-top: 11px; border-top: 2px dashed #8d99ae; }
+.nikke-buff-cmp .bcmp-seg-output { margin-top: 11px; background: #fff3b0; border: 2px solid #ffd166; border-radius: 10px; padding: 10px; color: #3d405b; font-size: 12px; font-weight: 950; line-height: 1.55; text-align: center; }
+
+.nikke-buff-cmp .bcmp-result-flex {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  margin-top: 12px;
+}
+.nikke-buff-cmp .bcmp-result-box {
+  flex: 1 1 0;
+  width: 0;
+  min-width: 0;
+  background: #fefae0;
+  border: 2px solid #ffd166;
+  border-radius: 10px;
+  padding: 9px 5px;
+  text-align: center;
+  overflow: hidden;
+}
+.nikke-buff-cmp .bcmp-result-box.bcmp-accent { background: #3d405b; border-color: #8338ec; }
+.nikke-buff-cmp .bcmp-result-box.bcmp-accent .bcmp-result-label { color: #b8c0ff; }
+.nikke-buff-cmp .bcmp-result-label { color: #3d405b; font-size: clamp(9px, 1.5vw, 11px); font-weight: 850; line-height: 1.35; margin-bottom: 5px; white-space: nowrap; }
+.nikke-buff-cmp .bcmp-result-value { color: #118ab2; font-size: clamp(14px, 2.2vw, 17px); font-weight: 950; line-height: 1.25; overflow-wrap: anywhere; letter-spacing: -0.03em; }
+.nikke-buff-cmp .bcmp-accent .bcmp-result-value { color: #ffd166; }
+.nikke-buff-cmp .bcmp-positive { color: #06d6a0 !important; }
+.nikke-buff-cmp .bcmp-negative { color: #ef476f !important; }
+
+.nikke-buff-cmp .bcmp-check-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 8px 9px;
+  border: 2px solid #8d99ae;
+  background: #ffffff;
+  color: #2b2d42;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 850;
+  cursor: pointer;
+}
+.nikke-buff-cmp .bcmp-check-field input {
+  width: auto;
+  min-width: auto;
+  margin: 0;
+  accent-color: #118ab2;
+}
+.nikke-buff-cmp .bcmp-check-field span {
+  margin: 0;
+  color: #3d405b;
+  line-height: 1.35;
+}
+
+
+.nikke-buff-cmp .bcmp-buff-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+.nikke-buff-cmp .bcmp-buff-pair {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 88px;
+  gap: 7px;
+  align-items: end;
+}
+.nikke-buff-cmp .bcmp-buff-pair .bcmp-field span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nikke-buff-cmp .bcmp-duration-field span {
+  color: #8338ec;
+}
+
+
+.nikke-buff-cmp .bcmp-field.bcmp-shared-disabled span {
+  color: #8d99ae;
+}
+.nikke-buff-cmp .bcmp-field.bcmp-shared-disabled input {
+  background: #e5e7eb;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+.nikke-buff-cmp .bcmp-field.bcmp-shared-disabled::after {
+  content: "沿用同类型第一段";
+  display: block;
+  color: #8338ec;
+  font-size: 10px;
+  font-weight: 850;
+  margin-top: 4px;
+}
+
+.nikke-buff-cmp .hidden { display: none !important; }
+
+@container (max-width: 680px) {
+  .nikke-buff-cmp .bcmp-grid,
+  .nikke-buff-cmp .bcmp-main-grid,
+  .nikke-buff-cmp .bcmp-buff-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .nikke-buff-cmp .bcmp-result-flex { gap: 6px; }
+  .nikke-buff-cmp .bcmp-result-box { padding: 8px 4px; }
+}
+@media (max-width: 560px) {
+  .nikke-buff-cmp { width: calc(100% - 8px); padding: 10px; }
+  .nikke-buff-cmp .bcmp-set { padding: 11px; }
+  .nikke-buff-cmp .bcmp-set-head,
+  .nikke-buff-cmp .bcmp-section-row,
+  .nikke-buff-cmp .bcmp-seg-head { flex-direction: column; align-items: stretch; }
+  .nikke-buff-cmp .bcmp-btn,
+  .nikke-buff-cmp .bcmp-copy-btn,
+  .nikke-buff-cmp .bcmp-remove-btn,
+  .nikke-buff-cmp .bcmp-delete-set-btn,
+.nikke-buff-cmp .bcmp-import-btn,
+.nikke-buff-cmp .bcmp-export-btn,
+.nikke-buff-cmp .bcmp-export-results-btn { width: 100%; }
+  .nikke-buff-cmp .bcmp-grid,
+  .nikke-buff-cmp .bcmp-main-grid,
+  .nikke-buff-cmp .bcmp-buff-grid { grid-template-columns: minmax(0,1fr); }
+  .nikke-buff-cmp .bcmp-buff-pair { grid-template-columns: minmax(0, 1fr) 82px; }
+  .nikke-buff-cmp .bcmp-field input,
+  .nikke-buff-cmp .bcmp-field select { font-size: 16px; }
+  .nikke-buff-cmp .bcmp-result-label { font-size: 9px; }
+  .nikke-buff-cmp .bcmp-result-value { font-size: 13px; }
+}
+</style>
+
+<script>
+(function(){
+  let setId = 0;
+  let segmentSeq = 0;
+  const setsRoot = document.getElementById('bcmpSets');
+  const exportResultsBtn = document.getElementById('bcmpExportResultsBtn');
+
+  function pct(v){ return (Number(v) || 0) / 100; }
+  function num(v){ return Number(v) || 0; }
+  function fmt(n){ if(!Number.isFinite(n)) return '—'; return Math.round(n).toLocaleString(); }
+  function fmt2(n){ if(!Number.isFinite(n)) return '—'; return n.toLocaleString(undefined, { maximumFractionDigits: 3 }); }
+  function fmtPct(n){ if(!Number.isFinite(n)) return '—'; return (n >= 0 ? '+' : '') + n.toLocaleString(undefined, { maximumFractionDigits: 2 }) + '%'; }
+
+  function copyToClipboard(text, successMsg){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(() => alert(successMsg)).catch(() => window.prompt('复制以下内容：', text));
+    } else {
+      window.prompt('复制以下内容：', text);
+    }
+  }
+
+  const BUFFS = [
+    ['atkBuff', '攻击力 buff'],
+    ['elementBuff', '优越伤害 buff'],
+    ['critRateBuff', '暴击率 buff'],
+    ['critDmgBuff', '暴击伤害 buff'],
+    ['atkDmgBuff', '攻击伤害 buff'],
+    ['coreBuff', '核心伤害 buff'],
+    ['takenBuff', '所受伤害 buff'],
+    ['sharedBuff', '分摊伤害 buff'],
+    ['chargeBuff', '蓄力伤害 buff', 'weapon']
+  ];
+
+  function buffPair(key, label, cls){
+    return `
+      <div class="bcmp-buff-pair ${cls || ''}">
+        <label class="bcmp-field"><span>${label}（%）</span><input type="number" data-key="${key}" value="0" step="0.01"></label>
+        <label class="bcmp-field bcmp-duration-field"><span>时间</span><input type="number" data-key="${key}Duration" value="10" min="0" step="0.01"></label>
+      </div>`;
+  }
+
+  function activeBuff(seg, key, t){
+    const value = pct(seg[key]);
+    const duration = num(seg[key + 'Duration']);
+    return duration > 0 && t < duration ? value : 0;
+  }
+
+  function multipliers(common, seg, t){
+    const critRate = 0.15 + activeBuff(seg, 'critRateBuff', t);
+    const critDmg = 0.5 + activeBuff(seg, 'critDmgBuff', t);
+    const critExpected = critRate * critDmg;
+    const coreBuff = activeBuff(seg, 'coreBuff', t);
+    const chargeBuff = seg.type === 'weapon' && supportsCharge(seg.weaponType) ? activeBuff(seg, 'chargeBuff', t) : 0;
+    const sharedBuff = activeBuff(seg, 'sharedBuff', t);
+    const atkDmgBuff = activeBuff(seg, 'atkDmgBuff', t);
+    const distanceBonus = seg.type === 'weapon' && supportsDistance(seg.weaponType) && seg.distanceBonus ? 0.3 : 0;
+    return {
+      critRate,
+      critDmg,
+      critExpected,
+      distanceBonus,
+      correction: 1 + critExpected + 0.5 + (1 + coreBuff) + distanceBonus,
+      element: 1.1 + activeBuff(seg, 'elementBuff', t),
+      charge: 1 + chargeBuff,
+      vulnerability: 1 + activeBuff(seg, 'takenBuff', t) + sharedBuff,
+      atkDmg: 1 + atkDmgBuff,
+      atkBuff: activeBuff(seg, 'atkBuff', t)
+    };
+  }
+
+  function damagePerHit(common, seg, t){
+    const m = multipliers(common, seg, t);
+    const atk = common.baseAtk * (1 + m.atkBuff) * pct(seg.multiplier);
+    return atk * m.correction * m.element * m.charge * m.vulnerability * m.atkDmg;
+  }
+
+  function relevantBreakpoints(seg){
+    const duration = Math.max(0, num(seg.duration));
+    const points = new Set([0, duration]);
+    BUFFS.forEach(([key, , type]) => {
+      if(type && type !== seg.type) return;
+      if(key === 'chargeBuff' && seg.type === 'weapon' && !supportsCharge(seg.weaponType)) return;
+      const d = num(seg[key + 'Duration']);
+      if(d > 0 && d < duration) points.add(d);
+    });
+    return Array.from(points).sort((a,b)=>a-b);
+  }
+
+  function initWeaponState(magazineSize){
+    const mag = Math.max(0, num(magazineSize));
+    return {
+      magazineSize: mag,
+      currentAmmo: mag > 0 ? mag : null,
+      reloadRemaining: 0
+    };
+  }
+
+  function weaponTypeName(type){
+    return {
+      rifle: '步枪',
+      smg: '冲锋枪',
+      mg: '机枪',
+      sg: '霰弹枪',
+      sr: '狙击枪',
+      rl: '发射器'
+    }[type] || '武器';
+  }
+
+  function supportsCharge(type){
+    return type === 'sr' || type === 'rl';
+  }
+
+  function supportsDistance(type){
+    return type !== 'rl';
+  }
+
+  function cleanNonNegative(v){
+    return Math.max(0, num(v));
+  }
+
+  function bulletsInWindow(seg, state, start, end){
+    const duration = Math.max(0, num(seg.duration));
+    const requestedShots = Math.max(0, num(seg.shots));
+    if(end <= start || duration <= 0 || requestedShots <= 0) return 0;
+
+    const rate = requestedShots / duration;
+    const windowDuration = end - start;
+    const magazine = cleanNonNegative(seg.effectiveMagazine ?? seg.magazine);
+    const reload = cleanNonNegative(seg.effectiveReload ?? seg.reload);
+
+    
+    if(magazine <= 0) {
+      return rate * windowDuration;
+    }
+
+    if(!state || state.magazineSize !== magazine || state.currentAmmo === null) {
+      state.magazineSize = magazine;
+      state.currentAmmo = Math.min(state.currentAmmo === null ? magazine : state.currentAmmo, magazine);
+      state.reloadRemaining = Math.max(0, state.reloadRemaining || 0);
+    }
+
+    let remaining = windowDuration;
+    let bullets = 0;
+    const EPS = 1e-9;
+
+    while(remaining > EPS) {
+      if(state.reloadRemaining > EPS) {
+        const wait = Math.min(remaining, state.reloadRemaining);
+        state.reloadRemaining -= wait;
+        remaining -= wait;
+        if(state.reloadRemaining <= EPS) {
+          state.reloadRemaining = 0;
+          state.currentAmmo = magazine;
+        }
+        continue;
+      }
+
+      if(state.currentAmmo <= EPS) {
+        
+        if(reload > EPS) {
+          state.reloadRemaining = reload;
+          continue;
+        }
+        state.currentAmmo = magazine;
+      }
+
+      const timeUntilEmpty = state.currentAmmo / rate;
+      const fireTime = Math.min(remaining, timeUntilEmpty);
+      bullets += rate * fireTime;
+      state.currentAmmo -= rate * fireTime;
+      remaining -= fireTime;
+
+      if(state.currentAmmo <= EPS) {
+        state.currentAmmo = 0;
+        if(remaining > EPS && reload > EPS) {
+          state.reloadRemaining = reload;
+        }
+      }
+    }
+
+    return bullets;
+  }
+
+  function calcSegment(common, seg, weaponState){
+    const duration = Math.max(0, num(seg.duration));
+    const points = relevantBreakpoints(seg);
+    let total = 0;
+    let count = 0;
+    const slices = [];
+
+    for(let i = 0; i < points.length - 1; i++){
+      const start = points[i];
+      const end = points[i + 1];
+      if(end <= start) continue;
+      const t = start + 0.000001;
+      const perHit = damagePerHit(common, seg, t);
+      let c = 0;
+      if(seg.type === 'weapon'){
+        c = bulletsInWindow(seg, weaponState, start, end);
+      } else {
+        c = duration > 0 ? num(seg.times) * ((end - start) / duration) : 0;
+      }
+      const dmg = perHit * c;
+      total += dmg;
+      count += c;
+      slices.push({ start, end, count: c, perHit, total: dmg });
+    }
+
+    return { total, count, perHit: count > 0 ? total / count : 0, slices };
+  }
+
+  function setTemplate(id, isBase){
+    return `
+      <div class="bcmp-set" data-set-id="${id}" data-base="${isBase ? '1' : '0'}">
+        <div class="bcmp-set-head">
+          <div class="bcmp-set-title">${isBase ? '基准 Set #1' : '对比 Set #' + id}</div>
+          <div class="bcmp-set-actions">${isBase ? '<button type="button" class="bcmp-copy-btn">复制</button><button type="button" class="bcmp-export-btn">导出</button><button type="button" class="bcmp-import-btn">导入</button>' : '<button type="button" class="bcmp-delete-set-btn">删除Set</button>'}</div>
+        </div>
+
+        <div class="bcmp-set-note-grid">
+          <label class="bcmp-field"><span>Set备注</span><input type="text" data-key="setNote" value="${isBase ? '基准' : ''}" placeholder="例：皇冠 / 娜由塔 / 无拐基准"></label>
+        </div>
+
+        <div class="bcmp-subtitle">基础参数</div>
+        <div class="bcmp-note">这里只保留基础攻击力。每个 buff 都在伤害段落里填写数值与持续时间；时间为0秒时视为没有该buff。</div>
+        <br>
+        <div class="bcmp-grid bcmp-public-grid">
+          <label class="bcmp-field"><span>基础攻击力</span><input type="number" data-key="baseAtk" value="0" min="0" step="1"></label>
+        </div>
+
+        <div class="bcmp-subtitle">伤害段落</div>
+        <div class="bcmp-section-row">
+          <div class="bcmp-note" style="margin-top:0; flex:1;">每个段落代表一段时间轴。武器/普攻请填写段落总子弹数；同武器类型会沿用第一段的弹匣/换弹，不同武器类型分开计算。最大装弹数 0 = 无限；换弹速度 0 = 无。</div>
+          <button type="button" class="bcmp-btn bcmp-add-seg">添加</button>
+        </div>
+        <div class="bcmp-segments"></div>
+
+        <div class="bcmp-subtitle">本 Set 结果</div>
+        <div class="bcmp-result-flex">
+          <div class="bcmp-result-box"><div class="bcmp-result-label">总伤害</div><div class="bcmp-result-value set-total">0</div></div>
+          <div class="bcmp-result-box bcmp-accent"><div class="bcmp-result-label">对比基准</div><div class="bcmp-result-value set-growth">基准</div></div>
+          <div class="bcmp-result-box"><div class="bcmp-result-label">伤害差值</div><div class="bcmp-result-value set-diff">0</div></div>
+        </div>
+        <div class="bcmp-formula set-formula">添加伤害段落并输入倍率后开始计算。</div>
+      </div>`;
+  }
+
+  function segmentTemplate(){
+    segmentSeq += 1;
+    return `
+      <div class="bcmp-segment">
+        <div class="bcmp-seg-head">
+          <div class="bcmp-seg-title">伤害段落 #${segmentSeq}</div>
+          <button type="button" class="bcmp-remove-btn">删除</button>
+        </div>
+
+        <div class="bcmp-main-grid">
+          <label class="bcmp-field"><span>类型</span><select data-key="type" class="seg-type"><option value="weapon">武器 / 普攻</option><option value="skill">技能伤害</option></select></label>
+          <label class="bcmp-field weapon-only"><span>武器类型</span><select data-key="weaponType" class="weapon-type"><option value="rifle">步枪</option><option value="smg">冲锋枪</option><option value="mg">机枪</option><option value="sg">霰弹枪</option><option value="sr">狙击枪</option><option value="rl">发射器</option></select></label>
+          <label class="bcmp-field"><span>段落总时间（秒）</span><input type="number" data-key="duration" value="10" min="0" step="0.01"></label>
+          <label class="bcmp-field"><span>倍率（%）</span><input type="number" data-key="multiplier" value="0" step="0.01"></label>
+          <label class="bcmp-field weapon-only"><span>段落总子弹数</span><input type="number" data-key="shots" value="0" min="0" step="0.01"></label>
+          <label class="bcmp-field weapon-only magazine-field"><span>最大装弹数（0=无限）</span><input type="number" data-key="magazine" value="0" min="0" step="1"></label>
+          <label class="bcmp-field weapon-only reload-field"><span>换弹速度（秒）（0=无）</span><input type="number" data-key="reload" value="0" min="0" step="0.01"></label>
+          <div class="weapon-only charge-field">${buffPair('chargeBuff', '蓄力伤害')}</div>
+          <label class="bcmp-check-field weapon-only distance-field"><input type="checkbox" data-key="distanceBonus"><span>距离补正 +0.3</span></label>
+          <label class="bcmp-field skill-only hidden"><span>段落总触发次数</span><input type="number" data-key="times" value="1" min="0" step="0.01"></label>
+        </div>
+
+        <div class="bcmp-block-title">Buff 设置</div>
+        <div class="bcmp-buff-grid">
+          ${buffPair('atkBuff', '攻击力')}
+          ${buffPair('elementBuff', '优越伤害')}
+          ${buffPair('critRateBuff', '暴击率')}
+          ${buffPair('critDmgBuff', '暴击伤害')}
+          ${buffPair('atkDmgBuff', '攻击伤害')}
+          ${buffPair('coreBuff', '核心伤害')}
+          ${buffPair('takenBuff', '所受伤害')}
+          ${buffPair('sharedBuff', '分摊伤害')}
+        </div>
+
+        <div class="bcmp-seg-output">本段：<span class="seg-damage">0</span></div>
+      </div>`;
+  }
+
+  function readSetNote(setEl){
+    return (setEl.querySelector('[data-key="setNote"]')?.value || '').trim();
+  }
+
+  function readCommon(setEl){
+    return { baseAtk: num(setEl.querySelector('.bcmp-public-grid [data-key="baseAtk"]')?.value) };
+  }
+
+  function readSegment(segEl){
+    const read = key => num(segEl.querySelector(`[data-key="${key}"]`)?.value);
+    const checked = key => !!segEl.querySelector(`[data-key="${key}"]`)?.checked;
+    const type = segEl.querySelector('[data-key="type"]').value;
+    const seg = {
+      type,
+      weaponType: type === 'weapon' ? (segEl.querySelector('[data-key="weaponType"]')?.value || 'rifle') : '',
+      duration: cleanNonNegative(read('duration')),
+      multiplier: read('multiplier'),
+      shots: cleanNonNegative(read('shots')),
+      magazine: cleanNonNegative(read('magazine')),
+      reload: cleanNonNegative(read('reload')),
+      distanceBonus: type === 'weapon' && supportsDistance(segEl.querySelector('[data-key="weaponType"]')?.value || 'rifle') ? checked('distanceBonus') : false,
+      times: cleanNonNegative(read('times'))
+    };
+    BUFFS.forEach(([key]) => {
+      seg[key] = read(key);
+      seg[key + 'Duration'] = read(key + 'Duration');
+    });
+    return seg;
+  }
+
+  function refreshSegmentVisibility(segEl){
+    const isWeapon = segEl.querySelector('[data-key="type"]').value === 'weapon';
+    const weaponType = segEl.querySelector('[data-key="weaponType"]')?.value || 'rifle';
+    segEl.querySelectorAll('.weapon-only').forEach(el => el.classList.toggle('hidden', !isWeapon));
+    segEl.querySelectorAll('.skill-only').forEach(el => el.classList.toggle('hidden', isWeapon));
+    const chargeField = segEl.querySelector('.charge-field');
+    if(chargeField) chargeField.classList.toggle('hidden', !isWeapon || !supportsCharge(weaponType));
+    const distanceField = segEl.querySelector('.distance-field');
+    if(distanceField) {
+      distanceField.classList.toggle('hidden', !isWeapon || !supportsDistance(weaponType));
+      if(!isWeapon || !supportsDistance(weaponType)) {
+        const cb = distanceField.querySelector('[data-key="distanceBonus"]');
+        if(cb) cb.checked = false;
+      }
+    }
+    refreshWeaponSharedFields(segEl.closest('.bcmp-set'));
+  }
+
+  function refreshWeaponSharedFields(setEl){
+    if(!setEl) return;
+    const firstByType = {};
+    Array.from(setEl.querySelectorAll('.bcmp-segment')).forEach(segEl => {
+      const isWeapon = segEl.querySelector('[data-key="type"]')?.value === 'weapon';
+      const magField = segEl.querySelector('.magazine-field');
+      const reloadField = segEl.querySelector('.reload-field');
+      const magInput = segEl.querySelector('[data-key="magazine"]');
+      const reloadInput = segEl.querySelector('[data-key="reload"]');
+      [magField, reloadField].forEach(field => field && field.classList.remove('bcmp-shared-disabled'));
+      [magInput, reloadInput].forEach(input => input && (input.disabled = false));
+      if(!isWeapon) return;
+      const weaponType = segEl.querySelector('[data-key="weaponType"]')?.value || 'rifle';
+      if(!firstByType[weaponType]) {
+        firstByType[weaponType] = { mag: magInput?.value || '0', reload: reloadInput?.value || '0' };
+        return;
+      }
+      if(magInput) { magInput.value = firstByType[weaponType].mag; magInput.disabled = true; }
+      if(reloadInput) { reloadInput.value = firstByType[weaponType].reload; reloadInput.disabled = true; }
+      if(magField) magField.classList.add('bcmp-shared-disabled');
+      if(reloadField) reloadField.classList.add('bcmp-shared-disabled');
+    });
+  }
+
+  function bindSegment(segEl){
+    segEl.querySelectorAll('input, select').forEach(el => {
+      el.addEventListener('input', () => { refreshSegmentVisibility(segEl); calculateAll(); });
+      el.addEventListener('change', () => { refreshSegmentVisibility(segEl); calculateAll(); });
+    });
+    segEl.querySelector('.bcmp-remove-btn').addEventListener('click', () => { segEl.remove(); calculateAll(); });
+    refreshSegmentVisibility(segEl);
+  }
+
+  function addSegmentToSet(setEl, data){
+    const holder = setEl.querySelector('.bcmp-segments');
+    holder.insertAdjacentHTML('beforeend', segmentTemplate());
+    const segEl = holder.lastElementChild;
+    bindSegment(segEl);
+    if(data) fillSegment(segEl, data);
+    calculateAll();
+  }
+
+  function createSet(isBase, sourceData){
+    setId += 1;
+    setsRoot.insertAdjacentHTML('beforeend', setTemplate(setId, isBase));
+    const setEl = setsRoot.lastElementChild;
+    bindSet(setEl);
+    if(sourceData) fillSet(setEl, sourceData);
+    if(!sourceData) addSegmentToSet(setEl);
+    calculateAll();
+    return setEl;
+  }
+
+  function bindSet(setEl){
+    setEl.querySelectorAll('.bcmp-public-grid input').forEach(el => el.addEventListener('input', calculateAll));
+    const noteInput = setEl.querySelector('[data-key="setNote"]');
+    if(noteInput) noteInput.addEventListener('input', calculateAll);
+    setEl.querySelector('.bcmp-add-seg').addEventListener('click', () => addSegmentToSet(setEl));
+    const copyBtn = setEl.querySelector('.bcmp-copy-btn');
+    if(copyBtn) copyBtn.addEventListener('click', () => createSet(false, collectSetData(setEl)));
+    const exportBtn = setEl.querySelector('.bcmp-export-btn');
+    if(exportBtn) exportBtn.addEventListener('click', () => exportBaseSet(setEl));
+    const importBtn = setEl.querySelector('.bcmp-import-btn');
+    if(importBtn) importBtn.addEventListener('click', () => importBaseSet(setEl));
+    const delBtn = setEl.querySelector('.bcmp-delete-set-btn');
+    if(delBtn) delBtn.addEventListener('click', () => { setEl.remove(); calculateAll(); });
+  }
+
+  function collectSetData(setEl){
+    return {
+      note: readSetNote(setEl),
+      common: readCommon(setEl),
+      segments: Array.from(setEl.querySelectorAll('.bcmp-segment')).map(readSegment)
+    };
+  }
+
+  function fillSet(setEl, data){
+    const noteInput = setEl.querySelector('[data-key="setNote"]');
+    if(noteInput && data.note !== undefined) noteInput.value = data.note;
+    Object.entries(data.common || {}).forEach(([key, val]) => {
+      const input = setEl.querySelector(`.bcmp-public-grid [data-key="${key}"]`);
+      if(input) input.value = val;
+    });
+    const holder = setEl.querySelector('.bcmp-segments');
+    holder.innerHTML = '';
+    (data.segments || []).forEach(seg => addSegmentToSet(setEl, seg));
+    if(!(data.segments || []).length) addSegmentToSet(setEl);
+  }
+
+  function fillSegment(segEl, data){
+    segEl.querySelector('[data-key="type"]').value = data.type || 'weapon';
+    if(data.weaponType === undefined) data.weaponType = 'rifle';
+
+    
+    if(data.shots === undefined && data.rps !== undefined) {
+      data.shots = num(data.rps) * num(data.duration || 10);
+    }
+
+    
+    if(data.atkDmgBuff === undefined) {
+      data.atkDmgBuff = data.type === 'skill' ? data.atkDmgBuffSkill : data.atkDmgBuffWeapon;
+      data.atkDmgBuffDuration = data.type === 'skill' ? data.atkDmgBuffSkillDuration : data.atkDmgBuffWeaponDuration;
+    }
+
+    Object.entries(data).forEach(([key, val]) => {
+      const input = segEl.querySelector(`[data-key="${key}"]`);
+      if(input) {
+        if(input.type === 'checkbox') input.checked = !!val;
+        else input.value = val;
+      }
+    });
+    refreshSegmentVisibility(segEl);
+    refreshWeaponSharedFields(segEl.closest('.bcmp-set'));
+  }
+
+  function buffSummary(seg){
+    return BUFFS
+      .filter(([key, , type]) => !type || type === seg.type)
+      .filter(([key]) => num(seg[key]) !== 0 && num(seg[key + 'Duration']) > 0)
+      .map(([key, label]) => `${label.replace(/\s*buff$/, 'buff')} ${fmt2(seg[key])}%/${fmt2(seg[key + 'Duration'])}秒`)
+      .join('，') || '无';
+  }
+
+
+  function exportBaseSet(setEl){
+    const payload = {
+      version: 2,
+      type: 'nikke-buff-calc-base-set',
+      exportedAt: new Date().toISOString(),
+      data: collectSetData(setEl)
+    };
+    copyToClipboard(JSON.stringify(payload), '基准 Set 已导出到剪贴板。');
+  }
+
+  function importBaseSet(setEl){
+    const raw = window.prompt('请粘贴之前导出的基准 Set JSON：');
+    if(!raw) return;
+    try {
+      const parsed = JSON.parse(raw);
+      const data = parsed.data || parsed;
+      if(!data || !data.common || !Array.isArray(data.segments)) throw new Error('格式不正确');
+      fillSet(setEl, data);
+      calculateAll();
+      alert('导入完成。');
+    } catch (err) {
+      alert('导入失败：JSON 格式不正确。');
+    }
+  }
+
+  function multiplierText(m){
+    return `攻击${fmt2(1 + m.atkBuff)} / 补正${fmt2(m.correction)} / 优越${fmt2(m.element)} / 蓄伤${fmt2(m.charge)} / 易伤${fmt2(m.vulnerability)} / 攻伤${fmt2(m.atkDmg)}`;
+  }
+
+  function segmentMultiplierSummary(common, seg, res){
+    if(!res.slices.length) return '乘区：—';
+    if(res.slices.length === 1){
+      const m = multipliers(common, seg, res.slices[0].start + 0.000001);
+      return `乘区：${multiplierText(m)}`;
+    }
+    return '乘区：' + res.slices.map(sl => {
+      const m = multipliers(common, seg, sl.start + 0.000001);
+      return `${fmt2(sl.start)}-${fmt2(sl.end)}秒 ${multiplierText(m)}`;
+    }).join('；');
+  }
+
+  function exportComparisonResults(){
+    const sets = Array.from(setsRoot.querySelectorAll('.bcmp-set'));
+    if(sets.length <= 1) return;
+    const lines = ['# 全爆裂拐力计算结果', ''];
+    sets.forEach((setEl, idx) => {
+      const name = readSetNote(setEl) || (idx === 0 ? '基准 Set #1' : `对比 Set #${idx + 1}`);
+      lines.push(`## ${name}`);
+      lines.push(`总伤害：${setEl.querySelector('.set-total')?.textContent || '0'}`);
+      lines.push(`对比基准：${setEl.querySelector('.set-growth')?.textContent || '基准'}`);
+      lines.push(`伤害差值：${setEl.querySelector('.set-diff')?.textContent || '0'}`);
+      const formula = (setEl.querySelector('.set-formula')?.innerText || '').trim();
+      if(formula) lines.push(formula);
+      lines.push('');
+    });
+    copyToClipboard(lines.join('\n'), '全部对比结果已复制到剪贴板。');
+  }
+
+  function calculateSet(setEl){
+    const common = readCommon(setEl);
+    let total = 0;
+    const parts = [];
+    refreshWeaponSharedFields(setEl);
+    const weaponStates = {};
+    const firstWeaponSettings = {};
+    Array.from(setEl.querySelectorAll('.bcmp-segment')).forEach((segEl, idx) => {
+      let seg = readSegment(segEl);
+      let weaponState = null;
+      if(seg.type === 'weapon') {
+        const wType = seg.weaponType || 'rifle';
+        if(!firstWeaponSettings[wType]) {
+          firstWeaponSettings[wType] = { magazine: cleanNonNegative(seg.magazine), reload: cleanNonNegative(seg.reload) };
+          weaponStates[wType] = initWeaponState(firstWeaponSettings[wType].magazine);
+        }
+        seg = { ...seg, effectiveMagazine: firstWeaponSettings[wType].magazine, effectiveReload: firstWeaponSettings[wType].reload };
+        weaponState = weaponStates[wType];
+      }
+      const res = calcSegment(common, seg, weaponState);
+      total += res.total;
+      segEl.querySelector('.seg-damage').textContent = fmt(res.total);
+      const label = seg.type === 'weapon'
+        ? `${weaponTypeName(seg.weaponType)} ${fmt2(seg.duration)}秒，预计 ${fmt2(seg.shots)} 发，实际 ${fmt2(res.count)} 发`
+        : `技能伤害 ${fmt2(seg.duration)}秒内 ${fmt2(res.count)} 次`;
+      const sliceInfo = res.slices.length > 1 ? `；自动拆成 ${res.slices.length} 段计算` : '';
+      const extra = seg.type === 'weapon' ? `弹匣 ${cleanNonNegative(seg.effectiveMagazine) <= 0 ? '无限' : fmt2(seg.effectiveMagazine)}，换弹 ${cleanNonNegative(seg.effectiveReload) <= 0 ? '无' : fmt2(seg.effectiveReload) + '秒'}，距离补正 ${seg.distanceBonus ? '+0.3' : '无'}` : '技能无距离补正';
+      const multInfo = segmentMultiplierSummary(common, seg, res);
+      parts.push(`#${idx + 1} ${label}，平均单次 ${fmt(res.perHit)}，本段 ${fmt(res.total)}${sliceInfo}；${extra}；Buff：${buffSummary(seg)}；${multInfo}`);
+    });
+    setEl.dataset.total = String(total);
+    setEl.querySelector('.set-total').textContent = fmt(total);
+    setEl.querySelector('.set-formula').innerHTML = parts.length ? parts.join('<br>') : '添加伤害段落并输入倍率后开始计算。';
+    return total;
+  }
+
+  function calculateAll(){
+    const sets = Array.from(setsRoot.querySelectorAll('.bcmp-set'));
+    const totals = sets.map(calculateSet);
+    const base = totals[0] || 0;
+    sets.forEach((setEl, idx) => {
+      const titleEl = setEl.querySelector('.bcmp-set-title');
+      const note = readSetNote(setEl);
+      if(titleEl) titleEl.textContent = note || (idx === 0 ? '基准 Set #1' : `对比 Set #${idx + 1}`);
+      const total = totals[idx] || 0;
+      const diff = total - base;
+      const growth = base > 0 ? ((total / base) - 1) * 100 : NaN;
+      const growthEl = setEl.querySelector('.set-growth');
+      const diffEl = setEl.querySelector('.set-diff');
+      if(idx === 0){
+        growthEl.textContent = '基准';
+        growthEl.className = 'bcmp-result-value set-growth';
+        diffEl.textContent = '0';
+        diffEl.className = 'bcmp-result-value set-diff';
+      } else {
+        growthEl.textContent = Number.isFinite(growth) ? fmtPct(growth) : '—';
+        diffEl.textContent = (diff >= 0 ? '+' : '') + fmt(diff);
+        growthEl.className = 'bcmp-result-value set-growth ' + (growth >= 0 ? 'bcmp-positive' : 'bcmp-negative');
+        diffEl.className = 'bcmp-result-value set-diff ' + (diff >= 0 ? 'bcmp-positive' : 'bcmp-negative');
+      }
+    });
+    if(exportResultsBtn) exportResultsBtn.classList.toggle('hidden', sets.length <= 1);
+  }
+
+  if(exportResultsBtn) exportResultsBtn.addEventListener('click', exportComparisonResults);
+  createSet(true);
+})();
+</script>
 
 </section>
 
@@ -817,7 +1705,7 @@ post-sidebar">
     <section class="article-lastmod">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 7v5l3 3" /></svg>
         <span>
-            最后更新于 2026-06-17
+            最后更新于 2026-06-19
         </span>
     </section></footer>
 
