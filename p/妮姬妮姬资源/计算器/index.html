@@ -1954,7 +1954,7 @@ window.onload = function() {
   </div>
 
   <div class="bcmp-top-note">
-    公式沿用：攻击力 × 补正区 × 优越区 × 蓄伤区 × 易伤区 × 攻伤区。每个 buff 可单独填写持续时间；武器/普攻可额外勾选距离补正。
+    公式沿用：攻击力 × 补正区 × 优越区 × 蓄伤区 × 易伤区 × 攻伤区。武器/普攻可选择武器类型；同类型武器段会共用第一段的弹匣与换弹设置。
   </div>
 
   <div class="bcmp-sets" id="bcmpSets"></div>
@@ -2165,6 +2165,24 @@ window.onload = function() {
   color: #8338ec;
 }
 
+
+.nikke-buff-cmp .bcmp-field.bcmp-shared-disabled span {
+  color: #8d99ae;
+}
+.nikke-buff-cmp .bcmp-field.bcmp-shared-disabled input {
+  background: #e5e7eb;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+.nikke-buff-cmp .bcmp-field.bcmp-shared-disabled::after {
+  content: "沿用同类型第一段";
+  display: block;
+  color: #8338ec;
+  font-size: 10px;
+  font-weight: 850;
+  margin-top: 4px;
+}
+
 .nikke-buff-cmp .hidden { display: none !important; }
 
 @container (max-width: 680px) {
@@ -2222,7 +2240,7 @@ window.onload = function() {
   function buffPair(key, label, cls){
     return `
       <div class="bcmp-buff-pair ${cls || ''}">
-        <label class="bcmp-field"><span>${label} %</span><input type="number" data-key="${key}" value="0" step="0.01"></label>
+        <label class="bcmp-field"><span>${label}（%）</span><input type="number" data-key="${key}" value="0" step="0.01"></label>
         <label class="bcmp-field bcmp-duration-field"><span>时间</span><input type="number" data-key="${key}Duration" value="10" min="0" step="0.01"></label>
       </div>`;
   }
@@ -2238,10 +2256,10 @@ window.onload = function() {
     const critDmg = 0.5 + activeBuff(seg, 'critDmgBuff', t);
     const critExpected = critRate * critDmg;
     const coreBuff = activeBuff(seg, 'coreBuff', t);
-    const chargeBuff = seg.type === 'weapon' ? activeBuff(seg, 'chargeBuff', t) : 0;
+    const chargeBuff = seg.type === 'weapon' && supportsCharge(seg.weaponType) ? activeBuff(seg, 'chargeBuff', t) : 0;
     const sharedBuff = activeBuff(seg, 'sharedBuff', t);
     const atkDmgBuff = activeBuff(seg, 'atkDmgBuff', t);
-    const distanceBonus = seg.type === 'weapon' && seg.distanceBonus ? 0.3 : 0;
+    const distanceBonus = seg.type === 'weapon' && supportsDistance(seg.weaponType) && seg.distanceBonus ? 0.3 : 0;
     return {
       critRate,
       critDmg,
@@ -2267,33 +2285,109 @@ window.onload = function() {
     const points = new Set([0, duration]);
     BUFFS.forEach(([key, , type]) => {
       if(type && type !== seg.type) return;
+      if(key === 'chargeBuff' && seg.type === 'weapon' && !supportsCharge(seg.weaponType)) return;
       const d = num(seg[key + 'Duration']);
       if(d > 0 && d < duration) points.add(d);
     });
     return Array.from(points).sort((a,b)=>a-b);
   }
 
-  function bulletsInWindow(rps, magazine, reload, start, end){
-    rps = num(rps); magazine = num(magazine); reload = num(reload);
-    if(rps <= 0 || magazine <= 0 || end <= start) return 0;
-    const fireDur = magazine / rps;
-    const cycle = fireDur + Math.max(0, reload);
-    if(cycle <= 0) return 0;
-    let bullets = 0;
-    const firstCycle = Math.floor(start / cycle) - 1;
-    for(let i = Math.max(0, firstCycle); ; i++){
-      const cStart = i * cycle;
-      const fStart = cStart;
-      const fEnd = cStart + fireDur;
-      if(fStart >= end) break;
-      const overlap = Math.max(0, Math.min(end, fEnd) - Math.max(start, fStart));
-      bullets += overlap * rps;
-      if(cStart > end + cycle) break;
+  function initWeaponState(magazineSize){
+    const mag = Math.max(0, num(magazineSize));
+    return {
+      magazineSize: mag,
+      currentAmmo: mag > 0 ? mag : null,
+      reloadRemaining: 0
+    };
+  }
+
+  function weaponTypeName(type){
+    return {
+      rifle: '步枪',
+      smg: '冲锋枪',
+      mg: '机枪',
+      sg: '霰弹枪',
+      sr: '狙击枪',
+      rl: '发射器'
+    }[type] || '武器';
+  }
+
+  function supportsCharge(type){
+    return type === 'sr' || type === 'rl';
+  }
+
+  function supportsDistance(type){
+    return type !== 'rl';
+  }
+
+  function cleanNonNegative(v){
+    return Math.max(0, num(v));
+  }
+
+  function bulletsInWindow(seg, state, start, end){
+    const duration = Math.max(0, num(seg.duration));
+    const requestedShots = Math.max(0, num(seg.shots));
+    if(end <= start || duration <= 0 || requestedShots <= 0) return 0;
+
+    const rate = requestedShots / duration;
+    const windowDuration = end - start;
+    const magazine = cleanNonNegative(seg.effectiveMagazine ?? seg.magazine);
+    const reload = cleanNonNegative(seg.effectiveReload ?? seg.reload);
+
+    
+    if(magazine <= 0) {
+      return rate * windowDuration;
     }
+
+    if(!state || state.magazineSize !== magazine || state.currentAmmo === null) {
+      state.magazineSize = magazine;
+      state.currentAmmo = Math.min(state.currentAmmo === null ? magazine : state.currentAmmo, magazine);
+      state.reloadRemaining = Math.max(0, state.reloadRemaining || 0);
+    }
+
+    let remaining = windowDuration;
+    let bullets = 0;
+    const EPS = 1e-9;
+
+    while(remaining > EPS) {
+      if(state.reloadRemaining > EPS) {
+        const wait = Math.min(remaining, state.reloadRemaining);
+        state.reloadRemaining -= wait;
+        remaining -= wait;
+        if(state.reloadRemaining <= EPS) {
+          state.reloadRemaining = 0;
+          state.currentAmmo = magazine;
+        }
+        continue;
+      }
+
+      if(state.currentAmmo <= EPS) {
+        
+        if(reload > EPS) {
+          state.reloadRemaining = reload;
+          continue;
+        }
+        state.currentAmmo = magazine;
+      }
+
+      const timeUntilEmpty = state.currentAmmo / rate;
+      const fireTime = Math.min(remaining, timeUntilEmpty);
+      bullets += rate * fireTime;
+      state.currentAmmo -= rate * fireTime;
+      remaining -= fireTime;
+
+      if(state.currentAmmo <= EPS) {
+        state.currentAmmo = 0;
+        if(remaining > EPS && reload > EPS) {
+          state.reloadRemaining = reload;
+        }
+      }
+    }
+
     return bullets;
   }
 
-  function calcSegment(common, seg){
+  function calcSegment(common, seg, weaponState){
     const duration = Math.max(0, num(seg.duration));
     const points = relevantBreakpoints(seg);
     let total = 0;
@@ -2308,7 +2402,7 @@ window.onload = function() {
       const perHit = damagePerHit(common, seg, t);
       let c = 0;
       if(seg.type === 'weapon'){
-        c = bulletsInWindow(seg.rps, seg.magazine, seg.reload, start, end);
+        c = bulletsInWindow(seg, weaponState, start, end);
       } else {
         c = duration > 0 ? num(seg.times) * ((end - start) / duration) : 0;
       }
@@ -2330,7 +2424,7 @@ window.onload = function() {
         </div>
 
         <div class="bcmp-subtitle">基础参数</div>
-        <div class="bcmp-note">这里只保留基础攻击力。每个 buff 都在伤害段落里填写数值与持续时间；时间为 0 秒时视为没有该 buff。</div>
+        <div class="bcmp-note">这里只保留基础攻击力。每个 buff 都在伤害段落里填写数值与持续时间；时间为0秒时视为没有该buff。</div>
         <br>
         <div class="bcmp-grid bcmp-public-grid">
           <label class="bcmp-field"><span>基础攻击力</span><input type="number" data-key="baseAtk" value="0" min="0" step="1"></label>
@@ -2338,7 +2432,7 @@ window.onload = function() {
 
         <div class="bcmp-subtitle">伤害段落</div>
         <div class="bcmp-section-row">
-          <div class="bcmp-note" style="margin-top:0; flex:1;">每个段落代表一段完整时间轴。每个 buff 都有独立持续时间；武器/普攻可填写蓄力伤害并勾选距离补正，技能伤害不会吃距离补正。</div>
+          <div class="bcmp-note" style="margin-top:0; flex:1;">每个段落代表一段时间轴。武器/普攻请填写段落总子弹数；同武器类型会沿用第一段的弹匣/换弹，不同武器类型分开计算。最大装弹数 0 = 无限；换弹速度 0 = 无。</div>
           <button type="button" class="bcmp-btn bcmp-add-seg">添加</button>
         </div>
         <div class="bcmp-segments"></div>
@@ -2364,14 +2458,15 @@ window.onload = function() {
 
         <div class="bcmp-main-grid">
           <label class="bcmp-field"><span>类型</span><select data-key="type" class="seg-type"><option value="weapon">武器 / 普攻</option><option value="skill">技能伤害</option></select></label>
-          <label class="bcmp-field"><span>段落总时间 秒</span><input type="number" data-key="duration" value="10" min="0" step="0.01"></label>
-          <label class="bcmp-field"><span>倍率 %</span><input type="number" data-key="multiplier" value="0" step="0.01"></label>
-          <label class="bcmp-field weapon-only"><span>子弹数 / 秒</span><input type="number" data-key="rps" value="0" step="0.01"></label>
-          <label class="bcmp-field weapon-only"><span>最大装弹数</span><input type="number" data-key="magazine" value="0" step="1"></label>
-          <label class="bcmp-field weapon-only"><span>换弹速度 秒</span><input type="number" data-key="reload" value="0" step="0.01"></label>
-          <div class="weapon-only">${buffPair('chargeBuff', '蓄力伤害')}</div>
-          <label class="bcmp-check-field weapon-only"><input type="checkbox" data-key="distanceBonus"><span>距离补正 +0.3</span></label>
-          <label class="bcmp-field skill-only hidden"><span>段落总触发次数</span><input type="number" data-key="times" value="1" step="0.01"></label>
+          <label class="bcmp-field weapon-only"><span>武器类型</span><select data-key="weaponType" class="weapon-type"><option value="rifle">步枪</option><option value="smg">冲锋枪</option><option value="mg">机枪</option><option value="sg">霰弹枪</option><option value="sr">狙击枪</option><option value="rl">发射器</option></select></label>
+          <label class="bcmp-field"><span>段落总时间（秒）</span><input type="number" data-key="duration" value="10" min="0" step="0.01"></label>
+          <label class="bcmp-field"><span>倍率（%）</span><input type="number" data-key="multiplier" value="0" step="0.01"></label>
+          <label class="bcmp-field weapon-only"><span>段落总子弹数</span><input type="number" data-key="shots" value="0" min="0" step="0.01"></label>
+          <label class="bcmp-field weapon-only magazine-field"><span>最大装弹数（0=无限）</span><input type="number" data-key="magazine" value="0" min="0" step="1"></label>
+          <label class="bcmp-field weapon-only reload-field"><span>换弹速度（秒）（0=无）</span><input type="number" data-key="reload" value="0" min="0" step="0.01"></label>
+          <div class="weapon-only charge-field">${buffPair('chargeBuff', '蓄力伤害')}</div>
+          <label class="bcmp-check-field weapon-only distance-field"><input type="checkbox" data-key="distanceBonus"><span>距离补正 +0.3</span></label>
+          <label class="bcmp-field skill-only hidden"><span>段落总触发次数</span><input type="number" data-key="times" value="1" min="0" step="0.01"></label>
         </div>
 
         <div class="bcmp-block-title">Buff 设置</div>
@@ -2400,13 +2495,14 @@ window.onload = function() {
     const type = segEl.querySelector('[data-key="type"]').value;
     const seg = {
       type,
-      duration: read('duration'),
+      weaponType: type === 'weapon' ? (segEl.querySelector('[data-key="weaponType"]')?.value || 'rifle') : '',
+      duration: cleanNonNegative(read('duration')),
       multiplier: read('multiplier'),
-      rps: read('rps'),
-      magazine: read('magazine'),
-      reload: read('reload'),
-      distanceBonus: type === 'weapon' ? checked('distanceBonus') : false,
-      times: read('times')
+      shots: cleanNonNegative(read('shots')),
+      magazine: cleanNonNegative(read('magazine')),
+      reload: cleanNonNegative(read('reload')),
+      distanceBonus: type === 'weapon' && supportsDistance(segEl.querySelector('[data-key="weaponType"]')?.value || 'rifle') ? checked('distanceBonus') : false,
+      times: cleanNonNegative(read('times'))
     };
     BUFFS.forEach(([key]) => {
       seg[key] = read(key);
@@ -2417,14 +2513,49 @@ window.onload = function() {
 
   function refreshSegmentVisibility(segEl){
     const isWeapon = segEl.querySelector('[data-key="type"]').value === 'weapon';
+    const weaponType = segEl.querySelector('[data-key="weaponType"]')?.value || 'rifle';
     segEl.querySelectorAll('.weapon-only').forEach(el => el.classList.toggle('hidden', !isWeapon));
     segEl.querySelectorAll('.skill-only').forEach(el => el.classList.toggle('hidden', isWeapon));
+    const chargeField = segEl.querySelector('.charge-field');
+    if(chargeField) chargeField.classList.toggle('hidden', !isWeapon || !supportsCharge(weaponType));
+    const distanceField = segEl.querySelector('.distance-field');
+    if(distanceField) {
+      distanceField.classList.toggle('hidden', !isWeapon || !supportsDistance(weaponType));
+      if(!isWeapon || !supportsDistance(weaponType)) {
+        const cb = distanceField.querySelector('[data-key="distanceBonus"]');
+        if(cb) cb.checked = false;
+      }
+    }
+    refreshWeaponSharedFields(segEl.closest('.bcmp-set'));
+  }
 
+  function refreshWeaponSharedFields(setEl){
+    if(!setEl) return;
+    const firstByType = {};
+    Array.from(setEl.querySelectorAll('.bcmp-segment')).forEach(segEl => {
+      const isWeapon = segEl.querySelector('[data-key="type"]')?.value === 'weapon';
+      const magField = segEl.querySelector('.magazine-field');
+      const reloadField = segEl.querySelector('.reload-field');
+      const magInput = segEl.querySelector('[data-key="magazine"]');
+      const reloadInput = segEl.querySelector('[data-key="reload"]');
+      [magField, reloadField].forEach(field => field && field.classList.remove('bcmp-shared-disabled'));
+      [magInput, reloadInput].forEach(input => input && (input.disabled = false));
+      if(!isWeapon) return;
+      const weaponType = segEl.querySelector('[data-key="weaponType"]')?.value || 'rifle';
+      if(!firstByType[weaponType]) {
+        firstByType[weaponType] = { mag: magInput?.value || '0', reload: reloadInput?.value || '0' };
+        return;
+      }
+      if(magInput) { magInput.value = firstByType[weaponType].mag; magInput.disabled = true; }
+      if(reloadInput) { reloadInput.value = firstByType[weaponType].reload; reloadInput.disabled = true; }
+      if(magField) magField.classList.add('bcmp-shared-disabled');
+      if(reloadField) reloadField.classList.add('bcmp-shared-disabled');
+    });
   }
 
   function bindSegment(segEl){
     segEl.querySelectorAll('input, select').forEach(el => {
-      el.addEventListener('input', calculateAll);
+      el.addEventListener('input', () => { refreshSegmentVisibility(segEl); calculateAll(); });
       el.addEventListener('change', () => { refreshSegmentVisibility(segEl); calculateAll(); });
     });
     segEl.querySelector('.bcmp-remove-btn').addEventListener('click', () => { segEl.remove(); calculateAll(); });
@@ -2480,6 +2611,12 @@ window.onload = function() {
 
   function fillSegment(segEl, data){
     segEl.querySelector('[data-key="type"]').value = data.type || 'weapon';
+    if(data.weaponType === undefined) data.weaponType = 'rifle';
+
+    
+    if(data.shots === undefined && data.rps !== undefined) {
+      data.shots = num(data.rps) * num(data.duration || 10);
+    }
 
     
     if(data.atkDmgBuff === undefined) {
@@ -2495,6 +2632,7 @@ window.onload = function() {
       }
     });
     refreshSegmentVisibility(segEl);
+    refreshWeaponSharedFields(segEl.closest('.bcmp-set'));
   }
 
   function buffSummary(seg){
@@ -2509,16 +2647,29 @@ window.onload = function() {
     const common = readCommon(setEl);
     let total = 0;
     const parts = [];
+    refreshWeaponSharedFields(setEl);
+    const weaponStates = {};
+    const firstWeaponSettings = {};
     Array.from(setEl.querySelectorAll('.bcmp-segment')).forEach((segEl, idx) => {
-      const seg = readSegment(segEl);
-      const res = calcSegment(common, seg);
+      let seg = readSegment(segEl);
+      let weaponState = null;
+      if(seg.type === 'weapon') {
+        const wType = seg.weaponType || 'rifle';
+        if(!firstWeaponSettings[wType]) {
+          firstWeaponSettings[wType] = { magazine: cleanNonNegative(seg.magazine), reload: cleanNonNegative(seg.reload) };
+          weaponStates[wType] = initWeaponState(firstWeaponSettings[wType].magazine);
+        }
+        seg = { ...seg, effectiveMagazine: firstWeaponSettings[wType].magazine, effectiveReload: firstWeaponSettings[wType].reload };
+        weaponState = weaponStates[wType];
+      }
+      const res = calcSegment(common, seg, weaponState);
       total += res.total;
       segEl.querySelector('.seg-damage').textContent = fmt(res.total);
       const label = seg.type === 'weapon'
-        ? `武器 ${fmt2(seg.duration)}秒约 ${fmt2(res.count)} 发`
+        ? `${weaponTypeName(seg.weaponType)} ${fmt2(seg.duration)}秒，预计 ${fmt2(seg.shots)} 发，实际 ${fmt2(res.count)} 发`
         : `技能伤害 ${fmt2(seg.duration)}秒内 ${fmt2(res.count)} 次`;
       const sliceInfo = res.slices.length > 1 ? `；自动拆成 ${res.slices.length} 段计算` : '';
-      const extra = seg.type === 'weapon' ? `距离补正 ${seg.distanceBonus ? '+0.3' : '无'}` : '技能无距离补正';
+      const extra = seg.type === 'weapon' ? `弹匣 ${cleanNonNegative(seg.effectiveMagazine) <= 0 ? '无限' : fmt2(seg.effectiveMagazine)}，换弹 ${cleanNonNegative(seg.effectiveReload) <= 0 ? '无' : fmt2(seg.effectiveReload) + '秒'}，距离补正 ${seg.distanceBonus ? '+0.3' : '无'}` : '技能无距离补正';
       parts.push(`#${idx + 1} ${label}，平均单次 ${fmt(res.perHit)}，本段 ${fmt(res.total)}${sliceInfo}；${extra}；Buff：${buffSummary(seg)}`);
     });
     setEl.dataset.total = String(total);
