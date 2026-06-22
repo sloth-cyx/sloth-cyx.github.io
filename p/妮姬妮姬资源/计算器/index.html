@@ -2034,26 +2034,29 @@ window.onload = function() {
     });
 
     attrControls.forEach((control, index) => {
+      const lockType = lockSelects[index].value;
+      const isLocked = lockType !== 'none';
       getSelectedValues(index).forEach(value => {
         if (!selectedMap[value]) selectedMap[value] = [];
-        selectedMap[value].push(index);
+        selectedMap[value].push({ index, isLocked });
       });
     });
 
     Object.keys(selectedMap).forEach(value => {
-      const uniqueSlots = Array.from(new Set(selectedMap[value]));
-      if (uniqueSlots.length > 1) {
+      const entries = selectedMap[value];
+      const hasLockedDuplicate = entries.some(entry => entry.isLocked) && entries.length > 1;
+      if (hasLockedDuplicate) {
         const attr = getAttr(value);
         duplicates.push(attr.name);
-        uniqueSlots.forEach(slotIndex => attrControls[slotIndex].button.classList.add('attr-error'));
+        entries.forEach(entry => attrControls[entry.index].button.classList.add('attr-error'));
       }
     });
 
     const warningBox = document.getElementById('attrWarningText');
     if (duplicates.length > 0) {
       warningBox.style.display = 'block';
-      warningBox.textContent = '不同格子不能选择重叠目标词条：' + duplicates.join('、') + '。同一格内多选代表“命中其中之一即可”。';
-      return false;
+      warningBox.textContent = '已有锁定一样词条：' + duplicates.join('、') + '。已锁定词条视为已经拥有；未锁定格子重复选择同一目标时，会按“任意一个格子出货即可”计算。';
+      return true;
     }
 
     warningBox.style.display = 'none';
@@ -2062,22 +2065,15 @@ window.onload = function() {
   }
 
   function calculateAttributes() {
-    if (!validateDuplicateAttrs()) {
-      document.getElementById('attrTotalRate').textContent = '—';
-      document.getElementById('attrExpectedRuns').textContent = '—';
-      document.getElementById('attrStoneCost').textContent = '—';
-      document.getElementById('attrKeyCost').textContent = '—';
-      document.getElementById('attrFormulaText').textContent = '请先修正不同格子之间的重复目标词条后再计算。';
-      return;
-    }
+    validateDuplicateAttrs();
 
-    let totalRate = 1;
-    let targetCount = 0;
     let lockedCount = 0;
     let stoneLockedCount = 0;
     let stoneDoneCount = 0;
     let keyLockedCount = 0;
     const formulaParts = [];
+    const lockedAttrValues = new Set();
+    const unlockedSelections = [];
 
     attrControls.forEach((control, index) => {
       const attrs = getSelectedAttrs(index);
@@ -2092,29 +2088,19 @@ window.onload = function() {
       lockSelect.disabled = false;
       const lockType = lockSelect.value;
       const attrNames = attrs.map(attr => attr.name).join(' / ');
-      const attrRateSum = attrs.reduce((sum, attr) => sum + attr.rate, 0);
 
       if (lockType !== 'none') {
         lockedCount += 1;
+        attrs.forEach(attr => lockedAttrValues.add(attr.value));
         if (lockType === 'stone') stoneLockedCount += 1;
         if (lockType === 'stoneDone') stoneDoneCount += 1;
         if (lockType === 'key') keyLockedCount += 1;
         const lockLabel = lockType === 'stone' ? '石头锁定' : (lockType === 'stoneDone' ? '石头已锁' : '锁子锁定');
-        formulaParts.push(`第${index + 1}格「${attrNames}」${lockLabel}，不参与概率计算`);
+        formulaParts.push(`第${index + 1}格「${attrNames}」${lockLabel}，视为已经拥有，不参与概率计算`);
         return;
       }
 
-      const slotRate = SLOT_RATES[index];
-      const hitRate = slotRate * attrRateSum;
-      totalRate *= hitRate;
-      targetCount += 1;
-
-      if (attrs.length > 1) {
-        const rateDetail = attrs.map(attr => formatRate(attr.rate)).join(' + ');
-        formulaParts.push(`第${index + 1}格「${attrNames}」：${formatRate(slotRate)} × (${rateDetail}) = ${formatRate(hitRate)}`);
-      } else {
-        formulaParts.push(`第${index + 1}格「${attrNames}」：${formatRate(slotRate)} × ${formatRate(attrRateSum)} = ${formatRate(hitRate)}`);
-      }
+      unlockedSelections.push({ index, attrs });
     });
 
     if (lockedCount > 2) {
@@ -2126,12 +2112,70 @@ window.onload = function() {
       return;
     }
 
+    const attrSlotMap = {};
+    unlockedSelections.forEach(selection => {
+      selection.attrs.forEach(attr => {
+        if (lockedAttrValues.has(attr.value)) return;
+        if (!attrSlotMap[attr.value]) attrSlotMap[attr.value] = { attr, slots: [] };
+        attrSlotMap[attr.value].slots.push(selection.index);
+      });
+    });
+
+    const duplicateAttrValues = new Set(
+      Object.keys(attrSlotMap).filter(value => Array.from(new Set(attrSlotMap[value].slots)).length > 1)
+    );
+
+    let totalRate = 1;
+    let targetCount = 0;
+    const usedDuplicateValues = new Set();
+
+    Object.keys(attrSlotMap).forEach(value => {
+      if (!duplicateAttrValues.has(value)) return;
+      const item = attrSlotMap[value];
+      const uniqueSlots = Array.from(new Set(item.slots));
+      const missRate = uniqueSlots.reduce((product, slotIndex) => {
+        return product * (1 - SLOT_RATES[slotIndex] * item.attr.rate);
+      }, 1);
+      const hitRate = 1 - missRate;
+      totalRate *= hitRate;
+      targetCount += 1;
+      usedDuplicateValues.add(value);
+      const slotNames = uniqueSlots.map(slotIndex => `第${slotIndex + 1}格`).join(' / ');
+      const rateDetail = uniqueSlots.map(slotIndex => `${formatRate(SLOT_RATES[slotIndex])} × ${formatRate(item.attr.rate)}`).join('，');
+      formulaParts.push(`${slotNames}重复目标「${item.attr.name}」：任意一格出货即可，1 - [(${uniqueSlots.map(slotIndex => `1 - ${formatRate(SLOT_RATES[slotIndex] * item.attr.rate)}`).join(') × (')})] = ${formatRate(hitRate)}（${rateDetail}）`);
+    });
+
+    unlockedSelections.forEach(selection => {
+      const attrs = selection.attrs.filter(attr => !lockedAttrValues.has(attr.value) && !usedDuplicateValues.has(attr.value));
+      if (!attrs.length) return;
+
+      const slotRate = SLOT_RATES[selection.index];
+      const attrNames = attrs.map(attr => attr.name).join(' / ');
+      const attrRateSum = attrs.reduce((sum, attr) => sum + attr.rate, 0);
+      const hitRate = slotRate * attrRateSum;
+      totalRate *= hitRate;
+      targetCount += 1;
+
+      if (attrs.length > 1) {
+        const rateDetail = attrs.map(attr => formatRate(attr.rate)).join(' + ');
+        formulaParts.push(`第${selection.index + 1}格「${attrNames}」：${formatRate(slotRate)} × (${rateDetail}) = ${formatRate(hitRate)}`);
+      } else {
+        formulaParts.push(`第${selection.index + 1}格「${attrNames}」：${formatRate(slotRate)} × ${formatRate(attrRateSum)} = ${formatRate(hitRate)}`);
+      }
+    });
+
+    unlockedSelections.forEach(selection => {
+      const ignoredAttrs = selection.attrs.filter(attr => lockedAttrValues.has(attr.value));
+      if (!ignoredAttrs.length) return;
+      formulaParts.push(`第${selection.index + 1}格「${ignoredAttrs.map(attr => attr.name).join(' / ')}」已在锁定词条中拥有，本次概率计算忽略该重复目标`);
+    });
+
     if (targetCount === 0) {
       document.getElementById('attrTotalRate').textContent = '—';
       document.getElementById('attrExpectedRuns').textContent = '0 次';
       document.getElementById('attrStoneCost').textContent = '0 颗';
       document.getElementById('attrKeyCost').textContent = '0 个';
-      document.getElementById('attrFormulaText').textContent = formulaParts.length ? '当前只有已锁定词条，没有需要继续洗的目标。' : '请选择至少一个未锁定的目标词条。';
+      document.getElementById('attrFormulaText').textContent = formulaParts.length ? '当前只有已锁定词条，或未锁定目标已被锁定词条覆盖，没有需要继续洗的目标。' : '请选择至少一个未锁定的目标词条。';
       return;
     }
 
