@@ -1377,7 +1377,10 @@ window.onload = function() {
         <div class="slot-title">第一格（出词条概率100%）</div>
         <div class="attr-slot-row">
           <label class="attr-slot-field"><span>目标词条</span>
-            <select id="attrSlot1" class="attr-select"></select>
+            <div class="attr-multi" data-slot="1">
+              <button type="button" id="attrSlot1" class="attr-select attr-multi-btn">空</button>
+              <div class="attr-multi-menu" id="attrSlot1Menu"></div>
+            </div>
           </label>
           <label class="attr-slot-field"><span>锁定方式</span>
             <select id="lockSlot1" class="attr-select lock-select" disabled>
@@ -1394,7 +1397,10 @@ window.onload = function() {
         <div class="slot-title">第二格（出词条概率50%）</div>
         <div class="attr-slot-row">
           <label class="attr-slot-field"><span>目标词条</span>
-            <select id="attrSlot2" class="attr-select"></select>
+            <div class="attr-multi" data-slot="2">
+              <button type="button" id="attrSlot2" class="attr-select attr-multi-btn">空</button>
+              <div class="attr-multi-menu" id="attrSlot2Menu"></div>
+            </div>
           </label>
           <label class="attr-slot-field"><span>锁定方式</span>
             <select id="lockSlot2" class="attr-select lock-select" disabled>
@@ -1411,7 +1417,10 @@ window.onload = function() {
         <div class="slot-title">第三格（出词条概率30%）</div>
         <div class="attr-slot-row">
           <label class="attr-slot-field"><span>目标词条</span>
-            <select id="attrSlot3" class="attr-select"></select>
+            <div class="attr-multi" data-slot="3">
+              <button type="button" id="attrSlot3" class="attr-select attr-multi-btn">空</button>
+              <div class="attr-multi-menu" id="attrSlot3Menu"></div>
+            </div>
           </label>
           <label class="attr-slot-field"><span>锁定方式</span>
             <select id="lockSlot3" class="attr-select lock-select" disabled>
@@ -1768,7 +1777,7 @@ window.onload = function() {
 }
 .nikke-attributes-section .attr-slot-row {
   display: grid !important;
-  grid-template-columns: 5fr 5fr !important;
+  grid-template-columns: 7fr 3fr !important;
   gap: 10px !important;
   align-items: end !important;
 }
@@ -1789,6 +1798,75 @@ window.onload = function() {
     grid-template-columns: minmax(0, 1fr) !important;
   }
 }
+
+ 
+.nikke-attributes-section .attr-multi {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+.nikke-attributes-section .attr-multi-btn {
+  text-align: left;
+  cursor: pointer;
+  min-height: 38px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nikke-attributes-section .attr-multi-btn::after {
+  content: "▾";
+  float: right;
+  color: #4a5568;
+  font-size: 11px;
+  margin-left: 8px;
+}
+.nikke-attributes-section .attr-multi-menu {
+  display: none;
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  max-height: 260px;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 1px solid #cbdbe6;
+  border-radius: 8px;
+  box-shadow: 0 10px 24px rgba(44, 62, 80, 0.18);
+  padding: 6px;
+}
+.nikke-attributes-section .attr-multi.open .attr-multi-menu {
+  display: block;
+}
+.nikke-attributes-section .attr-multi-option {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  margin: 0 !important;
+  padding: 7px 8px;
+  border-radius: 6px;
+  color: #2c3e50 !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  cursor: pointer;
+}
+.nikke-attributes-section .attr-multi-option:hover {
+  background: #f0f5fa;
+}
+.nikke-attributes-section .attr-multi-option input {
+  width: auto;
+  margin: 0;
+  accent-color: #2b6cb0;
+}
+.nikke-attributes-section .attr-multi-clear {
+  border-bottom: 1px solid #e1e8ed;
+  margin-bottom: 4px !important;
+  color: #718096 !important;
+}
+.nikke-attributes-section .attr-multi-btn.attr-error {
+  border-color: #e53e3e !important;
+  background: #fff5f5 !important;
+}
 </style>
 
 <script>
@@ -1805,16 +1883,13 @@ window.onload = function() {
     { value: 'def', name: '防御力', rate: 0.10 },
     { value: 'hit', name: '命中率', rate: 0.12 }
   ];
+
   const SLOT_RATES = [1, 0.5, 0.3];
-  
+
   function getStonePerRoll(lockedCount) {
     return 1 + lockedCount;
   }
 
-  
-  
-  
-  
   function getStoneLockCost(stoneLockedCount, stoneDoneCount) {
     let cost = 0;
     let permanentLockBeforeNewStone = stoneDoneCount;
@@ -1827,8 +1902,6 @@ window.onload = function() {
     return cost;
   }
 
-  
-  
   function getKeyPerRoll(lockedCount, keyLockedCount) {
     if (keyLockedCount <= 0) return 0;
     if (lockedCount <= 1) return 20;
@@ -1836,10 +1909,22 @@ window.onload = function() {
     return 50;
   }
 
-  const attrSelects = [
-    document.getElementById('attrSlot1'),
-    document.getElementById('attrSlot2'),
-    document.getElementById('attrSlot3')
+  const attrControls = [
+    {
+      button: document.getElementById('attrSlot1'),
+      menu: document.getElementById('attrSlot1Menu'),
+      wrapper: document.querySelector('.attr-multi[data-slot="1"]')
+    },
+    {
+      button: document.getElementById('attrSlot2'),
+      menu: document.getElementById('attrSlot2Menu'),
+      wrapper: document.querySelector('.attr-multi[data-slot="2"]')
+    },
+    {
+      button: document.getElementById('attrSlot3'),
+      menu: document.getElementById('attrSlot3Menu'),
+      wrapper: document.querySelector('.attr-multi[data-slot="3"]')
+    }
   ];
 
   const lockSelects = [
@@ -1865,10 +1950,78 @@ window.onload = function() {
     return ATTR_OPTIONS.find(item => item.value === value) || ATTR_OPTIONS[0];
   }
 
+  function getSelectedValues(index) {
+    const menu = attrControls[index].menu;
+    return Array.from(menu.querySelectorAll('input[type="checkbox"]:checked')).map(input => input.value);
+  }
+
+  function getSelectedAttrs(index) {
+    return getSelectedValues(index).map(getAttr).filter(attr => attr.value);
+  }
+
+  function updateMultiButton(index) {
+    const attrs = getSelectedAttrs(index);
+    const button = attrControls[index].button;
+    if (!attrs.length) {
+      button.textContent = '空';
+      button.title = '空';
+      return;
+    }
+    const text = attrs.map(attr => attr.name).join(' / ');
+    button.textContent = text;
+    button.title = text;
+  }
+
   function initOptions() {
-    const html = ATTR_OPTIONS.map(item => `<option value="${item.value}">${item.name}</option>`).join('');
-    attrSelects.forEach(select => {
-      select.innerHTML = html;
+    attrControls.forEach((control, index) => {
+      const clearHtml = `
+        <label class="attr-multi-option attr-multi-clear">
+          <input type="checkbox" data-clear="1">
+          <span>空</span>
+        </label>`;
+      const optionHtml = ATTR_OPTIONS
+        .filter(item => item.value)
+        .map(item => `
+          <label class="attr-multi-option">
+            <input type="checkbox" value="${item.value}">
+            <span>${item.name}（${formatRate(item.rate)}）</span>
+          </label>`)
+        .join('');
+
+      control.menu.innerHTML = clearHtml + optionHtml;
+
+      const clearInput = control.menu.querySelector('[data-clear="1"]');
+      clearInput.addEventListener('change', () => {
+        if (clearInput.checked) {
+          control.menu.querySelectorAll('input[type="checkbox"]:not([data-clear])').forEach(input => input.checked = false);
+          clearInput.checked = false;
+          updateMultiButton(index);
+          calculateAttributes();
+        }
+      });
+
+      control.menu.querySelectorAll('input[type="checkbox"]:not([data-clear])').forEach(input => {
+        input.addEventListener('change', () => {
+          updateMultiButton(index);
+          calculateAttributes();
+        });
+      });
+
+      control.button.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        attrControls.forEach((other, otherIndex) => {
+          if (otherIndex !== index) other.wrapper.classList.remove('open');
+        });
+        control.wrapper.classList.toggle('open');
+      });
+
+      control.menu.addEventListener('click', event => event.stopPropagation());
+      updateMultiButton(index);
+    });
+
+    document.addEventListener('click', () => {
+      attrControls.forEach(control => control.wrapper.classList.remove('open'));
     });
   }
 
@@ -1876,25 +2029,30 @@ window.onload = function() {
     const selectedMap = {};
     const duplicates = [];
 
-    attrSelects.forEach(select => {
-      select.classList.remove('attr-error');
-      if (!select.value) return;
-      if (!selectedMap[select.value]) selectedMap[select.value] = [];
-      selectedMap[select.value].push(select);
+    attrControls.forEach(control => {
+      control.button.classList.remove('attr-error');
+    });
+
+    attrControls.forEach((control, index) => {
+      getSelectedValues(index).forEach(value => {
+        if (!selectedMap[value]) selectedMap[value] = [];
+        selectedMap[value].push(index);
+      });
     });
 
     Object.keys(selectedMap).forEach(value => {
-      if (selectedMap[value].length > 1) {
+      const uniqueSlots = Array.from(new Set(selectedMap[value]));
+      if (uniqueSlots.length > 1) {
         const attr = getAttr(value);
         duplicates.push(attr.name);
-        selectedMap[value].forEach(select => select.classList.add('attr-error'));
+        uniqueSlots.forEach(slotIndex => attrControls[slotIndex].button.classList.add('attr-error'));
       }
     });
 
     const warningBox = document.getElementById('attrWarningText');
     if (duplicates.length > 0) {
       warningBox.style.display = 'block';
-      warningBox.textContent = '同一件装备不能重复选择相同词条：' + duplicates.join('、') + '。请更换其中一个格子的目标词条。';
+      warningBox.textContent = '不同格子不能选择重叠目标词条：' + duplicates.join('、') + '。同一格内多选代表“命中其中之一即可”。';
       return false;
     }
 
@@ -1909,7 +2067,7 @@ window.onload = function() {
       document.getElementById('attrExpectedRuns').textContent = '—';
       document.getElementById('attrStoneCost').textContent = '—';
       document.getElementById('attrKeyCost').textContent = '—';
-      document.getElementById('attrFormulaText').textContent = '请先修正重复词条后再计算。';
+      document.getElementById('attrFormulaText').textContent = '请先修正不同格子之间的重复目标词条后再计算。';
       return;
     }
 
@@ -1919,14 +2077,13 @@ window.onload = function() {
     let stoneLockedCount = 0;
     let stoneDoneCount = 0;
     let keyLockedCount = 0;
-    const lockTypes = [];
     const formulaParts = [];
 
-    attrSelects.forEach((attrSelect, index) => {
-      const attr = getAttr(attrSelect.value);
+    attrControls.forEach((control, index) => {
+      const attrs = getSelectedAttrs(index);
       const lockSelect = lockSelects[index];
 
-      if (!attr.value) {
+      if (!attrs.length) {
         lockSelect.value = 'none';
         lockSelect.disabled = true;
         return;
@@ -1934,23 +2091,30 @@ window.onload = function() {
 
       lockSelect.disabled = false;
       const lockType = lockSelect.value;
+      const attrNames = attrs.map(attr => attr.name).join(' / ');
+      const attrRateSum = attrs.reduce((sum, attr) => sum + attr.rate, 0);
 
       if (lockType !== 'none') {
         lockedCount += 1;
-        lockTypes.push(lockType);
         if (lockType === 'stone') stoneLockedCount += 1;
         if (lockType === 'stoneDone') stoneDoneCount += 1;
         if (lockType === 'key') keyLockedCount += 1;
         const lockLabel = lockType === 'stone' ? '石头锁定' : (lockType === 'stoneDone' ? '石头已锁' : '锁子锁定');
-        formulaParts.push(`第${index + 1}格「${attr.name}」${lockLabel}，不参与概率计算`);
+        formulaParts.push(`第${index + 1}格「${attrNames}」${lockLabel}，不参与概率计算`);
         return;
       }
 
       const slotRate = SLOT_RATES[index];
-      const hitRate = slotRate * attr.rate;
+      const hitRate = slotRate * attrRateSum;
       totalRate *= hitRate;
       targetCount += 1;
-      formulaParts.push(`第${index + 1}格「${attr.name}」：${formatRate(slotRate)} × ${formatRate(attr.rate)} = ${formatRate(hitRate)}`);
+
+      if (attrs.length > 1) {
+        const rateDetail = attrs.map(attr => formatRate(attr.rate)).join(' + ');
+        formulaParts.push(`第${index + 1}格「${attrNames}」：${formatRate(slotRate)} × (${rateDetail}) = ${formatRate(hitRate)}`);
+      } else {
+        formulaParts.push(`第${index + 1}格「${attrNames}」：${formatRate(slotRate)} × ${formatRate(attrRateSum)} = ${formatRate(hitRate)}`);
+      }
     });
 
     if (lockedCount > 2) {
@@ -1997,7 +2161,6 @@ window.onload = function() {
   }
 
   initOptions();
-  attrSelects.forEach(select => select.addEventListener('change', calculateAttributes));
   lockSelects.forEach(select => select.addEventListener('change', calculateAttributes));
   calculateAttributes();
 })();

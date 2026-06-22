@@ -2784,7 +2784,10 @@ window.onload = function() {
         &lt;div class=&#34;slot-title&#34;&gt;第一格（出词条概率100%）&lt;/div&gt;
         &lt;div class=&#34;attr-slot-row&#34;&gt;
           &lt;label class=&#34;attr-slot-field&#34;&gt;&lt;span&gt;目标词条&lt;/span&gt;
-            &lt;select id=&#34;attrSlot1&#34; class=&#34;attr-select&#34;&gt;&lt;/select&gt;
+            &lt;div class=&#34;attr-multi&#34; data-slot=&#34;1&#34;&gt;
+              &lt;button type=&#34;button&#34; id=&#34;attrSlot1&#34; class=&#34;attr-select attr-multi-btn&#34;&gt;空&lt;/button&gt;
+              &lt;div class=&#34;attr-multi-menu&#34; id=&#34;attrSlot1Menu&#34;&gt;&lt;/div&gt;
+            &lt;/div&gt;
           &lt;/label&gt;
           &lt;label class=&#34;attr-slot-field&#34;&gt;&lt;span&gt;锁定方式&lt;/span&gt;
             &lt;select id=&#34;lockSlot1&#34; class=&#34;attr-select lock-select&#34; disabled&gt;
@@ -2801,7 +2804,10 @@ window.onload = function() {
         &lt;div class=&#34;slot-title&#34;&gt;第二格（出词条概率50%）&lt;/div&gt;
         &lt;div class=&#34;attr-slot-row&#34;&gt;
           &lt;label class=&#34;attr-slot-field&#34;&gt;&lt;span&gt;目标词条&lt;/span&gt;
-            &lt;select id=&#34;attrSlot2&#34; class=&#34;attr-select&#34;&gt;&lt;/select&gt;
+            &lt;div class=&#34;attr-multi&#34; data-slot=&#34;2&#34;&gt;
+              &lt;button type=&#34;button&#34; id=&#34;attrSlot2&#34; class=&#34;attr-select attr-multi-btn&#34;&gt;空&lt;/button&gt;
+              &lt;div class=&#34;attr-multi-menu&#34; id=&#34;attrSlot2Menu&#34;&gt;&lt;/div&gt;
+            &lt;/div&gt;
           &lt;/label&gt;
           &lt;label class=&#34;attr-slot-field&#34;&gt;&lt;span&gt;锁定方式&lt;/span&gt;
             &lt;select id=&#34;lockSlot2&#34; class=&#34;attr-select lock-select&#34; disabled&gt;
@@ -2818,7 +2824,10 @@ window.onload = function() {
         &lt;div class=&#34;slot-title&#34;&gt;第三格（出词条概率30%）&lt;/div&gt;
         &lt;div class=&#34;attr-slot-row&#34;&gt;
           &lt;label class=&#34;attr-slot-field&#34;&gt;&lt;span&gt;目标词条&lt;/span&gt;
-            &lt;select id=&#34;attrSlot3&#34; class=&#34;attr-select&#34;&gt;&lt;/select&gt;
+            &lt;div class=&#34;attr-multi&#34; data-slot=&#34;3&#34;&gt;
+              &lt;button type=&#34;button&#34; id=&#34;attrSlot3&#34; class=&#34;attr-select attr-multi-btn&#34;&gt;空&lt;/button&gt;
+              &lt;div class=&#34;attr-multi-menu&#34; id=&#34;attrSlot3Menu&#34;&gt;&lt;/div&gt;
+            &lt;/div&gt;
           &lt;/label&gt;
           &lt;label class=&#34;attr-slot-field&#34;&gt;&lt;span&gt;锁定方式&lt;/span&gt;
             &lt;select id=&#34;lockSlot3&#34; class=&#34;attr-select lock-select&#34; disabled&gt;
@@ -3175,7 +3184,7 @@ window.onload = function() {
 }
 .nikke-attributes-section .attr-slot-row {
   display: grid !important;
-  grid-template-columns: 5fr 5fr !important;
+  grid-template-columns: 7fr 3fr !important;
   gap: 10px !important;
   align-items: end !important;
 }
@@ -3196,6 +3205,75 @@ window.onload = function() {
     grid-template-columns: minmax(0, 1fr) !important;
   }
 }
+
+ 
+.nikke-attributes-section .attr-multi {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+.nikke-attributes-section .attr-multi-btn {
+  text-align: left;
+  cursor: pointer;
+  min-height: 38px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nikke-attributes-section .attr-multi-btn::after {
+  content: &#34;▾&#34;;
+  float: right;
+  color: #4a5568;
+  font-size: 11px;
+  margin-left: 8px;
+}
+.nikke-attributes-section .attr-multi-menu {
+  display: none;
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  max-height: 260px;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 1px solid #cbdbe6;
+  border-radius: 8px;
+  box-shadow: 0 10px 24px rgba(44, 62, 80, 0.18);
+  padding: 6px;
+}
+.nikke-attributes-section .attr-multi.open .attr-multi-menu {
+  display: block;
+}
+.nikke-attributes-section .attr-multi-option {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  margin: 0 !important;
+  padding: 7px 8px;
+  border-radius: 6px;
+  color: #2c3e50 !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  cursor: pointer;
+}
+.nikke-attributes-section .attr-multi-option:hover {
+  background: #f0f5fa;
+}
+.nikke-attributes-section .attr-multi-option input {
+  width: auto;
+  margin: 0;
+  accent-color: #2b6cb0;
+}
+.nikke-attributes-section .attr-multi-clear {
+  border-bottom: 1px solid #e1e8ed;
+  margin-bottom: 4px !important;
+  color: #718096 !important;
+}
+.nikke-attributes-section .attr-multi-btn.attr-error {
+  border-color: #e53e3e !important;
+  background: #fff5f5 !important;
+}
 &lt;/style&gt;
 
 &lt;script&gt;
@@ -3212,16 +3290,13 @@ window.onload = function() {
     { value: &#39;def&#39;, name: &#39;防御力&#39;, rate: 0.10 },
     { value: &#39;hit&#39;, name: &#39;命中率&#39;, rate: 0.12 }
   ];
+
   const SLOT_RATES = [1, 0.5, 0.3];
-  
+
   function getStonePerRoll(lockedCount) {
     return 1 + lockedCount;
   }
 
-  
-  
-  
-  
   function getStoneLockCost(stoneLockedCount, stoneDoneCount) {
     let cost = 0;
     let permanentLockBeforeNewStone = stoneDoneCount;
@@ -3234,8 +3309,6 @@ window.onload = function() {
     return cost;
   }
 
-  
-  
   function getKeyPerRoll(lockedCount, keyLockedCount) {
     if (keyLockedCount &lt;= 0) return 0;
     if (lockedCount &lt;= 1) return 20;
@@ -3243,10 +3316,22 @@ window.onload = function() {
     return 50;
   }
 
-  const attrSelects = [
-    document.getElementById(&#39;attrSlot1&#39;),
-    document.getElementById(&#39;attrSlot2&#39;),
-    document.getElementById(&#39;attrSlot3&#39;)
+  const attrControls = [
+    {
+      button: document.getElementById(&#39;attrSlot1&#39;),
+      menu: document.getElementById(&#39;attrSlot1Menu&#39;),
+      wrapper: document.querySelector(&#39;.attr-multi[data-slot=&#34;1&#34;]&#39;)
+    },
+    {
+      button: document.getElementById(&#39;attrSlot2&#39;),
+      menu: document.getElementById(&#39;attrSlot2Menu&#39;),
+      wrapper: document.querySelector(&#39;.attr-multi[data-slot=&#34;2&#34;]&#39;)
+    },
+    {
+      button: document.getElementById(&#39;attrSlot3&#39;),
+      menu: document.getElementById(&#39;attrSlot3Menu&#39;),
+      wrapper: document.querySelector(&#39;.attr-multi[data-slot=&#34;3&#34;]&#39;)
+    }
   ];
 
   const lockSelects = [
@@ -3272,10 +3357,78 @@ window.onload = function() {
     return ATTR_OPTIONS.find(item =&gt; item.value === value) || ATTR_OPTIONS[0];
   }
 
+  function getSelectedValues(index) {
+    const menu = attrControls[index].menu;
+    return Array.from(menu.querySelectorAll(&#39;input[type=&#34;checkbox&#34;]:checked&#39;)).map(input =&gt; input.value);
+  }
+
+  function getSelectedAttrs(index) {
+    return getSelectedValues(index).map(getAttr).filter(attr =&gt; attr.value);
+  }
+
+  function updateMultiButton(index) {
+    const attrs = getSelectedAttrs(index);
+    const button = attrControls[index].button;
+    if (!attrs.length) {
+      button.textContent = &#39;空&#39;;
+      button.title = &#39;空&#39;;
+      return;
+    }
+    const text = attrs.map(attr =&gt; attr.name).join(&#39; / &#39;);
+    button.textContent = text;
+    button.title = text;
+  }
+
   function initOptions() {
-    const html = ATTR_OPTIONS.map(item =&gt; `&lt;option value=&#34;${item.value}&#34;&gt;${item.name}&lt;/option&gt;`).join(&#39;&#39;);
-    attrSelects.forEach(select =&gt; {
-      select.innerHTML = html;
+    attrControls.forEach((control, index) =&gt; {
+      const clearHtml = `
+        &lt;label class=&#34;attr-multi-option attr-multi-clear&#34;&gt;
+          &lt;input type=&#34;checkbox&#34; data-clear=&#34;1&#34;&gt;
+          &lt;span&gt;空&lt;/span&gt;
+        &lt;/label&gt;`;
+      const optionHtml = ATTR_OPTIONS
+        .filter(item =&gt; item.value)
+        .map(item =&gt; `
+          &lt;label class=&#34;attr-multi-option&#34;&gt;
+            &lt;input type=&#34;checkbox&#34; value=&#34;${item.value}&#34;&gt;
+            &lt;span&gt;${item.name}（${formatRate(item.rate)}）&lt;/span&gt;
+          &lt;/label&gt;`)
+        .join(&#39;&#39;);
+
+      control.menu.innerHTML = clearHtml + optionHtml;
+
+      const clearInput = control.menu.querySelector(&#39;[data-clear=&#34;1&#34;]&#39;);
+      clearInput.addEventListener(&#39;change&#39;, () =&gt; {
+        if (clearInput.checked) {
+          control.menu.querySelectorAll(&#39;input[type=&#34;checkbox&#34;]:not([data-clear])&#39;).forEach(input =&gt; input.checked = false);
+          clearInput.checked = false;
+          updateMultiButton(index);
+          calculateAttributes();
+        }
+      });
+
+      control.menu.querySelectorAll(&#39;input[type=&#34;checkbox&#34;]:not([data-clear])&#39;).forEach(input =&gt; {
+        input.addEventListener(&#39;change&#39;, () =&gt; {
+          updateMultiButton(index);
+          calculateAttributes();
+        });
+      });
+
+      control.button.addEventListener(&#39;click&#39;, (event) =&gt; {
+        event.preventDefault();
+        event.stopPropagation();
+        attrControls.forEach((other, otherIndex) =&gt; {
+          if (otherIndex !== index) other.wrapper.classList.remove(&#39;open&#39;);
+        });
+        control.wrapper.classList.toggle(&#39;open&#39;);
+      });
+
+      control.menu.addEventListener(&#39;click&#39;, event =&gt; event.stopPropagation());
+      updateMultiButton(index);
+    });
+
+    document.addEventListener(&#39;click&#39;, () =&gt; {
+      attrControls.forEach(control =&gt; control.wrapper.classList.remove(&#39;open&#39;));
     });
   }
 
@@ -3283,25 +3436,30 @@ window.onload = function() {
     const selectedMap = {};
     const duplicates = [];
 
-    attrSelects.forEach(select =&gt; {
-      select.classList.remove(&#39;attr-error&#39;);
-      if (!select.value) return;
-      if (!selectedMap[select.value]) selectedMap[select.value] = [];
-      selectedMap[select.value].push(select);
+    attrControls.forEach(control =&gt; {
+      control.button.classList.remove(&#39;attr-error&#39;);
+    });
+
+    attrControls.forEach((control, index) =&gt; {
+      getSelectedValues(index).forEach(value =&gt; {
+        if (!selectedMap[value]) selectedMap[value] = [];
+        selectedMap[value].push(index);
+      });
     });
 
     Object.keys(selectedMap).forEach(value =&gt; {
-      if (selectedMap[value].length &gt; 1) {
+      const uniqueSlots = Array.from(new Set(selectedMap[value]));
+      if (uniqueSlots.length &gt; 1) {
         const attr = getAttr(value);
         duplicates.push(attr.name);
-        selectedMap[value].forEach(select =&gt; select.classList.add(&#39;attr-error&#39;));
+        uniqueSlots.forEach(slotIndex =&gt; attrControls[slotIndex].button.classList.add(&#39;attr-error&#39;));
       }
     });
 
     const warningBox = document.getElementById(&#39;attrWarningText&#39;);
     if (duplicates.length &gt; 0) {
       warningBox.style.display = &#39;block&#39;;
-      warningBox.textContent = &#39;同一件装备不能重复选择相同词条：&#39; + duplicates.join(&#39;、&#39;) + &#39;。请更换其中一个格子的目标词条。&#39;;
+      warningBox.textContent = &#39;不同格子不能选择重叠目标词条：&#39; + duplicates.join(&#39;、&#39;) + &#39;。同一格内多选代表“命中其中之一即可”。&#39;;
       return false;
     }
 
@@ -3316,7 +3474,7 @@ window.onload = function() {
       document.getElementById(&#39;attrExpectedRuns&#39;).textContent = &#39;—&#39;;
       document.getElementById(&#39;attrStoneCost&#39;).textContent = &#39;—&#39;;
       document.getElementById(&#39;attrKeyCost&#39;).textContent = &#39;—&#39;;
-      document.getElementById(&#39;attrFormulaText&#39;).textContent = &#39;请先修正重复词条后再计算。&#39;;
+      document.getElementById(&#39;attrFormulaText&#39;).textContent = &#39;请先修正不同格子之间的重复目标词条后再计算。&#39;;
       return;
     }
 
@@ -3326,14 +3484,13 @@ window.onload = function() {
     let stoneLockedCount = 0;
     let stoneDoneCount = 0;
     let keyLockedCount = 0;
-    const lockTypes = [];
     const formulaParts = [];
 
-    attrSelects.forEach((attrSelect, index) =&gt; {
-      const attr = getAttr(attrSelect.value);
+    attrControls.forEach((control, index) =&gt; {
+      const attrs = getSelectedAttrs(index);
       const lockSelect = lockSelects[index];
 
-      if (!attr.value) {
+      if (!attrs.length) {
         lockSelect.value = &#39;none&#39;;
         lockSelect.disabled = true;
         return;
@@ -3341,23 +3498,30 @@ window.onload = function() {
 
       lockSelect.disabled = false;
       const lockType = lockSelect.value;
+      const attrNames = attrs.map(attr =&gt; attr.name).join(&#39; / &#39;);
+      const attrRateSum = attrs.reduce((sum, attr) =&gt; sum + attr.rate, 0);
 
       if (lockType !== &#39;none&#39;) {
         lockedCount += 1;
-        lockTypes.push(lockType);
         if (lockType === &#39;stone&#39;) stoneLockedCount += 1;
         if (lockType === &#39;stoneDone&#39;) stoneDoneCount += 1;
         if (lockType === &#39;key&#39;) keyLockedCount += 1;
         const lockLabel = lockType === &#39;stone&#39; ? &#39;石头锁定&#39; : (lockType === &#39;stoneDone&#39; ? &#39;石头已锁&#39; : &#39;锁子锁定&#39;);
-        formulaParts.push(`第${index + 1}格「${attr.name}」${lockLabel}，不参与概率计算`);
+        formulaParts.push(`第${index + 1}格「${attrNames}」${lockLabel}，不参与概率计算`);
         return;
       }
 
       const slotRate = SLOT_RATES[index];
-      const hitRate = slotRate * attr.rate;
+      const hitRate = slotRate * attrRateSum;
       totalRate *= hitRate;
       targetCount += 1;
-      formulaParts.push(`第${index + 1}格「${attr.name}」：${formatRate(slotRate)} × ${formatRate(attr.rate)} = ${formatRate(hitRate)}`);
+
+      if (attrs.length &gt; 1) {
+        const rateDetail = attrs.map(attr =&gt; formatRate(attr.rate)).join(&#39; + &#39;);
+        formulaParts.push(`第${index + 1}格「${attrNames}」：${formatRate(slotRate)} × (${rateDetail}) = ${formatRate(hitRate)}`);
+      } else {
+        formulaParts.push(`第${index + 1}格「${attrNames}」：${formatRate(slotRate)} × ${formatRate(attrRateSum)} = ${formatRate(hitRate)}`);
+      }
     });
 
     if (lockedCount &gt; 2) {
@@ -3404,7 +3568,6 @@ window.onload = function() {
   }
 
   initOptions();
-  attrSelects.forEach(select =&gt; select.addEventListener(&#39;change&#39;, calculateAttributes));
   lockSelects.forEach(select =&gt; select.addEventListener(&#39;change&#39;, calculateAttributes));
   calculateAttributes();
 })();
