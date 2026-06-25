@@ -915,84 +915,21 @@ window.onload = function() {
 };
 </script>
 <h2 id="技能计算器">技能计算器
-</h2><div class="nikke-skill-calculator">
+</h2><div class="nikke-skill-calculator" id="nikkeSkillCalculator">
   <div class="nsc-card">
-    <div class="nsc-notice">代码手册拥有5种属性，现阶段不支持~继续细化改日再说，也有可能不做~</div>
+    <div class="nsc-notice">按角色技能需求与属性统计技能书、爆裂书与各属性代码手册消耗。</div>
 
-    <div class="nsc-main-grid">
-      <section class="nsc-panel">
-        <div class="nsc-panel-title">点技能角色数量</div>
-
-        <div class="nsc-input-group">
-          <label for="S101010">10/10/10 角色数量</label>
-          <input type="number" id="S101010" value="0" min="0">
-        </div>
-
-        <div class="nsc-input-group">
-          <label for="S10710">10/7/10 或 7/10/10 角色数量</label>
-          <input type="number" id="S10710" value="0" min="0">
-        </div>
-
-        <div class="nsc-input-group">
-          <label for="S1077">10/7/7 或 7/10/7 角色数量</label>
-          <input type="number" id="S1077" value="0" min="0">
-        </div>
-
-        <div class="nsc-input-group">
-          <label for="S7710">7/7/10 角色数量</label>
-          <input type="number" id="S7710" value="0" min="0">
-        </div>
-
-        <div class="nsc-input-group">
-          <label for="S777">7/7/7 角色数量</label>
-          <input type="number" id="S777" value="0" min="0">
-        </div>
-      </section>
-
-      <section class="nsc-panel">
-        <div class="nsc-panel-title">库存</div>
-
-        <div class="nsc-material-grid">
-          <div class="nsc-input-group">
-            <label for="ownedSkillBlue">技能蓝书</label>
-            <input type="number" id="ownedSkillBlue" value="0" min="0">
-          </div>
-
-          <div class="nsc-input-group">
-            <label for="ownedSkillPurple">技能紫书</label>
-            <input type="number" id="ownedSkillPurple" value="0" min="0">
-          </div>
-
-          <div class="nsc-input-group">
-            <label for="ownedSkillGold">技能金书</label>
-            <input type="number" id="ownedSkillGold" value="0" min="0">
-          </div>
-
-          <div class="nsc-input-group">
-            <label for="ownedBurstBlue">爆裂蓝书</label>
-            <input type="number" id="ownedBurstBlue" value="0" min="0">
-          </div>
-
-          <div class="nsc-input-group">
-            <label for="ownedBurstPurple">爆裂紫书</label>
-            <input type="number" id="ownedBurstPurple" value="0" min="0">
-          </div>
-
-          <div class="nsc-input-group">
-            <label for="ownedBurstGold">爆裂金书</label>
-            <input type="number" id="ownedBurstGold" value="0" min="0">
-          </div>
-
-          <div class="nsc-input-group">
-            <label for="ownedCode">代码手册</label>
-            <input type="number" id="ownedCode" value="0" min="0">
-          </div>
-        </div>
-      </section>
-    </div>
+    <section class="nsc-panel nsc-demand-panel">
+      <div class="nsc-section-row">
+        <div class="nsc-panel-title no-margin">角色技能需求</div>
+        <button type="button" class="nsc-add-btn" id="addSkillSetBtn" aria-label="添加角色技能需求">＋</button>
+      </div>
+      <div class="nsc-help-text">每个 Set 代表一个角色。选择技能需求后必须选择属性；代码手册会按属性分别统计。</div>
+      <div id="skillSetList" class="nsc-set-list"></div>
+    </section>
 
     <section class="nsc-panel nsc-result-panel">
-      <div class="nsc-panel-title">📊 资源计算结果</div>
+      <div class="nsc-panel-title">资源计算结果</div>
       <div class="nsc-table-wrap">
         <table class="nsc-table nsc-result-table">
           <thead>
@@ -1004,30 +941,6 @@ window.onload = function() {
             </tr>
           </thead>
           <tbody id="resultTable"></tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="nsc-panel nsc-month-panel">
-      <div class="nsc-panel-title">每月技能资源获取数量</div>
-      <div class="nsc-table-wrap">
-        <table class="nsc-table nsc-month-table">
-          <thead>
-            <tr>
-              <th>材料</th>
-              <th>小活动*2</th>
-              <th>大活动*1</th>
-              <th>小活动*大活动</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>技能蓝书</td><td>4300</td><td>4204</td><td>4454</td></tr>
-            <tr><td>技能紫书</td><td>3120</td><td>3028</td><td>3218</td></tr>
-            <tr><td>技能金书</td><td>784</td><td>784</td><td>814</td></tr>
-            <tr><td>爆裂蓝书</td><td>2240</td><td>2102</td><td>2272</td></tr>
-            <tr><td>爆裂紫书</td><td>1630</td><td>1514</td><td>1644</td></tr>
-            <tr><td>爆裂金书</td><td>422</td><td>392</td><td>422</td></tr>
-          </tbody>
         </table>
       </div>
     </section>
@@ -1060,7 +973,6 @@ window.onload = function() {
   box-shadow: 0 4px 20px rgba(40, 50, 45, 0.25);
 }
 
- 
 .nsc-notice,
 .nsc-panel-title {
   border-left: none !important;
@@ -1081,12 +993,6 @@ window.onload = function() {
   letter-spacing: 1px;
 }
 
-.nsc-main-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-}
-
 .nsc-panel {
   min-width: 0;
   width: 100%;
@@ -1095,6 +1001,10 @@ window.onload = function() {
   border: 1px solid #6b8477;
   border-radius: 8px;
   color: #2d3748;
+}
+
+.nsc-result-panel {
+  margin-top: 24px;
 }
 
 .nsc-panel-title {
@@ -1106,15 +1016,114 @@ window.onload = function() {
   line-height: 1.5;
 }
 
+.nsc-panel-title.no-margin {
+  margin: 0;
+}
+
+.nsc-section-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.nsc-add-btn,
+.nsc-delete-btn {
+  border: none;
+  cursor: pointer;
+  font-weight: 900;
+  line-height: 1;
+  transition: transform .08s ease, filter .08s ease;
+}
+
+.nsc-add-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #4a5d53;
+  color: #ffffff;
+  font-size: 21px;
+  box-shadow: 0 3px 8px rgba(74, 93, 83, .28);
+}
+
+.nsc-delete-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: #c53030;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.nsc-add-btn:active,
+.nsc-delete-btn:active {
+  transform: translateY(1px);
+  filter: brightness(.95);
+}
+
+.nsc-help-text {
+  background: #f4f7f5;
+  border-left: 4px solid #6b8477;
+  border-radius: 6px;
+  color: #4a5d53;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.6;
+  padding: 9px 11px;
+  margin-bottom: 14px;
+}
+
+.nsc-set-list {
+  display: grid;
+  gap: 12px;
+}
+
+.nsc-skill-set {
+  background: #f8fbf9;
+  border: 1px solid #cbdad2;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.nsc-set-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.nsc-set-name-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.nsc-set-name {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  padding: 9px 10px;
+  background: #ffffff;
+  border: 1px solid #cbdad2;
+  border-radius: 6px;
+  color: #4a5d53;
+  font-size: 13px;
+  font-weight: 800;
+  outline: none;
+}
+
+.nsc-set-grid {
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+  gap: 12px;
+  align-items: end;
+}
+
 .nsc-input-group {
   display: flex;
   flex-direction: column;
   min-width: 0;
-  margin-bottom: 14px;
-}
-
-.nsc-input-group:last-child {
-  margin-bottom: 0;
 }
 
 .nsc-input-group label {
@@ -1125,18 +1134,8 @@ window.onload = function() {
   line-height: 1.45;
 }
 
-.nsc-material-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.nsc-material-grid label {
-  color: #566c61;
-  font-size: 12px;
-}
-
-.nikke-skill-calculator input {
+.nikke-skill-calculator input,
+.nikke-skill-calculator select {
   width: 100%;
   min-width: 0;
   max-width: 100%;
@@ -1150,14 +1149,15 @@ window.onload = function() {
   outline: none;
 }
 
-.nsc-material-grid input {
-  padding: 8px;
-  font-size: 13px;
+.nikke-skill-calculator select:disabled {
+  background: #edf2ef;
+  color: #9aa8a0;
+  cursor: not-allowed;
 }
 
-.nsc-result-panel,
-.nsc-month-panel {
-  margin-top: 24px;
+.nikke-skill-calculator select.nsc-error {
+  border-color: #c53030 !important;
+  background: #fff5f5 !important;
 }
 
 .nsc-table-wrap {
@@ -1194,23 +1194,12 @@ window.onload = function() {
   width: 22%;
 }
 
-.nsc-month-table th:first-child,
-.nsc-month-table td:first-child {
-  width: 30%;
-}
-
-.nsc-month-table th:not(:first-child),
-.nsc-month-table td:not(:first-child) {
-  width: 23.333%;
-}
-
 .nsc-table th {
   background: #e4ebe7;
   color: #4a5d53;
   font-weight: 700;
 }
 
- 
 .nsc-table tbody tr {
   background: #ffffff !important;
 }
@@ -1222,6 +1211,14 @@ window.onload = function() {
 .nsc-material-name {
   color: #4a5d53;
   font-weight: 700;
+}
+
+.nsc-owned-input {
+  -moz-appearance: textfield;
+  appearance: textfield;
+  padding: 7px 6px !important;
+  text-align: center;
+  font-size: 13px !important;
 }
 
 .nsc-positive {
@@ -1250,12 +1247,17 @@ window.onload = function() {
     font-size: 16px;
   }
 
-  .nsc-main-grid {
+  .nsc-panel {
+    padding: 14px;
+  }
+
+  .nsc-set-grid {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .nsc-material-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .nikke-skill-calculator select,
+  .nikke-skill-calculator input {
+    font-size: 16px;
   }
 
   .nsc-table {
@@ -1266,6 +1268,11 @@ window.onload = function() {
   .nsc-table td {
     padding: 7px 3px;
   }
+
+  .nsc-owned-input {
+    font-size: 11px !important;
+    padding: 6px 3px !important;
+  }
 }
 
 @media (max-width: 420px) {
@@ -1275,11 +1282,7 @@ window.onload = function() {
 
   .nsc-card,
   .nsc-panel {
-    padding: 14px;
-  }
-
-  .nsc-material-grid {
-    grid-template-columns: minmax(0, 1fr);
+    padding: 12px;
   }
 
   .nsc-table {
@@ -1289,10 +1292,6 @@ window.onload = function() {
   .nsc-table th,
   .nsc-table td {
     padding: 6px 2px;
-  }
-
-  .nsc-month-table {
-    font-size: 9px;
   }
 }
 </style>
@@ -1307,39 +1306,171 @@ window.onload = function() {
     S777:    { skillBlue: 760,  skillPurple: 540,  skillGold: 0,   burstBlue: 380,  burstPurple: 270, burstGold: 0,   code: 220  }
   };
 
-  const materials = [
-    { key: 'skillBlue',   name: '技能蓝书', owned: 'ownedSkillBlue' },
-    { key: 'skillPurple', name: '技能紫书', owned: 'ownedSkillPurple' },
-    { key: 'skillGold',   name: '技能金书', owned: 'ownedSkillGold' },
-    { key: 'burstBlue',   name: '爆裂蓝书', owned: 'ownedBurstBlue' },
-    { key: 'burstPurple', name: '爆裂紫书', owned: 'ownedBurstPurple' },
-    { key: 'burstGold',   name: '爆裂金书', owned: 'ownedBurstGold' },
-    { key: 'code',        name: '代码手册', owned: 'ownedCode' }
+  const DEMANDS = [
+    { value: '', label: '无' },
+    { value: 'S101010', label: '10/10/10' },
+    { value: 'S10710', label: '10/7/10 或 7/10/10' },
+    { value: 'S1077', label: '10/7/7 或 7/10/7' },
+    { value: 'S7710', label: '7/7/10' },
+    { value: 'S777', label: '7/7/7' }
   ];
 
-  function getValue(id) {
-    const el = document.getElementById(id);
-    return el ? Number(el.value) || 0 : 0;
+  const ATTRIBUTES = [
+    { value: '', label: '请选择属性' },
+    { value: 'burn', label: '燃烧代码' },
+    { value: 'water', label: '水冷代码' },
+    { value: 'wind', label: '风压代码' },
+    { value: 'electric', label: '电击代码' },
+    { value: 'iron', label: '铁甲代码' }
+  ];
+
+  const materials = [
+    { key: 'skillBlue',   name: '技能蓝书' },
+    { key: 'skillPurple', name: '技能紫书' },
+    { key: 'skillGold',   name: '技能金书' },
+    { key: 'burstBlue',   name: '爆裂蓝书' },
+    { key: 'burstPurple', name: '爆裂紫书' },
+    { key: 'burstGold',   name: '爆裂金书' },
+    { key: 'codeBurn',    name: '燃烧代码手册' },
+    { key: 'codeWater',   name: '水冷代码手册' },
+    { key: 'codeWind',    name: '风压代码手册' },
+    { key: 'codeElectric',name: '电击代码手册' },
+    { key: 'codeIron',    name: '铁甲代码手册' }
+  ];
+
+  const codeKeyByAttr = {
+    burn: 'codeBurn',
+    water: 'codeWater',
+    wind: 'codeWind',
+    electric: 'codeElectric',
+    iron: 'codeIron'
+  };
+
+  let setSeq = 0;
+  const ownedValues = {};
+  const setList = document.getElementById('skillSetList');
+  const resultTable = document.getElementById('resultTable');
+  const addBtn = document.getElementById('addSkillSetBtn');
+
+  function optionHtml(options) {
+    return options.map(item => `<option value="${item.value}">${item.label}</option>`).join('');
+  }
+
+  function getNumber(value) {
+    const cleaned = String(value || '').replace(/,/g, '').trim();
+    return Number(cleaned) || 0;
+  }
+
+  function createSkillSet() {
+    setSeq += 1;
+    const setEl = document.createElement('div');
+    setEl.className = 'nsc-skill-set';
+    setEl.dataset.setId = String(setSeq);
+    setEl.innerHTML = `
+      <div class="nsc-set-head">
+        <div class="nsc-set-name-wrap">
+          <input type="text" class="nsc-set-name" value="Set ${setSeq}" aria-label="Set 备注">
+        </div>
+        <button type="button" class="nsc-delete-btn" aria-label="删除此 Set">−</button>
+      </div>
+      <div class="nsc-set-grid">
+        <div class="nsc-input-group">
+          <label>技能需求</label>
+          <select class="nsc-demand-select">${optionHtml(DEMANDS)}</select>
+        </div>
+        <div class="nsc-input-group">
+          <label>属性</label>
+          <select class="nsc-attr-select" disabled>${optionHtml(ATTRIBUTES)}</select>
+        </div>
+      </div>
+    `;
+
+    const demandSelect = setEl.querySelector('.nsc-demand-select');
+    const attrSelect = setEl.querySelector('.nsc-attr-select');
+    const deleteBtn = setEl.querySelector('.nsc-delete-btn');
+
+    demandSelect.addEventListener('change', function () {
+      if (demandSelect.value) {
+        attrSelect.disabled = false;
+      } else {
+        attrSelect.value = '';
+        attrSelect.disabled = true;
+        attrSelect.classList.remove('nsc-error');
+      }
+      calculate();
+    });
+
+    attrSelect.addEventListener('change', calculate);
+    deleteBtn.addEventListener('click', function () {
+      setEl.remove();
+      if (!setList.querySelector('.nsc-skill-set')) createSkillSet();
+      calculate();
+    });
+
+    setList.appendChild(setEl);
+    calculate();
+  }
+
+  function ensureOwnedInput(mat) {
+    if (ownedValues[mat.key] == null) ownedValues[mat.key] = '0';
+    return `<input type="text" inputmode="numeric" pattern="[0-9]*" class="nsc-owned-input" data-owned-key="${mat.key}" value="${ownedValues[mat.key]}">`;
+  }
+
+  function calculateNeeds() {
+    const totals = materials.reduce((acc, mat) => {
+      acc[mat.key] = 0;
+      return acc;
+    }, {});
+
+    document.querySelectorAll('.nsc-skill-set').forEach(setEl => {
+      const demand = setEl.querySelector('.nsc-demand-select').value;
+      const attrSelect = setEl.querySelector('.nsc-attr-select');
+      const attr = attrSelect.value;
+
+      attrSelect.classList.remove('nsc-error');
+
+      if (!demand) return;
+
+      if (!attr) {
+        attrSelect.classList.add('nsc-error');
+        return;
+      }
+
+      const cost = COSTS[demand];
+      if (!cost) return;
+
+      totals.skillBlue += cost.skillBlue;
+      totals.skillPurple += cost.skillPurple;
+      totals.skillGold += cost.skillGold;
+      totals.burstBlue += cost.burstBlue;
+      totals.burstPurple += cost.burstPurple;
+      totals.burstGold += cost.burstGold;
+      totals[codeKeyByAttr[attr]] += cost.code;
+    });
+
+    return totals;
   }
 
   function calculate() {
-    const resultTable = document.getElementById('resultTable');
     if (!resultTable) return;
 
-    const counts = {
-      S101010: getValue('S101010'),
-      S10710: getValue('S10710'),
-      S1077: getValue('S1077'),
-      S7710: getValue('S7710'),
-      S777: getValue('S777')
-    };
+    const activeEl = document.activeElement;
+    const activeOwnedKey = activeEl && activeEl.classList && activeEl.classList.contains('nsc-owned-input')
+      ? activeEl.dataset.ownedKey
+      : null;
+    const activeSelectionStart = activeOwnedKey ? activeEl.selectionStart : null;
+    const activeSelectionEnd = activeOwnedKey ? activeEl.selectionEnd : null;
+
+    document.querySelectorAll('.nsc-owned-input').forEach(input => {
+      const cleaned = String(input.value || '').replace(/[^0-9]/g, '');
+      ownedValues[input.dataset.ownedKey] = cleaned;
+    });
+
+    const totals = calculateNeeds();
 
     resultTable.innerHTML = materials.map(mat => {
-      const need = Object.keys(counts).reduce((sum, key) => {
-        return sum + COSTS[key][mat.key] * counts[key];
-      }, 0);
-
-      const owned = getValue(mat.owned);
+      const need = totals[mat.key] || 0;
+      const owned = getNumber(ownedValues[mat.key]);
       const remain = owned - need;
       const remainClass = remain >= 0 ? 'nsc-positive' : 'nsc-negative';
       const remainText = `${remain >= 0 ? '+' : ''}${remain.toLocaleString()}`;
@@ -1348,18 +1479,49 @@ window.onload = function() {
         <tr>
           <td class="nsc-material-name">${mat.name}</td>
           <td>${need.toLocaleString()}</td>
-          <td>${owned.toLocaleString()}</td>
+          <td>${ensureOwnedInput(mat)}</td>
           <td class="${remainClass}">${remainText}</td>
         </tr>
       `;
     }).join('');
+
+    resultTable.querySelectorAll('.nsc-owned-input').forEach(input => {
+      input.addEventListener('focus', function () {
+        if (input.value === '0') {
+          setTimeout(() => input.select(), 0);
+        }
+      });
+
+      input.addEventListener('input', function () {
+        const cleaned = String(input.value || '').replace(/[^0-9]/g, '');
+        if (cleaned !== input.value) input.value = cleaned;
+        ownedValues[input.dataset.ownedKey] = cleaned;
+        calculate();
+      });
+
+      input.addEventListener('blur', function () {
+        if (input.value === '') {
+          input.value = '0';
+          ownedValues[input.dataset.ownedKey] = '0';
+          calculate();
+        }
+      });
+    });
+
+    if (activeOwnedKey) {
+      const nextActive = resultTable.querySelector(`.nsc-owned-input[data-owned-key="${activeOwnedKey}"]`);
+      if (nextActive) {
+        nextActive.focus();
+        const len = nextActive.value.length;
+        const start = Math.min(activeSelectionStart == null ? len : activeSelectionStart, len);
+        const end = Math.min(activeSelectionEnd == null ? len : activeSelectionEnd, len);
+        try { nextActive.setSelectionRange(start, end); } catch (e) {}
+      }
+    }
   }
 
-  document.querySelectorAll('.nikke-skill-calculator input').forEach(input => {
-    input.addEventListener('input', calculate);
-  });
-
-  calculate();
+  addBtn.addEventListener('click', createSkillSet);
+  createSkillSet();
 })();
 </script>
 <h2 id="词条期望计算器">词条期望计算器
