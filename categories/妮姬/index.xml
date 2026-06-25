@@ -24,6 +24,7 @@
 🟣 &lt;strong&gt;易伤区：&lt;/strong&gt;（1 + 所受伤害/分摊伤害）&lt;/p&gt;
 &lt;p&gt;参考帖子：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://bbs.nga.cn/read.php?tid=34243415&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;【攻略】(11.14更新防御算法) 关于nikke伤害计算公式的推导及结论&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
 &lt;h3 id=&#34;伤害乘区&#34;&gt;伤害乘区
 &lt;/h3&gt;&lt;p&gt;⚠️ &lt;strong&gt;&lt;mark&gt;同一乘区为互相加算。&lt;/mark&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;攻击力：&lt;/strong&gt; 攻击力&lt;br&gt;
@@ -32,6 +33,7 @@
 &lt;strong&gt;补正区：&lt;/strong&gt; 核心伤害，暴击伤害&lt;br&gt;
 &lt;strong&gt;蓄伤区：&lt;/strong&gt; 蓄力伤害&lt;br&gt;
 &lt;strong&gt;优越区：&lt;/strong&gt; 优越代码攻击伤害&lt;/p&gt;
+&lt;hr&gt;
 &lt;h3 id=&#34;基准攻击力&#34;&gt;基准攻击力
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;后现代妮姬里很多攻击拐都有&lt;strong&gt;以施展者为基准的攻击力XX%提升&lt;/strong&gt;的说明，这里解释一下，这是指以妮姬面板的攻击力 × 相应的%提升，吃✅&lt;strong&gt;装备等级，收藏品等级，好感度，突破数，循环室等级&lt;/strong&gt;；但❌&lt;strong&gt;不吃词条&lt;/strong&gt;。&lt;/li&gt;
@@ -73,6 +75,7 @@
 &lt;/ul&gt;
 &lt;p&gt;参考帖子：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://bbs.nga.cn/read.php?tid=46737810&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;【攻略】 进阶基础课：以施展者为基准的攻击力——辅助数值差距的源头&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
 &lt;h3 id=&#34;武器射速&#34;&gt;武器射速
 &lt;/h3&gt;&lt;p&gt;参考来源：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://media.discordapp.net/attachments/1046881062111952976/1471111543457447936/image.png?ex=6a328a63&amp;amp;is=6a3138e3&amp;amp;hm=539b1f028e584841aab564d64bd5c9a2ce2a72e91e1366ae8484f4dad521f5db&amp;amp;=&amp;amp;format=webp&amp;amp;quality=lossless&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Discord&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
@@ -168,6 +171,7 @@
 &lt;/table&gt;
 &lt;p&gt;📌 &lt;mark&gt;相较60 FPS的理论增益&lt;/mark&gt;：如果完全消除帧率导致的射速损失，理论上还能比当前60FPS提升多少。公式为（理论射速/实际射速（60 FPS）（发/秒））- 1。&lt;br&gt;
 📌 以机枪为例，（70/60）- 1 = 16.67%；如果机枪能够达到理论射速70发/秒，那么会比现在60FPS环境下的60发/秒多16.67%的输出。&lt;/p&gt;
+&lt;hr&gt;
 &lt;h3 id=&#34;装弹蓄速词条&#34;&gt;装弹&amp;amp;蓄速词条
 &lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -195,6 +199,7 @@
     &gt;【攻略】2/21 公式修復(照舊制)，備戰競技場蓄速詞條需知 (T10詞條進位研究)&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
 参考帖子：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://nga.178.com/read.php?tid=43103602&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;【攻略】 由装备词条开始的数值计算研究，小心词条不要白洗了，效果甚至可能不升反降【1/24更新完善】&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;小知识&#34;&gt;小知识
 &lt;/h2&gt;&lt;h3 id=&#34;pve&#34;&gt;PVE
 &lt;/h3&gt;&lt;ol&gt;
@@ -202,12 +207,14 @@
 &lt;li&gt;霰弹枪的弹丸数量算在命中次数里。&lt;/li&gt;
 &lt;li&gt;核心算零件，常驻核心的话佩戴零件魔法就会有常驻的31.9%攻伤；非常适合小红帽等大招不需要换弹且穿透打得到核心的妮姬。  &lt;!-- 参考帖子：**[【攻略】4月10日聯盟突襲 Hard模式全攻略 - 科普系列：魔方选择](https://forum.gamer.com.tw/C.php?bsn=36390&amp;snA=21561)**   --&gt;&lt;/li&gt;
 &lt;/ol&gt;
+&lt;hr&gt;
 &lt;h3 id=&#34;pvp&#34;&gt;PVP
 &lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;进攻时，狙击枪会打对面5号位。&lt;/li&gt;
 &lt;li&gt;防守时，霰弹枪会打对面5号位。&lt;/li&gt;
 &lt;li&gt;发射器RL在拥有4%左右蓄力速度的情况下会产生质变，低于3%没有较大影响。&lt;/li&gt;
 &lt;/ol&gt;
+&lt;hr&gt;
 &lt;h3 id=&#34;调和魔方&#34;&gt;调和魔方
 &lt;/h3&gt;&lt;p&gt;调和魔方优越数值：&lt;strong&gt;5级 8.48%&lt;/strong&gt; | &lt;strong&gt;9级 10.60%&lt;/strong&gt; | &lt;strong&gt;11级 14.84%&lt;/strong&gt; | &lt;strong&gt;13级 16.96%&lt;/strong&gt; | &lt;strong&gt;15级 19.09%&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;参考来源：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://bbs.nga.cn/read.php?tid=35942545&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -337,6 +344,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;hr&gt;
 &lt;h3 id=&#34;黑票商店&#34;&gt;黑票商店
 &lt;/h3&gt;&lt;p&gt;3.5周年后，黑票商店只剩两个位置，4.5周年会填满，那5周年会更新还是游戏结束就不得而知了。&lt;/p&gt;
 &lt;p&gt;参考来源：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://forum.gamer.com.tw/C.php?bsn=36390&amp;amp;snA=11148&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -566,6 +574,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;全爆裂拐力计算器beta&#34;&gt;全爆裂拐力计算器（Beta）
 &lt;/h2&gt;&lt;div class=&#34;nikke-buff-cmp&#34; id=&#34;nikkeBuffCmp&#34;&gt;
   &lt;div class=&#34;bcmp-header&#34;&gt;
@@ -2739,11 +2748,11 @@ window.onload = function() {
     { key: &#39;burstBlue&#39;,   name: &#39;爆裂蓝书&#39; },
     { key: &#39;burstPurple&#39;, name: &#39;爆裂紫书&#39; },
     { key: &#39;burstGold&#39;,   name: &#39;爆裂金书&#39; },
-    { key: &#39;codeBurn&#39;,    name: &#39;燃烧代码手册&#39; },
-    { key: &#39;codeWater&#39;,   name: &#39;水冷代码手册&#39; },
-    { key: &#39;codeWind&#39;,    name: &#39;风压代码手册&#39; },
-    { key: &#39;codeElectric&#39;,name: &#39;电击代码手册&#39; },
-    { key: &#39;codeIron&#39;,    name: &#39;铁甲代码手册&#39; }
+    { key: &#39;codeBurn&#39;,    name: &#39;燃烧代码&#39; },
+    { key: &#39;codeWater&#39;,   name: &#39;水冷代码&#39; },
+    { key: &#39;codeWind&#39;,    name: &#39;风压代码&#39; },
+    { key: &#39;codeElectric&#39;,name: &#39;电击代码&#39; },
+    { key: &#39;codeIron&#39;,    name: &#39;铁甲代码&#39; }
   ];
 
   const codeKeyByAttr = {

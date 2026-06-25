@@ -10,7 +10,7 @@
 <meta property='og:description' content="~记录不同游戏的玩后感以及分数~">
 <meta property='og:url' content='https://sloth-cyx.github.io/p/%E4%B8%AA%E4%BA%BA%E6%B8%B8%E6%88%8F%E8%AF%84%E5%88%86%E6%84%9F%E6%83%B3/'>
 <meta property='og:site_name' content='怠惰的天秤-sloth'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-07-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-06-25T20:12:49&#43;08:00'/><meta property='og:image' content='https://sloth-cyx.github.io/images/gameRating/gameRating_bg.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2025-07-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-06-25T23:52:58&#43;08:00'/><meta property='og:image' content='https://sloth-cyx.github.io/images/gameRating/gameRating_bg.png' />
 <meta name="twitter:title" content="【个人】游戏评分&感想">
 <meta name="twitter:description" content="~记录不同游戏的玩后感以及分数~"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://sloth-cyx.github.io/images/gameRating/gameRating_bg.png' />
@@ -505,23 +505,24 @@ post-sidebar">
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#hugo">Hugo</a>
+    <li><a href="#动作rpg开放世界">动作/RPG/开放世界</a>
       <ol>
-        <li><a href="#创建hugo文件夹">创建Hugo文件夹</a></li>
-        <li><a href="#使用stack主题">使用Stack主题</a></li>
-        <li><a href="#创建新文章">创建新文章</a></li>
-        <li><a href="#debug">DEBUG</a></li>
+        <li><a href="#荒野大镖客">荒野大镖客</a></li>
+        <li><a href="#黑神话悟空2周目">黑神话悟空（2周目）</a></li>
+        <li><a href="#gta5">GTA5</a></li>
       </ol>
     </li>
-    <li><a href="#git">Git</a>
+    <li><a href="#女神异闻录5皇家版2周目">女神异闻录5皇家版（2周目）</a></li>
+    <li><a href="#gal黄油">GAL/黄油</a>
       <ol>
-        <li><a href="#初次部署">初次部署</a></li>
-        <li><a href="#发布新文章">发布新文章</a></li>
-        <li><a href="#git命令行">Git命令行</a></li>
+        <li><a href="#变态监狱henpri">变态监狱Henpri</a></li>
       </ol>
     </li>
-    <li><a href="#教程链接">教程链接</a></li>
-    <li><a href="#美化教程">美化教程</a></li>
+    <li><a href="#弃坑游戏">弃坑游戏</a>
+      <ol>
+        <li><a href="#死亡搁浅">死亡搁浅</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -601,118 +602,894 @@ post-sidebar">
     <section class="article-content">
     
     
-    <h2 id="hugo">Hugo
-</h2><p>整个过程请参考文末<a class="link" href="#%e6%95%99%e7%a8%8b%e9%93%be%e6%8e%a5" >教程链接</a>。</p>
-<h3 id="创建hugo文件夹">创建Hugo文件夹
-</h3><p>a. 在github下载hugo压缩包。<br>
- <a class="link" href="https://github.com/gohugoio/hugo/tags"  target="_blank" rel="noopener"
-    >Github Hugo</a><br>
-b. 解压后，在hugo.exe的位置/文件夹开启cmd。<br>
-c. 使用以下命令来创建hugo文件夹。<br>
- <code>hugo new site &lt;文件夹名字&gt;</code><br>
- <code>hugo new site hugoStackBlog</code><br>
-d. 把hugo.exe复制到创建好的文件夹，例如示例的hugoStackBlog。</p>
-<h3 id="使用stack主题">使用Stack主题
-</h3><p>a. 在github下载stack压缩包。<br>
- <a class="link" href="hhttps://github.com/CaiJimmy/hugo-theme-stack/tags" >Hugo主题 Stack</a><br>
-b. 如何应用请参考文末<a class="link" href="#%e6%95%99%e7%a8%8b%e9%93%be%e6%8e%a5" >教程链接</a>。</p>
-<h3 id="创建新文章">创建新文章
-</h3><p>a. 使用以下命令来创建新的文章。<br>
- <code>hugo new content &lt;文件夹&gt;/&lt;文件夹&gt;/&lt;文件名称.md&gt;</code><br>
- <code>hugo new content post/information/mdWritting.md</code><br>
-b. 使用以下命令来生成public文件夹并启动本地服务，既在<strong>localhost:1313</strong>里查看效果；public文件夹是被部署到github上的文件夹。<br>
- <code>hugo server -D</code></p>
-<h3 id="debug">DEBUG
-</h3><p>a. 使用以下命令来查看读取的配置（YAML）。<br>
- <code>hugo config</code><br>
-b. 使用以下命令来查看问题，会直接报出来。<br>
- <code>hugo server --debug</code></p>
-<hr>
-<h2 id="git">Git
-</h2><h3 id="初次部署">初次部署
-</h3><p>a. 在github官网创建仓库（repositories），取名为<strong>用户名.github.io</strong>，例如<strong>sloth-cyx.giythub.io</strong>。<br>
-b. 把hugo.yaml的baseurl改成你创建好的仓库名（https://sloth-cyx.github.io），然后照着github的指示开始把<strong>public</strong>文件夹部署到github上。<br>
-<mark>* 需在<strong>public</strong>文件夹内呼出cmd！</mark><br>
-<mark>* <strong>git add README.md</strong>需换成下面的命令行来直接把全部public文件夹一次性加入到上传行列。</mark><br>
- <code>git add .</code><br>
-<img src="/images/articleCreationDeployment/GitFirstTimeDeploymentSample.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="Git Instruction"
-	
-	
->
-c. Github上的操作请参考文末<a class="link" href="#%e6%95%99%e7%a8%8b%e9%93%be%e6%8e%a5" >教程链接</a>。</p>
-<h3 id="发布新文章">发布新文章
-</h3><p>在<strong>public</strong>文件夹内使用以下git命令行来让新文章部署到github上。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">    git add .
-</span></span><span class="line"><span class="cl">    git commit -m &#34;更新说明&#34;
-</span></span><span class="line"><span class="cl">    git push
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="git命令行">Git命令行
-</h3><p>a. 检查哪些文件有变更<br>
- <code>git status</code><br>
-b. 添加全部变更文件<br>
- <code>git add .</code><br>
-c. 添加指定文件<br>
- <code>git add 文件名.后缀</code><br>
-d. 保存更新纪录<br>
- <code>git commit -m &quot;更新说明&quot;</code><br>
-e. 第一次连接 Github 仓库<br>
- <code>git remote add origin https://github.com/Git名字/仓库名.git</code><br>
-f. 初次上传Github（<strong>-u</strong>记住这个远端branch，往后就不需要)<br>
- <code>git push -u origin main或master</code><br>
-g. 后续上传Github<br>
- <code>git push</code><br>
-h. 下载远端更新<br>
- <code>git pull</code><br>
-i. 查看本地分支<br>
- <code>git branch</code><br>
-j. 查看全部分支<br>
- <code>git branch -a</code><br>
-k. 切换分支<br>
- <code>git switch 分支名</code><br>
- <code>git checkout 分支名</code><br>
-l. 创建并切换分支<br>
- <code>git switch -c 分支名</code><br>
-m. 删除本地分支<br>
- <code>git branch -d 分支名</code><br>
-n. 强制删除本地分支<br>
- <code>git branch -D 分支名</code><br>
-o. 删除远端分支<br>
- <code>git push origin --delete 分支名</code><br>
-p. 查看远端仓库<br>
- <code>git remote -v</code></p>
-<hr>
-<h2 id="教程链接">教程链接
-</h2><p><a class="link" href="https://letere-gzj.github.io/hugo-stack/"  target="_blank" rel="noopener"
-    >莱特雷-letere博客</a><br>
-<a class="link" href="https://www.bilibili.com/video/BV1bovfeaEtQ/?p=4&amp;share_source=copy_web&amp;vd_source=7433a5af914fec7cd6c8f410f7a79d6e"  target="_blank" rel="noopener"
-    >莱特雷 Hugo + Github免费搭建博客，并实现自动化部署</a><br>
-<a class="link" href="https://www.bilibili.com/video/BV1zu41187o4/?share_source=copy_web&amp;vd_source=7433a5af914fec7cd6c8f410f7a79d6e"  target="_blank" rel="noopener"
-    >如何使用Hugo搭建博客并上传至GitHub</a></p>
-<hr>
-<h2 id="美化教程">美化教程
-</h2><p><a class="link" href="https://blog.laphel.com/posts/hugo-stack-renovation/"  target="_blank" rel="noopener"
-    >Laphel- Hugo stack 主题美化</a><br>
-<a class="link" href="https://www.xalaok.top/post/stack-modify/"  target="_blank" rel="noopener"
-    >Naive Koala- Hugo Stack 魔改美化</a><br>
-<a class="link" href="https://momentodimezzo.com/p/blog-customization/"  target="_blank" rel="noopener"
-    >居中的時刻- Hugo Stack 主題魔改集錦</a><br>
-<a class="link" href="https://thirdshire.com/hugo-stack-renovation/"  target="_blank" rel="noopener"
-    >第三夏尔- Hugo Stack主题装修笔记</a></p>
+    <h2 id="动作rpg开放世界">动作/RPG/开放世界
+</h2><h3 id="荒野大镖客">荒野大镖客
+</h3>
 
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+<div class="game-score-card">
+  <div class="game-score-title">🎮 个人向评分卡</div>
+
+  <div class="game-score-total">
+    <div class="game-score-total-label">总分</div>
+    <div class="game-score-total-value">33.5 / 35</div>
+    <div class="game-score-total-stars"> ⭐⭐⭐⭐⭐</div>
+    <div class="game-score-total-comment"> 👑 神作，强烈推荐</div>
+  </div>
+
+  <div class="game-score-list">
+    <div class="game-score-row" style="--score: 5;">
+      <div class="game-score-name">🎭 剧情</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">5</div>
+    </div>
+
+    <div class="game-score-row" style="--score: 5;">
+      <div class="game-score-name">⚔️ 动作</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">5</div>
+    </div>
+
+    <div class="game-score-row" style="--score: 4;">
+      <div class="game-score-name">🎵 音乐</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">4</div>
+    </div>
+
+    <div class="game-score-row" style="--score: 5;">
+      <div class="game-score-name">🎨 美术</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">5</div>
+    </div>
+
+    <div class="game-score-row" style="--score: 5;">
+      <div class="game-score-name">⚙️ 优化</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">5</div>
+    </div>
+
+    <div class="game-score-row" style="--score: 4.5;">
+      <div class="game-score-name">🎮 游戏性</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">4.5</div>
+    </div>
+
+    <div class="game-score-row" style="--score: 5;">
+      <div class="game-score-name">🌍 沉浸感</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">5</div>
+    </div>
+  </div>
+</div>
+
+<style>
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: .9rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-stars {
+  font-size: 1.1rem;
+  margin-top: .25rem;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-comment{
+    margin-top:8px;
+    font-size:.95rem;
+    font-weight:600;
+    color:#5d6b42;
+}
+
+@media (max-width: 600px) {
+  .game-score-row {
+    grid-template-columns: 1fr 60px;
+    gap: .6rem;
+  }
+
+  .game-score-bar {
+    grid-column: 1 / -1;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+</style>
+<p>👍 <strong>优点</strong>：拥有开放世界的自由感却也有高潮起伏的剧情；R星超强的流畅动作<br>
+👎 <strong>缺点</strong>：全收集有难度，逼死强迫症</p>
+<hr>
+<h3 id="黑神话悟空2周目">黑神话悟空（2周目）
+</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+<div class="game-score-card">
+  <div class="game-score-title">🎮 个人向评分卡</div>
+
+  <div class="game-score-total">
+    <div class="game-score-total-label">总分</div>
+    <div class="game-score-total-value">33 / 35</div>
+    <div class="game-score-total-stars"> ⭐⭐⭐⭐⭐</div>
+    <div class="game-score-total-comment"> 👑 神作，强烈推荐</div>
+  </div>
+
+  <div class="game-score-list">
+    <div class="game-score-row" style="--score: 5;">
+      <div class="game-score-name">🎭 剧情</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">5</div>
+    </div>
+
+    <div class="game-score-row" style="--score: 5;">
+      <div class="game-score-name">⚔️ 动作</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">5</div>
+    </div>
+
+    <div class="game-score-row" style="--score: 5;">
+      <div class="game-score-name">🎵 音乐</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">5</div>
+    </div>
+
+    <div class="game-score-row" style="--score: 5;">
+      <div class="game-score-name">🎨 美术</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">5</div>
+    </div>
+
+    <div class="game-score-row" style="--score: 4;">
+      <div class="game-score-name">⚙️ 优化</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">4</div>
+    </div>
+
+    <div class="game-score-row" style="--score: 4;">
+      <div class="game-score-name">🎮 游戏性</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">4</div>
+    </div>
+
+    <div class="game-score-row" style="--score: 5;">
+      <div class="game-score-name">🌍 沉浸感</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">5</div>
+    </div>
+  </div>
+</div>
+
+<style>
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: .9rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-stars {
+  font-size: 1.1rem;
+  margin-top: .25rem;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-comment{
+    margin-top:8px;
+    font-size:.95rem;
+    font-weight:600;
+    color:#5d6b42;
+}
+
+@media (max-width: 600px) {
+  .game-score-row {
+    grid-template-columns: 1fr 60px;
+    gap: .6rem;
+  }
+
+  .game-score-bar {
+    grid-column: 1 / -1;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+</style>
+<p>👍 <strong>优点</strong>：剧情美术牛逼；用中文语音和音乐，投入感一流；动作很丝滑，打架带感<br>
+👎 <strong>缺点</strong>：没有地图；空气墙有时候有，有时候没有；第六章很拉<br>
+💕 <strong>老婆</strong>：四妹❤️</p>
+<hr>
+<h3 id="gta5">GTA5
+</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+<div class="game-score-card">
+  <div class="game-score-title">🎮 个人向评分卡</div>
+
+  <div class="game-score-total">
+    <div class="game-score-total-label">总分</div>
+    <div class="game-score-total-value">29.5 / 35</div>
+    <div class="game-score-total-stars"> ⭐⭐⭐⭐☆</div>
+    <div class="game-score-total-comment"> 🌟 优秀，值得体验</div>
+  </div>
+
+  <div class="game-score-list">
+    <div class="game-score-row" style="--score: 3;">
+      <div class="game-score-name">🎭 剧情</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">3</div>
+    </div>
+
+    <div class="game-score-row" style="--score: 5;">
+      <div class="game-score-name">⚔️ 动作</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">5</div>
+    </div>
+
+    <div class="game-score-row" style="--score: 2.5;">
+      <div class="game-score-name">🎵 音乐</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">2.5</div>
+    </div>
+
+    <div class="game-score-row" style="--score: 4;">
+      <div class="game-score-name">🎨 美术</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">4</div>
+    </div>
+
+    <div class="game-score-row" style="--score: 5;">
+      <div class="game-score-name">⚙️ 优化</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">5</div>
+    </div>
+
+    <div class="game-score-row" style="--score: 5;">
+      <div class="game-score-name">🎮 游戏性</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">5</div>
+    </div>
+
+    <div class="game-score-row" style="--score: 5;">
+      <div class="game-score-name">🌍 沉浸感</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">5</div>
+    </div>
+  </div>
+</div>
+
+<style>
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: .9rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-stars {
+  font-size: 1.1rem;
+  margin-top: .25rem;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-comment{
+    margin-top:8px;
+    font-size:.95rem;
+    font-weight:600;
+    color:#5d6b42;
+}
+
+@media (max-width: 600px) {
+  .game-score-row {
+    grid-template-columns: 1fr 60px;
+    gap: .6rem;
+  }
+
+  .game-score-bar {
+    grid-column: 1 / -1;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+</style>
+<p>👍 <strong>优点</strong>：自由度高，释放压力用；联机强；R星超强的流畅动作<br>
+👎 <strong>缺点</strong>：剧情一般</p>
+<hr>
+<h2 id="女神异闻录5皇家版2周目">女神异闻录5皇家版（2周目）
+</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+<div class="game-score-card">
+  <div class="game-score-title">🎮 个人向评分卡</div>
+
+  <div class="game-score-total">
+    <div class="game-score-total-label">总分</div>
+    <div class="game-score-total-value">29 / 35</div>
+    <div class="game-score-total-stars"> ⭐⭐⭐⭐☆</div>
+    <div class="game-score-total-comment"> 🌟 优秀，值得体验</div>
+  </div>
+
+  <div class="game-score-list">
+    <div class="game-score-row" style="--score: 3.5;">
+      <div class="game-score-name">🎭 剧情</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">3.5</div>
+    </div>
+
+    <div class="game-score-row" style="--score: 3;">
+      <div class="game-score-name">⚔️ 动作</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">3</div>
+    </div>
+
+    <div class="game-score-row" style="--score: 4;">
+      <div class="game-score-name">🎵 音乐</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">4</div>
+    </div>
+
+    <div class="game-score-row" style="--score: 4.5;">
+      <div class="game-score-name">🎨 美术</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">4.5</div>
+    </div>
+
+    <div class="game-score-row" style="--score: 5;">
+      <div class="game-score-name">⚙️ 优化</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">5</div>
+    </div>
+
+    <div class="game-score-row" style="--score: 4.5;">
+      <div class="game-score-name">🎮 游戏性</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">4.5</div>
+    </div>
+
+    <div class="game-score-row" style="--score: 4.5;">
+      <div class="game-score-name">🌍 沉浸感</div>
+      <div class="game-score-bar"><span></span></div>
+      <div class="game-score-value">4.5</div>
+    </div>
+  </div>
+</div>
+
+<style>
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: .9rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-stars {
+  font-size: 1.1rem;
+  margin-top: .25rem;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-comment{
+    margin-top:8px;
+    font-size:.95rem;
+    font-weight:600;
+    color:#5d6b42;
+}
+
+@media (max-width: 600px) {
+  .game-score-row {
+    grid-template-columns: 1fr 60px;
+    gap: .6rem;
+  }
+
+  .game-score-bar {
+    grid-column: 1 / -1;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+</style>
+<p>👍 <strong>优点</strong>：绑定日期的玩法新颖，很有充实感；音乐和美术都很潮；可以攻略不同类型的妹子<br>
+👎 <strong>缺点</strong>：明智扣分项，后面的剧情较为一般；整体偏刷，每天的安排很重要<br>
+💕 <strong>老婆</strong>：新岛真，芳泽堇</p>
+<hr>
+<h2 id="gal黄油">GAL/黄油
+</h2><h3 id="变态监狱henpri">变态监狱Henpri
+</h3>
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+<div class="gal-score-card">
+  <div class="gal-score-title">🎮 个人向评分卡</div>
+
+  <div class="gal-score-total">
+    <div class="gal-score-total-label">总分</div>
+    <div class="gal-score-total-value">17 / 20</div>
+    <div class="game-score-total-stars"> ⭐⭐⭐⭐☆</div>
+    <div class="game-score-total-comment"> 🌟 优秀，值得体验</div>
+  </div>
+
+  <div class="gal-score-list">
+    <div class="gal-score-row" style="--score: 5;">
+      <div class="gal-score-name">🎭 剧情</div>
+      <div class="gal-score-bar"><span></span></div>
+      <div class="gal-score-value">5</div>
+    </div>
+
+    <div class="gal-score-row" style="--score: 5;">
+      <div class="gal-score-name">🎵 音乐</div>
+      <div class="gal-score-bar"><span></span></div>
+      <div class="gal-score-value">5</div>
+    </div>
+
+    <div class="gal-score-row" style="--score: 2.5;">
+      <div class="gal-score-name">🎨 美术</div>
+      <div class="gal-score-bar"><span></span></div>
+      <div class="gal-score-value">2.5</div>
+    </div>
+
+    <div class="gal-score-row" style="--score: 4.5;">
+      <div class="gal-score-name">🌍 沉浸感</div>
+      <div class="gal-score-bar"><span></span></div>
+      <div class="gal-score-value">4.5</div>
+    </div>
+  </div>
+</div>
+
+<style>
+.gal-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #f8d8ed;
+  border: 2px solid #420c0c;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+}
+
+.gal-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.gal-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #fffeea;
+  border: 1px solid #6e691c;
+}
+
+.gal-score-total-label {
+  font-size: .9rem;
+  opacity: .75;
+}
+
+.gal-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.gal-score-stars {
+  font-size: 1.1rem;
+  margin-top: .25rem;
+}
+
+.gal-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.gal-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #fffeea;
+  border: 1px solid #6e691c;
+}
+
+.gal-score-name {
+  font-weight: 700;
+}
+
+.gal-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #e0bca7;
+  overflow: hidden;
+}
+
+.gal-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #f57926;
+}
+
+.gal-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 600px) {
+  .gal-score-row {
+    grid-template-columns: 1fr 60px;
+    gap: .6rem;
+  }
+
+  .gal-score-bar {
+    grid-column: 1 / -1;
+  }
+
+  .gal-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+</style>
+<p>👍 <strong>优点</strong>：量大饱满且文本极好的剧情引人入胜；优秀的人设；强劲的BGM和声优表现；各种反转乐趣满天飞<br>
+👎 <strong>缺点</strong>：前期铺垫较长；有些线的智斗比较贫瘠，也有些人物塑造稍微薄弱；个别涩涩的场面没兴致<br>
+💕 <strong>老婆</strong>：红林诺亚（声音中气反转）<br>
+📌 <strong>其他</strong>：<br>
+主观个人线排名：诺亚线（人设&amp;喜剧）&gt; 妙花线（智斗&amp;武斗）&gt; 伊栖未线（动机不足直到真结局才揭晓）<br>
+客观智斗线排名：伊栖未线 &gt; 妙花线 &gt; 诺亚线</p>
+<hr>
+<h2 id="弃坑游戏">弃坑游戏
+</h2><h3 id="死亡搁浅">死亡搁浅
+</h3>
 </section>
 
 
