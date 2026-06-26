@@ -4537,7 +4537,7 @@ p. 查看远端仓库&lt;br&gt;
 
 
 &lt;div class=&#34;game-score-card&#34;&gt;
-  &lt;div class=&#34;game-score-title&#34;&gt;🎮 个人向评分卡&lt;/div&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
 
   &lt;div class=&#34;game-score-total&#34;&gt;
     &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
@@ -4584,7 +4584,7 @@ p. 查看远端仓库&lt;br&gt;
     &lt;/div&gt;
 
     &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 5;&#34;&gt;
-      &lt;div class=&#34;game-score-name&#34;&gt;🌍 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
       &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
       &lt;div class=&#34;game-score-value&#34;&gt;5&lt;/div&gt;
     &lt;/div&gt;
@@ -4599,6 +4599,7 @@ p. 查看远端仓库&lt;br&gt;
   background: #d8f3f8;
   border: 2px solid #0c1642;
   box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
 }
 
 .game-score-title {
@@ -4617,7 +4618,7 @@ p. 查看远端仓库&lt;br&gt;
 }
 
 .game-score-total-label {
-  font-size: .9rem;
+  font-size: 1.25rem;
   opacity: .75;
 }
 
@@ -4625,11 +4626,6 @@ p. 查看远端仓库&lt;br&gt;
   font-size: 2rem;
   font-weight: 900;
   line-height: 1.3;
-}
-
-.game-score-stars {
-  font-size: 1.1rem;
-  margin-top: .25rem;
 }
 
 .game-score-list {
@@ -4674,21 +4670,39 @@ p. 查看远端仓库&lt;br&gt;
   font-size: 1.05rem;
 }
 
-.game-score-comment{
+.game-score-total-comment{
     margin-top:8px;
-    font-size:.95rem;
-    font-weight:600;
-    color:#5d6b42;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
 }
 
 @media (max-width: 600px) {
+
   .game-score-row {
-    grid-template-columns: 1fr 60px;
-    gap: .6rem;
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
   }
 
   .game-score-bar {
-    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
   }
 
   .game-score-total-value {
@@ -4718,7 +4732,7 @@ p. 查看远端仓库&lt;br&gt;
 
 
 &lt;div class=&#34;game-score-card&#34;&gt;
-  &lt;div class=&#34;game-score-title&#34;&gt;🎮 个人向评分卡&lt;/div&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
 
   &lt;div class=&#34;game-score-total&#34;&gt;
     &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
@@ -4765,7 +4779,7 @@ p. 查看远端仓库&lt;br&gt;
     &lt;/div&gt;
 
     &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 5;&#34;&gt;
-      &lt;div class=&#34;game-score-name&#34;&gt;🌍 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
       &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
       &lt;div class=&#34;game-score-value&#34;&gt;5&lt;/div&gt;
     &lt;/div&gt;
@@ -4780,6 +4794,7 @@ p. 查看远端仓库&lt;br&gt;
   background: #d8f3f8;
   border: 2px solid #0c1642;
   box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
 }
 
 .game-score-title {
@@ -4798,7 +4813,7 @@ p. 查看远端仓库&lt;br&gt;
 }
 
 .game-score-total-label {
-  font-size: .9rem;
+  font-size: 1.25rem;
   opacity: .75;
 }
 
@@ -4806,11 +4821,6 @@ p. 查看远端仓库&lt;br&gt;
   font-size: 2rem;
   font-weight: 900;
   line-height: 1.3;
-}
-
-.game-score-stars {
-  font-size: 1.1rem;
-  margin-top: .25rem;
 }
 
 .game-score-list {
@@ -4855,21 +4865,39 @@ p. 查看远端仓库&lt;br&gt;
   font-size: 1.05rem;
 }
 
-.game-score-comment{
+.game-score-total-comment{
     margin-top:8px;
-    font-size:.95rem;
-    font-weight:600;
-    color:#5d6b42;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
 }
 
 @media (max-width: 600px) {
+
   .game-score-row {
-    grid-template-columns: 1fr 60px;
-    gap: .6rem;
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
   }
 
   .game-score-bar {
-    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
   }
 
   .game-score-total-value {
@@ -4879,7 +4907,7 @@ p. 查看远端仓库&lt;br&gt;
 &lt;/style&gt;
 &lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：剧情美术牛逼；用中文语音和音乐，投入感一流；动作很丝滑，打架带感&lt;br&gt;
 👎 &lt;strong&gt;缺点&lt;/strong&gt;：没有地图；空气墙有时候有，有时候没有；第六章很拉&lt;br&gt;
-💕 &lt;strong&gt;老婆&lt;/strong&gt;：四妹❤️&lt;/p&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：四妹❤️&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;gta5&#34;&gt;GTA5
 &lt;/h3&gt;
@@ -4900,7 +4928,7 @@ p. 查看远端仓库&lt;br&gt;
 
 
 &lt;div class=&#34;game-score-card&#34;&gt;
-  &lt;div class=&#34;game-score-title&#34;&gt;🎮 个人向评分卡&lt;/div&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
 
   &lt;div class=&#34;game-score-total&#34;&gt;
     &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
@@ -4947,7 +4975,7 @@ p. 查看远端仓库&lt;br&gt;
     &lt;/div&gt;
 
     &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 5;&#34;&gt;
-      &lt;div class=&#34;game-score-name&#34;&gt;🌍 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
       &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
       &lt;div class=&#34;game-score-value&#34;&gt;5&lt;/div&gt;
     &lt;/div&gt;
@@ -4962,6 +4990,7 @@ p. 查看远端仓库&lt;br&gt;
   background: #d8f3f8;
   border: 2px solid #0c1642;
   box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
 }
 
 .game-score-title {
@@ -4980,7 +5009,7 @@ p. 查看远端仓库&lt;br&gt;
 }
 
 .game-score-total-label {
-  font-size: .9rem;
+  font-size: 1.25rem;
   opacity: .75;
 }
 
@@ -4988,11 +5017,6 @@ p. 查看远端仓库&lt;br&gt;
   font-size: 2rem;
   font-weight: 900;
   line-height: 1.3;
-}
-
-.game-score-stars {
-  font-size: 1.1rem;
-  margin-top: .25rem;
 }
 
 .game-score-list {
@@ -5037,21 +5061,39 @@ p. 查看远端仓库&lt;br&gt;
   font-size: 1.05rem;
 }
 
-.game-score-comment{
+.game-score-total-comment{
     margin-top:8px;
-    font-size:.95rem;
-    font-weight:600;
-    color:#5d6b42;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
 }
 
 @media (max-width: 600px) {
+
   .game-score-row {
-    grid-template-columns: 1fr 60px;
-    gap: .6rem;
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
   }
 
   .game-score-bar {
-    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
   }
 
   .game-score-total-value {
@@ -5062,8 +5104,8 @@ p. 查看远端仓库&lt;br&gt;
 &lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：自由度高，释放压力用；联机强；R星超强的流畅动作&lt;br&gt;
 👎 &lt;strong&gt;缺点&lt;/strong&gt;：剧情一般&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;女神异闻录5皇家版2周目&#34;&gt;女神异闻录5皇家版（2周目）
-&lt;/h2&gt;
+&lt;h3 id=&#34;女神异闻录5皇家版2周目&#34;&gt;女神异闻录5皇家版（2周目）
+&lt;/h3&gt;
 
 
 
@@ -5081,7 +5123,7 @@ p. 查看远端仓库&lt;br&gt;
 
 
 &lt;div class=&#34;game-score-card&#34;&gt;
-  &lt;div class=&#34;game-score-title&#34;&gt;🎮 个人向评分卡&lt;/div&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
 
   &lt;div class=&#34;game-score-total&#34;&gt;
     &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
@@ -5128,7 +5170,7 @@ p. 查看远端仓库&lt;br&gt;
     &lt;/div&gt;
 
     &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4.5;&#34;&gt;
-      &lt;div class=&#34;game-score-name&#34;&gt;🌍 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
       &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
       &lt;div class=&#34;game-score-value&#34;&gt;4.5&lt;/div&gt;
     &lt;/div&gt;
@@ -5143,6 +5185,7 @@ p. 查看远端仓库&lt;br&gt;
   background: #d8f3f8;
   border: 2px solid #0c1642;
   box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
 }
 
 .game-score-title {
@@ -5161,7 +5204,7 @@ p. 查看远端仓库&lt;br&gt;
 }
 
 .game-score-total-label {
-  font-size: .9rem;
+  font-size: 1.25rem;
   opacity: .75;
 }
 
@@ -5169,11 +5212,6 @@ p. 查看远端仓库&lt;br&gt;
   font-size: 2rem;
   font-weight: 900;
   line-height: 1.3;
-}
-
-.game-score-stars {
-  font-size: 1.1rem;
-  margin-top: .25rem;
 }
 
 .game-score-list {
@@ -5218,21 +5256,39 @@ p. 查看远端仓库&lt;br&gt;
   font-size: 1.05rem;
 }
 
-.game-score-comment{
+.game-score-total-comment{
     margin-top:8px;
-    font-size:.95rem;
-    font-weight:600;
-    color:#5d6b42;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
 }
 
 @media (max-width: 600px) {
+
   .game-score-row {
-    grid-template-columns: 1fr 60px;
-    gap: .6rem;
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
   }
 
   .game-score-bar {
-    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
   }
 
   .game-score-total-value {
@@ -5242,7 +5298,3924 @@ p. 查看远端仓库&lt;br&gt;
 &lt;/style&gt;
 &lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：绑定日期的玩法新颖，很有充实感；音乐和美术都很潮；可以攻略不同类型的妹子&lt;br&gt;
 👎 &lt;strong&gt;缺点&lt;/strong&gt;：明智扣分项，后面的剧情较为一般；整体偏刷，每天的安排很重要&lt;br&gt;
-💕 &lt;strong&gt;老婆&lt;/strong&gt;：新岛真，芳泽堇&lt;/p&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：新岛真❤️，芳泽堇❤️&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;塞尔达-荒野之息--dlc&#34;&gt;塞尔达 荒野之息 + DLC
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;game-score-card&#34;&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;game-score-total&#34;&gt;
+    &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-value&#34;&gt;27 / 35&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐⭐⭐☆&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🌟 优秀，值得体验&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;game-score-list&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚔️ 动作&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎮 游戏性&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;5&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
+}
+
+@media (max-width: 600px) {
+
+  .game-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
+  }
+
+  .game-score-bar {
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：自由度极高，人物塑造好&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：开荒（开塔和神庙略乏味），没有强引导导致一头雾水，有些关卡烧脑&lt;br&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：米法❤️&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;明末渊墟之羽&#34;&gt;明末渊墟之羽
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;game-score-card&#34;&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;game-score-total&#34;&gt;
+    &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-value&#34;&gt;27 / 35&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐⭐⭐☆&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🌟 优秀，值得体验&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;game-score-list&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚔️ 动作&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎮 游戏性&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
+}
+
+@media (max-width: 600px) {
+
+  .game-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
+  }
+
+  .game-score-bar {
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：女主美，衣服多；风景优美，地图设计优秀，常常让人感叹原来这里链接这里；build多，非常有趣，而且轮椅巨多；非常完整的流程无赶工；结局也很多；保存退游戏再回来是当前位置而不是神龛&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：成也地图，败也地图，太复杂了，得跟着攻略走；神龛太少；缺少动画转场，大多数都是加个上下黑框带过；npc基本无表情，太木了，建模不精细&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;生化危机4-重制版--dlc&#34;&gt;生化危机4 重制版 + DLC
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;game-score-card&#34;&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;game-score-total&#34;&gt;
+    &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-value&#34;&gt;27 / 35&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐⭐⭐☆&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🌟 优秀，值得体验&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;game-score-list&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚔️ 动作&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎮 游戏性&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
+}
+
+@media (max-width: 600px) {
+
+  .game-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
+  }
+
+  .game-score-bar {
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：剧情相对强，双视角很有意思；振刀好玩；没有暴君所以氛围没有很恐怖（艾达篇比较恐怖！）&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：挺难的，沉浸感真的一般般，但是艾达篇沉浸感强一点，懂的都懂；爽的话有多周目需求（猫耳朵：1周目没有专家，二周目攒钱，三周目无限火箭筒5.5小时+&amp;lt;15存档专家S+，四周目升满专家S+武器，五周目才能爽）&lt;br&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：艾达王❤️&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;巫师3--2-dlc&#34;&gt;巫师3 + 2 DLC
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;game-score-card&#34;&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;game-score-total&#34;&gt;
+    &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-value&#34;&gt;27 / 35&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐⭐⭐☆&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🌟 优秀，值得体验&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;game-score-list&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚔️ 动作&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎮 游戏性&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4.5&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
+}
+
+@media (max-width: 600px) {
+
+  .game-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
+  }
+
+  .game-score-bar {
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：选择会影响有些任务的流程；剧情超长；流派玩法也很多&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：动作僵硬，骑马和战斗都很别扭；支线太多，唯一没做完支线的游戏；美术有点灰蒙蒙的&lt;br&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：叶奈法❤️&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;最终幻想15&#34;&gt;最终幻想15
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;game-score-card&#34;&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;game-score-total&#34;&gt;
+    &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-value&#34;&gt;27 / 35&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐⭐⭐☆&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🌟 优秀，值得体验&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;game-score-list&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚔️ 动作&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎮 游戏性&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
+}
+
+@media (max-width: 600px) {
+
+  .game-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
+  }
+
+  .game-score-bar {
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：战斗很帅，大场面好看；剧情结合小说很棒&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：最终幻想一贯的除了战斗，动作都很别扭；可惜是半成品，真结局活在小说里&lt;br&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：露娜弗蕾亚❤️&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;八方旅人2&#34;&gt;八方旅人2
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;game-score-card&#34;&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;game-score-total&#34;&gt;
+    &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-value&#34;&gt;26.5 / 35&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐⭐⭐☆&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🌟 优秀，值得体验&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;game-score-list&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚔️ 动作&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎮 游戏性&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
+}
+
+@media (max-width: 600px) {
+
+  .game-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
+  }
+
+  .game-score-bar {
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：继承1的优点，画风再升级；剧情爆炸反转；战斗速度*2是好评&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：练级的过程还是和1代一样问题；有时候会掉帧&lt;br&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：斯洛妮❤️&lt;br&gt;
+💬 &lt;strong&gt;其他&lt;/strong&gt;：&lt;br&gt;
+每一对的主题不同，盗贼&amp;amp;神官：黑暗，猎人&amp;amp;剑士：热血，商人&amp;amp;舞娘：明亮，学者&amp;amp;药师：救赎&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;赛博朋克2077--dlc本体三周目dlc二周目&#34;&gt;赛博朋克2077 + DLC（本体三周目，DLC二周目）
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;game-score-card&#34;&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;game-score-total&#34;&gt;
+    &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-value&#34;&gt;26 / 35&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐⭐⭐☆&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🌟 优秀，值得体验&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;game-score-list&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚔️ 动作&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎮 游戏性&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
+}
+
+@media (max-width: 600px) {
+
+  .game-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
+  }
+
+  .game-score-bar {
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：选择会影响有些任务的流程；流派玩法也很多；多结局；全程第一人称很带感&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：流程相比巫师3会比较短，有点意犹未尽；优化有点拉&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;怪物猎人-荒野&#34;&gt;怪物猎人 荒野
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;game-score-card&#34;&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;game-score-total&#34;&gt;
+    &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-value&#34;&gt;25 / 35&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐⭐☆☆&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🔥 推荐，整体表现出色&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;game-score-list&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚔️ 动作&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎮 游戏性&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;5&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
+}
+
+@media (max-width: 600px) {
+
+  .game-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
+  }
+
+  .game-score-bar {
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：战斗爽！丰富的生态环境和地图相得益彰，华丽的角力相杀为演出加分不少。最重要的是，我女儿捏得真好看，荒野暖暖也是动力之一，培养的角色毕业成就感满满！&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：优化巨垃圾，倒不是说什么平常卡顿，因为关掉体积雾算蛮顺，但时不时地图就要卡爆需要大退真的恶心，而且每次更新都要渲染着色器！剧情问题倒是问题不大，毕竟怪猎也不是什么很依靠剧情的游戏&lt;br&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：我女儿真好看❤️&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;剑星--dlc本体三周目&#34;&gt;剑星 + DLC（本体三周目）
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;game-score-card&#34;&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;game-score-total&#34;&gt;
+    &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-value&#34;&gt;24.5 / 35&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐⭐☆☆&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🔥 推荐，整体表现出色&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;game-score-list&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚔️ 动作&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎮 游戏性&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
+}
+
+@media (max-width: 600px) {
+
+  .game-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
+  }
+
+  .game-score-bar {
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：衣服暴多，色色无敌；优化不错（虽然爆显存卡退过一次）；震刀手感不错；联动良心；线性流程设计不错；中文配音真的很可以&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：收集任务（汽水&amp;amp;拍照）无趣繁琐，收集全衣服要三周目，二周目就已经腻了；防御闪躲手感奇怪无比；boss多换皮怪&lt;br&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：由加莉❤️&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;女神异闻录3-reload--dlc本体二周目&#34;&gt;女神异闻录3 Reload + DLC（本体二周目）
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;game-score-card&#34;&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;game-score-total&#34;&gt;
+    &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-value&#34;&gt;24 / 35&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐⭐☆☆&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🔥 推荐，整体表现出色&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;game-score-list&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚔️ 动作&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎮 游戏性&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
+}
+
+@media (max-width: 600px) {
+
+  .game-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
+  }
+
+  .game-score-bar {
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：美术很潮，战斗画面爽爆，音乐非常不错；剧情低开高走但也比较一般，个人感觉DLC的剧情比本体好，加上了厚度和反转&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：捏面具和练级确实乏味，晚上只有两个coop不太合理；有时会掉帧而且不能开全特效（优化稀烂）；DLC85%时间都在爬塔，枯燥无比&lt;br&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：由加莉❤️&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;八方旅人1&#34;&gt;八方旅人1
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;game-score-card&#34;&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;game-score-total&#34;&gt;
+    &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-value&#34;&gt;24 / 35&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐⭐☆☆&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🔥 推荐，整体表现出色&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;game-score-list&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚔️ 动作&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎮 游戏性&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
+}
+
+@media (max-width: 600px) {
+
+  .game-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
+  }
+
+  .game-score-bar {
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：像素风，很新鲜好看；技能搭配很好玩&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：要练级，不然有点难，但是练级的过程很枯燥，而且没有后台经验的关系，八个人的经验不是均衡的，要练很久&lt;br&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：普莉姆萝洁❤️&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;生化危机9-安魂曲4周目&#34;&gt;生化危机9 安魂曲（4周目）
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;game-score-card&#34;&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;game-score-total&#34;&gt;
+    &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-value&#34;&gt;24 / 35&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐⭐☆☆&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🔥 推荐，整体表现出色&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;game-score-list&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚔️ 动作&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎮 游戏性&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
+}
+
+@media (max-width: 600px) {
+
+  .game-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
+  }
+
+  .game-score-bar {
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：双视角分别采用生2，生4的玩法，集大成之作；优秀的沉浸感；无限子弹门槛降低&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：流程短，剧情没惊喜；玩一会儿就会猛掉帧；没有艾达&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;最终幻想16&#34;&gt;最终幻想16
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;game-score-card&#34;&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;game-score-total&#34;&gt;
+    &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-value&#34;&gt;24 / 35&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐⭐☆☆&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🔥 推荐，整体表现出色&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;game-score-list&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚔️ 动作&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 1;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;1&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎮 游戏性&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
+}
+
+@media (max-width: 600px) {
+
+  .game-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
+  }
+
+  .game-score-bar {
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：大场面华丽史诗，战斗蛮带感的；上垒好评，美女多&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：动作僵硬（ex：不能自己选择奔驰！）；支线多数不佳；优化垃圾，掉帧卡顿闪退应有尽有&lt;br&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：吉尔❤️（希瓦），奥丁他妈❤️，艾达❤️（孕妇）&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;最终幻想7-重生&#34;&gt;最终幻想7 重生
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;game-score-card&#34;&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;game-score-total&#34;&gt;
+    &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-value&#34;&gt;24 / 35&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐⭐☆☆&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🔥 推荐，整体表现出色&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;game-score-list&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚔️ 动作&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎮 游戏性&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
+}
+
+@media (max-width: 600px) {
+
+  .game-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
+  }
+
+  .game-score-bar {
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：变成半开放世界后就多了很多探索；任务，小游戏，支线都不少；战斗优化得更有趣好玩；电影般的画面非常好看&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：动作依旧算僵硬；烦人的小游戏多，探索重复性高，乐趣也一般般；优化真的垃圾（更新后好一点，但是过场动画会卡是真绷不住）；主线弱智情节不少，逻辑不通，剧情演出节奏拖沓，大多数时候需要按RT快进，只能勉强给个及格分，而且主线塞小游戏真的巨烦！越后期越玩不下去；而且有些情节强制操作某些角色，真的恶心&lt;br&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：蒂法❤️，爱丽丝❤️，西斯妮❤️，艾丝特❤️&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;生化危机2-重制版表里皆有&#34;&gt;生化危机2 重制版（表里皆有）
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;game-score-card&#34;&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;game-score-total&#34;&gt;
+    &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-value&#34;&gt;23.5 / 35&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐⭐☆☆&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🔥 推荐，整体表现出色&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;game-score-list&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚔️ 动作&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎮 游戏性&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
+}
+
+@media (max-width: 600px) {
+
+  .game-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
+  }
+
+  .game-score-bar {
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：虽然流程短但是蛮好玩的，解谜要素+恐怖氛围蛮有趣，双主角&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：有点短，沉浸感一般&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;碧蓝幻想relink&#34;&gt;碧蓝幻想Relink
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;game-score-card&#34;&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;game-score-total&#34;&gt;
+    &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-value&#34;&gt;23.5 / 35&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐⭐☆☆&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🔥 推荐，整体表现出色&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;game-score-list&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚔️ 动作&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎮 游戏性&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
+}
+
+@media (max-width: 600px) {
+
+  .game-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
+  }
+
+  .game-score-bar {
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：妹子好看；战斗爽&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：刷子游戏，后期只能刷刷刷因子没事干了&lt;br&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：菲莉❤️，泽塔❤️，索恩❤️，娜露梅亚❤️&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;生化危机3-重制版&#34;&gt;生化危机3 重制版
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;game-score-card&#34;&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;game-score-total&#34;&gt;
+    &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-value&#34;&gt;23 / 35&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐⭐☆☆&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🔥 推荐，整体表现出色&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;game-score-list&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚔️ 动作&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎮 游戏性&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
+}
+
+@media (max-width: 600px) {
+
+  .game-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
+  }
+
+  .game-score-bar {
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：和上一部基本一样，游戏性有保证&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：变回单主角，而且吉尔不如克莱尔好看，单主角让主线更短了&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;符文工房3-豪华版&#34;&gt;符文工房3 豪华版
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;game-score-card&#34;&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;game-score-total&#34;&gt;
+    &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-value&#34;&gt;22 / 35&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐⭐☆☆&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🔥 推荐，整体表现出色&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;game-score-list&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚔️ 动作&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎮 游戏性&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
+}
+
+@media (max-width: 600px) {
+
+  .game-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
+  }
+
+  .game-score-bar {
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：上头，务农，打怪融合得很好；恋爱候补很多，人设都不错，鲜明；有很多小技巧可以快速赚钱，从此无忧无虑&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：有功利心会玩得很累；结婚后瞬间没动力；重制版并没有很好的把这个作品呈现得更好&lt;br&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：托娜❤️，卡琳❤️，咲耶❤️&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;宝可梦传说-za本体二周目&#34;&gt;宝可梦传说 ZA（本体二周目）
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;game-score-card&#34;&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;game-score-total&#34;&gt;
+    &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-value&#34;&gt;20.5 / 35&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐☆☆☆&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🙂 一般，有一定亮点&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;game-score-list&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚔️ 动作&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎮 游戏性&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
+}
+
+@media (max-width: 600px) {
+
+  .game-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
+  }
+
+  .game-score-bar {
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：玩法改成实时对战，比较有趣味性；努力值王冠那些也比较简单；闪光机制好评；好看的衣服很多&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：羸弱的剧情和劲敌塑造；支线通马桶&lt;br&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：玳萝❤️，卡娜莉❤️&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;最终幻想7-重制版&#34;&gt;最终幻想7 重制版
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;game-score-card&#34;&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;game-score-total&#34;&gt;
+    &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-value&#34;&gt;20 / 35&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐☆☆☆&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🙂 一般，有一定亮点&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;game-score-list&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚔️ 动作&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎮 游戏性&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
+}
+
+@media (max-width: 600px) {
+
+  .game-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
+  }
+
+  .game-score-bar {
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：蒂法&amp;amp;爱丽丝&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：动作僵硬；支线也不佳；整体较为无趣&lt;br&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：蒂法❤️，爱丽丝❤️&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;gal黄油&#34;&gt;GAL/黄油
 &lt;/h2&gt;&lt;h3 id=&#34;变态监狱henpri&#34;&gt;变态监狱Henpri
@@ -5261,13 +9234,13 @@ p. 查看远端仓库&lt;br&gt;
 
 
 &lt;div class=&#34;gal-score-card&#34;&gt;
-  &lt;div class=&#34;gal-score-title&#34;&gt;🎮 个人向评分卡&lt;/div&gt;
+  &lt;div class=&#34;gal-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
 
   &lt;div class=&#34;gal-score-total&#34;&gt;
     &lt;div class=&#34;gal-score-total-label&#34;&gt;总分&lt;/div&gt;
     &lt;div class=&#34;gal-score-total-value&#34;&gt;17 / 20&lt;/div&gt;
-    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐⭐⭐☆&lt;/div&gt;
-    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🌟 优秀，值得体验&lt;/div&gt;
+    &lt;div class=&#34;gal-score-total-stars&#34;&gt; ⭐⭐⭐⭐☆&lt;/div&gt;
+    &lt;div class=&#34;gal-score-total-comment&#34;&gt; 🌟 优秀，值得体验&lt;/div&gt;
   &lt;/div&gt;
 
   &lt;div class=&#34;gal-score-list&#34;&gt;
@@ -5290,7 +9263,7 @@ p. 查看远端仓库&lt;br&gt;
     &lt;/div&gt;
 
     &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 4.5;&#34;&gt;
-      &lt;div class=&#34;gal-score-name&#34;&gt;🌍 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;gal-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
       &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
       &lt;div class=&#34;gal-score-value&#34;&gt;4.5&lt;/div&gt;
     &lt;/div&gt;
@@ -5305,6 +9278,7 @@ p. 查看远端仓库&lt;br&gt;
   background: #f8d8ed;
   border: 2px solid #420c0c;
   box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
 }
 
 .gal-score-title {
@@ -5323,7 +9297,7 @@ p. 查看远端仓库&lt;br&gt;
 }
 
 .gal-score-total-label {
-  font-size: .9rem;
+  font-size: 1.25rem;
   opacity: .75;
 }
 
@@ -5380,14 +9354,39 @@ p. 查看远端仓库&lt;br&gt;
   font-size: 1.05rem;
 }
 
+.gal-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.gal-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+   
+}
+
 @media (max-width: 600px) {
+
   .gal-score-row {
-    grid-template-columns: 1fr 60px;
-    gap: .6rem;
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .gal-score-name {
+    text-align: left;
   }
 
   .gal-score-bar {
-    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .gal-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
   }
 
   .gal-score-total-value {
@@ -5397,14 +9396,928 @@ p. 查看远端仓库&lt;br&gt;
 &lt;/style&gt;
 &lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：量大饱满且文本极好的剧情引人入胜；优秀的人设；强劲的BGM和声优表现；各种反转乐趣满天飞&lt;br&gt;
 👎 &lt;strong&gt;缺点&lt;/strong&gt;：前期铺垫较长；有些线的智斗比较贫瘠，也有些人物塑造稍微薄弱；个别涩涩的场面没兴致&lt;br&gt;
-💕 &lt;strong&gt;老婆&lt;/strong&gt;：红林诺亚（声音中气反转）&lt;br&gt;
-📌 &lt;strong&gt;其他&lt;/strong&gt;：&lt;br&gt;
-主观个人线排名：诺亚线（人设&amp;amp;喜剧）&amp;gt; 妙花线（智斗&amp;amp;武斗）&amp;gt; 伊栖未线（动机不足直到真结局才揭晓）&lt;br&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：红林诺亚❤️（声音中气反转）&lt;br&gt;
+💬 &lt;strong&gt;其他&lt;/strong&gt;：&lt;br&gt;
+主观个人线排名：诺亚线（人设&amp;amp;喜剧）&amp;gt; 妙花线（智斗&amp;amp;武斗）&amp;gt; 伊栖未线（被针对的动机不足直到真结局才揭晓）&lt;br&gt;
 客观智斗线排名：伊栖未线 &amp;gt; 妙花线 &amp;gt; 诺亚线&lt;/p&gt;
 &lt;hr&gt;
+&lt;h3 id=&#34;拔作岛2--dlc&#34;&gt;拔作岛2 + DLC
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;gal-score-card&#34;&gt;
+  &lt;div class=&#34;gal-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;gal-score-total&#34;&gt;
+    &lt;div class=&#34;gal-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;gal-score-total-value&#34;&gt;16.5 / 20&lt;/div&gt;
+    &lt;div class=&#34;gal-score-total-stars&#34;&gt; ⭐⭐⭐⭐☆&lt;/div&gt;
+    &lt;div class=&#34;gal-score-total-comment&#34;&gt; 🌟 优秀，值得体验&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;gal-score-list&#34;&gt;
+    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 4.5;&#34;&gt;
+      &lt;div class=&#34;gal-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;gal-score-value&#34;&gt;4.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 4.5;&#34;&gt;
+      &lt;div class=&#34;gal-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;gal-score-value&#34;&gt;4.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;gal-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;gal-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 4.5;&#34;&gt;
+      &lt;div class=&#34;gal-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;gal-score-value&#34;&gt;4.5&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.gal-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #f8d8ed;
+  border: 2px solid #420c0c;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.gal-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.gal-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #fffeea;
+  border: 1px solid #6e691c;
+}
+
+.gal-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.gal-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.gal-score-stars {
+  font-size: 1.1rem;
+  margin-top: .25rem;
+}
+
+.gal-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.gal-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #fffeea;
+  border: 1px solid #6e691c;
+}
+
+.gal-score-name {
+  font-weight: 700;
+}
+
+.gal-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #e0bca7;
+  overflow: hidden;
+}
+
+.gal-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #f57926;
+}
+
+.gal-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.gal-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.gal-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+   
+}
+
+@media (max-width: 600px) {
+
+  .gal-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .gal-score-name {
+    text-align: left;
+  }
+
+  .gal-score-bar {
+    width: 100%;
+  }
+
+  .gal-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .gal-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：比较像是1代的大型资料片；和1代不同，主线剧情只有一个路线，只有攻略方面的剧情才有分支，所以可以skip；和1代注重剧情相比，2代更重于打磨人设（个人比较喜欢，尤其玩了2更喜欢FS3巨头了），其中包含1代女主角的各种后日谈；音乐相对1更好&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：同拔作岛1代&lt;br&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：女部田郁子❤️（软糯撒娇声线）&amp;gt; 糺川礼❤️（声音鼻音）&amp;gt; 冷泉院桐香❤️&lt;br&gt;
+💬 &lt;strong&gt;其他&lt;/strong&gt;：&lt;br&gt;
+主观个人排名：郁子线（细心大方，小黄恶魔）&amp;gt; 礼线（现实与救赎，虐我婆奈奈濑）&amp;gt; 桐香线（天才背后，诙谐日常）&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;拔作岛&#34;&gt;拔作岛
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;gal-score-card&#34;&gt;
+  &lt;div class=&#34;gal-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;gal-score-total&#34;&gt;
+    &lt;div class=&#34;gal-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;gal-score-total-value&#34;&gt;15 / 20&lt;/div&gt;
+    &lt;div class=&#34;gal-score-total-stars&#34;&gt; ⭐⭐⭐⭐☆&lt;/div&gt;
+    &lt;div class=&#34;gal-score-total-comment&#34;&gt; 🌟 优秀，值得体验&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;gal-score-list&#34;&gt;
+    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;gal-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;gal-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;gal-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;gal-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 2.5;&#34;&gt;
+      &lt;div class=&#34;gal-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;gal-score-value&#34;&gt;2.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 4.5;&#34;&gt;
+      &lt;div class=&#34;gal-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;gal-score-value&#34;&gt;4.5&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.gal-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #f8d8ed;
+  border: 2px solid #420c0c;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.gal-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.gal-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #fffeea;
+  border: 1px solid #6e691c;
+}
+
+.gal-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.gal-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.gal-score-stars {
+  font-size: 1.1rem;
+  margin-top: .25rem;
+}
+
+.gal-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.gal-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #fffeea;
+  border: 1px solid #6e691c;
+}
+
+.gal-score-name {
+  font-weight: 700;
+}
+
+.gal-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #e0bca7;
+  overflow: hidden;
+}
+
+.gal-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #f57926;
+}
+
+.gal-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.gal-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.gal-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+   
+}
+
+@media (max-width: 600px) {
+
+  .gal-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .gal-score-name {
+    text-align: left;
+  }
+
+  .gal-score-bar {
+    width: 100%;
+  }
+
+  .gal-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .gal-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：天马行空的剧情；塑造良好的人设；音乐相对变态监狱较为逊色但依旧可圈可点&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：没有什么特别好的智斗情节导致缺少扣人心弦的场景；个别涩涩的场面没兴致，无特别令人印象深刻的台词&lt;br&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：片桐奈奈濑❤️&lt;br&gt;
+💬 &lt;strong&gt;其他&lt;/strong&gt;：&lt;br&gt;
+主观个人排名：美岬线（诺亚人设，妙花剧情）&amp;gt; 奈奈濑线（王道热血婆系辣妹）&amp;gt; 雏见线（间谍）&lt;br&gt;
+客观智斗排名：雏见线 &amp;gt; 美岬线 &amp;gt; 奈奈濑线&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;甜蜜夏日&#34;&gt;甜蜜夏日
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;gal-score-card&#34;&gt;
+  &lt;div class=&#34;gal-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;gal-score-total&#34;&gt;
+    &lt;div class=&#34;gal-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;gal-score-total-value&#34;&gt;14 / 20&lt;/div&gt;
+    &lt;div class=&#34;gal-score-total-stars&#34;&gt; ⭐⭐⭐☆☆&lt;/div&gt;
+    &lt;div class=&#34;gal-score-total-comment&#34;&gt; 🔥 推荐，整体表现出色&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;gal-score-list&#34;&gt;
+    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;gal-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;gal-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;gal-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;gal-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;gal-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;gal-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;gal-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;gal-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.gal-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #f8d8ed;
+  border: 2px solid #420c0c;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.gal-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.gal-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #fffeea;
+  border: 1px solid #6e691c;
+}
+
+.gal-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.gal-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.gal-score-stars {
+  font-size: 1.1rem;
+  margin-top: .25rem;
+}
+
+.gal-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.gal-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #fffeea;
+  border: 1px solid #6e691c;
+}
+
+.gal-score-name {
+  font-weight: 700;
+}
+
+.gal-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #e0bca7;
+  overflow: hidden;
+}
+
+.gal-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #f57926;
+}
+
+.gal-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.gal-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.gal-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+   
+}
+
+@media (max-width: 600px) {
+
+  .gal-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .gal-score-name {
+    text-align: left;
+  }
+
+  .gal-score-bar {
+    width: 100%;
+  }
+
+  .gal-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .gal-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：女角配角塑造良好，让人会心一笑；实用，真tm实用；故事没有扣人心弦的剧情，只有平淡日常的乡村故事，个人线节奏算快，这部分见仁见智&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：平庸的男主人设，其实想不透女生为什么会对他沦陷，温柔人设真的太腻了；音乐没那么出彩；共同线由于男主没什么魅力所以挺无聊&lt;br&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：香钟❤️ &amp;gt;= 和叶❤️ &amp;gt; 夜雪❤️；香钟赢一手叫床声音好听（撒娇的时候黏黏的声线很加分，而且会扮演年上姐姐，少年，妹妹的声线），毕竟和叶的叫床有点奇怪的（但是听说这个颤音很色，可能我不会欣赏）&lt;br&gt;
+💬 &lt;strong&gt;其他&lt;/strong&gt;：&lt;br&gt;
+和叶：傲娇却又细心体贴的同龄，自尊心极高的反差就是私下爱撒娇闷骚的性格&lt;br&gt;
+香钟：活泼青春的学妹，但大大咧咧的外表下却有着胆小不自信的一面&lt;br&gt;
+夜雪：温柔脱线爱开玩笑的电波系；有时候天然呆孩子气，有时候却又打直球；你觉得她傻乎乎的时候她会冷不丁的一语道破呢&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;人狼村之谜&#34;&gt;人狼村之谜
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;gal-score-card&#34;&gt;
+  &lt;div class=&#34;gal-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;gal-score-total&#34;&gt;
+    &lt;div class=&#34;gal-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;gal-score-total-value&#34;&gt;13.5 / 20&lt;/div&gt;
+    &lt;div class=&#34;gal-score-total-stars&#34;&gt; ⭐⭐⭐☆☆&lt;/div&gt;
+    &lt;div class=&#34;gal-score-total-comment&#34;&gt; 🔥 推荐，整体表现出色&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;gal-score-list&#34;&gt;
+    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 4.5;&#34;&gt;
+      &lt;div class=&#34;gal-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;gal-score-value&#34;&gt;4.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;gal-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;gal-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 2;&#34;&gt;
+      &lt;div class=&#34;gal-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;gal-score-value&#34;&gt;2&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;gal-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;gal-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.gal-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #f8d8ed;
+  border: 2px solid #420c0c;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.gal-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.gal-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #fffeea;
+  border: 1px solid #6e691c;
+}
+
+.gal-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.gal-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.gal-score-stars {
+  font-size: 1.1rem;
+  margin-top: .25rem;
+}
+
+.gal-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.gal-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #fffeea;
+  border: 1px solid #6e691c;
+}
+
+.gal-score-name {
+  font-weight: 700;
+}
+
+.gal-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #e0bca7;
+  overflow: hidden;
+}
+
+.gal-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #f57926;
+}
+
+.gal-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.gal-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.gal-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+   
+}
+
+@media (max-width: 600px) {
+
+  .gal-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .gal-score-name {
+    text-align: left;
+  }
+
+  .gal-score-bar {
+    width: 100%;
+  }
+
+  .gal-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .gal-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：剧本很好，氛围拿捏到位；暴露篇很有趣，令人会心一笑；女主人设都不错；番外编量大管饱，很有诚意&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：前期铺垫很好，揭露真相的时候结合科技反倒降低了神学的震撼和神秘感（虽说是为了呼应番外揭晓的主角能力jinx）；立绘略微简陋；没有18x画面；大量的番外铺垫却没有发展成大ip很可惜&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;千恋万花&#34;&gt;千恋万花
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;gal-score-card&#34;&gt;
+  &lt;div class=&#34;gal-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;gal-score-total&#34;&gt;
+    &lt;div class=&#34;gal-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;gal-score-total-value&#34;&gt;11.5 / 20&lt;/div&gt;
+    &lt;div class=&#34;gal-score-total-stars&#34;&gt; ⭐⭐☆☆☆&lt;/div&gt;
+    &lt;div class=&#34;gal-score-total-comment&#34;&gt; 🙂 一般，有一定亮点&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;gal-score-list&#34;&gt;
+    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 2;&#34;&gt;
+      &lt;div class=&#34;gal-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;gal-score-value&#34;&gt;2&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;gal-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;gal-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;gal-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;gal-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;gal-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;gal-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.gal-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #f8d8ed;
+  border: 2px solid #420c0c;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.gal-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.gal-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #fffeea;
+  border: 1px solid #6e691c;
+}
+
+.gal-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.gal-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.gal-score-stars {
+  font-size: 1.1rem;
+  margin-top: .25rem;
+}
+
+.gal-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.gal-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #fffeea;
+  border: 1px solid #6e691c;
+}
+
+.gal-score-name {
+  font-weight: 700;
+}
+
+.gal-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #e0bca7;
+  overflow: hidden;
+}
+
+.gal-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #f57926;
+}
+
+.gal-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.gal-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.gal-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+   
+}
+
+@media (max-width: 600px) {
+
+  .gal-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .gal-score-name {
+    text-align: left;
+  }
+
+  .gal-score-bar {
+    width: 100%;
+  }
+
+  .gal-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .gal-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：优秀的人设；🦌点不错&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：不吸引人的剧情造就的不投入，想要搞神学但是没有人狼村的剧本，基本玩到后面都在skip&lt;br&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：常陆茉子❤️&lt;/p&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;弃坑游戏&#34;&gt;弃坑游戏
-&lt;/h2&gt;&lt;h3 id=&#34;死亡搁浅&#34;&gt;死亡搁浅
-&lt;/h3&gt;</description>
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;死亡搁浅 - 玩得有点摸不着头脑&lt;/li&gt;
+&lt;li&gt;女神异闻录5 Strikers - 机制有点复杂，有点难&lt;/li&gt;
+&lt;li&gt;仁王3 - 残心机制对手残不友好&lt;/li&gt;
+&lt;li&gt;天穗之咲稻姬 - 不好玩&amp;hellip;&lt;/li&gt;
+&lt;li&gt;真女神转生5 - 主线和探索比例失衡，且地图复杂导致探索无乐趣可言，探索过程枯燥乏味且厌倦&lt;/li&gt;
+&lt;/ol&gt;
+</description>
         </item>
         
     </channel>
