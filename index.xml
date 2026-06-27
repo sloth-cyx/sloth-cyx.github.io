@@ -366,9 +366,13 @@
         <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
         
         <guid>https://sloth-cyx.github.io/p/%E5%A6%AE%E5%A7%AC%E5%A6%AE%E5%A7%AC%E7%BB%84%E5%90%88%E6%8B%90%E5%8A%9B%E7%BB%9F%E8%AE%A1%E8%A1%A8/</guid>
-        <description>&lt;img src="https://sloth-cyx.github.io/images/nikkeTwinsBuffComparison/nikkeTwinsBuffComparison_bg.png" alt="Featured image of post 【妮姬】妮姬组合拐力统计表" /&gt;&lt;p&gt;鉴于妮姬这次新出的偶像双子拐力不错，想要统计一下和皇冠+其他拐的区别，就做了这个统计。&lt;/p&gt;
-&lt;h2 id=&#34;偶像双子&#34;&gt;偶像双子
-&lt;/h2&gt;&lt;table&gt;
+        <description>&lt;img src="https://sloth-cyx.github.io/images/nikkeBuff/nikkeBuff_bg.png" alt="Featured image of post 【妮姬】妮姬组合拐力统计表" /&gt;&lt;h2 id=&#34;拐力表&#34;&gt;拐力表
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://1drv.ms/x/c/f3c5f916f8987410/IQB__XLp5omkS71O34ms6sPjAUZ2V-nG6vKWTRrP7zvmw4Q?e=uUJ3XF&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;📌​跳转：线上拐力表&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;组合拐力一览&#34;&gt;组合拐力一览
+&lt;/h2&gt;&lt;h3 id=&#34;偶像双子&#34;&gt;偶像双子
+&lt;/h3&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th style=&#34;text-align:center&#34;&gt;伤害乘区&lt;/th&gt;
@@ -437,8 +441,8 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id=&#34;皇冠初音&#34;&gt;皇冠+初音
-&lt;/h2&gt;&lt;table&gt;
+&lt;h3 id=&#34;皇冠初音&#34;&gt;皇冠+初音
+&lt;/h3&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th style=&#34;text-align:center&#34;&gt;伤害乘区&lt;/th&gt;
@@ -484,8 +488,8 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id=&#34;皇冠马斯特皇冠开大&#34;&gt;皇冠+马斯特（皇冠开大）
-&lt;/h2&gt;&lt;table&gt;
+&lt;h3 id=&#34;皇冠马斯特皇冠开大&#34;&gt;皇冠+马斯特（皇冠开大）
+&lt;/h3&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th style=&#34;text-align:center&#34;&gt;伤害乘区&lt;/th&gt;
@@ -531,8 +535,8 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id=&#34;皇冠马斯特马斯特三层开大&#34;&gt;皇冠+马斯特（马斯特三层开大）
-&lt;/h2&gt;&lt;table&gt;
+&lt;h3 id=&#34;皇冠马斯特马斯特三层开大&#34;&gt;皇冠+马斯特（马斯特三层开大）
+&lt;/h3&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th style=&#34;text-align:center&#34;&gt;伤害乘区&lt;/th&gt;
