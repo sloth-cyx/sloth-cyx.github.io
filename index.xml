@@ -42,7 +42,6 @@
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th style=&#34;text-align:left&#34;&gt;妮姬类型&lt;/th&gt;
-&lt;th style=&#34;text-align:center&#34;&gt;1级攻击力&lt;/th&gt;
 &lt;th style=&#34;text-align:center&#34;&gt;400级攻击力&lt;/th&gt;
 &lt;th style=&#34;text-align:center&#34;&gt;差距&lt;/th&gt;
 &lt;/tr&gt;
@@ -50,20 +49,17 @@
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left&#34;&gt;火力型&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;2525&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;92243&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;90318&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left&#34;&gt;辅助型&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;2425&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;77190&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;0.84个火力型&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;75265&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0.83个火力型&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:left&#34;&gt;防御型&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;2425&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;62137&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;60212&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;0.67个火力型&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -385,7 +381,7 @@
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;攻击力&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;54.62%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;53.97%&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
@@ -500,7 +496,7 @@
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;攻击力&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;72.64%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;72.29%&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -547,7 +543,7 @@
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;攻击力&lt;/td&gt;
-&lt;td style=&#34;text-align:center&#34;&gt;123.19%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;122.24%&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -1346,7 +1342,7 @@
       exportedAt: new Date().toISOString(),
       data: collectSetData(setEl)
     };
-    copyToClipboard(JSON.stringify(payload), &#39;基准 Set 已导出到剪贴板。&#39;);
+    copyToClipboard(JSON.stringify(payload), &#39;基准Set已导出到剪贴板&#39;);
   }
 
   function importBaseSet(setEl){
@@ -1394,7 +1390,7 @@
       if(formula) lines.push(formula);
       lines.push(&#39;&#39;);
     });
-    copyToClipboard(lines.join(&#39;\n&#39;), &#39;全部对比结果已复制到剪贴板。&#39;);
+    copyToClipboard(lines.join(&#39;\n&#39;), &#39;全部对比结果已复制到剪贴板&#39;);
   }
 
   function calculateSet(setEl){
