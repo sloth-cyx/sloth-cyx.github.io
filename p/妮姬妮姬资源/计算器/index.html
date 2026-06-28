@@ -916,37 +916,34 @@ window.onload = function() {
 </script>
 <h2 id="技能计算器">技能计算器
 </h2><div class="nikke-skill-calculator" id="nikkeSkillCalculator">
-  <div class="nsc-card">
-    <div class="nsc-notice">按角色技能需求与属性统计技能书、爆裂书与各属性代码手册消耗。</div>
-
-    <section class="nsc-panel nsc-demand-panel">
-      <div class="nsc-section-row">
-        <div class="nsc-panel-title no-margin">角色技能需求</div>
-        <button type="button" class="nsc-add-btn" id="addSkillSetBtn" aria-label="添加角色技能需求">＋</button>
-      </div>
-      <div class="nsc-help-text">每个 Set 代表一个角色。选择技能需求后必须选择属性；代码手册会按属性分别统计。</div>
-      <div id="skillSetList" class="nsc-set-list"></div>
-    </section>
-
-    <section class="nsc-panel nsc-result-panel">
-      <div class="nsc-panel-title">资源计算结果</div>
-      <div class="nsc-table-wrap">
-        <table class="nsc-table nsc-result-table">
-          <thead>
-            <tr>
-              <th>材料</th>
-              <th>消耗</th>
-              <th>库存</th>
-              <th>剩余</th>
-            </tr>
-          </thead>
-          <tbody id="resultTable"></tbody>
-        </table>
-      </div>
-    </section>
-  </div>
+<div class="nsc-card">
+<div class="nsc-notice">按角色技能需求与属性统计技能书、爆裂书与各属性代码手册消耗。</div>
+<section class="nsc-panel nsc-demand-panel">
+<div class="nsc-section-row">
+<div class="nsc-panel-title no-margin">角色技能需求</div>
+<button aria-label="添加角色技能需求" class="nsc-add-btn" id="addSkillSetBtn" type="button">＋</button>
 </div>
-
+<div class="nsc-help-text">每个 Set 代表一个角色。选择技能需求后必须选择属性；代码手册会按属性分别统计。</div>
+<div class="nsc-set-list" id="skillSetList"></div>
+</section>
+<section class="nsc-panel nsc-result-panel">
+<div class="nsc-panel-title">资源计算结果</div>
+<div class="nsc-table-wrap">
+<table class="nsc-table nsc-result-table">
+<thead>
+<tr>
+<th>材料</th>
+<th>消耗</th>
+<th>库存</th>
+<th>剩余</th>
+</tr>
+</thead>
+<tbody id="resultTable"></tbody>
+</table>
+</div>
+</section>
+<section class="nsc-panel nsc-month-panel"><div class="nsc-panel-title">每月技能资源获取数量</div><div class="nsc-table-wrap"><table class="nsc-table"><thead><tr><th>技能资源</th><th>总计（小活动*2）</th><th>总计（大活动）</th><th>总计（小活动*大活动）</th></tr></thead><tbody><tr><td>技能蓝书</td><td>4300</td><td>4204</td><td>4454</td></tr><tr><td>技能紫书</td><td>3120</td><td>3028</td><td>3218</td></tr><tr><td>技能金书</td><td>784</td><td>784</td><td>814</td></tr><tr><td>爆裂蓝书</td><td>2240</td><td>2102</td><td>2272</td></tr><tr><td>爆裂紫书</td><td>1630</td><td>1514</td><td>1644</td></tr><tr><td>爆裂金书</td><td>422</td><td>392</td><td>422</td></tr></tbody></table></div></section></div>
+</div>
 <style>
 .nikke-skill-calculator,
 .nikke-skill-calculator * {
@@ -1003,7 +1000,8 @@ window.onload = function() {
   color: #2d3748;
 }
 
-.nsc-result-panel {
+.nsc-result-panel,
+.nsc-month-panel {
   margin-top: 24px;
 }
 
@@ -1295,7 +1293,6 @@ window.onload = function() {
   }
 }
 </style>
-
 <script>
 (function () {
   const COSTS = {

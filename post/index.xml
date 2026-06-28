@@ -2421,37 +2421,34 @@ window.onload = function() {
 &lt;/script&gt;
 &lt;h2 id=&#34;技能计算器&#34;&gt;技能计算器
 &lt;/h2&gt;&lt;div class=&#34;nikke-skill-calculator&#34; id=&#34;nikkeSkillCalculator&#34;&gt;
-  &lt;div class=&#34;nsc-card&#34;&gt;
-    &lt;div class=&#34;nsc-notice&#34;&gt;按角色技能需求与属性统计技能书、爆裂书与各属性代码手册消耗。&lt;/div&gt;
-
-    &lt;section class=&#34;nsc-panel nsc-demand-panel&#34;&gt;
-      &lt;div class=&#34;nsc-section-row&#34;&gt;
-        &lt;div class=&#34;nsc-panel-title no-margin&#34;&gt;角色技能需求&lt;/div&gt;
-        &lt;button type=&#34;button&#34; class=&#34;nsc-add-btn&#34; id=&#34;addSkillSetBtn&#34; aria-label=&#34;添加角色技能需求&#34;&gt;＋&lt;/button&gt;
-      &lt;/div&gt;
-      &lt;div class=&#34;nsc-help-text&#34;&gt;每个 Set 代表一个角色。选择技能需求后必须选择属性；代码手册会按属性分别统计。&lt;/div&gt;
-      &lt;div id=&#34;skillSetList&#34; class=&#34;nsc-set-list&#34;&gt;&lt;/div&gt;
-    &lt;/section&gt;
-
-    &lt;section class=&#34;nsc-panel nsc-result-panel&#34;&gt;
-      &lt;div class=&#34;nsc-panel-title&#34;&gt;资源计算结果&lt;/div&gt;
-      &lt;div class=&#34;nsc-table-wrap&#34;&gt;
-        &lt;table class=&#34;nsc-table nsc-result-table&#34;&gt;
-          &lt;thead&gt;
-            &lt;tr&gt;
-              &lt;th&gt;材料&lt;/th&gt;
-              &lt;th&gt;消耗&lt;/th&gt;
-              &lt;th&gt;库存&lt;/th&gt;
-              &lt;th&gt;剩余&lt;/th&gt;
-            &lt;/tr&gt;
-          &lt;/thead&gt;
-          &lt;tbody id=&#34;resultTable&#34;&gt;&lt;/tbody&gt;
-        &lt;/table&gt;
-      &lt;/div&gt;
-    &lt;/section&gt;
-  &lt;/div&gt;
+&lt;div class=&#34;nsc-card&#34;&gt;
+&lt;div class=&#34;nsc-notice&#34;&gt;按角色技能需求与属性统计技能书、爆裂书与各属性代码手册消耗。&lt;/div&gt;
+&lt;section class=&#34;nsc-panel nsc-demand-panel&#34;&gt;
+&lt;div class=&#34;nsc-section-row&#34;&gt;
+&lt;div class=&#34;nsc-panel-title no-margin&#34;&gt;角色技能需求&lt;/div&gt;
+&lt;button aria-label=&#34;添加角色技能需求&#34; class=&#34;nsc-add-btn&#34; id=&#34;addSkillSetBtn&#34; type=&#34;button&#34;&gt;＋&lt;/button&gt;
 &lt;/div&gt;
-
+&lt;div class=&#34;nsc-help-text&#34;&gt;每个 Set 代表一个角色。选择技能需求后必须选择属性；代码手册会按属性分别统计。&lt;/div&gt;
+&lt;div class=&#34;nsc-set-list&#34; id=&#34;skillSetList&#34;&gt;&lt;/div&gt;
+&lt;/section&gt;
+&lt;section class=&#34;nsc-panel nsc-result-panel&#34;&gt;
+&lt;div class=&#34;nsc-panel-title&#34;&gt;资源计算结果&lt;/div&gt;
+&lt;div class=&#34;nsc-table-wrap&#34;&gt;
+&lt;table class=&#34;nsc-table nsc-result-table&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;材料&lt;/th&gt;
+&lt;th&gt;消耗&lt;/th&gt;
+&lt;th&gt;库存&lt;/th&gt;
+&lt;th&gt;剩余&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody id=&#34;resultTable&#34;&gt;&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+&lt;section class=&#34;nsc-panel nsc-month-panel&#34;&gt;&lt;div class=&#34;nsc-panel-title&#34;&gt;每月技能资源获取数量&lt;/div&gt;&lt;div class=&#34;nsc-table-wrap&#34;&gt;&lt;table class=&#34;nsc-table&#34;&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;技能资源&lt;/th&gt;&lt;th&gt;总计（小活动*2）&lt;/th&gt;&lt;th&gt;总计（大活动）&lt;/th&gt;&lt;th&gt;总计（小活动*大活动）&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;技能蓝书&lt;/td&gt;&lt;td&gt;4300&lt;/td&gt;&lt;td&gt;4204&lt;/td&gt;&lt;td&gt;4454&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;技能紫书&lt;/td&gt;&lt;td&gt;3120&lt;/td&gt;&lt;td&gt;3028&lt;/td&gt;&lt;td&gt;3218&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;技能金书&lt;/td&gt;&lt;td&gt;784&lt;/td&gt;&lt;td&gt;784&lt;/td&gt;&lt;td&gt;814&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;爆裂蓝书&lt;/td&gt;&lt;td&gt;2240&lt;/td&gt;&lt;td&gt;2102&lt;/td&gt;&lt;td&gt;2272&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;爆裂紫书&lt;/td&gt;&lt;td&gt;1630&lt;/td&gt;&lt;td&gt;1514&lt;/td&gt;&lt;td&gt;1644&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;爆裂金书&lt;/td&gt;&lt;td&gt;422&lt;/td&gt;&lt;td&gt;392&lt;/td&gt;&lt;td&gt;422&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;&lt;/section&gt;&lt;/div&gt;
+&lt;/div&gt;
 &lt;style&gt;
 .nikke-skill-calculator,
 .nikke-skill-calculator * {
@@ -2508,7 +2505,8 @@ window.onload = function() {
   color: #2d3748;
 }
 
-.nsc-result-panel {
+.nsc-result-panel,
+.nsc-month-panel {
   margin-top: 24px;
 }
 
@@ -2800,7 +2798,6 @@ window.onload = function() {
   }
 }
 &lt;/style&gt;
-
 &lt;script&gt;
 (function () {
   const COSTS = {
@@ -10058,7 +10055,7 @@ p. 查看远端仓库&lt;br&gt;
 
   &lt;div class=&#34;gal-score-total&#34;&gt;
     &lt;div class=&#34;gal-score-total-label&#34;&gt;总分&lt;/div&gt;
-    &lt;div class=&#34;gal-score-total-value&#34;&gt;13.5 / 20&lt;/div&gt;
+    &lt;div class=&#34;gal-score-total-value&#34;&gt;14 / 20&lt;/div&gt;
     &lt;div class=&#34;gal-score-total-stars&#34;&gt; ⭐⭐⭐☆☆&lt;/div&gt;
     &lt;div class=&#34;gal-score-total-comment&#34;&gt; 🔥 推荐，整体表现出色&lt;/div&gt;
   &lt;/div&gt;
@@ -10082,10 +10079,10 @@ p. 查看远端仓库&lt;br&gt;
       &lt;div class=&#34;gal-score-value&#34;&gt;2&lt;/div&gt;
     &lt;/div&gt;
 
-    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 4.5;&#34;&gt;
       &lt;div class=&#34;gal-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
       &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
-      &lt;div class=&#34;gal-score-value&#34;&gt;4&lt;/div&gt;
+      &lt;div class=&#34;gal-score-value&#34;&gt;4.5&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
