@@ -1355,9 +1355,9 @@
       if(!data || !data.common || !Array.isArray(data.segments)) throw new Error(&#39;格式不正确&#39;);
       fillSet(setEl, data);
       calculateAll();
-      alert(&#39;导入完成。&#39;);
+      alert(&#39;导入完成&#39;);
     } catch (err) {
-      alert(&#39;导入失败：JSON 格式不正确。&#39;);
+      alert(&#39;导入失败：JSON 格式不正确&#39;);
     }
   }
 
@@ -1480,17 +1480,18 @@ T4 - 无任何性价比和泛用性（很吃环境），属于对策垃圾卡，
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;#%e6%b3%b7%e5%a5%88&#34; &gt;&lt;strong&gt;20260601 - 添加泷奈&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
 &lt;a class=&#34;link&#34; href=&#34;#%e8%8c%a8%e7%93%a6%e4%bc%8a&#34; &gt;&lt;strong&gt;20260605 - 添加茨瓦伊&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
 &lt;a class=&#34;link&#34; href=&#34;#%e9%98%bf%e5%b0%94%e5%8d%a1%e5%a8%9c&#34; &gt;&lt;strong&gt;20260613 - 添加阿尔卡娜&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
-&lt;a class=&#34;link&#34; href=&#34;#%e6%88%98%e6%9c%af%e8%b4%9d%e6%96%af%e8%92%82&#34; &gt;&lt;strong&gt;20260613 - 添加战术贝斯蒂&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;#%e8%b4%9d%e6%96%af%e8%92%82%e6%88%98%e6%9c%af%e5%8d%87%e7%ba%a7&#34; &gt;&lt;strong&gt;20260613 - 添加贝斯蒂战术升级&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
 &lt;a class=&#34;link&#34; href=&#34;#%e8%96%87%e5%b0%94%e7%bb%b4%e7%89%b9&#34; &gt;&lt;strong&gt;20260613 - 添加薇尔维特&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
-&lt;a class=&#34;link&#34; href=&#34;#%e8%8e%89%e8%b4%9d%e9%9b%b7%e5%88%a9%e5%a5%a5&#34; &gt;&lt;strong&gt;20260615 - 添加莉贝雷利奥&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;a class=&#34;link&#34; href=&#34;#%e8%8e%89%e8%b4%9d%e9%9b%b7%e5%88%a9%e5%a5%a5&#34; &gt;&lt;strong&gt;20260615 - 添加莉贝雷利奥&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;#%e8%bf%aa%e5%a1%9e%e5%b0%94%e5%86%ac%e6%97%a5%e7%94%9c%e5%bf%83&#34; &gt;&lt;strong&gt;20260628 - 添加迪塞尔冬日甜心&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;泷奈&#34;&gt;泷奈
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_previous/inoueAvatar_300x300.png&#34;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_previous/inoueAvatar.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;inoueAvatar_300x300&#34;
+		alt=&#34;inoueAvatar&#34;
 	
 	
 &gt;&lt;/p&gt;
@@ -1567,13 +1568,13 @@ T4 - 无任何性价比和泛用性（很吃环境），属于对策垃圾卡，
 &gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;茨瓦伊&#34;&gt;茨瓦伊
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_previous/zweiAvatar_300x300.png&#34;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_previous/zweiAvatar.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;zweiAvatar_300x300&#34;
+		alt=&#34;zweiAvatar&#34;
 	
 	
 &gt;&lt;/p&gt;
@@ -1653,13 +1654,13 @@ T4 - 无任何性价比和泛用性（很吃环境），属于对策垃圾卡，
 &gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;阿尔卡娜&#34;&gt;阿尔卡娜
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_previous/arcanaAvatar_300x300.png&#34;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_previous/arcanaAvatar.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;arcanaAvatar_300x300&#34;
+		alt=&#34;arcanaAvatar&#34;
 	
 	
 &gt;&lt;/p&gt;
@@ -1738,14 +1739,14 @@ T4 - 无任何性价比和泛用性（很吃环境），属于对策垃圾卡，
 	
 &gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;战术贝斯蒂&#34;&gt;战术贝斯蒂
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_previous/vestiAvatar_300x300.png&#34;
+&lt;h2 id=&#34;贝斯蒂战术升级&#34;&gt;贝斯蒂战术升级
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_previous/vestiAvatar.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;vestiAvatar_300x300&#34;
+		alt=&#34;vestiAvatar&#34;
 	
 	
 &gt;&lt;/p&gt;
@@ -1799,7 +1800,7 @@ T4 - 无任何性价比和泛用性（很吃环境），属于对策垃圾卡，
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;要点：&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;战贝是张强力PVP卡的同时也是一张特殊的PVE卡，这都是由于她本身的机制都围绕着&lt;strong&gt;真伤&lt;/strong&gt;的缘故。&lt;/li&gt;
+&lt;li&gt;贝斯蒂战术升级（以下简称战贝）是张强力PVP卡的同时也是一张特殊的PVE卡，这都是由于她本身的机制都围绕着&lt;strong&gt;真伤&lt;/strong&gt;的缘故。&lt;/li&gt;
 &lt;li&gt;没错，在&lt;a class=&#34;link&#34; href=&#34;#%e6%b3%b7%e5%a5%88&#34; &gt;&lt;strong&gt;泷奈篇&lt;/strong&gt;&lt;/a&gt;也提过，真伤在PVE的定位不是普遍的个突出高分，而是在于&lt;strong&gt;越战推图&lt;/strong&gt;。这方面，战贝是毫无疑问的T0级别选手，她的全屏大招和超大范围AOE真伤普攻毫无疑问的让她成为越战的唯一真神。但，还是要再一次说明等级越高，战贝在推图的优先级就越往下降。&lt;/li&gt;
 &lt;li&gt;但不同于泷奈的是，战贝的推图强势可以带到企业塔里（毕竟没有反常塔），&lt;strong&gt;超毗+女仆双子+战贝+海伦&lt;/strong&gt;也是现在的主流极乐塔阵容。&lt;/li&gt;
 &lt;li&gt;这里也要补充一点，越战推图多数情况指的是&lt;strong&gt;小怪关&lt;/strong&gt;而非boss关。Boss关和个突一样的，真伤吃瘪，也意味着战贝在这个突这方面&lt;strong&gt;并不突出&lt;/strong&gt;。除非是定制高防御并且是&lt;strong&gt;&lt;span style=&#34;background-color: rgb(255, 60, 0); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: rgb(255, 255, 255);&#34;&gt;
@@ -1821,13 +1822,13 @@ T4 - 无任何性价比和泛用性（很吃环境），属于对策垃圾卡，
 &gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;薇尔维特&#34;&gt;薇尔维特
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_previous/velvetAvatar_300x300.png&#34;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_previous/velvetAvatar.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;velvetAvatar_300x300&#34;
+		alt=&#34;velvetAvatar&#34;
 	
 	
 &gt;&lt;/p&gt;
@@ -1904,13 +1905,13 @@ T4 - 无任何性价比和泛用性（很吃环境），属于对策垃圾卡，
 &gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;莉贝雷利奥&#34;&gt;莉贝雷利奥
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_previous/liberalioAvatar_300x300.png&#34;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_previous/liberalioAvatar.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;liberalioAvatar_300x300&#34;
+		alt=&#34;liberalioAvatar&#34;
 	
 	
 &gt;&lt;/p&gt;
@@ -1996,6 +1997,91 @@ T4 - 无任何性价比和泛用性（很吃环境），属于对策垃圾卡，
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;liberalioPickup.jpg&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;迪塞尔冬日甜心&#34;&gt;迪塞尔冬日甜心
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_previous/xDieselAvatar.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;xDieselAvatar&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;上场空间&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 推图&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 个突&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 竞技场&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;养成方向&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;养成&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;需求&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;技能等级&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;7+/10/10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;收藏品&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;SR15&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;装备等级&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4T10 | 5-0-0-0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;主词条&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4攻击4优越&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;副词条&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;无&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;养成优先级：T2&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;XP打分&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[!ERROR]&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;9/10&lt;/li&gt;
+&lt;li&gt;天使的面孔，魔鬼的身材，这是我看到草莓糖的第一眼评价。&lt;/li&gt;
+&lt;li&gt;脸蛋又美又可爱；而藏在制服下的绝佳比例身材，让人感到兴奋。尤其草莓糖的身材是我喜欢的那种匀称型，现实中完全有可能出现。&lt;/li&gt;
+&lt;li&gt;新制服虽然包得很紧，遐想的空间却更大了。&lt;/li&gt;
+&lt;li&gt;蹲姿时的窄裙+绝对领域，我反正败了。&lt;/li&gt;
+&lt;li&gt;唯一扣分点在那意义不明的雨靴。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;要点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;迪塞尔冬日甜心（以下简称冬糖）是目前毋庸置疑的&lt;strong&gt;&lt;span style=&#34;background-color: rgb(255, 60, 0); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: rgb(255, 255, 255);&#34;&gt;
+    燃烧
+&lt;/span&gt;&lt;/strong&gt;属性超大刀。&lt;/li&gt;
+&lt;li&gt;先说机制，冬糖强烈推荐&lt;strong&gt;第二个开大&lt;/strong&gt;，否则将损失很多伤害，这点需要在配队和实战的时候注意一下。&lt;/li&gt;
+&lt;li&gt;再说毒点，冬糖自身大量的拐都&lt;strong&gt;集中在全蓄力攻击上&lt;/strong&gt;，导致冬糖是不能速充的。加上buff只维持3秒，迪塞尔换弹时本身2秒换弹+换弹后摇+1秒蓄力，实际上是3.几秒的时间，不足以维持buff；所以冬糖&lt;strong&gt;刚需装弹魔方&lt;/strong&gt;。&lt;br&gt;
+&lt;em&gt;&lt;mark&gt;多动boss也会导致冬糖buff消失，所以手操蓄力打空气也是冬糖的必修课。&lt;/mark&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;除此之外，dot算在debuff里，所以对上能消除debuff的boss，冬糖是无力的，如异拦的蝎子。超米由于增强过的关系，蝎子是不能解除超米dot的，相信这也是SU区分2%和1%给予的一个特殊待遇。&lt;/li&gt;
+&lt;li&gt;由于自带超高的持续伤害提升（871.31%）和易伤，冬糖实际上很挑辅助；冬糖由于完全没有攻击力加成，加上自带的持续伤害提升是攻伤区，冬糖和低攻击力加成&amp;amp;高攻伤加成的辅助&lt;strong&gt;不契合&lt;/strong&gt;（ex：兔爱德，格拉维）。但如果配上高攻击力辅助如皇冠或冬日布丽德等，那冬糖伤害会非常高（涵盖了攻击力，攻伤区，暴伤区，易伤区全范围）。&lt;/li&gt;
+&lt;li&gt;冬糖自身的高伤害加上她开大的时候会挂上易伤这个稀有乘区，这让冬糖在跨属的个突上也被频繁使用。甚至由于自身不带任何攻击力提升的技能，冬糖通常没有抢当期个突Cbuff的风险，是个突跨属副C的好选择，例如百爆。&lt;/li&gt;
+&lt;li&gt;综上所述，冬糖是张强度很高的燃烧C+跨属副C，所以综合优先级给到&lt;strong&gt;T2&lt;/strong&gt;，适合卷个突3%以上的玩家培养。&lt;del&gt;缺点就是每一次开大的简易动画都要唱一下真的有点吵。&lt;/del&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_previous/xDieselPickup.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;xDieselPickup.jpg&#34;
 	
 	
 &gt;&lt;/p&gt;
@@ -3809,13 +3895,13 @@ T4 - 无任何性价比和泛用性（很吃环境），属于对策垃圾卡，
 &lt;a class=&#34;link&#34; href=&#34;#%e6%99%ae%e8%8e%89%e5%8d%a1&#34; &gt;&lt;strong&gt;20260528 - 添加普莉卡&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
 &lt;a class=&#34;link&#34; href=&#34;#%e6%96%b9%e8%88%9f%e9%bb%91%e8%89%b2%e6%b8%b8%e4%be%a0&#34; &gt;&lt;strong&gt;20260611 - 添加方舟黑色游侠&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;敏特&#34;&gt;敏特
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_2026/mintAvatar_300x300.png&#34;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_2026/mintAvatar.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;mintAvatar_300x300&#34;
+		alt=&#34;mintAvatar&#34;
 	
 	
 &gt;&lt;/p&gt;
@@ -3904,13 +3990,13 @@ T4 - 无任何性价比和泛用性（很吃环境），属于对策垃圾卡，
 &gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;普莉卡&#34;&gt;普莉卡
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_2026/prikaAvatar_300x300.png&#34;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_2026/prikaAvatar.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;prikaAvatar_300x300&#34;
+		alt=&#34;prikaAvatar&#34;
 	
 	
 &gt;&lt;/p&gt;
@@ -3995,13 +4081,13 @@ T4 - 无任何性价比和泛用性（很吃环境），属于对策垃圾卡，
 &gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;方舟黑色游侠&#34;&gt;方舟黑色游侠
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_2026/arkRangerBlackAvatar_300x300.png&#34;
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_2026/arkRangerBlackAvatar.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;arkRangerBlackAvatar_300x300&#34;
+		alt=&#34;arkRangerBlackAvatar&#34;
 	
 	
 &gt;&lt;/p&gt;
