@@ -806,6 +806,39 @@
   line-height: 1.35;
 }
 
+.nikke-buff-cmp .bcmp-core-field {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px;
+  align-items: end;
+}
+.nikke-buff-cmp .bcmp-core-toggle {
+  min-height: 38px;
+}
+.nikke-buff-cmp .bcmp-core-value input:disabled {
+  background: #e5e7eb;
+  color: #8d99ae;
+  cursor: not-allowed;
+}
+
+.nikke-buff-cmp .bcmp-core-shell &gt; span {
+  display: block;
+  color: #3d405b;
+  font-size: 11px;
+  font-weight: 850;
+  line-height: 1.35;
+  margin-bottom: 5px;
+}
+
+.nikke-buff-cmp .bcmp-core-value span {
+  display: none;
+}
+
+.nikke-buff-cmp .distance-wrap &gt; .bcmp-check-field {
+  width: 100%;
+}
+
+
 
 .nikke-buff-cmp .bcmp-buff-grid {
   display: grid;
@@ -848,6 +881,86 @@
 
 .nikke-buff-cmp .hidden { display: none !important; }
 
+.nikke-buff-cmp .bcmp-weapon-grid-1,
+.nikke-buff-cmp .bcmp-weapon-grid-2,
+.nikke-buff-cmp .bcmp-weapon-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 9px;
+  align-items: end;
+  width: 100%;
+  min-width: 0;
+}
+
+.nikke-buff-cmp .bcmp-weapon-grid-2,
+.nikke-buff-cmp .bcmp-weapon-grid-3 {
+  margin-top: 9px;
+}
+
+.nikke-buff-cmp .bcmp-weapon-grid-3 .core-field {
+  grid-column: span 2;
+  width: 100%;
+  min-width: 0;
+}
+
+.nikke-buff-cmp .bcmp-weapon-grid-3 .charge-field {
+  grid-column: span 2;
+  width: 100%;
+  min-width: 0;
+}
+
+.nikke-buff-cmp .bcmp-weapon-grid-3 .bcmp-core-field,
+.nikke-buff-cmp .bcmp-weapon-grid-3 .bcmp-buff-pair {
+  width: 100%;
+  min-width: 0;
+}
+
+.nikke-buff-cmp .bcmp-empty-field {
+  min-height: 1px;
+}
+
+
+ 
+.nikke-buff-cmp .distance-wrap &gt; span:first-child {
+  display: block;
+  color: #3d405b;
+  font-size: 11px;
+  font-weight: 850;
+  line-height: 1.35;
+  margin-bottom: 5px;
+}
+
+.nikke-buff-cmp .distance-wrap .distance-field {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 7px !important;
+  min-height: 38px;
+  width: 100%;
+}
+
+.nikke-buff-cmp .distance-wrap .distance-field input {
+  width: auto !important;
+  min-width: auto !important;
+  margin: 0 !important;
+  flex: 0 0 auto;
+}
+
+.nikke-buff-cmp .distance-wrap .distance-field span {
+  display: inline !important;
+  margin: 0 !important;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.nikke-buff-cmp .bcmp-core-toggle .core-state-text {
+  display: inline !important;
+  margin: 0 !important;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
 @container (max-width: 680px) {
   .nikke-buff-cmp .bcmp-grid,
   .nikke-buff-cmp .bcmp-main-grid,
@@ -865,9 +978,9 @@
   .nikke-buff-cmp .bcmp-copy-btn,
   .nikke-buff-cmp .bcmp-remove-btn,
   .nikke-buff-cmp .bcmp-delete-set-btn,
-.nikke-buff-cmp .bcmp-import-btn,
-.nikke-buff-cmp .bcmp-export-btn,
-.nikke-buff-cmp .bcmp-export-results-btn { width: 100%; }
+  .nikke-buff-cmp .bcmp-import-btn,
+  .nikke-buff-cmp .bcmp-export-btn,
+  .nikke-buff-cmp .bcmp-export-results-btn { width: 100%; }
   .nikke-buff-cmp .bcmp-grid,
   .nikke-buff-cmp .bcmp-main-grid,
   .nikke-buff-cmp .bcmp-buff-grid { grid-template-columns: minmax(0,1fr); }
@@ -876,6 +989,19 @@
   .nikke-buff-cmp .bcmp-field select { font-size: 16px; }
   .nikke-buff-cmp .bcmp-result-label { font-size: 9px; }
   .nikke-buff-cmp .bcmp-result-value { font-size: 13px; }
+  .nikke-buff-cmp .bcmp-weapon-grid-1,
+  .nikke-buff-cmp .bcmp-weapon-grid-2,
+  .nikke-buff-cmp .bcmp-weapon-grid-3 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .nikke-buff-cmp .bcmp-weapon-grid-3 .core-field,
+  .nikke-buff-cmp .bcmp-weapon-grid-3 .charge-field {
+    grid-column: auto;
+    width: 100%;
+  }
+  .nikke-buff-cmp .bcmp-empty-field {
+    display: none;
+  }
 }
 &lt;/style&gt;
 
@@ -906,10 +1032,9 @@
     [&#39;critRateBuff&#39;, &#39;暴击率 buff&#39;],
     [&#39;critDmgBuff&#39;, &#39;暴击伤害 buff&#39;],
     [&#39;atkDmgBuff&#39;, &#39;攻击伤害 buff&#39;],
-    [&#39;coreBuff&#39;, &#39;核心伤害 buff&#39;],
     [&#39;takenBuff&#39;, &#39;所受伤害 buff&#39;],
     [&#39;sharedBuff&#39;, &#39;分摊伤害 buff&#39;],
-    [&#39;chargeBuff&#39;, &#39;蓄力伤害 buff&#39;, &#39;weapon&#39;]
+    [&#39;chargeBuff&#39;, &#39;蓄力伤害 buff &#39;, &#39;weapon&#39;]
   ];
 
   function buffPair(key, label, cls){
@@ -917,6 +1042,17 @@
       &lt;div class=&#34;bcmp-buff-pair ${cls || &#39;&#39;}&#34;&gt;
         &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;${label}（%）&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;${key}&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
         &lt;label class=&#34;bcmp-field bcmp-duration-field&#34;&gt;&lt;span&gt;时间&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;${key}Duration&#34; value=&#34;10&#34; min=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+      &lt;/div&gt;`;
+  }
+
+  function coreField(){
+    return `
+      &lt;div class=&#34;bcmp-core-shell bcmp-field&#34;&gt;
+        &lt;span&gt;核心伤害（%）&lt;/span&gt;
+        &lt;div class=&#34;bcmp-core-field&#34;&gt;
+          &lt;label class=&#34;bcmp-check-field bcmp-core-toggle&#34;&gt;&lt;input type=&#34;checkbox&#34; data-key=&#34;coreEnabled&#34;&gt;&lt;span class=&#34;core-state-text&#34;&gt;无核&lt;/span&gt;&lt;/label&gt;
+          &lt;label class=&#34;bcmp-field bcmp-core-value&#34;&gt;&lt;input type=&#34;number&#34; data-key=&#34;coreBuff&#34; value=&#34;&#34; min=&#34;0&#34; step=&#34;0.01&#34; disabled placeholder=&#34;勾选后填入数值&#34;&gt;&lt;/label&gt;
+        &lt;/div&gt;
       &lt;/div&gt;`;
   }
 
@@ -930,7 +1066,7 @@
     const critRate = 0.15 + activeBuff(seg, &#39;critRateBuff&#39;, t);
     const critDmg = 0.5 + activeBuff(seg, &#39;critDmgBuff&#39;, t);
     const critExpected = critRate * critDmg;
-    const coreBuff = activeBuff(seg, &#39;coreBuff&#39;, t);
+    const coreBonus = seg.type === &#39;weapon&#39; &amp;&amp; seg.coreEnabled ? pct(seg.coreBuff) : 0;
     const chargeBuff = seg.type === &#39;weapon&#39; &amp;&amp; supportsCharge(seg.weaponType) ? activeBuff(seg, &#39;chargeBuff&#39;, t) : 0;
     const sharedBuff = activeBuff(seg, &#39;sharedBuff&#39;, t);
     const atkDmgBuff = activeBuff(seg, &#39;atkDmgBuff&#39;, t);
@@ -940,7 +1076,7 @@
       critDmg,
       critExpected,
       distanceBonus,
-      correction: 1 + critExpected + 0.5 + (1 + coreBuff) + distanceBonus,
+      correction: 1 + critExpected + 0.5 + coreBonus + distanceBonus,
       element: 1.1 + activeBuff(seg, &#39;elementBuff&#39;, t),
       charge: 1 + chargeBuff,
       vulnerability: 1 + activeBuff(seg, &#39;takenBuff&#39;, t) + sharedBuff,
@@ -1111,7 +1247,7 @@
 
         &lt;div class=&#34;bcmp-subtitle&#34;&gt;伤害段落&lt;/div&gt;
         &lt;div class=&#34;bcmp-section-row&#34;&gt;
-          &lt;div class=&#34;bcmp-note&#34; style=&#34;margin-top:0; flex:1;&#34;&gt;每个段落代表一段时间轴。武器/普攻请填写段落总子弹数；同武器类型会沿用第一段的弹匣/换弹，不同武器类型分开计算。最大装弹数 0 = 无限；换弹速度 0 = 无。&lt;/div&gt;
+          &lt;div class=&#34;bcmp-note&#34; style=&#34;margin-top:0; flex:1;&#34;&gt;每个段落代表一段时间轴。武器/普攻请填写段落总子弹数；同武器类型会沿用第一段的弹匣/换弹，不同武器类型分开计算。最大装弹数 0 = 无限；换弹速度 0 = 无。蓄力伤害默认已包含基础100%，例如角色显示150%蓄力伤害时，请填写50%；显示250%时，请填写150%。&lt;/div&gt;
           &lt;button type=&#34;button&#34; class=&#34;bcmp-btn bcmp-add-seg&#34;&gt;添加&lt;/button&gt;
         &lt;/div&gt;
         &lt;div class=&#34;bcmp-segments&#34;&gt;&lt;/div&gt;
@@ -1135,17 +1271,26 @@
           &lt;button type=&#34;button&#34; class=&#34;bcmp-remove-btn&#34;&gt;删除&lt;/button&gt;
         &lt;/div&gt;
 
-        &lt;div class=&#34;bcmp-main-grid&#34;&gt;
+        &lt;div class=&#34;bcmp-weapon-grid-1&#34;&gt;
           &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;类型&lt;/span&gt;&lt;select data-key=&#34;type&#34; class=&#34;seg-type&#34;&gt;&lt;option value=&#34;weapon&#34;&gt;武器 / 普攻&lt;/option&gt;&lt;option value=&#34;skill&#34;&gt;技能伤害&lt;/option&gt;&lt;/select&gt;&lt;/label&gt;
           &lt;label class=&#34;bcmp-field weapon-only&#34;&gt;&lt;span&gt;武器类型&lt;/span&gt;&lt;select data-key=&#34;weaponType&#34; class=&#34;weapon-type&#34;&gt;&lt;option value=&#34;rifle&#34;&gt;步枪&lt;/option&gt;&lt;option value=&#34;smg&#34;&gt;冲锋枪&lt;/option&gt;&lt;option value=&#34;mg&#34;&gt;机枪&lt;/option&gt;&lt;option value=&#34;sg&#34;&gt;霰弹枪&lt;/option&gt;&lt;option value=&#34;sr&#34;&gt;狙击枪&lt;/option&gt;&lt;option value=&#34;rl&#34;&gt;发射器&lt;/option&gt;&lt;/select&gt;&lt;/label&gt;
           &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;段落总时间（秒）&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;duration&#34; value=&#34;10&#34; min=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
           &lt;label class=&#34;bcmp-field&#34;&gt;&lt;span&gt;倍率（%）&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;multiplier&#34; value=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+          &lt;label class=&#34;bcmp-field skill-only hidden&#34;&gt;&lt;span&gt;段落总触发次数&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;times&#34; value=&#34;1&#34; min=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&#34;bcmp-weapon-grid-2&#34;&gt;
           &lt;label class=&#34;bcmp-field weapon-only&#34;&gt;&lt;span&gt;段落总子弹数&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;shots&#34; value=&#34;0&#34; min=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
           &lt;label class=&#34;bcmp-field weapon-only magazine-field&#34;&gt;&lt;span&gt;最大装弹数（0=无限）&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;magazine&#34; value=&#34;0&#34; min=&#34;0&#34; step=&#34;1&#34;&gt;&lt;/label&gt;
           &lt;label class=&#34;bcmp-field weapon-only reload-field&#34;&gt;&lt;span&gt;换弹速度（秒）（0=无）&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;reload&#34; value=&#34;0&#34; min=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
-          &lt;div class=&#34;weapon-only charge-field&#34;&gt;${buffPair(&#39;chargeBuff&#39;, &#39;蓄力伤害&#39;)}&lt;/div&gt;
-          &lt;label class=&#34;bcmp-check-field weapon-only distance-field&#34;&gt;&lt;input type=&#34;checkbox&#34; data-key=&#34;distanceBonus&#34;&gt;&lt;span&gt;距离补正 +0.3&lt;/span&gt;&lt;/label&gt;
-          &lt;label class=&#34;bcmp-field skill-only hidden&#34;&gt;&lt;span&gt;段落总触发次数&lt;/span&gt;&lt;input type=&#34;number&#34; data-key=&#34;times&#34; value=&#34;1&#34; min=&#34;0&#34; step=&#34;0.01&#34;&gt;&lt;/label&gt;
+          &lt;label class=&#34;bcmp-field weapon-only distance-wrap&#34;&gt;&lt;span class=&#34;bcmp-check-field distance-field&#34;&gt;&lt;input type=&#34;checkbox&#34; data-key=&#34;distanceBonus&#34;&gt;&lt;span&gt;距离补正+0.3&lt;/span&gt;&lt;/span&gt;&lt;/label&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&#34;bcmp-weapon-grid-3 weapon-only&#34;&gt;
+          &lt;div class=&#34;core-field&#34;&gt;
+            ${coreField()}
+          &lt;/div&gt;
+          &lt;div class=&#34;charge-field&#34;&gt;${buffPair(&#39;chargeBuff&#39;, &#39;蓄力伤害&#39;)}&lt;/div&gt;
         &lt;/div&gt;
 
         &lt;div class=&#34;bcmp-block-title&#34;&gt;Buff 设置&lt;/div&gt;
@@ -1155,7 +1300,6 @@
           ${buffPair(&#39;critRateBuff&#39;, &#39;暴击率&#39;)}
           ${buffPair(&#39;critDmgBuff&#39;, &#39;暴击伤害&#39;)}
           ${buffPair(&#39;atkDmgBuff&#39;, &#39;攻击伤害&#39;)}
-          ${buffPair(&#39;coreBuff&#39;, &#39;核心伤害&#39;)}
           ${buffPair(&#39;takenBuff&#39;, &#39;所受伤害&#39;)}
           ${buffPair(&#39;sharedBuff&#39;, &#39;分摊伤害&#39;)}
         &lt;/div&gt;
@@ -1184,6 +1328,8 @@
       shots: cleanNonNegative(read(&#39;shots&#39;)),
       magazine: cleanNonNegative(read(&#39;magazine&#39;)),
       reload: cleanNonNegative(read(&#39;reload&#39;)),
+      coreEnabled: type === &#39;weapon&#39; ? checked(&#39;coreEnabled&#39;) : false,
+      coreBuff: type === &#39;weapon&#39; ? cleanNonNegative(read(&#39;coreBuff&#39;)) : 0,
       distanceBonus: type === &#39;weapon&#39; &amp;&amp; supportsDistance(segEl.querySelector(&#39;[data-key=&#34;weaponType&#34;]&#39;)?.value || &#39;rifle&#39;) ? checked(&#39;distanceBonus&#39;) : false,
       times: cleanNonNegative(read(&#39;times&#39;))
     };
@@ -1194,6 +1340,36 @@
     return seg;
   }
 
+
+  function refreshCoreField(segEl, isWeapon){
+    const coreWrap = segEl.querySelector(&#39;.core-field&#39;);
+    if(!coreWrap) return;
+    coreWrap.classList.toggle(&#39;hidden&#39;, !isWeapon);
+    const cb = coreWrap.querySelector(&#39;[data-key=&#34;coreEnabled&#34;]&#39;);
+    const input = coreWrap.querySelector(&#39;[data-key=&#34;coreBuff&#34;]&#39;);
+    const stateText = coreWrap.querySelector(&#39;.core-state-text&#39;);
+    if(!isWeapon) {
+      if(cb) cb.checked = false;
+      if(stateText) stateText.textContent = &#39;无核&#39;;
+      if(input) {
+        input.value = &#39;&#39;;
+        input.disabled = true;
+      }
+      return;
+    }
+    if(cb &amp;&amp; input) {
+      if(cb.checked) {
+        if(stateText) stateText.textContent = &#39;有核&#39;;
+        input.disabled = false;
+        if(input.value === &#39;&#39;) input.value = &#39;200&#39;;
+      } else {
+        if(stateText) stateText.textContent = &#39;无核&#39;;
+        input.value = &#39;&#39;;
+        input.disabled = true;
+      }
+    }
+  }
+
   function refreshSegmentVisibility(segEl){
     const isWeapon = segEl.querySelector(&#39;[data-key=&#34;type&#34;]&#39;).value === &#39;weapon&#39;;
     const weaponType = segEl.querySelector(&#39;[data-key=&#34;weaponType&#34;]&#39;)?.value || &#39;rifle&#39;;
@@ -1201,10 +1377,14 @@
     segEl.querySelectorAll(&#39;.skill-only&#39;).forEach(el =&gt; el.classList.toggle(&#39;hidden&#39;, isWeapon));
     const chargeField = segEl.querySelector(&#39;.charge-field&#39;);
     if(chargeField) chargeField.classList.toggle(&#39;hidden&#39;, !isWeapon || !supportsCharge(weaponType));
+    refreshCoreField(segEl, isWeapon);
+    const distanceWrap = segEl.querySelector(&#39;.distance-wrap&#39;);
     const distanceField = segEl.querySelector(&#39;.distance-field&#39;);
+    const hideDistance = !isWeapon || !supportsDistance(weaponType);
+    if(distanceWrap) distanceWrap.classList.toggle(&#39;hidden&#39;, hideDistance);
     if(distanceField) {
-      distanceField.classList.toggle(&#39;hidden&#39;, !isWeapon || !supportsDistance(weaponType));
-      if(!isWeapon || !supportsDistance(weaponType)) {
+      distanceField.classList.toggle(&#39;hidden&#39;, hideDistance);
+      if(hideDistance) {
         const cb = distanceField.querySelector(&#39;[data-key=&#34;distanceBonus&#34;]&#39;);
         if(cb) cb.checked = false;
       }
@@ -1316,6 +1496,12 @@
       data.atkDmgBuffDuration = data.type === &#39;skill&#39; ? data.atkDmgBuffSkillDuration : data.atkDmgBuffWeaponDuration;
     }
 
+    
+    if(data.coreEnabled === undefined) {
+      data.coreEnabled = data.type === &#39;weapon&#39; &amp;&amp; num(data.coreBuff) &gt; 0 &amp;&amp; (data.coreBuffDuration === undefined || num(data.coreBuffDuration) &gt; 0);
+    }
+    if(data.coreEnabled &amp;&amp; (data.coreBuff === undefined || data.coreBuff === &#39;&#39;)) data.coreBuff = 200;
+
     Object.entries(data).forEach(([key, val]) =&gt; {
       const input = segEl.querySelector(`[data-key=&#34;${key}&#34;]`);
       if(input) {
@@ -1328,11 +1514,16 @@
   }
 
   function buffSummary(seg){
-    return BUFFS
+    const parts = BUFFS
       .filter(([key, , type]) =&gt; !type || type === seg.type)
       .filter(([key]) =&gt; num(seg[key]) !== 0 &amp;&amp; num(seg[key + &#39;Duration&#39;]) &gt; 0)
-      .map(([key, label]) =&gt; `${label.replace(/\s*buff$/, &#39;buff&#39;)} ${fmt2(seg[key])}%/${fmt2(seg[key + &#39;Duration&#39;])}秒`)
-      .join(&#39;，&#39;) || &#39;无&#39;;
+      .map(([key, label]) =&gt; `${label.replace(/\s*buff$/, &#39;buff&#39;)} ${fmt2(seg[key])}%/${fmt2(seg[key + &#39;Duration&#39;])}秒`);
+
+    if(seg.type === &#39;weapon&#39; &amp;&amp; seg.coreEnabled &amp;&amp; num(seg.coreBuff) &gt; 0) {
+      parts.push(`核心伤害 ${fmt2(seg.coreBuff)}%`);
+    }
+
+    return parts.join(&#39;，&#39;) || &#39;无&#39;;
   }
 
 
@@ -1420,7 +1611,7 @@
         ? `${weaponTypeName(seg.weaponType)} ${fmt2(seg.duration)}秒，预计 ${fmt2(seg.shots)} 发，实际 ${fmt2(res.count)} 发`
         : `技能伤害 ${fmt2(seg.duration)}秒内 ${fmt2(res.count)} 次`;
       const sliceInfo = res.slices.length &gt; 1 ? `；自动拆成 ${res.slices.length} 段计算` : &#39;&#39;;
-      const extra = seg.type === &#39;weapon&#39; ? `弹匣 ${cleanNonNegative(seg.effectiveMagazine) &lt;= 0 ? &#39;无限&#39; : fmt2(seg.effectiveMagazine)}，换弹 ${cleanNonNegative(seg.effectiveReload) &lt;= 0 ? &#39;无&#39; : fmt2(seg.effectiveReload) + &#39;秒&#39;}，距离补正 ${seg.distanceBonus ? &#39;+0.3&#39; : &#39;无&#39;}` : &#39;技能无距离补正&#39;;
+      const extra = seg.type === &#39;weapon&#39; ? `弹匣 ${cleanNonNegative(seg.effectiveMagazine) &lt;= 0 ? &#39;无限&#39; : fmt2(seg.effectiveMagazine)}，换弹 ${cleanNonNegative(seg.effectiveReload) &lt;= 0 ? &#39;无&#39; : fmt2(seg.effectiveReload) + &#39;秒&#39;}，核心 ${seg.coreEnabled ? fmt2(seg.coreBuff) + &#39;%&#39; : &#39;无&#39;}，距离补正 ${seg.distanceBonus ? &#39;+0.3&#39; : &#39;无&#39;}` : &#39;技能无距离补正&#39;;
       const multInfo = segmentMultiplierSummary(common, seg, res);
       parts.push(`#${idx + 1} ${label}，平均单次 ${fmt(res.perHit)}，本段 ${fmt(res.total)}${sliceInfo}；${extra}；Buff：${buffSummary(seg)}；${multInfo}`);
     });
@@ -3034,7 +3225,8 @@ window.onload = function() {
     &lt;div class=&#34;attr-section-title&#34;&gt;词条期望计算器&lt;/div&gt;
     &lt;div class=&#34;attr-calc-note&#34;&gt;
       选择目标词条后自动计算命中概率、期望洗词条次数、石头消耗与锁子消耗。已锁定词条视为已经拥有，不参与命中概率计算。&lt;br&gt;
-      「石头锁定」会计算一次性锁定成本；「石头已锁」只计算后续洗词条增加的每次石头成本。
+      「石头锁定」会计算一次性锁定成本；「石头已锁」只计算后续洗词条增加的每次石头成本。&lt;br&gt;
+      * 期望指数仅代表长期平均参考，并非保底。每次重洗均为独立判定，因此实际结果可能高于或低于期望次数。
     &lt;/div&gt;
 
     &lt;div class=&#34;attr-slot-grid&#34;&gt;

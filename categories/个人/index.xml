@@ -4917,7 +4917,7 @@
 
   &lt;div class=&#34;gal-score-total&#34;&gt;
     &lt;div class=&#34;gal-score-total-label&#34;&gt;总分&lt;/div&gt;
-    &lt;div class=&#34;gal-score-total-value&#34;&gt;16.5 / 20&lt;/div&gt;
+    &lt;div class=&#34;gal-score-total-value&#34;&gt;17 / 20&lt;/div&gt;
     &lt;div class=&#34;gal-score-total-stars&#34;&gt; ⭐⭐⭐⭐☆&lt;/div&gt;
     &lt;div class=&#34;gal-score-total-comment&#34;&gt; 🌟 优秀，值得体验&lt;/div&gt;
   &lt;/div&gt;
@@ -4941,10 +4941,10 @@
       &lt;div class=&#34;gal-score-value&#34;&gt;3&lt;/div&gt;
     &lt;/div&gt;
 
-    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 4.5;&#34;&gt;
+    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 5;&#34;&gt;
       &lt;div class=&#34;gal-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
       &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
-      &lt;div class=&#34;gal-score-value&#34;&gt;4.5&lt;/div&gt;
+      &lt;div class=&#34;gal-score-value&#34;&gt;5&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;

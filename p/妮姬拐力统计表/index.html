@@ -1037,6 +1037,39 @@ post-sidebar">
   line-height: 1.35;
 }
 
+.nikke-buff-cmp .bcmp-core-field {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px;
+  align-items: end;
+}
+.nikke-buff-cmp .bcmp-core-toggle {
+  min-height: 38px;
+}
+.nikke-buff-cmp .bcmp-core-value input:disabled {
+  background: #e5e7eb;
+  color: #8d99ae;
+  cursor: not-allowed;
+}
+
+.nikke-buff-cmp .bcmp-core-shell > span {
+  display: block;
+  color: #3d405b;
+  font-size: 11px;
+  font-weight: 850;
+  line-height: 1.35;
+  margin-bottom: 5px;
+}
+
+.nikke-buff-cmp .bcmp-core-value span {
+  display: none;
+}
+
+.nikke-buff-cmp .distance-wrap > .bcmp-check-field {
+  width: 100%;
+}
+
+
 
 .nikke-buff-cmp .bcmp-buff-grid {
   display: grid;
@@ -1079,6 +1112,86 @@ post-sidebar">
 
 .nikke-buff-cmp .hidden { display: none !important; }
 
+.nikke-buff-cmp .bcmp-weapon-grid-1,
+.nikke-buff-cmp .bcmp-weapon-grid-2,
+.nikke-buff-cmp .bcmp-weapon-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 9px;
+  align-items: end;
+  width: 100%;
+  min-width: 0;
+}
+
+.nikke-buff-cmp .bcmp-weapon-grid-2,
+.nikke-buff-cmp .bcmp-weapon-grid-3 {
+  margin-top: 9px;
+}
+
+.nikke-buff-cmp .bcmp-weapon-grid-3 .core-field {
+  grid-column: span 2;
+  width: 100%;
+  min-width: 0;
+}
+
+.nikke-buff-cmp .bcmp-weapon-grid-3 .charge-field {
+  grid-column: span 2;
+  width: 100%;
+  min-width: 0;
+}
+
+.nikke-buff-cmp .bcmp-weapon-grid-3 .bcmp-core-field,
+.nikke-buff-cmp .bcmp-weapon-grid-3 .bcmp-buff-pair {
+  width: 100%;
+  min-width: 0;
+}
+
+.nikke-buff-cmp .bcmp-empty-field {
+  min-height: 1px;
+}
+
+
+ 
+.nikke-buff-cmp .distance-wrap > span:first-child {
+  display: block;
+  color: #3d405b;
+  font-size: 11px;
+  font-weight: 850;
+  line-height: 1.35;
+  margin-bottom: 5px;
+}
+
+.nikke-buff-cmp .distance-wrap .distance-field {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 7px !important;
+  min-height: 38px;
+  width: 100%;
+}
+
+.nikke-buff-cmp .distance-wrap .distance-field input {
+  width: auto !important;
+  min-width: auto !important;
+  margin: 0 !important;
+  flex: 0 0 auto;
+}
+
+.nikke-buff-cmp .distance-wrap .distance-field span {
+  display: inline !important;
+  margin: 0 !important;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.nikke-buff-cmp .bcmp-core-toggle .core-state-text {
+  display: inline !important;
+  margin: 0 !important;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
 @container (max-width: 680px) {
   .nikke-buff-cmp .bcmp-grid,
   .nikke-buff-cmp .bcmp-main-grid,
@@ -1096,9 +1209,9 @@ post-sidebar">
   .nikke-buff-cmp .bcmp-copy-btn,
   .nikke-buff-cmp .bcmp-remove-btn,
   .nikke-buff-cmp .bcmp-delete-set-btn,
-.nikke-buff-cmp .bcmp-import-btn,
-.nikke-buff-cmp .bcmp-export-btn,
-.nikke-buff-cmp .bcmp-export-results-btn { width: 100%; }
+  .nikke-buff-cmp .bcmp-import-btn,
+  .nikke-buff-cmp .bcmp-export-btn,
+  .nikke-buff-cmp .bcmp-export-results-btn { width: 100%; }
   .nikke-buff-cmp .bcmp-grid,
   .nikke-buff-cmp .bcmp-main-grid,
   .nikke-buff-cmp .bcmp-buff-grid { grid-template-columns: minmax(0,1fr); }
@@ -1107,6 +1220,19 @@ post-sidebar">
   .nikke-buff-cmp .bcmp-field select { font-size: 16px; }
   .nikke-buff-cmp .bcmp-result-label { font-size: 9px; }
   .nikke-buff-cmp .bcmp-result-value { font-size: 13px; }
+  .nikke-buff-cmp .bcmp-weapon-grid-1,
+  .nikke-buff-cmp .bcmp-weapon-grid-2,
+  .nikke-buff-cmp .bcmp-weapon-grid-3 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .nikke-buff-cmp .bcmp-weapon-grid-3 .core-field,
+  .nikke-buff-cmp .bcmp-weapon-grid-3 .charge-field {
+    grid-column: auto;
+    width: 100%;
+  }
+  .nikke-buff-cmp .bcmp-empty-field {
+    display: none;
+  }
 }
 </style>
 
@@ -1137,10 +1263,9 @@ post-sidebar">
     ['critRateBuff', '暴击率 buff'],
     ['critDmgBuff', '暴击伤害 buff'],
     ['atkDmgBuff', '攻击伤害 buff'],
-    ['coreBuff', '核心伤害 buff'],
     ['takenBuff', '所受伤害 buff'],
     ['sharedBuff', '分摊伤害 buff'],
-    ['chargeBuff', '蓄力伤害 buff', 'weapon']
+    ['chargeBuff', '蓄力伤害 buff ', 'weapon']
   ];
 
   function buffPair(key, label, cls){
@@ -1148,6 +1273,17 @@ post-sidebar">
       <div class="bcmp-buff-pair ${cls || ''}">
         <label class="bcmp-field"><span>${label}（%）</span><input type="number" data-key="${key}" value="0" step="0.01"></label>
         <label class="bcmp-field bcmp-duration-field"><span>时间</span><input type="number" data-key="${key}Duration" value="10" min="0" step="0.01"></label>
+      </div>`;
+  }
+
+  function coreField(){
+    return `
+      <div class="bcmp-core-shell bcmp-field">
+        <span>核心伤害（%）</span>
+        <div class="bcmp-core-field">
+          <label class="bcmp-check-field bcmp-core-toggle"><input type="checkbox" data-key="coreEnabled"><span class="core-state-text">无核</span></label>
+          <label class="bcmp-field bcmp-core-value"><input type="number" data-key="coreBuff" value="" min="0" step="0.01" disabled placeholder="勾选后填入数值"></label>
+        </div>
       </div>`;
   }
 
@@ -1161,7 +1297,7 @@ post-sidebar">
     const critRate = 0.15 + activeBuff(seg, 'critRateBuff', t);
     const critDmg = 0.5 + activeBuff(seg, 'critDmgBuff', t);
     const critExpected = critRate * critDmg;
-    const coreBuff = activeBuff(seg, 'coreBuff', t);
+    const coreBonus = seg.type === 'weapon' && seg.coreEnabled ? pct(seg.coreBuff) : 0;
     const chargeBuff = seg.type === 'weapon' && supportsCharge(seg.weaponType) ? activeBuff(seg, 'chargeBuff', t) : 0;
     const sharedBuff = activeBuff(seg, 'sharedBuff', t);
     const atkDmgBuff = activeBuff(seg, 'atkDmgBuff', t);
@@ -1171,7 +1307,7 @@ post-sidebar">
       critDmg,
       critExpected,
       distanceBonus,
-      correction: 1 + critExpected + 0.5 + (1 + coreBuff) + distanceBonus,
+      correction: 1 + critExpected + 0.5 + coreBonus + distanceBonus,
       element: 1.1 + activeBuff(seg, 'elementBuff', t),
       charge: 1 + chargeBuff,
       vulnerability: 1 + activeBuff(seg, 'takenBuff', t) + sharedBuff,
@@ -1342,7 +1478,7 @@ post-sidebar">
 
         <div class="bcmp-subtitle">伤害段落</div>
         <div class="bcmp-section-row">
-          <div class="bcmp-note" style="margin-top:0; flex:1;">每个段落代表一段时间轴。武器/普攻请填写段落总子弹数；同武器类型会沿用第一段的弹匣/换弹，不同武器类型分开计算。最大装弹数 0 = 无限；换弹速度 0 = 无。</div>
+          <div class="bcmp-note" style="margin-top:0; flex:1;">每个段落代表一段时间轴。武器/普攻请填写段落总子弹数；同武器类型会沿用第一段的弹匣/换弹，不同武器类型分开计算。最大装弹数 0 = 无限；换弹速度 0 = 无。蓄力伤害默认已包含基础100%，例如角色显示150%蓄力伤害时，请填写50%；显示250%时，请填写150%。</div>
           <button type="button" class="bcmp-btn bcmp-add-seg">添加</button>
         </div>
         <div class="bcmp-segments"></div>
@@ -1366,17 +1502,26 @@ post-sidebar">
           <button type="button" class="bcmp-remove-btn">删除</button>
         </div>
 
-        <div class="bcmp-main-grid">
+        <div class="bcmp-weapon-grid-1">
           <label class="bcmp-field"><span>类型</span><select data-key="type" class="seg-type"><option value="weapon">武器 / 普攻</option><option value="skill">技能伤害</option></select></label>
           <label class="bcmp-field weapon-only"><span>武器类型</span><select data-key="weaponType" class="weapon-type"><option value="rifle">步枪</option><option value="smg">冲锋枪</option><option value="mg">机枪</option><option value="sg">霰弹枪</option><option value="sr">狙击枪</option><option value="rl">发射器</option></select></label>
           <label class="bcmp-field"><span>段落总时间（秒）</span><input type="number" data-key="duration" value="10" min="0" step="0.01"></label>
           <label class="bcmp-field"><span>倍率（%）</span><input type="number" data-key="multiplier" value="0" step="0.01"></label>
+          <label class="bcmp-field skill-only hidden"><span>段落总触发次数</span><input type="number" data-key="times" value="1" min="0" step="0.01"></label>
+        </div>
+
+        <div class="bcmp-weapon-grid-2">
           <label class="bcmp-field weapon-only"><span>段落总子弹数</span><input type="number" data-key="shots" value="0" min="0" step="0.01"></label>
           <label class="bcmp-field weapon-only magazine-field"><span>最大装弹数（0=无限）</span><input type="number" data-key="magazine" value="0" min="0" step="1"></label>
           <label class="bcmp-field weapon-only reload-field"><span>换弹速度（秒）（0=无）</span><input type="number" data-key="reload" value="0" min="0" step="0.01"></label>
-          <div class="weapon-only charge-field">${buffPair('chargeBuff', '蓄力伤害')}</div>
-          <label class="bcmp-check-field weapon-only distance-field"><input type="checkbox" data-key="distanceBonus"><span>距离补正 +0.3</span></label>
-          <label class="bcmp-field skill-only hidden"><span>段落总触发次数</span><input type="number" data-key="times" value="1" min="0" step="0.01"></label>
+          <label class="bcmp-field weapon-only distance-wrap"><span class="bcmp-check-field distance-field"><input type="checkbox" data-key="distanceBonus"><span>距离补正+0.3</span></span></label>
+        </div>
+
+        <div class="bcmp-weapon-grid-3 weapon-only">
+          <div class="core-field">
+            ${coreField()}
+          </div>
+          <div class="charge-field">${buffPair('chargeBuff', '蓄力伤害')}</div>
         </div>
 
         <div class="bcmp-block-title">Buff 设置</div>
@@ -1386,7 +1531,6 @@ post-sidebar">
           ${buffPair('critRateBuff', '暴击率')}
           ${buffPair('critDmgBuff', '暴击伤害')}
           ${buffPair('atkDmgBuff', '攻击伤害')}
-          ${buffPair('coreBuff', '核心伤害')}
           ${buffPair('takenBuff', '所受伤害')}
           ${buffPair('sharedBuff', '分摊伤害')}
         </div>
@@ -1415,6 +1559,8 @@ post-sidebar">
       shots: cleanNonNegative(read('shots')),
       magazine: cleanNonNegative(read('magazine')),
       reload: cleanNonNegative(read('reload')),
+      coreEnabled: type === 'weapon' ? checked('coreEnabled') : false,
+      coreBuff: type === 'weapon' ? cleanNonNegative(read('coreBuff')) : 0,
       distanceBonus: type === 'weapon' && supportsDistance(segEl.querySelector('[data-key="weaponType"]')?.value || 'rifle') ? checked('distanceBonus') : false,
       times: cleanNonNegative(read('times'))
     };
@@ -1425,6 +1571,36 @@ post-sidebar">
     return seg;
   }
 
+
+  function refreshCoreField(segEl, isWeapon){
+    const coreWrap = segEl.querySelector('.core-field');
+    if(!coreWrap) return;
+    coreWrap.classList.toggle('hidden', !isWeapon);
+    const cb = coreWrap.querySelector('[data-key="coreEnabled"]');
+    const input = coreWrap.querySelector('[data-key="coreBuff"]');
+    const stateText = coreWrap.querySelector('.core-state-text');
+    if(!isWeapon) {
+      if(cb) cb.checked = false;
+      if(stateText) stateText.textContent = '无核';
+      if(input) {
+        input.value = '';
+        input.disabled = true;
+      }
+      return;
+    }
+    if(cb && input) {
+      if(cb.checked) {
+        if(stateText) stateText.textContent = '有核';
+        input.disabled = false;
+        if(input.value === '') input.value = '200';
+      } else {
+        if(stateText) stateText.textContent = '无核';
+        input.value = '';
+        input.disabled = true;
+      }
+    }
+  }
+
   function refreshSegmentVisibility(segEl){
     const isWeapon = segEl.querySelector('[data-key="type"]').value === 'weapon';
     const weaponType = segEl.querySelector('[data-key="weaponType"]')?.value || 'rifle';
@@ -1432,10 +1608,14 @@ post-sidebar">
     segEl.querySelectorAll('.skill-only').forEach(el => el.classList.toggle('hidden', isWeapon));
     const chargeField = segEl.querySelector('.charge-field');
     if(chargeField) chargeField.classList.toggle('hidden', !isWeapon || !supportsCharge(weaponType));
+    refreshCoreField(segEl, isWeapon);
+    const distanceWrap = segEl.querySelector('.distance-wrap');
     const distanceField = segEl.querySelector('.distance-field');
+    const hideDistance = !isWeapon || !supportsDistance(weaponType);
+    if(distanceWrap) distanceWrap.classList.toggle('hidden', hideDistance);
     if(distanceField) {
-      distanceField.classList.toggle('hidden', !isWeapon || !supportsDistance(weaponType));
-      if(!isWeapon || !supportsDistance(weaponType)) {
+      distanceField.classList.toggle('hidden', hideDistance);
+      if(hideDistance) {
         const cb = distanceField.querySelector('[data-key="distanceBonus"]');
         if(cb) cb.checked = false;
       }
@@ -1547,6 +1727,12 @@ post-sidebar">
       data.atkDmgBuffDuration = data.type === 'skill' ? data.atkDmgBuffSkillDuration : data.atkDmgBuffWeaponDuration;
     }
 
+    
+    if(data.coreEnabled === undefined) {
+      data.coreEnabled = data.type === 'weapon' && num(data.coreBuff) > 0 && (data.coreBuffDuration === undefined || num(data.coreBuffDuration) > 0);
+    }
+    if(data.coreEnabled && (data.coreBuff === undefined || data.coreBuff === '')) data.coreBuff = 200;
+
     Object.entries(data).forEach(([key, val]) => {
       const input = segEl.querySelector(`[data-key="${key}"]`);
       if(input) {
@@ -1559,11 +1745,16 @@ post-sidebar">
   }
 
   function buffSummary(seg){
-    return BUFFS
+    const parts = BUFFS
       .filter(([key, , type]) => !type || type === seg.type)
       .filter(([key]) => num(seg[key]) !== 0 && num(seg[key + 'Duration']) > 0)
-      .map(([key, label]) => `${label.replace(/\s*buff$/, 'buff')} ${fmt2(seg[key])}%/${fmt2(seg[key + 'Duration'])}秒`)
-      .join('，') || '无';
+      .map(([key, label]) => `${label.replace(/\s*buff$/, 'buff')} ${fmt2(seg[key])}%/${fmt2(seg[key + 'Duration'])}秒`);
+
+    if(seg.type === 'weapon' && seg.coreEnabled && num(seg.coreBuff) > 0) {
+      parts.push(`核心伤害 ${fmt2(seg.coreBuff)}%`);
+    }
+
+    return parts.join('，') || '无';
   }
 
 
@@ -1651,7 +1842,7 @@ post-sidebar">
         ? `${weaponTypeName(seg.weaponType)} ${fmt2(seg.duration)}秒，预计 ${fmt2(seg.shots)} 发，实际 ${fmt2(res.count)} 发`
         : `技能伤害 ${fmt2(seg.duration)}秒内 ${fmt2(res.count)} 次`;
       const sliceInfo = res.slices.length > 1 ? `；自动拆成 ${res.slices.length} 段计算` : '';
-      const extra = seg.type === 'weapon' ? `弹匣 ${cleanNonNegative(seg.effectiveMagazine) <= 0 ? '无限' : fmt2(seg.effectiveMagazine)}，换弹 ${cleanNonNegative(seg.effectiveReload) <= 0 ? '无' : fmt2(seg.effectiveReload) + '秒'}，距离补正 ${seg.distanceBonus ? '+0.3' : '无'}` : '技能无距离补正';
+      const extra = seg.type === 'weapon' ? `弹匣 ${cleanNonNegative(seg.effectiveMagazine) <= 0 ? '无限' : fmt2(seg.effectiveMagazine)}，换弹 ${cleanNonNegative(seg.effectiveReload) <= 0 ? '无' : fmt2(seg.effectiveReload) + '秒'}，核心 ${seg.coreEnabled ? fmt2(seg.coreBuff) + '%' : '无'}，距离补正 ${seg.distanceBonus ? '+0.3' : '无'}` : '技能无距离补正';
       const multInfo = segmentMultiplierSummary(common, seg, res);
       parts.push(`#${idx + 1} ${label}，平均单次 ${fmt(res.perHit)}，本段 ${fmt(res.total)}${sliceInfo}；${extra}；Buff：${buffSummary(seg)}；${multInfo}`);
     });
