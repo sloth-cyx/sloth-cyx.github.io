@@ -1192,6 +1192,45 @@ post-sidebar">
   line-height: 1.2;
 }
 
+
+.nikke-buff-cmp .bcmp-weapon-grid-4{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:9px;
+  align-items:end;
+  width:100%;
+  min-width:0;
+}
+
+.nikke-buff-cmp .bcmp-weapon-grid-4 .bcmp-burst-wrap{
+  grid-column:1 / span 1;
+  width:100%;
+  min-width:0;
+}
+
+.nikke-buff-cmp .bcmp-burst-field{
+  width:100%;
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  gap:7px !important;
+}
+
+.nikke-buff-cmp .bcmp-burst-field input{
+  width:auto !important;
+  min-width:auto !important;
+  margin:0 !important;
+  flex:0 0 auto;
+}
+
+.nikke-buff-cmp .bcmp-burst-field span{
+  display:inline !important;
+  margin:0 !important;
+  white-space:nowrap;
+  line-height:1.2;
+}
+
 @container (max-width: 680px) {
   .nikke-buff-cmp .bcmp-grid,
   .nikke-buff-cmp .bcmp-main-grid,
@@ -1307,7 +1346,7 @@ post-sidebar">
       critDmg,
       critExpected,
       distanceBonus,
-      correction: 1 + critExpected + 0.5 + coreBonus + distanceBonus,
+      correction: 1 + critExpected + (seg.type === 'skill' ? (seg.burstBonus ? 0.5 : 0) : 0.5) + coreBonus + distanceBonus,
       element: 1.1 + activeBuff(seg, 'elementBuff', t),
       charge: 1 + chargeBuff,
       vulnerability: 1 + activeBuff(seg, 'takenBuff', t) + sharedBuff,
@@ -1524,6 +1563,15 @@ post-sidebar">
           <div class="charge-field">${buffPair('chargeBuff', '蓄力伤害')}</div>
         </div>
 
+        <div class="bcmp-weapon-grid-4 skill-only">
+          <label class="bcmp-field bcmp-burst-wrap">
+            <span class="bcmp-check-field bcmp-burst-field">
+              <input type="checkbox" data-key="burstBonus" checked>
+              <span>全爆裂加成+0.5</span>
+            </span>
+          </label>
+        </div>
+
         <div class="bcmp-block-title">Buff 设置</div>
         <div class="bcmp-buff-grid">
           ${buffPair('atkBuff', '攻击力')}
@@ -1562,7 +1610,8 @@ post-sidebar">
       coreEnabled: type === 'weapon' ? checked('coreEnabled') : false,
       coreBuff: type === 'weapon' ? cleanNonNegative(read('coreBuff')) : 0,
       distanceBonus: type === 'weapon' && supportsDistance(segEl.querySelector('[data-key="weaponType"]')?.value || 'rifle') ? checked('distanceBonus') : false,
-      times: cleanNonNegative(read('times'))
+      times: cleanNonNegative(read('times')),
+      burstBonus: type==='skill' ? checked('burstBonus') : true
     };
     BUFFS.forEach(([key]) => {
       seg[key] = read(key);
@@ -1884,6 +1933,7 @@ post-sidebar">
   createSet(true);
 })();
 </script>
+
 
 </section>
 

@@ -961,6 +961,45 @@
   line-height: 1.2;
 }
 
+
+.nikke-buff-cmp .bcmp-weapon-grid-4{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:9px;
+  align-items:end;
+  width:100%;
+  min-width:0;
+}
+
+.nikke-buff-cmp .bcmp-weapon-grid-4 .bcmp-burst-wrap{
+  grid-column:1 / span 1;
+  width:100%;
+  min-width:0;
+}
+
+.nikke-buff-cmp .bcmp-burst-field{
+  width:100%;
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  gap:7px !important;
+}
+
+.nikke-buff-cmp .bcmp-burst-field input{
+  width:auto !important;
+  min-width:auto !important;
+  margin:0 !important;
+  flex:0 0 auto;
+}
+
+.nikke-buff-cmp .bcmp-burst-field span{
+  display:inline !important;
+  margin:0 !important;
+  white-space:nowrap;
+  line-height:1.2;
+}
+
 @container (max-width: 680px) {
   .nikke-buff-cmp .bcmp-grid,
   .nikke-buff-cmp .bcmp-main-grid,
@@ -1076,7 +1115,7 @@
       critDmg,
       critExpected,
       distanceBonus,
-      correction: 1 + critExpected + 0.5 + coreBonus + distanceBonus,
+      correction: 1 + critExpected + (seg.type === &#39;skill&#39; ? (seg.burstBonus ? 0.5 : 0) : 0.5) + coreBonus + distanceBonus,
       element: 1.1 + activeBuff(seg, &#39;elementBuff&#39;, t),
       charge: 1 + chargeBuff,
       vulnerability: 1 + activeBuff(seg, &#39;takenBuff&#39;, t) + sharedBuff,
@@ -1293,6 +1332,15 @@
           &lt;div class=&#34;charge-field&#34;&gt;${buffPair(&#39;chargeBuff&#39;, &#39;蓄力伤害&#39;)}&lt;/div&gt;
         &lt;/div&gt;
 
+        &lt;div class=&#34;bcmp-weapon-grid-4 skill-only&#34;&gt;
+          &lt;label class=&#34;bcmp-field bcmp-burst-wrap&#34;&gt;
+            &lt;span class=&#34;bcmp-check-field bcmp-burst-field&#34;&gt;
+              &lt;input type=&#34;checkbox&#34; data-key=&#34;burstBonus&#34; checked&gt;
+              &lt;span&gt;全爆裂加成+0.5&lt;/span&gt;
+            &lt;/span&gt;
+          &lt;/label&gt;
+        &lt;/div&gt;
+
         &lt;div class=&#34;bcmp-block-title&#34;&gt;Buff 设置&lt;/div&gt;
         &lt;div class=&#34;bcmp-buff-grid&#34;&gt;
           ${buffPair(&#39;atkBuff&#39;, &#39;攻击力&#39;)}
@@ -1331,7 +1379,8 @@
       coreEnabled: type === &#39;weapon&#39; ? checked(&#39;coreEnabled&#39;) : false,
       coreBuff: type === &#39;weapon&#39; ? cleanNonNegative(read(&#39;coreBuff&#39;)) : 0,
       distanceBonus: type === &#39;weapon&#39; &amp;&amp; supportsDistance(segEl.querySelector(&#39;[data-key=&#34;weaponType&#34;]&#39;)?.value || &#39;rifle&#39;) ? checked(&#39;distanceBonus&#39;) : false,
-      times: cleanNonNegative(read(&#39;times&#39;))
+      times: cleanNonNegative(read(&#39;times&#39;)),
+      burstBonus: type===&#39;skill&#39; ? checked(&#39;burstBonus&#39;) : true
     };
     BUFFS.forEach(([key]) =&gt; {
       seg[key] = read(key);
@@ -1653,6 +1702,7 @@
   createSet(true);
 })();
 &lt;/script&gt;
+
 </description>
         </item>
         <item>
@@ -1674,7 +1724,8 @@ T4 - 无任何性价比和泛用性（很吃环境），属于对策垃圾卡，
 &lt;a class=&#34;link&#34; href=&#34;#%e8%b4%9d%e6%96%af%e8%92%82%e6%88%98%e6%9c%af%e5%8d%87%e7%ba%a7&#34; &gt;&lt;strong&gt;20260613 - 添加贝斯蒂战术升级&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
 &lt;a class=&#34;link&#34; href=&#34;#%e8%96%87%e5%b0%94%e7%bb%b4%e7%89%b9&#34; &gt;&lt;strong&gt;20260613 - 添加薇尔维特&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
 &lt;a class=&#34;link&#34; href=&#34;#%e8%8e%89%e8%b4%9d%e9%9b%b7%e5%88%a9%e5%a5%a5&#34; &gt;&lt;strong&gt;20260615 - 添加莉贝雷利奥&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
-&lt;a class=&#34;link&#34; href=&#34;#%e8%bf%aa%e5%a1%9e%e5%b0%94%e5%86%ac%e6%97%a5%e7%94%9c%e5%bf%83&#34; &gt;&lt;strong&gt;20260628 - 添加迪塞尔冬日甜心&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;a class=&#34;link&#34; href=&#34;#%e8%bf%aa%e5%a1%9e%e5%b0%94%e5%86%ac%e6%97%a5%e7%94%9c%e5%bf%83&#34; &gt;&lt;strong&gt;20260628 - 添加迪塞尔冬日甜心&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;#%e5%b0%bc%e6%81%a9%e9%80%8f%e8%a7%86%e4%b9%8b%e7%9c%bc&#34; &gt;&lt;strong&gt;20260702 - 添加尼恩透视之眼&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;泷奈&#34;&gt;泷奈
 &lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_previous/inoueAvatar.png&#34;
 	
@@ -2241,7 +2292,7 @@ T4 - 无任何性价比和泛用性（很吃环境），属于对策垃圾卡，
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;&lt;strong&gt;养成优先级：T2&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;养成优先级：T1&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;XP打分&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;[!ERROR]&lt;/p&gt;
@@ -2265,7 +2316,7 @@ T4 - 无任何性价比和泛用性（很吃环境），属于对策垃圾卡，
 &lt;li&gt;除此之外，dot算在debuff里，所以对上能消除debuff的boss，冬糖是无力的，如异拦的蝎子。超米由于增强过的关系，蝎子是不能解除超米dot的，相信这也是SU区分2%和1%给予的一个特殊待遇。&lt;/li&gt;
 &lt;li&gt;由于自带超高的持续伤害提升（871.31%）和易伤，冬糖实际上很挑辅助；冬糖由于完全没有攻击力加成，加上自带的持续伤害提升是攻伤区，冬糖和低攻击力加成&amp;amp;高攻伤加成的辅助&lt;strong&gt;不契合&lt;/strong&gt;（ex：兔爱德，格拉维）。但如果配上高攻击力辅助如皇冠或冬日布丽德等，那冬糖伤害会非常高（涵盖了攻击力，攻伤区，暴伤区，易伤区全范围）。&lt;/li&gt;
 &lt;li&gt;冬糖自身的高伤害加上她开大的时候会挂上易伤这个稀有乘区，这让冬糖在跨属的个突上也被频繁使用。甚至由于自身不带任何攻击力提升的技能，冬糖通常没有抢当期个突Cbuff的风险，是个突跨属副C的好选择，例如百爆。&lt;/li&gt;
-&lt;li&gt;综上所述，冬糖是张强度很高的燃烧C+跨属副C，所以综合优先级给到&lt;strong&gt;T2&lt;/strong&gt;，适合卷个突3%以上的玩家培养。&lt;del&gt;缺点就是每一次开大的简易动画都要唱一下真的有点吵。&lt;/del&gt;&lt;/li&gt;
+&lt;li&gt;综上所述，冬糖是张强度很高的燃烧C+跨属副C，所以综合优先级给到&lt;strong&gt;T1&lt;/strong&gt;，适合卷个突3%以上的玩家培养。&lt;del&gt;缺点就是每一次开大的简易动画都要唱一下真的有点吵。&lt;/del&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_previous/xDieselPickup.jpg&#34;
 	
@@ -2274,6 +2325,114 @@ T4 - 无任何性价比和泛用性（很吃环境），属于对策垃圾卡，
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;xDieselPickup.jpg&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;尼恩透视之眼&#34;&gt;尼恩透视之眼
+&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_previous/neonOverspecAvatar.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;neonOverspecAvatar&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;上场空间&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 推图&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 个突&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 竞技场&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;养成方向&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;养成&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;需求&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;技能等级&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;10/7+/7+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;收藏品&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;SR15&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;装备等级&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4T10 | 5-0-0-0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;主词条&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4攻击4优越&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;副词条&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;装弹，蓄速&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;养成优先级：T1&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;XP打分&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[!VIOLET]&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;7/10&lt;/li&gt;
+&lt;li&gt;帅，无需多言。&lt;/li&gt;
+&lt;li&gt;点击互动还有形态变化环节，好评。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;要点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;尼恩透视之眼（以下简称超尼）是3.5周年推出的&lt;strong&gt;&lt;span style=&#34;background-color: rgb(140, 0, 255); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: rgb(255, 255, 255);&#34;&gt;
+    电击
+&lt;/span&gt;&lt;/strong&gt;超标准大C，多判场合提高上限。&lt;/li&gt;
+&lt;li&gt;先从机制说起，超尼第一次开了100%火力的爆裂后，后续两个自己的爆裂要攒火力条，第三次爆裂重回100%火力条全输出；所以超尼全力输出的回合分别是&lt;strong&gt;1，7，13&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;由于超尼的自拐极高，加上武器和超阿&amp;amp;水母类似，所以蓄速对超尼来说是更重要的拐力；蓄速提升分别如下：
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;蓄速&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;发射子弹次数&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0%&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;9-10发&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;11%（0.11秒）&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;10-11发&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;18%（0.18秒）&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;11-12发&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;24%（0.24秒）&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;12-13发&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;li&gt;也因此，超尼的词条非常多样化，想追18%蓄速基本上要4蓄速，1装弹，3攻击，4优越；也有追11%只需3蓄速，1装弹，4攻击，4优越的选项；当然，最低标准4攻击4优越1装弹即可。&lt;/li&gt;
+&lt;li&gt;超尼的无敌每次触发后有内置20秒的CD，且对于&lt;strong&gt;不是伤害型的debuff没法解除&lt;/strong&gt;；比如联盟战boss直接挂个减300%蓄速的debuff，超尼是没办法的。&lt;/li&gt;
+&lt;li&gt;PVP的话，超尼由于追加伤害只对boss生效，且充能下毒（只打两个），不是很强。好在自身还有轴外自拐能力&amp;amp;无敌的能力，所以超尼在竞技场大多数作为轴外输出角色&amp;amp;位于屁股防霰弹上场（也可调慢速战略使用）。&lt;/li&gt;
+&lt;li&gt;综上所述，超尼是个很强的电击C，甚至跨属多判的场合也可以上，故优先级给到&lt;strong&gt;T1&lt;/strong&gt;。超尼的词条性价比较低，只推荐卷电个突的玩家给超尼洗12词条。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_previous/neonOverspecPickup.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;neonOverspecPickup.jpg&#34;
 	
 	
 &gt;&lt;/p&gt;
@@ -4083,7 +4242,8 @@ T4 - 无任何性价比和泛用性（很吃环境），属于对策垃圾卡，
 --&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;#%e6%95%8f%e7%89%b9&#34; &gt;&lt;strong&gt;20260522 - 添加敏特&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
 &lt;a class=&#34;link&#34; href=&#34;#%e6%99%ae%e8%8e%89%e5%8d%a1&#34; &gt;&lt;strong&gt;20260528 - 添加普莉卡&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
-&lt;a class=&#34;link&#34; href=&#34;#%e6%96%b9%e8%88%9f%e9%bb%91%e8%89%b2%e6%b8%b8%e4%be%a0&#34; &gt;&lt;strong&gt;20260611 - 添加方舟黑色游侠&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;a class=&#34;link&#34; href=&#34;#%e6%96%b9%e8%88%9f%e9%bb%91%e8%89%b2%e6%b8%b8%e4%be%a0&#34; &gt;&lt;strong&gt;20260611 - 添加方舟黑色游侠&lt;/strong&gt;&lt;/a&gt;&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;#%e7%81%b0%e5%a7%91%e5%a8%98%e7%90%89%e7%92%83%e6%b3%a2%e5%85%89&#34; &gt;&lt;strong&gt;20260611 - 添加灰姑娘琉璃波光&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;敏特&#34;&gt;敏特
 &lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_2026/mintAvatar.png&#34;
 	
@@ -4351,6 +4511,81 @@ T4 - 无任何性价比和泛用性（很吃环境），属于对策垃圾卡，
 	
 	
 &gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;灰姑娘琉璃波光&#34;&gt;灰姑娘琉璃波光
+&lt;/h2&gt;&lt;!-- ![cinderellaSummerAvatar](/images/nikkeComment_2026/cinderellaSummerAvatar.png) --&gt;
+&lt;p&gt;&lt;strong&gt;上场空间&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 推图&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 个突&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 竞技场&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;养成方向&lt;/strong&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;养成&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;需求&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;技能等级&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;10/7+/10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;收藏品&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;SR15&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;装备等级&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4T10 | 5-0-0-0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;主词条&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4攻击4优越2+装弹&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;副词条&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;暴击，暴伤&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;养成优先级：T1&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;XP打分&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[!WARN]&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;10/10&lt;/li&gt;
+&lt;li&gt;个人首先看脸，其次看腰，才是胸，腿，屁股等。美脸&amp;amp;细腰的组合已经把我打倒了，夯暴！&lt;/li&gt;
+&lt;li&gt;胸部大小差不多等于脸蛋，尚可接受。&lt;/li&gt;
+&lt;li&gt;换装后有人妻味，可御可甜，极致享受。甚至还有盘发，双马尾，长直发（活动图）的三种发型，谁看谁不迷糊？&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;蹲姿还能看到骆驼蹄，换装后脚边还有换下的内裤，嘶哈嘶哈。&lt;/del&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;要点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;灰姑娘琉璃波光（以下简称泳灰）是目前第一的&lt;strong&gt;&lt;span style=&#34;background-color: rgb(255, 174, 0); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: black;&#34;&gt;
+    铁甲
+&lt;/span&gt;&lt;/strong&gt;个突C，甚至高超毗20%左右。据LGG测试，狙击模式&lt;strong&gt;4.2&lt;/strong&gt;红（多1判大约提升22-24%），机枪模式&lt;strong&gt;4-4.9&lt;/strong&gt;红。&lt;/li&gt;
+&lt;li&gt;说说泳灰的武器切换机制，她的默认武器是机枪，在换弹完成的时候会获得一个&lt;strong&gt;6秒的换弹buff（强制换弹时间变成3秒）&lt;/strong&gt;，在这6秒内手动换弹就可以切换武器。&lt;br&gt;
+&lt;em&gt;&lt;mark&gt;如果在第4秒换弹导致第7秒才完成换弹动作的话，buff已结束是不会切换武器的。所以实际上你只有3秒的窗口时间切换武器。&lt;/mark&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;由于射击 &amp;gt; 换弹（获得6秒buff）&amp;gt; 射击（消耗子弹）&amp;gt; 换弹（固定3秒）&amp;gt; 切换武器等一系列操作，实际切换武器需要大概8秒的时间。&lt;/li&gt;
+&lt;li&gt;泳灰机枪模式下的&lt;strong&gt;技能2核心命中伤害&lt;/strong&gt;需要莱彻拥有核心才会触发，没核心不会触发。技能2的伤害占比大约为10%（论坛看的，自己还没测试），所以技能书不够可以只点到7。&lt;/li&gt;
+&lt;li&gt;其弱点就是&lt;strong&gt;贫瘠的AOE能力&lt;/strong&gt;，仅有技能2进全爆裂触发的1次AOE；还有就是她的跨属能力有待商榷，虽然伤害很高，但是&lt;strong&gt;缺乏辅助队友的能力&lt;/strong&gt;，和冬糖（易伤），水母（蓄速），超毗（1号位）等不太一样。但伤害+双武器我个人觉得还是能提供些许跨属能力的。&lt;/li&gt;
+&lt;li&gt;综上所述，泳灰是当之无愧的铁甲超级大C，双武器形态赋予了她在铁甲个突的&lt;strong&gt;泛用性&lt;/strong&gt;。因此，优先级给到&lt;strong&gt;T1&lt;/strong&gt;，3%个突玩家都推荐练（除非完全不卷铁甲）。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://sloth-cyx.github.io/images/nikkeComment_2026/cinderellaSummerPickup.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;cinderellaSummerPickup.jpg&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
 </description>
         </item>
         
