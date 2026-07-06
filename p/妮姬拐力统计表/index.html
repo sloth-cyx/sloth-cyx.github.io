@@ -1348,7 +1348,7 @@ post-sidebar">
       distanceBonus,
       correction: 1 + critExpected + (seg.type === 'skill' ? (seg.burstBonus ? 0.5 : 0) : 0.5) + coreBonus + distanceBonus,
       element: 1.1 + activeBuff(seg, 'elementBuff', t),
-      charge: 1 + chargeBuff,
+      charge: chargeBuff > 0 ? chargeBuff : 1,
       vulnerability: 1 + activeBuff(seg, 'takenBuff', t) + sharedBuff,
       atkDmg: 1 + atkDmgBuff,
       atkBuff: activeBuff(seg, 'atkBuff', t)
@@ -1517,7 +1517,7 @@ post-sidebar">
 
         <div class="bcmp-subtitle">伤害段落</div>
         <div class="bcmp-section-row">
-          <div class="bcmp-note" style="margin-top:0; flex:1;">每个段落代表一段时间轴。武器/普攻请填写段落总子弹数；同武器类型会沿用第一段的弹匣/换弹，不同武器类型分开计算。最大装弹数 0 = 无限；换弹速度 0 = 无。蓄力伤害默认已包含基础100%，例如角色显示150%蓄力伤害时，请填写50%；显示250%时，请填写150%。</div>
+          <div class="bcmp-note" style="margin-top:0; flex:1;">每个段落代表一段时间轴。武器/普攻请填写段落总子弹数；同武器类型会沿用第一段的弹匣/换弹，不同武器类型分开计算。最大装弹数 0 = 无限；换弹速度 0 = 无。蓄力伤害请直接填写总蓄力伤害，留空或0表示不参与计算；例如250%填写250%，350%填写350%。</div>
           <button type="button" class="bcmp-btn bcmp-add-seg">添加</button>
         </div>
         <div class="bcmp-segments"></div>
