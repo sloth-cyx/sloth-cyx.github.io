@@ -2391,8 +2391,8 @@ T4 - 无任何性价比和泛用性（很吃环境），属于对策垃圾卡，
 &lt;li&gt;尼恩透视之眼（以下简称超尼）是3.5周年推出的&lt;strong&gt;&lt;span style=&#34;background-color: rgb(140, 0, 255); padding: 0px 2px; margin: 0px 1px; border-radius: 4px; color: rgb(255, 255, 255);&#34;&gt;
     电击
 &lt;/span&gt;&lt;/strong&gt;超标准大C，多判场合提高上限。&lt;/li&gt;
-&lt;li&gt;先从机制说起，超尼第一次开了100%火力的爆裂后，后续两个自己的爆裂要攒火力条，第三次爆裂重回100%火力条全输出；所以超尼全力输出的回合分别是&lt;strong&gt;1，7，13&lt;/strong&gt;。&lt;/li&gt;
-&lt;li&gt;由于超尼的自拐极高，加上武器和超阿&amp;amp;水母类似，所以蓄速对超尼来说是更重要的拐力；蓄速提升分别如下：
+&lt;li&gt;先从机制说起，超尼第一次开了100%火力的爆裂后，后续两个自己的爆裂要攒火力条，第三次自己爆裂时重回100%火力条全输出；所以超尼全力输出的回合分别是&lt;strong&gt;1，7，13&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;由于超尼的自拐极高，加上武器模组和超阿&amp;amp;水母类似（不能使用宏快速连发），所以蓄速对超尼来说是更重要的拐力；蓄速提升分别如下：
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -4579,10 +4579,10 @@ T4 - 无任何性价比和泛用性（很吃环境），属于对策垃圾卡，
 &lt;li&gt;说说泳灰的武器切换机制，她的默认武器是机枪，在换弹完成的时候会获得一个&lt;strong&gt;6秒的换弹buff（强制换弹时间变成3秒）&lt;/strong&gt;，在这6秒内手动换弹就可以切换武器。&lt;br&gt;
 &lt;em&gt;&lt;mark&gt;如果在第4秒换弹导致第7秒才完成换弹动作的话，buff已结束是不会切换武器的。所以实际上你只有3秒的窗口时间切换武器。&lt;/mark&gt;&lt;/em&gt;&lt;/li&gt;
 &lt;li&gt;由于射击 &amp;gt; 换弹（获得6秒buff）&amp;gt; 射击（消耗子弹）&amp;gt; 换弹（固定3秒）&amp;gt; 切换武器等一系列操作，实际切换武器需要大概8秒的时间。&lt;/li&gt;
-&lt;li&gt;泳灰机枪模式下的&lt;strong&gt;技能2核心命中伤害&lt;/strong&gt;需要莱彻拥有核心才会触发，没核心不会触发。技能2的伤害占比大约为10%（论坛看的，自己还没测试），所以技能书不够可以只点到7。&lt;/li&gt;
-&lt;li&gt;其弱点就是&lt;strong&gt;贫瘠的AOE能力&lt;/strong&gt;，仅有技能2进全爆裂触发的1次AOE；还有就是她的跨属能力有待商榷，虽然伤害很高，但是&lt;strong&gt;缺乏辅助队友的能力&lt;/strong&gt;，和冬糖（易伤），水母（蓄速），超毗（1号位）等不太一样。但伤害+双武器我个人觉得还是能提供些许跨属能力的。&lt;/li&gt;
+&lt;li&gt;泳灰机枪模式下的&lt;strong&gt;技能2核心命中伤害&lt;/strong&gt;需要莱彻拥有核心才会触发，没核心不会触发。技能2的伤害占比大约为10%-15%（15%仅计算全爆裂期间，10%则是论坛算的3分钟轴），所以技能书不够可以只点到7。&lt;/li&gt;
+&lt;li&gt;其弱点就是&lt;strong&gt;贫瘠的AOE能力&lt;/strong&gt;，仅有技能2进全爆裂触发的1次AOE；还有就是她的跨属&lt;strong&gt;缺乏辅助队友的能力&lt;/strong&gt;，和冬糖（易伤），水母（蓄速），超毗（1号位）等的定位不太一样。但好在伤害高+双武器还是能提供不少跨属能力的。&lt;/li&gt;
 &lt;li&gt;魔方选择的话，机枪模式要是进换弹队伍如皇初就带换弹魔方，否则就是补弹魔方；狙击模式初始自带15发子弹（每1发需蓄力1秒），全爆裂10秒打不完15发，所以对换弹和补弹要求不高，可看情况带零件魔方或者换弹魔方。&lt;/li&gt;
-&lt;li&gt;综上所述，泳灰是当之无愧的铁甲超级大C，双武器形态赋予了她在铁甲个突和跨属性的&lt;strong&gt;泛用性&lt;/strong&gt;。因此，优先级给到&lt;strong&gt;T1&lt;/strong&gt;，3%个突玩家都推荐练（除非完全不卷铁甲）。&lt;/li&gt;
+&lt;li&gt;综上所述，泳灰是当之无愧的铁甲超级大C，双武器形态赋予了她在个突的&lt;strong&gt;泛用性&lt;/strong&gt;。因此，优先级给到&lt;strong&gt;T1&lt;/strong&gt;，3%个突玩家都推荐练。&lt;/li&gt;
 &lt;li&gt;目前泳灰已知的3个bug：&lt;/li&gt;
 &lt;/ol&gt;
 &lt;ul&gt;
@@ -9957,16 +9957,16 @@ p. 查看远端仓库&lt;br&gt;
   &lt;/div&gt;
 
   &lt;div class=&#34;gal-score-list&#34;&gt;
-    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 4.5;&#34;&gt;
+    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 4;&#34;&gt;
       &lt;div class=&#34;gal-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
       &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
-      &lt;div class=&#34;gal-score-value&#34;&gt;4.5&lt;/div&gt;
+      &lt;div class=&#34;gal-score-value&#34;&gt;4&lt;/div&gt;
     &lt;/div&gt;
 
-    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 4.5;&#34;&gt;
+    &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 5;&#34;&gt;
       &lt;div class=&#34;gal-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
       &lt;div class=&#34;gal-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
-      &lt;div class=&#34;gal-score-value&#34;&gt;4.5&lt;/div&gt;
+      &lt;div class=&#34;gal-score-value&#34;&gt;5&lt;/div&gt;
     &lt;/div&gt;
 
     &lt;div class=&#34;gal-score-row&#34; style=&#34;--score: 3;&#34;&gt;
