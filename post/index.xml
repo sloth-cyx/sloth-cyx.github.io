@@ -752,6 +752,13 @@
 .nikke-buff-cmp .bcmp-block-title { color: #118ab2; font-size: 12px; font-weight: 950; margin: 13px 0 8px; padding-top: 11px; border-top: 2px dashed #8d99ae; }
 .nikke-buff-cmp .bcmp-seg-output { margin-top: 11px; background: #fff3b0; border: 2px solid #ffd166; border-radius: 10px; padding: 10px; color: #3d405b; font-size: 12px; font-weight: 950; line-height: 1.55; text-align: center; }
 
+.nikke-buff-cmp .seg-share { color:#8338ec; margin-left:4px; }
+.nikke-buff-cmp .bcmp-composition { margin-top:10px; background:#fff; border:2px solid #8d99ae; border-radius:10px; padding:10px 12px; }
+.nikke-buff-cmp .bcmp-composition-title { color:#118ab2; font-size:12px; font-weight:950; margin-bottom:7px; }
+.nikke-buff-cmp .bcmp-composition-list { display:grid; gap:5px; }
+.nikke-buff-cmp .bcmp-composition-item { display:flex; justify-content:space-between; gap:12px; color:#3d405b; font-size:12px; font-weight:850; line-height:1.4; }
+.nikke-buff-cmp .bcmp-composition-percent { color:#8338ec; white-space:nowrap; }
+
 .nikke-buff-cmp .bcmp-result-flex {
   display: flex;
   flex-wrap: nowrap;
@@ -1297,6 +1304,10 @@
           &lt;div class=&#34;bcmp-result-box bcmp-accent&#34;&gt;&lt;div class=&#34;bcmp-result-label&#34;&gt;对比基准&lt;/div&gt;&lt;div class=&#34;bcmp-result-value set-growth&#34;&gt;基准&lt;/div&gt;&lt;/div&gt;
           &lt;div class=&#34;bcmp-result-box&#34;&gt;&lt;div class=&#34;bcmp-result-label&#34;&gt;伤害差值&lt;/div&gt;&lt;div class=&#34;bcmp-result-value set-diff&#34;&gt;0&lt;/div&gt;&lt;/div&gt;
         &lt;/div&gt;
+        &lt;div class=&#34;bcmp-composition&#34;&gt;
+          &lt;div class=&#34;bcmp-composition-title&#34;&gt;伤害组成&lt;/div&gt;
+          &lt;div class=&#34;bcmp-composition-list&#34;&gt;暂无伤害数据&lt;/div&gt;
+        &lt;/div&gt;
         &lt;div class=&#34;bcmp-formula set-formula&#34;&gt;添加伤害段落并输入倍率后开始计算。&lt;/div&gt;
       &lt;/div&gt;`;
   }
@@ -1352,7 +1363,7 @@
           ${buffPair(&#39;sharedBuff&#39;, &#39;分摊伤害&#39;)}
         &lt;/div&gt;
 
-        &lt;div class=&#34;bcmp-seg-output&#34;&gt;本段：&lt;span class=&#34;seg-damage&#34;&gt;0&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&#34;bcmp-seg-output&#34;&gt;本段：&lt;span class=&#34;seg-damage&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;seg-share&#34;&gt;（0.00%）&lt;/span&gt;&lt;/div&gt;
       &lt;/div&gt;`;
   }
 
@@ -1638,9 +1649,11 @@
     const common = readCommon(setEl);
     let total = 0;
     const parts = [];
+    const segmentResults = [];
     refreshWeaponSharedFields(setEl);
     const weaponStates = {};
     const firstWeaponSettings = {};
+
     Array.from(setEl.querySelectorAll(&#39;.bcmp-segment&#39;)).forEach((segEl, idx) =&gt; {
       let seg = readSegment(segEl);
       let weaponState = null;
@@ -1655,17 +1668,32 @@
       }
       const res = calcSegment(common, seg, weaponState);
       total += res.total;
-      segEl.querySelector(&#39;.seg-damage&#39;).textContent = fmt(res.total);
       const label = seg.type === &#39;weapon&#39;
         ? `${weaponTypeName(seg.weaponType)} ${fmt2(seg.duration)}秒，预计 ${fmt2(seg.shots)} 发，实际 ${fmt2(res.count)} 发`
         : `技能伤害 ${fmt2(seg.duration)}秒内 ${fmt2(res.count)} 次`;
+      const shortLabel = seg.type === &#39;weapon&#39; ? `#${idx + 1} ${weaponTypeName(seg.weaponType)}` : `#${idx + 1} 技能伤害`;
       const sliceInfo = res.slices.length &gt; 1 ? `；自动拆成 ${res.slices.length} 段计算` : &#39;&#39;;
-      const extra = seg.type === &#39;weapon&#39; ? `弹匣 ${cleanNonNegative(seg.effectiveMagazine) &lt;= 0 ? &#39;无限&#39; : fmt2(seg.effectiveMagazine)}，换弹 ${cleanNonNegative(seg.effectiveReload) &lt;= 0 ? &#39;无&#39; : fmt2(seg.effectiveReload) + &#39;秒&#39;}，核心 ${seg.coreEnabled ? fmt2(seg.coreBuff) + &#39;%&#39; : &#39;无&#39;}，距离补正 ${seg.distanceBonus ? &#39;+0.3&#39; : &#39;无&#39;}` : &#39;技能无距离补正&#39;;
+      const extra = seg.type === &#39;weapon&#39;
+        ? `弹匣 ${cleanNonNegative(seg.effectiveMagazine) &lt;= 0 ? &#39;无限&#39; : fmt2(seg.effectiveMagazine)}，换弹 ${cleanNonNegative(seg.effectiveReload) &lt;= 0 ? &#39;无&#39; : fmt2(seg.effectiveReload) + &#39;秒&#39;}，核心 ${seg.coreEnabled ? fmt2(seg.coreBuff) + &#39;%&#39; : &#39;无&#39;}，距离补正 ${seg.distanceBonus ? &#39;+0.3&#39; : &#39;无&#39;}`
+        : `全爆裂加成 ${seg.burstBonus ? &#39;+0.5&#39; : &#39;无&#39;}，技能无距离补正`;
       const multInfo = segmentMultiplierSummary(common, seg, res);
-      parts.push(`#${idx + 1} ${label}，平均单次 ${fmt(res.perHit)}，本段 ${fmt(res.total)}${sliceInfo}；${extra}；Buff：${buffSummary(seg)}；${multInfo}`);
+      segmentResults.push({segEl, seg, res, label, shortLabel, sliceInfo, extra, multInfo});
     });
+
+    const compositionItems = [];
+    segmentResults.forEach((item, idx) =&gt; {
+      const share = total &gt; 0 ? item.res.total / total * 100 : 0;
+      item.segEl.querySelector(&#39;.seg-damage&#39;).textContent = fmt(item.res.total);
+      const shareEl = item.segEl.querySelector(&#39;.seg-share&#39;);
+      if(shareEl) shareEl.textContent = `（${share.toFixed(2)}%）`;
+      compositionItems.push(`&lt;div class=&#34;bcmp-composition-item&#34;&gt;&lt;span&gt;${item.shortLabel}&lt;/span&gt;&lt;span class=&#34;bcmp-composition-percent&#34;&gt;${share.toFixed(2)}%&lt;/span&gt;&lt;/div&gt;`);
+      parts.push(`#${idx + 1} ${item.label}，平均单次 ${fmt(item.res.perHit)}，本段 ${fmt(item.res.total)}（${share.toFixed(2)}%）${item.sliceInfo}；${item.extra}；Buff：${buffSummary(item.seg)}；${item.multInfo}`);
+    });
+
     setEl.dataset.total = String(total);
     setEl.querySelector(&#39;.set-total&#39;).textContent = fmt(total);
+    const compositionList = setEl.querySelector(&#39;.bcmp-composition-list&#39;);
+    if(compositionList) compositionList.innerHTML = compositionItems.length ? compositionItems.join(&#39;&#39;) : &#39;暂无伤害数据&#39;;
     setEl.querySelector(&#39;.set-formula&#39;).innerHTML = parts.length ? parts.join(&#39;&lt;br&gt;&#39;) : &#39;添加伤害段落并输入倍率后开始计算。&#39;;
     return total;
   }
