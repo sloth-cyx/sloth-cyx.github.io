@@ -990,6 +990,113 @@ post-sidebar">
 .nikke-buff-cmp .bcmp-composition-item { display:flex; justify-content:space-between; gap:12px; color:#3d405b; font-size:12px; font-weight:850; line-height:1.4; }
 .nikke-buff-cmp .bcmp-composition-percent { color:#8338ec; white-space:nowrap; }
 
+.nikke-buff-cmp .bcmp-composition-item {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:7px 12px;
+  align-items:center;
+}
+
+.nikke-buff-cmp .bcmp-composition-name {
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.nikke-buff-cmp .bcmp-composition-bar {
+  grid-column:1 / -1;
+  height:10px;
+  overflow:hidden;
+  border:2px solid #1b1d2f;
+  border-radius:999px;
+  background:#e5e7eb;
+}
+
+.nikke-buff-cmp .bcmp-composition-fill {
+  height:100%;
+  width:0;
+  background:#06d6a0;
+  transition:width .18s ease;
+}
+
+.nikke-buff-cmp .bcmp-top-contributor {
+  margin-top:10px;
+  padding:10px 12px;
+  border:2px solid #8338ec;
+  border-radius:10px;
+  background:#f3e8ff;
+  color:#3d405b;
+  font-size:12px;
+  font-weight:850;
+  line-height:1.5;
+}
+
+.nikke-buff-cmp .bcmp-top-contributor strong {
+  color:#8338ec;
+}
+
+.nikke-buff-cmp .bcmp-seg-note {
+  flex:1;
+  min-width:0;
+}
+
+.nikke-buff-cmp .bcmp-seg-note input {
+  width:100%;
+  min-width:0;
+  border:2px solid #8d99ae;
+  background:#ffffff;
+  color:#2b2d42;
+  border-radius:8px;
+  padding:7px 9px;
+  font-size:13px;
+  font-weight:850;
+  outline:none;
+}
+
+.nikke-buff-cmp .bcmp-seg-note input:focus {
+  border-color:#8338ec;
+  box-shadow:0 0 0 3px rgba(131,56,236,.18);
+}
+
+.nikke-buff-cmp .bcmp-details-toggle {
+  width:100%;
+  margin-top:10px;
+  border:2px solid #1b1d2f;
+  border-radius:8px;
+  padding:8px 10px;
+  background:#3d405b;
+  color:#ffd166;
+  font-weight:950;
+  cursor:pointer;
+  box-shadow:0 3px 0 #1b1d2f;
+  text-align:left;
+}
+
+.nikke-buff-cmp .bcmp-details-toggle:active {
+  transform:translateY(2px);
+  box-shadow:0 1px 0 #1b1d2f;
+}
+
+.nikke-buff-cmp .bcmp-details-toggle::before {
+  content:"▶";
+  display:inline-block;
+  margin-right:7px;
+  transition:transform .15s ease;
+}
+
+.nikke-buff-cmp .bcmp-details-toggle[aria-expanded="true"]::before {
+  transform:rotate(90deg);
+}
+
+.nikke-buff-cmp .bcmp-details-panel {
+  margin-top:8px;
+}
+
+.nikke-buff-cmp .bcmp-details-panel.hidden {
+  display:none !important;
+}
+
 .nikke-buff-cmp .bcmp-result-flex {
   display: flex;
   flex-wrap: nowrap;
@@ -1279,6 +1386,9 @@ post-sidebar">
   .nikke-buff-cmp .bcmp-empty-field {
     display: none;
   }
+  .nikke-buff-cmp .bcmp-composition-item {
+    grid-template-columns:minmax(0,1fr) auto;
+  }
 }
 </style>
 
@@ -1539,7 +1649,11 @@ post-sidebar">
           <div class="bcmp-composition-title">伤害组成</div>
           <div class="bcmp-composition-list">暂无伤害数据</div>
         </div>
-        <div class="bcmp-formula set-formula">添加伤害段落并输入倍率后开始计算。</div>
+        <div class="bcmp-top-contributor">主要输出来源：<strong>暂无伤害数据</strong></div>
+        <button type="button" class="bcmp-details-toggle" aria-expanded="false">展开乘区详情</button>
+        <div class="bcmp-details-panel hidden">
+          <div class="bcmp-formula set-formula">添加伤害段落并输入倍率后开始计算。</div>
+        </div>
       </div>`;
   }
 
@@ -1548,10 +1662,12 @@ post-sidebar">
     return `
       <div class="bcmp-segment">
         <div class="bcmp-seg-head">
-          <div class="bcmp-seg-title">伤害段落 #${segmentSeq}</div>
+          <label class="bcmp-seg-note">
+            <input type="text" data-key="segmentNote" value="伤害段落" placeholder="例：普攻 / 爆裂技能 / 持续伤害">
+          </label>
           <button type="button" class="bcmp-remove-btn">删除</button>
         </div>
-
+        <br>
         <div class="bcmp-weapon-grid-1">
           <label class="bcmp-field"><span>类型</span><select data-key="type" class="seg-type"><option value="weapon">武器 / 普攻</option><option value="skill">技能伤害</option></select></label>
           <label class="bcmp-field weapon-only"><span>武器类型</span><select data-key="weaponType" class="weapon-type"><option value="rifle">步枪</option><option value="smg">冲锋枪</option><option value="mg">机枪</option><option value="sg">霰弹枪</option><option value="sr">狙击枪</option><option value="rl">发射器</option></select></label>
@@ -1611,6 +1727,7 @@ post-sidebar">
     const checked = key => !!segEl.querySelector(`[data-key="${key}"]`)?.checked;
     const type = segEl.querySelector('[data-key="type"]').value;
     const seg = {
+      note: (segEl.querySelector('[data-key="segmentNote"]')?.value || '伤害段落').trim() || '伤害段落',
       type,
       weaponType: type === 'weapon' ? (segEl.querySelector('[data-key="weaponType"]')?.value || 'rifle') : '',
       duration: cleanNonNegative(read('duration')),
@@ -1749,6 +1866,17 @@ post-sidebar">
     if(importBtn) importBtn.addEventListener('click', () => importBaseSet(setEl));
     const delBtn = setEl.querySelector('.bcmp-delete-set-btn');
     if(delBtn) delBtn.addEventListener('click', () => { setEl.remove(); calculateAll(); });
+
+    const detailsToggle = setEl.querySelector('.bcmp-details-toggle');
+    const detailsPanel = setEl.querySelector('.bcmp-details-panel');
+    if(detailsToggle && detailsPanel){
+      detailsToggle.addEventListener('click', () => {
+        const expanded = detailsToggle.getAttribute('aria-expanded') === 'true';
+        detailsToggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+        detailsToggle.textContent = expanded ? '展开乘区详情' : '收起乘区详情';
+        detailsPanel.classList.toggle('hidden', expanded);
+      });
+    }
   }
 
   function collectSetData(setEl){
@@ -1793,7 +1921,18 @@ post-sidebar">
     }
     if(data.coreEnabled && (data.coreBuff === undefined || data.coreBuff === '')) data.coreBuff = 200;
 
+    
+    
+    const segmentNoteInput = segEl.querySelector('[data-key="segmentNote"]');
+    if(segmentNoteInput) {
+      const importedNote = data.note ?? data.segmentNote;
+      segmentNoteInput.value = importedNote !== undefined && String(importedNote).trim()
+        ? String(importedNote)
+        : '伤害段落';
+    }
+
     Object.entries(data).forEach(([key, val]) => {
+      if(key === 'note' || key === 'segmentNote') return;
       const input = segEl.querySelector(`[data-key="${key}"]`);
       if(input) {
         if(input.type === 'checkbox') input.checked = !!val;
@@ -1888,44 +2027,108 @@ post-sidebar">
     Array.from(setEl.querySelectorAll('.bcmp-segment')).forEach((segEl, idx) => {
       let seg = readSegment(segEl);
       let weaponState = null;
+
       if(seg.type === 'weapon') {
         const wType = seg.weaponType || 'rifle';
         if(!firstWeaponSettings[wType]) {
-          firstWeaponSettings[wType] = { magazine: cleanNonNegative(seg.magazine), reload: cleanNonNegative(seg.reload) };
+          firstWeaponSettings[wType] = {
+            magazine: cleanNonNegative(seg.magazine),
+            reload: cleanNonNegative(seg.reload)
+          };
           weaponStates[wType] = initWeaponState(firstWeaponSettings[wType].magazine);
         }
-        seg = { ...seg, effectiveMagazine: firstWeaponSettings[wType].magazine, effectiveReload: firstWeaponSettings[wType].reload };
+        seg = {
+          ...seg,
+          effectiveMagazine: firstWeaponSettings[wType].magazine,
+          effectiveReload: firstWeaponSettings[wType].reload
+        };
         weaponState = weaponStates[wType];
       }
+
       const res = calcSegment(common, seg, weaponState);
       total += res.total;
+
       const label = seg.type === 'weapon'
         ? `${weaponTypeName(seg.weaponType)} ${fmt2(seg.duration)}秒，预计 ${fmt2(seg.shots)} 发，实际 ${fmt2(res.count)} 发`
         : `技能伤害 ${fmt2(seg.duration)}秒内 ${fmt2(res.count)} 次`;
-      const shortLabel = seg.type === 'weapon' ? `#${idx + 1} ${weaponTypeName(seg.weaponType)}` : `#${idx + 1} 技能伤害`;
-      const sliceInfo = res.slices.length > 1 ? `；自动拆成 ${res.slices.length} 段计算` : '';
+
+      const displayName = seg.note || `伤害段落 #${idx + 1}`;
+      const shortLabel = `#${idx + 1} ${displayName}`;
+
+      const sliceInfo = res.slices.length > 1
+        ? `；自动拆成 ${res.slices.length} 段计算`
+        : '';
+
       const extra = seg.type === 'weapon'
         ? `弹匣 ${cleanNonNegative(seg.effectiveMagazine) <= 0 ? '无限' : fmt2(seg.effectiveMagazine)}，换弹 ${cleanNonNegative(seg.effectiveReload) <= 0 ? '无' : fmt2(seg.effectiveReload) + '秒'}，核心 ${seg.coreEnabled ? fmt2(seg.coreBuff) + '%' : '无'}，距离补正 ${seg.distanceBonus ? '+0.3' : '无'}`
         : `全爆裂加成 ${seg.burstBonus ? '+0.5' : '无'}，技能无距离补正`;
+
       const multInfo = segmentMultiplierSummary(common, seg, res);
-      segmentResults.push({segEl, seg, res, label, shortLabel, sliceInfo, extra, multInfo});
+
+      segmentResults.push({
+        segEl,
+        seg,
+        res,
+        label,
+        displayName,
+        shortLabel,
+        sliceInfo,
+        extra,
+        multInfo
+      });
     });
 
     const compositionItems = [];
+
     segmentResults.forEach((item, idx) => {
       const share = total > 0 ? item.res.total / total * 100 : 0;
+
       item.segEl.querySelector('.seg-damage').textContent = fmt(item.res.total);
       const shareEl = item.segEl.querySelector('.seg-share');
       if(shareEl) shareEl.textContent = `（${share.toFixed(2)}%）`;
-      compositionItems.push(`<div class="bcmp-composition-item"><span>${item.shortLabel}</span><span class="bcmp-composition-percent">${share.toFixed(2)}%</span></div>`);
-      parts.push(`#${idx + 1} ${item.label}，平均单次 ${fmt(item.res.perHit)}，本段 ${fmt(item.res.total)}（${share.toFixed(2)}%）${item.sliceInfo}；${item.extra}；Buff：${buffSummary(item.seg)}；${item.multInfo}`);
+
+      compositionItems.push(`
+        <div class="bcmp-composition-item">
+          <span class="bcmp-composition-name">${item.shortLabel}</span>
+          <span class="bcmp-composition-percent">${share.toFixed(2)}%</span>
+          <div class="bcmp-composition-bar">
+            <div class="bcmp-composition-fill" style="width:${Math.max(0, Math.min(100, share)).toFixed(2)}%"></div>
+          </div>
+        </div>
+      `);
+
+      parts.push(
+        `#${idx + 1} ${item.displayName}｜${item.label}，平均单次 ${fmt(item.res.perHit)}，本段 ${fmt(item.res.total)}（${share.toFixed(2)}%）${item.sliceInfo}；${item.extra}；Buff：${buffSummary(item.seg)}；${item.multInfo}`
+      );
     });
 
     setEl.dataset.total = String(total);
     setEl.querySelector('.set-total').textContent = fmt(total);
+
     const compositionList = setEl.querySelector('.bcmp-composition-list');
-    if(compositionList) compositionList.innerHTML = compositionItems.length ? compositionItems.join('') : '暂无伤害数据';
-    setEl.querySelector('.set-formula').innerHTML = parts.length ? parts.join('<br>') : '添加伤害段落并输入倍率后开始计算。';
+    if(compositionList) {
+      compositionList.innerHTML = compositionItems.length
+        ? compositionItems.join('')
+        : '暂无伤害数据';
+    }
+
+    const topContributor = setEl.querySelector('.bcmp-top-contributor strong');
+    if(topContributor) {
+      if(segmentResults.length && total > 0) {
+        const top = segmentResults.reduce((best, item) =>
+          item.res.total > best.res.total ? item : best
+        );
+        const topShare = top.res.total / total * 100;
+        topContributor.textContent = `${top.displayName}（${topShare.toFixed(2)}%）`;
+      } else {
+        topContributor.textContent = '暂无伤害数据';
+      }
+    }
+
+    setEl.querySelector('.set-formula').innerHTML = parts.length
+      ? parts.join('<br>')
+      : '添加伤害段落并输入倍率后开始计算。';
+
     return total;
   }
 
