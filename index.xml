@@ -362,13 +362,12 @@
         <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
         
         <guid>https://sloth-cyx.github.io/p/%E5%A6%AE%E5%A7%AC%E6%8B%90%E5%8A%9B%E7%BB%9F%E8%AE%A1%E8%A1%A8/</guid>
-        <description>&lt;img src="https://sloth-cyx.github.io/images/nikkeBuff/nikkeBuff_bg.png" alt="Featured image of post 【妮姬】拐力统计表" /&gt;&lt;h2 id=&#34;妮姬拐力表&#34;&gt;妮姬拐力表
-&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://1drv.ms/x/c/f3c5f916f8987410/IQB__XLp5omkS71O34ms6sPjAUZ2V-nG6vKWTRrP7zvmw4Q?e=uUJ3XF&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;📌​跳转：线上拐力表&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+        <description>&lt;img src="https://sloth-cyx.github.io/images/nikkeBuff/nikkeBuff_bg.png" alt="Featured image of post 【妮姬】拐力统计表" /&gt;&lt;h2 id=&#34;妮姬拐力表&#34;&gt;妮姬拐力表&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://1drv.ms/x/c/f3c5f916f8987410/IQB__XLp5omkS71O34ms6sPjAUZ2V-nG6vKWTRrP7zvmw4Q?e=uUJ3XF&#34;&gt;📌​跳转：线上拐力表&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;组合拐力一览&#34;&gt;组合拐力一览
-&lt;/h2&gt;&lt;h3 id=&#34;偶像双子&#34;&gt;偶像双子
-&lt;/h3&gt;&lt;table&gt;
+&lt;h2 id=&#34;组合拐力一览&#34;&gt;组合拐力一览&lt;/h2&gt;
+&lt;h3 id=&#34;偶像双子&#34;&gt;偶像双子&lt;/h3&gt;
+&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th style=&#34;text-align:center&#34;&gt;伤害乘区&lt;/th&gt;
@@ -437,8 +436,8 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h3 id=&#34;皇冠初音&#34;&gt;皇冠+初音
-&lt;/h3&gt;&lt;table&gt;
+&lt;h3 id=&#34;皇冠初音&#34;&gt;皇冠+初音&lt;/h3&gt;
+&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th style=&#34;text-align:center&#34;&gt;伤害乘区&lt;/th&gt;
@@ -484,8 +483,8 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h3 id=&#34;皇冠马斯特皇冠开大&#34;&gt;皇冠+马斯特（皇冠开大）
-&lt;/h3&gt;&lt;table&gt;
+&lt;h3 id=&#34;皇冠马斯特皇冠开大&#34;&gt;皇冠+马斯特（皇冠开大）&lt;/h3&gt;
+&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th style=&#34;text-align:center&#34;&gt;伤害乘区&lt;/th&gt;
@@ -531,8 +530,8 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h3 id=&#34;皇冠马斯特马斯特三层开大&#34;&gt;皇冠+马斯特（马斯特三层开大）
-&lt;/h3&gt;&lt;table&gt;
+&lt;h3 id=&#34;皇冠马斯特马斯特三层开大&#34;&gt;皇冠+马斯特（马斯特三层开大）&lt;/h3&gt;
+&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th style=&#34;text-align:center&#34;&gt;伤害乘区&lt;/th&gt;
@@ -574,8 +573,8 @@
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;全爆裂拐力计算器beta&#34;&gt;全爆裂拐力计算器（Beta）
-&lt;/h2&gt;&lt;div class=&#34;nikke-buff-cmp&#34; id=&#34;nikkeBuffCmp&#34;&gt;
+&lt;h2 id=&#34;全爆裂拐力计算器beta&#34;&gt;全爆裂拐力计算器（Beta）&lt;/h2&gt;
+&lt;div class=&#34;nikke-buff-cmp&#34; id=&#34;nikkeBuffCmp&#34;&gt;
   &lt;div class=&#34;bcmp-header&#34;&gt;
     &lt;div class=&#34;bcmp-kicker&#34;&gt;NIKKE BUFF TOOL&lt;/div&gt;
     &lt;div class=&#34;bcmp-title&#34;&gt;全爆裂拐力计算器&lt;/div&gt;
@@ -1181,6 +1180,105 @@
     }
   }
 
+
+  function safeFileName(name){
+    const cleaned = String(name || &#39;&#39;)
+      .trim()
+      .replace(/[\\/:*?&#34;&lt;&gt;|]+/g, &#39;-&#39;)
+      .replace(/\s+/g, &#39; &#39;)
+      .replace(/\.+$/g, &#39;&#39;);
+    return cleaned || &#39;base-set&#39;;
+  }
+
+  async function saveJsonFile(payload, suggestedName){
+    const text = JSON.stringify(payload, null, 2);
+    const fileName = safeFileName(suggestedName).replace(/\.json$/i, &#39;&#39;) + &#39;.json&#39;;
+
+    
+    if(window.isSecureContext &amp;&amp; typeof window.showSaveFilePicker === &#39;function&#39;){
+      try {
+        const handle = await window.showSaveFilePicker({
+          suggestedName: fileName,
+          types: [{
+            description: &#39;JSON 文件&#39;,
+            accept: { &#39;application/json&#39;: [&#39;.json&#39;] }
+          }]
+        });
+        const writable = await handle.createWritable();
+        await writable.write(text);
+        await writable.close();
+        return true;
+      } catch(err) {
+        if(err &amp;&amp; err.name === &#39;AbortError&#39;) return false;
+        console.warn(&#39;系统另存为不可用，改用浏览器下载：&#39;, err);
+      }
+    }
+
+    
+    const blob = new Blob([text], { type: &#39;application/json;charset=utf-8&#39; });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement(&#39;a&#39;);
+    link.href = url;
+    link.download = fileName;
+    link.style.display = &#39;none&#39;;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() =&gt; URL.revokeObjectURL(url), 1000);
+    return true;
+  }
+
+  function chooseJsonByInput(){
+    return new Promise(resolve =&gt; {
+      const input = document.createElement(&#39;input&#39;);
+      input.type = &#39;file&#39;;
+      input.accept = &#39;.json,application/json&#39;;
+      input.style.display = &#39;none&#39;;
+
+      let settled = false;
+      const finish = file =&gt; {
+        if(settled) return;
+        settled = true;
+        window.removeEventListener(&#39;focus&#39;, handleFocus);
+        input.remove();
+        resolve(file || null);
+      };
+
+      const handleFocus = () =&gt; {
+        
+        setTimeout(() =&gt; {
+          if(!settled &amp;&amp; (!input.files || input.files.length === 0)) finish(null);
+        }, 350);
+      };
+
+      input.addEventListener(&#39;change&#39;, () =&gt; finish(input.files?.[0] || null), { once: true });
+      window.addEventListener(&#39;focus&#39;, handleFocus, { once: true });
+      document.body.appendChild(input);
+      input.click();
+    });
+  }
+
+  async function openJsonFile(){
+    
+    if(window.isSecureContext &amp;&amp; typeof window.showOpenFilePicker === &#39;function&#39;){
+      try {
+        const [handle] = await window.showOpenFilePicker({
+          multiple: false,
+          types: [{
+            description: &#39;JSON 文件&#39;,
+            accept: { &#39;application/json&#39;: [&#39;.json&#39;] }
+          }]
+        });
+        return handle ? await handle.getFile() : null;
+      } catch(err) {
+        if(err &amp;&amp; err.name === &#39;AbortError&#39;) return null;
+        console.warn(&#39;系统文件选择器不可用，改用普通上传选择器：&#39;, err);
+      }
+    }
+
+    return chooseJsonByInput();
+  }
+
   const BUFFS = [
     [&#39;atkBuff&#39;, &#39;攻击力 buff&#39;],
     [&#39;elementBuff&#39;, &#39;优越伤害 buff&#39;],
@@ -1386,7 +1484,7 @@
       &lt;div class=&#34;bcmp-set&#34; data-set-id=&#34;${id}&#34; data-base=&#34;${isBase ? &#39;1&#39; : &#39;0&#39;}&#34;&gt;
         &lt;div class=&#34;bcmp-set-head&#34;&gt;
           &lt;div class=&#34;bcmp-set-title&#34;&gt;${isBase ? &#39;基准 Set #1&#39; : &#39;对比 Set #&#39; + id}&lt;/div&gt;
-          &lt;div class=&#34;bcmp-set-actions&#34;&gt;${isBase ? &#39;&lt;button type=&#34;button&#34; class=&#34;bcmp-copy-btn&#34;&gt;复制&lt;/button&gt;&lt;button type=&#34;button&#34; class=&#34;bcmp-export-btn&#34;&gt;导出&lt;/button&gt;&lt;button type=&#34;button&#34; class=&#34;bcmp-import-btn&#34;&gt;导入&lt;/button&gt;&#39; : &#39;&lt;button type=&#34;button&#34; class=&#34;bcmp-delete-set-btn&#34;&gt;删除Set&lt;/button&gt;&#39;}&lt;/div&gt;
+          &lt;div class=&#34;bcmp-set-actions&#34;&gt;${isBase ? &#39;&lt;button type=&#34;button&#34; class=&#34;bcmp-copy-btn&#34;&gt;复制&lt;/button&gt;&lt;button type=&#34;button&#34; class=&#34;bcmp-export-btn&#34; title=&#34;导出为 JSON 文件&#34;&gt;导出&lt;/button&gt;&lt;button type=&#34;button&#34; class=&#34;bcmp-import-btn&#34; title=&#34;从 JSON 文件导入&#34;&gt;导入&lt;/button&gt;&#39; : &#39;&lt;button type=&#34;button&#34; class=&#34;bcmp-delete-set-btn&#34;&gt;删除Set&lt;/button&gt;&#39;}&lt;/div&gt;
         &lt;/div&gt;
 
         &lt;div class=&#34;bcmp-set-note-grid&#34;&gt;
@@ -1725,28 +1823,42 @@
   }
 
 
-  function exportBaseSet(setEl){
+  async function exportBaseSet(setEl){
     const payload = {
-      version: 2,
+      version: 3,
       type: &#39;nikke-buff-calc-base-set&#39;,
       exportedAt: new Date().toISOString(),
       data: collectSetData(setEl)
     };
-    copyToClipboard(JSON.stringify(payload), &#39;基准Set已导出到剪贴板&#39;);
+
+    const note = readSetNote(setEl) || &#39;基准Set&#39;;
+    const saved = await saveJsonFile(payload, `nikke-buff-${note}`);
+    if(saved) alert(&#39;基准 Set JSON 已导出&#39;);
   }
 
-  function importBaseSet(setEl){
-    const raw = window.prompt(&#39;请粘贴之前导出的基准 Set JSON：&#39;);
-    if(!raw) return;
+  async function importBaseSet(setEl){
+    const file = await openJsonFile();
+    if(!file) return;
+
     try {
+      if(file.size &gt; 5 * 1024 * 1024) {
+        throw new Error(&#39;文件过大&#39;);
+      }
+
+      const raw = (await file.text()).replace(/^\uFEFF/, &#39;&#39;);
       const parsed = JSON.parse(raw);
-      const data = parsed.data || parsed;
-      if(!data || !data.common || !Array.isArray(data.segments)) throw new Error(&#39;格式不正确&#39;);
+      const data = parsed?.data || parsed;
+
+      if(!data || !data.common || !Array.isArray(data.segments)) {
+        throw new Error(&#39;格式不正确&#39;);
+      }
+
       fillSet(setEl, data);
       calculateAll();
-      alert(&#39;导入完成&#39;);
-    } catch (err) {
-      alert(&#39;导入失败：JSON 格式不正确&#39;);
+      alert(`导入完成：${file.name}`);
+    } catch(err) {
+      console.error(err);
+      alert(&#39;导入失败：请选择由本计算器导出的有效 JSON 文件&#39;);
     }
   }
 
@@ -2675,8 +2787,8 @@ T4 - 无任何性价比和泛用性（很吃环境），属于对策垃圾卡，
         <pubDate>Sat, 23 May 2026 00:00:00 +0000</pubDate>
         
         <guid>https://sloth-cyx.github.io/p/%E5%A6%AE%E5%A7%AC%E5%A6%AE%E5%A7%AC%E8%B5%84%E6%BA%90/%E8%AE%A1%E7%AE%97%E5%99%A8/</guid>
-        <description>&lt;img src="https://sloth-cyx.github.io/images/nikkeCalculator/nikkeCalculator_bg.png" alt="Featured image of post 【妮姬】妮姬资源/计算器" /&gt;&lt;h2 id=&#34;石头期望计算器&#34;&gt;石头期望计算器
-&lt;/h2&gt;&lt;div class=&#34;nikke-drop-calc-section&#34; style=&#34;width: 100%; margin: 2rem auto; max-width: 800px; font-family: -apple-system, sans-serif; background: #fff5f5; border: 1px solid #ebdada; border-radius: 12px; padding: 25px; color: #333; box-shadow: 0 4px 12px rgba(180,160,160,0.08);&#34;&gt;
+        <description>&lt;img src="https://sloth-cyx.github.io/images/nikkeCalculator/nikkeCalculator_bg.png" alt="Featured image of post 【妮姬】妮姬资源/计算器" /&gt;&lt;h2 id=&#34;石头期望计算器&#34;&gt;石头期望计算器&lt;/h2&gt;
+&lt;div class=&#34;nikke-drop-calc-section&#34; style=&#34;width: 100%; margin: 2rem auto; max-width: 800px; font-family: -apple-system, sans-serif; background: #fff5f5; border: 1px solid #ebdada; border-radius: 12px; padding: 25px; color: #333; box-shadow: 0 4px 12px rgba(180,160,160,0.08);&#34;&gt;
         
     &lt;div style=&#34;margin: 20px 0; display: flex; align-items: center; gap: 10px;&#34;&gt;
         &lt;label for=&#34;stage-select&#34; style=&#34;font-weight: bold; font-size: 14px; color: #4a5568; white-space: nowrap;&#34;&gt;当前克拉肯阶段：&lt;/label&gt;
@@ -2837,8 +2949,8 @@ window.onload = function() {
     calculateDrops();
 };
 &lt;/script&gt;
-&lt;h2 id=&#34;收藏品sr15升级期望&#34;&gt;收藏品SR15升级期望
-&lt;/h2&gt;&lt;div class=&#34;nikke-collection-table&#34; style=&#34;width: 100%; margin: 2.5rem auto; max-width: 800px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; padding: 15px; background: #8c624d; border-radius: 16px;&#34;&gt;
+&lt;h2 id=&#34;收藏品sr15升级期望&#34;&gt;收藏品SR15升级期望&lt;/h2&gt;
+&lt;div class=&#34;nikke-collection-table&#34; style=&#34;width: 100%; margin: 2.5rem auto; max-width: 800px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; padding: 15px; background: #8c624d; border-radius: 16px;&#34;&gt;
   &lt;div class=&#34;table-card&#34; style=&#34;background: #a1755e; border: 1px solid #b38770; border-radius: 12px; padding: 25px; color: #ffffff; box-shadow: 0 4px 20px rgba(70,45,35,0.25);&#34;&gt;
 
     &lt;div style=&#34;background: #ffffff; border-radius: 8px; padding: 20px; border: 1px solid #b88d76; overflow-x: auto;&#34;&gt;
@@ -2884,8 +2996,8 @@ window.onload = function() {
   border: 1px solid #e3d3ca !important;
 }
 &lt;/style&gt;
-&lt;h2 id=&#34;装备升级计算器&#34;&gt;装备升级计算器
-&lt;/h2&gt;&lt;div class=&#34;nikke-equipment-calc&#34; style=&#34;max-width: 800px; margin: 20px auto; padding: 25px; border: 1px solid #dcd7cc; border-radius: 12px; box-shadow: 0 4px 16px rgba(139,126,116,0.1); font-family: -apple-system, sans-serif; background: #fdfaf4; color: #433e37; box-sizing: border-box;&#34;&gt;
+&lt;h2 id=&#34;装备升级计算器&#34;&gt;装备升级计算器&lt;/h2&gt;
+&lt;div class=&#34;nikke-equipment-calc&#34; style=&#34;max-width: 800px; margin: 20px auto; padding: 25px; border: 1px solid #dcd7cc; border-radius: 12px; box-shadow: 0 4px 16px rgba(139,126,116,0.1); font-family: -apple-system, sans-serif; background: #fdfaf4; color: #433e37; box-sizing: border-box;&#34;&gt;
     
     &lt;div style=&#34;background-color: #f3ede2; padding: 10px 15px; border-radius: 6px; font-size: 12px; color: #7d715e; margin-bottom: 25px; line-height: 1.6; border-left: 4px solid #b1a491;&#34;&gt;
         &lt;strong&gt;狗粮提供经验：&lt;/strong&gt; T8狗粮 = 12,800 EXP | T9狗粮 = 25,400 EXP&lt;br&gt;
@@ -3000,8 +3112,8 @@ window.onload = function() {
     calcCombinedGear();
 };
 &lt;/script&gt;
-&lt;h2 id=&#34;技能计算器&#34;&gt;技能计算器
-&lt;/h2&gt;&lt;div class=&#34;nikke-skill-calculator&#34; id=&#34;nikkeSkillCalculator&#34;&gt;
+&lt;h2 id=&#34;技能计算器&#34;&gt;技能计算器&lt;/h2&gt;
+&lt;div class=&#34;nikke-skill-calculator&#34; id=&#34;nikkeSkillCalculator&#34;&gt;
 &lt;div class=&#34;nsc-card&#34;&gt;
 &lt;div class=&#34;nsc-notice&#34;&gt;按角色技能需求与属性统计技能书、爆裂书与各属性代码手册消耗。&lt;/div&gt;
 &lt;section class=&#34;nsc-panel nsc-demand-panel&#34;&gt;
@@ -3607,15 +3719,15 @@ window.onload = function() {
   createSkillSet();
 })();
 &lt;/script&gt;
-&lt;h2 id=&#34;词条期望计算器&#34;&gt;词条期望计算器
-&lt;/h2&gt;&lt;div class=&#34;nikke-attributes-section&#34; style=&#34;width: 100%; margin: 2.5rem auto; max-width: 900px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #e6eff6; border: 1px solid #cbdbe6; border-radius: 12px; padding: 25px; color: #2c3e50; box-shadow: 0 4px 16px rgba(180,200,215,0.25);&#34;&gt;
+&lt;h2 id=&#34;词条期望计算器&#34;&gt;词条期望计算器&lt;/h2&gt;
+&lt;div class=&#34;nikke-attributes-section&#34; style=&#34;width: 100%; margin: 2.5rem auto; max-width: 900px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #e6eff6; border: 1px solid #cbdbe6; border-radius: 12px; padding: 25px; color: #2c3e50; box-shadow: 0 4px 16px rgba(180,200,215,0.25);&#34;&gt;
   
   &lt;div class=&#34;attr-calc-card&#34;&gt;
     &lt;div class=&#34;attr-section-title&#34;&gt;词条期望计算器&lt;/div&gt;
     &lt;div class=&#34;attr-calc-note&#34;&gt;
-      选择目标词条后自动计算命中概率、期望洗词条次数、石头消耗与锁子消耗。已锁定词条视为已经拥有，不参与命中概率计算。&lt;br&gt;
-      「石头锁定」会计算一次性锁定成本；「石头已锁」只计算后续洗词条增加的每次石头成本。&lt;br&gt;
-      * 期望指数仅代表长期平均参考，并非保底。每次重洗均为独立判定，因此实际结果可能高于或低于期望次数。
+      选择目标词条后自动计算命中概率、期望洗词条次数、石头消耗与锁子消耗。锁定词条会先从词条池中移除，剩余词条按原始权重重新归一化。&lt;br&gt;
+      多个未锁格选择多个目标时，会枚举所有不重复词条的成功排列，并将各条成功路径概率相加。「石头锁定」会计算一次性锁定成本；「石头已锁」只计算后续每次洗词条增加的石头成本。&lt;br&gt;
+      * 仅计算已选择目标的未锁定格；目标词条为“空”表示该格不参与本次洗词条计算，也不会生成随机词条或改变后续词条池。参与计算的格子仍按第一格→第二格→第三格顺序生成，且同件装备词条不重复。期望值仅代表长期平均参考，并非保底。
     &lt;/div&gt;
 
     &lt;div class=&#34;attr-slot-grid&#34;&gt;
@@ -3700,7 +3812,8 @@ window.onload = function() {
     &lt;/div&gt;
 
     &lt;div class=&#34;attr-warning-box&#34; id=&#34;attrWarningText&#34;&gt;&lt;/div&gt;
-    &lt;div class=&#34;attr-formula-box&#34; id=&#34;attrFormulaText&#34;&gt;请选择至少一个未锁定的目标词条。&lt;/div&gt;
+    &lt;button type=&#34;button&#34; class=&#34;attr-formula-toggle&#34; id=&#34;attrFormulaToggle&#34; aria-expanded=&#34;false&#34;&gt;展开计算公式&lt;/button&gt;
+    &lt;div class=&#34;attr-formula-box attr-formula-collapsed&#34; id=&#34;attrFormulaText&#34;&gt;请选择至少一个未锁定的目标词条。&lt;/div&gt;
   &lt;/div&gt;
 
 
@@ -3983,6 +4096,54 @@ window.onload = function() {
   padding: 10px 12px;
 }
 
+.nikke-attributes-section .attr-formula-toggle {
+  width: 100%;
+  margin-top: 12px;
+  padding: 9px 12px;
+  border: 1px solid #90cdf4;
+  border-radius: 6px;
+  background: #ebf8ff;
+  color: #2b6cb0;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  text-align: left;
+}
+
+.nikke-attributes-section .attr-formula-toggle::before {
+  content: &#34;▶&#34;;
+  display: inline-block;
+  margin-right: 7px;
+  transition: transform .15s ease;
+}
+
+.nikke-attributes-section .attr-formula-toggle[aria-expanded=&#34;true&#34;]::before {
+  transform: rotate(90deg);
+}
+
+.nikke-attributes-section .attr-formula-collapsed {
+  display: none;
+}
+
+.nikke-attributes-section .attr-formula-section {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed #edc86f;
+}
+
+.nikke-attributes-section .attr-formula-section:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.nikke-attributes-section .attr-path-line {
+  margin-top: 5px;
+  padding: 6px 8px;
+  background: rgba(255,255,255,.58);
+  border-radius: 5px;
+}
+
 @media (max-width: 768px) {
   .nikke-attributes-section {
     padding: 14px !important;
@@ -4131,6 +4292,8 @@ window.onload = function() {
   ];
 
   const SLOT_RATES = [1, 0.5, 0.3];
+  const EPS = 1e-12;
+  const MAX_PATHS_TO_SHOW = 80;
 
   function getStonePerRoll(lockedCount) {
     return 1 + lockedCount;
@@ -4144,7 +4307,6 @@ window.onload = function() {
       cost += permanentLockBeforeNewStone === 0 ? 2 : 3;
       permanentLockBeforeNewStone += 1;
     }
-
     return cost;
   }
 
@@ -4179,26 +4341,44 @@ window.onload = function() {
     document.getElementById(&#39;lockSlot3&#39;)
   ];
 
-  function formatNumber(num) {
-    if (!Number.isFinite(num)) return &#39;—&#39;;
-    if (Math.abs(num - Math.round(num)) &lt; 0.000001) return Math.round(num).toLocaleString();
-    return num.toLocaleString(undefined, { maximumFractionDigits: 2 });
+  const formulaToggle = document.getElementById(&#39;attrFormulaToggle&#39;);
+  const formulaBox = document.getElementById(&#39;attrFormulaText&#39;);
+  const warningBox = document.getElementById(&#39;attrWarningText&#39;);
+
+  function formatNumber(value) {
+    if (!Number.isFinite(value)) return &#39;—&#39;;
+    if (Math.abs(value - Math.round(value)) &lt; 0.000001) return Math.round(value).toLocaleString();
+    return value.toLocaleString(undefined, { maximumFractionDigits: 2 });
   }
 
   function formatRate(rate) {
     if (!Number.isFinite(rate)) return &#39;—&#39;;
     const percent = rate * 100;
+    if (Math.abs(percent) &lt; 0.0000005) return &#39;0%&#39;;
     if (percent &gt;= 1) return percent.toLocaleString(undefined, { maximumFractionDigits: 4 }) + &#39;%&#39;;
     return percent.toLocaleString(undefined, { maximumFractionDigits: 6 }) + &#39;%&#39;;
+  }
+
+  function formatCostRange(minCost, maxCost, unit) {
+    const minText = formatNumber(minCost);
+    const maxText = formatNumber(maxCost);
+    return minCost === maxCost
+      ? `${minText} ${unit}`
+      : `${minText}-${maxText} ${unit}`;
   }
 
   function getAttr(value) {
     return ATTR_OPTIONS.find(item =&gt; item.value === value) || ATTR_OPTIONS[0];
   }
 
+  function sumRates(attrs) {
+    return attrs.reduce((sum, attr) =&gt; sum + attr.rate, 0);
+  }
+
   function getSelectedValues(index) {
-    const menu = attrControls[index].menu;
-    return Array.from(menu.querySelectorAll(&#39;input[type=&#34;checkbox&#34;]:checked&#39;)).map(input =&gt; input.value);
+    return Array.from(
+      attrControls[index].menu.querySelectorAll(&#39;input[type=&#34;checkbox&#34;]:checked&#39;)
+    ).map(input =&gt; input.value);
   }
 
   function getSelectedAttrs(index) {
@@ -4208,11 +4388,13 @@ window.onload = function() {
   function updateMultiButton(index) {
     const attrs = getSelectedAttrs(index);
     const button = attrControls[index].button;
+
     if (!attrs.length) {
       button.textContent = &#39;空&#39;;
       button.title = &#39;空&#39;;
       return;
     }
+
     const text = attrs.map(attr =&gt; attr.name).join(&#39; / &#39;);
     button.textContent = text;
     button.title = text;
@@ -4225,6 +4407,7 @@ window.onload = function() {
           &lt;input type=&#34;checkbox&#34; data-clear=&#34;1&#34;&gt;
           &lt;span&gt;空&lt;/span&gt;
         &lt;/label&gt;`;
+
       const optionHtml = ATTR_OPTIONS
         .filter(item =&gt; item.value)
         .map(item =&gt; `
@@ -4238,27 +4421,32 @@ window.onload = function() {
 
       const clearInput = control.menu.querySelector(&#39;[data-clear=&#34;1&#34;]&#39;);
       clearInput.addEventListener(&#39;change&#39;, () =&gt; {
-        if (clearInput.checked) {
-          control.menu.querySelectorAll(&#39;input[type=&#34;checkbox&#34;]:not([data-clear])&#39;).forEach(input =&gt; input.checked = false);
-          clearInput.checked = false;
-          updateMultiButton(index);
-          calculateAttributes();
-        }
+        if (!clearInput.checked) return;
+        control.menu
+          .querySelectorAll(&#39;input[type=&#34;checkbox&#34;]:not([data-clear])&#39;)
+          .forEach(input =&gt; { input.checked = false; });
+        clearInput.checked = false;
+        updateMultiButton(index);
+        calculateAttributes();
       });
 
-      control.menu.querySelectorAll(&#39;input[type=&#34;checkbox&#34;]:not([data-clear])&#39;).forEach(input =&gt; {
-        input.addEventListener(&#39;change&#39;, () =&gt; {
-          updateMultiButton(index);
-          calculateAttributes();
+      control.menu
+        .querySelectorAll(&#39;input[type=&#34;checkbox&#34;]:not([data-clear])&#39;)
+        .forEach(input =&gt; {
+          input.addEventListener(&#39;change&#39;, () =&gt; {
+            updateMultiButton(index);
+            calculateAttributes();
+          });
         });
-      });
 
-      control.button.addEventListener(&#39;click&#39;, (event) =&gt; {
+      control.button.addEventListener(&#39;click&#39;, event =&gt; {
         event.preventDefault();
         event.stopPropagation();
+
         attrControls.forEach((other, otherIndex) =&gt; {
           if (otherIndex !== index) other.wrapper.classList.remove(&#39;open&#39;);
         });
+
         control.wrapper.classList.toggle(&#39;open&#39;);
       });
 
@@ -4271,55 +4459,201 @@ window.onload = function() {
     });
   }
 
-  function validateDuplicateAttrs() {
-    const selectedMap = {};
-    const duplicates = [];
-
-    attrControls.forEach(control =&gt; {
-      control.button.classList.remove(&#39;attr-error&#39;);
-    });
-
-    attrControls.forEach((control, index) =&gt; {
-      const lockType = lockSelects[index].value;
-      const isLocked = lockType !== &#39;none&#39;;
-      getSelectedValues(index).forEach(value =&gt; {
-        if (!selectedMap[value]) selectedMap[value] = [];
-        selectedMap[value].push({ index, isLocked });
-      });
-    });
-
-    Object.keys(selectedMap).forEach(value =&gt; {
-      const entries = selectedMap[value];
-      const hasLockedDuplicate = entries.some(entry =&gt; entry.isLocked) &amp;&amp; entries.length &gt; 1;
-      if (hasLockedDuplicate) {
-        const attr = getAttr(value);
-        duplicates.push(attr.name);
-        entries.forEach(entry =&gt; attrControls[entry.index].button.classList.add(&#39;attr-error&#39;));
-      }
-    });
-
-    const warningBox = document.getElementById(&#39;attrWarningText&#39;);
-    if (duplicates.length &gt; 0) {
-      warningBox.style.display = &#39;block&#39;;
-      warningBox.textContent = &#39;已有锁定一样词条：&#39; + duplicates.join(&#39;、&#39;) + &#39;。已锁定词条视为已经拥有；未锁定格子重复选择同一目标时，会按“任意一个格子出货即可”计算。&#39;;
-      return true;
-    }
-
+  function resetErrors() {
+    attrControls.forEach(control =&gt; control.button.classList.remove(&#39;attr-error&#39;));
     warningBox.style.display = &#39;none&#39;;
     warningBox.textContent = &#39;&#39;;
+  }
+
+  function setInvalidResult(message, formulaLines) {
+    document.getElementById(&#39;attrTotalRate&#39;).textContent = &#39;—&#39;;
+    document.getElementById(&#39;attrExpectedRuns&#39;).textContent = &#39;—&#39;;
+    document.getElementById(&#39;attrStoneCost&#39;).textContent = &#39;—&#39;;
+    document.getElementById(&#39;attrKeyCost&#39;).textContent = &#39;—&#39;;
+    warningBox.style.display = &#39;block&#39;;
+    warningBox.textContent = message;
+    formulaBox.innerHTML = (formulaLines &amp;&amp; formulaLines.length)
+      ? formulaLines.join(&#39;&lt;br&gt;&#39;)
+      : message;
+  }
+
+  function buildTargetRules(slotStates, lockedValues) {
+    const targetSlots = slotStates
+      .filter(slot =&gt; !slot.isLocked)
+      .map(slot =&gt; ({
+        index: slot.index,
+        attrs: slot.attrs.filter(attr =&gt; !lockedValues.has(attr.value))
+      }))
+      .filter(slot =&gt; slot.attrs.length &gt; 0);
+
+    const singletonMap = {};
+    targetSlots.forEach(slot =&gt; {
+      if (slot.attrs.length !== 1) return;
+      const value = slot.attrs[0].value;
+      if (!singletonMap[value]) singletonMap[value] = [];
+      singletonMap[value].push(slot.index);
+    });
+
+    const duplicateSingletonGroups = Object.entries(singletonMap)
+      .filter(([, indices]) =&gt; indices.length &gt; 1)
+      .map(([value, indices]) =&gt; ({ value, indices }));
+
+    const duplicateSingletonValues = new Set(
+      duplicateSingletonGroups.map(group =&gt; group.value)
+    );
+
+    const slotConstraints = targetSlots.filter(slot =&gt; {
+      return !(slot.attrs.length === 1 &amp;&amp; duplicateSingletonValues.has(slot.attrs[0].value));
+    });
+
+    return {
+      targetSlots,
+      duplicateSingletonGroups,
+      slotConstraints
+    };
+  }
+
+  function pathIsSuccessful(outcomes, rules) {
+    for (const group of rules.duplicateSingletonGroups) {
+      const matched = group.indices.some(index =&gt; outcomes[index] === group.value);
+      if (!matched) return false;
+    }
+
+    for (const constraint of rules.slotConstraints) {
+      const result = outcomes[constraint.index];
+      if (!result) return false;
+      if (!constraint.attrs.some(attr =&gt; attr.value === result)) return false;
+    }
+
     return true;
   }
 
+  function enumerateProbability(slotStates, lockedValues, rules) {
+    const availableStart = ATTR_OPTIONS
+      .filter(attr =&gt; attr.value &amp;&amp; !lockedValues.has(attr.value));
+
+    
+
+    const activeSlots = rules.targetSlots
+      .slice()
+      .sort((a, b) =&gt; a.index - b.index);
+
+    const successfulPaths = [];
+    let totalRate = 0;
+
+    function recurse(position, available, probability, outcomes, factors) {
+      if (position &gt;= activeSlots.length) {
+        if (!pathIsSuccessful(outcomes, rules)) return;
+
+        totalRate += probability;
+        successfulPaths.push({
+          probability,
+          outcomes: outcomes.slice(),
+          factors: factors.slice()
+        });
+        return;
+      }
+
+      const activeSlot = activeSlots[position];
+      const index = activeSlot.index;
+      const appearanceRate = SLOT_RATES[index];
+
+      
+      if (appearanceRate &lt; 1) {
+        outcomes[index] = null;
+        recurse(
+          position + 1,
+          available,
+          probability * (1 - appearanceRate),
+          outcomes,
+          factors.concat({
+            text: `第${index + 1}格未出现：1 - ${formatRate(appearanceRate)}`,
+            value: 1 - appearanceRate
+          })
+        );
+      }
+
+      const poolWeight = sumRates(available);
+      if (poolWeight &lt;= EPS || appearanceRate &lt;= EPS) return;
+
+      available.forEach((attr, attrIndex) =&gt; {
+        const conditionalRate = attr.rate / poolWeight;
+        const branchRate = appearanceRate * conditionalRate;
+        const nextAvailable = available.slice();
+
+        
+        nextAvailable.splice(attrIndex, 1);
+        outcomes[index] = attr.value;
+
+        recurse(
+          position + 1,
+          nextAvailable,
+          probability * branchRate,
+          outcomes,
+          factors.concat({
+            text: `第${index + 1}格「${attr.name}」：${formatRate(appearanceRate)} × (${formatRate(attr.rate)} ÷ ${formatRate(poolWeight)})`,
+            value: branchRate
+          })
+        );
+      });
+
+      outcomes[index] = null;
+    }
+
+    recurse(0, availableStart, 1, [null, null, null], []);
+
+    return {
+      totalRate,
+      successfulPaths,
+      initialPoolWeight: sumRates(availableStart)
+    };
+  }
+
+  function targetRuleDescription(rules) {
+    const parts = [];
+
+    rules.duplicateSingletonGroups.forEach(group =&gt; {
+      const attr = getAttr(group.value);
+      const slots = group.indices.map(index =&gt; `第${index + 1}格`).join(&#39; / &#39;);
+      parts.push(`${slots}都选择「${attr.name}」：保留原本逻辑，任意一格出现即可`);
+    });
+
+    rules.slotConstraints.forEach(constraint =&gt; {
+      const names = constraint.attrs.map(attr =&gt; attr.name).join(&#39; / &#39;);
+      parts.push(`第${constraint.index + 1}格必须出现「${names}」之一`);
+    });
+
+    return parts;
+  }
+
+  function successPathName(path, rules) {
+    const entries = [];
+    const relevant = new Set(rules.targetSlots.map(slot =&gt; slot.index));
+
+    path.outcomes.forEach((value, index) =&gt; {
+      if (!relevant.has(index)) return;
+      if (!value) {
+        entries.push(`第${index + 1}格未出现`);
+        return;
+      }
+      entries.push(`第${index + 1}格${getAttr(value).name}`);
+    });
+
+    return entries.join(&#39; + &#39;) || &#39;成功路径&#39;;
+  }
+
   function calculateAttributes() {
-    validateDuplicateAttrs();
+    resetErrors();
 
     let lockedCount = 0;
     let stoneLockedCount = 0;
     let stoneDoneCount = 0;
     let keyLockedCount = 0;
-    const formulaParts = [];
-    const lockedAttrValues = new Set();
-    const unlockedSelections = [];
+    const lockedValues = new Set();
+    const slotStates = [];
+    const formulaSections = [];
+    const setupLines = [];
+    const invalidMessages = [];
 
     attrControls.forEach((control, index) =&gt; {
       const attrs = getSelectedAttrs(index);
@@ -4328,133 +4662,214 @@ window.onload = function() {
       if (!attrs.length) {
         lockSelect.value = &#39;none&#39;;
         lockSelect.disabled = true;
-        return;
+      } else {
+        lockSelect.disabled = false;
       }
 
-      lockSelect.disabled = false;
-      const lockType = lockSelect.value;
-      const attrNames = attrs.map(attr =&gt; attr.name).join(&#39; / &#39;);
+      const lockType = attrs.length ? lockSelect.value : &#39;none&#39;;
+      const isLocked = lockType !== &#39;none&#39;;
 
-      if (lockType !== &#39;none&#39;) {
+      if (isLocked &amp;&amp; attrs.length !== 1) {
+        invalidMessages.push(`第${index + 1}格设置为锁定时，只能选择一个实际已经拥有的词条。`);
+        control.button.classList.add(&#39;attr-error&#39;);
+      }
+
+      if (isLocked &amp;&amp; attrs.length === 1) {
+        const attr = attrs[0];
+        if (lockedValues.has(attr.value)) {
+          invalidMessages.push(`锁定词条「${attr.name}」重复；同一件装备不能拥有两个相同词条。`);
+          control.button.classList.add(&#39;attr-error&#39;);
+        }
+        lockedValues.add(attr.value);
         lockedCount += 1;
-        attrs.forEach(attr =&gt; lockedAttrValues.add(attr.value));
+
         if (lockType === &#39;stone&#39;) stoneLockedCount += 1;
         if (lockType === &#39;stoneDone&#39;) stoneDoneCount += 1;
         if (lockType === &#39;key&#39;) keyLockedCount += 1;
-        const lockLabel = lockType === &#39;stone&#39; ? &#39;石头锁定&#39; : (lockType === &#39;stoneDone&#39; ? &#39;石头已锁&#39; : &#39;锁子锁定&#39;);
-        formulaParts.push(`第${index + 1}格「${attrNames}」${lockLabel}，视为已经拥有，不参与概率计算`);
-        return;
+
+        const lockLabel = lockType === &#39;stone&#39;
+          ? &#39;石头锁定&#39;
+          : (lockType === &#39;stoneDone&#39; ? &#39;石头已锁&#39; : &#39;锁子锁定&#39;);
+
+        setupLines.push(
+          `第${index + 1}格「${attr.name}」${lockLabel}：从后续词条池中排除 ${formatRate(attr.rate)} 权重`
+        );
       }
 
-      unlockedSelections.push({ index, attrs });
-    });
-
-    if (lockedCount &gt; 2) {
-      document.getElementById(&#39;attrTotalRate&#39;).textContent = &#39;—&#39;;
-      document.getElementById(&#39;attrExpectedRuns&#39;).textContent = &#39;—&#39;;
-      document.getElementById(&#39;attrStoneCost&#39;).textContent = &#39;—&#39;;
-      document.getElementById(&#39;attrKeyCost&#39;).textContent = &#39;—&#39;;
-      document.getElementById(&#39;attrFormulaText&#39;).textContent = &#39;游戏内最多只能锁定 2 个词条，请减少锁定数量。&#39;;
-      return;
-    }
-
-    const attrSlotMap = {};
-    unlockedSelections.forEach(selection =&gt; {
-      selection.attrs.forEach(attr =&gt; {
-        if (lockedAttrValues.has(attr.value)) return;
-        if (!attrSlotMap[attr.value]) attrSlotMap[attr.value] = { attr, slots: [] };
-        attrSlotMap[attr.value].slots.push(selection.index);
+      slotStates.push({
+        index,
+        attrs,
+        lockType,
+        isLocked
       });
     });
 
-    const duplicateAttrValues = new Set(
-      Object.keys(attrSlotMap).filter(value =&gt; Array.from(new Set(attrSlotMap[value].slots)).length &gt; 1)
-    );
+    if (lockedCount &gt; 2) {
+      invalidMessages.push(&#39;游戏内最多只能锁定 2 个词条，请减少锁定数量。&#39;);
+    }
 
-    let totalRate = 1;
-    let targetCount = 0;
-    const usedDuplicateValues = new Set();
+    if (invalidMessages.length) {
+      setInvalidResult(invalidMessages.join(&#39; &#39;), invalidMessages);
+      return;
+    }
 
-    Object.keys(attrSlotMap).forEach(value =&gt; {
-      if (!duplicateAttrValues.has(value)) return;
-      const item = attrSlotMap[value];
-      const uniqueSlots = Array.from(new Set(item.slots));
-      const missRate = uniqueSlots.reduce((product, slotIndex) =&gt; {
-        return product * (1 - SLOT_RATES[slotIndex] * item.attr.rate);
-      }, 1);
-      const hitRate = 1 - missRate;
-      totalRate *= hitRate;
-      targetCount += 1;
-      usedDuplicateValues.add(value);
-      const slotNames = uniqueSlots.map(slotIndex =&gt; `第${slotIndex + 1}格`).join(&#39; / &#39;);
-      const rateDetail = uniqueSlots.map(slotIndex =&gt; `${formatRate(SLOT_RATES[slotIndex])} × ${formatRate(item.attr.rate)}`).join(&#39;，&#39;);
-      formulaParts.push(`${slotNames}重复目标「${item.attr.name}」：任意一格出货即可，1 - [(${uniqueSlots.map(slotIndex =&gt; `1 - ${formatRate(SLOT_RATES[slotIndex] * item.attr.rate)}`).join(&#39;) × (&#39;)})] = ${formatRate(hitRate)}（${rateDetail}）`);
-    });
+    const rules = buildTargetRules(slotStates, lockedValues);
 
-    unlockedSelections.forEach(selection =&gt; {
-      const attrs = selection.attrs.filter(attr =&gt; !lockedAttrValues.has(attr.value) &amp;&amp; !usedDuplicateValues.has(attr.value));
-      if (!attrs.length) return;
+    const ignoredLines = [];
+    const emptySlotLines = slotStates
+      .filter(slot =&gt; !slot.isLocked &amp;&amp; slot.attrs.length === 0)
+      .map(slot =&gt; `第${slot.index + 1}格目标为“空”：本次不洗该格，不参与概率路径`);
 
-      const slotRate = SLOT_RATES[selection.index];
-      const attrNames = attrs.map(attr =&gt; attr.name).join(&#39; / &#39;);
-      const attrRateSum = attrs.reduce((sum, attr) =&gt; sum + attr.rate, 0);
-      const hitRate = slotRate * attrRateSum;
-      totalRate *= hitRate;
-      targetCount += 1;
-
-      if (attrs.length &gt; 1) {
-        const rateDetail = attrs.map(attr =&gt; formatRate(attr.rate)).join(&#39; + &#39;);
-        formulaParts.push(`第${selection.index + 1}格「${attrNames}」：${formatRate(slotRate)} × (${rateDetail}) = ${formatRate(hitRate)}`);
-      } else {
-        formulaParts.push(`第${selection.index + 1}格「${attrNames}」：${formatRate(slotRate)} × ${formatRate(attrRateSum)} = ${formatRate(hitRate)}`);
+    slotStates.forEach(slot =&gt; {
+      if (slot.isLocked) return;
+      const ignored = slot.attrs.filter(attr =&gt; lockedValues.has(attr.value));
+      if (ignored.length) {
+        ignoredLines.push(
+          `第${slot.index + 1}格选择的「${ignored.map(attr =&gt; attr.name).join(&#39; / &#39;)}」已经被锁定，因此无法再次出现并从目标中忽略`
+        );
       }
     });
 
-    unlockedSelections.forEach(selection =&gt; {
-      const ignoredAttrs = selection.attrs.filter(attr =&gt; lockedAttrValues.has(attr.value));
-      if (!ignoredAttrs.length) return;
-      formulaParts.push(`第${selection.index + 1}格「${ignoredAttrs.map(attr =&gt; attr.name).join(&#39; / &#39;)}」已在锁定词条中拥有，本次概率计算忽略该重复目标`);
-    });
-
-    if (targetCount === 0) {
+    if (!rules.targetSlots.length) {
       document.getElementById(&#39;attrTotalRate&#39;).textContent = &#39;—&#39;;
       document.getElementById(&#39;attrExpectedRuns&#39;).textContent = &#39;0 次&#39;;
       document.getElementById(&#39;attrStoneCost&#39;).textContent = &#39;0 颗&#39;;
       document.getElementById(&#39;attrKeyCost&#39;).textContent = &#39;0 个&#39;;
-      document.getElementById(&#39;attrFormulaText&#39;).textContent = formulaParts.length ? &#39;当前只有已锁定词条，或未锁定目标已被锁定词条覆盖，没有需要继续洗的目标。&#39; : &#39;请选择至少一个未锁定的目标词条。&#39;;
+
+      const lines = setupLines.concat(emptySlotLines, ignoredLines);
+      formulaBox.innerHTML = lines.length
+        ? lines.join(&#39;&lt;br&gt;&#39;) + &#39;&lt;br&gt;当前没有需要继续洗的未锁定目标。&#39;
+        : &#39;请选择至少一个未锁定的目标词条。&#39;;
+      return;
+    }
+
+    const lockedRate = Array.from(lockedValues)
+      .map(getAttr)
+      .reduce((sum, attr) =&gt; sum + attr.rate, 0);
+
+    const initialPoolRate = 1 - lockedRate;
+    const poolLines = [
+      `基础词条权重池：100%`,
+      lockedValues.size
+        ? `锁定词条排除权重：${Array.from(lockedValues).map(value =&gt; `${getAttr(value).name} ${formatRate(getAttr(value).rate)}`).join(&#39; + &#39;)} = ${formatRate(lockedRate)}`
+        : &#39;当前没有锁定词条，初始词条池保持 100%&#39;,
+      `重新归一化后的初始剩余池：100% - ${formatRate(lockedRate)} = ${formatRate(initialPoolRate)}`,
+      `目标词条为“空”的未锁定格不参与本次计算：不判定出词条、不生成随机属性，也不改变后续格子的剩余池`,
+      `只有实际选择了目标的格子才按位置顺序生成；较前的参与格生成词条后，该词条权重会从后续参与格的池中移除，再重新归一化`
+    ];
+
+    const ruleLines = targetRuleDescription(rules);
+    const enumeration = enumerateProbability(slotStates, lockedValues, rules);
+    const totalRate = enumeration.totalRate;
+
+    if (totalRate &lt;= EPS) {
+      document.getElementById(&#39;attrTotalRate&#39;).textContent = &#39;0%&#39;;
+      document.getElementById(&#39;attrExpectedRuns&#39;).textContent = &#39;无法达成&#39;;
+      document.getElementById(&#39;attrStoneCost&#39;).textContent = &#39;—&#39;;
+      document.getElementById(&#39;attrKeyCost&#39;).textContent = &#39;—&#39;;
+
+      formulaBox.innerHTML = [
+        &#39;&lt;div class=&#34;attr-formula-section&#34;&gt;&lt;strong&gt;锁定与词条池&lt;/strong&gt;&lt;br&gt;&#39; + setupLines.concat(emptySlotLines, poolLines, ignoredLines).join(&#39;&lt;br&gt;&#39;) + &#39;&lt;/div&gt;&#39;,
+        &#39;&lt;div class=&#34;attr-formula-section&#34;&gt;&lt;strong&gt;目标判定&lt;/strong&gt;&lt;br&gt;&#39; + ruleLines.join(&#39;&lt;br&gt;&#39;) + &#39;&lt;/div&gt;&#39;,
+        &#39;&lt;div class=&#34;attr-formula-section&#34;&gt;&lt;strong&gt;结果&lt;/strong&gt;&lt;br&gt;不存在满足所有目标且词条不重复的成功路径，因此概率为 0%。&lt;/div&gt;&#39;
+      ].join(&#39;&#39;);
       return;
     }
 
     const expectedRuns = 1 / totalRate;
+    const lowerRuns = Math.floor(expectedRuns + EPS);
+    const upperRuns = Math.ceil(expectedRuns - EPS);
     const stonePerRoll = getStonePerRoll(lockedCount);
     const stoneLockCost = getStoneLockCost(stoneLockedCount, stoneDoneCount);
     const keyPerRoll = getKeyPerRoll(lockedCount, keyLockedCount);
-    const stoneCost = expectedRuns * stonePerRoll + stoneLockCost;
-    const keyCost = expectedRuns * keyPerRoll;
+
+    const stoneCostMin = lowerRuns * stonePerRoll + stoneLockCost;
+    const stoneCostMax = upperRuns * stonePerRoll + stoneLockCost;
+    const keyCostMin = lowerRuns * keyPerRoll;
+    const keyCostMax = upperRuns * keyPerRoll;
 
     document.getElementById(&#39;attrTotalRate&#39;).textContent = formatRate(totalRate);
     document.getElementById(&#39;attrExpectedRuns&#39;).textContent = formatNumber(expectedRuns) + &#39; 次&#39;;
-    document.getElementById(&#39;attrStoneCost&#39;).textContent = formatNumber(stoneCost) + &#39; 颗&#39;;
-    document.getElementById(&#39;attrKeyCost&#39;).textContent = formatNumber(keyCost) + &#39; 个&#39;;
+    document.getElementById(&#39;attrStoneCost&#39;).textContent = formatCostRange(stoneCostMin, stoneCostMax, &#39;颗&#39;);
+    document.getElementById(&#39;attrKeyCost&#39;).textContent = keyPerRoll &gt; 0
+      ? formatCostRange(keyCostMin, keyCostMax, &#39;个&#39;)
+      : &#39;0 个&#39;;
 
-    formulaParts.push(`锁定数量：${lockedCount} 个；每次洗词条消耗 ${stonePerRoll} 颗石头`);
-    if (stoneLockedCount &gt; 0) formulaParts.push(`石头锁定：${stoneLockedCount} 个；本次新增永久锁一次性消耗 ${stoneLockCost} 颗石头`);
-    if (stoneDoneCount &gt; 0) formulaParts.push(`石头已锁：${stoneDoneCount} 个；不再计算一次性锁定成本，但会增加每次洗词条石头消耗，也会影响后续石头锁定档位`);
-    if (keyLockedCount &gt; 0) {
-      const keyDetail = keyLockedCount === 2 ? &#39;20 + 30 = 50&#39; : (lockedCount &gt;= 2 ? &#39;已有其他锁定，因此为第二档 30&#39; : &#39;单独锁子锁定为 20&#39;);
-      formulaParts.push(`锁子锁定：${keyLockedCount} 个；每次洗词条消耗 ${keyPerRoll} 个锁子（${keyDetail}）`);
+    const pathLines = enumeration.successfulPaths
+      .slice(0, MAX_PATHS_TO_SHOW)
+      .map((path, index) =&gt; {
+        const factorText = path.factors.length
+          ? path.factors.map(factor =&gt; factor.text).join(&#39;；&#39;)
+          : &#39;锁定状态已经满足目标&#39;;
+        return `&lt;div class=&#34;attr-path-line&#34;&gt;路径 ${index + 1}｜${successPathName(path, rules)}&lt;br&gt;${factorText}&lt;br&gt;路径概率 = ${formatRate(path.probability)}&lt;/div&gt;`;
+      });
+
+    if (enumeration.successfulPaths.length &gt; MAX_PATHS_TO_SHOW) {
+      pathLines.push(
+        `&lt;div class=&#34;attr-path-line&#34;&gt;成功路径共有 ${enumeration.successfulPaths.length} 条；为保持页面流畅，仅显示前 ${MAX_PATHS_TO_SHOW} 条，但总概率使用了全部路径。&lt;/div&gt;`
+      );
     }
-    formulaParts.push(`期望石头 = ${formatNumber(expectedRuns)} × ${stonePerRoll} + ${stoneLockCost} = ${formatNumber(stoneCost)} 颗`);
-    if (keyPerRoll &gt; 0) formulaParts.push(`期望锁子 = ${formatNumber(expectedRuns)} × ${keyPerRoll} = ${formatNumber(keyCost)} 个`);
 
-    document.getElementById(&#39;attrFormulaText&#39;).innerHTML = formulaParts.join(&#39;&lt;br&gt;&#39;);
+    const costLines = [
+      `全部成功路径相加：${enumeration.successfulPaths.map(path =&gt; formatRate(path.probability)).slice(0, 18).join(&#39; + &#39;)}${enumeration.successfulPaths.length &gt; 18 ? &#39; + …&#39; : &#39;&#39;} = ${formatRate(totalRate)}`,
+      `期望次数 = 1 ÷ ${formatRate(totalRate)} = ${formatNumber(expectedRuns)} 次`,
+      `锁定数量：${lockedCount} 个；每次洗词条消耗 ${stonePerRoll} 颗石头`,
+      lowerRuns === upperRuns
+        ? `实际按 ${lowerRuns} 次计算：${lowerRuns} × ${stonePerRoll} + ${stoneLockCost} = ${formatNumber(stoneCostMin)} 颗石头`
+        : `实际次数取整区间：${lowerRuns}-${upperRuns} 次；石头 = ${lowerRuns} × ${stonePerRoll} + ${stoneLockCost} 至 ${upperRuns} × ${stonePerRoll} + ${stoneLockCost} = ${formatNumber(stoneCostMin)}-${formatNumber(stoneCostMax)} 颗`
+    ];
+
+    if (stoneLockedCount &gt; 0) {
+      costLines.push(
+        `石头锁定：${stoneLockedCount} 个；本次新增永久锁一次性消耗 ${stoneLockCost} 颗石头`
+      );
+    }
+
+    if (stoneDoneCount &gt; 0) {
+      costLines.push(
+        `石头已锁：${stoneDoneCount} 个；不重复计算一次性锁定成本，但计入每次洗词条成本`
+      );
+    }
+
+    if (keyLockedCount &gt; 0) {
+      const keyDetail = keyLockedCount === 2
+        ? &#39;20 + 30 = 50&#39;
+        : (lockedCount &gt;= 2 ? &#39;已有其他锁定，因此为第二档 30&#39; : &#39;单独锁子锁定为 20&#39;);
+      costLines.push(
+        `锁子锁定：每次消耗 ${keyPerRoll} 个锁子（${keyDetail}）`
+      );
+      costLines.push(
+        lowerRuns === upperRuns
+          ? `实际按 ${lowerRuns} 次计算：${lowerRuns} × ${keyPerRoll} = ${formatNumber(keyCostMin)} 个锁子`
+          : `锁子消耗区间 = ${lowerRuns} × ${keyPerRoll} 至 ${upperRuns} × ${keyPerRoll} = ${formatNumber(keyCostMin)}-${formatNumber(keyCostMax)} 个`
+      );
+    }
+
+    formulaBox.innerHTML = [
+      &#39;&lt;div class=&#34;attr-formula-section&#34;&gt;&lt;strong&gt;① 锁定与重新归一化&lt;/strong&gt;&lt;br&gt;&#39; + setupLines.concat(emptySlotLines, poolLines, ignoredLines).join(&#39;&lt;br&gt;&#39;) + &#39;&lt;/div&gt;&#39;,
+      &#39;&lt;div class=&#34;attr-formula-section&#34;&gt;&lt;strong&gt;② 目标判定规则&lt;/strong&gt;&lt;br&gt;&#39; + ruleLines.join(&#39;&lt;br&gt;&#39;) + &#39;&lt;/div&gt;&#39;,
+      &#39;&lt;div class=&#34;attr-formula-section&#34;&gt;&lt;strong&gt;③ 成功路径&lt;/strong&gt;&#39; + pathLines.join(&#39;&#39;) + &#39;&lt;/div&gt;&#39;,
+      &#39;&lt;div class=&#34;attr-formula-section&#34;&gt;&lt;strong&gt;④ 总概率与消耗&lt;/strong&gt;&lt;br&gt;&#39; + costLines.join(&#39;&lt;br&gt;&#39;) + &#39;&lt;/div&gt;&#39;
+    ].join(&#39;&#39;);
   }
 
   initOptions();
-  lockSelects.forEach(select =&gt; select.addEventListener(&#39;change&#39;, calculateAttributes));
+
+  lockSelects.forEach(select =&gt; {
+    select.addEventListener(&#39;change&#39;, calculateAttributes);
+  });
+
+  formulaToggle.addEventListener(&#39;click&#39;, () =&gt; {
+    const expanded = formulaToggle.getAttribute(&#39;aria-expanded&#39;) === &#39;true&#39;;
+    formulaToggle.setAttribute(&#39;aria-expanded&#39;, expanded ? &#39;false&#39; : &#39;true&#39;);
+    formulaToggle.textContent = expanded ? &#39;展开计算公式&#39; : &#39;收起计算公式&#39;;
+    formulaBox.classList.toggle(&#39;attr-formula-collapsed&#39;, expanded);
+  });
+
   calculateAttributes();
 })();
 &lt;/script&gt;
+
 </description>
         </item>
         <item>

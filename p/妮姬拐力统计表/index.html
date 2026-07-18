@@ -1413,6 +1413,105 @@ post-sidebar">
     }
   }
 
+
+  function safeFileName(name){
+    const cleaned = String(name || '')
+      .trim()
+      .replace(/[\\/:*?"<>|]+/g, '-')
+      .replace(/\s+/g, ' ')
+      .replace(/\.+$/g, '');
+    return cleaned || 'base-set';
+  }
+
+  async function saveJsonFile(payload, suggestedName){
+    const text = JSON.stringify(payload, null, 2);
+    const fileName = safeFileName(suggestedName).replace(/\.json$/i, '') + '.json';
+
+    
+    if(window.isSecureContext && typeof window.showSaveFilePicker === 'function'){
+      try {
+        const handle = await window.showSaveFilePicker({
+          suggestedName: fileName,
+          types: [{
+            description: 'JSON 文件',
+            accept: { 'application/json': ['.json'] }
+          }]
+        });
+        const writable = await handle.createWritable();
+        await writable.write(text);
+        await writable.close();
+        return true;
+      } catch(err) {
+        if(err && err.name === 'AbortError') return false;
+        console.warn('系统另存为不可用，改用浏览器下载：', err);
+      }
+    }
+
+    
+    const blob = new Blob([text], { type: 'application/json;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = fileName;
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    return true;
+  }
+
+  function chooseJsonByInput(){
+    return new Promise(resolve => {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = '.json,application/json';
+      input.style.display = 'none';
+
+      let settled = false;
+      const finish = file => {
+        if(settled) return;
+        settled = true;
+        window.removeEventListener('focus', handleFocus);
+        input.remove();
+        resolve(file || null);
+      };
+
+      const handleFocus = () => {
+        
+        setTimeout(() => {
+          if(!settled && (!input.files || input.files.length === 0)) finish(null);
+        }, 350);
+      };
+
+      input.addEventListener('change', () => finish(input.files?.[0] || null), { once: true });
+      window.addEventListener('focus', handleFocus, { once: true });
+      document.body.appendChild(input);
+      input.click();
+    });
+  }
+
+  async function openJsonFile(){
+    
+    if(window.isSecureContext && typeof window.showOpenFilePicker === 'function'){
+      try {
+        const [handle] = await window.showOpenFilePicker({
+          multiple: false,
+          types: [{
+            description: 'JSON 文件',
+            accept: { 'application/json': ['.json'] }
+          }]
+        });
+        return handle ? await handle.getFile() : null;
+      } catch(err) {
+        if(err && err.name === 'AbortError') return null;
+        console.warn('系统文件选择器不可用，改用普通上传选择器：', err);
+      }
+    }
+
+    return chooseJsonByInput();
+  }
+
   const BUFFS = [
     ['atkBuff', '攻击力 buff'],
     ['elementBuff', '优越伤害 buff'],
@@ -1618,7 +1717,7 @@ post-sidebar">
       <div class="bcmp-set" data-set-id="${id}" data-base="${isBase ? '1' : '0'}">
         <div class="bcmp-set-head">
           <div class="bcmp-set-title">${isBase ? '基准 Set #1' : '对比 Set #' + id}</div>
-          <div class="bcmp-set-actions">${isBase ? '<button type="button" class="bcmp-copy-btn">复制</button><button type="button" class="bcmp-export-btn">导出</button><button type="button" class="bcmp-import-btn">导入</button>' : '<button type="button" class="bcmp-delete-set-btn">删除Set</button>'}</div>
+          <div class="bcmp-set-actions">${isBase ? '<button type="button" class="bcmp-copy-btn">复制</button><button type="button" class="bcmp-export-btn" title="导出为 JSON 文件">导出</button><button type="button" class="bcmp-import-btn" title="从 JSON 文件导入">导入</button>' : '<button type="button" class="bcmp-delete-set-btn">删除Set</button>'}</div>
         </div>
 
         <div class="bcmp-set-note-grid">
@@ -1957,28 +2056,42 @@ post-sidebar">
   }
 
 
-  function exportBaseSet(setEl){
+  async function exportBaseSet(setEl){
     const payload = {
-      version: 2,
+      version: 3,
       type: 'nikke-buff-calc-base-set',
       exportedAt: new Date().toISOString(),
       data: collectSetData(setEl)
     };
-    copyToClipboard(JSON.stringify(payload), '基准Set已导出到剪贴板');
+
+    const note = readSetNote(setEl) || '基准Set';
+    const saved = await saveJsonFile(payload, `nikke-buff-${note}`);
+    if(saved) alert('基准 Set JSON 已导出');
   }
 
-  function importBaseSet(setEl){
-    const raw = window.prompt('请粘贴之前导出的基准 Set JSON：');
-    if(!raw) return;
+  async function importBaseSet(setEl){
+    const file = await openJsonFile();
+    if(!file) return;
+
     try {
+      if(file.size > 5 * 1024 * 1024) {
+        throw new Error('文件过大');
+      }
+
+      const raw = (await file.text()).replace(/^\uFEFF/, '');
       const parsed = JSON.parse(raw);
-      const data = parsed.data || parsed;
-      if(!data || !data.common || !Array.isArray(data.segments)) throw new Error('格式不正确');
+      const data = parsed?.data || parsed;
+
+      if(!data || !data.common || !Array.isArray(data.segments)) {
+        throw new Error('格式不正确');
+      }
+
       fillSet(setEl, data);
       calculateAll();
-      alert('导入完成');
-    } catch (err) {
-      alert('导入失败：JSON 格式不正确');
+      alert(`导入完成：${file.name}`);
+    } catch(err) {
+      console.error(err);
+      alert('导入失败：请选择由本计算器导出的有效 JSON 文件');
     }
   }
 
