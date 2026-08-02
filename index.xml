@@ -71,6 +71,40 @@
 &lt;p&gt;参考帖子：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://bbs.nga.cn/read.php?tid=46737810&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;【攻略】 进阶基础课：以施展者为基准的攻击力——辅助数值差距的源头&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;hr&gt;
+&lt;h3 id=&#34;体力转换攻击力&#34;&gt;体力转换攻击力
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;由于每个人拿的数据不同，结果会有些许差异，都在接受范围内。&lt;/li&gt;
+&lt;li&gt;DC Gatrix：火力型：22.5，辅助型：25.0，防御型：27.5。
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;妮姬类型&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;400级体力&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;体力/攻击力比例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;火力型（贝斯蒂）&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2032167&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;22.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;辅助型（小厨娘）&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2257963&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;30.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;防御型（草莓糖）&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2483759&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;41.3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;li&gt;以拉普拉斯究极英雄为例，她以施展者的体力4.05%转换攻击力，即4.05% × 22.5 = 90.00%攻击力。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
 &lt;h3 id=&#34;武器射速&#34;&gt;武器射速
 &lt;/h3&gt;&lt;p&gt;参考来源：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://media.discordapp.net/attachments/1046881062111952976/1471111543457447936/image.png?ex=6a328a63&amp;amp;is=6a3138e3&amp;amp;hm=539b1f028e584841aab564d64bd5c9a2ce2a72e91e1366ae8484f4dad521f5db&amp;amp;=&amp;amp;format=webp&amp;amp;quality=lossless&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Discord&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
@@ -9495,7 +9529,7 @@ p. 查看远端仓库&lt;br&gt;
 &lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：虽然流程短但是蛮好玩的，解谜要素+恐怖氛围蛮有趣，双主角&lt;br&gt;
 👎 &lt;strong&gt;缺点&lt;/strong&gt;：有点短，沉浸感一般&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;碧蓝幻想relink&#34;&gt;碧蓝幻想Relink
+&lt;h3 id=&#34;碧蓝幻想relink--dlc&#34;&gt;碧蓝幻想Relink + DLC
 &lt;/h3&gt;
 
 
@@ -9687,9 +9721,9 @@ p. 查看远端仓库&lt;br&gt;
   }
 }
 &lt;/style&gt;
-&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：妹子好看；战斗爽&lt;br&gt;
-👎 &lt;strong&gt;缺点&lt;/strong&gt;：刷子游戏，后期只能刷刷刷因子没事干了&lt;br&gt;
-💕 &lt;strong&gt;我推&lt;/strong&gt;：菲莉❤️，泽塔❤️，索恩❤️，娜露梅亚❤️&lt;/p&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：妹子好看；战斗爽；DLC出的新角色暗龙，贝熊，暗龙都挺好玩的，依旧保持不错的战斗水准；DLC的boss如世界很好玩，格挡反击太爽了，毕业因子难度大大降低&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：刷子游戏，后期只能刷刷刷因子没事干了；DLC相对于本体肝度直线上升，而且不是因子方面而是msp；得一直刷一样的关卡超级无聊，没有本体那种属转+追击V+那种期待感；专精毕业后因子武器那些也相对容易所以后期容易无聊；DLC有些boss不好玩，指名天元&lt;br&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：菲莉❤️，泽塔❤️，索恩❤️，娜露梅亚❤️，贝熊❤️，芙劳❤️&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;生化危机3-重制版&#34;&gt;生化危机3 重制版
 &lt;/h3&gt;

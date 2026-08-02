@@ -72,6 +72,40 @@
 &lt;p&gt;参考帖子：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://bbs.nga.cn/read.php?tid=46737810&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;【攻略】 进阶基础课：以施展者为基准的攻击力——辅助数值差距的源头&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;hr&gt;
+&lt;h3 id=&#34;体力转换攻击力&#34;&gt;体力转换攻击力
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;由于每个人拿的数据不同，结果会有些许差异，都在接受范围内。&lt;/li&gt;
+&lt;li&gt;DC Gatrix：火力型：22.5，辅助型：25.0，防御型：27.5。
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;妮姬类型&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;400级体力&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;体力/攻击力比例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;火力型（贝斯蒂）&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2032167&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;22.5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;辅助型（小厨娘）&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2257963&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;30.0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;防御型（草莓糖）&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2483759&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;41.3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/li&gt;
+&lt;li&gt;以拉普拉斯究极英雄为例，她以施展者的体力4.05%转换攻击力，即4.05% × 22.5 = 90.00%攻击力。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
 &lt;h3 id=&#34;武器射速&#34;&gt;武器射速
 &lt;/h3&gt;&lt;p&gt;参考来源：&lt;strong&gt;&lt;a class=&#34;link&#34; href=&#34;https://media.discordapp.net/attachments/1046881062111952976/1471111543457447936/image.png?ex=6a328a63&amp;amp;is=6a3138e3&amp;amp;hm=539b1f028e584841aab564d64bd5c9a2ce2a72e91e1366ae8484f4dad521f5db&amp;amp;=&amp;amp;format=webp&amp;amp;quality=lossless&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Discord&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
