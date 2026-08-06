@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="~从命令行到桌面应用，掌握 Codex 的日常开发工作流~">
+<title>【咨讯】Codex CLI 与 Desktop App 使用指南</title>
+
+<link rel='canonical' href='https://sloth-cyx.github.io/p/%E5%92%A8%E8%AE%AFcodex-cli-%E4%B8%8E-desktop-app-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/'>
+
+<link rel="stylesheet" href="/scss/style.min.8d6e7c59f80ad513fa3c42b45c22c43bb0ccb9d4ed4e958da321c5e33249e077.css"><meta property='og:title' content="【咨讯】Codex CLI 与 Desktop App 使用指南">
+<meta property='og:description' content="~从命令行到桌面应用，掌握 Codex 的日常开发工作流~">
+<meta property='og:url' content='https://sloth-cyx.github.io/p/%E5%92%A8%E8%AE%AFcodex-cli-%E4%B8%8E-desktop-app-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/'>
+<meta property='og:site_name' content='怠惰的天秤-sloth'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-08-06T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-08-07T00:12:19&#43;08:00'/><meta property='og:image' content='https://sloth-cyx.github.io/images/codexUserGuide/codexUserGuide_bg.png' />
+<meta name="twitter:title" content="【咨讯】Codex CLI 与 Desktop App 使用指南">
+<meta name="twitter:description" content="~从命令行到桌面应用，掌握 Codex 的日常开发工作流~"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://sloth-cyx.github.io/images/codexUserGuide/codexUserGuide_bg.png' />
+    <link rel="shortcut icon" href="/libra.ico" />
+
+  
+
+<div class="loading">
+    
+    <div class="loading-bg"></div>
+
+    <div class="sharingon">
+        <div class="ring">
+            <div class="to"></div>
+            <div class="to"></div>
+            <div class="to"></div>
+            <div class="circle"></div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .loading {
+        position: fixed;
+         
+         
+         
+        display: none;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        zoom: 3.0;
+        overflow: hidden;
+    }
+
+     
+    .loading-bg {
+        position: absolute;
+        inset: 0;
+
+        background: #000;
+
+        z-index: 0;
+    }
+
+     
+    .bgFadeout {
+        animation: bgFadeOut 1.5s forwards;
+    }
+
+    @keyframes bgFadeOut {
+        0% {
+            transform: scale(1);
+            opacity: 0.6;
+        }
+        90% {
+            opacity: 0.6;
+        }
+        100% {
+            transform: scale(1.5);
+            opacity: 0;
+        }
+    }
+    
+     
+    .loader-spin-out {
+         
+        animation: spinAndShrink 1.5s forwards ease-in-out !important;
+    }
+
+    @keyframes spinAndShrink {
+        0% {
+            transform: rotate(0deg) scale(1);
+            opacity: 1;
+        }
+
+        70% {
+             
+            transform: rotate(-1080deg) scale(1);
+            opacity: 1;
+        }
+
+        100% {
+             
+            transform: scale(1.5);
+            opacity: 0;
+        }
+    }
+
+     
+    .sharingon {
+        position: relative;
+        z-index: 1;
+        width: 6em;
+        height: 6em;
+        background-color: red;
+        border: 6px solid rgb(0, 0, 0);
+         
+         
+         
+        box-shadow:
+            0 0 25px rgba(255, 0, 0, 0.4),
+            0 0 60px rgba(255, 0, 0, 0.2);
+        border-radius: 50%;
+        animation: rot 1s linear infinite;  
+    }
+
+    .ring {
+        position: absolute;
+        content: "";
+        left: 50%;
+        top: 50%;
+        width: 3.5em;
+        height: 3.5em;
+        border: 4px solid rgb(110, 13 ,13 ,0.5);
+        transform: translate(-50%,-50%);
+    }
+
+    .sharingon, .ring, .to,.circle {
+        border-radius: 50%;
+    }
+
+    .to,.circle {
+        position: absolute;
+        content: "";
+        width: 0.9em;
+        height: 0.9em;
+        background-color: black;
+    }
+
+    .to:nth-child(1) {
+        top: -0.5em;
+        left: 50%;
+        transform: translate(-40%);
+    }
+
+    .to::before {
+        content: "";
+        position: absolute;
+        top: -0.5em;
+        right: -0.2em;
+        width: 1.1em;
+        height: 0.9em;
+        box-sizing: border-box;
+        border-left: 16px solid black;
+        border-radius: 100% 0 0;
+    }
+
+    .to:nth-child(2) {
+        bottom: 0.5em;
+        left: -0.35em;
+        transform: rotate(-120deg);
+    }
+
+    .to:nth-child(3) {
+        bottom: 0.5em;
+        right: -0.35em;
+        transform: rotate(120deg);
+    }
+
+    .circle {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background: black;
+        box-shadow:
+            0 0 10px rgba(255, 0, 0, 0.7),
+            0 0 20px rgba(255, 0, 0, 0.4);
+        width: 1em;
+        height: 1em;
+    }
+
+    @keyframes rot {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<script>    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    function initLoading() {
+        const isFirstVisit = !sessionStorage.getItem('visited');
+        if (isFirstVisit) {
+            let loading = document.querySelector(".loading");
+            loading.style.display = "flex";
+            document.addEventListener('DOMContentLoaded', function() {
+                
+                loadFinish();
+                
+                setTimeout(() => {
+                    loading.style.display = "none";
+                }, 1500)
+                sessionStorage.setItem('visited', 'true');
+            });
+        }
+    }
+    
+    function loadFinish() {
+        
+        let sharingon = document.querySelector(".sharingon");
+        sharingon.classList.add("loader-spin-out");
+        
+        
+        let loading = document.querySelector(".loading-bg");
+        loading.classList.add("bgFadeout");
+    }
+    
+    initLoading();
+</script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky 
+
+post-sidebar">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar2_hu3260391422873070556.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🫰</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">怠惰的天秤-sloth</a></h1>
+            <h2 class="site-description">让你事故死哦~Baby！</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/197975297'
+                        target="_blank"
+                        title="Bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-bilibili"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 10a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4v-6" /><path d="M8 3l2 3" /><path d="M16 3l-2 3" /><path d="M9 13v-2" /><path d="M15 11v2" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/sloth-cyx'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.lofter.com/blog/raymondchua'
+                        target="_blank"
+                        title="Lofter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-letter-l"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M7 4v16h10" /></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#codex-是什么">Codex 是什么</a></li>
+    <li><a href="#codex-cli">Codex CLI</a>
+      <ol>
+        <li><a href="#安装与登录">安装与登录</a>
+          <ol>
+            <li><a href="#npmwindowsmacoslinux">npm（Windows、macOS、Linux）</a></li>
+            <li><a href="#homebrewmacos">Homebrew（macOS）</a></li>
+          </ol>
+        </li>
+        <li><a href="#开始第一个任务">开始第一个任务</a></li>
+        <li><a href="#常用-cli-命令">常用 CLI 命令</a></li>
+        <li><a href="#常用启动参数">常用启动参数</a></li>
+        <li><a href="#-斜杠命令"><code>/</code> 斜杠命令</a>
+          <ol>
+            <li><a href="#会话与上下文">会话与上下文</a></li>
+            <li><a href="#模型计划与执行">模型、计划与执行</a></li>
+            <li><a href="#修改审查与权限">修改、审查与权限</a></li>
+            <li><a href="#扩展与其他工具">扩展与其他工具</a></li>
+          </ol>
+        </li>
+        <li><a href="#codex-能调用的-functions--tools">Codex 能调用的 Functions / Tools</a></li>
+        <li><a href="#一个完整的-cli-工作流">一个完整的 CLI 工作流</a></li>
+      </ol>
+    </li>
+    <li><a href="#codex-desktop-app">Codex Desktop App</a>
+      <ol>
+        <li><a href="#安装与创建项目">安装与创建项目</a></li>
+        <li><a href="#用-filename-精确引用文件">用 <code>@filename</code> 精确引用文件</a>
+          <ol>
+            <li><a href="#先确认项目目录">先确认项目目录</a></li>
+            <li><a href="#使用示例">使用示例</a></li>
+          </ol>
+        </li>
+        <li><a href="#-命令与-skill"><code>/</code> 命令与 Skill</a></li>
+        <li><a href="#automations--scheduled-tasks">Automations / Scheduled Tasks</a></li>
+        <li><a href="#plugins">Plugins</a></li>
+        <li><a href="#多对话多代理与-worktree">多对话、多代理与 Worktree</a></li>
+        <li><a href="#review预览与终端">Review、预览与终端</a></li>
+      </ol>
+    </li>
+    <li><a href="#如何写出更好的-codex-任务">如何写出更好的 Codex 任务</a></li>
+    <li><a href="#安全与常见问题">安全与常见问题</a>
+      <ol>
+        <li><a href="#为什么-codex-一直询问批准">为什么 Codex 一直询问批准？</a></li>
+        <li><a href="#为什么-codex-找不到文件">为什么 Codex 找不到文件？</a></li>
+        <li><a href="#为什么安装-skill-或-plugin-后没有生效">为什么安装 Skill 或 Plugin 后没有生效？</a></li>
+        <li><a href="#为什么不建议让-automation-直接推送代码">为什么不建议让 Automation 直接推送代码？</a></li>
+      </ol>
+    </li>
+    <li><a href="#参考链接">参考链接</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E5%92%A8%E8%AE%AFcodex-cli-%E4%B8%8E-desktop-app-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
+                
+                    <img src="/images/codexUserGuide/codexUserGuide_bg.png" loading="lazy" alt="Featured image of post 【咨讯】Codex CLI 与 Desktop App 使用指南" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+
+    <div class="article-title-wrapper" style="text-align: center;">
+        <h2 class="article-title">
+            <a href="/p/%E5%92%A8%E8%AE%AFcodex-cli-%E4%B8%8E-desktop-app-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">【咨讯】Codex CLI 与 Desktop App 使用指南</a>
+        </h2>
+
+        
+        <h3 class="article-subtitle">
+            ~从命令行到桌面应用，掌握 Codex 的日常开发工作流~
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time" style="display: flex; flex-direction: row; justify-content: left; align-items: left; gap: 15px;">
+        
+        
+        <div style="display: flex; align-items: left; gap: 5px;">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+            <time class="article-time--published">2026-08-06</time>
+        </div>
+        
+
+        
+        <div style="display: flex; align-items: left; gap: 5px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 7v5l3 3" /></svg> 
+            <time class="article-time--lastmod">2026-08-07</time>
+        </div>
+        
+
+        
+        
+    </footer>
+    
+
+    
+
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p>[!NOTE]</p>
+<ul>
+<li>本文章为codex制作，仅在reference做了一些手动添加/修改。</li>
+</ul>
+</blockquote>
+<h2 id="codex-是什么">Codex 是什么
+</h2><p>Codex 是 OpenAI 的编程代理，能够读取项目、修改文件、运行命令、执行测试、审查代码，并通过 Skills、Plugins 和 MCP 连接更多工具。它常用的两个入口是：</p>
+<ul>
+<li><strong>Codex CLI</strong>：在终端内工作，适合熟悉命令行、需要脚本化或 CI 自动化的用户。</li>
+<li><strong>Codex Desktop App</strong>：在 Windows 或 macOS 中以图形界面管理项目、多个任务、差异审查、终端、自动化和 Plugins。</li>
+</ul>
+<p><mark>* Codex 会真实读写文件和执行命令。开始前建议使用 Git 提交当前状态，并为它选择最小必要的文件和网络权限。</mark></p>
+<hr>
+<h2 id="codex-cli">Codex CLI
+</h2><h3 id="安装与登录">安装与登录
+</h3><h4 id="npmwindowsmacoslinux">npm（Windows、macOS、Linux）
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">npm</span> <span class="n">install</span> <span class="p">-</span><span class="n">-global</span> <span class="nv">@openai</span><span class="p">/</span><span class="n">codex</span>
+</span></span><span class="line"><span class="cl"><span class="n">codex</span> <span class="p">-</span><span class="n">-version</span>
+</span></span><span class="line"><span class="cl"><span class="n">codex</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="homebrewmacos">Homebrew（macOS）
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">brew install codex
+</span></span><span class="line"><span class="cl">codex
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>首次运行 <code>codex</code> 时，根据提示选择 <strong>Sign in with ChatGPT</strong> 或其他可用的登录方式。也可主动管理登录状态：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">codex</span> <span class="n">login</span>
+</span></span><span class="line"><span class="cl"><span class="n">codex</span> <span class="n">login</span> <span class="n">status</span>
+</span></span><span class="line"><span class="cl"><span class="n">codex</span> <span class="n">logout</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Windows 用户可以直接在 PowerShell 中使用；如果项目和开发工具都在 WSL 中，则建议在 WSL 内安装并运行 CLI，避免 Windows 与 Linux 路径、权限和依赖混用。</p>
+<h3 id="开始第一个任务">开始第一个任务
+</h3><p>先进入项目目录，再启动 Codex：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">cd </span><span class="n">D:</span><span class="p">\</span><span class="n">Blog</span><span class="p">\</span><span class="n">hugoStackBlog</span>
+</span></span><span class="line"><span class="cl"><span class="n">codex</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>启动后直接用自然语言描述结果，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">请阅读这个 Hugo 项目，说明文章目录、图片目录和本地预览方式，先不要修改文件。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>也可以把提示词直接作为启动参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">codex</span> <span class="s2">&#34;检查这个项目的构建方式，并告诉我应该运行哪些测试&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="常用-cli-命令">常用 CLI 命令
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>codex</code></td>
+<td>启动交互式终端界面</td>
+<td><code>codex</code></td>
+</tr>
+<tr>
+<td><code>codex exec</code> / <code>codex e</code></td>
+<td>非交互执行，适合脚本和 CI</td>
+<td><code>codex exec &quot;运行测试并总结失败原因&quot;</code></td>
+</tr>
+<tr>
+<td><code>codex resume</code></td>
+<td>继续之前保存的会话</td>
+<td><code>codex resume --last</code></td>
+</tr>
+<tr>
+<td><code>codex fork</code></td>
+<td>从旧会话分叉新方案</td>
+<td><code>codex fork</code></td>
+</tr>
+<tr>
+<td><code>codex review</code></td>
+<td>审查未提交变更、某个提交或基准分支</td>
+<td><code>codex review --uncommitted</code></td>
+</tr>
+<tr>
+<td><code>codex app</code></td>
+<td>从 CLI 打开 Desktop App</td>
+<td><code>codex app</code></td>
+</tr>
+<tr>
+<td><code>codex doctor</code></td>
+<td>诊断安装、认证、配置、Git 和运行环境</td>
+<td><code>codex doctor</code></td>
+</tr>
+<tr>
+<td><code>codex update</code></td>
+<td>在当前安装方式支持时更新 CLI</td>
+<td><code>codex update</code></td>
+</tr>
+<tr>
+<td><code>codex mcp</code></td>
+<td>添加、删除、登录和查看 MCP Server</td>
+<td><code>codex mcp list</code></td>
+</tr>
+<tr>
+<td><code>codex plugin</code></td>
+<td>安装、查看和删除 Plugin</td>
+<td><code>codex plugin list</code></td>
+</tr>
+<tr>
+<td><code>codex completion</code></td>
+<td>生成 Bash、Zsh、Fish 或 PowerShell 补全脚本</td>
+<td><code>codex completion powershell</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="常用启动参数">常用启动参数
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>用途</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-C, --cd &lt;path&gt;</code></td>
+<td>指定工作目录</td>
+<td><code>codex -C D:\Blog\hugoStackBlog</code></td>
+</tr>
+<tr>
+<td><code>-m, --model &lt;model&gt;</code></td>
+<td>本次运行使用指定模型</td>
+<td><code>codex -m &lt;model&gt;</code></td>
+</tr>
+<tr>
+<td><code>-i, --image &lt;path&gt;</code></td>
+<td>把截图、设计图或架构图加入首轮上下文</td>
+<td><code>codex -i error.png &quot;修复截图中的错误&quot;</code></td>
+</tr>
+<tr>
+<td><code>--search</code></td>
+<td>启用实时网络搜索</td>
+<td><code>codex --search</code></td>
+</tr>
+<tr>
+<td><code>-s, --sandbox &lt;mode&gt;</code></td>
+<td>选择 <code>read-only</code>、<code>workspace-write</code> 或 <code>danger-full-access</code></td>
+<td><code>codex -s workspace-write</code></td>
+</tr>
+<tr>
+<td><code>-a, --ask-for-approval &lt;policy&gt;</code></td>
+<td>控制何时需要人工批准</td>
+<td><code>codex -a on-request</code></td>
+</tr>
+<tr>
+<td><code>--add-dir &lt;path&gt;</code></td>
+<td>额外授权一个可写目录</td>
+<td><code>codex --add-dir D:\Shared</code></td>
+</tr>
+<tr>
+<td><code>-c, --config key=value</code></td>
+<td>仅为当次运行覆盖 <code>config.toml</code></td>
+<td><code>codex -c key=value</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><mark>* 不要在日常开发机器上随意使用 <code>--yolo</code> 或 <code>danger-full-access</code>，它们会绕过常规批准或沙箱保护。</mark></p>
+<h3 id="-斜杠命令"><code>/</code> 斜杠命令
+</h3><p>在 Codex CLI 输入框中键入 <code>/</code> 会打开命令列表。命令会随版本和当前环境变化，以实际弹出列表为准。</p>
+<h4 id="会话与上下文">会话与上下文
+</h4><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/new</code> / <code>/clear</code></td>
+<td>在当前 CLI 中开始新会话</td>
+</tr>
+<tr>
+<td><code>/resume</code></td>
+<td>继续已保存的会话</td>
+</tr>
+<tr>
+<td><code>/fork</code></td>
+<td>从当前会话分叉新会话</td>
+</tr>
+<tr>
+<td><code>/rename</code></td>
+<td>为当前会话命名</td>
+</tr>
+<tr>
+<td><code>/compact</code></td>
+<td>压缩长对话，用摘要保留重点并释放上下文</td>
+</tr>
+<tr>
+<td><code>/side</code> / <code>/btw</code></td>
+<td>开一个临时侧边对话，不打断主线</td>
+</tr>
+<tr>
+<td><code>/mention</code></td>
+<td>把指定文件或文件夹附加到对话</td>
+</tr>
+<tr>
+<td><code>/copy</code></td>
+<td>复制最近一次完成的回复</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="模型计划与执行">模型、计划与执行
+</h4><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/model</code></td>
+<td>选择模型和推理强度</td>
+</tr>
+<tr>
+<td><code>/fast</code></td>
+<td>在当前模型支持时切换 Fast 模式</td>
+</tr>
+<tr>
+<td><code>/plan</code></td>
+<td>先制定方案，再进入实施</td>
+</tr>
+<tr>
+<td><code>/goal</code></td>
+<td>设定、查看、修改、暂停或继续长期目标</td>
+</tr>
+<tr>
+<td><code>/personality</code></td>
+<td>切换沟通风格</td>
+</tr>
+<tr>
+<td><code>/agent</code> / <code>/subagents</code></td>
+<td>查看或切换子代理线程</td>
+</tr>
+<tr>
+<td><code>/ps</code></td>
+<td>查看后台终端与最近输出</td>
+</tr>
+<tr>
+<td><code>/stop</code></td>
+<td>停止当前会话启动的后台终端</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="修改审查与权限">修改、审查与权限
+</h4><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/diff</code></td>
+<td>查看 Git diff，包括未跟踪文件</td>
+</tr>
+<tr>
+<td><code>/review</code></td>
+<td>审查当前工作树</td>
+</tr>
+<tr>
+<td><code>/permissions</code></td>
+<td>在会话中收紧或放宽权限</td>
+</tr>
+<tr>
+<td><code>/approve</code></td>
+<td>对最近被自动审查拒绝的动作批准一次重试</td>
+</tr>
+<tr>
+<td><code>/status</code></td>
+<td>查看模型、权限、可写目录、Token 与上下文状态</td>
+</tr>
+<tr>
+<td><code>/usage</code></td>
+<td>查看账户用量和限额状态</td>
+</tr>
+<tr>
+<td><code>/init</code></td>
+<td>为当前项目生成 <code>AGENTS.md</code> 指令骨架</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="扩展与其他工具">扩展与其他工具
+</h4><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/skills</code></td>
+<td>浏览并选择可复用的 Skill</td>
+</tr>
+<tr>
+<td><code>/plugins</code></td>
+<td>浏览、安装、启用或禁用 Plugin</td>
+</tr>
+<tr>
+<td><code>/apps</code></td>
+<td>浏览 Apps / Connectors，并将它们加入提示词</td>
+</tr>
+<tr>
+<td><code>/mcp</code></td>
+<td>列出当前可用的 MCP 工具</td>
+</tr>
+<tr>
+<td><code>/hooks</code></td>
+<td>查看、信任或禁用生命周期 Hooks</td>
+</tr>
+<tr>
+<td><code>/app</code></td>
+<td>把当前 CLI 会话继续到 Desktop App</td>
+</tr>
+<tr>
+<td><code>/feedback</code></td>
+<td>向 Codex 维护团队发送问题与日志</td>
+</tr>
+<tr>
+<td><code>/quit</code> / <code>/exit</code></td>
+<td>退出 CLI</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="codex-能调用的-functions--tools">Codex 能调用的 Functions / Tools
+</h3><p>Codex 不只是生成代码，它会根据任务调用工具。实际可用项取决于当前平台、权限、Skills、Plugins 和 MCP 配置。</p>
+<ul>
+<li><strong>文件工具</strong>：搜索、读取、新建和修改项目文件。</li>
+<li><strong>Shell / Terminal</strong>：运行构建、测试、格式化、Git 和项目自带脚本。</li>
+<li><strong>Web Search / Browser</strong>：在权限允许时搜索新资料、阅读页面或测试网页交互。</li>
+<li><strong>MCP / Connectors</strong>：访问 GitHub、Slack、Google Drive、数据库等外部系统。</li>
+<li><strong>Skills</strong>：加载一套可复用的流程、检查标准、参考文件或辅助脚本。</li>
+<li><strong>Image / Artifact Tools</strong>：在支持的表面读图、生成图片，或创建文档、表格、幻灯片等产物。</li>
+<li><strong>Agents</strong>：将可独立的子任务交给多个代理并行处理，再由主线整合。</li>
+</ul>
+<p>工具调用前后都应检查输入、权限和结果；涉及删除、发布、推送、付费或对外发送消息时，应明确要求 Codex 先征求确认。</p>
+<h3 id="一个完整的-cli-工作流">一个完整的 CLI 工作流
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">1. 阅读 AGENTS.md 和项目结构，先告诉我你理解的构建、测试和格式化命令。
+</span></span><span class="line"><span class="cl">2. 检查当前 Git 状态，不要覆盖已有的本地修改。
+</span></span><span class="line"><span class="cl">3. 实现「具体目标」，仅修改与任务有关的文件。
+</span></span><span class="line"><span class="cl">4. 运行与风险相匹配的测试。
+</span></span><span class="line"><span class="cl">5. 最后列出修改的文件、验证结果和仍存在的风险，不要自动提交或推送。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="codex-desktop-app">Codex Desktop App
+</h2><h3 id="安装与创建项目">安装与创建项目
+</h3><p>a. 下载 Windows 或 macOS 版 ChatGPT Desktop App，打开后登录 ChatGPT 账户。<br>
+b. 在左上角切换到 <strong>Codex</strong>，选择 <strong>Open folder / Add project</strong>。<br>
+c. 只授权与任务有关的项目目录，例如 <code>D:\Blog\hugoStackBlog</code>。<br>
+d. 创建新对话（Thread / Chat），说明目标、限制、需要验证的内容和不可修改的范围。</p>
+<p>常用快捷键：</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>Windows / macOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>命令菜单</td>
+<td><code>Ctrl/Cmd + Shift + P</code> 或 <code>Ctrl/Cmd + K</code></td>
+</tr>
+<tr>
+<td>打开文件夹</td>
+<td><code>Ctrl/Cmd + O</code></td>
+</tr>
+<tr>
+<td>新对话</td>
+<td><code>Ctrl/Cmd + N</code></td>
+</tr>
+<tr>
+<td>搜索对话</td>
+<td><code>Ctrl/Cmd + G</code></td>
+</tr>
+<tr>
+<td>开关侧边栏</td>
+<td><code>Ctrl/Cmd + B</code></td>
+</tr>
+<tr>
+<td>开关终端</td>
+<td>`Ctrl + ``</td>
+</tr>
+<tr>
+<td>打开审查页</td>
+<td><code>Ctrl + Shift + G</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="用-filename-精确引用文件">用 <code>@filename</code> 精确引用文件
+</h3><p><code>@filename</code> 会搜索并引用当前任务所属项目中的文件。在输入框键入 <code>@</code> 和部分文件名，再从「文件」候选中选中目标，Desktop App 会将它作为明确上下文加入请求。与「帮我看一下代码」相比，指向具体文件更快、更准确，也能减少不必要的上下文。</p>
+<h4 id="先确认项目目录">先确认项目目录
+</h4><p><code>@</code> 不会搜索整台电脑，它只能从当前项目已附加的文件夹中查找文件。即使在提示词中手动写了其他磁盘的路径，当前任务的主工作目录也不会因此自动切换。</p>
+<p>以本博客项目为例：</p>
+<p>a. 在 Desktop App 按 <code>Ctrl+O</code>。<br>
+b. 选择 <code>D:\Blog\hugoStackBlog</code>。<br>
+c. 为该目录新建一个 Codex 任务。<br>
+d. 确认新任务的工作目录为 <code>D:\Blog\hugoStackBlog</code>。<br>
+e. 输入 <code>@codex</code>，在「文件」分类中选择 <code>codexUserGuide.md</code>。</p>
+<p>如果使用 Project，也可以打开 <strong>Edit project → Add folder</strong>，加入正确目录并将它设为 <strong>Primary</strong>。新任务会以 Primary folder 作为默认工作目录；其他已附加文件夹仍可用于文件搜索和读写。</p>
+<h4 id="使用示例">使用示例
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">请参考 @content/post/information/articleCreationDeployment.md 的 Front Matter、标题层级和链接格式，
+</span></span><span class="line"><span class="cl">为 @content/post/information/ 新建一篇 Codex 使用指南。
+</span></span><span class="line"><span class="cl">不要修改参考文件。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>@</code> 没有弹出文件时，也可以直接写明相对于项目根目录的完整路径：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">请读取 content/post/information/codexUserGuide.md，检查 @filename 章节。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><mark>* 如果键入 <code>@</code> 后只看到 Computer Use 应用、Plugin、Skill 或对话，却没有「文件」分类，请先检查当前任务是否打开了正确项目目录。该候选列表由 Desktop App 在发送消息前生成，通常不是切换模型就能解决的问题。</mark></p>
+<h3 id="-命令与-skill"><code>/</code> 命令与 Skill
+</h3><p>Desktop App 输入框中键入 <code>/</code> 可查看当前版本支持的操作。常用项包括：</p>
+<ul>
+<li><code>/plan</code>：先产生可审阅的计划，适合范围尚未完全明确的任务。</li>
+<li><code>/goal</code>：为长时间或多阶段任务设定持续目标。</li>
+<li><code>/review</code>：审查当前修改，优先查找缺陷、回归和测试缺口。</li>
+<li><code>/status</code>：查看当前模型、权限和会话状态。</li>
+<li><code>/mcp</code>：查看已连接的 MCP Server 和工具。</li>
+<li><code>/feedback</code>：发送产品反馈。</li>
+</ul>
+<p>Skill 是针对某类任务的可复用工作流，例如「创建并验证 PDF」、「编辑并渲染 Word」或「生成博客文章」。</p>
+<ul>
+<li>在 Skills 页面浏览已安装的 Skill。</li>
+<li>在命令菜单中选择 Skill，或按当前界面提示调用。</li>
+<li>在需要精确指定时，使用 <code>$skill-name</code> 显式调用。</li>
+<li>CLI 中对应命令是 <code>/skills</code>（复数），不要把 Skill 和 Plugin 混为一个概念。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">$documents 请把 @notes.md 整理成一份 Word 文档，生成后渲染检查每一页。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="automations--scheduled-tasks">Automations / Scheduled Tasks
+</h3><p>Automations 现在在界面中也可能显示为 <strong>Scheduled</strong>，用于按时间表、周期或当前对话的轮询节奏自动运行任务。</p>
+<p>适合场景：</p>
+<ul>
+<li>每天检查构建或测试状态。</li>
+<li>持续轮询 PR、CI、部署或其他长时间操作。</li>
+<li>每周整理代码库变更、依赖或异常报告。</li>
+<li>配合 Skill 与 GitHub、Slack 等 Plugin 执行标准化流程。</li>
+</ul>
+<p>创建时应写清：每次运行要做什么、在什么时间运行、什么情况需要报告、什么情况应停止，以及是否回到当前对话。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">每个工作日 09:00 检查这个项目的测试和依赖状态。
+</span></span><span class="line"><span class="cl">只读取项目并运行已有检查，不要自动修改、提交或推送。
+</span></span><span class="line"><span class="cl">如果全部正常则简短记录；如果失败，请报告失败命令、关键错误和建议的下一步。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>本地项目的定时任务需要电脑开机、Desktop App 运行且项目目录可用。Git 项目可选择直接在当前工作目录运行，或在独立 Worktree 中运行；会改代码的后台任务优先使用 Worktree，避免与手头未完成的修改冲突。</p>
+<h3 id="plugins">Plugins
+</h3><p>Plugin 是可安装的能力包，可以包含：</p>
+<ul>
+<li><strong>Skills</strong>：可复用的指令、参考资料、模板与脚本。</li>
+<li><strong>Connectors / Apps</strong>：连接 GitHub、Gmail、Google Drive、Slack、Notion 等服务。</li>
+<li><strong>MCP Tools</strong>：以结构化参数读取外部数据或执行操作。</li>
+<li><strong>Hooks、浏览器能力和 Scheduled Task Templates</strong>：在 Plugin 需要时提供更完整的工作流。</li>
+</ul>
+<p>使用方式：</p>
+<p>a. 在 Desktop App 左侧打开 <strong>Plugins</strong>。<br>
+b. 搜索并安装所需 Plugin，阅读它请求的权限。<br>
+c. 如果需要连接外部账户，完成登录与授权。<br>
+d. 安装后新建对话，直接描述目标，或键入 <code>@</code> 明确选择 Plugin / Skill。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">@GitHub 查看这个仓库最近失败的 CI，先总结失败原因和受影响的提交，不要修改代码或发送消息。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Plugin 可用性受账户方案、工作区管理策略、当前平台与 Plugin 自身限制影响。卸载 Plugin 不一定会自动断开它使用的 Connector，如需完全取消授权，还应到连接管理中检查。</p>
+<h3 id="多对话多代理与-worktree">多对话、多代理与 Worktree
+</h3><p>Desktop App 适合同时跟踪多个任务。较大任务可以分为「查找安全风险」、「补测试」和「检查可维护性」等可独立子任务并行处理，最后由主对话整合。</p>
+<p>Git Worktree 可以给每个对话一份独立工作区，避免多个代理同时修改同一份文件。但它不会自动消除架构冲突：并行前仍然应划分清晰的文件边界和验收标准。</p>
+<h3 id="review预览与终端">Review、预览与终端
+</h3><ul>
+<li>使用 <strong>Review</strong> 查看变更文件和 diff，在提交前逐项检查。</li>
+<li>使用集成终端运行测试、构建、格式化和 <code>git status</code>。</li>
+<li>支持的文档、表格、演示文稿、PDF 和 HTML 可在 App 中预览。</li>
+<li>在可预览的文件或界面上添加 Annotation，可以把反馈精确指向某一行、某个组件或某个区域。</li>
+<li>要求 Codex 报告每个产物的保存路径、它运行的检查和尚未覆盖的风险。</li>
+</ul>
+<hr>
+<h2 id="如何写出更好的-codex-任务">如何写出更好的 Codex 任务
+</h2><p>一个实用提示词通常包含以下部分：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">目标：最终要产生什么结果。
+</span></span><span class="line"><span class="cl">上下文：应该阅读哪些文件、文档或外部资料。
+</span></span><span class="line"><span class="cl">范围：可以修改什么，不可以修改什么。
+</span></span><span class="line"><span class="cl">验证：需要运行哪些测试、构建、渲染或人工检查。
+</span></span><span class="line"><span class="cl">交付：最后应该列出文件、结果、风险和下一步。
+</span></span><span class="line"><span class="cl">安全：是否允许删除、提交、推送、发布、访网或对外发送消息。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>对大任务，先用 <code>/plan</code>。对长时间结果，用 <code>/goal</code>。对精确文件，用 <code>@filename</code>。对标准化流程，用 Skill。对外部服务和工具，用 Plugin / Connector / MCP。对周期性任务，用 Automation。</p>
+<hr>
+<h2 id="安全与常见问题">安全与常见问题
+</h2><h3 id="为什么-codex-一直询问批准">为什么 Codex 一直询问批准？
+</h3><p>因为当前操作超出了沙箱、可写目录或网络规则。先确认命令、目标路径和影响，再针对性批准，不要为了方便一次性开放全部权限。</p>
+<h3 id="为什么-codex-找不到文件">为什么 Codex 找不到文件？
+</h3><p>检查当前项目根目录，使用 <code>@filename</code>、CLI <code>/mention</code> 或 <code>-C &lt;path&gt;</code> 指向正确位置。项目外的目录可能还需要额外读写权限。</p>
+<h3 id="为什么安装-skill-或-plugin-后没有生效">为什么安装 Skill 或 Plugin 后没有生效？
+</h3><p>新安装的能力通常需要新建对话或 CLI Session。Plugin 若包含 Connector 或 MCP Server，还要检查是否已登录、授权、完成额外配置，以及工作区管理员是否允许使用。</p>
+<h3 id="为什么不建议让-automation-直接推送代码">为什么不建议让 Automation 直接推送代码？
+</h3><p>定时任务在无人值守时运行，较宽权限会放大误修改、泄露数据和供应链风险。优先让它在独立 Worktree 中产生可审查的变更或报告，再由人员确认合并和发布。</p>
+<hr>
+<h2 id="参考链接">参考链接
+</h2><p><a class="link" href="https://learn.chatgpt.com/docs/codex/cli"  target="_blank" rel="noopener"
+    >OpenAI - Codex CLI</a><br>
+<a class="link" href="https://learn.chatgpt.com/docs/developer-commands?surface=cli"  target="_blank" rel="noopener"
+    >OpenAI - Codex CLI 命令与参数</a><br>
+<a class="link" href="https://learn.chatgpt.com/docs/developer-commands?surface=cli#slash-commands-in-codex-cli"  target="_blank" rel="noopener"
+    >OpenAI - Codex CLI 斜杠命令</a><br>
+<a class="link" href="https://learn.chatgpt.com/docs/app"  target="_blank" rel="noopener"
+    >OpenAI - ChatGPT Desktop App</a><br>
+<a class="link" href="https://learn.chatgpt.com/docs/reference/commands"  target="_blank" rel="noopener"
+    >OpenAI - Desktop App 命令</a><br>
+<a class="link" href="https://learn.chatgpt.com/docs/skills-and-plugins"  target="_blank" rel="noopener"
+    >OpenAI - Skills &amp; Plugins</a><br>
+<a class="link" href="https://learn.chatgpt.com/docs/plugins"  target="_blank" rel="noopener"
+    >OpenAI - Plugins</a><br>
+<a class="link" href="https://learn.chatgpt.com/docs/automations"  target="_blank" rel="noopener"
+    >OpenAI - Scheduled Tasks / Automations</a><br>
+<a class="link" href="https://learn.chatgpt.com/docs/agent-approvals-security"  target="_blank" rel="noopener"
+    >OpenAI - Agent Approvals &amp; Security</a><br>
+<a class="link" href="https://www.youtube.com/watch?v=W5ymBPi53Tw&amp;t=16s"  target="_blank" rel="noopener"
+    >YouTube - 一個 AI 助手打趴整套 Office 軟體！超強 Codex 從表格簡報、合併列印、架設網站全部一手包辦！</a><br>
+<a class="link" href="https://claudemarketplaces.com/"  target="_blank" rel="noopener"
+    >Skill - frontend-design</a></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>禁止转载。如需引用，请注明文章链接。</span>
+    </section>
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 7v5l3 3" /></svg>
+        <span>
+            最后更新于 2026-08-07
+        </span>
+    </section></footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%92%A8%E8%AE%AFmd%E5%86%99%E6%B3%95%E7%A4%BA%E4%BE%8B/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/images/mdWritting/mdWritting_bg.png" loading="lazy" data-key="" data-hash="/images/mdWritting/mdWritting_bg.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【咨讯】MD写法示例</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%92%A8%E8%AE%AF%E6%96%87%E7%AB%A0%E5%88%9B%E4%BD%9C%E4%B8%8E%E9%83%A8%E7%BD%B2/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/images/articleCreationDeployment/articleCreationDeployment_bg.png" loading="lazy" data-key="" data-hash="/images/articleCreationDeployment/articleCreationDeployment_bg.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【咨讯】文章创作与部署</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2026 怠惰的天秤-sloth
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+
+
+
+
+
+<div id="particles-js"></div>
+
+<style>
+    #particles-js {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    #TableOfContents>ul,
+    ol {
+
+        ul,
+        ol {
+            display: none;
+        }
+
+        .open {
+            display: block;
+        }
+    }
+
+    #backTopBtn {
+        display: none;
+        position: fixed;
+        bottom: 30px;
+        z-index: 99;
+        cursor: pointer;
+        width: 35px;
+        height: 35px;
+        background-image: url('https://sloth-cyx.github.io/icons/backTop.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        transition: transform 0.2s ease;
+    }
+
+    #backTopBtn:hover {
+        transform: translateY(-3px);
+    }
+</style>
+
+<script src="https://sloth-cyx.github.io/background/sakura.js"></script>
+<script src="https://sloth-cyx.github.io/background/particles.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        
+        
+        function initParticles() {
+            
+            const container = document.getElementById('particles-js');
+            if (container && container.childNodes.length === 0) {
+                if (typeof particlesJS !== "undefined") {
+                    particlesJS.load('particles-js', 'https:\/\/sloth-cyx.github.io\/background\/particlesjs-config.json', function () {});
+                }
+            }
+        }
+
+        function checkBackground() {
+            const isDark = document.documentElement.getAttribute('data-scheme') === 'dark';
+            
+            
+            if (isDark) {
+                initParticles();
+            }
+        }
+
+        
+        window.addEventListener('load', () => {
+            
+            if (typeof Sakura !== "undefined") new Sakura('body');
+            
+            checkBackground();
+        });
+
+        
+        const observer = new MutationObserver(checkBackground);
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-scheme'] });
+            
+        
+        let toc = document.querySelector(".widget--toc");
+        if (toc) {
+            window.addEventListener('scroll', function () {
+                let openUl = document.querySelectorAll(".open");
+                if (openUl.length > 0) { openUl.forEach((ul) => { ul.classList.remove("open") }) }
+                let currentLi = document.querySelector(".active-class");
+                if (!currentLi) return;
+                if (currentLi.children.length > 1) { currentLi.children[1].classList.add("open") }
+                let ul = currentLi.parentElement;
+                do {
+                    ul.classList.add("open");
+                    ul = ul.parentElement.parentElement
+                } while (ul !== undefined && (ul.localName === 'ul' || ul.localName === 'ol'))
+            });
+        }
+
+        
+        let rightSideBar = document.querySelector(".right-sidebar");
+        if (rightSideBar) {
+            let btn = document.createElement("div");
+            btn.id = "backTopBtn";
+            btn.onclick = function () { window.scrollTo({ top: 0, behavior: "smooth" }); };
+            rightSideBar.appendChild(btn);
+            window.addEventListener('scroll', function () {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) { btn.style.display = "block"; }
+                else { btn.style.display = "none"; }
+            });
+        }
+
+        
+        let blockquotes = document.querySelectorAll("blockquote");
+        blockquotes.forEach(function (bq) {
+            
+            let text = bq.textContent || bq.innerText;
+            let alertType = "";
+
+            
+            if (text.includes("[!NOTE]")) { alertType = "note"; }
+            else if (text.includes("[!TIP]")) { alertType = "tip"; }
+            else if (text.includes("[!WARN]")) { alertType = "warn"; }
+            else if (text.includes("[!ERROR]")) { alertType = "error"; }
+            else if (text.includes("[!VIOLET]")) { alertType = "violet"; }
+
+            if (alertType) {
+                
+                bq.classList.add("alert", "alert-" + alertType);
+
+                
+                let pTag = bq.querySelector("p");
+                if (pTag) {
+                    
+                    let token = "[!" + alertType.toUpperCase() + "]";
+                    if (pTag.innerText.startsWith(token)) {
+                        pTag.innerText = pTag.innerText.substring(token.length).trim();
+                    } else {
+                        
+                        pTag.innerText = pTag.innerText.replace(/\[!(NOTE|TIP|WARN|ERROR|VIOLET)\]/g, "").trim();
+                    }
+                }
+            }
+        });
+    });
+</script>
+    </body>
+</html>
