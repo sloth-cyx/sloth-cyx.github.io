@@ -7,7 +7,635 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>怠惰的天秤-sloth</copyright>
-        <lastBuildDate>Fri, 07 Aug 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://sloth-cyx.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 06 Aug 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://sloth-cyx.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【咨讯】Codex CLI 与 Desktop App 使用指南</title>
+        <link>https://sloth-cyx.github.io/p/%E5%92%A8%E8%AE%AFcodex-cli-%E4%B8%8E-desktop-app-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link>
+        <pubDate>Thu, 06 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>https://sloth-cyx.github.io/p/%E5%92%A8%E8%AE%AFcodex-cli-%E4%B8%8E-desktop-app-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
+        <description>&lt;img src="https://sloth-cyx.github.io/images/codexUserGuide/codexUserGuide_bg.png" alt="Featured image of post 【咨讯】Codex CLI 与 Desktop App 使用指南" /&gt;&lt;blockquote&gt;
+&lt;p&gt;[!NOTE]&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;本文章为codex制作，仅在reference做了一些手动添加/修改。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;codex-是什么&#34;&gt;Codex 是什么
+&lt;/h2&gt;&lt;p&gt;Codex 是 OpenAI 的编程代理，能够读取项目、修改文件、运行命令、执行测试、审查代码，并通过 Skills、Plugins 和 MCP 连接更多工具。它常用的两个入口是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Codex CLI&lt;/strong&gt;：在终端内工作，适合熟悉命令行、需要脚本化或 CI 自动化的用户。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Codex Desktop App&lt;/strong&gt;：在 Windows 或 macOS 中以图形界面管理项目、多个任务、差异审查、终端、自动化和 Plugins。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;mark&gt;* Codex 会真实读写文件和执行命令。开始前建议使用 Git 提交当前状态，并为它选择最小必要的文件和网络权限。&lt;/mark&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;codex-cli&#34;&gt;Codex CLI
+&lt;/h2&gt;&lt;h3 id=&#34;安装与登录&#34;&gt;安装与登录
+&lt;/h3&gt;&lt;h4 id=&#34;npmwindowsmacoslinux&#34;&gt;npm（Windows、macOS、Linux）
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;npm&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-global&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;@openai&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;codex&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;codex&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;-version&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;codex&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h4 id=&#34;homebrewmacos&#34;&gt;Homebrew（macOS）
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;brew install codex
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;codex
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;首次运行 &lt;code&gt;codex&lt;/code&gt; 时，根据提示选择 &lt;strong&gt;Sign in with ChatGPT&lt;/strong&gt; 或其他可用的登录方式。也可主动管理登录状态：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;codex&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;login&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;codex&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;login&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;status&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;codex&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;logout&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Windows 用户可以直接在 PowerShell 中使用；如果项目和开发工具都在 WSL 中，则建议在 WSL 内安装并运行 CLI，避免 Windows 与 Linux 路径、权限和依赖混用。&lt;/p&gt;
+&lt;h3 id=&#34;开始第一个任务&#34;&gt;开始第一个任务
+&lt;/h3&gt;&lt;p&gt;先进入项目目录，再启动 Codex：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;D:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Blog&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hugoStackBlog&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;codex&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;启动后直接用自然语言描述结果，例如：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;请阅读这个 Hugo 项目，说明文章目录、图片目录和本地预览方式，先不要修改文件。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;也可以把提示词直接作为启动参数：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;codex&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;检查这个项目的构建方式，并告诉我应该运行哪些测试&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;常用-cli-命令&#34;&gt;常用 CLI 命令
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;th&gt;示例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;codex&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;启动交互式终端界面&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;codex&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;codex exec&lt;/code&gt; / &lt;code&gt;codex e&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;非交互执行，适合脚本和 CI&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;codex exec &amp;quot;运行测试并总结失败原因&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;codex resume&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;继续之前保存的会话&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;codex resume --last&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;codex fork&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;从旧会话分叉新方案&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;codex fork&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;codex review&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;审查未提交变更、某个提交或基准分支&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;codex review --uncommitted&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;codex app&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;从 CLI 打开 Desktop App&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;codex app&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;codex doctor&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;诊断安装、认证、配置、Git 和运行环境&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;codex doctor&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;codex update&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在当前安装方式支持时更新 CLI&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;codex update&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;codex mcp&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;添加、删除、登录和查看 MCP Server&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;codex mcp list&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;codex plugin&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;安装、查看和删除 Plugin&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;codex plugin list&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;codex completion&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;生成 Bash、Zsh、Fish 或 PowerShell 补全脚本&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;codex completion powershell&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;常用启动参数&#34;&gt;常用启动参数
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;th&gt;示例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-C, --cd &amp;lt;path&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;指定工作目录&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;codex -C D:\Blog\hugoStackBlog&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-m, --model &amp;lt;model&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;本次运行使用指定模型&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;codex -m &amp;lt;model&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-i, --image &amp;lt;path&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;把截图、设计图或架构图加入首轮上下文&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;codex -i error.png &amp;quot;修复截图中的错误&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--search&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;启用实时网络搜索&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;codex --search&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-s, --sandbox &amp;lt;mode&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;选择 &lt;code&gt;read-only&lt;/code&gt;、&lt;code&gt;workspace-write&lt;/code&gt; 或 &lt;code&gt;danger-full-access&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;codex -s workspace-write&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-a, --ask-for-approval &amp;lt;policy&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;控制何时需要人工批准&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;codex -a on-request&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;--add-dir &amp;lt;path&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;额外授权一个可写目录&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;codex --add-dir D:\Shared&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-c, --config key=value&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;仅为当次运行覆盖 &lt;code&gt;config.toml&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;codex -c key=value&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;mark&gt;* 不要在日常开发机器上随意使用 &lt;code&gt;--yolo&lt;/code&gt; 或 &lt;code&gt;danger-full-access&lt;/code&gt;，它们会绕过常规批准或沙箱保护。&lt;/mark&gt;&lt;/p&gt;
+&lt;h3 id=&#34;-斜杠命令&#34;&gt;&lt;code&gt;/&lt;/code&gt; 斜杠命令
+&lt;/h3&gt;&lt;p&gt;在 Codex CLI 输入框中键入 &lt;code&gt;/&lt;/code&gt; 会打开命令列表。命令会随版本和当前环境变化，以实际弹出列表为准。&lt;/p&gt;
+&lt;h4 id=&#34;会话与上下文&#34;&gt;会话与上下文
+&lt;/h4&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/new&lt;/code&gt; / &lt;code&gt;/clear&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在当前 CLI 中开始新会话&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/resume&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;继续已保存的会话&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/fork&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;从当前会话分叉新会话&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/rename&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;为当前会话命名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/compact&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;压缩长对话，用摘要保留重点并释放上下文&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/side&lt;/code&gt; / &lt;code&gt;/btw&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;开一个临时侧边对话，不打断主线&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/mention&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;把指定文件或文件夹附加到对话&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/copy&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;复制最近一次完成的回复&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;模型计划与执行&#34;&gt;模型、计划与执行
+&lt;/h4&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/model&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;选择模型和推理强度&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/fast&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在当前模型支持时切换 Fast 模式&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/plan&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;先制定方案，再进入实施&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/goal&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;设定、查看、修改、暂停或继续长期目标&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/personality&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;切换沟通风格&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/agent&lt;/code&gt; / &lt;code&gt;/subagents&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看或切换子代理线程&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/ps&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看后台终端与最近输出&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/stop&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;停止当前会话启动的后台终端&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;修改审查与权限&#34;&gt;修改、审查与权限
+&lt;/h4&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/diff&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看 Git diff，包括未跟踪文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/review&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;审查当前工作树&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/permissions&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在会话中收紧或放宽权限&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/approve&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;对最近被自动审查拒绝的动作批准一次重试&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/status&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看模型、权限、可写目录、Token 与上下文状态&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/usage&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看账户用量和限额状态&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/init&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;为当前项目生成 &lt;code&gt;AGENTS.md&lt;/code&gt; 指令骨架&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id=&#34;扩展与其他工具&#34;&gt;扩展与其他工具
+&lt;/h4&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/skills&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;浏览并选择可复用的 Skill&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/plugins&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;浏览、安装、启用或禁用 Plugin&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/apps&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;浏览 Apps / Connectors，并将它们加入提示词&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/mcp&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;列出当前可用的 MCP 工具&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/hooks&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看、信任或禁用生命周期 Hooks&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/app&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;把当前 CLI 会话继续到 Desktop App&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/feedback&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;向 Codex 维护团队发送问题与日志&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/quit&lt;/code&gt; / &lt;code&gt;/exit&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;退出 CLI&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;codex-能调用的-functions--tools&#34;&gt;Codex 能调用的 Functions / Tools
+&lt;/h3&gt;&lt;p&gt;Codex 不只是生成代码，它会根据任务调用工具。实际可用项取决于当前平台、权限、Skills、Plugins 和 MCP 配置。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;文件工具&lt;/strong&gt;：搜索、读取、新建和修改项目文件。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Shell / Terminal&lt;/strong&gt;：运行构建、测试、格式化、Git 和项目自带脚本。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Web Search / Browser&lt;/strong&gt;：在权限允许时搜索新资料、阅读页面或测试网页交互。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MCP / Connectors&lt;/strong&gt;：访问 GitHub、Slack、Google Drive、数据库等外部系统。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Skills&lt;/strong&gt;：加载一套可复用的流程、检查标准、参考文件或辅助脚本。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Image / Artifact Tools&lt;/strong&gt;：在支持的表面读图、生成图片，或创建文档、表格、幻灯片等产物。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Agents&lt;/strong&gt;：将可独立的子任务交给多个代理并行处理，再由主线整合。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;工具调用前后都应检查输入、权限和结果；涉及删除、发布、推送、付费或对外发送消息时，应明确要求 Codex 先征求确认。&lt;/p&gt;
+&lt;h3 id=&#34;一个完整的-cli-工作流&#34;&gt;一个完整的 CLI 工作流
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;1. 阅读 AGENTS.md 和项目结构，先告诉我你理解的构建、测试和格式化命令。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;2. 检查当前 Git 状态，不要覆盖已有的本地修改。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;3. 实现「具体目标」，仅修改与任务有关的文件。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;4. 运行与风险相匹配的测试。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;5. 最后列出修改的文件、验证结果和仍存在的风险，不要自动提交或推送。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;codex-desktop-app&#34;&gt;Codex Desktop App
+&lt;/h2&gt;&lt;h3 id=&#34;安装与创建项目&#34;&gt;安装与创建项目
+&lt;/h3&gt;&lt;p&gt;a. 下载 Windows 或 macOS 版 ChatGPT Desktop App，打开后登录 ChatGPT 账户。&lt;br&gt;
+b. 在左上角切换到 &lt;strong&gt;Codex&lt;/strong&gt;，选择 &lt;strong&gt;Open folder / Add project&lt;/strong&gt;。&lt;br&gt;
+c. 只授权与任务有关的项目目录，例如 &lt;code&gt;D:\Blog\hugoStackBlog&lt;/code&gt;。&lt;br&gt;
+d. 创建新对话（Thread / Chat），说明目标、限制、需要验证的内容和不可修改的范围。&lt;/p&gt;
+&lt;p&gt;常用快捷键：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;操作&lt;/th&gt;
+&lt;th&gt;Windows / macOS&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;命令菜单&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Ctrl/Cmd + Shift + P&lt;/code&gt; 或 &lt;code&gt;Ctrl/Cmd + K&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;打开文件夹&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Ctrl/Cmd + O&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;新对话&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Ctrl/Cmd + N&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;搜索对话&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Ctrl/Cmd + G&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;开关侧边栏&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Ctrl/Cmd + B&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;开关终端&lt;/td&gt;
+&lt;td&gt;`Ctrl + ``&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;打开审查页&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Ctrl + Shift + G&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;用-filename-精确引用文件&#34;&gt;用 &lt;code&gt;@filename&lt;/code&gt; 精确引用文件
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;@filename&lt;/code&gt; 会搜索并引用当前任务所属项目中的文件。在输入框键入 &lt;code&gt;@&lt;/code&gt; 和部分文件名，再从「文件」候选中选中目标，Desktop App 会将它作为明确上下文加入请求。与「帮我看一下代码」相比，指向具体文件更快、更准确，也能减少不必要的上下文。&lt;/p&gt;
+&lt;h4 id=&#34;先确认项目目录&#34;&gt;先确认项目目录
+&lt;/h4&gt;&lt;p&gt;&lt;code&gt;@&lt;/code&gt; 不会搜索整台电脑，它只能从当前项目已附加的文件夹中查找文件。即使在提示词中手动写了其他磁盘的路径，当前任务的主工作目录也不会因此自动切换。&lt;/p&gt;
+&lt;p&gt;以本博客项目为例：&lt;/p&gt;
+&lt;p&gt;a. 在 Desktop App 按 &lt;code&gt;Ctrl+O&lt;/code&gt;。&lt;br&gt;
+b. 选择 &lt;code&gt;D:\Blog\hugoStackBlog&lt;/code&gt;。&lt;br&gt;
+c. 为该目录新建一个 Codex 任务。&lt;br&gt;
+d. 确认新任务的工作目录为 &lt;code&gt;D:\Blog\hugoStackBlog&lt;/code&gt;。&lt;br&gt;
+e. 输入 &lt;code&gt;@codex&lt;/code&gt;，在「文件」分类中选择 &lt;code&gt;codexUserGuide.md&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;如果使用 Project，也可以打开 &lt;strong&gt;Edit project → Add folder&lt;/strong&gt;，加入正确目录并将它设为 &lt;strong&gt;Primary&lt;/strong&gt;。新任务会以 Primary folder 作为默认工作目录；其他已附加文件夹仍可用于文件搜索和读写。&lt;/p&gt;
+&lt;h4 id=&#34;使用示例&#34;&gt;使用示例
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;请参考 @content/post/information/articleCreationDeployment.md 的 Front Matter、标题层级和链接格式，
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;为 @content/post/information/ 新建一篇 Codex 使用指南。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;不要修改参考文件。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;@&lt;/code&gt; 没有弹出文件时，也可以直接写明相对于项目根目录的完整路径：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;请读取 content/post/information/codexUserGuide.md，检查 @filename 章节。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;mark&gt;* 如果键入 &lt;code&gt;@&lt;/code&gt; 后只看到 Computer Use 应用、Plugin、Skill 或对话，却没有「文件」分类，请先检查当前任务是否打开了正确项目目录。该候选列表由 Desktop App 在发送消息前生成，通常不是切换模型就能解决的问题。&lt;/mark&gt;&lt;/p&gt;
+&lt;h3 id=&#34;-命令与-skill&#34;&gt;&lt;code&gt;/&lt;/code&gt; 命令与 Skill
+&lt;/h3&gt;&lt;p&gt;Desktop App 输入框中键入 &lt;code&gt;/&lt;/code&gt; 可查看当前版本支持的操作。常用项包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/plan&lt;/code&gt;：先产生可审阅的计划，适合范围尚未完全明确的任务。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/goal&lt;/code&gt;：为长时间或多阶段任务设定持续目标。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/review&lt;/code&gt;：审查当前修改，优先查找缺陷、回归和测试缺口。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/status&lt;/code&gt;：查看当前模型、权限和会话状态。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/mcp&lt;/code&gt;：查看已连接的 MCP Server 和工具。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/feedback&lt;/code&gt;：发送产品反馈。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Skill 是针对某类任务的可复用工作流，例如「创建并验证 PDF」、「编辑并渲染 Word」或「生成博客文章」。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在 Skills 页面浏览已安装的 Skill。&lt;/li&gt;
+&lt;li&gt;在命令菜单中选择 Skill，或按当前界面提示调用。&lt;/li&gt;
+&lt;li&gt;在需要精确指定时，使用 &lt;code&gt;$skill-name&lt;/code&gt; 显式调用。&lt;/li&gt;
+&lt;li&gt;CLI 中对应命令是 &lt;code&gt;/skills&lt;/code&gt;（复数），不要把 Skill 和 Plugin 混为一个概念。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$documents 请把 @notes.md 整理成一份 Word 文档，生成后渲染检查每一页。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;automations--scheduled-tasks&#34;&gt;Automations / Scheduled Tasks
+&lt;/h3&gt;&lt;p&gt;Automations 现在在界面中也可能显示为 &lt;strong&gt;Scheduled&lt;/strong&gt;，用于按时间表、周期或当前对话的轮询节奏自动运行任务。&lt;/p&gt;
+&lt;p&gt;适合场景：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每天检查构建或测试状态。&lt;/li&gt;
+&lt;li&gt;持续轮询 PR、CI、部署或其他长时间操作。&lt;/li&gt;
+&lt;li&gt;每周整理代码库变更、依赖或异常报告。&lt;/li&gt;
+&lt;li&gt;配合 Skill 与 GitHub、Slack 等 Plugin 执行标准化流程。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;创建时应写清：每次运行要做什么、在什么时间运行、什么情况需要报告、什么情况应停止，以及是否回到当前对话。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;每个工作日 09:00 检查这个项目的测试和依赖状态。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;只读取项目并运行已有检查，不要自动修改、提交或推送。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;如果全部正常则简短记录；如果失败，请报告失败命令、关键错误和建议的下一步。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;本地项目的定时任务需要电脑开机、Desktop App 运行且项目目录可用。Git 项目可选择直接在当前工作目录运行，或在独立 Worktree 中运行；会改代码的后台任务优先使用 Worktree，避免与手头未完成的修改冲突。&lt;/p&gt;
+&lt;h3 id=&#34;plugins&#34;&gt;Plugins
+&lt;/h3&gt;&lt;p&gt;Plugin 是可安装的能力包，可以包含：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Skills&lt;/strong&gt;：可复用的指令、参考资料、模板与脚本。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Connectors / Apps&lt;/strong&gt;：连接 GitHub、Gmail、Google Drive、Slack、Notion 等服务。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MCP Tools&lt;/strong&gt;：以结构化参数读取外部数据或执行操作。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hooks、浏览器能力和 Scheduled Task Templates&lt;/strong&gt;：在 Plugin 需要时提供更完整的工作流。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;使用方式：&lt;/p&gt;
+&lt;p&gt;a. 在 Desktop App 左侧打开 &lt;strong&gt;Plugins&lt;/strong&gt;。&lt;br&gt;
+b. 搜索并安装所需 Plugin，阅读它请求的权限。&lt;br&gt;
+c. 如果需要连接外部账户，完成登录与授权。&lt;br&gt;
+d. 安装后新建对话，直接描述目标，或键入 &lt;code&gt;@&lt;/code&gt; 明确选择 Plugin / Skill。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;@GitHub 查看这个仓库最近失败的 CI，先总结失败原因和受影响的提交，不要修改代码或发送消息。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Plugin 可用性受账户方案、工作区管理策略、当前平台与 Plugin 自身限制影响。卸载 Plugin 不一定会自动断开它使用的 Connector，如需完全取消授权，还应到连接管理中检查。&lt;/p&gt;
+&lt;h3 id=&#34;多对话多代理与-worktree&#34;&gt;多对话、多代理与 Worktree
+&lt;/h3&gt;&lt;p&gt;Desktop App 适合同时跟踪多个任务。较大任务可以分为「查找安全风险」、「补测试」和「检查可维护性」等可独立子任务并行处理，最后由主对话整合。&lt;/p&gt;
+&lt;p&gt;Git Worktree 可以给每个对话一份独立工作区，避免多个代理同时修改同一份文件。但它不会自动消除架构冲突：并行前仍然应划分清晰的文件边界和验收标准。&lt;/p&gt;
+&lt;h3 id=&#34;review预览与终端&#34;&gt;Review、预览与终端
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;使用 &lt;strong&gt;Review&lt;/strong&gt; 查看变更文件和 diff，在提交前逐项检查。&lt;/li&gt;
+&lt;li&gt;使用集成终端运行测试、构建、格式化和 &lt;code&gt;git status&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;支持的文档、表格、演示文稿、PDF 和 HTML 可在 App 中预览。&lt;/li&gt;
+&lt;li&gt;在可预览的文件或界面上添加 Annotation，可以把反馈精确指向某一行、某个组件或某个区域。&lt;/li&gt;
+&lt;li&gt;要求 Codex 报告每个产物的保存路径、它运行的检查和尚未覆盖的风险。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;如何写出更好的-codex-任务&#34;&gt;如何写出更好的 Codex 任务
+&lt;/h2&gt;&lt;p&gt;一个实用提示词通常包含以下部分：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;目标：最终要产生什么结果。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;上下文：应该阅读哪些文件、文档或外部资料。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;范围：可以修改什么，不可以修改什么。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;验证：需要运行哪些测试、构建、渲染或人工检查。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;交付：最后应该列出文件、结果、风险和下一步。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;安全：是否允许删除、提交、推送、发布、访网或对外发送消息。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;对大任务，先用 &lt;code&gt;/plan&lt;/code&gt;。对长时间结果，用 &lt;code&gt;/goal&lt;/code&gt;。对精确文件，用 &lt;code&gt;@filename&lt;/code&gt;。对标准化流程，用 Skill。对外部服务和工具，用 Plugin / Connector / MCP。对周期性任务，用 Automation。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;安全与常见问题&#34;&gt;安全与常见问题
+&lt;/h2&gt;&lt;h3 id=&#34;为什么-codex-一直询问批准&#34;&gt;为什么 Codex 一直询问批准？
+&lt;/h3&gt;&lt;p&gt;因为当前操作超出了沙箱、可写目录或网络规则。先确认命令、目标路径和影响，再针对性批准，不要为了方便一次性开放全部权限。&lt;/p&gt;
+&lt;h3 id=&#34;为什么-codex-找不到文件&#34;&gt;为什么 Codex 找不到文件？
+&lt;/h3&gt;&lt;p&gt;检查当前项目根目录，使用 &lt;code&gt;@filename&lt;/code&gt;、CLI &lt;code&gt;/mention&lt;/code&gt; 或 &lt;code&gt;-C &amp;lt;path&amp;gt;&lt;/code&gt; 指向正确位置。项目外的目录可能还需要额外读写权限。&lt;/p&gt;
+&lt;h3 id=&#34;为什么安装-skill-或-plugin-后没有生效&#34;&gt;为什么安装 Skill 或 Plugin 后没有生效？
+&lt;/h3&gt;&lt;p&gt;新安装的能力通常需要新建对话或 CLI Session。Plugin 若包含 Connector 或 MCP Server，还要检查是否已登录、授权、完成额外配置，以及工作区管理员是否允许使用。&lt;/p&gt;
+&lt;h3 id=&#34;为什么不建议让-automation-直接推送代码&#34;&gt;为什么不建议让 Automation 直接推送代码？
+&lt;/h3&gt;&lt;p&gt;定时任务在无人值守时运行，较宽权限会放大误修改、泄露数据和供应链风险。优先让它在独立 Worktree 中产生可审查的变更或报告，再由人员确认合并和发布。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;参考链接&#34;&gt;参考链接
+&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://learn.chatgpt.com/docs/codex/cli&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;OpenAI - Codex CLI&lt;/a&gt;&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://learn.chatgpt.com/docs/developer-commands?surface=cli&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;OpenAI - Codex CLI 命令与参数&lt;/a&gt;&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://learn.chatgpt.com/docs/developer-commands?surface=cli#slash-commands-in-codex-cli&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;OpenAI - Codex CLI 斜杠命令&lt;/a&gt;&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://learn.chatgpt.com/docs/app&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;OpenAI - ChatGPT Desktop App&lt;/a&gt;&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://learn.chatgpt.com/docs/reference/commands&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;OpenAI - Desktop App 命令&lt;/a&gt;&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://learn.chatgpt.com/docs/skills-and-plugins&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;OpenAI - Skills &amp;amp; Plugins&lt;/a&gt;&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://learn.chatgpt.com/docs/plugins&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;OpenAI - Plugins&lt;/a&gt;&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://learn.chatgpt.com/docs/automations&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;OpenAI - Scheduled Tasks / Automations&lt;/a&gt;&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://learn.chatgpt.com/docs/agent-approvals-security&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;OpenAI - Agent Approvals &amp;amp; Security&lt;/a&gt;&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=W5ymBPi53Tw&amp;amp;t=16s&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;YouTube - 一個 AI 助手打趴整套 Office 軟體！超強 Codex 從表格簡報、合併列印、架設網站全部一手包辦！&lt;/a&gt;&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://claudemarketplaces.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Skill - frontend-design&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>【妮姬】妮游小课堂</title>
         <link>https://sloth-cyx.github.io/p/%E5%A6%AE%E5%A7%AC%E5%A6%AE%E6%B8%B8%E5%B0%8F%E8%AF%BE%E5%A0%82/</link>
         <pubDate>Tue, 16 Jun 2026 00:00:00 +0000</pubDate>
