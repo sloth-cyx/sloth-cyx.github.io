@@ -2387,7 +2387,7 @@
 
   &lt;div class=&#34;game-score-total&#34;&gt;
     &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
-    &lt;div class=&#34;game-score-total-value&#34;&gt;24.5 / 35&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-value&#34;&gt;24 / 35&lt;/div&gt;
     &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐⭐☆☆&lt;/div&gt;
     &lt;div class=&#34;game-score-total-comment&#34;&gt; 🔥 推荐，整体表现出色&lt;/div&gt;
   &lt;/div&gt;
@@ -2417,10 +2417,10 @@
       &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
     &lt;/div&gt;
 
-    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4.5;&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
       &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
       &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
-      &lt;div class=&#34;game-score-value&#34;&gt;4.5&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
     &lt;/div&gt;
 
     &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
@@ -2557,8 +2557,7 @@
 }
 &lt;/style&gt;
 &lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：衣服暴多，色色无敌；优化不错（虽然爆显存卡退过一次）；震刀手感不错；联动良心；线性流程设计不错；中文配音真的很可以&lt;br&gt;
-👎 &lt;strong&gt;缺点&lt;/strong&gt;：收集任务（汽水&amp;amp;拍照）无趣繁琐，收集全衣服要三周目，二周目就已经腻了；防御闪躲手感奇怪无比；boss多换皮怪&lt;br&gt;
-💕 &lt;strong&gt;我推&lt;/strong&gt;：由加莉❤️&lt;/p&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：收集任务（汽水&amp;amp;拍照）无趣繁琐，收集全衣服要三周目，二周目就已经腻了；防御闪躲手感奇怪无比；boss多换皮怪；前半段地图风格大同小异，审美疲劳&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;女神异闻录3-reload--dlc本体二周目&#34;&gt;女神异闻录3 Reload + DLC（本体二周目）
 &lt;/h3&gt;
@@ -3539,6 +3538,202 @@
 👎 &lt;strong&gt;缺点&lt;/strong&gt;：动作依旧算僵硬；烦人的小游戏多，探索重复性高，乐趣也一般般；优化真的垃圾（更新后好一点，但是过场动画会卡是真绷不住）；主线弱智情节不少，逻辑不通，剧情演出节奏拖沓，大多数时候需要按RT快进，只能勉强给个及格分，而且主线塞小游戏真的巨烦！越后期越玩不下去；而且有些情节强制操作某些角色，真的恶心&lt;br&gt;
 💕 &lt;strong&gt;我推&lt;/strong&gt;：蒂法❤️，爱丽丝❤️，西斯妮❤️，艾丝特❤️&lt;/p&gt;
 &lt;hr&gt;
+&lt;h3 id=&#34;碧蓝幻想relink--dlc&#34;&gt;碧蓝幻想Relink + DLC
+&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;game-score-card&#34;&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;game-score-total&#34;&gt;
+    &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-value&#34;&gt;24 / 35&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐⭐☆☆&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🔥 推荐，整体表现出色&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;game-score-list&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚔️ 动作&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;2.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎨 美术&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎮 游戏性&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-list {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+
+.game-score-row {
+  display: grid;
+  grid-template-columns: 4fr 6fr 60px;
+  align-items: center;
+  gap: .9rem;
+  padding: .8rem 1rem;
+  border-radius: 14px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-name {
+  font-weight: 700;
+}
+
+.game-score-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d9e9b7;
+  overflow: hidden;
+}
+
+.game-score-bar span {
+  display: block;
+  height: 100%;
+  width: calc(var(--score) / 5 * 100%);
+  border-radius: 999px;
+  background: #7ca84d;
+}
+
+.game-score-value {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.game-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
+}
+
+@media (max-width: 600px) {
+
+  .game-score-row {
+    grid-template-columns: 1fr;
+    gap: .7rem;
+  }
+
+  .game-score-name {
+    text-align: left;
+  }
+
+  .game-score-bar {
+    width: 100%;
+  }
+
+  .game-score-value {
+    justify-self: center;
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+}
+&lt;/style&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：妹子好看；战斗爽；DLC出的新角色暗龙，贝熊，暗龙都挺好玩的，依旧保持不错的战斗水准；DLC的boss如世界很好玩，格挡反击太爽了，毕业因子难度大大降低&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：刷子游戏，后期只能刷刷刷因子没事干了；DLC相对于本体肝度直线上升，而且不是因子方面而是msp；得一直刷一样的关卡超级无聊，没有本体那种属转+追击V+那种期待感；专精毕业后因子武器那些也相对容易所以后期容易无聊；DLC有些boss不好玩，指名天元&lt;br&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：菲莉❤️，泽塔❤️，索恩❤️，娜露梅亚❤️，贝熊❤️，芙劳❤️&lt;/p&gt;
+&lt;hr&gt;
 &lt;h3 id=&#34;生化危机2-重制版表里皆有&#34;&gt;生化危机2 重制版（表里皆有）
 &lt;/h3&gt;
 
@@ -3734,7 +3929,7 @@
 &lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：虽然流程短但是蛮好玩的，解谜要素+恐怖氛围蛮有趣，双主角&lt;br&gt;
 👎 &lt;strong&gt;缺点&lt;/strong&gt;：有点短，沉浸感一般&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;碧蓝幻想relink--dlc&#34;&gt;碧蓝幻想Relink + DLC
+&lt;h3 id=&#34;轮回之兽&#34;&gt;轮回之兽
 &lt;/h3&gt;
 
 
@@ -3763,46 +3958,46 @@
   &lt;/div&gt;
 
   &lt;div class=&#34;game-score-list&#34;&gt;
-    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2;&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
       &lt;div class=&#34;game-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
       &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
-      &lt;div class=&#34;game-score-value&#34;&gt;2&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
     &lt;/div&gt;
 
-    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
       &lt;div class=&#34;game-score-name&#34;&gt;⚔️ 动作&lt;/div&gt;
       &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
-      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
     &lt;/div&gt;
 
-    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2.5;&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
       &lt;div class=&#34;game-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
       &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
-      &lt;div class=&#34;game-score-value&#34;&gt;2.5&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
     &lt;/div&gt;
 
-    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
       &lt;div class=&#34;game-score-name&#34;&gt;🎨 美术&lt;/div&gt;
       &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
-      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
-      &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
-      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
       &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
     &lt;/div&gt;
 
     &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
-      &lt;div class=&#34;game-score-name&#34;&gt;🎮 游戏性&lt;/div&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
       &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
       &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
     &lt;/div&gt;
 
-    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
+      &lt;div class=&#34;game-score-name&#34;&gt;🎮 游戏性&lt;/div&gt;
+      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
       &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
       &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
-      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
+      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -3926,9 +4121,8 @@
   }
 }
 &lt;/style&gt;
-&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：妹子好看；战斗爽；DLC出的新角色暗龙，贝熊，暗龙都挺好玩的，依旧保持不错的战斗水准；DLC的boss如世界很好玩，格挡反击太爽了，毕业因子难度大大降低&lt;br&gt;
-👎 &lt;strong&gt;缺点&lt;/strong&gt;：刷子游戏，后期只能刷刷刷因子没事干了；DLC相对于本体肝度直线上升，而且不是因子方面而是msp；得一直刷一样的关卡超级无聊，没有本体那种属转+追击V+那种期待感；专精毕业后因子武器那些也相对容易所以后期容易无聊；DLC有些boss不好玩，指名天元&lt;br&gt;
-💕 &lt;strong&gt;我推&lt;/strong&gt;：菲莉❤️，泽塔❤️，索恩❤️，娜露梅亚❤️，贝熊❤️，芙劳❤️&lt;/p&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：妳是拉毗，妳是2B，妳是石川由依；作战丰富度高，轮椅多；地图很漂亮，每一章的地图都很有特点，前期剧情轻松的时候地图大让玩家自由探索，随着剧情越来越紧凑，地图越来越线性和缩短，个人觉得这样的地图设计节奏很不错；探索和主线也有不错的引导；音乐蛮有剑星的感觉，还挺上耳；由于boss不难打所以还&lt;del&gt;挺有成就感&lt;/del&gt;；没网传的那么无聊，但后期极其容易毕业&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：视角很近（不能改！），导致探索需要频繁的转视角，会有点晕，习惯了就不会晕；闪避手感一坨，闪红光攻击容易但是反而闪不掉一般攻击；格挡手感也有点怪，有点前动作的惯性，不能马上格挡；画质中等偏下，材质的纹理很粗糙；优化一般，有些过场动画和游戏交互会掉帧（导致有些过场动画怪怪的，掉帧一下突然间主角就飞出去了，看得莫名其妙）；交互动作很慢，非常慢；boss大多是放大版的小怪，品种很少；前期的地图看似很大，实则有些地方有空气墙；有些对话是可以跳的，但是画面不会切，所以就算对话跳了但是画面也卡在那里一下，有点搞笑；大量的素材复用，如boss（前半段和后半段的boss重复），如CG（击杀boss的CG，休息至出发的CG），如节奏（打boss一阶段 -&amp;gt; 二阶段 -&amp;gt; 晕倒 -&amp;gt; violet恢复些许记忆 -&amp;gt; 早上醒来 -&amp;gt; 休息至出发 -&amp;gt; 和violet对话 -&amp;gt; 出发当天（晚上）-&amp;gt; 黑屏布拉德和苦无对话 -&amp;gt; 早上艾玛和布拉德对话 -&amp;gt; 新地图），由于CG大多不能跳过，偏偏剧情喜欢使用大量的CG慢慢说故事，导致二周目目前没计划（据说后续会优化）&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;生化危机3-重制版&#34;&gt;生化危机3 重制版
 &lt;/h3&gt;
@@ -4712,201 +4906,6 @@
 &lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：蒂法&amp;amp;爱丽丝&lt;br&gt;
 👎 &lt;strong&gt;缺点&lt;/strong&gt;：动作僵硬；支线也不佳；整体较为无趣&lt;br&gt;
 💕 &lt;strong&gt;我推&lt;/strong&gt;：蒂法❤️，爱丽丝❤️&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;轮回之兽&#34;&gt;轮回之兽
-&lt;/h3&gt;
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-
-
-&lt;div class=&#34;game-score-card&#34;&gt;
-  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
-
-  &lt;div class=&#34;game-score-total&#34;&gt;
-    &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
-    &lt;div class=&#34;game-score-total-value&#34;&gt;20 / 35&lt;/div&gt;
-    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐☆☆☆&lt;/div&gt;
-    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🙂 一般，有一定亮点&lt;/div&gt;
-  &lt;/div&gt;
-
-  &lt;div class=&#34;game-score-list&#34;&gt;
-    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
-      &lt;div class=&#34;game-score-name&#34;&gt;🎭 剧情&lt;/div&gt;
-      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
-      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3.5;&#34;&gt;
-      &lt;div class=&#34;game-score-name&#34;&gt;⚔️ 动作&lt;/div&gt;
-      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
-      &lt;div class=&#34;game-score-value&#34;&gt;3.5&lt;/div&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2.5;&#34;&gt;
-      &lt;div class=&#34;game-score-name&#34;&gt;🎵 音乐&lt;/div&gt;
-      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
-      &lt;div class=&#34;game-score-value&#34;&gt;2.5&lt;/div&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 4;&#34;&gt;
-      &lt;div class=&#34;game-score-name&#34;&gt;🎨 美术&lt;/div&gt;
-      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
-      &lt;div class=&#34;game-score-value&#34;&gt;4&lt;/div&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2;&#34;&gt;
-      &lt;div class=&#34;game-score-name&#34;&gt;⚙️ 优化&lt;/div&gt;
-      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
-      &lt;div class=&#34;game-score-value&#34;&gt;2&lt;/div&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 2;&#34;&gt;
-      &lt;div class=&#34;game-score-name&#34;&gt;🎮 游戏性&lt;/div&gt;
-      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
-      &lt;div class=&#34;game-score-value&#34;&gt;2&lt;/div&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&#34;game-score-row&#34; style=&#34;--score: 3;&#34;&gt;
-      &lt;div class=&#34;game-score-name&#34;&gt;⏱️ 沉浸感&lt;/div&gt;
-      &lt;div class=&#34;game-score-bar&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
-      &lt;div class=&#34;game-score-value&#34;&gt;3&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;style&gt;
-.game-score-card {
-  margin: 1.5rem 0;
-  padding: 1.3rem;
-  border-radius: 20px;
-  background: #d8f3f8;
-  border: 2px solid #0c1642;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
-  color:#222;
-}
-
-.game-score-title {
-  font-size: 1.2rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-}
-
-.game-score-total {
-  text-align: center;
-  margin-bottom: 1.2rem;
-  padding: 1rem;
-  border-radius: 16px;
-  background: #f9fff1;
-  border: 1px solid #175315;
-}
-
-.game-score-total-label {
-  font-size: 1.25rem;
-  opacity: .75;
-}
-
-.game-score-total-value {
-  font-size: 2rem;
-  font-weight: 900;
-  line-height: 1.3;
-}
-
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
-  background: #f9fff1;
-  border: 1px solid #175315;
-}
-
-.game-score-name {
-  font-weight: 700;
-}
-
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
-}
-
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
-}
-
-.game-score-total-comment{
-    margin-top:8px;
-    font-size:1.5rem;
-     
-     
-}
-
-.game-score-total-stars {
-  font-size: 1.25rem;
-  margin-top: .25rem;
-     
-}
-
-@media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
-  .game-score-total-value {
-    font-size: 1.7rem;
-  }
-}
-&lt;/style&gt;
-&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：妳是拉毗，妳是2B，妳是石川由依；作战丰富度高；地图很漂亮，探索也有不错的引导；音乐蛮有剑星的感觉，还挺上耳；&lt;br&gt;
-👎 &lt;strong&gt;缺点&lt;/strong&gt;：视角很近（不能改！），导致探索需要频繁的转视角，会有点晕；闪避手感一坨，格挡手感也有点怪；全收集可能有难度（繁琐）；过场动画和画质都中规中矩，过场动画还掉帧；&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;gal黄油&#34;&gt;GAL/黄油
 &lt;/h2&gt;&lt;h3 id=&#34;变态监狱henpri&#34;&gt;变态监狱Henpri
