@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta name="color-scheme" content="light">
+  <title>账单分摊</title>
+  <style>
+    :root { color-scheme:light; --blue:#2868d8; --ink:#17243a; --muted:#667085; --line:#dce4ef; --surface:#fff; --soft:#f4f7fb; --green:#147a57; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; padding:24px max(14px, env(safe-area-inset-right)) calc(110px + env(safe-area-inset-bottom)) max(14px, env(safe-area-inset-left)); background:linear-gradient(145deg,#edf5ff 0,#fff8ee 48%,#f5f8fc 100%) fixed; color:var(--ink); font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif; }
+    button, input { font:inherit; }
+    button { touch-action:manipulation; }
+    .app { width:min(720px,100%); margin:auto; }
+    .hero, .panel { border:1px solid var(--line); border-radius:18px; background:var(--surface); box-shadow:0 9px 28px rgba(31,55,91,.08); }
+    .hero { display:flex; justify-content:space-between; gap:16px; padding:20px; background:linear-gradient(135deg,#eef6ff,#fff8ea); }
+    .eyebrow { color:var(--blue); font-size:11px; font-weight:850; letter-spacing:.09em; text-transform:uppercase; }
+    h1 { margin:3px 0 5px; font-size:24px; line-height:1.25; }
+    .hero p, .help { margin:0; color:var(--muted); font-size:12px; }
+    .readonly { align-self:flex-start; flex:0 0 auto; padding:6px 9px; border-radius:999px; background:#e2f7eb; color:#176442; font-size:11px; font-weight:800; }
+    .panel { margin-top:14px; padding:18px; }
+    .heading { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:13px; }
+    .heading strong { font-size:16px; }
+    .count { color:var(--muted); font-size:11px; }
+    .items { display:grid; gap:10px; margin-top:14px; }
+    .item { overflow:hidden; border:1px solid var(--line); border-radius:14px; background:var(--surface); }
+    .item.selected { border-color:#82a9e8; box-shadow:0 0 0 3px rgba(40,104,216,.08); }
+    .item-main { display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:11px; padding:13px; }
+    .pick { display:grid; place-items:center; width:30px; height:30px; }
+    .pick input, .share-toggle input { width:20px; height:20px; margin:0; accent-color:var(--blue); cursor:pointer; }
+    .item-copy { min-width:0; }
+    .item-name { overflow-wrap:anywhere; font-weight:800; }
+    .item-note { color:var(--muted); font-size:10px; }
+    .price { font-weight:850; white-space:nowrap; }
+    .share-row { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 13px; border-top:1px solid var(--line); background:var(--soft); }
+    .share-toggle { display:flex; align-items:center; gap:7px; cursor:pointer; font-size:12px; font-weight:750; }
+    .divisor { display:flex; align-items:center; gap:6px; }
+    .divisor[hidden] { display:none; }
+    .divisor button { width:34px; height:34px; border:1px solid #cbd5e1; border-radius:9px; background:var(--surface); color:inherit; cursor:pointer; font-size:17px; }
+    .divisor output { min-width:48px; text-align:center; font-weight:800; }
+    .charges { display:grid; grid-template-columns:1fr 1fr 1fr; gap:9px; margin-top:14px; }
+    .charge { display:grid; gap:3px; padding:11px; border:1px solid var(--line); border-radius:11px; }
+    .charge span { color:var(--muted); font-size:10px; }
+    .charge b { font-size:14px; }
+    .error { padding:20px; text-align:center; }
+    .error strong { display:block; margin-bottom:5px; color:#b22f3d; font-size:17px; }
+    .summary { position:fixed; z-index:3; right:max(14px,env(safe-area-inset-right)); bottom:max(10px,env(safe-area-inset-bottom)); left:max(14px,env(safe-area-inset-left)); width:min(692px,calc(100% - 28px)); margin:auto; overflow:hidden; border:1px solid rgba(255,255,255,.2); border-radius:16px; background:#17345f; color:#fff; box-shadow:0 14px 35px rgba(11,31,62,.32); }
+    .summary-main { display:flex; min-height:68px; padding:12px 16px; align-items:center; justify-content:space-between; gap:15px; }
+    .summary-copy { display:grid; }
+    .summary-copy small { color:#bed0e9; font-size:10px; }
+    .summary-copy strong { font-size:14px; }
+    .total { font-size:25px; font-weight:900; white-space:nowrap; }
+    .breakdown { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; padding:10px 16px 13px; border-top:1px solid rgba(255,255,255,.14); }
+    .breakdown div { display:grid; gap:2px; }
+    .breakdown span { color:#bed0e9; font-size:9px; }
+    .breakdown b { font-size:11px; }
+    [hidden] { display:none!important; }
+    @media (max-width:520px) {
+      body { padding-top:14px; }
+      .hero { display:grid; padding:16px; }
+      h1 { font-size:21px; }
+      .readonly { justify-self:start; }
+      .panel { padding:14px; border-radius:15px; }
+      .charges { grid-template-columns:1fr; }
+      .summary { border-radius:14px; }
+      .breakdown { grid-template-columns:1fr 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <div>
+        <div class="eyebrow">Receipt Splitter</div>
+        <h1>勾选你的商品</h1>
+        <p>商品和收费由分享者提供；选择后会实时计算你需要支付的金额。</p>
+      </div>
+      <span class="readonly">🔒 只读账单</span>
+    </header>
+
+    <section class="panel" id="receiptPanel" hidden>
+      <div class="heading"><strong>账单商品</strong><span class="count" id="itemCount"></span></div>
+      <p class="help">可以勾选商品，并按实际情况调整共享人数；商品名称、价格和收费无法修改。</p>
+      <div class="items" id="items"></div>
+      <div class="charges">
+        <div class="charge"><span>Service Charge</span><b id="serviceAmount">RM0.00</b></div>
+        <div class="charge"><span>SST / Tax</span><b id="sstAmount">RM0.00</b></div>
+        <div class="charge"><span>账单总额</span><b id="receiptTotal">RM0.00</b></div>
+      </div>
+    </section>
+
+    <section class="panel error" id="errorPanel" hidden>
+      <strong>无法读取这份账单</strong>
+      <span id="errorText">请确认分享链接完整后再试。</span>
+    </section>
+  </main>
+
+  <aside class="summary" id="summary" hidden aria-live="polite">
+    <div class="summary-main">
+      <span class="summary-copy"><small id="selectedCount">已选择 0 项</small><strong>我的总额</strong></span>
+      <span class="total" id="myTotal">RM0.00</span>
+    </div>
+    <div class="breakdown">
+      <div><span>商品</span><b id="mySubtotal">RM0.00</b></div>
+      <div><span>Service Charge</span><b id="myService">RM0.00</b></div>
+      <div><span>SST / Tax</span><b id="mySst">RM0.00</b></div>
+    </div>
+  </aside>
+
+  <script>
+    (() => {
+      'use strict';
+      const $ = id => document.getElementById(id);
+      const els = {
+        receiptPanel: $('receiptPanel'), errorPanel: $('errorPanel'), errorText: $('errorText'), items: $('items'),
+        itemCount: $('itemCount'), serviceAmount: $('serviceAmount'), sstAmount: $('sstAmount'), receiptTotal: $('receiptTotal'),
+        summary: $('summary'), selectedCount: $('selectedCount'), myTotal: $('myTotal'), mySubtotal: $('mySubtotal'),
+        myService: $('myService'), mySst: $('mySst')
+      };
+      const state = { items: [], charges: { service: { rate:0, amount:0, mode:'rate' }, sst: { rate:0, amount:0, mode:'rate' } }, receiptTotal:null };
+
+      function number(value, fallback = 0) {
+        const parsed = Number(value);
+        return Number.isFinite(parsed) ? parsed : fallback;
+      }
+      function money(value) {
+        const safe = Math.abs(number(value)) < .0005 ? 0 : number(value);
+        return (safe < 0 ? '-RM' : 'RM') + Math.abs(safe).toFixed(2);
+      }
+      function subtotal() { return state.items.reduce((sum,item) => sum + item.price, 0); }
+      function chargeAmount(key) {
+        const charge = state.charges[key];
+        return charge.mode === 'rate' ? subtotal() * charge.rate / 100 : charge.amount;
+      }
+      function decode(token) {
+        if (!token || token.length > 100000) throw new Error('分享链接无效或内容过长。');
+        const padded = token.replace(/-/g,'+').replace(/_/g,'/') + '==='.slice((token.length + 3) % 4);
+        const binary = atob(padded);
+        const bytes = Uint8Array.from(binary, character => character.charCodeAt(0));
+        return JSON.parse(new TextDecoder().decode(bytes));
+      }
+      function itemAmounts(item) {
+        const allItems = subtotal();
+        const ratio = allItems > 0 ? item.price / allItems : 0;
+        const divisor = item.shareEnabled ? item.divisor : 1;
+        return {
+          base: item.price / divisor,
+          service: chargeAmount('service') * ratio / divisor,
+          sst: chargeAmount('sst') * ratio / divisor
+        };
+      }
+      function calculate() {
+        let count = 0, base = 0, service = 0, sst = 0;
+        state.items.forEach(item => {
+          if (!item.selected) return;
+          const values = itemAmounts(item);
+          count += 1; base += values.base; service += values.service; sst += values.sst;
+        });
+        els.selectedCount.textContent = '已选择 ' + count + ' 项';
+        els.mySubtotal.textContent = money(base);
+        els.myService.textContent = money(service);
+        els.mySst.textContent = money(sst);
+        els.myTotal.textContent = money(base + service + sst);
+      }
+      function render() {
+        els.items.replaceChildren();
+        state.items.forEach((item,index) => {
+          const card = document.createElement('article');
+          card.className = 'item';
+          const main = document.createElement('div'); main.className = 'item-main';
+          const pickLabel = document.createElement('label'); pickLabel.className = 'pick';
+          const pick = document.createElement('input'); pick.type = 'checkbox'; pick.setAttribute('aria-label','选择 ' + item.name); pickLabel.append(pick);
+          const copy = document.createElement('div'); copy.className = 'item-copy';
+          const name = document.createElement('div'); name.className = 'item-name'; name.textContent = item.name;
+          const note = document.createElement('div'); note.className = 'item-note'; note.textContent = '第 ' + (index + 1) + ' 项 · 价格由分享者提供';
+          copy.append(name,note);
+          const price = document.createElement('div'); price.className = 'price'; price.textContent = money(item.price);
+          main.append(pickLabel,copy,price);
+
+          const shareRow = document.createElement('div'); shareRow.className = 'share-row';
+          const shareLabel = document.createElement('label'); shareLabel.className = 'share-toggle';
+          const shareCheck = document.createElement('input'); shareCheck.type = 'checkbox'; shareCheck.checked = item.shareEnabled;
+          const shareText = document.createElement('span'); shareText.textContent = '共享商品'; shareLabel.append(shareCheck,shareText);
+          const controls = document.createElement('div'); controls.className = 'divisor'; controls.hidden = !item.shareEnabled;
+          const minus = document.createElement('button'); minus.type = 'button'; minus.textContent = '−'; minus.setAttribute('aria-label','减少共享人数');
+          const output = document.createElement('output'); output.textContent = '÷ ' + item.divisor;
+          const plus = document.createElement('button'); plus.type = 'button'; plus.textContent = '＋'; plus.setAttribute('aria-label','增加共享人数');
+          controls.append(minus,output,plus); shareRow.append(shareLabel,controls); card.append(main,shareRow); els.items.append(card);
+
+          pick.addEventListener('change', () => { item.selected = pick.checked; card.classList.toggle('selected',item.selected); calculate(); });
+          shareCheck.addEventListener('change', () => { item.shareEnabled = shareCheck.checked; controls.hidden = !item.shareEnabled; calculate(); });
+          minus.addEventListener('click', () => { item.divisor = Math.max(2,item.divisor - 1); output.textContent = '÷ ' + item.divisor; calculate(); });
+          plus.addEventListener('click', () => { item.divisor = Math.min(99,item.divisor + 1); output.textContent = '÷ ' + item.divisor; calculate(); });
+        });
+        const service = chargeAmount('service'), sst = chargeAmount('sst');
+        els.itemCount.textContent = state.items.length + ' 项';
+        els.serviceAmount.textContent = money(service);
+        els.sstAmount.textContent = money(sst);
+        els.receiptTotal.textContent = money(state.receiptTotal == null ? subtotal() + service + sst : state.receiptTotal);
+        els.receiptPanel.hidden = false; els.summary.hidden = false; calculate();
+      }
+      function load() {
+        try {
+          const match = location.hash.match(/^#receipt=([^&]+)/);
+          if (!match) throw new Error('链接中没有账单资料。');
+          const data = decode(match[1]);
+          if (!data || data.v !== 1 || !Array.isArray(data.i) || !data.i.length || data.i.length > 300) throw new Error('账单资料格式不正确。');
+          state.items = data.i.map(entry => {
+            if (!Array.isArray(entry) || !String(entry[0] || '').trim()) throw new Error('账单中有无效商品。');
+            const divisor = Math.max(1,Math.min(99,Math.floor(number(entry[2],1))));
+            return { name:String(entry[0]).slice(0,200), price:Math.max(0,number(entry[1])), selected:false, shareEnabled:divisor > 1, divisor:divisor > 1 ? divisor : 2 };
+          });
+          const charges = Array.isArray(data.c) ? data.c : [];
+          ['service','sst'].forEach((key,index) => {
+            const charge = Array.isArray(charges[index]) ? charges[index] : [0,0,0];
+            state.charges[key] = { rate:Math.max(0,number(charge[0])), amount:number(charge[1]), mode:charge[2] === 1 ? 'amount' : 'rate' };
+          });
+          state.receiptTotal = data.r == null ? null : number(data.r);
+          render();
+        } catch (error) {
+          els.errorText.textContent = error && error.message ? error.message : '请确认分享链接完整后再试。';
+          els.errorPanel.hidden = false;
+        }
+      }
+      window.addEventListener('hashchange', () => location.reload());
+      load();
+    })();
+  </script>
+</body>
+</html>
