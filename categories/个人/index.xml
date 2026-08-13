@@ -7,7 +7,1048 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>怠惰的天秤-sloth</copyright>
-        <lastBuildDate>Wed, 23 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://sloth-cyx.github.io/categories/%E4%B8%AA%E4%BA%BA/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 12 Aug 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://sloth-cyx.github.io/categories/%E4%B8%AA%E4%BA%BA/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【个人】实用小工具合集</title>
+        <link>https://sloth-cyx.github.io/p/%E4%B8%AA%E4%BA%BA%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/</link>
+        <pubDate>Wed, 12 Aug 2026 00:00:00 +0000</pubDate>
+        
+        <guid>https://sloth-cyx.github.io/p/%E4%B8%AA%E4%BA%BA%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/</guid>
+        <description>&lt;img src="https://sloth-cyx.github.io/images/consolidateTool/consolidateTool_bg.png" alt="Featured image of post 【个人】实用小工具合集" /&gt;&lt;h2 id=&#34;账单分摊计算器&#34;&gt;账单分摊计算器
+&lt;/h2&gt;&lt;div class=&#34;rs-app&#34; id=&#34;receiptSplitter&#34;&gt;
+  &lt;section class=&#34;rs-panel rs-intro&#34;&gt;
+    &lt;div&gt;
+      &lt;div class=&#34;rs-kicker&#34;&gt;Receipt Splitter&lt;/div&gt;
+      &lt;h3&gt;扫描、勾选，算出我该付多少&lt;/h3&gt;
+      &lt;p&gt;照片只在当前浏览器内处理，不会上传到服务器。OCR 结果可能有误，请在结算前核对商品和收费。&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;span class=&#34;rs-privacy&#34;&gt;🔒 本地处理&lt;/span&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&#34;rs-panel rs-upload-panel&#34;&gt;
+    &lt;div class=&#34;rs-section-heading&#34;&gt;
+      &lt;div class=&#34;rs-upload-heading-main&#34;&gt;
+        &lt;span class=&#34;rs-step&#34;&gt;1&lt;/span&gt;&lt;strong&gt;上传收据&lt;/strong&gt;
+        &lt;div class=&#34;rs-source-toggle&#34; role=&#34;group&#34; aria-label=&#34;选择资料来源&#34;&gt;
+          &lt;button type=&#34;button&#34; data-source-mode=&#34;import&#34; aria-pressed=&#34;true&#34;&gt;导入 JSON&lt;/button&gt;
+          &lt;button type=&#34;button&#34; data-source-mode=&#34;ocr&#34; aria-pressed=&#34;false&#34;&gt;OCR 扫描&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;button class=&#34;rs-text-button&#34; id=&#34;rsResetButton&#34; type=&#34;button&#34;&gt;清空全部&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;rs-source-panel&#34; id=&#34;rsOcrPanel&#34; hidden&gt;
+      &lt;input id=&#34;rsReceiptInput&#34; class=&#34;rs-file-input&#34; type=&#34;file&#34; accept=&#34;image/jpeg,image/png,image/webp,image/*&#34; capture=&#34;environment&#34;&gt;
+      &lt;label class=&#34;rs-upload-zone&#34; for=&#34;rsReceiptInput&#34; id=&#34;rsUploadZone&#34;&gt;
+        &lt;span class=&#34;rs-upload-icon&#34;&gt;📷&lt;/span&gt;
+        &lt;strong&gt;拍摄或选择收据照片&lt;/strong&gt;
+        &lt;small&gt;建议使用光线均匀、文字清晰且边缘完整的照片&lt;/small&gt;
+      &lt;/label&gt;
+
+      &lt;div class=&#34;rs-preview-wrap&#34; id=&#34;rsPreviewWrap&#34; hidden&gt;
+        &lt;canvas id=&#34;rsPreviewCanvas&#34; aria-label=&#34;收据照片预览&#34;&gt;&lt;/canvas&gt;
+        &lt;div class=&#34;rs-preview-actions&#34;&gt;
+          &lt;button class=&#34;rs-secondary-button&#34; id=&#34;rsRotateLeft&#34; type=&#34;button&#34;&gt;↶ 向左旋转&lt;/button&gt;
+          &lt;button class=&#34;rs-secondary-button&#34; id=&#34;rsRotateRight&#34; type=&#34;button&#34;&gt;↷ 向右旋转&lt;/button&gt;
+          &lt;label class=&#34;rs-secondary-button&#34; for=&#34;rsReceiptInput&#34;&gt;更换照片&lt;/label&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&#34;rs-scan-row&#34;&gt;
+        &lt;label&gt;
+          &lt;span&gt;识别语言&lt;/span&gt;
+          &lt;select id=&#34;rsLanguage&#34;&gt;
+            &lt;option value=&#34;eng&#34; selected&gt;English（速度较快）&lt;/option&gt;
+            &lt;option value=&#34;eng+chi_sim&#34;&gt;English + 简体中文&lt;/option&gt;
+          &lt;/select&gt;
+        &lt;/label&gt;
+        &lt;button class=&#34;rs-primary-button&#34; id=&#34;rsScanButton&#34; type=&#34;button&#34; disabled&gt;开始 OCR 扫描&lt;/button&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&#34;rs-progress&#34; id=&#34;rsProgress&#34; hidden&gt;
+        &lt;div class=&#34;rs-progress-track&#34;&gt;&lt;span id=&#34;rsProgressBar&#34;&gt;&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&#34;rs-progress-copy&#34;&gt;&lt;span id=&#34;rsProgressText&#34;&gt;准备 OCR…&lt;/span&gt;&lt;span id=&#34;rsProgressPercent&#34;&gt;0%&lt;/span&gt;&lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;details class=&#34;rs-raw-result&#34; id=&#34;rsRawResult&#34; hidden&gt;
+        &lt;summary&gt;查看 OCR 原始文字&lt;/summary&gt;
+        &lt;pre id=&#34;rsRawText&#34;&gt;&lt;/pre&gt;
+      &lt;/details&gt;
+    &lt;/div&gt;
+
+    &lt;section class=&#34;rs-list-import&#34; id=&#34;rsImportPanel&#34;&gt;
+      &lt;div class=&#34;rs-list-import-title&#34;&gt;&lt;span&gt;✨ 已用 ChatGPT 扫描？导入商品清单&lt;/span&gt;&lt;small&gt;支持粘贴或上传 JSON / TXT&lt;/small&gt;&lt;/div&gt;
+      &lt;div class=&#34;rs-list-import-body&#34;&gt;
+        &lt;p&gt;将 ChatGPT 返回的清单粘贴到这里，或上传保存好的文件。导入后仍可使用“快速修正”检查内容。&lt;/p&gt;
+        &lt;textarea id=&#34;rsListText&#34; rows=&#34;8&#34; spellcheck=&#34;false&#34; placeholder=&#39;粘贴 JSON，例如：{&#34;items&#34;:[{&#34;name&#34;:&#34;Chicken Rice&#34;,&#34;quantity&#34;:2,&#34;unit_price&#34;:12.00}]}&#39;&gt;&lt;/textarea&gt;
+        &lt;input id=&#34;rsListFile&#34; class=&#34;rs-file-input&#34; type=&#34;file&#34; accept=&#34;.json,.txt,application/json,text/plain&#34;&gt;
+        &lt;div class=&#34;rs-import-actions&#34;&gt;
+          &lt;label class=&#34;rs-secondary-button&#34; for=&#34;rsListFile&#34;&gt;上传 JSON / TXT&lt;/label&gt;
+          &lt;button class=&#34;rs-secondary-button&#34; id=&#34;rsCopyPrompt&#34; type=&#34;button&#34;&gt;复制 ChatGPT 提示词&lt;/button&gt;
+          &lt;button class=&#34;rs-primary-button&#34; id=&#34;rsImportList&#34; type=&#34;button&#34;&gt;导入清单&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;details class=&#34;rs-prompt-preview&#34;&gt;
+          &lt;summary&gt;查看固定提示词&lt;/summary&gt;
+          &lt;pre id=&#34;rsPromptText&#34;&gt;&lt;/pre&gt;
+        &lt;/details&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;div class=&#34;rs-message&#34; id=&#34;rsMessage&#34; role=&#34;status&#34; aria-live=&#34;polite&#34; hidden&gt;&lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&#34;rs-panel rs-items-panel&#34;&gt;
+    &lt;div class=&#34;rs-section-heading&#34;&gt;
+      &lt;div&gt;&lt;span class=&#34;rs-step&#34;&gt;2&lt;/span&gt;&lt;strong&gt;勾选我的商品&lt;/strong&gt;&lt;/div&gt;
+      &lt;div class=&#34;rs-item-actions&#34;&gt;
+        &lt;button class=&#34;rs-mode-button&#34; id=&#34;rsQuickEdit&#34; type=&#34;button&#34; aria-pressed=&#34;false&#34; disabled&gt;✎ 快速修正&lt;/button&gt;
+        &lt;button class=&#34;rs-text-button&#34; id=&#34;rsAddItem&#34; type=&#34;button&#34;&gt;＋ 手动添加&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;rs-help&#34;&gt;OCR 会把数量大于 1 的商品拆成多行。勾选属于你的商品；多人共享时开启 Share 并填写除数。&lt;/p&gt;
+    &lt;div class=&#34;rs-items-column&#34;&gt;
+      &lt;div class=&#34;rs-empty&#34; id=&#34;rsEmptyItems&#34;&gt;
+        &lt;span&gt;🧾&lt;/span&gt;
+        &lt;p&gt;扫描收据、导入清单，或手动添加商品开始计算。&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&#34;rs-item-list&#34; id=&#34;rsItemList&#34;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&#34;rs-panel rs-charge-panel&#34;&gt;
+    &lt;div class=&#34;rs-section-heading&#34;&gt;
+      &lt;div&gt;&lt;span class=&#34;rs-step&#34;&gt;3&lt;/span&gt;&lt;strong&gt;收费项目&lt;/strong&gt;&lt;/div&gt;
+      &lt;span class=&#34;rs-charge-note&#34;&gt;结算以金额为准&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;rs-help&#34;&gt;未识别到的收费默认为 0%。修改费率会按商品小计重算金额；也可以直接修正收费金额。&lt;/p&gt;
+    &lt;div class=&#34;rs-charge-grid&#34;&gt;
+      &lt;article class=&#34;rs-charge-card&#34; data-charge=&#34;service&#34;&gt;
+        &lt;div class=&#34;rs-charge-title&#34;&gt;&lt;strong&gt;Service Charge&lt;/strong&gt;&lt;span id=&#34;rsServiceMode&#34;&gt;按费率&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&#34;rs-field-row&#34;&gt;
+          &lt;label&gt;&lt;span&gt;费率&lt;/span&gt;&lt;div class=&#34;rs-input-suffix&#34;&gt;&lt;input id=&#34;rsServiceRate&#34; type=&#34;number&#34; min=&#34;0&#34; step=&#34;0.01&#34; inputmode=&#34;decimal&#34; value=&#34;0&#34;&gt;&lt;b&gt;%&lt;/b&gt;&lt;/div&gt;&lt;/label&gt;
+          &lt;label&gt;&lt;span&gt;金额&lt;/span&gt;&lt;div class=&#34;rs-money-input&#34;&gt;&lt;b&gt;RM&lt;/b&gt;&lt;input id=&#34;rsServiceAmount&#34; type=&#34;number&#34; step=&#34;0.01&#34; inputmode=&#34;decimal&#34; value=&#34;0.00&#34;&gt;&lt;/div&gt;&lt;/label&gt;
+        &lt;/div&gt;
+      &lt;/article&gt;
+      &lt;article class=&#34;rs-charge-card&#34; data-charge=&#34;sst&#34;&gt;
+        &lt;div class=&#34;rs-charge-title&#34;&gt;&lt;strong&gt;SST / Tax&lt;/strong&gt;&lt;span id=&#34;rsSstMode&#34;&gt;按费率&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&#34;rs-field-row&#34;&gt;
+          &lt;label&gt;&lt;span&gt;费率&lt;/span&gt;&lt;div class=&#34;rs-input-suffix&#34;&gt;&lt;input id=&#34;rsSstRate&#34; type=&#34;number&#34; min=&#34;0&#34; step=&#34;0.01&#34; inputmode=&#34;decimal&#34; value=&#34;0&#34;&gt;&lt;b&gt;%&lt;/b&gt;&lt;/div&gt;&lt;/label&gt;
+          &lt;label&gt;&lt;span&gt;金额&lt;/span&gt;&lt;div class=&#34;rs-money-input&#34;&gt;&lt;b&gt;RM&lt;/b&gt;&lt;input id=&#34;rsSstAmount&#34; type=&#34;number&#34; step=&#34;0.01&#34; inputmode=&#34;decimal&#34; value=&#34;0.00&#34;&gt;&lt;/div&gt;&lt;/label&gt;
+        &lt;/div&gt;
+      &lt;/article&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&#34;rs-panel rs-check-panel&#34;&gt;
+    &lt;div class=&#34;rs-section-heading&#34;&gt;
+      &lt;div&gt;&lt;span class=&#34;rs-step&#34;&gt;4&lt;/span&gt;&lt;strong&gt;收据校验&lt;/strong&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;rs-check-grid&#34;&gt;
+      &lt;label&gt;&lt;span&gt;收据最终总额（可修改）&lt;/span&gt;&lt;div class=&#34;rs-money-input&#34;&gt;&lt;b&gt;RM&lt;/b&gt;&lt;input id=&#34;rsReceiptTotal&#34; type=&#34;number&#34; step=&#34;0.01&#34; inputmode=&#34;decimal&#34; placeholder=&#34;0.00&#34;&gt;&lt;/div&gt;&lt;/label&gt;
+      &lt;div class=&#34;rs-check-value&#34;&gt;&lt;span&gt;商品与收费合计&lt;/span&gt;&lt;strong id=&#34;rsCalculatedReceiptTotal&#34;&gt;RM0.00&lt;/strong&gt;&lt;/div&gt;
+      &lt;div class=&#34;rs-check-value&#34;&gt;&lt;span&gt;差额&lt;/span&gt;&lt;strong id=&#34;rsDifference&#34;&gt;—&lt;/strong&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;div class=&#34;rs-summary&#34; id=&#34;rsSummary&#34; aria-live=&#34;polite&#34;&gt;
+    &lt;button class=&#34;rs-summary-main&#34; id=&#34;rsSummaryToggle&#34; type=&#34;button&#34; aria-expanded=&#34;false&#34;&gt;
+      &lt;span&gt;&lt;small id=&#34;rsSelectedCount&#34;&gt;已选择 0 项&lt;/small&gt;&lt;strong&gt;我的总额&lt;/strong&gt;&lt;/span&gt;
+      &lt;b id=&#34;rsMyTotal&#34;&gt;RM0.00&lt;/b&gt;
+    &lt;/button&gt;
+    &lt;div class=&#34;rs-summary-details&#34; id=&#34;rsSummaryDetails&#34; hidden&gt;
+      &lt;div&gt;&lt;span&gt;所选商品（Share 后）&lt;/span&gt;&lt;b id=&#34;rsSelectedSubtotal&#34;&gt;RM0.00&lt;/b&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;span&gt;Service Charge&lt;/span&gt;&lt;b id=&#34;rsMyService&#34;&gt;RM0.00&lt;/b&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;span&gt;SST / Tax&lt;/span&gt;&lt;b id=&#34;rsMySst&#34;&gt;RM0.00&lt;/b&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.rs-app { --rs-blue:#2767d8; --rs-blue-soft:#edf4ff; --rs-green:#147a57; --rs-red:#c63f4a; --rs-border:#dce3ec; --rs-muted:#667085; --rs-surface:var(--card-background, #fff); position:relative; display:grid; gap:16px; margin:16px 0 84px; color:var(--card-text-color-main, inherit); }
+.rs-app *, .rs-app *::before, .rs-app *::after { box-sizing:border-box; }
+.rs-app [hidden] { display:none!important; }
+.rs-panel { margin:0; padding:20px; border:1px solid var(--rs-border); border-radius:18px; background:var(--rs-surface); box-shadow:0 8px 24px rgba(27,44,72,.06); }
+.rs-intro { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; background:linear-gradient(135deg,#eef6ff,#fff8ea); }
+.rs-intro h3 { margin:3px 0 6px; font-size:22px; color:#17345f; }
+.rs-intro p { margin:0; max-width:650px; color:#536273; font-size:13px; line-height:1.7; }
+.rs-kicker { color:var(--rs-blue); font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+.rs-privacy { flex:0 0 auto; padding:7px 10px; border-radius:999px; background:#def7e9; color:#176442; font-size:12px; font-weight:700; }
+.rs-section-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px; }
+.rs-section-heading &gt; div { display:flex; align-items:center; gap:9px; }
+.rs-step { display:inline-grid; place-items:center; width:27px; height:27px; border-radius:9px; background:var(--rs-blue); color:#fff; font-size:13px; font-weight:800; }
+.rs-help { margin:-4px 0 15px; color:var(--rs-muted); font-size:12px; line-height:1.65; }
+.rs-text-button { padding:5px; border:0; background:none; color:var(--rs-blue); cursor:pointer; font:inherit; font-size:13px; font-weight:700; }
+.rs-upload-heading-main { flex-wrap:wrap; }
+.rs-source-toggle { display:inline-flex!important; padding:3px; border:1px solid #c5d3e7; border-radius:11px; background:#eef3f9; gap:3px!important; }
+.rs-source-toggle button { min-height:29px; padding:5px 10px; border:0; border-radius:8px; background:transparent; color:#65758a; cursor:pointer; font:inherit; font-size:10px; font-weight:750; }
+.rs-source-toggle button[aria-pressed=&#34;true&#34;] { background:var(--rs-blue); color:#fff; box-shadow:0 2px 7px rgba(39,103,216,.22); }
+.rs-item-actions { justify-content:flex-end; flex-wrap:wrap; }
+.rs-mode-button { min-height:34px; padding:6px 10px; border:1px solid #afc6e8; border-radius:9px; background:#f3f7ff; color:#315f9e; cursor:pointer; font:inherit; font-size:11px; font-weight:750; }
+.rs-mode-button[aria-pressed=&#34;true&#34;] { border-color:#efbd67; background:#fff5dd; color:#875500; }
+.rs-mode-button:disabled { opacity:.45; cursor:not-allowed; }
+.rs-file-input { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+.rs-upload-zone { display:flex; min-height:150px; padding:24px; border:2px dashed #a9c5ee; border-radius:16px; background:#f6faff; flex-direction:column; align-items:center; justify-content:center; gap:7px; color:#315a91; text-align:center; cursor:pointer; transition:.2s ease; }
+.rs-upload-zone:hover { border-color:var(--rs-blue); background:#eef5ff; transform:translateY(-1px); }
+.rs-upload-zone small { color:#71829a; }
+.rs-upload-icon { font-size:32px; }
+.rs-preview-wrap { overflow:hidden; border-radius:14px; background:#161a20; }
+#rsPreviewCanvas { display:block; width:100%; max-height:560px; object-fit:contain; }
+.rs-preview-actions { display:flex; justify-content:center; flex-wrap:wrap; gap:8px; padding:10px; background:#252b34; }
+.rs-secondary-button, .rs-primary-button { min-height:40px; padding:9px 14px; border-radius:11px; cursor:pointer; font:inherit; font-size:13px; font-weight:750; }
+.rs-secondary-button { border:1px solid #cbd5e1; background:#fff; color:#344054; }
+.rs-primary-button { border:0; background:var(--rs-blue); color:#fff; box-shadow:0 5px 14px rgba(39,103,216,.23); }
+.rs-primary-button:disabled { opacity:.45; cursor:not-allowed; box-shadow:none; }
+.rs-scan-row { display:flex; align-items:flex-end; justify-content:space-between; gap:12px; margin-top:14px; }
+.rs-scan-row label { display:grid; flex:1; gap:5px; color:var(--rs-muted); font-size:11px; font-weight:700; }
+.rs-app select, .rs-app input { min-width:0; border:1px solid #cdd6e1; border-radius:9px; background:var(--rs-surface); color:inherit; font:inherit; outline:none; }
+.rs-app select:focus, .rs-app input:focus { border-color:#6b9be9; box-shadow:0 0 0 3px rgba(39,103,216,.12); }
+.rs-app select { width:100%; height:40px; padding:0 10px; }
+.rs-progress { margin-top:14px; }
+.rs-progress-track { height:8px; overflow:hidden; border-radius:999px; background:#e5eaf1; }
+.rs-progress-track span { display:block; width:0; height:100%; border-radius:inherit; background:linear-gradient(90deg,#4b8df0,#55c9a0); transition:width .2s; }
+.rs-progress-copy { display:flex; justify-content:space-between; margin-top:5px; color:var(--rs-muted); font-size:11px; }
+.rs-message { margin-top:12px; padding:10px 12px; border-radius:10px; background:var(--rs-blue-soft); color:#24508e; font-size:12px; line-height:1.5; }
+.rs-message.rs-error { background:#fff0f1; color:#a32935; }
+.rs-list-import { overflow:hidden; border:1px solid #cfdcec; border-radius:13px; background:rgba(237,244,255,.55); }
+.rs-list-import-title { display:flex; min-height:45px; padding:11px 13px; align-items:center; justify-content:space-between; gap:10px; color:#285a9e; font-size:12px; font-weight:800; }
+.rs-list-import-title small { margin-left:auto; color:var(--rs-muted); font-size:9px; font-weight:600; }
+.rs-list-import-body { display:grid; gap:10px; padding:13px; border-top:1px solid #cfdcec; background:var(--rs-surface); }
+.rs-list-import-body p { margin:0; color:var(--rs-muted); font-size:11px; line-height:1.6; }
+.rs-list-import textarea { width:100%; min-height:145px; resize:vertical; padding:11px; border:1px solid #cdd6e1; border-radius:10px; background:var(--rs-surface); color:inherit; font:12px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace; outline:none; }
+.rs-list-import textarea:focus { border-color:#6b9be9; box-shadow:0 0 0 3px rgba(39,103,216,.12); }
+.rs-import-actions { display:flex; justify-content:flex-end; flex-wrap:wrap; gap:8px; }
+.rs-prompt-preview { color:var(--rs-muted); font-size:11px; }
+.rs-prompt-preview summary { cursor:pointer; font-weight:700; }
+.rs-prompt-preview pre { max-height:300px; overflow:auto; padding:11px; border-radius:9px; background:#111827; color:#d9e2f0; white-space:pre-wrap; font-size:10px; line-height:1.55; }
+.rs-raw-result { margin-top:12px; color:var(--rs-muted); font-size:12px; }
+.rs-raw-result summary { cursor:pointer; font-weight:700; }
+.rs-raw-result pre { max-height:220px; overflow:auto; padding:12px; border-radius:10px; background:#111827; color:#d9e2f0; white-space:pre-wrap; font-size:11px; }
+.rs-empty { display:grid; place-items:center; min-height:130px; padding:20px; border:1px dashed var(--rs-border); border-radius:14px; color:var(--rs-muted); text-align:center; }
+.rs-empty span { font-size:28px; }
+.rs-empty p { margin:5px 0 0; font-size:12px; }
+.rs-items-column { min-width:0; }
+.rs-item-list { display:grid; gap:11px; }
+.rs-item-card { border:1px solid var(--rs-border); border-radius:14px; background:var(--rs-surface); transition:.18s ease; }
+.rs-item-card.rs-selected { border-color:#7ca6e7; box-shadow:0 0 0 3px rgba(39,103,216,.08); }
+.rs-item-top { display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:10px; padding:13px; }
+.rs-check { display:grid; place-items:center; width:28px; height:28px; }
+.rs-check input { width:20px; height:20px; accent-color:var(--rs-blue); cursor:pointer; }
+.rs-item-name-wrap { display:grid; gap:4px; }
+.rs-item-name { width:100%; height:36px; padding:0 9px; font-weight:750; }
+.rs-item-origin { color:var(--rs-muted); font-size:10px; }
+.rs-delete-item { width:34px; height:34px; border:0; border-radius:9px; background:#fff0f1; color:var(--rs-red); cursor:pointer; font-size:17px; }
+.rs-item-body { display:grid; grid-template-columns:minmax(120px,1fr) minmax(145px,1fr); gap:12px; padding:0 13px 13px; }
+.rs-item-body label, .rs-field-row label, .rs-check-grid label { display:grid; gap:5px; color:var(--rs-muted); font-size:11px; font-weight:700; }
+.rs-money-input, .rs-input-suffix { display:flex; height:40px; align-items:center; overflow:hidden; border:1px solid #cdd6e1; border-radius:9px; background:var(--rs-surface); }
+.rs-money-input:focus-within, .rs-input-suffix:focus-within { border-color:#6b9be9; box-shadow:0 0 0 3px rgba(39,103,216,.12); }
+.rs-money-input b, .rs-input-suffix b { padding:0 9px; color:#718096; font-size:11px; }
+.rs-money-input input, .rs-input-suffix input { width:100%; height:100%; padding:0 8px; border:0; border-radius:0; box-shadow:none!important; }
+.rs-share-box { display:grid; gap:5px; }
+.rs-share-line { display:flex; min-height:40px; align-items:center; justify-content:space-between; gap:8px; }
+.rs-share-toggle { display:flex!important; grid-auto-flow:column; align-items:center; gap:7px!important; color:inherit!important; cursor:pointer; }
+.rs-share-toggle input { width:18px; height:18px; accent-color:var(--rs-blue); }
+.rs-share-controls { display:flex; align-items:center; gap:5px; }
+.rs-share-controls button { width:30px; height:30px; border:1px solid #cdd6e1; border-radius:8px; background:var(--rs-surface); color:inherit; cursor:pointer; }
+.rs-share-controls input { width:47px; height:34px; padding:0 4px; text-align:center; }
+.rs-item-result { display:grid; grid-template-columns:1fr 1fr; gap:8px; padding:10px 13px; border-top:1px solid var(--rs-border); border-radius:0 0 14px 14px; background:rgba(123,145,176,.07); font-size:11px; }
+.rs-item-result div { display:grid; gap:2px; }
+.rs-item-result span { color:var(--rs-muted); }
+.rs-item-result b { font-size:13px; }
+.rs-item-result .rs-item-mine b { color:var(--rs-blue); }
+.rs-quick-row { display:none; grid-template-columns:minmax(0,1fr) minmax(100px,.42fr) auto; align-items:center; gap:8px; padding:9px; }
+.rs-quick-row .rs-item-name { height:40px; }
+.rs-quick-edit .rs-normal-item { display:none; }
+.rs-quick-edit .rs-quick-row { display:grid; }
+.rs-quick-edit .rs-item-card { box-shadow:none; }
+.rs-quick-edit .rs-item-card.rs-selected { border-color:var(--rs-border); }
+.rs-quick-edit .rs-help { color:#875500; }
+.rs-charge-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.rs-charge-card { padding:14px; border:1px solid var(--rs-border); border-radius:14px; }
+.rs-charge-title { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:11px; }
+.rs-charge-title span, .rs-charge-note { color:var(--rs-muted); font-size:10px; }
+.rs-field-row { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+.rs-check-grid { display:grid; grid-template-columns:1.3fr 1fr 1fr; align-items:end; gap:12px; }
+.rs-check-value { display:grid; min-height:57px; padding:9px 11px; border:1px solid var(--rs-border); border-radius:10px; align-content:center; gap:3px; }
+.rs-check-value span { color:var(--rs-muted); font-size:10px; }
+.rs-check-value strong { font-size:14px; }
+.rs-ok { color:var(--rs-green)!important; }
+.rs-bad { color:var(--rs-red)!important; }
+.rs-summary { position:sticky; z-index:20; bottom:12px; overflow:hidden; border:1px solid rgba(255,255,255,.2); border-radius:16px; background:#17345f; color:#fff; box-shadow:0 12px 32px rgba(11,31,62,.3); }
+.rs-summary-main { display:flex; width:100%; min-height:65px; padding:12px 16px; border:0; background:transparent; color:inherit; align-items:center; justify-content:space-between; cursor:pointer; text-align:left; }
+.rs-summary-main span { display:grid; gap:2px; }
+.rs-summary-main small { color:#b9cce8; font-size:10px; }
+.rs-summary-main strong { font-size:14px; }
+.rs-summary-main &gt; b { font-size:24px; letter-spacing:-.03em; }
+.rs-summary-details { padding:0 16px 12px; border-top:1px solid rgba(255,255,255,.13); }
+.rs-summary-details div { display:flex; justify-content:space-between; padding-top:8px; color:#d9e5f5; font-size:11px; }
+[data-scheme=&#34;dark&#34;] .rs-app { --rs-border:#59616c; --rs-muted:#b1bac7; }
+[data-scheme=&#34;dark&#34;] .rs-intro { background:linear-gradient(135deg,#273b56,#473b28); }
+[data-scheme=&#34;dark&#34;] .rs-intro h3, [data-scheme=&#34;dark&#34;] .rs-intro p { color:#edf3fa; }
+[data-scheme=&#34;dark&#34;] .rs-upload-zone { background:#2c3848; color:#d8e8ff; }
+[data-scheme=&#34;dark&#34;] .rs-secondary-button { background:#3d4652; color:#fff; }
+[data-scheme=&#34;dark&#34;] .rs-delete-item { background:#60343a; color:#ffd5d8; }
+[data-scheme=&#34;dark&#34;] .rs-mode-button { background:#314359; color:#d8e8ff; }
+[data-scheme=&#34;dark&#34;] .rs-mode-button[aria-pressed=&#34;true&#34;] { background:#59482b; color:#ffe4a8; }
+[data-scheme=&#34;dark&#34;] .rs-list-import { background:#2c3848; }
+[data-scheme=&#34;dark&#34;] .rs-source-toggle { background:#2c3848; }
+@media (max-width:600px) {
+  .rs-app { gap:12px; margin-bottom:76px; }
+  .rs-panel { padding:15px; border-radius:15px; }
+  .rs-intro { display:grid; }
+  .rs-intro h3 { font-size:19px; }
+  .rs-privacy { justify-self:start; }
+  .rs-scan-row { display:grid; }
+  .rs-primary-button { width:100%; }
+  .rs-section-heading { align-items:flex-start; }
+  .rs-upload-panel .rs-section-heading { align-items:center; flex-wrap:wrap; }
+  .rs-upload-heading-main { width:100%; }
+  .rs-upload-panel #rsResetButton { margin-left:auto; }
+  .rs-source-toggle { margin-left:auto; }
+  .rs-items-panel .rs-section-heading { align-items:center; flex-wrap:wrap; }
+  .rs-items-panel .rs-section-heading &gt; div:first-child { white-space:nowrap; }
+  .rs-items-panel .rs-item-actions { width:100%; margin-top:-5px; justify-content:flex-end; }
+  .rs-import-actions { display:grid; grid-template-columns:1fr; }
+  .rs-import-actions &gt; * { width:100%; text-align:center; }
+  .rs-item-body, .rs-charge-grid, .rs-check-grid { grid-template-columns:1fr; }
+  .rs-field-row { grid-template-columns:1fr 1fr; }
+  .rs-item-result { grid-template-columns:1fr 1fr; }
+  .rs-summary { bottom:8px; border-radius:14px; }
+  .rs-summary-main &gt; b { font-size:21px; }
+}
+@media (max-width:380px) {
+  .rs-field-row, .rs-item-result { grid-template-columns:1fr; }
+  .rs-preview-actions { display:grid; grid-template-columns:1fr 1fr; }
+  .rs-quick-row { grid-template-columns:minmax(0,1fr) 102px; }
+  .rs-quick-row .rs-delete-item { grid-column:2; justify-self:end; }
+}
+&lt;/style&gt;
+
+&lt;script src=&#34;https://cdn.jsdelivr.net/npm/tesseract.js@6.0.1/dist/tesseract.min.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;
+(function () {
+  &#39;use strict&#39;;
+
+  const root = document.getElementById(&#39;receiptSplitter&#39;);
+  if (!root || root.dataset.ready === &#39;1&#39;) return;
+  root.dataset.ready = &#39;1&#39;;
+
+  const $ = id =&gt; root.querySelector(&#39;#&#39; + id);
+  const els = {
+    sourceButtons: root.querySelectorAll(&#39;[data-source-mode]&#39;), ocrPanel: $(&#39;rsOcrPanel&#39;), importPanel: $(&#39;rsImportPanel&#39;),
+    file: $(&#39;rsReceiptInput&#39;), upload: $(&#39;rsUploadZone&#39;), previewWrap: $(&#39;rsPreviewWrap&#39;),
+    preview: $(&#39;rsPreviewCanvas&#39;), rotateLeft: $(&#39;rsRotateLeft&#39;), rotateRight: $(&#39;rsRotateRight&#39;),
+    language: $(&#39;rsLanguage&#39;), scan: $(&#39;rsScanButton&#39;), reset: $(&#39;rsResetButton&#39;),
+    progress: $(&#39;rsProgress&#39;), progressBar: $(&#39;rsProgressBar&#39;), progressText: $(&#39;rsProgressText&#39;),
+    progressPercent: $(&#39;rsProgressPercent&#39;), message: $(&#39;rsMessage&#39;), rawResult: $(&#39;rsRawResult&#39;),
+    rawText: $(&#39;rsRawText&#39;), addItem: $(&#39;rsAddItem&#39;), quickEdit: $(&#39;rsQuickEdit&#39;), empty: $(&#39;rsEmptyItems&#39;), itemList: $(&#39;rsItemList&#39;),
+    listText: $(&#39;rsListText&#39;), listFile: $(&#39;rsListFile&#39;), importList: $(&#39;rsImportList&#39;), copyPrompt: $(&#39;rsCopyPrompt&#39;), promptText: $(&#39;rsPromptText&#39;),
+    serviceRate: $(&#39;rsServiceRate&#39;), serviceAmount: $(&#39;rsServiceAmount&#39;), serviceMode: $(&#39;rsServiceMode&#39;),
+    sstRate: $(&#39;rsSstRate&#39;), sstAmount: $(&#39;rsSstAmount&#39;), sstMode: $(&#39;rsSstMode&#39;),
+    receiptTotal: $(&#39;rsReceiptTotal&#39;), calculatedTotal: $(&#39;rsCalculatedReceiptTotal&#39;), difference: $(&#39;rsDifference&#39;),
+    selectedCount: $(&#39;rsSelectedCount&#39;), myTotal: $(&#39;rsMyTotal&#39;), selectedSubtotal: $(&#39;rsSelectedSubtotal&#39;),
+    myService: $(&#39;rsMyService&#39;), mySst: $(&#39;rsMySst&#39;), summaryToggle: $(&#39;rsSummaryToggle&#39;),
+    summaryDetails: $(&#39;rsSummaryDetails&#39;)
+  };
+
+  const state = {
+    sourceMode: &#39;import&#39;,
+    image: null,
+    rotation: 0,
+    quickEdit: false,
+    items: [],
+    nextId: 1,
+    receiptTotal: null,
+    charges: {
+      service: { rate: 0, amount: 0, mode: &#39;rate&#39; },
+      sst: { rate: 0, amount: 0, mode: &#39;rate&#39; }
+    }
+  };
+
+  const CHATGPT_PROMPT = `请直接分析我接下来上传的收据原图，并提取账单资料。不要只输出 OCR 原文。
+
+要求：
+1. 只把实际购买且有价格的项目放进 items；不要把店名、日期、桌号、备注、支付方式、Subtotal、Total、Change 当成商品。
+2. Cold、Hot、Less Sweet、Remarks 等无价格文字放进对应商品的 modifiers，不要成为独立商品。
+3. quantity 保留收据数量；unit_price 是单件价格；line_total 是该行数量合计。无法确认单价时，用 line_total ÷ quantity。
+4. Service Charge 和 SST / GST / Tax 分开放进 charges。没有识别到时 rate 和 amount 都填 0。
+5. 金额只使用数字，不要包含 RM、逗号或货币符号。
+6. 必须只返回合法 JSON，不要 Markdown 代码块、解释或额外文字。
+
+严格使用以下格式：
+{
+  &#34;currency&#34;: &#34;MYR&#34;,
+  &#34;items&#34;: [
+    {
+      &#34;name&#34;: &#34;商品名称&#34;,
+      &#34;quantity&#34;: 1,
+      &#34;unit_price&#34;: 0.00,
+      &#34;line_total&#34;: 0.00,
+      &#34;modifiers&#34;: []
+    }
+  ],
+  &#34;charges&#34;: {
+    &#34;service_charge&#34;: { &#34;rate&#34;: 0, &#34;amount&#34;: 0.00 },
+    &#34;sst&#34;: { &#34;rate&#34;: 0, &#34;amount&#34;: 0.00 }
+  },
+  &#34;subtotal&#34;: 0.00,
+  &#34;grand_total&#34;: 0.00
+}`;
+
+  els.promptText.textContent = CHATGPT_PROMPT;
+
+  function number(value, fallback) {
+    const parsed = parseFloat(String(value == null ? &#39;&#39; : value).replace(/,/g, &#39;&#39;));
+    return Number.isFinite(parsed) ? parsed : (fallback == null ? 0 : fallback);
+  }
+
+  function money(value) {
+    const safe = Math.abs(value) &lt; 0.0005 ? 0 : value;
+    return (safe &lt; 0 ? &#39;-RM&#39; : &#39;RM&#39;) + Math.abs(safe).toFixed(2);
+  }
+
+  function escapeHtml(value) {
+    return String(value == null ? &#39;&#39; : value)
+      .replace(/&amp;/g, &#39;&amp;amp;&#39;).replace(/&lt;/g, &#39;&amp;lt;&#39;).replace(/&gt;/g, &#39;&amp;gt;&#39;)
+      .replace(/&#34;/g, &#39;&amp;quot;&#39;).replace(/&#39;/g, &#39;&amp;#039;&#39;);
+  }
+
+  function subtotal() {
+    return state.items.reduce((sum, item) =&gt; sum + Math.max(0, number(item.price)), 0);
+  }
+
+  function chargeAmount(key) {
+    const charge = state.charges[key];
+    return charge.mode === &#39;rate&#39; ? subtotal() * Math.max(0, number(charge.rate)) / 100 : number(charge.amount);
+  }
+
+  function itemBreakdown(item) {
+    const base = Math.max(0, number(item.price));
+    const allItems = subtotal();
+    const ratio = allItems &gt; 0 ? base / allItems : 0;
+    const service = chargeAmount(&#39;service&#39;) * ratio;
+    const sst = chargeAmount(&#39;sst&#39;) * ratio;
+    const divisor = item.shareEnabled ? Math.max(2, Math.floor(number(item.divisor, 2))) : 1;
+    return { base, service, sst, divisor, gross: base + service + sst, mine: (base + service + sst) / divisor };
+  }
+
+  function newItem(name, price, origin) {
+    return {
+      id: state.nextId++, name: name || &#39;新商品&#39;, price: Math.max(0, number(price)), selected: false,
+      shareEnabled: false, divisor: 2, origin: origin || &#39;手动添加&#39;
+    };
+  }
+
+  function renderItems() {
+    els.empty.hidden = state.items.length &gt; 0;
+    els.quickEdit.disabled = state.items.length === 0;
+    els.itemList.innerHTML = state.items.map(item =&gt; {
+      const calc = itemBreakdown(item);
+      const shareDivisor = Math.max(2, Math.floor(number(item.divisor, 2)));
+      return `
+        &lt;article class=&#34;rs-item-card ${item.selected ? &#39;rs-selected&#39; : &#39;&#39;}&#34; data-item-id=&#34;${item.id}&#34;&gt;
+          &lt;div class=&#34;rs-quick-row&#34;&gt;
+            &lt;input class=&#34;rs-item-name&#34; type=&#34;text&#34; data-field=&#34;name&#34; value=&#34;${escapeHtml(item.name)}&#34; aria-label=&#34;快速修正商品名称&#34;&gt;
+            &lt;div class=&#34;rs-money-input&#34;&gt;&lt;b&gt;RM&lt;/b&gt;&lt;input type=&#34;number&#34; min=&#34;0&#34; step=&#34;0.01&#34; inputmode=&#34;decimal&#34; data-field=&#34;price&#34; value=&#34;${calc.base.toFixed(2)}&#34; aria-label=&#34;快速修正商品价格&#34;&gt;&lt;/div&gt;
+            &lt;button class=&#34;rs-delete-item&#34; type=&#34;button&#34; data-action=&#34;delete&#34; aria-label=&#34;删除商品&#34;&gt;×&lt;/button&gt;
+          &lt;/div&gt;
+          &lt;div class=&#34;rs-normal-item&#34;&gt;
+            &lt;div class=&#34;rs-item-top&#34;&gt;
+              &lt;label class=&#34;rs-check&#34; title=&#34;属于我的商品&#34;&gt;
+                &lt;input type=&#34;checkbox&#34; data-field=&#34;selected&#34; ${item.selected ? &#39;checked&#39; : &#39;&#39;} aria-label=&#34;选择 ${escapeHtml(item.name)}&#34;&gt;
+              &lt;/label&gt;
+              &lt;div class=&#34;rs-item-name-wrap&#34;&gt;
+                &lt;input class=&#34;rs-item-name&#34; type=&#34;text&#34; data-field=&#34;name&#34; value=&#34;${escapeHtml(item.name)}&#34; aria-label=&#34;商品名称&#34;&gt;
+                &lt;span class=&#34;rs-item-origin&#34;&gt;${escapeHtml(item.origin)}&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;button class=&#34;rs-delete-item&#34; type=&#34;button&#34; data-action=&#34;delete&#34; aria-label=&#34;删除商品&#34;&gt;×&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&#34;rs-item-body&#34;&gt;
+              &lt;label&gt;&lt;span&gt;商品价格&lt;/span&gt;&lt;div class=&#34;rs-money-input&#34;&gt;&lt;b&gt;RM&lt;/b&gt;&lt;input type=&#34;number&#34; min=&#34;0&#34; step=&#34;0.01&#34; inputmode=&#34;decimal&#34; data-field=&#34;price&#34; value=&#34;${calc.base.toFixed(2)}&#34;&gt;&lt;/div&gt;&lt;/label&gt;
+              &lt;div class=&#34;rs-share-box&#34;&gt;
+                &lt;span&gt;共享商品&lt;/span&gt;
+                &lt;div class=&#34;rs-share-line&#34;&gt;
+                  &lt;label class=&#34;rs-share-toggle&#34;&gt;&lt;input type=&#34;checkbox&#34; data-field=&#34;shareEnabled&#34; ${item.shareEnabled ? &#39;checked&#39; : &#39;&#39;}&gt;&lt;b&gt;Share&lt;/b&gt;&lt;/label&gt;
+                  &lt;div class=&#34;rs-share-controls&#34; ${item.shareEnabled ? &#39;&#39; : &#39;hidden&#39;}&gt;
+                    &lt;button type=&#34;button&#34; data-action=&#34;minus&#34; aria-label=&#34;减少共享人数&#34;&gt;−&lt;/button&gt;
+                    &lt;input type=&#34;number&#34; min=&#34;2&#34; step=&#34;1&#34; inputmode=&#34;numeric&#34; data-field=&#34;divisor&#34; value=&#34;${shareDivisor}&#34; aria-label=&#34;共享人数&#34;&gt;
+                    &lt;button type=&#34;button&#34; data-action=&#34;plus&#34; aria-label=&#34;增加共享人数&#34;&gt;＋&lt;/button&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&#34;rs-item-result&#34;&gt;
+              &lt;div&gt;&lt;span&gt;含收费金额&lt;/span&gt;&lt;b data-result=&#34;gross&#34;&gt;${money(calc.gross)}&lt;/b&gt;&lt;/div&gt;
+              &lt;div class=&#34;rs-item-mine&#34;&gt;&lt;span&gt;我的金额${item.shareEnabled ? &#39;（÷ &#39; + calc.divisor + &#39;）&#39; : &#39;&#39;}&lt;/span&gt;&lt;b data-result=&#34;mine&#34;&gt;${money(calc.mine)}&lt;/b&gt;&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/article&gt;`;
+    }).join(&#39;&#39;);
+    calculate();
+  }
+
+  function refreshItemCard(card, item) {
+    const calc = itemBreakdown(item);
+    card.classList.toggle(&#39;rs-selected&#39;, item.selected);
+    const controls = card.querySelector(&#39;.rs-share-controls&#39;);
+    controls.hidden = !item.shareEnabled;
+    card.querySelector(&#39;[data-result=&#34;gross&#34;]&#39;).textContent = money(calc.gross);
+    card.querySelector(&#39;[data-result=&#34;mine&#34;]&#39;).textContent = money(calc.mine);
+    card.querySelector(&#39;.rs-item-mine span&#39;).textContent = &#39;我的金额&#39; + (item.shareEnabled ? &#39;（÷ &#39; + calc.divisor + &#39;）&#39; : &#39;&#39;);
+  }
+
+  function syncAllItemResults() {
+    state.items.forEach(item =&gt; {
+      const card = els.itemList.querySelector(&#39;[data-item-id=&#34;&#39; + item.id + &#39;&#34;]&#39;);
+      if (card) refreshItemCard(card, item);
+    });
+  }
+
+  function syncCharges(skipInput) {
+    const total = subtotal();
+    [&#39;service&#39;, &#39;sst&#39;].forEach(key =&gt; {
+      const charge = state.charges[key];
+      if (charge.mode === &#39;rate&#39;) charge.amount = total * Math.max(0, charge.rate) / 100;
+    });
+    if (skipInput !== els.serviceRate &amp;&amp; document.activeElement !== els.serviceRate) els.serviceRate.value = state.charges.service.rate;
+    if (skipInput !== els.serviceAmount &amp;&amp; document.activeElement !== els.serviceAmount) els.serviceAmount.value = state.charges.service.amount.toFixed(2);
+    if (skipInput !== els.sstRate &amp;&amp; document.activeElement !== els.sstRate) els.sstRate.value = state.charges.sst.rate;
+    if (skipInput !== els.sstAmount &amp;&amp; document.activeElement !== els.sstAmount) els.sstAmount.value = state.charges.sst.amount.toFixed(2);
+    els.serviceMode.textContent = state.charges.service.mode === &#39;rate&#39; ? &#39;按费率&#39; : &#39;按金额&#39;;
+    els.sstMode.textContent = state.charges.sst.mode === &#39;rate&#39; ? &#39;按费率&#39; : &#39;按金额&#39;;
+  }
+
+  function calculate(skipChargeInput) {
+    syncCharges(skipChargeInput);
+    let selectedBase = 0;
+    let selectedService = 0;
+    let selectedSst = 0;
+    let count = 0;
+    state.items.forEach(item =&gt; {
+      if (!item.selected) return;
+      const calc = itemBreakdown(item);
+      count += 1;
+      selectedBase += calc.base / calc.divisor;
+      selectedService += calc.service / calc.divisor;
+      selectedSst += calc.sst / calc.divisor;
+    });
+    const mine = selectedBase + selectedService + selectedSst;
+    els.selectedCount.textContent = &#39;已选择 &#39; + count + &#39; 项&#39;;
+    els.myTotal.textContent = money(mine);
+    els.selectedSubtotal.textContent = money(selectedBase);
+    els.myService.textContent = money(selectedService);
+    els.mySst.textContent = money(selectedSst);
+
+    const calculatedReceipt = subtotal() + chargeAmount(&#39;service&#39;) + chargeAmount(&#39;sst&#39;);
+    els.calculatedTotal.textContent = money(calculatedReceipt);
+    if (state.receiptTotal == null || !Number.isFinite(state.receiptTotal)) {
+      els.difference.textContent = &#39;—&#39;;
+      els.difference.className = &#39;&#39;;
+    } else {
+      const diff = calculatedReceipt - state.receiptTotal;
+      els.difference.textContent = (diff &gt; 0 ? &#39;+&#39; : &#39;&#39;) + money(diff);
+      els.difference.className = Math.abs(diff) &lt; 0.01 ? &#39;rs-ok&#39; : &#39;rs-bad&#39;;
+    }
+  }
+
+  function showMessage(text, isError) {
+    els.message.hidden = !text;
+    els.message.textContent = text || &#39;&#39;;
+    els.message.classList.toggle(&#39;rs-error&#39;, !!isError);
+  }
+
+  function updateProgress(status, progress) {
+    const labels = {
+      &#39;loading tesseract core&#39;: &#39;加载 OCR 核心&#39;, &#39;initializing tesseract&#39;: &#39;初始化 OCR&#39;,
+      &#39;loading language traineddata&#39;: &#39;加载语言模型&#39;, &#39;initializing api&#39;: &#39;准备识别&#39;,
+      &#39;recognizing text&#39;: &#39;正在识别文字&#39;
+    };
+    const percent = Math.max(0, Math.min(100, Math.round((progress || 0) * 100)));
+    els.progressText.textContent = labels[status] || status || &#39;准备 OCR…&#39;;
+    els.progressPercent.textContent = percent + &#39;%&#39;;
+    els.progressBar.style.width = percent + &#39;%&#39;;
+  }
+
+  function drawImageCanvas(maxDimension, preprocess) {
+    if (!state.image) return null;
+    const rotated = Math.abs(state.rotation % 180) === 90;
+    const naturalW = state.image.naturalWidth || state.image.width;
+    const naturalH = state.image.naturalHeight || state.image.height;
+    const outputW = rotated ? naturalH : naturalW;
+    const outputH = rotated ? naturalW : naturalH;
+    const scale = Math.min(1, maxDimension / Math.max(outputW, outputH));
+    const canvas = document.createElement(&#39;canvas&#39;);
+    canvas.width = Math.max(1, Math.round(outputW * scale));
+    canvas.height = Math.max(1, Math.round(outputH * scale));
+    const ctx = canvas.getContext(&#39;2d&#39;, { willReadFrequently: !!preprocess });
+    ctx.save();
+    ctx.translate(canvas.width / 2, canvas.height / 2);
+    ctx.rotate(state.rotation * Math.PI / 180);
+    const drawW = naturalW * scale;
+    const drawH = naturalH * scale;
+    ctx.drawImage(state.image, -drawW / 2, -drawH / 2, drawW, drawH);
+    ctx.restore();
+    if (preprocess) {
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const data = imageData.data;
+      for (let i = 0; i &lt; data.length; i += 4) {
+        const gray = data[i] * .299 + data[i + 1] * .587 + data[i + 2] * .114;
+        const contrasted = Math.max(0, Math.min(255, (gray - 128) * 1.28 + 128));
+        data[i] = data[i + 1] = data[i + 2] = contrasted;
+      }
+      ctx.putImageData(imageData, 0, 0);
+    }
+    return canvas;
+  }
+
+  function renderPreview() {
+    const source = drawImageCanvas(1500, false);
+    if (!source) return;
+    els.preview.width = source.width;
+    els.preview.height = source.height;
+    els.preview.getContext(&#39;2d&#39;).drawImage(source, 0, 0);
+  }
+
+  function setQuickEdit(enabled) {
+    state.quickEdit = !!enabled &amp;&amp; state.items.length &gt; 0;
+    root.classList.toggle(&#39;rs-quick-edit&#39;, state.quickEdit);
+    els.quickEdit.setAttribute(&#39;aria-pressed&#39;, String(state.quickEdit));
+    els.quickEdit.textContent = state.quickEdit ? &#39;✓ 完成修正&#39; : &#39;✎ 快速修正&#39;;
+    root.querySelector(&#39;.rs-items-panel .rs-help&#39;).textContent = state.quickEdit
+      ? &#39;快速修正模式：对照原图集中修改商品名称和价格；完成后再勾选商品与设置 Share。&#39;
+      : &#39;OCR 会把数量大于 1 的商品拆成多行。勾选属于你的商品；多人共享时开启 Share 并填写除数。&#39;;
+  }
+
+  function setSourceMode(mode) {
+    state.sourceMode = mode === &#39;ocr&#39; ? &#39;ocr&#39; : &#39;import&#39;;
+    els.ocrPanel.hidden = state.sourceMode !== &#39;ocr&#39;;
+    els.importPanel.hidden = state.sourceMode !== &#39;import&#39;;
+    els.sourceButtons.forEach(button =&gt; {
+      button.setAttribute(&#39;aria-pressed&#39;, String(button.dataset.sourceMode === state.sourceMode));
+    });
+    showMessage(&#39;&#39;, false);
+  }
+
+  function loadFile(file) {
+    if (!file || !file.type.startsWith(&#39;image/&#39;)) {
+      showMessage(&#39;请选择 JPEG、PNG、WebP 或手机能够显示的图片格式。&#39;, true);
+      return;
+    }
+    const url = URL.createObjectURL(file);
+    const image = new Image();
+    image.onload = function () {
+      if (state.image &amp;&amp; state.image.dataset.objectUrl) URL.revokeObjectURL(state.image.dataset.objectUrl);
+      image.dataset.objectUrl = url;
+      state.image = image;
+      state.rotation = 0;
+      els.upload.hidden = true;
+      els.previewWrap.hidden = false;
+      els.scan.disabled = false;
+      renderPreview();
+      showMessage(&#39;照片已载入。请确认方向正确，然后开始扫描。&#39;, false);
+    };
+    image.onerror = function () {
+      URL.revokeObjectURL(url);
+      showMessage(&#39;浏览器无法读取这张照片，请转换成 JPEG 或 PNG 后再试。&#39;, true);
+    };
+    image.src = url;
+  }
+
+  function moneyValues(line) {
+    const clean = line.replace(/\d+(?:\.\d+)?\s*%/g, &#39;&#39;);
+    const matches = clean.match(/(?:RM\s*)?-?\d[\d,]*\.\d{2}/gi) || [];
+    return matches.map(value =&gt; number(value.replace(/RM\s*/i, &#39;&#39;)));
+  }
+
+  function percentage(line) {
+    const match = line.match(/(\d+(?:\.\d+)?)\s*%/);
+    return match ? number(match[1]) : null;
+  }
+
+  function usefulName(value) {
+    const name = value.replace(/^[\s|:;._-]+|[\s|:;._-]+$/g, &#39;&#39;).trim();
+    if (name.length &lt; 2 || !/[A-Za-z\u3400-\u9fff]/.test(name)) return &#39;&#39;;
+    if (/^(date|time|table|cashier|receipt|invoice|order|tel|thank|change|cash|visa|master|subtotal|total|amount)$/i.test(name)) return &#39;&#39;;
+    return name;
+  }
+
+  function parseReceipt(text) {
+    const lines = text.split(/\r?\n/).map(line =&gt; line.replace(/[|]/g, &#39; &#39;).replace(/\s+/g, &#39; &#39;).trim()).filter(Boolean);
+    const items = [];
+    const charges = {
+      service: { rate: 0, amount: 0, mode: &#39;rate&#39;, found: false },
+      sst: { rate: 0, amount: 0, mode: &#39;rate&#39;, found: false }
+    };
+    let receiptTotal = null;
+    let pendingName = &#39;&#39;;
+
+    lines.forEach((line, lineIndex) =&gt; {
+      const lower = line.toLowerCase();
+      const values = moneyValues(line);
+      const lastValue = values.length ? values[values.length - 1] : null;
+      const rate = percentage(line);
+      const isService = /service\s*(charge|chg)|svc\s*(charge|chg)/i.test(line);
+      const isSst = /\b(sst|gst|tax)\b/i.test(line) &amp;&amp; !/tax\s*(invoice|no)/i.test(line);
+      const isSubtotal = /sub\s*total|subtotal/i.test(line);
+      const isGrandTotal = !isSubtotal &amp;&amp; /grand\s*total|total\s*(due|amount)?|amount\s*due|jumlah\s*(besar|bayaran)?/i.test(line);
+
+      if (isService || isSst) {
+        const key = isService ? &#39;service&#39; : &#39;sst&#39;;
+        charges[key].found = true;
+        if (rate != null) charges[key].rate = rate;
+        if (lastValue != null) {
+          charges[key].amount = lastValue;
+          charges[key].mode = &#39;amount&#39;;
+        } else if (rate != null) {
+          charges[key].mode = &#39;rate&#39;;
+        }
+        pendingName = &#39;&#39;;
+        return;
+      }
+      if (isGrandTotal &amp;&amp; lastValue != null) {
+        receiptTotal = lastValue;
+        pendingName = &#39;&#39;;
+        return;
+      }
+      if (isSubtotal || /discount|voucher|rounding|change|tender|cash|credit|debit|balance/i.test(lower)) {
+        pendingName = &#39;&#39;;
+        return;
+      }
+      if (lastValue == null) {
+        const candidate = usefulName(line);
+        if (candidate &amp;&amp; !/\b\d{1,2}[\/:.-]\d{1,2}[\/:.-]\d{2,4}\b/.test(line)) pendingName = candidate;
+        return;
+      }
+
+      const priceToken = line.match(/(?:RM\s*)?-?\d[\d,]*\.\d{2}(?!.*\d[\d,]*\.\d{2})/i);
+      if (!priceToken || lastValue &lt; 0) return;
+      let body = line.slice(0, priceToken.index).replace(/RM\s*$/i, &#39;&#39;).trim();
+      let qty = 1;
+      let name = body;
+      const leadingQty = body.match(/^(\d+)\s*[xX×]\s*(.+)$/);
+      const trailingQtyUnit = body.match(/^(.+?)\s+(\d+)\s*[xX×]\s*(?:RM\s*)?\d[\d,]*(?:\.\d{1,2})?$/i);
+      if (leadingQty) {
+        qty = Math.max(1, Math.min(99, parseInt(leadingQty[1], 10)));
+        name = leadingQty[2];
+      } else if (trailingQtyUnit) {
+        qty = Math.max(1, Math.min(99, parseInt(trailingQtyUnit[2], 10)));
+        name = trailingQtyUnit[1];
+      }
+      name = usefulName(name) || pendingName;
+      pendingName = &#39;&#39;;
+      if (!name || /^(rm)?\s*\d/i.test(name)) return;
+      const unitPrice = lastValue / qty;
+      for (let index = 0; index &lt; qty; index += 1) {
+        items.push(newItem(name, unitPrice, qty &gt; 1 ? &#39;OCR 数量拆分 &#39; + (index + 1) + &#39;/&#39; + qty : &#39;OCR 第 &#39; + (lineIndex + 1) + &#39; 行&#39;));
+      }
+    });
+
+    const parsedSubtotal = items.reduce((sum, item) =&gt; sum + item.price, 0);
+    [&#39;service&#39;, &#39;sst&#39;].forEach(key =&gt; {
+      const charge = charges[key];
+      if (!charge.found) return;
+      if (charge.mode === &#39;rate&#39;) charge.amount = parsedSubtotal * charge.rate / 100;
+      if (!charge.rate &amp;&amp; charge.amount &amp;&amp; parsedSubtotal) charge.rate = charge.amount / parsedSubtotal * 100;
+    });
+    return { items, charges, receiptTotal, lines };
+  }
+
+  function normalizedKey(value) {
+    return String(value || &#39;&#39;).toLowerCase().replace(/[\s_.\-\/]/g, &#39;&#39;);
+  }
+
+  function pickValue(object, aliases) {
+    if (!object || typeof object !== &#39;object&#39;) return undefined;
+    const wanted = aliases.map(normalizedKey);
+    const key = Object.keys(object).find(candidate =&gt; wanted.includes(normalizedKey(candidate)));
+    return key == null ? undefined : object[key];
+  }
+
+  function unwrapJsonText(text) {
+    const cleaned = String(text || &#39;&#39;).trim().replace(/^```(?:json)?\s*/i, &#39;&#39;).replace(/\s*```$/i, &#39;&#39;).trim();
+    const objectStart = cleaned.indexOf(&#39;{&#39;);
+    const arrayStart = cleaned.indexOf(&#39;[&#39;);
+    const start = objectStart &lt; 0 ? arrayStart : arrayStart &lt; 0 ? objectStart : Math.min(objectStart, arrayStart);
+    if (start &lt; 0) return cleaned;
+    const opening = cleaned[start];
+    const end = opening === &#39;{&#39; ? cleaned.lastIndexOf(&#39;}&#39;) : cleaned.lastIndexOf(&#39;]&#39;);
+    return end &gt; start ? cleaned.slice(start, end + 1) : cleaned;
+  }
+
+  function chargeFromImport(raw) {
+    if (raw == null) return { rate: 0, amount: 0, mode: &#39;rate&#39; };
+    if (typeof raw === &#39;number&#39; || typeof raw === &#39;string&#39;) {
+      return { rate: 0, amount: number(raw), mode: &#39;amount&#39; };
+    }
+    const rateRaw = pickValue(raw, [&#39;rate&#39;, &#39;percent&#39;, &#39;percentage&#39;, &#39;费率&#39;, &#39;税率&#39;]);
+    const amountRaw = pickValue(raw, [&#39;amount&#39;, &#39;value&#39;, &#39;total&#39;, &#39;金额&#39;, &#39;收费&#39;]);
+    const rate = Math.max(0, number(rateRaw));
+    const amount = number(amountRaw);
+    return { rate, amount, mode: amountRaw == null &amp;&amp; rate &gt; 0 ? &#39;rate&#39; : &#39;amount&#39; };
+  }
+
+  function findCharge(charges, matcher, aliases) {
+    if (Array.isArray(charges)) {
+      return charges.find(entry =&gt; matcher.test(String(pickValue(entry, [&#39;type&#39;, &#39;name&#39;, &#39;label&#39;, &#39;名称&#39;, &#39;项目&#39;]) || &#39;&#39;)));
+    }
+    return pickValue(charges, aliases);
+  }
+
+  function parseImportedList(text) {
+    let data;
+    try {
+      data = JSON.parse(unwrapJsonText(text));
+    } catch (error) {
+      const fallback = parseReceipt(text);
+      if (!fallback.items.length) throw new Error(&#39;无法读取清单。请使用“复制 ChatGPT 提示词”重新生成 JSON。&#39;);
+      return fallback;
+    }
+
+    const rawItems = Array.isArray(data)
+      ? data
+      : pickValue(data, [&#39;items&#39;, &#39;item_list&#39;, &#39;itemList&#39;, &#39;products&#39;, &#39;product_list&#39;, &#39;lines&#39;, &#39;商品&#39;, &#39;商品列表&#39;, &#39;明细&#39;]);
+    if (!Array.isArray(rawItems) || !rawItems.length) throw new Error(&#39;JSON 中找不到 items 商品数组。&#39;);
+
+    const items = [];
+    rawItems.forEach((rawItem, itemIndex) =&gt; {
+      if (!rawItem || typeof rawItem !== &#39;object&#39;) return;
+      const baseName = String(pickValue(rawItem, [&#39;name&#39;, &#39;item&#39;, &#39;product&#39;, &#39;description&#39;, &#39;title&#39;, &#39;名称&#39;, &#39;商品名&#39;, &#39;品名&#39;]) || &#39;&#39;).trim();
+      if (!baseName) return;
+      const quantity = Math.max(1, Math.min(99, Math.floor(number(pickValue(rawItem, [&#39;quantity&#39;, &#39;qty&#39;, &#39;count&#39;, &#39;数量&#39;]), 1))));
+      const unitRaw = pickValue(rawItem, [&#39;unit_price&#39;, &#39;unitPrice&#39;, &#39;unitprice&#39;, &#39;price&#39;, &#39;单价&#39;, &#39;每份价格&#39;]);
+      const lineRaw = pickValue(rawItem, [&#39;line_total&#39;, &#39;lineTotal&#39;, &#39;linetotal&#39;, &#39;total&#39;, &#39;amount&#39;, &#39;subtotal&#39;, &#39;小计&#39;, &#39;总价&#39;, &#39;金额&#39;]);
+      const unitPrice = unitRaw == null ? number(lineRaw) / quantity : number(unitRaw);
+      const modifierRaw = pickValue(rawItem, [&#39;modifiers&#39;, &#39;modifier&#39;, &#39;options&#39;, &#39;remarks&#39;, &#39;备注&#39;, &#39;选项&#39;]);
+      const modifiers = Array.isArray(modifierRaw) ? modifierRaw.filter(Boolean).map(String) : modifierRaw ? [String(modifierRaw)] : [];
+      const name = baseName + (modifiers.length ? &#39; · &#39; + modifiers.join(&#39; / &#39;) : &#39;&#39;);
+      for (let quantityIndex = 0; quantityIndex &lt; quantity; quantityIndex += 1) {
+        items.push(newItem(name, unitPrice, quantity &gt; 1
+          ? &#39;清单导入 数量拆分 &#39; + (quantityIndex + 1) + &#39;/&#39; + quantity
+          : &#39;清单导入 第 &#39; + (itemIndex + 1) + &#39; 项&#39;));
+      }
+    });
+    if (!items.length) throw new Error(&#39;items 中没有可用的商品名称。&#39;);
+
+    const chargesRaw = pickValue(data, [&#39;charges&#39;, &#39;fees&#39;, &#39;taxes&#39;, &#39;收费&#39;, &#39;费用&#39;]);
+    const serviceRaw = findCharge(chargesRaw, /service|服务费/i, [&#39;service_charge&#39;, &#39;serviceCharge&#39;, &#39;service&#39;, &#39;服务费&#39;]);
+    const sstRaw = findCharge(chargesRaw, /sst|gst|tax|税/i, [&#39;sst&#39;, &#39;gst&#39;, &#39;tax&#39;, &#39;sales_tax&#39;, &#39;销售税&#39;, &#39;税&#39;]);
+    const serviceTop = pickValue(data, [&#39;service_charge&#39;, &#39;serviceCharge&#39;, &#39;service&#39;, &#39;服务费&#39;]);
+    const sstTop = pickValue(data, [&#39;sst&#39;, &#39;gst&#39;, &#39;tax&#39;, &#39;sales_tax&#39;, &#39;销售税&#39;, &#39;税&#39;]);
+    const receiptTotalRaw = pickValue(data, [&#39;grand_total&#39;, &#39;grandTotal&#39;, &#39;receipt_total&#39;, &#39;receiptTotal&#39;, &#39;total_due&#39;, &#39;final_total&#39;, &#39;应付合计&#39;, &#39;最终总额&#39;, &#39;总额&#39;]);
+
+    return {
+      items,
+      charges: {
+        service: chargeFromImport(serviceRaw == null ? serviceTop : serviceRaw),
+        sst: chargeFromImport(sstRaw == null ? sstTop : sstRaw)
+      },
+      receiptTotal: receiptTotalRaw == null ? null : number(receiptTotalRaw)
+    };
+  }
+
+  function applyImportedList(text) {
+    const parsed = parseImportedList(text);
+    setQuickEdit(false);
+    state.items = parsed.items;
+    state.charges.service = parsed.charges.service;
+    state.charges.sst = parsed.charges.sst;
+    state.receiptTotal = parsed.receiptTotal;
+    els.receiptTotal.value = parsed.receiptTotal == null ? &#39;&#39; : parsed.receiptTotal.toFixed(2);
+    syncCharges();
+    renderItems();
+    showMessage(&#39;清单导入完成：已填入 &#39; + parsed.items.length + &#39; 行商品。请使用快速修正确认名称和价格。&#39;, false);
+    root.querySelector(&#39;.rs-items-panel&#39;).scrollIntoView({ behavior: &#39;smooth&#39;, block: &#39;start&#39; });
+  }
+
+  async function scanReceipt() {
+    if (!state.image) return;
+    if (!window.Tesseract || !window.Tesseract.createWorker) {
+      showMessage(&#39;OCR 程序未能载入。请检查网络连接并刷新页面后重试。&#39;, true);
+      return;
+    }
+    els.scan.disabled = true;
+    els.progress.hidden = false;
+    showMessage(&#39;&#39;, false);
+    updateProgress(&#39;准备 OCR…&#39;, 0);
+    let worker;
+    try {
+      const ocrCanvas = drawImageCanvas(2400, true);
+      worker = await window.Tesseract.createWorker(els.language.value, 1, {
+        logger: message =&gt; updateProgress(message.status, message.progress)
+      });
+      const result = await worker.recognize(ocrCanvas);
+      const text = result &amp;&amp; result.data ? result.data.text : &#39;&#39;;
+      els.rawText.textContent = text || &#39;没有识别到文字。&#39;;
+      els.rawResult.hidden = false;
+      const parsed = parseReceipt(text);
+      state.items = parsed.items;
+      state.charges.service = parsed.charges.service;
+      state.charges.sst = parsed.charges.sst;
+      state.receiptTotal = parsed.receiptTotal;
+      els.receiptTotal.value = parsed.receiptTotal == null ? &#39;&#39; : parsed.receiptTotal.toFixed(2);
+      syncCharges();
+      renderItems();
+      syncAllItemResults();
+      updateProgress(&#39;识别完成&#39;, 1);
+      const chargeCount = (parsed.charges.service.found ? 1 : 0) + (parsed.charges.sst.found ? 1 : 0);
+      showMessage(&#39;扫描完成：识别出 &#39; + parsed.items.length + &#39; 行商品和 &#39; + chargeCount + &#39; 个收费项目。请对照原图检查结果。&#39;, parsed.items.length === 0);
+    } catch (error) {
+      console.error(error);
+      showMessage(&#39;OCR 扫描失败：&#39; + (error &amp;&amp; error.message ? error.message : &#39;请检查网络或更换清晰照片后重试。&#39;), true);
+    } finally {
+      if (worker) await worker.terminate().catch(() =&gt; {});
+      els.scan.disabled = !state.image;
+    }
+  }
+
+  function resetAll() {
+    if (state.image &amp;&amp; state.image.dataset.objectUrl) URL.revokeObjectURL(state.image.dataset.objectUrl);
+    state.image = null;
+    state.rotation = 0;
+    setQuickEdit(false);
+    state.items = [];
+    state.receiptTotal = null;
+    state.charges.service = { rate: 0, amount: 0, mode: &#39;rate&#39; };
+    state.charges.sst = { rate: 0, amount: 0, mode: &#39;rate&#39; };
+    els.file.value = &#39;&#39;;
+    els.upload.hidden = false;
+    els.previewWrap.hidden = true;
+    els.scan.disabled = true;
+    els.progress.hidden = true;
+    els.rawResult.hidden = true;
+    els.listText.value = &#39;&#39;;
+    els.listFile.value = &#39;&#39;;
+    els.receiptTotal.value = &#39;&#39;;
+    showMessage(&#39;&#39;, false);
+    syncCharges();
+    renderItems();
+  }
+
+  els.file.addEventListener(&#39;change&#39;, event =&gt; loadFile(event.target.files &amp;&amp; event.target.files[0]));
+  els.sourceButtons.forEach(button =&gt; button.addEventListener(&#39;click&#39;, () =&gt; setSourceMode(button.dataset.sourceMode)));
+  els.rotateLeft.addEventListener(&#39;click&#39;, () =&gt; { state.rotation = (state.rotation - 90 + 360) % 360; renderPreview(); });
+  els.rotateRight.addEventListener(&#39;click&#39;, () =&gt; { state.rotation = (state.rotation + 90) % 360; renderPreview(); });
+  els.scan.addEventListener(&#39;click&#39;, scanReceipt);
+  els.reset.addEventListener(&#39;click&#39;, resetAll);
+  els.addItem.addEventListener(&#39;click&#39;, () =&gt; { state.items.push(newItem(&#39;&#39;, 0, &#39;手动添加&#39;)); renderItems(); });
+  els.quickEdit.addEventListener(&#39;click&#39;, () =&gt; {
+    setQuickEdit(!state.quickEdit);
+    renderItems();
+  });
+  els.importList.addEventListener(&#39;click&#39;, () =&gt; {
+    try {
+      applyImportedList(els.listText.value);
+    } catch (error) {
+      showMessage(error.message || &#39;清单导入失败，请检查格式。&#39;, true);
+    }
+  });
+  els.listFile.addEventListener(&#39;change&#39;, async event =&gt; {
+    const file = event.target.files &amp;&amp; event.target.files[0];
+    if (!file) return;
+    if (file.size &gt; 1024 * 1024) {
+      showMessage(&#39;清单文件不能超过 1 MB。&#39;, true);
+      return;
+    }
+    try {
+      const text = await file.text();
+      els.listText.value = text;
+      applyImportedList(text);
+    } catch (error) {
+      showMessage(error.message || &#39;无法读取这个清单文件。&#39;, true);
+    }
+  });
+  els.copyPrompt.addEventListener(&#39;click&#39;, async () =&gt; {
+    try {
+      await navigator.clipboard.writeText(CHATGPT_PROMPT);
+    } catch (error) {
+      const helper = document.createElement(&#39;textarea&#39;);
+      helper.value = CHATGPT_PROMPT;
+      helper.style.position = &#39;fixed&#39;;
+      helper.style.opacity = &#39;0&#39;;
+      document.body.appendChild(helper);
+      helper.select();
+      document.execCommand(&#39;copy&#39;);
+      helper.remove();
+    }
+    showMessage(&#39;ChatGPT 收据扫描提示词已复制。上传照片给 ChatGPT 后贴上提示词，再把返回的 JSON 导入这里。&#39;, false);
+  });
+
+  els.itemList.addEventListener(&#39;input&#39;, event =&gt; {
+    const card = event.target.closest(&#39;[data-item-id]&#39;);
+    const field = event.target.dataset.field;
+    if (!card || !field) return;
+    const item = state.items.find(entry =&gt; entry.id === number(card.dataset.itemId));
+    if (!item) return;
+    if (field === &#39;selected&#39; || field === &#39;shareEnabled&#39;) {
+      item[field] = event.target.checked;
+      if (field === &#39;shareEnabled&#39;) {
+        item.divisor = Math.max(2, Math.floor(number(item.divisor, 2)));
+        const divisorInput = card.querySelector(&#39;[data-field=&#34;divisor&#34;]&#39;);
+        if (divisorInput) divisorInput.value = item.divisor;
+      }
+    }
+    else if (field === &#39;price&#39;) item.price = Math.max(0, number(event.target.value));
+    else if (field === &#39;divisor&#39;) item.divisor = Math.max(2, Math.floor(number(event.target.value, 2)));
+    else item[field] = event.target.value;
+    syncCharges();
+    syncAllItemResults();
+    calculate();
+  });
+
+  els.itemList.addEventListener(&#39;click&#39;, event =&gt; {
+    const button = event.target.closest(&#39;button[data-action]&#39;);
+    const card = event.target.closest(&#39;[data-item-id]&#39;);
+    if (!button || !card) return;
+    const item = state.items.find(entry =&gt; entry.id === number(card.dataset.itemId));
+    if (!item) return;
+    if (button.dataset.action === &#39;delete&#39;) {
+      state.items = state.items.filter(entry =&gt; entry.id !== item.id);
+      renderItems();
+      if (!state.items.length) setQuickEdit(false);
+      return;
+    }
+    if (button.dataset.action === &#39;minus&#39;) item.divisor = Math.max(2, item.divisor - 1);
+    if (button.dataset.action === &#39;plus&#39;) item.divisor = Math.min(99, item.divisor + 1);
+    const input = card.querySelector(&#39;[data-field=&#34;divisor&#34;]&#39;);
+    if (input) input.value = item.divisor;
+    refreshItemCard(card, item);
+    calculate();
+  });
+
+  function bindCharge(key, rateInput, amountInput) {
+    rateInput.addEventListener(&#39;input&#39;, () =&gt; {
+      state.charges[key].rate = Math.max(0, number(rateInput.value));
+      state.charges[key].mode = &#39;rate&#39;;
+      syncAllItemResults(); calculate(rateInput);
+    });
+    amountInput.addEventListener(&#39;input&#39;, () =&gt; {
+      state.charges[key].amount = number(amountInput.value);
+      state.charges[key].mode = &#39;amount&#39;;
+      syncAllItemResults(); calculate(amountInput);
+    });
+    rateInput.addEventListener(&#39;blur&#39;, () =&gt; { syncCharges(); calculate(); });
+    amountInput.addEventListener(&#39;blur&#39;, () =&gt; { syncCharges(); calculate(); });
+  }
+  bindCharge(&#39;service&#39;, els.serviceRate, els.serviceAmount);
+  bindCharge(&#39;sst&#39;, els.sstRate, els.sstAmount);
+
+  els.receiptTotal.addEventListener(&#39;input&#39;, () =&gt; {
+    state.receiptTotal = els.receiptTotal.value.trim() === &#39;&#39; ? null : number(els.receiptTotal.value);
+    calculate();
+  });
+  els.summaryToggle.addEventListener(&#39;click&#39;, () =&gt; {
+    const expanded = els.summaryToggle.getAttribute(&#39;aria-expanded&#39;) === &#39;true&#39;;
+    els.summaryToggle.setAttribute(&#39;aria-expanded&#39;, String(!expanded));
+    els.summaryDetails.hidden = expanded;
+  });
+
+  setSourceMode(&#39;import&#39;);
+  syncCharges();
+  renderItems();
+})();
+&lt;/script&gt;
+
+</description>
+        </item>
+        <item>
         <title>【个人】游戏评分&amp;感想</title>
         <link>https://sloth-cyx.github.io/p/%E4%B8%AA%E4%BA%BA%E6%B8%B8%E6%88%8F%E8%AF%84%E5%88%86%E6%84%9F%E6%83%B3/</link>
         <pubDate>Wed, 23 Jul 2025 00:00:00 +0000</pubDate>
@@ -5456,7 +6497,7 @@
 主观个人排名：美岬线（诺亚人设，妙花剧情）&amp;gt; 奈奈濑线（王道热血婆系辣妹）&amp;gt; 雏见线（间谍）&lt;br&gt;
 客观智斗排名：雏见线 &amp;gt; 美岬线 &amp;gt; 奈奈濑线&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;甜蜜夏日&#34;&gt;甜蜜夏日
+&lt;h3 id=&#34;甜蜜夏日--甜蜜夏日&#34;&gt;甜蜜夏日 + 甜蜜夏日+
 &lt;/h3&gt;
 
 
@@ -5632,8 +6673,8 @@
   }
 }
 &lt;/style&gt;
-&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：女角配角塑造良好，让人会心一笑；实用，真tm实用；故事没有扣人心弦的剧情，只有平淡日常的乡村故事，个人线节奏算快，这部分见仁见智&lt;br&gt;
-👎 &lt;strong&gt;缺点&lt;/strong&gt;：平庸的男主人设，其实想不透女生为什么会对他沦陷，温柔人设真的太腻了；音乐没那么出彩；共同线由于男主没什么魅力所以挺无聊&lt;br&gt;
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：女角配角塑造良好，让人会心一笑；实用，真tm实用；故事没有扣人心弦的剧情，只有平淡日常的乡村故事，个人线节奏算快，这部分见仁见智；DLC补上后日谈很甜&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：平庸的男主人设，其实想不透女生为什么会对他沦陷，温柔人设真的太腻了；音乐没那么出彩；共同线由于男主没什么魅力所以挺无聊；+的错字有点多&lt;br&gt;
 💕 &lt;strong&gt;我推&lt;/strong&gt;：香钟❤️ &amp;gt;= 和叶❤️ &amp;gt; 夜雪❤️；香钟赢一手叫床声音好听（撒娇的时候黏黏的声线很加分，而且会扮演年上姐姐，少年，妹妹的声线），毕竟和叶的叫床有点奇怪的（但是听说这个颤音很色，可能我不会欣赏）&lt;br&gt;
 💬 &lt;strong&gt;其他&lt;/strong&gt;：&lt;br&gt;
 和叶：傲娇却又细心体贴的同龄，自尊心极高的反差就是私下爱撒娇闷骚的性格&lt;br&gt;

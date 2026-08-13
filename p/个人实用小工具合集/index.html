@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="~日常使用的实用小工具合集~">
+<title>【个人】实用小工具合集</title>
+
+<link rel='canonical' href='https://sloth-cyx.github.io/p/%E4%B8%AA%E4%BA%BA%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/'>
+
+<link rel="stylesheet" href="/scss/style.min.8d6e7c59f80ad513fa3c42b45c22c43bb0ccb9d4ed4e958da321c5e33249e077.css"><meta property='og:title' content="【个人】实用小工具合集">
+<meta property='og:description' content="~日常使用的实用小工具合集~">
+<meta property='og:url' content='https://sloth-cyx.github.io/p/%E4%B8%AA%E4%BA%BA%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/'>
+<meta property='og:site_name' content='怠惰的天秤-sloth'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-08-12T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-08-13T08:13:36&#43;08:00'/><meta property='og:image' content='https://sloth-cyx.github.io/images/consolidateTool/consolidateTool_bg.png' />
+<meta name="twitter:title" content="【个人】实用小工具合集">
+<meta name="twitter:description" content="~日常使用的实用小工具合集~"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://sloth-cyx.github.io/images/consolidateTool/consolidateTool_bg.png' />
+    <link rel="shortcut icon" href="/libra.ico" />
+
+  
+
+<div class="loading">
+    
+    <div class="loading-bg"></div>
+
+    <div class="sharingon">
+        <div class="ring">
+            <div class="to"></div>
+            <div class="to"></div>
+            <div class="to"></div>
+            <div class="circle"></div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .loading {
+        position: fixed;
+         
+         
+         
+        display: none;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        zoom: 3.0;
+        overflow: hidden;
+    }
+
+     
+    .loading-bg {
+        position: absolute;
+        inset: 0;
+
+        background: #000;
+
+        z-index: 0;
+    }
+
+     
+    .bgFadeout {
+        animation: bgFadeOut 1.5s forwards;
+    }
+
+    @keyframes bgFadeOut {
+        0% {
+            transform: scale(1);
+            opacity: 0.6;
+        }
+        90% {
+            opacity: 0.6;
+        }
+        100% {
+            transform: scale(1.5);
+            opacity: 0;
+        }
+    }
+    
+     
+    .loader-spin-out {
+         
+        animation: spinAndShrink 1.5s forwards ease-in-out !important;
+    }
+
+    @keyframes spinAndShrink {
+        0% {
+            transform: rotate(0deg) scale(1);
+            opacity: 1;
+        }
+
+        70% {
+             
+            transform: rotate(-1080deg) scale(1);
+            opacity: 1;
+        }
+
+        100% {
+             
+            transform: scale(1.5);
+            opacity: 0;
+        }
+    }
+
+     
+    .sharingon {
+        position: relative;
+        z-index: 1;
+        width: 6em;
+        height: 6em;
+        background-color: red;
+        border: 6px solid rgb(0, 0, 0);
+         
+         
+         
+        box-shadow:
+            0 0 25px rgba(255, 0, 0, 0.4),
+            0 0 60px rgba(255, 0, 0, 0.2);
+        border-radius: 50%;
+        animation: rot 1s linear infinite;  
+    }
+
+    .ring {
+        position: absolute;
+        content: "";
+        left: 50%;
+        top: 50%;
+        width: 3.5em;
+        height: 3.5em;
+        border: 4px solid rgb(110, 13 ,13 ,0.5);
+        transform: translate(-50%,-50%);
+    }
+
+    .sharingon, .ring, .to,.circle {
+        border-radius: 50%;
+    }
+
+    .to,.circle {
+        position: absolute;
+        content: "";
+        width: 0.9em;
+        height: 0.9em;
+        background-color: black;
+    }
+
+    .to:nth-child(1) {
+        top: -0.5em;
+        left: 50%;
+        transform: translate(-40%);
+    }
+
+    .to::before {
+        content: "";
+        position: absolute;
+        top: -0.5em;
+        right: -0.2em;
+        width: 1.1em;
+        height: 0.9em;
+        box-sizing: border-box;
+        border-left: 16px solid black;
+        border-radius: 100% 0 0;
+    }
+
+    .to:nth-child(2) {
+        bottom: 0.5em;
+        left: -0.35em;
+        transform: rotate(-120deg);
+    }
+
+    .to:nth-child(3) {
+        bottom: 0.5em;
+        right: -0.35em;
+        transform: rotate(120deg);
+    }
+
+    .circle {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background: black;
+        box-shadow:
+            0 0 10px rgba(255, 0, 0, 0.7),
+            0 0 20px rgba(255, 0, 0, 0.4);
+        width: 1em;
+        height: 1em;
+    }
+
+    @keyframes rot {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<script>    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    function initLoading() {
+        const isFirstVisit = !sessionStorage.getItem('visited');
+        if (isFirstVisit) {
+            let loading = document.querySelector(".loading");
+            loading.style.display = "flex";
+            document.addEventListener('DOMContentLoaded', function() {
+                
+                loadFinish();
+                
+                setTimeout(() => {
+                    loading.style.display = "none";
+                }, 1500)
+                sessionStorage.setItem('visited', 'true');
+            });
+        }
+    }
+    
+    function loadFinish() {
+        
+        let sharingon = document.querySelector(".sharingon");
+        sharingon.classList.add("loader-spin-out");
+        
+        
+        let loading = document.querySelector(".loading-bg");
+        loading.classList.add("bgFadeout");
+    }
+    
+    initLoading();
+</script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky 
+
+post-sidebar">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar2_hu3260391422873070556.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🫰</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">怠惰的天秤-sloth</a></h1>
+            <h2 class="site-description">让你事故死哦~Baby！</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/197975297'
+                        target="_blank"
+                        title="Bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-bilibili"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 10a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4v-6" /><path d="M8 3l2 3" /><path d="M16 3l-2 3" /><path d="M9 13v-2" /><path d="M15 11v2" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/sloth-cyx'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.lofter.com/blog/raymondchua'
+                        target="_blank"
+                        title="Lofter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-letter-l"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M7 4v16h10" /></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#账单分摊计算器">账单分摊计算器</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E4%B8%AA%E4%BA%BA%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/">
+                
+                    <img src="/images/consolidateTool/consolidateTool_bg.png" loading="lazy" alt="Featured image of post 【个人】实用小工具合集" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+
+    <div class="article-title-wrapper" style="text-align: center;">
+        <h2 class="article-title">
+            <a href="/p/%E4%B8%AA%E4%BA%BA%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/">【个人】实用小工具合集</a>
+        </h2>
+
+        
+        <h3 class="article-subtitle">
+            ~日常使用的实用小工具合集~
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time" style="display: flex; flex-direction: row; justify-content: left; align-items: left; gap: 15px;">
+        
+        
+        <div style="display: flex; align-items: left; gap: 5px;">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+            <time class="article-time--published">2026-08-12</time>
+        </div>
+        
+
+        
+        <div style="display: flex; align-items: left; gap: 5px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 7v5l3 3" /></svg> 
+            <time class="article-time--lastmod">2026-08-13</time>
+        </div>
+        
+
+        
+        
+    </footer>
+    
+
+    
+
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="账单分摊计算器">账单分摊计算器
+</h2><div class="rs-app" id="receiptSplitter">
+  <section class="rs-panel rs-intro">
+    <div>
+      <div class="rs-kicker">Receipt Splitter</div>
+      <h3>扫描、勾选，算出我该付多少</h3>
+      <p>照片只在当前浏览器内处理，不会上传到服务器。OCR 结果可能有误，请在结算前核对商品和收费。</p>
+    </div>
+    <span class="rs-privacy">🔒 本地处理</span>
+  </section>
+
+  <section class="rs-panel rs-upload-panel">
+    <div class="rs-section-heading">
+      <div class="rs-upload-heading-main">
+        <span class="rs-step">1</span><strong>上传收据</strong>
+        <div class="rs-source-toggle" role="group" aria-label="选择资料来源">
+          <button type="button" data-source-mode="import" aria-pressed="true">导入 JSON</button>
+          <button type="button" data-source-mode="ocr" aria-pressed="false">OCR 扫描</button>
+        </div>
+      </div>
+      <button class="rs-text-button" id="rsResetButton" type="button">清空全部</button>
+    </div>
+
+    <div class="rs-source-panel" id="rsOcrPanel" hidden>
+      <input id="rsReceiptInput" class="rs-file-input" type="file" accept="image/jpeg,image/png,image/webp,image/*" capture="environment">
+      <label class="rs-upload-zone" for="rsReceiptInput" id="rsUploadZone">
+        <span class="rs-upload-icon">📷</span>
+        <strong>拍摄或选择收据照片</strong>
+        <small>建议使用光线均匀、文字清晰且边缘完整的照片</small>
+      </label>
+
+      <div class="rs-preview-wrap" id="rsPreviewWrap" hidden>
+        <canvas id="rsPreviewCanvas" aria-label="收据照片预览"></canvas>
+        <div class="rs-preview-actions">
+          <button class="rs-secondary-button" id="rsRotateLeft" type="button">↶ 向左旋转</button>
+          <button class="rs-secondary-button" id="rsRotateRight" type="button">↷ 向右旋转</button>
+          <label class="rs-secondary-button" for="rsReceiptInput">更换照片</label>
+        </div>
+      </div>
+
+      <div class="rs-scan-row">
+        <label>
+          <span>识别语言</span>
+          <select id="rsLanguage">
+            <option value="eng" selected>English（速度较快）</option>
+            <option value="eng+chi_sim">English + 简体中文</option>
+          </select>
+        </label>
+        <button class="rs-primary-button" id="rsScanButton" type="button" disabled>开始 OCR 扫描</button>
+      </div>
+
+      <div class="rs-progress" id="rsProgress" hidden>
+        <div class="rs-progress-track"><span id="rsProgressBar"></span></div>
+        <div class="rs-progress-copy"><span id="rsProgressText">准备 OCR…</span><span id="rsProgressPercent">0%</span></div>
+      </div>
+
+      <details class="rs-raw-result" id="rsRawResult" hidden>
+        <summary>查看 OCR 原始文字</summary>
+        <pre id="rsRawText"></pre>
+      </details>
+    </div>
+
+    <section class="rs-list-import" id="rsImportPanel">
+      <div class="rs-list-import-title"><span>✨ 已用 ChatGPT 扫描？导入商品清单</span><small>支持粘贴或上传 JSON / TXT</small></div>
+      <div class="rs-list-import-body">
+        <p>将 ChatGPT 返回的清单粘贴到这里，或上传保存好的文件。导入后仍可使用“快速修正”检查内容。</p>
+        <textarea id="rsListText" rows="8" spellcheck="false" placeholder='粘贴 JSON，例如：{"items":[{"name":"Chicken Rice","quantity":2,"unit_price":12.00}]}'></textarea>
+        <input id="rsListFile" class="rs-file-input" type="file" accept=".json,.txt,application/json,text/plain">
+        <div class="rs-import-actions">
+          <label class="rs-secondary-button" for="rsListFile">上传 JSON / TXT</label>
+          <button class="rs-secondary-button" id="rsCopyPrompt" type="button">复制 ChatGPT 提示词</button>
+          <button class="rs-primary-button" id="rsImportList" type="button">导入清单</button>
+        </div>
+        <details class="rs-prompt-preview">
+          <summary>查看固定提示词</summary>
+          <pre id="rsPromptText"></pre>
+        </details>
+      </div>
+    </section>
+
+    <div class="rs-message" id="rsMessage" role="status" aria-live="polite" hidden></div>
+  </section>
+
+  <section class="rs-panel rs-items-panel">
+    <div class="rs-section-heading">
+      <div><span class="rs-step">2</span><strong>勾选我的商品</strong></div>
+      <div class="rs-item-actions">
+        <button class="rs-mode-button" id="rsQuickEdit" type="button" aria-pressed="false" disabled>✎ 快速修正</button>
+        <button class="rs-text-button" id="rsAddItem" type="button">＋ 手动添加</button>
+      </div>
+    </div>
+    <p class="rs-help">OCR 会把数量大于 1 的商品拆成多行。勾选属于你的商品；多人共享时开启 Share 并填写除数。</p>
+    <div class="rs-items-column">
+      <div class="rs-empty" id="rsEmptyItems">
+        <span>🧾</span>
+        <p>扫描收据、导入清单，或手动添加商品开始计算。</p>
+      </div>
+      <div class="rs-item-list" id="rsItemList"></div>
+    </div>
+  </section>
+
+  <section class="rs-panel rs-charge-panel">
+    <div class="rs-section-heading">
+      <div><span class="rs-step">3</span><strong>收费项目</strong></div>
+      <span class="rs-charge-note">结算以金额为准</span>
+    </div>
+    <p class="rs-help">未识别到的收费默认为 0%。修改费率会按商品小计重算金额；也可以直接修正收费金额。</p>
+    <div class="rs-charge-grid">
+      <article class="rs-charge-card" data-charge="service">
+        <div class="rs-charge-title"><strong>Service Charge</strong><span id="rsServiceMode">按费率</span></div>
+        <div class="rs-field-row">
+          <label><span>费率</span><div class="rs-input-suffix"><input id="rsServiceRate" type="number" min="0" step="0.01" inputmode="decimal" value="0"><b>%</b></div></label>
+          <label><span>金额</span><div class="rs-money-input"><b>RM</b><input id="rsServiceAmount" type="number" step="0.01" inputmode="decimal" value="0.00"></div></label>
+        </div>
+      </article>
+      <article class="rs-charge-card" data-charge="sst">
+        <div class="rs-charge-title"><strong>SST / Tax</strong><span id="rsSstMode">按费率</span></div>
+        <div class="rs-field-row">
+          <label><span>费率</span><div class="rs-input-suffix"><input id="rsSstRate" type="number" min="0" step="0.01" inputmode="decimal" value="0"><b>%</b></div></label>
+          <label><span>金额</span><div class="rs-money-input"><b>RM</b><input id="rsSstAmount" type="number" step="0.01" inputmode="decimal" value="0.00"></div></label>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="rs-panel rs-check-panel">
+    <div class="rs-section-heading">
+      <div><span class="rs-step">4</span><strong>收据校验</strong></div>
+    </div>
+    <div class="rs-check-grid">
+      <label><span>收据最终总额（可修改）</span><div class="rs-money-input"><b>RM</b><input id="rsReceiptTotal" type="number" step="0.01" inputmode="decimal" placeholder="0.00"></div></label>
+      <div class="rs-check-value"><span>商品与收费合计</span><strong id="rsCalculatedReceiptTotal">RM0.00</strong></div>
+      <div class="rs-check-value"><span>差额</span><strong id="rsDifference">—</strong></div>
+    </div>
+  </section>
+
+  <div class="rs-summary" id="rsSummary" aria-live="polite">
+    <button class="rs-summary-main" id="rsSummaryToggle" type="button" aria-expanded="false">
+      <span><small id="rsSelectedCount">已选择 0 项</small><strong>我的总额</strong></span>
+      <b id="rsMyTotal">RM0.00</b>
+    </button>
+    <div class="rs-summary-details" id="rsSummaryDetails" hidden>
+      <div><span>所选商品（Share 后）</span><b id="rsSelectedSubtotal">RM0.00</b></div>
+      <div><span>Service Charge</span><b id="rsMyService">RM0.00</b></div>
+      <div><span>SST / Tax</span><b id="rsMySst">RM0.00</b></div>
+    </div>
+  </div>
+</div>
+
+<style>
+.rs-app { --rs-blue:#2767d8; --rs-blue-soft:#edf4ff; --rs-green:#147a57; --rs-red:#c63f4a; --rs-border:#dce3ec; --rs-muted:#667085; --rs-surface:var(--card-background, #fff); position:relative; display:grid; gap:16px; margin:16px 0 84px; color:var(--card-text-color-main, inherit); }
+.rs-app *, .rs-app *::before, .rs-app *::after { box-sizing:border-box; }
+.rs-app [hidden] { display:none!important; }
+.rs-panel { margin:0; padding:20px; border:1px solid var(--rs-border); border-radius:18px; background:var(--rs-surface); box-shadow:0 8px 24px rgba(27,44,72,.06); }
+.rs-intro { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; background:linear-gradient(135deg,#eef6ff,#fff8ea); }
+.rs-intro h3 { margin:3px 0 6px; font-size:22px; color:#17345f; }
+.rs-intro p { margin:0; max-width:650px; color:#536273; font-size:13px; line-height:1.7; }
+.rs-kicker { color:var(--rs-blue); font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+.rs-privacy { flex:0 0 auto; padding:7px 10px; border-radius:999px; background:#def7e9; color:#176442; font-size:12px; font-weight:700; }
+.rs-section-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px; }
+.rs-section-heading > div { display:flex; align-items:center; gap:9px; }
+.rs-step { display:inline-grid; place-items:center; width:27px; height:27px; border-radius:9px; background:var(--rs-blue); color:#fff; font-size:13px; font-weight:800; }
+.rs-help { margin:-4px 0 15px; color:var(--rs-muted); font-size:12px; line-height:1.65; }
+.rs-text-button { padding:5px; border:0; background:none; color:var(--rs-blue); cursor:pointer; font:inherit; font-size:13px; font-weight:700; }
+.rs-upload-heading-main { flex-wrap:wrap; }
+.rs-source-toggle { display:inline-flex!important; padding:3px; border:1px solid #c5d3e7; border-radius:11px; background:#eef3f9; gap:3px!important; }
+.rs-source-toggle button { min-height:29px; padding:5px 10px; border:0; border-radius:8px; background:transparent; color:#65758a; cursor:pointer; font:inherit; font-size:10px; font-weight:750; }
+.rs-source-toggle button[aria-pressed="true"] { background:var(--rs-blue); color:#fff; box-shadow:0 2px 7px rgba(39,103,216,.22); }
+.rs-item-actions { justify-content:flex-end; flex-wrap:wrap; }
+.rs-mode-button { min-height:34px; padding:6px 10px; border:1px solid #afc6e8; border-radius:9px; background:#f3f7ff; color:#315f9e; cursor:pointer; font:inherit; font-size:11px; font-weight:750; }
+.rs-mode-button[aria-pressed="true"] { border-color:#efbd67; background:#fff5dd; color:#875500; }
+.rs-mode-button:disabled { opacity:.45; cursor:not-allowed; }
+.rs-file-input { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+.rs-upload-zone { display:flex; min-height:150px; padding:24px; border:2px dashed #a9c5ee; border-radius:16px; background:#f6faff; flex-direction:column; align-items:center; justify-content:center; gap:7px; color:#315a91; text-align:center; cursor:pointer; transition:.2s ease; }
+.rs-upload-zone:hover { border-color:var(--rs-blue); background:#eef5ff; transform:translateY(-1px); }
+.rs-upload-zone small { color:#71829a; }
+.rs-upload-icon { font-size:32px; }
+.rs-preview-wrap { overflow:hidden; border-radius:14px; background:#161a20; }
+#rsPreviewCanvas { display:block; width:100%; max-height:560px; object-fit:contain; }
+.rs-preview-actions { display:flex; justify-content:center; flex-wrap:wrap; gap:8px; padding:10px; background:#252b34; }
+.rs-secondary-button, .rs-primary-button { min-height:40px; padding:9px 14px; border-radius:11px; cursor:pointer; font:inherit; font-size:13px; font-weight:750; }
+.rs-secondary-button { border:1px solid #cbd5e1; background:#fff; color:#344054; }
+.rs-primary-button { border:0; background:var(--rs-blue); color:#fff; box-shadow:0 5px 14px rgba(39,103,216,.23); }
+.rs-primary-button:disabled { opacity:.45; cursor:not-allowed; box-shadow:none; }
+.rs-scan-row { display:flex; align-items:flex-end; justify-content:space-between; gap:12px; margin-top:14px; }
+.rs-scan-row label { display:grid; flex:1; gap:5px; color:var(--rs-muted); font-size:11px; font-weight:700; }
+.rs-app select, .rs-app input { min-width:0; border:1px solid #cdd6e1; border-radius:9px; background:var(--rs-surface); color:inherit; font:inherit; outline:none; }
+.rs-app select:focus, .rs-app input:focus { border-color:#6b9be9; box-shadow:0 0 0 3px rgba(39,103,216,.12); }
+.rs-app select { width:100%; height:40px; padding:0 10px; }
+.rs-progress { margin-top:14px; }
+.rs-progress-track { height:8px; overflow:hidden; border-radius:999px; background:#e5eaf1; }
+.rs-progress-track span { display:block; width:0; height:100%; border-radius:inherit; background:linear-gradient(90deg,#4b8df0,#55c9a0); transition:width .2s; }
+.rs-progress-copy { display:flex; justify-content:space-between; margin-top:5px; color:var(--rs-muted); font-size:11px; }
+.rs-message { margin-top:12px; padding:10px 12px; border-radius:10px; background:var(--rs-blue-soft); color:#24508e; font-size:12px; line-height:1.5; }
+.rs-message.rs-error { background:#fff0f1; color:#a32935; }
+.rs-list-import { overflow:hidden; border:1px solid #cfdcec; border-radius:13px; background:rgba(237,244,255,.55); }
+.rs-list-import-title { display:flex; min-height:45px; padding:11px 13px; align-items:center; justify-content:space-between; gap:10px; color:#285a9e; font-size:12px; font-weight:800; }
+.rs-list-import-title small { margin-left:auto; color:var(--rs-muted); font-size:9px; font-weight:600; }
+.rs-list-import-body { display:grid; gap:10px; padding:13px; border-top:1px solid #cfdcec; background:var(--rs-surface); }
+.rs-list-import-body p { margin:0; color:var(--rs-muted); font-size:11px; line-height:1.6; }
+.rs-list-import textarea { width:100%; min-height:145px; resize:vertical; padding:11px; border:1px solid #cdd6e1; border-radius:10px; background:var(--rs-surface); color:inherit; font:12px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace; outline:none; }
+.rs-list-import textarea:focus { border-color:#6b9be9; box-shadow:0 0 0 3px rgba(39,103,216,.12); }
+.rs-import-actions { display:flex; justify-content:flex-end; flex-wrap:wrap; gap:8px; }
+.rs-prompt-preview { color:var(--rs-muted); font-size:11px; }
+.rs-prompt-preview summary { cursor:pointer; font-weight:700; }
+.rs-prompt-preview pre { max-height:300px; overflow:auto; padding:11px; border-radius:9px; background:#111827; color:#d9e2f0; white-space:pre-wrap; font-size:10px; line-height:1.55; }
+.rs-raw-result { margin-top:12px; color:var(--rs-muted); font-size:12px; }
+.rs-raw-result summary { cursor:pointer; font-weight:700; }
+.rs-raw-result pre { max-height:220px; overflow:auto; padding:12px; border-radius:10px; background:#111827; color:#d9e2f0; white-space:pre-wrap; font-size:11px; }
+.rs-empty { display:grid; place-items:center; min-height:130px; padding:20px; border:1px dashed var(--rs-border); border-radius:14px; color:var(--rs-muted); text-align:center; }
+.rs-empty span { font-size:28px; }
+.rs-empty p { margin:5px 0 0; font-size:12px; }
+.rs-items-column { min-width:0; }
+.rs-item-list { display:grid; gap:11px; }
+.rs-item-card { border:1px solid var(--rs-border); border-radius:14px; background:var(--rs-surface); transition:.18s ease; }
+.rs-item-card.rs-selected { border-color:#7ca6e7; box-shadow:0 0 0 3px rgba(39,103,216,.08); }
+.rs-item-top { display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:10px; padding:13px; }
+.rs-check { display:grid; place-items:center; width:28px; height:28px; }
+.rs-check input { width:20px; height:20px; accent-color:var(--rs-blue); cursor:pointer; }
+.rs-item-name-wrap { display:grid; gap:4px; }
+.rs-item-name { width:100%; height:36px; padding:0 9px; font-weight:750; }
+.rs-item-origin { color:var(--rs-muted); font-size:10px; }
+.rs-delete-item { width:34px; height:34px; border:0; border-radius:9px; background:#fff0f1; color:var(--rs-red); cursor:pointer; font-size:17px; }
+.rs-item-body { display:grid; grid-template-columns:minmax(120px,1fr) minmax(145px,1fr); gap:12px; padding:0 13px 13px; }
+.rs-item-body label, .rs-field-row label, .rs-check-grid label { display:grid; gap:5px; color:var(--rs-muted); font-size:11px; font-weight:700; }
+.rs-money-input, .rs-input-suffix { display:flex; height:40px; align-items:center; overflow:hidden; border:1px solid #cdd6e1; border-radius:9px; background:var(--rs-surface); }
+.rs-money-input:focus-within, .rs-input-suffix:focus-within { border-color:#6b9be9; box-shadow:0 0 0 3px rgba(39,103,216,.12); }
+.rs-money-input b, .rs-input-suffix b { padding:0 9px; color:#718096; font-size:11px; }
+.rs-money-input input, .rs-input-suffix input { width:100%; height:100%; padding:0 8px; border:0; border-radius:0; box-shadow:none!important; }
+.rs-share-box { display:grid; gap:5px; }
+.rs-share-line { display:flex; min-height:40px; align-items:center; justify-content:space-between; gap:8px; }
+.rs-share-toggle { display:flex!important; grid-auto-flow:column; align-items:center; gap:7px!important; color:inherit!important; cursor:pointer; }
+.rs-share-toggle input { width:18px; height:18px; accent-color:var(--rs-blue); }
+.rs-share-controls { display:flex; align-items:center; gap:5px; }
+.rs-share-controls button { width:30px; height:30px; border:1px solid #cdd6e1; border-radius:8px; background:var(--rs-surface); color:inherit; cursor:pointer; }
+.rs-share-controls input { width:47px; height:34px; padding:0 4px; text-align:center; }
+.rs-item-result { display:grid; grid-template-columns:1fr 1fr; gap:8px; padding:10px 13px; border-top:1px solid var(--rs-border); border-radius:0 0 14px 14px; background:rgba(123,145,176,.07); font-size:11px; }
+.rs-item-result div { display:grid; gap:2px; }
+.rs-item-result span { color:var(--rs-muted); }
+.rs-item-result b { font-size:13px; }
+.rs-item-result .rs-item-mine b { color:var(--rs-blue); }
+.rs-quick-row { display:none; grid-template-columns:minmax(0,1fr) minmax(100px,.42fr) auto; align-items:center; gap:8px; padding:9px; }
+.rs-quick-row .rs-item-name { height:40px; }
+.rs-quick-edit .rs-normal-item { display:none; }
+.rs-quick-edit .rs-quick-row { display:grid; }
+.rs-quick-edit .rs-item-card { box-shadow:none; }
+.rs-quick-edit .rs-item-card.rs-selected { border-color:var(--rs-border); }
+.rs-quick-edit .rs-help { color:#875500; }
+.rs-charge-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.rs-charge-card { padding:14px; border:1px solid var(--rs-border); border-radius:14px; }
+.rs-charge-title { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:11px; }
+.rs-charge-title span, .rs-charge-note { color:var(--rs-muted); font-size:10px; }
+.rs-field-row { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+.rs-check-grid { display:grid; grid-template-columns:1.3fr 1fr 1fr; align-items:end; gap:12px; }
+.rs-check-value { display:grid; min-height:57px; padding:9px 11px; border:1px solid var(--rs-border); border-radius:10px; align-content:center; gap:3px; }
+.rs-check-value span { color:var(--rs-muted); font-size:10px; }
+.rs-check-value strong { font-size:14px; }
+.rs-ok { color:var(--rs-green)!important; }
+.rs-bad { color:var(--rs-red)!important; }
+.rs-summary { position:sticky; z-index:20; bottom:12px; overflow:hidden; border:1px solid rgba(255,255,255,.2); border-radius:16px; background:#17345f; color:#fff; box-shadow:0 12px 32px rgba(11,31,62,.3); }
+.rs-summary-main { display:flex; width:100%; min-height:65px; padding:12px 16px; border:0; background:transparent; color:inherit; align-items:center; justify-content:space-between; cursor:pointer; text-align:left; }
+.rs-summary-main span { display:grid; gap:2px; }
+.rs-summary-main small { color:#b9cce8; font-size:10px; }
+.rs-summary-main strong { font-size:14px; }
+.rs-summary-main > b { font-size:24px; letter-spacing:-.03em; }
+.rs-summary-details { padding:0 16px 12px; border-top:1px solid rgba(255,255,255,.13); }
+.rs-summary-details div { display:flex; justify-content:space-between; padding-top:8px; color:#d9e5f5; font-size:11px; }
+[data-scheme="dark"] .rs-app { --rs-border:#59616c; --rs-muted:#b1bac7; }
+[data-scheme="dark"] .rs-intro { background:linear-gradient(135deg,#273b56,#473b28); }
+[data-scheme="dark"] .rs-intro h3, [data-scheme="dark"] .rs-intro p { color:#edf3fa; }
+[data-scheme="dark"] .rs-upload-zone { background:#2c3848; color:#d8e8ff; }
+[data-scheme="dark"] .rs-secondary-button { background:#3d4652; color:#fff; }
+[data-scheme="dark"] .rs-delete-item { background:#60343a; color:#ffd5d8; }
+[data-scheme="dark"] .rs-mode-button { background:#314359; color:#d8e8ff; }
+[data-scheme="dark"] .rs-mode-button[aria-pressed="true"] { background:#59482b; color:#ffe4a8; }
+[data-scheme="dark"] .rs-list-import { background:#2c3848; }
+[data-scheme="dark"] .rs-source-toggle { background:#2c3848; }
+@media (max-width:600px) {
+  .rs-app { gap:12px; margin-bottom:76px; }
+  .rs-panel { padding:15px; border-radius:15px; }
+  .rs-intro { display:grid; }
+  .rs-intro h3 { font-size:19px; }
+  .rs-privacy { justify-self:start; }
+  .rs-scan-row { display:grid; }
+  .rs-primary-button { width:100%; }
+  .rs-section-heading { align-items:flex-start; }
+  .rs-upload-panel .rs-section-heading { align-items:center; flex-wrap:wrap; }
+  .rs-upload-heading-main { width:100%; }
+  .rs-upload-panel #rsResetButton { margin-left:auto; }
+  .rs-source-toggle { margin-left:auto; }
+  .rs-items-panel .rs-section-heading { align-items:center; flex-wrap:wrap; }
+  .rs-items-panel .rs-section-heading > div:first-child { white-space:nowrap; }
+  .rs-items-panel .rs-item-actions { width:100%; margin-top:-5px; justify-content:flex-end; }
+  .rs-import-actions { display:grid; grid-template-columns:1fr; }
+  .rs-import-actions > * { width:100%; text-align:center; }
+  .rs-item-body, .rs-charge-grid, .rs-check-grid { grid-template-columns:1fr; }
+  .rs-field-row { grid-template-columns:1fr 1fr; }
+  .rs-item-result { grid-template-columns:1fr 1fr; }
+  .rs-summary { bottom:8px; border-radius:14px; }
+  .rs-summary-main > b { font-size:21px; }
+}
+@media (max-width:380px) {
+  .rs-field-row, .rs-item-result { grid-template-columns:1fr; }
+  .rs-preview-actions { display:grid; grid-template-columns:1fr 1fr; }
+  .rs-quick-row { grid-template-columns:minmax(0,1fr) 102px; }
+  .rs-quick-row .rs-delete-item { grid-column:2; justify-self:end; }
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@6.0.1/dist/tesseract.min.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  const root = document.getElementById('receiptSplitter');
+  if (!root || root.dataset.ready === '1') return;
+  root.dataset.ready = '1';
+
+  const $ = id => root.querySelector('#' + id);
+  const els = {
+    sourceButtons: root.querySelectorAll('[data-source-mode]'), ocrPanel: $('rsOcrPanel'), importPanel: $('rsImportPanel'),
+    file: $('rsReceiptInput'), upload: $('rsUploadZone'), previewWrap: $('rsPreviewWrap'),
+    preview: $('rsPreviewCanvas'), rotateLeft: $('rsRotateLeft'), rotateRight: $('rsRotateRight'),
+    language: $('rsLanguage'), scan: $('rsScanButton'), reset: $('rsResetButton'),
+    progress: $('rsProgress'), progressBar: $('rsProgressBar'), progressText: $('rsProgressText'),
+    progressPercent: $('rsProgressPercent'), message: $('rsMessage'), rawResult: $('rsRawResult'),
+    rawText: $('rsRawText'), addItem: $('rsAddItem'), quickEdit: $('rsQuickEdit'), empty: $('rsEmptyItems'), itemList: $('rsItemList'),
+    listText: $('rsListText'), listFile: $('rsListFile'), importList: $('rsImportList'), copyPrompt: $('rsCopyPrompt'), promptText: $('rsPromptText'),
+    serviceRate: $('rsServiceRate'), serviceAmount: $('rsServiceAmount'), serviceMode: $('rsServiceMode'),
+    sstRate: $('rsSstRate'), sstAmount: $('rsSstAmount'), sstMode: $('rsSstMode'),
+    receiptTotal: $('rsReceiptTotal'), calculatedTotal: $('rsCalculatedReceiptTotal'), difference: $('rsDifference'),
+    selectedCount: $('rsSelectedCount'), myTotal: $('rsMyTotal'), selectedSubtotal: $('rsSelectedSubtotal'),
+    myService: $('rsMyService'), mySst: $('rsMySst'), summaryToggle: $('rsSummaryToggle'),
+    summaryDetails: $('rsSummaryDetails')
+  };
+
+  const state = {
+    sourceMode: 'import',
+    image: null,
+    rotation: 0,
+    quickEdit: false,
+    items: [],
+    nextId: 1,
+    receiptTotal: null,
+    charges: {
+      service: { rate: 0, amount: 0, mode: 'rate' },
+      sst: { rate: 0, amount: 0, mode: 'rate' }
+    }
+  };
+
+  const CHATGPT_PROMPT = `请直接分析我接下来上传的收据原图，并提取账单资料。不要只输出 OCR 原文。
+
+要求：
+1. 只把实际购买且有价格的项目放进 items；不要把店名、日期、桌号、备注、支付方式、Subtotal、Total、Change 当成商品。
+2. Cold、Hot、Less Sweet、Remarks 等无价格文字放进对应商品的 modifiers，不要成为独立商品。
+3. quantity 保留收据数量；unit_price 是单件价格；line_total 是该行数量合计。无法确认单价时，用 line_total ÷ quantity。
+4. Service Charge 和 SST / GST / Tax 分开放进 charges。没有识别到时 rate 和 amount 都填 0。
+5. 金额只使用数字，不要包含 RM、逗号或货币符号。
+6. 必须只返回合法 JSON，不要 Markdown 代码块、解释或额外文字。
+
+严格使用以下格式：
+{
+  "currency": "MYR",
+  "items": [
+    {
+      "name": "商品名称",
+      "quantity": 1,
+      "unit_price": 0.00,
+      "line_total": 0.00,
+      "modifiers": []
+    }
+  ],
+  "charges": {
+    "service_charge": { "rate": 0, "amount": 0.00 },
+    "sst": { "rate": 0, "amount": 0.00 }
+  },
+  "subtotal": 0.00,
+  "grand_total": 0.00
+}`;
+
+  els.promptText.textContent = CHATGPT_PROMPT;
+
+  function number(value, fallback) {
+    const parsed = parseFloat(String(value == null ? '' : value).replace(/,/g, ''));
+    return Number.isFinite(parsed) ? parsed : (fallback == null ? 0 : fallback);
+  }
+
+  function money(value) {
+    const safe = Math.abs(value) < 0.0005 ? 0 : value;
+    return (safe < 0 ? '-RM' : 'RM') + Math.abs(safe).toFixed(2);
+  }
+
+  function escapeHtml(value) {
+    return String(value == null ? '' : value)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+  }
+
+  function subtotal() {
+    return state.items.reduce((sum, item) => sum + Math.max(0, number(item.price)), 0);
+  }
+
+  function chargeAmount(key) {
+    const charge = state.charges[key];
+    return charge.mode === 'rate' ? subtotal() * Math.max(0, number(charge.rate)) / 100 : number(charge.amount);
+  }
+
+  function itemBreakdown(item) {
+    const base = Math.max(0, number(item.price));
+    const allItems = subtotal();
+    const ratio = allItems > 0 ? base / allItems : 0;
+    const service = chargeAmount('service') * ratio;
+    const sst = chargeAmount('sst') * ratio;
+    const divisor = item.shareEnabled ? Math.max(2, Math.floor(number(item.divisor, 2))) : 1;
+    return { base, service, sst, divisor, gross: base + service + sst, mine: (base + service + sst) / divisor };
+  }
+
+  function newItem(name, price, origin) {
+    return {
+      id: state.nextId++, name: name || '新商品', price: Math.max(0, number(price)), selected: false,
+      shareEnabled: false, divisor: 2, origin: origin || '手动添加'
+    };
+  }
+
+  function renderItems() {
+    els.empty.hidden = state.items.length > 0;
+    els.quickEdit.disabled = state.items.length === 0;
+    els.itemList.innerHTML = state.items.map(item => {
+      const calc = itemBreakdown(item);
+      const shareDivisor = Math.max(2, Math.floor(number(item.divisor, 2)));
+      return `
+        <article class="rs-item-card ${item.selected ? 'rs-selected' : ''}" data-item-id="${item.id}">
+          <div class="rs-quick-row">
+            <input class="rs-item-name" type="text" data-field="name" value="${escapeHtml(item.name)}" aria-label="快速修正商品名称">
+            <div class="rs-money-input"><b>RM</b><input type="number" min="0" step="0.01" inputmode="decimal" data-field="price" value="${calc.base.toFixed(2)}" aria-label="快速修正商品价格"></div>
+            <button class="rs-delete-item" type="button" data-action="delete" aria-label="删除商品">×</button>
+          </div>
+          <div class="rs-normal-item">
+            <div class="rs-item-top">
+              <label class="rs-check" title="属于我的商品">
+                <input type="checkbox" data-field="selected" ${item.selected ? 'checked' : ''} aria-label="选择 ${escapeHtml(item.name)}">
+              </label>
+              <div class="rs-item-name-wrap">
+                <input class="rs-item-name" type="text" data-field="name" value="${escapeHtml(item.name)}" aria-label="商品名称">
+                <span class="rs-item-origin">${escapeHtml(item.origin)}</span>
+              </div>
+              <button class="rs-delete-item" type="button" data-action="delete" aria-label="删除商品">×</button>
+            </div>
+            <div class="rs-item-body">
+              <label><span>商品价格</span><div class="rs-money-input"><b>RM</b><input type="number" min="0" step="0.01" inputmode="decimal" data-field="price" value="${calc.base.toFixed(2)}"></div></label>
+              <div class="rs-share-box">
+                <span>共享商品</span>
+                <div class="rs-share-line">
+                  <label class="rs-share-toggle"><input type="checkbox" data-field="shareEnabled" ${item.shareEnabled ? 'checked' : ''}><b>Share</b></label>
+                  <div class="rs-share-controls" ${item.shareEnabled ? '' : 'hidden'}>
+                    <button type="button" data-action="minus" aria-label="减少共享人数">−</button>
+                    <input type="number" min="2" step="1" inputmode="numeric" data-field="divisor" value="${shareDivisor}" aria-label="共享人数">
+                    <button type="button" data-action="plus" aria-label="增加共享人数">＋</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="rs-item-result">
+              <div><span>含收费金额</span><b data-result="gross">${money(calc.gross)}</b></div>
+              <div class="rs-item-mine"><span>我的金额${item.shareEnabled ? '（÷ ' + calc.divisor + '）' : ''}</span><b data-result="mine">${money(calc.mine)}</b></div>
+            </div>
+          </div>
+        </article>`;
+    }).join('');
+    calculate();
+  }
+
+  function refreshItemCard(card, item) {
+    const calc = itemBreakdown(item);
+    card.classList.toggle('rs-selected', item.selected);
+    const controls = card.querySelector('.rs-share-controls');
+    controls.hidden = !item.shareEnabled;
+    card.querySelector('[data-result="gross"]').textContent = money(calc.gross);
+    card.querySelector('[data-result="mine"]').textContent = money(calc.mine);
+    card.querySelector('.rs-item-mine span').textContent = '我的金额' + (item.shareEnabled ? '（÷ ' + calc.divisor + '）' : '');
+  }
+
+  function syncAllItemResults() {
+    state.items.forEach(item => {
+      const card = els.itemList.querySelector('[data-item-id="' + item.id + '"]');
+      if (card) refreshItemCard(card, item);
+    });
+  }
+
+  function syncCharges(skipInput) {
+    const total = subtotal();
+    ['service', 'sst'].forEach(key => {
+      const charge = state.charges[key];
+      if (charge.mode === 'rate') charge.amount = total * Math.max(0, charge.rate) / 100;
+    });
+    if (skipInput !== els.serviceRate && document.activeElement !== els.serviceRate) els.serviceRate.value = state.charges.service.rate;
+    if (skipInput !== els.serviceAmount && document.activeElement !== els.serviceAmount) els.serviceAmount.value = state.charges.service.amount.toFixed(2);
+    if (skipInput !== els.sstRate && document.activeElement !== els.sstRate) els.sstRate.value = state.charges.sst.rate;
+    if (skipInput !== els.sstAmount && document.activeElement !== els.sstAmount) els.sstAmount.value = state.charges.sst.amount.toFixed(2);
+    els.serviceMode.textContent = state.charges.service.mode === 'rate' ? '按费率' : '按金额';
+    els.sstMode.textContent = state.charges.sst.mode === 'rate' ? '按费率' : '按金额';
+  }
+
+  function calculate(skipChargeInput) {
+    syncCharges(skipChargeInput);
+    let selectedBase = 0;
+    let selectedService = 0;
+    let selectedSst = 0;
+    let count = 0;
+    state.items.forEach(item => {
+      if (!item.selected) return;
+      const calc = itemBreakdown(item);
+      count += 1;
+      selectedBase += calc.base / calc.divisor;
+      selectedService += calc.service / calc.divisor;
+      selectedSst += calc.sst / calc.divisor;
+    });
+    const mine = selectedBase + selectedService + selectedSst;
+    els.selectedCount.textContent = '已选择 ' + count + ' 项';
+    els.myTotal.textContent = money(mine);
+    els.selectedSubtotal.textContent = money(selectedBase);
+    els.myService.textContent = money(selectedService);
+    els.mySst.textContent = money(selectedSst);
+
+    const calculatedReceipt = subtotal() + chargeAmount('service') + chargeAmount('sst');
+    els.calculatedTotal.textContent = money(calculatedReceipt);
+    if (state.receiptTotal == null || !Number.isFinite(state.receiptTotal)) {
+      els.difference.textContent = '—';
+      els.difference.className = '';
+    } else {
+      const diff = calculatedReceipt - state.receiptTotal;
+      els.difference.textContent = (diff > 0 ? '+' : '') + money(diff);
+      els.difference.className = Math.abs(diff) < 0.01 ? 'rs-ok' : 'rs-bad';
+    }
+  }
+
+  function showMessage(text, isError) {
+    els.message.hidden = !text;
+    els.message.textContent = text || '';
+    els.message.classList.toggle('rs-error', !!isError);
+  }
+
+  function updateProgress(status, progress) {
+    const labels = {
+      'loading tesseract core': '加载 OCR 核心', 'initializing tesseract': '初始化 OCR',
+      'loading language traineddata': '加载语言模型', 'initializing api': '准备识别',
+      'recognizing text': '正在识别文字'
+    };
+    const percent = Math.max(0, Math.min(100, Math.round((progress || 0) * 100)));
+    els.progressText.textContent = labels[status] || status || '准备 OCR…';
+    els.progressPercent.textContent = percent + '%';
+    els.progressBar.style.width = percent + '%';
+  }
+
+  function drawImageCanvas(maxDimension, preprocess) {
+    if (!state.image) return null;
+    const rotated = Math.abs(state.rotation % 180) === 90;
+    const naturalW = state.image.naturalWidth || state.image.width;
+    const naturalH = state.image.naturalHeight || state.image.height;
+    const outputW = rotated ? naturalH : naturalW;
+    const outputH = rotated ? naturalW : naturalH;
+    const scale = Math.min(1, maxDimension / Math.max(outputW, outputH));
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.max(1, Math.round(outputW * scale));
+    canvas.height = Math.max(1, Math.round(outputH * scale));
+    const ctx = canvas.getContext('2d', { willReadFrequently: !!preprocess });
+    ctx.save();
+    ctx.translate(canvas.width / 2, canvas.height / 2);
+    ctx.rotate(state.rotation * Math.PI / 180);
+    const drawW = naturalW * scale;
+    const drawH = naturalH * scale;
+    ctx.drawImage(state.image, -drawW / 2, -drawH / 2, drawW, drawH);
+    ctx.restore();
+    if (preprocess) {
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const data = imageData.data;
+      for (let i = 0; i < data.length; i += 4) {
+        const gray = data[i] * .299 + data[i + 1] * .587 + data[i + 2] * .114;
+        const contrasted = Math.max(0, Math.min(255, (gray - 128) * 1.28 + 128));
+        data[i] = data[i + 1] = data[i + 2] = contrasted;
+      }
+      ctx.putImageData(imageData, 0, 0);
+    }
+    return canvas;
+  }
+
+  function renderPreview() {
+    const source = drawImageCanvas(1500, false);
+    if (!source) return;
+    els.preview.width = source.width;
+    els.preview.height = source.height;
+    els.preview.getContext('2d').drawImage(source, 0, 0);
+  }
+
+  function setQuickEdit(enabled) {
+    state.quickEdit = !!enabled && state.items.length > 0;
+    root.classList.toggle('rs-quick-edit', state.quickEdit);
+    els.quickEdit.setAttribute('aria-pressed', String(state.quickEdit));
+    els.quickEdit.textContent = state.quickEdit ? '✓ 完成修正' : '✎ 快速修正';
+    root.querySelector('.rs-items-panel .rs-help').textContent = state.quickEdit
+      ? '快速修正模式：对照原图集中修改商品名称和价格；完成后再勾选商品与设置 Share。'
+      : 'OCR 会把数量大于 1 的商品拆成多行。勾选属于你的商品；多人共享时开启 Share 并填写除数。';
+  }
+
+  function setSourceMode(mode) {
+    state.sourceMode = mode === 'ocr' ? 'ocr' : 'import';
+    els.ocrPanel.hidden = state.sourceMode !== 'ocr';
+    els.importPanel.hidden = state.sourceMode !== 'import';
+    els.sourceButtons.forEach(button => {
+      button.setAttribute('aria-pressed', String(button.dataset.sourceMode === state.sourceMode));
+    });
+    showMessage('', false);
+  }
+
+  function loadFile(file) {
+    if (!file || !file.type.startsWith('image/')) {
+      showMessage('请选择 JPEG、PNG、WebP 或手机能够显示的图片格式。', true);
+      return;
+    }
+    const url = URL.createObjectURL(file);
+    const image = new Image();
+    image.onload = function () {
+      if (state.image && state.image.dataset.objectUrl) URL.revokeObjectURL(state.image.dataset.objectUrl);
+      image.dataset.objectUrl = url;
+      state.image = image;
+      state.rotation = 0;
+      els.upload.hidden = true;
+      els.previewWrap.hidden = false;
+      els.scan.disabled = false;
+      renderPreview();
+      showMessage('照片已载入。请确认方向正确，然后开始扫描。', false);
+    };
+    image.onerror = function () {
+      URL.revokeObjectURL(url);
+      showMessage('浏览器无法读取这张照片，请转换成 JPEG 或 PNG 后再试。', true);
+    };
+    image.src = url;
+  }
+
+  function moneyValues(line) {
+    const clean = line.replace(/\d+(?:\.\d+)?\s*%/g, '');
+    const matches = clean.match(/(?:RM\s*)?-?\d[\d,]*\.\d{2}/gi) || [];
+    return matches.map(value => number(value.replace(/RM\s*/i, '')));
+  }
+
+  function percentage(line) {
+    const match = line.match(/(\d+(?:\.\d+)?)\s*%/);
+    return match ? number(match[1]) : null;
+  }
+
+  function usefulName(value) {
+    const name = value.replace(/^[\s|:;._-]+|[\s|:;._-]+$/g, '').trim();
+    if (name.length < 2 || !/[A-Za-z\u3400-\u9fff]/.test(name)) return '';
+    if (/^(date|time|table|cashier|receipt|invoice|order|tel|thank|change|cash|visa|master|subtotal|total|amount)$/i.test(name)) return '';
+    return name;
+  }
+
+  function parseReceipt(text) {
+    const lines = text.split(/\r?\n/).map(line => line.replace(/[|]/g, ' ').replace(/\s+/g, ' ').trim()).filter(Boolean);
+    const items = [];
+    const charges = {
+      service: { rate: 0, amount: 0, mode: 'rate', found: false },
+      sst: { rate: 0, amount: 0, mode: 'rate', found: false }
+    };
+    let receiptTotal = null;
+    let pendingName = '';
+
+    lines.forEach((line, lineIndex) => {
+      const lower = line.toLowerCase();
+      const values = moneyValues(line);
+      const lastValue = values.length ? values[values.length - 1] : null;
+      const rate = percentage(line);
+      const isService = /service\s*(charge|chg)|svc\s*(charge|chg)/i.test(line);
+      const isSst = /\b(sst|gst|tax)\b/i.test(line) && !/tax\s*(invoice|no)/i.test(line);
+      const isSubtotal = /sub\s*total|subtotal/i.test(line);
+      const isGrandTotal = !isSubtotal && /grand\s*total|total\s*(due|amount)?|amount\s*due|jumlah\s*(besar|bayaran)?/i.test(line);
+
+      if (isService || isSst) {
+        const key = isService ? 'service' : 'sst';
+        charges[key].found = true;
+        if (rate != null) charges[key].rate = rate;
+        if (lastValue != null) {
+          charges[key].amount = lastValue;
+          charges[key].mode = 'amount';
+        } else if (rate != null) {
+          charges[key].mode = 'rate';
+        }
+        pendingName = '';
+        return;
+      }
+      if (isGrandTotal && lastValue != null) {
+        receiptTotal = lastValue;
+        pendingName = '';
+        return;
+      }
+      if (isSubtotal || /discount|voucher|rounding|change|tender|cash|credit|debit|balance/i.test(lower)) {
+        pendingName = '';
+        return;
+      }
+      if (lastValue == null) {
+        const candidate = usefulName(line);
+        if (candidate && !/\b\d{1,2}[\/:.-]\d{1,2}[\/:.-]\d{2,4}\b/.test(line)) pendingName = candidate;
+        return;
+      }
+
+      const priceToken = line.match(/(?:RM\s*)?-?\d[\d,]*\.\d{2}(?!.*\d[\d,]*\.\d{2})/i);
+      if (!priceToken || lastValue < 0) return;
+      let body = line.slice(0, priceToken.index).replace(/RM\s*$/i, '').trim();
+      let qty = 1;
+      let name = body;
+      const leadingQty = body.match(/^(\d+)\s*[xX×]\s*(.+)$/);
+      const trailingQtyUnit = body.match(/^(.+?)\s+(\d+)\s*[xX×]\s*(?:RM\s*)?\d[\d,]*(?:\.\d{1,2})?$/i);
+      if (leadingQty) {
+        qty = Math.max(1, Math.min(99, parseInt(leadingQty[1], 10)));
+        name = leadingQty[2];
+      } else if (trailingQtyUnit) {
+        qty = Math.max(1, Math.min(99, parseInt(trailingQtyUnit[2], 10)));
+        name = trailingQtyUnit[1];
+      }
+      name = usefulName(name) || pendingName;
+      pendingName = '';
+      if (!name || /^(rm)?\s*\d/i.test(name)) return;
+      const unitPrice = lastValue / qty;
+      for (let index = 0; index < qty; index += 1) {
+        items.push(newItem(name, unitPrice, qty > 1 ? 'OCR 数量拆分 ' + (index + 1) + '/' + qty : 'OCR 第 ' + (lineIndex + 1) + ' 行'));
+      }
+    });
+
+    const parsedSubtotal = items.reduce((sum, item) => sum + item.price, 0);
+    ['service', 'sst'].forEach(key => {
+      const charge = charges[key];
+      if (!charge.found) return;
+      if (charge.mode === 'rate') charge.amount = parsedSubtotal * charge.rate / 100;
+      if (!charge.rate && charge.amount && parsedSubtotal) charge.rate = charge.amount / parsedSubtotal * 100;
+    });
+    return { items, charges, receiptTotal, lines };
+  }
+
+  function normalizedKey(value) {
+    return String(value || '').toLowerCase().replace(/[\s_.\-\/]/g, '');
+  }
+
+  function pickValue(object, aliases) {
+    if (!object || typeof object !== 'object') return undefined;
+    const wanted = aliases.map(normalizedKey);
+    const key = Object.keys(object).find(candidate => wanted.includes(normalizedKey(candidate)));
+    return key == null ? undefined : object[key];
+  }
+
+  function unwrapJsonText(text) {
+    const cleaned = String(text || '').trim().replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '').trim();
+    const objectStart = cleaned.indexOf('{');
+    const arrayStart = cleaned.indexOf('[');
+    const start = objectStart < 0 ? arrayStart : arrayStart < 0 ? objectStart : Math.min(objectStart, arrayStart);
+    if (start < 0) return cleaned;
+    const opening = cleaned[start];
+    const end = opening === '{' ? cleaned.lastIndexOf('}') : cleaned.lastIndexOf(']');
+    return end > start ? cleaned.slice(start, end + 1) : cleaned;
+  }
+
+  function chargeFromImport(raw) {
+    if (raw == null) return { rate: 0, amount: 0, mode: 'rate' };
+    if (typeof raw === 'number' || typeof raw === 'string') {
+      return { rate: 0, amount: number(raw), mode: 'amount' };
+    }
+    const rateRaw = pickValue(raw, ['rate', 'percent', 'percentage', '费率', '税率']);
+    const amountRaw = pickValue(raw, ['amount', 'value', 'total', '金额', '收费']);
+    const rate = Math.max(0, number(rateRaw));
+    const amount = number(amountRaw);
+    return { rate, amount, mode: amountRaw == null && rate > 0 ? 'rate' : 'amount' };
+  }
+
+  function findCharge(charges, matcher, aliases) {
+    if (Array.isArray(charges)) {
+      return charges.find(entry => matcher.test(String(pickValue(entry, ['type', 'name', 'label', '名称', '项目']) || '')));
+    }
+    return pickValue(charges, aliases);
+  }
+
+  function parseImportedList(text) {
+    let data;
+    try {
+      data = JSON.parse(unwrapJsonText(text));
+    } catch (error) {
+      const fallback = parseReceipt(text);
+      if (!fallback.items.length) throw new Error('无法读取清单。请使用“复制 ChatGPT 提示词”重新生成 JSON。');
+      return fallback;
+    }
+
+    const rawItems = Array.isArray(data)
+      ? data
+      : pickValue(data, ['items', 'item_list', 'itemList', 'products', 'product_list', 'lines', '商品', '商品列表', '明细']);
+    if (!Array.isArray(rawItems) || !rawItems.length) throw new Error('JSON 中找不到 items 商品数组。');
+
+    const items = [];
+    rawItems.forEach((rawItem, itemIndex) => {
+      if (!rawItem || typeof rawItem !== 'object') return;
+      const baseName = String(pickValue(rawItem, ['name', 'item', 'product', 'description', 'title', '名称', '商品名', '品名']) || '').trim();
+      if (!baseName) return;
+      const quantity = Math.max(1, Math.min(99, Math.floor(number(pickValue(rawItem, ['quantity', 'qty', 'count', '数量']), 1))));
+      const unitRaw = pickValue(rawItem, ['unit_price', 'unitPrice', 'unitprice', 'price', '单价', '每份价格']);
+      const lineRaw = pickValue(rawItem, ['line_total', 'lineTotal', 'linetotal', 'total', 'amount', 'subtotal', '小计', '总价', '金额']);
+      const unitPrice = unitRaw == null ? number(lineRaw) / quantity : number(unitRaw);
+      const modifierRaw = pickValue(rawItem, ['modifiers', 'modifier', 'options', 'remarks', '备注', '选项']);
+      const modifiers = Array.isArray(modifierRaw) ? modifierRaw.filter(Boolean).map(String) : modifierRaw ? [String(modifierRaw)] : [];
+      const name = baseName + (modifiers.length ? ' · ' + modifiers.join(' / ') : '');
+      for (let quantityIndex = 0; quantityIndex < quantity; quantityIndex += 1) {
+        items.push(newItem(name, unitPrice, quantity > 1
+          ? '清单导入 数量拆分 ' + (quantityIndex + 1) + '/' + quantity
+          : '清单导入 第 ' + (itemIndex + 1) + ' 项'));
+      }
+    });
+    if (!items.length) throw new Error('items 中没有可用的商品名称。');
+
+    const chargesRaw = pickValue(data, ['charges', 'fees', 'taxes', '收费', '费用']);
+    const serviceRaw = findCharge(chargesRaw, /service|服务费/i, ['service_charge', 'serviceCharge', 'service', '服务费']);
+    const sstRaw = findCharge(chargesRaw, /sst|gst|tax|税/i, ['sst', 'gst', 'tax', 'sales_tax', '销售税', '税']);
+    const serviceTop = pickValue(data, ['service_charge', 'serviceCharge', 'service', '服务费']);
+    const sstTop = pickValue(data, ['sst', 'gst', 'tax', 'sales_tax', '销售税', '税']);
+    const receiptTotalRaw = pickValue(data, ['grand_total', 'grandTotal', 'receipt_total', 'receiptTotal', 'total_due', 'final_total', '应付合计', '最终总额', '总额']);
+
+    return {
+      items,
+      charges: {
+        service: chargeFromImport(serviceRaw == null ? serviceTop : serviceRaw),
+        sst: chargeFromImport(sstRaw == null ? sstTop : sstRaw)
+      },
+      receiptTotal: receiptTotalRaw == null ? null : number(receiptTotalRaw)
+    };
+  }
+
+  function applyImportedList(text) {
+    const parsed = parseImportedList(text);
+    setQuickEdit(false);
+    state.items = parsed.items;
+    state.charges.service = parsed.charges.service;
+    state.charges.sst = parsed.charges.sst;
+    state.receiptTotal = parsed.receiptTotal;
+    els.receiptTotal.value = parsed.receiptTotal == null ? '' : parsed.receiptTotal.toFixed(2);
+    syncCharges();
+    renderItems();
+    showMessage('清单导入完成：已填入 ' + parsed.items.length + ' 行商品。请使用快速修正确认名称和价格。', false);
+    root.querySelector('.rs-items-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  async function scanReceipt() {
+    if (!state.image) return;
+    if (!window.Tesseract || !window.Tesseract.createWorker) {
+      showMessage('OCR 程序未能载入。请检查网络连接并刷新页面后重试。', true);
+      return;
+    }
+    els.scan.disabled = true;
+    els.progress.hidden = false;
+    showMessage('', false);
+    updateProgress('准备 OCR…', 0);
+    let worker;
+    try {
+      const ocrCanvas = drawImageCanvas(2400, true);
+      worker = await window.Tesseract.createWorker(els.language.value, 1, {
+        logger: message => updateProgress(message.status, message.progress)
+      });
+      const result = await worker.recognize(ocrCanvas);
+      const text = result && result.data ? result.data.text : '';
+      els.rawText.textContent = text || '没有识别到文字。';
+      els.rawResult.hidden = false;
+      const parsed = parseReceipt(text);
+      state.items = parsed.items;
+      state.charges.service = parsed.charges.service;
+      state.charges.sst = parsed.charges.sst;
+      state.receiptTotal = parsed.receiptTotal;
+      els.receiptTotal.value = parsed.receiptTotal == null ? '' : parsed.receiptTotal.toFixed(2);
+      syncCharges();
+      renderItems();
+      syncAllItemResults();
+      updateProgress('识别完成', 1);
+      const chargeCount = (parsed.charges.service.found ? 1 : 0) + (parsed.charges.sst.found ? 1 : 0);
+      showMessage('扫描完成：识别出 ' + parsed.items.length + ' 行商品和 ' + chargeCount + ' 个收费项目。请对照原图检查结果。', parsed.items.length === 0);
+    } catch (error) {
+      console.error(error);
+      showMessage('OCR 扫描失败：' + (error && error.message ? error.message : '请检查网络或更换清晰照片后重试。'), true);
+    } finally {
+      if (worker) await worker.terminate().catch(() => {});
+      els.scan.disabled = !state.image;
+    }
+  }
+
+  function resetAll() {
+    if (state.image && state.image.dataset.objectUrl) URL.revokeObjectURL(state.image.dataset.objectUrl);
+    state.image = null;
+    state.rotation = 0;
+    setQuickEdit(false);
+    state.items = [];
+    state.receiptTotal = null;
+    state.charges.service = { rate: 0, amount: 0, mode: 'rate' };
+    state.charges.sst = { rate: 0, amount: 0, mode: 'rate' };
+    els.file.value = '';
+    els.upload.hidden = false;
+    els.previewWrap.hidden = true;
+    els.scan.disabled = true;
+    els.progress.hidden = true;
+    els.rawResult.hidden = true;
+    els.listText.value = '';
+    els.listFile.value = '';
+    els.receiptTotal.value = '';
+    showMessage('', false);
+    syncCharges();
+    renderItems();
+  }
+
+  els.file.addEventListener('change', event => loadFile(event.target.files && event.target.files[0]));
+  els.sourceButtons.forEach(button => button.addEventListener('click', () => setSourceMode(button.dataset.sourceMode)));
+  els.rotateLeft.addEventListener('click', () => { state.rotation = (state.rotation - 90 + 360) % 360; renderPreview(); });
+  els.rotateRight.addEventListener('click', () => { state.rotation = (state.rotation + 90) % 360; renderPreview(); });
+  els.scan.addEventListener('click', scanReceipt);
+  els.reset.addEventListener('click', resetAll);
+  els.addItem.addEventListener('click', () => { state.items.push(newItem('', 0, '手动添加')); renderItems(); });
+  els.quickEdit.addEventListener('click', () => {
+    setQuickEdit(!state.quickEdit);
+    renderItems();
+  });
+  els.importList.addEventListener('click', () => {
+    try {
+      applyImportedList(els.listText.value);
+    } catch (error) {
+      showMessage(error.message || '清单导入失败，请检查格式。', true);
+    }
+  });
+  els.listFile.addEventListener('change', async event => {
+    const file = event.target.files && event.target.files[0];
+    if (!file) return;
+    if (file.size > 1024 * 1024) {
+      showMessage('清单文件不能超过 1 MB。', true);
+      return;
+    }
+    try {
+      const text = await file.text();
+      els.listText.value = text;
+      applyImportedList(text);
+    } catch (error) {
+      showMessage(error.message || '无法读取这个清单文件。', true);
+    }
+  });
+  els.copyPrompt.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(CHATGPT_PROMPT);
+    } catch (error) {
+      const helper = document.createElement('textarea');
+      helper.value = CHATGPT_PROMPT;
+      helper.style.position = 'fixed';
+      helper.style.opacity = '0';
+      document.body.appendChild(helper);
+      helper.select();
+      document.execCommand('copy');
+      helper.remove();
+    }
+    showMessage('ChatGPT 收据扫描提示词已复制。上传照片给 ChatGPT 后贴上提示词，再把返回的 JSON 导入这里。', false);
+  });
+
+  els.itemList.addEventListener('input', event => {
+    const card = event.target.closest('[data-item-id]');
+    const field = event.target.dataset.field;
+    if (!card || !field) return;
+    const item = state.items.find(entry => entry.id === number(card.dataset.itemId));
+    if (!item) return;
+    if (field === 'selected' || field === 'shareEnabled') {
+      item[field] = event.target.checked;
+      if (field === 'shareEnabled') {
+        item.divisor = Math.max(2, Math.floor(number(item.divisor, 2)));
+        const divisorInput = card.querySelector('[data-field="divisor"]');
+        if (divisorInput) divisorInput.value = item.divisor;
+      }
+    }
+    else if (field === 'price') item.price = Math.max(0, number(event.target.value));
+    else if (field === 'divisor') item.divisor = Math.max(2, Math.floor(number(event.target.value, 2)));
+    else item[field] = event.target.value;
+    syncCharges();
+    syncAllItemResults();
+    calculate();
+  });
+
+  els.itemList.addEventListener('click', event => {
+    const button = event.target.closest('button[data-action]');
+    const card = event.target.closest('[data-item-id]');
+    if (!button || !card) return;
+    const item = state.items.find(entry => entry.id === number(card.dataset.itemId));
+    if (!item) return;
+    if (button.dataset.action === 'delete') {
+      state.items = state.items.filter(entry => entry.id !== item.id);
+      renderItems();
+      if (!state.items.length) setQuickEdit(false);
+      return;
+    }
+    if (button.dataset.action === 'minus') item.divisor = Math.max(2, item.divisor - 1);
+    if (button.dataset.action === 'plus') item.divisor = Math.min(99, item.divisor + 1);
+    const input = card.querySelector('[data-field="divisor"]');
+    if (input) input.value = item.divisor;
+    refreshItemCard(card, item);
+    calculate();
+  });
+
+  function bindCharge(key, rateInput, amountInput) {
+    rateInput.addEventListener('input', () => {
+      state.charges[key].rate = Math.max(0, number(rateInput.value));
+      state.charges[key].mode = 'rate';
+      syncAllItemResults(); calculate(rateInput);
+    });
+    amountInput.addEventListener('input', () => {
+      state.charges[key].amount = number(amountInput.value);
+      state.charges[key].mode = 'amount';
+      syncAllItemResults(); calculate(amountInput);
+    });
+    rateInput.addEventListener('blur', () => { syncCharges(); calculate(); });
+    amountInput.addEventListener('blur', () => { syncCharges(); calculate(); });
+  }
+  bindCharge('service', els.serviceRate, els.serviceAmount);
+  bindCharge('sst', els.sstRate, els.sstAmount);
+
+  els.receiptTotal.addEventListener('input', () => {
+    state.receiptTotal = els.receiptTotal.value.trim() === '' ? null : number(els.receiptTotal.value);
+    calculate();
+  });
+  els.summaryToggle.addEventListener('click', () => {
+    const expanded = els.summaryToggle.getAttribute('aria-expanded') === 'true';
+    els.summaryToggle.setAttribute('aria-expanded', String(!expanded));
+    els.summaryDetails.hidden = expanded;
+  });
+
+  setSourceMode('import');
+  syncCharges();
+  renderItems();
+})();
+</script>
+
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>禁止转载。如需引用，请注明文章链接。</span>
+    </section>
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 7v5l3 3" /></svg>
+        <span>
+            最后更新于 2026-08-13
+        </span>
+    </section></footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E4%B8%AA%E4%BA%BA%E6%B8%B8%E6%88%8F%E8%AF%84%E5%88%86%E6%84%9F%E6%83%B3/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/images/gameRating/gameRating_bg.png" loading="lazy" data-key="" data-hash="/images/gameRating/gameRating_bg.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【个人】游戏评分&amp;感想</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2026 怠惰的天秤-sloth
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+
+
+
+
+
+<div id="particles-js"></div>
+
+<style>
+    #particles-js {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    #TableOfContents>ul,
+    ol {
+
+        ul,
+        ol {
+            display: none;
+        }
+
+        .open {
+            display: block;
+        }
+    }
+
+    #backTopBtn {
+        display: none;
+        position: fixed;
+        bottom: 30px;
+        z-index: 99;
+        cursor: pointer;
+        width: 35px;
+        height: 35px;
+        background-image: url('https://sloth-cyx.github.io/icons/backTop.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        transition: transform 0.2s ease;
+    }
+
+    #backTopBtn:hover {
+        transform: translateY(-3px);
+    }
+</style>
+
+<script src="https://sloth-cyx.github.io/background/sakura.js"></script>
+<script src="https://sloth-cyx.github.io/background/particles.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        
+        
+        function initParticles() {
+            
+            const container = document.getElementById('particles-js');
+            if (container && container.childNodes.length === 0) {
+                if (typeof particlesJS !== "undefined") {
+                    particlesJS.load('particles-js', 'https:\/\/sloth-cyx.github.io\/background\/particlesjs-config.json', function () {});
+                }
+            }
+        }
+
+        function checkBackground() {
+            const isDark = document.documentElement.getAttribute('data-scheme') === 'dark';
+            
+            
+            if (isDark) {
+                initParticles();
+            }
+        }
+
+        
+        window.addEventListener('load', () => {
+            
+            if (typeof Sakura !== "undefined") new Sakura('body');
+            
+            checkBackground();
+        });
+
+        
+        const observer = new MutationObserver(checkBackground);
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-scheme'] });
+            
+        
+        let toc = document.querySelector(".widget--toc");
+        if (toc) {
+            window.addEventListener('scroll', function () {
+                let openUl = document.querySelectorAll(".open");
+                if (openUl.length > 0) { openUl.forEach((ul) => { ul.classList.remove("open") }) }
+                let currentLi = document.querySelector(".active-class");
+                if (!currentLi) return;
+                if (currentLi.children.length > 1) { currentLi.children[1].classList.add("open") }
+                let ul = currentLi.parentElement;
+                do {
+                    ul.classList.add("open");
+                    ul = ul.parentElement.parentElement
+                } while (ul !== undefined && (ul.localName === 'ul' || ul.localName === 'ol'))
+            });
+        }
+
+        
+        let rightSideBar = document.querySelector(".right-sidebar");
+        if (rightSideBar) {
+            let btn = document.createElement("div");
+            btn.id = "backTopBtn";
+            btn.onclick = function () { window.scrollTo({ top: 0, behavior: "smooth" }); };
+            rightSideBar.appendChild(btn);
+            window.addEventListener('scroll', function () {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) { btn.style.display = "block"; }
+                else { btn.style.display = "none"; }
+            });
+        }
+
+        
+        let blockquotes = document.querySelectorAll("blockquote");
+        blockquotes.forEach(function (bq) {
+            
+            let text = bq.textContent || bq.innerText;
+            let alertType = "";
+
+            
+            if (text.includes("[!NOTE]")) { alertType = "note"; }
+            else if (text.includes("[!TIP]")) { alertType = "tip"; }
+            else if (text.includes("[!WARN]")) { alertType = "warn"; }
+            else if (text.includes("[!ERROR]")) { alertType = "error"; }
+            else if (text.includes("[!VIOLET]")) { alertType = "violet"; }
+
+            if (alertType) {
+                
+                bq.classList.add("alert", "alert-" + alertType);
+
+                
+                let pTag = bq.querySelector("p");
+                if (pTag) {
+                    
+                    let token = "[!" + alertType.toUpperCase() + "]";
+                    if (pTag.innerText.startsWith(token)) {
+                        pTag.innerText = pTag.innerText.substring(token.length).trim();
+                    } else {
+                        
+                        pTag.innerText = pTag.innerText.replace(/\[!(NOTE|TIP|WARN|ERROR|VIOLET)\]/g, "").trim();
+                    }
+                }
+            }
+        });
+    });
+</script>
+    </body>
+</html>
