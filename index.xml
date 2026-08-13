@@ -36,10 +36,10 @@
     &lt;/div&gt;
 
     &lt;div class=&#34;rs-source-panel&#34; id=&#34;rsOcrPanel&#34; hidden&gt;
-      &lt;input id=&#34;rsReceiptInput&#34; class=&#34;rs-file-input&#34; type=&#34;file&#34; accept=&#34;image/jpeg,image/png,image/webp,image/*&#34; capture=&#34;environment&#34;&gt;
+      &lt;input id=&#34;rsReceiptInput&#34; class=&#34;rs-file-input&#34; type=&#34;file&#34; accept=&#34;image/jpeg,image/png,image/webp,image/*&#34;&gt;
       &lt;label class=&#34;rs-upload-zone&#34; for=&#34;rsReceiptInput&#34; id=&#34;rsUploadZone&#34;&gt;
-        &lt;span class=&#34;rs-upload-icon&#34;&gt;📷&lt;/span&gt;
-        &lt;strong&gt;拍摄或选择收据照片&lt;/strong&gt;
+        &lt;span class=&#34;rs-upload-icon&#34;&gt;🖼️&lt;/span&gt;
+        &lt;strong&gt;上传收据照片&lt;/strong&gt;
         &lt;small&gt;建议使用光线均匀、文字清晰且边缘完整的照片&lt;/small&gt;
       &lt;/label&gt;
 
@@ -58,6 +58,14 @@
           &lt;select id=&#34;rsLanguage&#34;&gt;
             &lt;option value=&#34;eng&#34; selected&gt;English（速度较快）&lt;/option&gt;
             &lt;option value=&#34;eng+chi_sim&#34;&gt;English + 简体中文&lt;/option&gt;
+          &lt;/select&gt;
+        &lt;/label&gt;
+        &lt;label&gt;
+          &lt;span&gt;图片预处理&lt;/span&gt;
+          &lt;select id=&#34;rsPreprocessMode&#34;&gt;
+            &lt;option value=&#34;enhance&#34; selected&gt;自动增强（推荐）&lt;/option&gt;
+            &lt;option value=&#34;binary&#34;&gt;黑白文字&lt;/option&gt;
+            &lt;option value=&#34;original&#34;&gt;使用原图&lt;/option&gt;
           &lt;/select&gt;
         &lt;/label&gt;
         &lt;button class=&#34;rs-primary-button&#34; id=&#34;rsScanButton&#34; type=&#34;button&#34; disabled&gt;开始 OCR 扫描&lt;/button&gt;
@@ -145,6 +153,23 @@
       &lt;label&gt;&lt;span&gt;收据最终总额（可修改）&lt;/span&gt;&lt;div class=&#34;rs-money-input&#34;&gt;&lt;b&gt;RM&lt;/b&gt;&lt;input id=&#34;rsReceiptTotal&#34; type=&#34;number&#34; step=&#34;0.01&#34; inputmode=&#34;decimal&#34; placeholder=&#34;0.00&#34;&gt;&lt;/div&gt;&lt;/label&gt;
       &lt;div class=&#34;rs-check-value&#34;&gt;&lt;span&gt;商品与收费合计&lt;/span&gt;&lt;strong id=&#34;rsCalculatedReceiptTotal&#34;&gt;RM0.00&lt;/strong&gt;&lt;/div&gt;
       &lt;div class=&#34;rs-check-value&#34;&gt;&lt;span&gt;差额&lt;/span&gt;&lt;strong id=&#34;rsDifference&#34;&gt;—&lt;/strong&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&#34;rs-panel rs-share-panel&#34;&gt;
+    &lt;div class=&#34;rs-section-heading&#34;&gt;
+      &lt;div&gt;&lt;span class=&#34;rs-step&#34;&gt;5&lt;/span&gt;&lt;strong&gt;分享账单&lt;/strong&gt;&lt;/div&gt;
+      &lt;span class=&#34;rs-charge-note&#34;&gt;不会包含收据照片&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;p class=&#34;rs-help&#34;&gt;生成链接发送给朋友；对方打开后商品默认未勾选，可自行选择并计算金额。共享商品的除数会一起保留。&lt;/p&gt;
+    &lt;div class=&#34;rs-share-actions&#34;&gt;
+      &lt;button class=&#34;rs-primary-button&#34; id=&#34;rsShareReceipt&#34; type=&#34;button&#34; disabled&gt;分享给朋友&lt;/button&gt;
+      &lt;button class=&#34;rs-secondary-button&#34; id=&#34;rsCopyShareLink&#34; type=&#34;button&#34; disabled&gt;复制分享链接&lt;/button&gt;
+      &lt;button class=&#34;rs-secondary-button&#34; id=&#34;rsDownloadList&#34; type=&#34;button&#34; disabled&gt;下载 JSON&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;rs-share-result&#34; id=&#34;rsShareResult&#34; hidden&gt;
+      &lt;span&gt;分享链接已生成&lt;/span&gt;
+      &lt;input id=&#34;rsShareLink&#34; type=&#34;text&#34; readonly aria-label=&#34;账单分享链接&#34;&gt;
     &lt;/div&gt;
   &lt;/section&gt;
 
@@ -271,6 +296,10 @@
 .rs-check-value strong { font-size:14px; }
 .rs-ok { color:var(--rs-green)!important; }
 .rs-bad { color:var(--rs-red)!important; }
+.rs-share-actions { display:flex; flex-wrap:wrap; gap:8px; }
+.rs-share-result { display:grid; grid-template-columns:auto minmax(0,1fr); align-items:center; gap:10px; margin-top:12px; padding:10px 12px; border:1px solid #cfe0f5; border-radius:11px; background:var(--rs-blue-soft); }
+.rs-share-result span { color:#285a9e; font-size:11px; font-weight:800; white-space:nowrap; }
+.rs-share-result input { width:100%; height:36px; padding:0 9px; font-size:11px; }
 .rs-summary { position:sticky; z-index:20; bottom:12px; overflow:hidden; border:1px solid rgba(255,255,255,.2); border-radius:16px; background:#17345f; color:#fff; box-shadow:0 12px 32px rgba(11,31,62,.3); }
 .rs-summary-main { display:flex; width:100%; min-height:65px; padding:12px 16px; border:0; background:transparent; color:inherit; align-items:center; justify-content:space-between; cursor:pointer; text-align:left; }
 .rs-summary-main span { display:grid; gap:2px; }
@@ -307,6 +336,8 @@
   .rs-items-panel .rs-item-actions { width:100%; margin-top:-5px; justify-content:flex-end; }
   .rs-import-actions { display:grid; grid-template-columns:1fr; }
   .rs-import-actions &gt; * { width:100%; text-align:center; }
+  .rs-share-actions { display:grid; grid-template-columns:1fr; }
+  .rs-share-result { grid-template-columns:1fr; }
   .rs-item-body, .rs-charge-grid, .rs-check-grid { grid-template-columns:1fr; }
   .rs-field-row { grid-template-columns:1fr 1fr; }
   .rs-item-result { grid-template-columns:1fr 1fr; }
@@ -335,7 +366,7 @@
     sourceButtons: root.querySelectorAll(&#39;[data-source-mode]&#39;), ocrPanel: $(&#39;rsOcrPanel&#39;), importPanel: $(&#39;rsImportPanel&#39;),
     file: $(&#39;rsReceiptInput&#39;), upload: $(&#39;rsUploadZone&#39;), previewWrap: $(&#39;rsPreviewWrap&#39;),
     preview: $(&#39;rsPreviewCanvas&#39;), rotateLeft: $(&#39;rsRotateLeft&#39;), rotateRight: $(&#39;rsRotateRight&#39;),
-    language: $(&#39;rsLanguage&#39;), scan: $(&#39;rsScanButton&#39;), reset: $(&#39;rsResetButton&#39;),
+    language: $(&#39;rsLanguage&#39;), preprocessMode: $(&#39;rsPreprocessMode&#39;), scan: $(&#39;rsScanButton&#39;), reset: $(&#39;rsResetButton&#39;),
     progress: $(&#39;rsProgress&#39;), progressBar: $(&#39;rsProgressBar&#39;), progressText: $(&#39;rsProgressText&#39;),
     progressPercent: $(&#39;rsProgressPercent&#39;), message: $(&#39;rsMessage&#39;), rawResult: $(&#39;rsRawResult&#39;),
     rawText: $(&#39;rsRawText&#39;), addItem: $(&#39;rsAddItem&#39;), quickEdit: $(&#39;rsQuickEdit&#39;), empty: $(&#39;rsEmptyItems&#39;), itemList: $(&#39;rsItemList&#39;),
@@ -345,7 +376,8 @@
     receiptTotal: $(&#39;rsReceiptTotal&#39;), calculatedTotal: $(&#39;rsCalculatedReceiptTotal&#39;), difference: $(&#39;rsDifference&#39;),
     selectedCount: $(&#39;rsSelectedCount&#39;), myTotal: $(&#39;rsMyTotal&#39;), selectedSubtotal: $(&#39;rsSelectedSubtotal&#39;),
     myService: $(&#39;rsMyService&#39;), mySst: $(&#39;rsMySst&#39;), summaryToggle: $(&#39;rsSummaryToggle&#39;),
-    summaryDetails: $(&#39;rsSummaryDetails&#39;)
+    summaryDetails: $(&#39;rsSummaryDetails&#39;), shareReceipt: $(&#39;rsShareReceipt&#39;), copyShareLink: $(&#39;rsCopyShareLink&#39;),
+    downloadList: $(&#39;rsDownloadList&#39;), shareResult: $(&#39;rsShareResult&#39;), shareLink: $(&#39;rsShareLink&#39;)
   };
 
   const state = {
@@ -439,6 +471,9 @@
   function renderItems() {
     els.empty.hidden = state.items.length &gt; 0;
     els.quickEdit.disabled = state.items.length === 0;
+    els.shareReceipt.disabled = state.items.length === 0;
+    els.copyShareLink.disabled = state.items.length === 0;
+    els.downloadList.disabled = state.items.length === 0;
     els.itemList.innerHTML = state.items.map(item =&gt; {
       const calc = itemBreakdown(item);
       const shareDivisor = Math.max(2, Math.floor(number(item.divisor, 2)));
@@ -516,6 +551,10 @@
   }
 
   function calculate(skipChargeInput) {
+    if (els.shareLink.value) {
+      els.shareLink.value = &#39;&#39;;
+      els.shareResult.hidden = true;
+    }
     syncCharges(skipChargeInput);
     let selectedBase = 0;
     let selectedService = 0;
@@ -554,6 +593,119 @@
     els.message.classList.toggle(&#39;rs-error&#39;, !!isError);
   }
 
+  function exportReceiptData() {
+    return {
+      currency: &#39;MYR&#39;,
+      items: state.items.map(item =&gt; ({
+        name: item.name,
+        quantity: 1,
+        unit_price: Math.max(0, number(item.price)),
+        line_total: Math.max(0, number(item.price)),
+        share_by: item.shareEnabled ? Math.max(2, Math.floor(number(item.divisor, 2))) : 1,
+        modifiers: []
+      })),
+      charges: {
+        service_charge: { rate: Math.max(0, number(state.charges.service.rate)), amount: chargeAmount(&#39;service&#39;), mode: state.charges.service.mode },
+        sst: { rate: Math.max(0, number(state.charges.sst.rate)), amount: chargeAmount(&#39;sst&#39;), mode: state.charges.sst.mode }
+      },
+      subtotal: subtotal(),
+      grand_total: state.receiptTotal == null ? subtotal() + chargeAmount(&#39;service&#39;) + chargeAmount(&#39;sst&#39;) : state.receiptTotal
+    };
+  }
+
+  function encodeSharePayload() {
+    const compact = {
+      v: 1,
+      i: state.items.map(item =&gt; [
+        String(item.name || &#39;&#39;).slice(0, 200),
+        Math.max(0, number(item.price)),
+        item.shareEnabled ? Math.max(2, Math.floor(number(item.divisor, 2))) : 1
+      ]),
+      c: [
+        [Math.max(0, number(state.charges.service.rate)), chargeAmount(&#39;service&#39;), state.charges.service.mode === &#39;amount&#39; ? 1 : 0],
+        [Math.max(0, number(state.charges.sst.rate)), chargeAmount(&#39;sst&#39;), state.charges.sst.mode === &#39;amount&#39; ? 1 : 0]
+      ],
+      r: state.receiptTotal
+    };
+    const bytes = new TextEncoder().encode(JSON.stringify(compact));
+    let binary = &#39;&#39;;
+    for (let offset = 0; offset &lt; bytes.length; offset += 8192) {
+      binary += String.fromCharCode.apply(null, bytes.subarray(offset, offset + 8192));
+    }
+    return btoa(binary).replace(/\+/g, &#39;-&#39;).replace(/\//g, &#39;_&#39;).replace(/=+$/g, &#39;&#39;);
+  }
+
+  function decodeSharePayload(token) {
+    if (!token || token.length &gt; 100000) throw new Error(&#39;分享资料无效或过长。&#39;);
+    const padded = token.replace(/-/g, &#39;+&#39;).replace(/_/g, &#39;/&#39;) + &#39;===&#39;.slice((token.length + 3) % 4);
+    const binary = atob(padded);
+    const bytes = Uint8Array.from(binary, character =&gt; character.charCodeAt(0));
+    return JSON.parse(new TextDecoder().decode(bytes));
+  }
+
+  function buildShareLink() {
+    if (!state.items.length) throw new Error(&#39;请先加入商品再生成分享链接。&#39;);
+    const base = window.location.href.split(&#39;#&#39;)[0];
+    const link = base + &#39;#receipt=&#39; + encodeSharePayload();
+    els.shareLink.value = link;
+    els.shareResult.hidden = false;
+    return link;
+  }
+
+  async function copyText(value) {
+    try {
+      await navigator.clipboard.writeText(value);
+    } catch (error) {
+      const helper = document.createElement(&#39;textarea&#39;);
+      helper.value = value;
+      helper.style.position = &#39;fixed&#39;;
+      helper.style.opacity = &#39;0&#39;;
+      document.body.appendChild(helper);
+      helper.select();
+      document.execCommand(&#39;copy&#39;);
+      helper.remove();
+    }
+  }
+
+  function loadSharedReceipt() {
+    const match = window.location.hash.match(/^#receipt=([^&amp;]+)/);
+    if (!match) return false;
+    try {
+      const data = decodeSharePayload(match[1]);
+      if (!data || data.v !== 1 || !Array.isArray(data.i) || !data.i.length || data.i.length &gt; 300) {
+        throw new Error(&#39;分享资料格式不正确。&#39;);
+      }
+      state.items = data.i.map((entry, index) =&gt; {
+        if (!Array.isArray(entry) || !String(entry[0] || &#39;&#39;).trim()) throw new Error(&#39;分享资料中有无效商品。&#39;);
+        const item = newItem(String(entry[0]).slice(0, 200), Math.max(0, number(entry[1])), &#39;朋友分享 第 &#39; + (index + 1) + &#39; 项&#39;);
+        const divisor = Math.max(1, Math.min(99, Math.floor(number(entry[2], 1))));
+        item.shareEnabled = divisor &gt; 1;
+        item.divisor = divisor &gt; 1 ? divisor : 2;
+        item.selected = false;
+        return item;
+      });
+      const charges = Array.isArray(data.c) ? data.c : [];
+      [&#39;service&#39;, &#39;sst&#39;].forEach((key, index) =&gt; {
+        const charge = Array.isArray(charges[index]) ? charges[index] : [0, 0, 0];
+        state.charges[key] = {
+          rate: Math.max(0, number(charge[0])),
+          amount: number(charge[1]),
+          mode: charge[2] === 1 ? &#39;amount&#39; : &#39;rate&#39;
+        };
+      });
+      state.receiptTotal = data.r == null ? null : number(data.r);
+      els.receiptTotal.value = state.receiptTotal == null ? &#39;&#39; : state.receiptTotal.toFixed(2);
+      setSourceMode(&#39;import&#39;);
+      syncCharges();
+      renderItems();
+      showMessage(&#39;已载入朋友分享的账单，共 &#39; + state.items.length + &#39; 项。请勾选属于你的商品。&#39;, false);
+      return true;
+    } catch (error) {
+      showMessage(&#39;无法载入分享账单：&#39; + (error.message || &#39;链接资料已损坏。&#39;), true);
+      return false;
+    }
+  }
+
   function updateProgress(status, progress) {
     const labels = {
       &#39;loading tesseract core&#39;: &#39;加载 OCR 核心&#39;, &#39;initializing tesseract&#39;: &#39;初始化 OCR&#39;,
@@ -566,18 +718,86 @@
     els.progressBar.style.width = percent + &#39;%&#39;;
   }
 
-  function drawImageCanvas(maxDimension, preprocess) {
+  function clampByte(value) {
+    return Math.max(0, Math.min(255, value));
+  }
+
+  function otsuThreshold(grayValues) {
+    const histogram = new Uint32Array(256);
+    for (let i = 0; i &lt; grayValues.length; i += 1) histogram[grayValues[i]] += 1;
+    const total = grayValues.length;
+    let weightedTotal = 0;
+    for (let i = 0; i &lt; 256; i += 1) weightedTotal += i * histogram[i];
+    let backgroundWeight = 0;
+    let backgroundSum = 0;
+    let bestVariance = -1;
+    let threshold = 170;
+    for (let i = 0; i &lt; 256; i += 1) {
+      backgroundWeight += histogram[i];
+      if (!backgroundWeight) continue;
+      const foregroundWeight = total - backgroundWeight;
+      if (!foregroundWeight) break;
+      backgroundSum += i * histogram[i];
+      const backgroundMean = backgroundSum / backgroundWeight;
+      const foregroundMean = (weightedTotal - backgroundSum) / foregroundWeight;
+      const variance = backgroundWeight * foregroundWeight * Math.pow(backgroundMean - foregroundMean, 2);
+      if (variance &gt; bestVariance) {
+        bestVariance = variance;
+        threshold = i;
+      }
+    }
+    return threshold;
+  }
+
+  function preprocessReceipt(ctx, canvas, mode) {
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const pixels = imageData.data;
+    const width = canvas.width;
+    const height = canvas.height;
+    const gray = new Uint8ClampedArray(width * height);
+
+    for (let pixelIndex = 0, dataIndex = 0; pixelIndex &lt; gray.length; pixelIndex += 1, dataIndex += 4) {
+      const luminance = pixels[dataIndex] * .299 + pixels[dataIndex + 1] * .587 + pixels[dataIndex + 2] * .114;
+      gray[pixelIndex] = clampByte((luminance - 128) * 1.35 + 138);
+    }
+
+    const sharpened = new Uint8ClampedArray(gray);
+    for (let y = 1; y &lt; height - 1; y += 1) {
+      const row = y * width;
+      for (let x = 1; x &lt; width - 1; x += 1) {
+        const index = row + x;
+        sharpened[index] = clampByte(
+          gray[index] * 2 - (gray[index - 1] + gray[index + 1] + gray[index - width] + gray[index + width]) * .25
+        );
+      }
+    }
+
+    const threshold = mode === &#39;binary&#39; ? otsuThreshold(sharpened) : null;
+    for (let pixelIndex = 0, dataIndex = 0; pixelIndex &lt; sharpened.length; pixelIndex += 1, dataIndex += 4) {
+      const value = threshold == null ? sharpened[pixelIndex] : (sharpened[pixelIndex] &lt; threshold ? 0 : 255);
+      pixels[dataIndex] = pixels[dataIndex + 1] = pixels[dataIndex + 2] = value;
+      pixels[dataIndex + 3] = 255;
+    }
+    ctx.putImageData(imageData, 0, 0);
+  }
+
+  function drawImageCanvas(maxDimension, preprocessMode) {
     if (!state.image) return null;
     const rotated = Math.abs(state.rotation % 180) === 90;
     const naturalW = state.image.naturalWidth || state.image.width;
     const naturalH = state.image.naturalHeight || state.image.height;
     const outputW = rotated ? naturalH : naturalW;
     const outputH = rotated ? naturalW : naturalH;
-    const scale = Math.min(1, maxDimension / Math.max(outputW, outputH));
+    const shouldPreprocess = preprocessMode &amp;&amp; preprocessMode !== &#39;original&#39;;
+    const maximumScale = maxDimension / Math.max(outputW, outputH);
+    const desiredScale = shouldPreprocess ? Math.max(1, 1500 / Math.min(outputW, outputH)) : 1;
+    const scale = Math.min(shouldPreprocess ? 2 : 1, maximumScale, desiredScale);
     const canvas = document.createElement(&#39;canvas&#39;);
     canvas.width = Math.max(1, Math.round(outputW * scale));
     canvas.height = Math.max(1, Math.round(outputH * scale));
-    const ctx = canvas.getContext(&#39;2d&#39;, { willReadFrequently: !!preprocess });
+    const ctx = canvas.getContext(&#39;2d&#39;, { willReadFrequently: shouldPreprocess });
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = &#39;high&#39;;
     ctx.save();
     ctx.translate(canvas.width / 2, canvas.height / 2);
     ctx.rotate(state.rotation * Math.PI / 180);
@@ -585,16 +805,7 @@
     const drawH = naturalH * scale;
     ctx.drawImage(state.image, -drawW / 2, -drawH / 2, drawW, drawH);
     ctx.restore();
-    if (preprocess) {
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const data = imageData.data;
-      for (let i = 0; i &lt; data.length; i += 4) {
-        const gray = data[i] * .299 + data[i + 1] * .587 + data[i + 2] * .114;
-        const contrasted = Math.max(0, Math.min(255, (gray - 128) * 1.28 + 128));
-        data[i] = data[i + 1] = data[i + 2] = contrasted;
-      }
-      ctx.putImageData(imageData, 0, 0);
-    }
+    if (shouldPreprocess) preprocessReceipt(ctx, canvas, preprocessMode);
     return canvas;
   }
 
@@ -818,10 +1029,14 @@
       const modifierRaw = pickValue(rawItem, [&#39;modifiers&#39;, &#39;modifier&#39;, &#39;options&#39;, &#39;remarks&#39;, &#39;备注&#39;, &#39;选项&#39;]);
       const modifiers = Array.isArray(modifierRaw) ? modifierRaw.filter(Boolean).map(String) : modifierRaw ? [String(modifierRaw)] : [];
       const name = baseName + (modifiers.length ? &#39; · &#39; + modifiers.join(&#39; / &#39;) : &#39;&#39;);
+      const shareBy = Math.max(1, Math.min(99, Math.floor(number(pickValue(rawItem, [&#39;share_by&#39;, &#39;shareBy&#39;, &#39;divisor&#39;, &#39;共享人数&#39;, &#39;除数&#39;]), 1))));
       for (let quantityIndex = 0; quantityIndex &lt; quantity; quantityIndex += 1) {
-        items.push(newItem(name, unitPrice, quantity &gt; 1
+        const item = newItem(name, unitPrice, quantity &gt; 1
           ? &#39;清单导入 数量拆分 &#39; + (quantityIndex + 1) + &#39;/&#39; + quantity
-          : &#39;清单导入 第 &#39; + (itemIndex + 1) + &#39; 项&#39;));
+          : &#39;清单导入 第 &#39; + (itemIndex + 1) + &#39; 项&#39;);
+        item.shareEnabled = shareBy &gt; 1;
+        item.divisor = shareBy &gt; 1 ? shareBy : 2;
+        items.push(item);
       }
     });
     if (!items.length) throw new Error(&#39;items 中没有可用的商品名称。&#39;);
@@ -869,7 +1084,8 @@
     updateProgress(&#39;准备 OCR…&#39;, 0);
     let worker;
     try {
-      const ocrCanvas = drawImageCanvas(2400, true);
+      updateProgress(&#39;正在预处理图片&#39;, 0.03);
+      const ocrCanvas = drawImageCanvas(3600, els.preprocessMode.value);
       worker = await window.Tesseract.createWorker(els.language.value, 1, {
         logger: message =&gt; updateProgress(message.status, message.progress)
       });
@@ -916,12 +1132,18 @@
     els.listText.value = &#39;&#39;;
     els.listFile.value = &#39;&#39;;
     els.receiptTotal.value = &#39;&#39;;
+    els.shareLink.value = &#39;&#39;;
+    els.shareResult.hidden = true;
+    if (window.location.hash.startsWith(&#39;#receipt=&#39;)) {
+      window.history.replaceState(null, &#39;&#39;, window.location.pathname + window.location.search);
+    }
     showMessage(&#39;&#39;, false);
     syncCharges();
     renderItems();
   }
 
   els.file.addEventListener(&#39;change&#39;, event =&gt; loadFile(event.target.files &amp;&amp; event.target.files[0]));
+  window.addEventListener(&#39;hashchange&#39;, loadSharedReceipt);
   els.sourceButtons.forEach(button =&gt; button.addEventListener(&#39;click&#39;, () =&gt; setSourceMode(button.dataset.sourceMode)));
   els.rotateLeft.addEventListener(&#39;click&#39;, () =&gt; { state.rotation = (state.rotation - 90 + 360) % 360; renderPreview(); });
   els.rotateRight.addEventListener(&#39;click&#39;, () =&gt; { state.rotation = (state.rotation + 90) % 360; renderPreview(); });
@@ -955,19 +1177,55 @@
     }
   });
   els.copyPrompt.addEventListener(&#39;click&#39;, async () =&gt; {
-    try {
-      await navigator.clipboard.writeText(CHATGPT_PROMPT);
-    } catch (error) {
-      const helper = document.createElement(&#39;textarea&#39;);
-      helper.value = CHATGPT_PROMPT;
-      helper.style.position = &#39;fixed&#39;;
-      helper.style.opacity = &#39;0&#39;;
-      document.body.appendChild(helper);
-      helper.select();
-      document.execCommand(&#39;copy&#39;);
-      helper.remove();
-    }
+    await copyText(CHATGPT_PROMPT);
     showMessage(&#39;ChatGPT 收据扫描提示词已复制。上传照片给 ChatGPT 后贴上提示词，再把返回的 JSON 导入这里。&#39;, false);
+  });
+
+  els.shareReceipt.addEventListener(&#39;click&#39;, async () =&gt; {
+    try {
+      const link = buildShareLink();
+      if (navigator.share) {
+        try {
+          await navigator.share({ title: &#39;账单分摊&#39;, text: &#39;打开账单后勾选你的商品，即可计算需要支付的金额。&#39;, url: link });
+          showMessage(&#39;分享面板已打开。&#39;, false);
+          return;
+        } catch (error) {
+          if (error &amp;&amp; error.name === &#39;AbortError&#39;) return;
+        }
+      }
+      await copyText(link);
+      showMessage(link.length &gt; 7500
+        ? &#39;分享链接已复制，但账单较长；部分聊天软件可能截断链接，建议同时下载 JSON 发送。&#39;
+        : &#39;分享链接已复制，可以直接发送给朋友。&#39;, false);
+    } catch (error) {
+      showMessage(error.message || &#39;无法生成分享链接。&#39;, true);
+    }
+  });
+
+  els.copyShareLink.addEventListener(&#39;click&#39;, async () =&gt; {
+    try {
+      const link = buildShareLink();
+      await copyText(link);
+      showMessage(link.length &gt; 7500
+        ? &#39;链接已复制，但内容较长，建议改用“下载 JSON”。&#39;
+        : &#39;分享链接已复制，可以发送给朋友。&#39;, false);
+    } catch (error) {
+      showMessage(error.message || &#39;无法复制分享链接。&#39;, true);
+    }
+  });
+
+  els.downloadList.addEventListener(&#39;click&#39;, () =&gt; {
+    if (!state.items.length) return;
+    const blob = new Blob([JSON.stringify(exportReceiptData(), null, 2)], { type: &#39;application/json;charset=utf-8&#39; });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement(&#39;a&#39;);
+    link.href = url;
+    link.download = &#39;receipt-splitter-&#39; + new Date().toISOString().slice(0, 10) + &#39;.json&#39;;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+    showMessage(&#39;账单 JSON 已下载，可以把文件发送给朋友导入。&#39;, false);
   });
 
   els.itemList.addEventListener(&#39;input&#39;, event =&gt; {
@@ -1042,6 +1300,7 @@
   setSourceMode(&#39;import&#39;);
   syncCharges();
   renderItems();
+  loadSharedReceipt();
 })();
 &lt;/script&gt;
 
