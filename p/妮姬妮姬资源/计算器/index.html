@@ -2702,10 +2702,18 @@ window.onload = function() {
         border: 1px solid var(--card-separator-color);
         border-radius: var(--card-border-radius);
         background: var(--card-background);
+        color: var(--card-text-color-main);
         box-shadow: var(--shadow-l1);
     }
 
-    .article-access-card h2 { margin-top: 0; }
+    .article-access-card h2 {
+        margin-top: 0;
+        color: var(--card-text-color-main);
+    }
+    .article-access-card p,
+    .article-access-card label {
+        color: var(--card-text-color-main);
+    }
     .article-access-card label { display: block; margin-bottom: .5rem; font-weight: 600; }
     .article-access-controls { display: flex; gap: .75rem; }
     .article-access-controls input {
@@ -2725,7 +2733,7 @@ window.onload = function() {
         color: var(--accent-color-text);
         cursor: pointer;
     }
-    .article-access-error { margin-bottom: 0; color: #d33; }
+    .article-access-card .article-access-error { margin-bottom: 0; color: #d33; }
 </style>
 
 <script>
