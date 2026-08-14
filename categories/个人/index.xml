@@ -18,7 +18,6 @@
   &lt;section class=&#34;rs-panel rs-intro&#34;&gt;
     &lt;div&gt;
       &lt;div class=&#34;rs-kicker&#34;&gt;Receipt Splitter&lt;/div&gt;
-      &lt;h3&gt;扫描、勾选，算出我该付多少&lt;/h3&gt;
       &lt;p&gt;照片只在当前浏览器内处理，不会上传到服务器。OCR 结果可能有误，请在结算前核对商品和收费。&lt;/p&gt;
     &lt;/div&gt;
     &lt;span class=&#34;rs-privacy&#34;&gt;🔒 本地处理&lt;/span&gt;
@@ -190,11 +189,11 @@
 &lt;/div&gt;
 
 &lt;style&gt;
-.rs-app { --rs-blue:#2767d8; --rs-blue-soft:#edf4ff; --rs-green:#147a57; --rs-red:#c63f4a; --rs-border:#dce3ec; --rs-muted:#667085; --rs-surface:var(--card-background, #fff); position:relative; display:grid; gap:16px; margin:16px 0 84px; color:var(--card-text-color-main, inherit); }
+.rs-app { --rs-blue:#2767d8; --rs-blue-soft:#edf4ff; --rs-green:#147a57; --rs-red:#c63f4a; --rs-border:#dce3ec; --rs-muted:#667085; --rs-surface:var(--card-background, #fff); position:relative; display:grid; gap:16px; margin:16px 0 96px; color:var(--card-text-color-main, inherit); }
 .rs-app *, .rs-app *::before, .rs-app *::after { box-sizing:border-box; }
 .rs-app [hidden] { display:none!important; }
 .rs-panel { margin:0; padding:20px; border:1px solid var(--rs-border); border-radius:18px; background:var(--rs-surface); box-shadow:0 8px 24px rgba(27,44,72,.06); }
-.rs-intro { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; background:linear-gradient(135deg,#eef6ff,#fff8ea); }
+.rs-intro { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; background:#eef6ff; }
 .rs-intro h3 { margin:3px 0 6px; font-size:22px; color:#17345f; }
 .rs-intro p { margin:0; max-width:650px; color:#536273; font-size:13px; line-height:1.7; }
 .rs-kicker { color:var(--rs-blue); font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
@@ -315,7 +314,7 @@
 .rs-summary-details { padding:0 16px 12px; border-top:1px solid rgba(255,255,255,.13); }
 .rs-summary-details div { display:flex; justify-content:space-between; padding-top:8px; color:#d9e5f5; font-size:11px; }
 [data-scheme=&#34;dark&#34;] .rs-app { --rs-border:#59616c; --rs-muted:#b1bac7; }
-[data-scheme=&#34;dark&#34;] .rs-intro { background:linear-gradient(135deg,#273b56,#473b28); }
+[data-scheme=&#34;dark&#34;] .rs-intro { background:#273b56; }
 [data-scheme=&#34;dark&#34;] .rs-intro h3, [data-scheme=&#34;dark&#34;] .rs-intro p { color:#edf3fa; }
 [data-scheme=&#34;dark&#34;] .rs-upload-zone { background:#2c3848; color:#d8e8ff; }
 [data-scheme=&#34;dark&#34;] .rs-secondary-button { background:#3d4652; color:#fff; }
@@ -325,7 +324,7 @@
 [data-scheme=&#34;dark&#34;] .rs-list-import { background:#2c3848; }
 [data-scheme=&#34;dark&#34;] .rs-source-toggle { background:#2c3848; }
 @media (max-width:600px) {
-  .rs-app { gap:12px; margin-bottom:76px; }
+  .rs-app { gap:12px; margin-bottom:88px; }
   .rs-panel { padding:15px; border-radius:15px; }
   .rs-intro { display:grid; }
   .rs-intro h3 { font-size:19px; }
@@ -1330,6 +1329,341 @@
   syncCharges();
   renderItems();
   loadSharedReceipt();
+})();
+&lt;/script&gt;
+
+&lt;h2 id=&#34;图片隐私助手&#34;&gt;图片隐私助手
+&lt;/h2&gt;&lt;div class=&#34;ib-app&#34; data-image-blurrer&gt;
+  &lt;section class=&#34;ib-panel ib-intro&#34;&gt;
+    &lt;div&gt;
+      &lt;div class=&#34;ib-kicker&#34;&gt;Image Privacy Editor&lt;/div&gt;
+      &lt;p&gt;框选需要隐藏的文字、人脸或其他隐私内容；图片只在当前浏览器内处理，不会上传到服务器。&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;span class=&#34;ib-privacy&#34;&gt;🔒 本地处理&lt;/span&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&#34;ib-panel&#34;&gt;
+    &lt;div class=&#34;ib-heading&#34;&gt;&lt;div&gt;&lt;span class=&#34;ib-step&#34;&gt;1&lt;/span&gt;&lt;strong&gt;上传图片&lt;/strong&gt;&lt;/div&gt;&lt;button class=&#34;ib-text&#34; type=&#34;button&#34; data-reset hidden&gt;清空全部&lt;/button&gt;&lt;/div&gt;
+    &lt;input class=&#34;ib-file&#34; data-file type=&#34;file&#34; accept=&#34;image/png,image/jpeg,image/webp,image/*&#34;&gt;
+    &lt;label class=&#34;ib-drop&#34; data-drop&gt;
+      &lt;span&gt;🖼️&lt;/span&gt;&lt;strong&gt;点击或拖放图片到这里&lt;/strong&gt;&lt;small&gt;支持 PNG、JPG、WebP，建议不超过 20 MB&lt;/small&gt;
+      &lt;input class=&#34;ib-file&#34; data-file-inner type=&#34;file&#34; accept=&#34;image/png,image/jpeg,image/webp,image/*&#34;&gt;
+    &lt;/label&gt;
+    &lt;div class=&#34;ib-filebar&#34; data-filebar hidden&gt;&lt;span data-filename&gt;&lt;/span&gt;&lt;label class=&#34;ib-secondary&#34;&gt;更换图片&lt;input class=&#34;ib-file&#34; data-replace type=&#34;file&#34; accept=&#34;image/png,image/jpeg,image/webp,image/*&#34;&gt;&lt;/label&gt;&lt;/div&gt;
+    &lt;div class=&#34;ib-message&#34; data-message role=&#34;status&#34; aria-live=&#34;polite&#34; hidden&gt;&lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&#34;ib-panel&#34; data-editor-section hidden&gt;
+    &lt;div class=&#34;ib-heading&#34;&gt;&lt;div&gt;&lt;span class=&#34;ib-step&#34;&gt;2&lt;/span&gt;&lt;strong&gt;框选隐私区域&lt;/strong&gt;&lt;/div&gt;&lt;span class=&#34;ib-count&#34; data-count&gt;0 个选区&lt;/span&gt;&lt;/div&gt;
+    &lt;p class=&#34;ib-help&#34;&gt;先选择处理方式，再在图片上按住并拖动。可以重复框选多处；点击已有选区可重新选择。&lt;/p&gt;
+    &lt;div class=&#34;ib-toolbar&#34; role=&#34;group&#34; aria-label=&#34;选择处理方式&#34;&gt;
+      &lt;button type=&#34;button&#34; data-mode=&#34;pixelate&#34; aria-pressed=&#34;true&#34;&gt;&lt;span&gt;▦&lt;/span&gt; 马赛克&lt;/button&gt;
+      &lt;button type=&#34;button&#34; data-mode=&#34;blur&#34; aria-pressed=&#34;false&#34;&gt;&lt;span&gt;◉&lt;/span&gt; 模糊&lt;/button&gt;
+      &lt;button type=&#34;button&#34; data-mode=&#34;black&#34; aria-pressed=&#34;false&#34;&gt;&lt;span&gt;■&lt;/span&gt; 涂黑&lt;/button&gt;
+      &lt;label class=&#34;ib-strength&#34;&gt;&lt;span data-strength-label&gt;马赛克强度&lt;/span&gt;&lt;input data-strength type=&#34;range&#34; min=&#34;4&#34; max=&#34;40&#34; value=&#34;18&#34;&gt;&lt;b data-strength-value&gt;18&lt;/b&gt;&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;ib-stage&#34; data-stage&gt;
+      &lt;canvas data-canvas aria-label=&#34;图片隐私区域编辑画布&#34;&gt;&lt;/canvas&gt;
+      &lt;div class=&#34;ib-empty-tip&#34; data-tip&gt;在图片上拖动以添加第一个选区&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;ib-actions&#34;&gt;
+      &lt;button class=&#34;ib-secondary&#34; type=&#34;button&#34; data-undo disabled&gt;↶ 撤销&lt;/button&gt;
+      &lt;button class=&#34;ib-secondary&#34; type=&#34;button&#34; data-delete disabled&gt;删除所选&lt;/button&gt;
+      &lt;button class=&#34;ib-secondary&#34; type=&#34;button&#34; data-clear disabled&gt;清除所有选区&lt;/button&gt;
+      &lt;button class=&#34;ib-primary&#34; type=&#34;button&#34; data-preview disabled&gt;生成成品预览&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;ib-regions&#34; data-regions hidden&gt;&lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&#34;ib-panel&#34; data-result-section hidden&gt;
+    &lt;div class=&#34;ib-heading&#34;&gt;&lt;div&gt;&lt;span class=&#34;ib-step&#34;&gt;3&lt;/span&gt;&lt;strong&gt;预览与下载&lt;/strong&gt;&lt;/div&gt;&lt;span class=&#34;ib-ready&#34;&gt;✓ 已生成&lt;/span&gt;&lt;/div&gt;
+    &lt;div class=&#34;ib-result&#34;&gt;&lt;img data-result alt=&#34;处理后的成品图像预览&#34;&gt;&lt;/div&gt;
+    &lt;div class=&#34;ib-export-row&#34;&gt;
+      &lt;label&gt;导出格式&lt;select data-format&gt;&lt;option value=&#34;png&#34;&gt;PNG（无损）&lt;/option&gt;&lt;option value=&#34;jpeg&#34;&gt;JPG（文件较小）&lt;/option&gt;&lt;/select&gt;&lt;/label&gt;
+      &lt;label data-quality-wrap hidden&gt;JPG 画质&lt;input data-quality type=&#34;range&#34; min=&#34;50&#34; max=&#34;100&#34; value=&#34;92&#34;&gt;&lt;b data-quality-value&gt;92%&lt;/b&gt;&lt;/label&gt;
+      &lt;button class=&#34;ib-primary&#34; type=&#34;button&#34; data-download&gt;↓ 下载成品图片&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.ib-app{--ib-accent:#7c3aed;--ib-accent-dark:#6326c5;--ib-accent-soft:#f3edff;--ib-border:#dce3ec;--ib-muted:#667085;--ib-surface:var(--card-background,#fff);display:grid;gap:16px;margin:16px 0 96px;color:var(--card-text-color-main,inherit)}
+.ib-app *,.ib-app *:before,.ib-app *:after{box-sizing:border-box}.ib-app [hidden]{display:none!important}
+.ib-panel{margin:0;padding:20px;border:1px solid var(--ib-border);border-radius:18px;background:var(--ib-surface);box-shadow:0 8px 24px rgba(27,44,72,.06)}
+.ib-intro{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;background:#f5efff}
+.ib-intro h3{margin:3px 0 6px;font-size:22px;color:#17345f}.ib-intro p{margin:0;max-width:650px;color:#536273;font-size:13px;line-height:1.7}
+.ib-kicker{color:var(--ib-accent);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.ib-privacy{flex:0 0 auto;padding:7px 10px;border-radius:999px;background:#f0e7ff;color:#6528b8;font-size:12px;font-weight:700}
+.ib-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.ib-heading&gt;div{display:flex;align-items:center;gap:9px}.ib-step{display:inline-grid;place-items:center;width:27px;height:27px;border-radius:9px;background:var(--ib-accent);color:#fff;font-size:13px;font-weight:800}
+.ib-text{padding:5px;border:0;background:none;color:var(--ib-accent);cursor:pointer;font:inherit;font-size:13px;font-weight:700}.ib-file{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.ib-drop{display:flex;min-height:165px;padding:24px;border:2px dashed #c7aaf5;border-radius:16px;background:#fbf9ff;flex-direction:column;align-items:center;justify-content:center;gap:7px;color:#6935aa;text-align:center;cursor:pointer;transition:.2s}.ib-drop:hover,.ib-drop.is-dragging{border-color:var(--ib-accent);background:var(--ib-accent-soft);transform:translateY(-1px)}.ib-drop&gt;span{font-size:34px}.ib-drop small{color:#806d98}
+.ib-filebar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 13px;border:1px solid #d9e2ee;border-radius:12px;background:#f8fafc;font-size:13px}.ib-filebar&gt;span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ib-help{margin:-4px 0 14px;color:var(--ib-muted);font-size:12px;line-height:1.65}.ib-count,.ib-ready{padding:5px 9px;border-radius:999px;background:var(--ib-accent-soft);color:#6935aa;font-size:11px;font-weight:750}.ib-ready{background:#def7e9;color:#176442}
+.ib-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px}.ib-toolbar&gt;button,.ib-secondary,.ib-primary{min-height:40px;padding:9px 14px;border-radius:11px;cursor:pointer;font:inherit;font-size:13px;font-weight:750}.ib-toolbar&gt;button,.ib-secondary{border:1px solid #cbd5e1;background:#fff;color:#344054}.ib-toolbar&gt;button[aria-pressed=&#34;true&#34;]{border-color:#a879ed;background:var(--ib-accent-soft);color:var(--ib-accent-dark);box-shadow:0 0 0 2px rgba(124,58,237,.11)}.ib-toolbar&gt;button span{margin-right:5px}.ib-primary{border:0;background:var(--ib-accent);color:#fff;box-shadow:0 5px 14px rgba(124,58,237,.24)}.ib-primary:hover{background:var(--ib-accent-dark)}button:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
+.ib-strength{display:flex;align-items:center;gap:8px;margin-left:auto;color:var(--ib-muted);font-size:11px;font-weight:700}.ib-strength input{width:110px}.ib-strength b{min-width:22px;color:#344054}
+.ib-stage{position:relative;overflow:hidden;border-radius:14px;background:repeating-conic-gradient(#232832 0 25%,#1d222b 0 50%) 50%/18px 18px;touch-action:none;user-select:none}.ib-stage canvas{display:block;width:100%;height:auto;cursor:crosshair}.ib-empty-tip{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);padding:7px 11px;border-radius:999px;background:rgba(18,23,31,.78);color:#fff;font-size:11px;pointer-events:none;white-space:nowrap}
+.ib-actions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;margin-top:12px}.ib-regions{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;padding-top:12px;border-top:1px solid var(--ib-border)}.ib-regions button{padding:6px 9px;border:1px solid #d8e0eb;border-radius:9px;background:#f8fafc;color:#536273;cursor:pointer;font:inherit;font-size:11px}.ib-regions button.is-selected{border-color:#a879ed;background:var(--ib-accent-soft);color:var(--ib-accent-dark)}
+.ib-message{margin-top:12px;padding:10px 12px;border-radius:10px;background:#f3edff;color:#6935aa;font-size:12px}.ib-message.is-error{background:#fff0f1;color:#ad2634}.ib-result{display:grid;place-items:center;overflow:hidden;max-height:70vh;border-radius:14px;background:#171b22}.ib-result img{display:block;max-width:100%;max-height:70vh}.ib-export-row{display:flex;align-items:flex-end;flex-wrap:wrap;gap:12px;margin-top:14px}.ib-export-row label{display:grid;gap:5px;color:var(--ib-muted);font-size:11px;font-weight:700}.ib-export-row select{height:40px;padding:0 10px;border:1px solid #cdd6e1;border-radius:9px;background:var(--ib-surface);color:inherit;font:inherit}.ib-export-row label:nth-child(2){display:flex;align-items:center;align-self:center}.ib-export-row .ib-primary{margin-left:auto}
+[data-scheme=&#34;dark&#34;] .ib-intro{background:#392f4b}[data-scheme=&#34;dark&#34;] .ib-intro p{color:#eee8f7}
+@media(max-width:640px){.ib-app{margin-bottom:88px}.ib-panel{padding:15px}.ib-intro{flex-direction:column}.ib-privacy{align-self:flex-start}.ib-strength{width:100%;margin-left:0}.ib-strength input{flex:1}.ib-actions&gt;*{flex:1}.ib-export-row&gt;*{width:100%}.ib-export-row .ib-primary{margin-left:0}.ib-filebar{align-items:flex-start;flex-direction:column}}
+&lt;/style&gt;
+
+&lt;script&gt;
+(() =&gt; {
+  document.querySelectorAll(&#39;[data-image-blurrer]&#39;).forEach((root, instanceIndex) =&gt; {
+    if (root.dataset.ready) return;
+    root.dataset.ready = &#39;true&#39;;
+    const $ = selector =&gt; root.querySelector(selector);
+    const els = { drop:$(&#39;[data-drop]&#39;), file:$(&#39;[data-file-inner]&#39;), replace:$(&#39;[data-replace]&#39;), filebar:$(&#39;[data-filebar]&#39;), filename:$(&#39;[data-filename]&#39;), reset:$(&#39;[data-reset]&#39;), editor:$(&#39;[data-editor-section]&#39;), canvas:$(&#39;[data-canvas]&#39;), stage:$(&#39;[data-stage]&#39;), tip:$(&#39;[data-tip]&#39;), count:$(&#39;[data-count]&#39;), regions:$(&#39;[data-regions]&#39;), undo:$(&#39;[data-undo]&#39;), delete:$(&#39;[data-delete]&#39;), clear:$(&#39;[data-clear]&#39;), preview:$(&#39;[data-preview]&#39;), resultSection:$(&#39;[data-result-section]&#39;), result:$(&#39;[data-result]&#39;), format:$(&#39;[data-format]&#39;), qualityWrap:$(&#39;[data-quality-wrap]&#39;), quality:$(&#39;[data-quality]&#39;), qualityValue:$(&#39;[data-quality-value]&#39;), download:$(&#39;[data-download]&#39;), message:$(&#39;[data-message]&#39;), strength:$(&#39;[data-strength]&#39;), strengthLabel:$(&#39;[data-strength-label]&#39;), strengthValue:$(&#39;[data-strength-value]&#39;) };
+    const ctx = els.canvas.getContext(&#39;2d&#39;);
+    const state = { image:null, fileName:&#39;image&#39;, regions:[], selected:-1, mode:&#39;pixelate&#39;, strength:18, drag:null, resultUrl:null };
+
+    function message(text, error=false){ els.message.textContent=text; els.message.classList.toggle(&#39;is-error&#39;,error); els.message.hidden=!text; }
+    function modeName(mode){ return mode===&#39;pixelate&#39;?&#39;马赛克&#39;:mode===&#39;blur&#39;?&#39;模糊&#39;:&#39;涂黑&#39;; }
+    function normalizedRect(a,b){ return {x:Math.min(a.x,b.x),y:Math.min(a.y,b.y),w:Math.abs(b.x-a.x),h:Math.abs(b.y-a.y)}; }
+    function canvasPoint(event){ const r=els.canvas.getBoundingClientRect(); return {x:(event.clientX-r.left)*els.canvas.width/r.width,y:(event.clientY-r.top)*els.canvas.height/r.height}; }
+    function drawProcessed(target, includeGuides=false){
+      const c=target, cctx=c.getContext(&#39;2d&#39;); cctx.clearRect(0,0,c.width,c.height); cctx.drawImage(state.image,0,0,c.width,c.height);
+      state.regions.forEach(region =&gt; applyRegion(cctx,c,region));
+      if(includeGuides){ state.regions.forEach((r,i)=&gt;drawGuide(cctx,r,i===state.selected)); if(state.drag) drawGuide(cctx,normalizedRect(state.drag.start,state.drag.end),true); }
+    }
+    function applyRegion(cctx, sourceCanvas, r){
+      const x=Math.max(0,Math.round(r.x)),y=Math.max(0,Math.round(r.y)),w=Math.min(sourceCanvas.width-x,Math.round(r.w)),h=Math.min(sourceCanvas.height-y,Math.round(r.h)); if(w&lt;1||h&lt;1)return;
+      if(r.mode===&#39;black&#39;){ cctx.save(); cctx.fillStyle=&#39;#050505&#39;; cctx.fillRect(x,y,w,h); cctx.restore(); return; }
+      const temp=document.createElement(&#39;canvas&#39;); temp.width=w; temp.height=h; const t=temp.getContext(&#39;2d&#39;);
+      if(r.mode===&#39;blur&#39;){ t.filter=&#39;blur(&#39;+Math.max(2,r.strength/2)+&#39;px)&#39;; const pad=Math.min(40,Math.ceil(r.strength)); t.drawImage(sourceCanvas,x-pad,y-pad,w+pad*2,h+pad*2,-pad,-pad,w+pad*2,h+pad*2); }
+      else { const block=Math.max(4,r.strength),sw=Math.max(1,Math.ceil(w/block)),sh=Math.max(1,Math.ceil(h/block)); const tiny=document.createElement(&#39;canvas&#39;); tiny.width=sw;tiny.height=sh; tiny.getContext(&#39;2d&#39;).drawImage(sourceCanvas,x,y,w,h,0,0,sw,sh); t.imageSmoothingEnabled=false;t.drawImage(tiny,0,0,sw,sh,0,0,w,h); }
+      cctx.save(); cctx.beginPath(); cctx.rect(x,y,w,h); cctx.clip(); cctx.drawImage(temp,x,y); cctx.restore();
+    }
+    function drawGuide(cctx,r,selected){ cctx.save(); cctx.strokeStyle=selected?&#39;#f4c542&#39;:&#39;#a879ed&#39;;cctx.lineWidth=Math.max(2,els.canvas.width/500);cctx.setLineDash(selected?[10,6]:[6,5]);cctx.strokeRect(r.x,r.y,r.w,r.h);cctx.fillStyle=selected?&#39;rgba(244,197,66,.15)&#39;:&#39;rgba(124,58,237,.11)&#39;;cctx.fillRect(r.x,r.y,r.w,r.h);cctx.restore(); }
+    function render(){ if(!state.image)return; drawProcessed(els.canvas,true); syncControls(); }
+    function syncControls(){
+      const n=state.regions.length; els.count.textContent=n+&#39; 个选区&#39;;els.tip.hidden=n&gt;0;els.undo.disabled=!n;els.clear.disabled=!n;els.preview.disabled=!n;els.delete.disabled=state.selected&lt;0;els.regions.hidden=!n;
+      els.regions.innerHTML=state.regions.map((r,i)=&gt;&#39;&lt;button type=&#34;button&#34; data-region=&#34;&#39;+i+&#39;&#34; class=&#34;&#39;+(i===state.selected?&#39;is-selected&#39;:&#39;&#39;)+&#39;&#34;&gt;&#39;+(i+1)+&#39;. &#39;+modeName(r.mode)+&#39;&lt;/button&gt;&#39;).join(&#39;&#39;);
+    }
+    function invalidateResult(){ if(state.resultUrl){URL.revokeObjectURL(state.resultUrl);state.resultUrl=null;} els.resultSection.hidden=true; }
+    function loadFile(file){
+      if(!file)return; if(!file.type.startsWith(&#39;image/&#39;)){message(&#39;请选择图片文件。&#39;,true);return;} if(file.size&gt;20*1024*1024){message(&#39;图片不能超过 20 MB。&#39;,true);return;}
+      const url=URL.createObjectURL(file),image=new Image(); image.onload=()=&gt;{ if(state.image&amp;&amp;state.image.dataset.url)URL.revokeObjectURL(state.image.dataset.url);image.dataset.url=url;state.image=image;state.fileName=file.name.replace(/\.[^.]+$/,&#39;&#39;)||&#39;image&#39;;state.regions=[];state.selected=-1;els.canvas.width=image.naturalWidth;els.canvas.height=image.naturalHeight;els.drop.hidden=true;els.filebar.hidden=false;els.filename.textContent=file.name+&#39; · &#39;+image.naturalWidth+&#39; × &#39;+image.naturalHeight;els.reset.hidden=false;els.editor.hidden=false;invalidateResult();message(&#39;图片已载入。请选择处理方式并在图片上框选。&#39;);render();}; image.onerror=()=&gt;{URL.revokeObjectURL(url);message(&#39;无法读取这张图片，请尝试其他文件。&#39;,true);};image.src=url;
+    }
+    function hitTest(point){ for(let i=state.regions.length-1;i&gt;=0;i--){const r=state.regions[i];if(point.x&gt;=r.x&amp;&amp;point.x&lt;=r.x+r.w&amp;&amp;point.y&gt;=r.y&amp;&amp;point.y&lt;=r.y+r.h)return i;}return -1; }
+    function makeResult(callback){ const out=document.createElement(&#39;canvas&#39;);out.width=els.canvas.width;out.height=els.canvas.height;drawProcessed(out,false);callback(out); }
+    function updatePreview(){ makeResult(out=&gt;{out.toBlob(blob=&gt;{if(!blob)return;if(state.resultUrl)URL.revokeObjectURL(state.resultUrl);state.resultUrl=URL.createObjectURL(blob);els.result.src=state.resultUrl;els.resultSection.hidden=false;els.resultSection.scrollIntoView({behavior:&#39;smooth&#39;,block:&#39;start&#39;});},&#39;image/png&#39;);}); }
+    function reset(){ if(state.image&amp;&amp;state.image.dataset.url)URL.revokeObjectURL(state.image.dataset.url);invalidateResult();state.image=null;state.regions=[];state.selected=-1;els.file.value=&#39;&#39;;els.replace.value=&#39;&#39;;els.drop.hidden=false;els.filebar.hidden=true;els.editor.hidden=true;els.reset.hidden=true;message(&#39;&#39;); }
+
+    root.querySelectorAll(&#39;[data-mode]&#39;).forEach(button=&gt;button.addEventListener(&#39;click&#39;,()=&gt;{state.mode=button.dataset.mode;root.querySelectorAll(&#39;[data-mode]&#39;).forEach(b=&gt;b.setAttribute(&#39;aria-pressed&#39;,String(b===button)));els.strength.parentElement.hidden=state.mode===&#39;black&#39;;els.strengthLabel.textContent=state.mode===&#39;blur&#39;?&#39;模糊强度&#39;:&#39;马赛克强度&#39;;if(state.selected&gt;=0){state.regions[state.selected].mode=state.mode;state.regions[state.selected].strength=state.strength;invalidateResult();render();}}));
+    els.strength.addEventListener(&#39;input&#39;,()=&gt;{state.strength=Number(els.strength.value);els.strengthValue.textContent=state.strength;if(state.selected&gt;=0){state.regions[state.selected].strength=state.strength;invalidateResult();render();}});
+    els.canvas.addEventListener(&#39;pointerdown&#39;,event=&gt;{if(!state.image)return;event.preventDefault();els.canvas.setPointerCapture(event.pointerId);const point=canvasPoint(event),hit=hitTest(point);if(hit&gt;=0){selectRegion(hit);return;}state.selected=-1;state.drag={start:point,end:point};render();});
+    els.canvas.addEventListener(&#39;pointermove&#39;,event=&gt;{if(!state.drag)return;state.drag.end=canvasPoint(event);render();});
+    function finishDrag(event){if(!state.drag)return;state.drag.end=canvasPoint(event);const r=normalizedRect(state.drag.start,state.drag.end);state.drag=null;const min=Math.max(5,els.canvas.width/200);if(r.w&gt;=min&amp;&amp;r.h&gt;=min){r.mode=state.mode;r.strength=state.strength;state.regions.push(r);state.selected=state.regions.length-1;invalidateResult();}render();}
+    els.canvas.addEventListener(&#39;pointerup&#39;,finishDrag);els.canvas.addEventListener(&#39;pointercancel&#39;,()=&gt;{state.drag=null;render();});
+    function selectRegion(index){state.selected=index;const region=state.regions[index];if(region){state.mode=region.mode;state.strength=region.strength;els.strength.value=region.strength;els.strengthValue.textContent=region.strength;root.querySelectorAll(&#39;[data-mode]&#39;).forEach(b=&gt;b.setAttribute(&#39;aria-pressed&#39;,String(b.dataset.mode===region.mode)));els.strength.parentElement.hidden=region.mode===&#39;black&#39;;els.strengthLabel.textContent=region.mode===&#39;blur&#39;?&#39;模糊强度&#39;:&#39;马赛克强度&#39;;}render();}
+    els.regions.addEventListener(&#39;click&#39;,event=&gt;{const button=event.target.closest(&#39;[data-region]&#39;);if(!button)return;selectRegion(Number(button.dataset.region));});
+    els.undo.addEventListener(&#39;click&#39;,()=&gt;{state.regions.pop();state.selected=Math.min(state.selected,state.regions.length-1);invalidateResult();render();});
+    els.delete.addEventListener(&#39;click&#39;,()=&gt;{if(state.selected&lt;0)return;state.regions.splice(state.selected,1);state.selected=-1;invalidateResult();render();});
+    els.clear.addEventListener(&#39;click&#39;,()=&gt;{state.regions=[];state.selected=-1;invalidateResult();render();});
+    els.preview.addEventListener(&#39;click&#39;,updatePreview);els.reset.addEventListener(&#39;click&#39;,reset);
+    els.file.addEventListener(&#39;change&#39;,e=&gt;loadFile(e.target.files&amp;&amp;e.target.files[0]));els.replace.addEventListener(&#39;change&#39;,e=&gt;loadFile(e.target.files&amp;&amp;e.target.files[0]));
+    [&#39;dragenter&#39;,&#39;dragover&#39;].forEach(type=&gt;els.drop.addEventListener(type,e=&gt;{e.preventDefault();els.drop.classList.add(&#39;is-dragging&#39;);}));[&#39;dragleave&#39;,&#39;drop&#39;].forEach(type=&gt;els.drop.addEventListener(type,e=&gt;{e.preventDefault();els.drop.classList.remove(&#39;is-dragging&#39;);}));els.drop.addEventListener(&#39;drop&#39;,e=&gt;loadFile(e.dataTransfer.files&amp;&amp;e.dataTransfer.files[0]));
+    els.format.addEventListener(&#39;change&#39;,()=&gt;{els.qualityWrap.hidden=els.format.value!==&#39;jpeg&#39;;});els.quality.addEventListener(&#39;input&#39;,()=&gt;{els.qualityValue.textContent=els.quality.value+&#39;%&#39;;});
+    els.download.addEventListener(&#39;click&#39;,()=&gt;makeResult(out=&gt;{const type=els.format.value===&#39;jpeg&#39;?&#39;image/jpeg&#39;:&#39;image/png&#39;,ext=els.format.value===&#39;jpeg&#39;?&#39;jpg&#39;:&#39;png&#39;,quality=Number(els.quality.value)/100;out.toBlob(blob=&gt;{if(!blob)return;const url=URL.createObjectURL(blob),a=document.createElement(&#39;a&#39;);a.href=url;a.download=state.fileName+&#39;-privacy.&#39;+ext;document.body.appendChild(a);a.click();a.remove();setTimeout(()=&gt;URL.revokeObjectURL(url),1000);message(&#39;成品图片已下载。&#39;);},type,quality);}));
+  });
+})();
+&lt;/script&gt;
+
+&lt;h2 id=&#34;英汉--汉英词典&#34;&gt;英汉 · 汉英词典
+&lt;/h2&gt;&lt;div class=&#34;ecd-app&#34; id=&#34;ecdictTool&#34;&gt;
+  &lt;section class=&#34;ecd-hero&#34;&gt;
+    &lt;div&gt;
+      &lt;div class=&#34;ecd-kicker&#34;&gt;LOCAL ENGLISH · CHINESE DICTIONARY&lt;/div&gt;
+      &lt;p&gt;输入英文或中文即可查询。词典按需载入浏览器，不上传查询内容，也没有广告。&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;span class=&#34;ecd-local&#34;&gt;◉ 本地查询&lt;/span&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&#34;ecd-search-panel&#34;&gt;
+    &lt;div class=&#34;ecd-direction&#34; role=&#34;group&#34; aria-label=&#34;查询方向&#34;&gt;
+      &lt;button type=&#34;button&#34; data-mode=&#34;auto&#34; aria-pressed=&#34;true&#34;&gt;自动识别&lt;/button&gt;
+      &lt;button type=&#34;button&#34; data-mode=&#34;en&#34; aria-pressed=&#34;false&#34;&gt;英 → 中&lt;/button&gt;
+      &lt;button type=&#34;button&#34; data-mode=&#34;zh&#34; aria-pressed=&#34;false&#34;&gt;中 → 英&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;form class=&#34;ecd-search&#34; id=&#34;ecdSearchForm&#34;&gt;
+      &lt;label class=&#34;ecd-search-box&#34;&gt;
+        &lt;span aria-hidden=&#34;true&#34;&gt;⌕&lt;/span&gt;
+        &lt;input id=&#34;ecdQuery&#34; type=&#34;search&#34; autocomplete=&#34;off&#34; autocapitalize=&#34;none&#34; spellcheck=&#34;false&#34; placeholder=&#34;输入英文单词或中文词语&#34; aria-label=&#34;查询单词&#34;&gt;
+        &lt;button id=&#34;ecdClear&#34; type=&#34;button&#34; aria-label=&#34;清空&#34; hidden&gt;×&lt;/button&gt;
+      &lt;/label&gt;
+      &lt;button class=&#34;ecd-primary&#34; type=&#34;submit&#34;&gt;查询&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;div class=&#34;ecd-suggestions&#34; id=&#34;ecdSuggestions&#34; role=&#34;listbox&#34; aria-label=&#34;相似词建议&#34; hidden&gt;&lt;/div&gt;
+    &lt;div class=&#34;ecd-quick&#34; id=&#34;ecdHistory&#34; hidden&gt;&lt;/div&gt;
+    &lt;div class=&#34;ecd-status&#34; id=&#34;ecdStatus&#34; role=&#34;status&#34; aria-live=&#34;polite&#34;&gt;试试输入 &lt;button type=&#34;button&#34; data-query=&#34;serendipity&#34;&gt;serendipity&lt;/button&gt; 或 &lt;button type=&#34;button&#34; data-query=&#34;苹果&#34;&gt;苹果&lt;/button&gt;&lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&#34;ecd-results&#34; id=&#34;ecdResults&#34; aria-live=&#34;polite&#34;&gt;&lt;/section&gt;
+
+  &lt;footer class=&#34;ecd-footer&#34;&gt;
+    &lt;span&gt;词典资料：&lt;a href=&#34;https://github.com/skywind3000/ECDICT&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;ECDICT&lt;/a&gt;（&lt;a href=&#34;https://sloth-cyx.github.io/dictionary/ecdict/LICENSE.txt&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;MIT License&lt;/a&gt;）&lt;/span&gt;
+    &lt;span&gt;发音由设备的语音引擎提供&lt;/span&gt;
+  &lt;/footer&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.ecd-app{--ecd-blue:#315fd6;--ecd-blue-soft:#edf3ff;--ecd-ink:#172033;--ecd-muted:#667085;--ecd-line:#dce3ee;--ecd-card:var(--card-background,#fff);display:grid;gap:16px;margin:16px 0 30px;color:var(--card-text-color-main,var(--ecd-ink))}.ecd-app *{box-sizing:border-box}.ecd-app [hidden]{display:none!important}.ecd-hero,.ecd-search-panel,.ecd-results:not(:empty){border:1px solid var(--ecd-line);border-radius:20px;background:var(--ecd-card);box-shadow:0 8px 26px rgba(29,51,91,.07)}.ecd-hero{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;padding:24px;background:linear-gradient(135deg,var(--ecd-blue-soft),var(--ecd-card) 62%)}.ecd-kicker{margin-bottom:7px;color:var(--ecd-blue);font-size:.72rem;font-weight:800;letter-spacing:.12em}.ecd-hero h3{margin:0 0 7px;font-size:1.55rem}.ecd-hero p{margin:0;max-width:650px;color:var(--ecd-muted);line-height:1.65}.ecd-local{flex:none;padding:7px 11px;border-radius:999px;background:#e7f7ef;color:#147a57;font-size:.78rem;font-weight:700}.ecd-search-panel{padding:20px}.ecd-direction{display:flex;gap:5px;width:max-content;margin-bottom:13px;padding:4px;border-radius:12px;background:var(--ecd-blue-soft)}.ecd-direction button{padding:7px 12px;border:0;border-radius:9px;background:transparent;color:var(--ecd-muted);font:inherit;font-size:.82rem;cursor:pointer}.ecd-direction button[aria-pressed=true]{background:var(--ecd-card);color:var(--ecd-blue);font-weight:750;box-shadow:0 2px 8px rgba(30,61,120,.12)}.ecd-search{display:flex;gap:10px}.ecd-search-box{display:flex;flex:1;align-items:center;gap:10px;min-width:0;padding:0 14px;border:1.5px solid var(--ecd-line);border-radius:14px;background:var(--ecd-card)}.ecd-search-box:focus-within{border-color:var(--ecd-blue);box-shadow:0 0 0 3px rgba(49,95,214,.12)}.ecd-search-box&gt;span{font-size:1.45rem;color:var(--ecd-muted)}.ecd-search-box input{width:100%;min-width:0;padding:13px 0;border:0;outline:0;background:transparent;color:inherit;font:inherit;font-size:1rem}.ecd-search-box button{border:0;background:transparent;color:var(--ecd-muted);font-size:1.35rem;cursor:pointer}.ecd-primary{padding:0 22px;border:0;border-radius:14px;background:var(--ecd-blue);color:#fff;font:inherit;font-weight:750;cursor:pointer}.ecd-primary:disabled{opacity:.55;cursor:wait}.ecd-status{margin-top:12px;color:var(--ecd-muted);font-size:.84rem}.ecd-status button,.ecd-quick button{padding:0;border:0;background:transparent;color:var(--ecd-blue);font:inherit;cursor:pointer}.ecd-quick{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}.ecd-quick:before{content:&#34;最近：&#34;;color:var(--ecd-muted);font-size:.82rem;line-height:27px}.ecd-quick button{padding:4px 9px;border-radius:999px;background:var(--ecd-blue-soft);font-size:.8rem}.ecd-results{padding:8px 20px}.ecd-entry{padding:18px 2px;border-bottom:1px solid var(--ecd-line)}.ecd-entry:last-child{border-bottom:0}.ecd-entry-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.ecd-word{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px}.ecd-word h4{margin:0;font-size:1.35rem;color:inherit}.ecd-phonetic{color:var(--ecd-muted);font-family:Georgia,serif}.ecd-entry-actions{display:flex;gap:7px}.ecd-icon{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--ecd-line);border-radius:10px;background:var(--ecd-card);color:var(--ecd-blue);font-size:1rem;cursor:pointer}.ecd-icon[data-saved=true]{background:#fff5d8;color:#a96700}.ecd-translation{margin:13px 0 0;white-space:pre-line;line-height:1.72}.ecd-definition{margin:9px 0 0;padding:11px 13px;border-radius:11px;background:var(--ecd-blue-soft);white-space:pre-line;color:var(--ecd-muted);font-size:.88rem;line-height:1.65}.ecd-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.ecd-meta span{padding:3px 8px;border-radius:999px;background:var(--ecd-blue-soft);color:var(--ecd-blue);font-size:.72rem}.ecd-empty{padding:34px 12px;text-align:center;color:var(--ecd-muted)}.ecd-empty b{display:block;margin-bottom:7px;color:inherit;font-size:1rem}.ecd-footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:0 4px;color:var(--ecd-muted);font-size:.75rem}.ecd-footer a{color:var(--ecd-blue)}@media(max-width:620px){.ecd-hero{display:block;padding:19px}.ecd-local{display:inline-block;margin-top:13px}.ecd-search-panel{padding:15px}.ecd-direction{width:100%}.ecd-direction button{flex:1;padding-inline:7px}.ecd-search{display:grid}.ecd-primary{height:44px}.ecd-results{padding:5px 15px}.ecd-entry-head{align-items:center}.ecd-word h4{font-size:1.2rem}}
+[data-scheme=&#34;dark&#34;] .ecd-app{--ecd-blue:#91adff;--ecd-blue-soft:#27344a;--ecd-muted:#aeb8ca;--ecd-line:#4c5668}.ecd-app .ecd-local{background:#e7f7ef;color:#147a57}[data-scheme=&#34;dark&#34;] .ecd-app .ecd-local{background:#193c31;color:#82dcb9}
+.ecd-app{--ecd-blue:#c65332;--ecd-blue-soft:#fff0e9;--ecd-muted:#6f625e;--ecd-line:#ead8d1;margin-bottom:96px;font-size:16px}.ecd-hero{background:#fff3ed}.ecd-kicker{font-size:12px}.ecd-hero p{font-size:13px}.ecd-local{font-size:13px}.ecd-direction button{font-size:14px}.ecd-search-box input{font-size:16px}.ecd-primary{font-size:16px;box-shadow:0 5px 14px rgba(198,83,50,.22)}.ecd-search-box:focus-within{box-shadow:0 0 0 3px rgba(198,83,50,.13)}.ecd-status{font-size:13px}.ecd-quick:before{font-size:13px}.ecd-quick button{font-size:13px}.ecd-word h4{font-size:22px}.ecd-phonetic{font-size:17px}.ecd-icon{width:40px;height:40px;font-size:18px}.ecd-translation{font-size:17px}.ecd-definition{padding:14px 16px;font-size:15px}.ecd-meta span{padding:5px 9px;font-size:12px}.ecd-empty,.ecd-empty b{font-size:15px}.ecd-footer{font-size:12px}[data-scheme=&#34;dark&#34;] .ecd-app{--ecd-blue:#ff9b79;--ecd-blue-soft:#432c27;--ecd-muted:#c8b7b0;--ecd-line:#66504a}[data-scheme=&#34;dark&#34;] .ecd-hero{background:#432f2a}@media(max-width:620px){.ecd-app{margin-bottom:88px;font-size:15px}.ecd-hero p{font-size:13px}.ecd-word h4{font-size:20px}.ecd-translation{font-size:16px}.ecd-definition{font-size:14px}}
+.ecd-search-box input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;display:none}
+.ecd-suggestions{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px;padding:11px 13px;border:1px solid var(--ecd-line);border-radius:12px;background:var(--ecd-blue-soft)}.ecd-suggestions:before{content:&#34;建议：&#34;;align-self:center;color:var(--ecd-muted);font-size:13px}.ecd-suggestions button{padding:5px 10px;border:1px solid transparent;border-radius:999px;background:var(--ecd-card);color:var(--ecd-blue);font:inherit;font-size:13px;cursor:pointer}.ecd-suggestions button:hover,.ecd-suggestions button:focus-visible{border-color:var(--ecd-blue);outline:0}
+&lt;/style&gt;
+
+&lt;script&gt;
+(() =&gt; {
+  const root = document.getElementById(&#39;ecdictTool&#39;);
+  if (!root || root.dataset.ready) return;
+  root.dataset.ready = &#39;true&#39;;
+  const $ = id =&gt; root.querySelector(&#39;#&#39; + id);
+  const els = { form:$(&#39;ecdSearchForm&#39;), query:$(&#39;ecdQuery&#39;), clear:$(&#39;ecdClear&#39;), status:$(&#39;ecdStatus&#39;), results:$(&#39;ecdResults&#39;), history:$(&#39;ecdHistory&#39;), suggestions:$(&#39;ecdSuggestions&#39;) };
+  const base = &#39;\/dictionary\/ecdict\/&#39;;
+  const dataVersion = &#39;20260814-1&#39;;
+  const memory = new Map();
+  const historyKey = &#39;ecdict-history-v1&#39;;
+  let mode = &#39;auto&#39;;
+  let suggestTimer = 0;
+  let suggestRequest = 0;
+
+  const readList = key =&gt; { try { return JSON.parse(localStorage.getItem(key) || &#39;[]&#39;); } catch (_) { return []; } };
+  const saveList = (key, value) =&gt; { try { localStorage.setItem(key, JSON.stringify(value)); } catch (_) {} };
+  const escapeHtml = text =&gt; String(text || &#39;&#39;).replace(/[&amp;&lt;&gt;&#34;&#39;]/g, ch =&gt; ({&#39;&amp;&#39;:&#39;&amp;amp;&#39;,&#39;&lt;&#39;:&#39;&amp;lt;&#39;,&#39;&gt;&#39;:&#39;&amp;gt;&#39;,&#39;&#34;&#39;:&#39;&amp;quot;&#39;,&#34;&#39;&#34;:&#39;&amp;#39;&#39;}[ch]));
+  const enShard = word =&gt; { const letters = word.toLowerCase().replace(/[^a-z]/g,&#39;&#39;); return letters ? (letters + &#39;_&#39;).slice(0,2) : &#39;__&#39;; };
+  const zhShard = text =&gt; String(text.codePointAt(0) % 128).padStart(3,&#39;0&#39;);
+  const hasChinese = text =&gt; /[\u3400-\u9fff]/.test(text);
+
+  async function load(path) {
+    if (!memory.has(path)) memory.set(path, fetch(base + path + &#39;?v=&#39; + dataVersion, {cache:&#39;force-cache&#39;}).then(response =&gt; {
+      if (!response.ok) throw new Error(&#39;词库分片读取失败&#39;);
+      return response.json();
+    }).catch(error =&gt; { memory.delete(path); throw error; }));
+    return memory.get(path);
+  }
+
+  function rankEnglish(entries, query) {
+    const q = query.toLowerCase();
+    return entries.filter(entry =&gt; entry[0].toLowerCase().startsWith(q)).sort((a,b) =&gt; {
+      const ae = a[0].toLowerCase() === q ? 0 : 1, be = b[0].toLowerCase() === q ? 0 : 1;
+      return ae - be || a[0].length - b[0].length || a[0].localeCompare(b[0]);
+    }).slice(0,20);
+  }
+
+  async function findEnglish(query) {
+    return rankEnglish(await load(&#39;en/&#39; + enShard(query) + &#39;.json&#39;), query);
+  }
+
+  async function findChinese(query) {
+    const records = await load(&#39;zh/&#39; + zhShard(query) + &#39;.json&#39;);
+    const matches = records.filter(([term]) =&gt; term === query || term.startsWith(query)).sort((a,b) =&gt; {
+      return (a[0] === query ? 0 : 1) - (b[0] === query ? 0 : 1) || a[0].length - b[0].length;
+    }).slice(0,18);
+    const words = [];
+    matches.forEach(([, list]) =&gt; list.forEach(word =&gt; { if (!words.includes(word) &amp;&amp; words.length &lt; 24) words.push(word); }));
+    const groups = new Map();
+    words.forEach(word =&gt; { const shard = enShard(word); if (!groups.has(shard)) groups.set(shard, []); groups.get(shard).push(word); });
+    const found = [];
+    await Promise.all([...groups].map(async ([shard, wanted]) =&gt; {
+      const entries = await load(&#39;en/&#39; + shard + &#39;.json&#39;);
+      const set = new Set(wanted.map(word =&gt; word.toLowerCase()));
+      entries.forEach(entry =&gt; { if (set.has(entry[0].toLowerCase())) found.push(entry); });
+    }));
+    const order = new Map(words.map((word,index) =&gt; [word.toLowerCase(), index]));
+    return found.sort((a,b) =&gt; order.get(a[0].toLowerCase()) - order.get(b[0].toLowerCase())).slice(0,20);
+  }
+
+  async function suggest(raw) {
+    const query = raw.trim();
+    const direction = mode === &#39;auto&#39; ? (hasChinese(query) ? &#39;zh&#39; : &#39;en&#39;) : mode;
+    if (!query || (direction === &#39;en&#39; &amp;&amp; query.length &lt; 2)) { els.suggestions.hidden=true; els.suggestions.innerHTML=&#39;&#39;; return; }
+    const request = ++suggestRequest;
+    try {
+      let words;
+      if (direction === &#39;zh&#39;) {
+        const records = await load(&#39;zh/&#39; + zhShard(query) + &#39;.json&#39;);
+        words = records.filter(([term]) =&gt; term.startsWith(query)).sort((a,b) =&gt; a[0].length-b[0].length || a[0].localeCompare(b[0])).slice(0,8).map(([term]) =&gt; term);
+      } else {
+        words = rankEnglish(await load(&#39;en/&#39; + enShard(query) + &#39;.json&#39;), query).slice(0,8).map(entry =&gt; entry[0]);
+      }
+      if (request !== suggestRequest || els.query.value.trim() !== query) return;
+      els.suggestions.innerHTML = words.map(word =&gt; `&lt;button type=&#34;button&#34; role=&#34;option&#34; data-query=&#34;${escapeHtml(word)}&#34;&gt;${escapeHtml(word)}&lt;/button&gt;`).join(&#39;&#39;);
+      els.suggestions.hidden = !words.length;
+    } catch (_) { if (request === suggestRequest) els.suggestions.hidden=true; }
+  }
+
+  function exchangeTags(raw) {
+    const labels = {p:&#39;过去式&#39;,d:&#39;过去分词&#39;,i:&#39;现在分词&#39;,3:&#39;第三人称单数&#39;,r:&#39;比较级&#39;,t:&#39;最高级&#39;,s:&#39;复数&#39;,0:&#39;原形&#39;,1:&#39;原形变换&#39;};
+    return String(raw || &#39;&#39;).split(&#39;/&#39;).map(part =&gt; {
+      const pos = part.indexOf(&#39;:&#39;); if (pos &lt; 0) return &#39;&#39;;
+      return `&lt;span&gt;${labels[part.slice(0,pos)] || escapeHtml(part.slice(0,pos))}：${escapeHtml(part.slice(pos+1))}&lt;/span&gt;`;
+    }).join(&#39;&#39;);
+  }
+
+  function render(entries, query) {
+    if (!entries.length) {
+      els.results.innerHTML = `&lt;div class=&#34;ecd-empty&#34;&gt;&lt;b&gt;没有找到“${escapeHtml(query)}”&lt;/b&gt;可尝试输入单词原形或更短的中文词语。&lt;/div&gt;`;
+      return;
+    }
+    els.results.innerHTML = entries.map(entry =&gt; {
+      const [word, phonetic, translation, definition, exchange, tag] = entry;
+      return `&lt;article class=&#34;ecd-entry&#34;&gt;
+        &lt;div class=&#34;ecd-entry-head&#34;&gt;&lt;div class=&#34;ecd-word&#34;&gt;&lt;h4&gt;${escapeHtml(word)}&lt;/h4&gt;${phonetic ? `&lt;span class=&#34;ecd-phonetic&#34;&gt;/${escapeHtml(phonetic)}/&lt;/span&gt;` : &#39;&#39;}&lt;/div&gt;
+        &lt;div class=&#34;ecd-entry-actions&#34;&gt;&lt;button class=&#34;ecd-icon&#34; type=&#34;button&#34; data-speak=&#34;${escapeHtml(word)}&#34; title=&#34;朗读&#34; aria-label=&#34;朗读 ${escapeHtml(word)}&#34;&gt;🔊&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;
+        ${translation ? `&lt;p class=&#34;ecd-translation&#34;&gt;${escapeHtml(translation)}&lt;/p&gt;` : &#39;&#39;}
+        ${definition ? `&lt;p class=&#34;ecd-definition&#34;&gt;${escapeHtml(definition)}&lt;/p&gt;` : &#39;&#39;}
+        ${(exchange || tag) ? `&lt;div class=&#34;ecd-meta&#34;&gt;${exchangeTags(exchange)}${String(tag||&#39;&#39;).split(&#39; &#39;).filter(Boolean).map(item=&gt;`&lt;span&gt;${escapeHtml(item)}&lt;/span&gt;`).join(&#39;&#39;)}&lt;/div&gt;` : &#39;&#39;}
+      &lt;/article&gt;`;
+    }).join(&#39;&#39;);
+  }
+
+  function remember(query) {
+    const items = readList(historyKey).filter(item =&gt; item !== query);
+    items.unshift(query); saveList(historyKey, items.slice(0,8)); renderHistory();
+  }
+
+  function renderHistory() {
+    const items = readList(historyKey);
+    els.history.hidden = !items.length;
+    els.history.innerHTML = items.map(item =&gt; `&lt;button type=&#34;button&#34; data-query=&#34;${escapeHtml(item)}&#34;&gt;${escapeHtml(item)}&lt;/button&gt;`).join(&#39;&#39;);
+  }
+
+  async function search(raw) {
+    const query = raw.trim(); if (!query) { els.query.focus(); return; }
+    const direction = mode === &#39;auto&#39; ? (hasChinese(query) ? &#39;zh&#39; : &#39;en&#39;) : mode;
+    els.suggestions.hidden = true;
+    els.status.textContent = direction === &#39;zh&#39; ? &#39;正在进行中文反查…&#39; : &#39;正在查询英文词条…&#39;;
+    els.form.querySelector(&#39;.ecd-primary&#39;).disabled = true;
+    try {
+      const entries = direction === &#39;zh&#39; ? await findChinese(query) : await findEnglish(query);
+      render(entries, query); remember(query);
+      els.status.textContent = `找到 ${entries.length} 个结果 · 已载入的词库会由浏览器缓存`;
+    } catch (error) {
+      els.results.innerHTML = &#39;&lt;div class=&#34;ecd-empty&#34;&gt;&lt;b&gt;暂时无法读取词库&lt;/b&gt;请检查网络连接后重试。&lt;/div&gt;&#39;;
+      els.status.textContent = error.message || &#39;查询失败&#39;;
+    } finally { els.form.querySelector(&#39;.ecd-primary&#39;).disabled = false; }
+  }
+
+  root.querySelector(&#39;.ecd-direction&#39;).addEventListener(&#39;click&#39;, event =&gt; {
+    const button = event.target.closest(&#39;[data-mode]&#39;); if (!button) return;
+    mode = button.dataset.mode;
+    root.querySelectorAll(&#39;[data-mode]&#39;).forEach(item =&gt; item.setAttribute(&#39;aria-pressed&#39;, String(item === button)));
+    clearTimeout(suggestTimer); suggestTimer=setTimeout(() =&gt; suggest(els.query.value), 120);
+  });
+  els.form.addEventListener(&#39;submit&#39;, event =&gt; { event.preventDefault(); search(els.query.value); });
+  els.query.addEventListener(&#39;input&#39;, () =&gt; { els.clear.hidden = !els.query.value; clearTimeout(suggestTimer); suggestTimer=setTimeout(() =&gt; suggest(els.query.value), 180); });
+  els.query.addEventListener(&#39;keydown&#39;, event =&gt; { if (event.key === &#39;Escape&#39;) els.suggestions.hidden=true; });
+  els.clear.addEventListener(&#39;click&#39;, () =&gt; { els.query.value=&#39;&#39;; els.clear.hidden=true; els.results.innerHTML=&#39;&#39;; els.suggestions.hidden=true; els.query.focus(); });
+  root.addEventListener(&#39;click&#39;, event =&gt; {
+    const queryButton = event.target.closest(&#39;[data-query]&#39;);
+    if (queryButton) { els.query.value=queryButton.dataset.query; els.clear.hidden=false; search(els.query.value); return; }
+    const speak = event.target.closest(&#39;[data-speak]&#39;);
+    if (speak &amp;&amp; &#39;speechSynthesis&#39; in window) { speechSynthesis.cancel(); const utterance=new SpeechSynthesisUtterance(speak.dataset.speak); utterance.lang=&#39;en-US&#39;; utterance.rate=.85; speechSynthesis.speak(utterance); return; }
+  });
+  renderHistory();
 })();
 &lt;/script&gt;
 
@@ -5450,7 +5784,7 @@
 }
 &lt;/style&gt;
 &lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：妳是拉毗，妳是2B，妳是石川由依；作战丰富度高，轮椅多；地图很漂亮，每一章的地图都很有特点，前期剧情轻松的时候地图大让玩家自由探索，随着剧情越来越紧凑，地图越来越线性和缩短，个人觉得这样的地图设计节奏很不错；探索和主线也有不错的引导；音乐蛮有剑星的感觉，还挺上耳；由于boss不难打所以还&lt;del&gt;挺有成就感&lt;/del&gt;；没网传的那么无聊，但后期极其容易毕业&lt;br&gt;
-👎 &lt;strong&gt;缺点&lt;/strong&gt;：视角很近（不能改！），导致探索需要频繁的转视角，会有点晕，习惯了就不会晕；闪避手感一坨，闪红光攻击容易但是反而闪不掉一般攻击；格挡手感也有点怪，有点前动作的惯性，不能马上格挡；画质中等偏下，材质的纹理很粗糙；优化一般，有些过场动画和游戏交互会掉帧（导致有些过场动画怪怪的，掉帧一下突然间主角就飞出去了，看得莫名其妙）；交互动作很慢，非常慢；boss大多是放大版的小怪，品种很少；前期的地图看似很大，实则有些地方有空气墙；有些对话是可以跳的，但是画面不会切，所以就算对话跳了但是画面也卡在那里一下，有点搞笑；大量的素材复用，如boss（前半段和后半段的boss重复），如CG（击杀boss的CG，休息至出发的CG），如节奏（打boss一阶段 -&amp;gt; 二阶段 -&amp;gt; 晕倒 -&amp;gt; violet恢复些许记忆 -&amp;gt; 早上醒来 -&amp;gt; 休息至出发 -&amp;gt; 和violet对话 -&amp;gt; 出发当天（晚上）-&amp;gt; 黑屏布拉德和苦无对话 -&amp;gt; 早上艾玛和布拉德对话 -&amp;gt; 新地图），由于CG大多不能跳过，偏偏剧情喜欢使用大量的CG慢慢说故事，导致二周目目前没计划（据说后续会优化）&lt;/p&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：视角很近（不能改！），导致探索需要频繁的转视角，会有点晕，习惯了就不会晕；闪避手感一坨，闪红光攻击容易但是反而闪不掉一般攻击；格挡手感也有点怪，有点前动作的惯性，不能马上格挡；画质中等偏下，材质的纹理很粗糙；优化一般，有些过场动画和游戏交互会掉帧（导致有些过场动画怪怪的，掉帧一下突然间主角就飞出去了，看得莫名其妙）；交互动作很慢，非常慢；boss大多是放大版的小怪，品种很少；前期的地图看似很大，实则有些地方有空气墙；有些对话是可以跳的，但是画面不会切，所以就算对话跳了但是画面也卡在那里一下，有点搞笑；大量的素材复用，如boss（前半段和后半段的boss重复），如CG（击杀boss的CG，休息至出发的CG），如节奏（打boss一阶段 -&amp;gt; 二阶段 -&amp;gt; 晕倒 -&amp;gt; violet恢复些许记忆 -&amp;gt; 早上醒来 -&amp;gt; 休息至出发 -&amp;gt; 和violet对话 -&amp;gt; 出发当天（晚上）-&amp;gt; 黑屏布拉德和苦无对话 -&amp;gt; 早上艾玛和布拉德对话 -&amp;gt; 新地图），由于CG大多不能跳过，偏偏剧情喜欢使用大量的CG慢慢说故事，导致二周目目前没计划（据说后续会优化），而且使用了大量的CG表现力和感染力也不足&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;生化危机3-重制版&#34;&gt;生化危机3 重制版
 &lt;/h3&gt;
