@@ -20,7 +20,7 @@
       &lt;div class=&#34;rs-kicker&#34;&gt;Receipt Splitter&lt;/div&gt;
       &lt;p&gt;照片只在当前浏览器内处理，不会上传到服务器。OCR 结果可能有误，请在结算前核对商品和收费。&lt;/p&gt;
     &lt;/div&gt;
-    &lt;span class=&#34;rs-privacy&#34;&gt;🔒 本地处理&lt;/span&gt;
+    &lt;span class=&#34;rs-privacy&#34;&gt;🔒 浏览器本地&lt;/span&gt;
   &lt;/section&gt;
 
   &lt;section class=&#34;rs-panel rs-upload-panel&#34;&gt;
@@ -314,15 +314,16 @@
 .rs-summary-details { padding:0 16px 12px; border-top:1px solid rgba(255,255,255,.13); }
 .rs-summary-details div { display:flex; justify-content:space-between; padding-top:8px; color:#d9e5f5; font-size:11px; }
 [data-scheme=&#34;dark&#34;] .rs-app { --rs-border:#59616c; --rs-muted:#b1bac7; }
-[data-scheme=&#34;dark&#34;] .rs-intro { background:#273b56; }
+[data-scheme=&#34;dark&#34;] .rs-intro { background:#303b49; }
 [data-scheme=&#34;dark&#34;] .rs-intro h3, [data-scheme=&#34;dark&#34;] .rs-intro p { color:#edf3fa; }
-[data-scheme=&#34;dark&#34;] .rs-upload-zone { background:#2c3848; color:#d8e8ff; }
+[data-scheme=&#34;dark&#34;] .rs-upload-zone,
+[data-scheme=&#34;dark&#34;] .rs-list-import,
+[data-scheme=&#34;dark&#34;] .rs-source-toggle { background:#303b49; }
+[data-scheme=&#34;dark&#34;] .rs-upload-zone { color:#d8e8ff; }
 [data-scheme=&#34;dark&#34;] .rs-secondary-button { background:#3d4652; color:#fff; }
 [data-scheme=&#34;dark&#34;] .rs-delete-item { background:#60343a; color:#ffd5d8; }
 [data-scheme=&#34;dark&#34;] .rs-mode-button { background:#314359; color:#d8e8ff; }
 [data-scheme=&#34;dark&#34;] .rs-mode-button[aria-pressed=&#34;true&#34;] { background:#59482b; color:#ffe4a8; }
-[data-scheme=&#34;dark&#34;] .rs-list-import { background:#2c3848; }
-[data-scheme=&#34;dark&#34;] .rs-source-toggle { background:#2c3848; }
 @media (max-width:600px) {
   .rs-app { gap:12px; margin-bottom:88px; }
   .rs-panel { padding:15px; border-radius:15px; }
@@ -358,6 +359,9 @@
   .rs-quick-row { grid-template-columns:minmax(0,1fr) 102px; }
   .rs-quick-row .rs-delete-item { grid-column:2; justify-self:end; }
 }
+.rs-intro p,[data-scheme=&#34;dark&#34;] .rs-intro p{color:var(--card-text-color-secondary,#747474)}
+.rs-privacy{padding:7px 11px;border:1px solid color-mix(in srgb,var(--rs-blue) 34%,transparent);background:color-mix(in srgb,var(--rs-blue) 18%,var(--rs-surface));color:var(--rs-blue);box-shadow:inset 0 1px 0 rgba(255,255,255,.28);font-size:12px;font-weight:800}
+[data-scheme=&#34;dark&#34;] .rs-privacy{border-color:#5879a6;background:#3b4d66;color:#a9ccff;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
 &lt;/style&gt;
 
 &lt;script src=&#34;https://cdn.jsdelivr.net/npm/tesseract.js@6.0.1/dist/tesseract.min.js&#34;&gt;&lt;/script&gt;
@@ -1339,7 +1343,7 @@
       &lt;div class=&#34;ib-kicker&#34;&gt;Image Privacy Editor&lt;/div&gt;
       &lt;p&gt;框选需要隐藏的文字、人脸或其他隐私内容；图片只在当前浏览器内处理，不会上传到服务器。&lt;/p&gt;
     &lt;/div&gt;
-    &lt;span class=&#34;ib-privacy&#34;&gt;🔒 本地处理&lt;/span&gt;
+    &lt;span class=&#34;ib-privacy&#34;&gt;🔒 浏览器本地&lt;/span&gt;
   &lt;/section&gt;
 
   &lt;section class=&#34;ib-panel&#34;&gt;
@@ -1403,8 +1407,11 @@
 .ib-stage{position:relative;overflow:hidden;border-radius:14px;background:repeating-conic-gradient(#232832 0 25%,#1d222b 0 50%) 50%/18px 18px;touch-action:none;user-select:none}.ib-stage canvas{display:block;width:100%;height:auto;cursor:crosshair}.ib-empty-tip{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);padding:7px 11px;border-radius:999px;background:rgba(18,23,31,.78);color:#fff;font-size:11px;pointer-events:none;white-space:nowrap}
 .ib-actions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;margin-top:12px}.ib-regions{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;padding-top:12px;border-top:1px solid var(--ib-border)}.ib-regions button{padding:6px 9px;border:1px solid #d8e0eb;border-radius:9px;background:#f8fafc;color:#536273;cursor:pointer;font:inherit;font-size:11px}.ib-regions button.is-selected{border-color:#a879ed;background:var(--ib-accent-soft);color:var(--ib-accent-dark)}
 .ib-message{margin-top:12px;padding:10px 12px;border-radius:10px;background:#f3edff;color:#6935aa;font-size:12px}.ib-message.is-error{background:#fff0f1;color:#ad2634}.ib-result{display:grid;place-items:center;overflow:hidden;max-height:70vh;border-radius:14px;background:#171b22}.ib-result img{display:block;max-width:100%;max-height:70vh}.ib-export-row{display:flex;align-items:flex-end;flex-wrap:wrap;gap:12px;margin-top:14px}.ib-export-row label{display:grid;gap:5px;color:var(--ib-muted);font-size:11px;font-weight:700}.ib-export-row select{height:40px;padding:0 10px;border:1px solid #cdd6e1;border-radius:9px;background:var(--ib-surface);color:inherit;font:inherit}.ib-export-row label:nth-child(2){display:flex;align-items:center;align-self:center}.ib-export-row .ib-primary{margin-left:auto}
-[data-scheme=&#34;dark&#34;] .ib-intro{background:#392f4b}[data-scheme=&#34;dark&#34;] .ib-intro p{color:#eee8f7}
+[data-scheme=&#34;dark&#34;] .ib-intro{background:#3b3443}[data-scheme=&#34;dark&#34;] .ib-intro p{color:#eee8f7}
 @media(max-width:640px){.ib-app{margin-bottom:88px}.ib-panel{padding:15px}.ib-intro{flex-direction:column}.ib-privacy{align-self:flex-start}.ib-strength{width:100%;margin-left:0}.ib-strength input{flex:1}.ib-actions&gt;*{flex:1}.ib-export-row&gt;*{width:100%}.ib-export-row .ib-primary{margin-left:0}.ib-filebar{align-items:flex-start;flex-direction:column}}
+.ib-intro p,[data-scheme=&#34;dark&#34;] .ib-intro p{color:var(--card-text-color-secondary,#747474)}
+.ib-privacy{padding:7px 11px;border:1px solid color-mix(in srgb,var(--ib-accent) 34%,transparent);background:color-mix(in srgb,var(--ib-accent) 18%,var(--ib-surface));color:var(--ib-accent);box-shadow:inset 0 1px 0 rgba(255,255,255,.28);font-size:12px;font-weight:800}
+[data-scheme=&#34;dark&#34;] .ib-privacy{border-color:#765aa0;background:#4b3d5d;color:#d8bdff;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
 &lt;/style&gt;
 
 &lt;script&gt;
@@ -1477,7 +1484,7 @@
       &lt;div class=&#34;ecd-kicker&#34;&gt;LOCAL ENGLISH · CHINESE DICTIONARY&lt;/div&gt;
       &lt;p&gt;输入英文或中文即可查询。词典按需载入浏览器，不上传查询内容，也没有广告。&lt;/p&gt;
     &lt;/div&gt;
-    &lt;span class=&#34;ecd-local&#34;&gt;◉ 本地查询&lt;/span&gt;
+    &lt;span class=&#34;ecd-local&#34;&gt;🔒 浏览器本地&lt;/span&gt;
   &lt;/section&gt;
 
   &lt;section class=&#34;ecd-search-panel&#34;&gt;
@@ -1513,6 +1520,8 @@
 .ecd-app{--ecd-blue:#c65332;--ecd-blue-soft:#fff0e9;--ecd-muted:#6f625e;--ecd-line:#ead8d1;margin-bottom:96px;font-size:16px}.ecd-hero{background:#fff3ed}.ecd-kicker{font-size:12px}.ecd-hero p{font-size:13px}.ecd-local{font-size:13px}.ecd-direction button{font-size:14px}.ecd-search-box input{font-size:16px}.ecd-primary{font-size:16px;box-shadow:0 5px 14px rgba(198,83,50,.22)}.ecd-search-box:focus-within{box-shadow:0 0 0 3px rgba(198,83,50,.13)}.ecd-status{font-size:13px}.ecd-quick:before{font-size:13px}.ecd-quick button{font-size:13px}.ecd-word h4{font-size:22px}.ecd-phonetic{font-size:17px}.ecd-icon{width:40px;height:40px;font-size:18px}.ecd-translation{font-size:17px}.ecd-definition{padding:14px 16px;font-size:15px}.ecd-meta span{padding:5px 9px;font-size:12px}.ecd-empty,.ecd-empty b{font-size:15px}.ecd-footer{font-size:12px}[data-scheme=&#34;dark&#34;] .ecd-app{--ecd-blue:#ff9b79;--ecd-blue-soft:#432c27;--ecd-muted:#c8b7b0;--ecd-line:#66504a}[data-scheme=&#34;dark&#34;] .ecd-hero{background:#432f2a}@media(max-width:620px){.ecd-app{margin-bottom:88px;font-size:15px}.ecd-hero p{font-size:13px}.ecd-word h4{font-size:20px}.ecd-translation{font-size:16px}.ecd-definition{font-size:14px}}
 .ecd-search-box input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;display:none}
 .ecd-suggestions{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px;padding:11px 13px;border:1px solid var(--ecd-line);border-radius:12px;background:var(--ecd-blue-soft)}.ecd-suggestions:before{content:&#34;建议：&#34;;align-self:center;color:var(--ecd-muted);font-size:13px}.ecd-suggestions button{padding:5px 10px;border:1px solid transparent;border-radius:999px;background:var(--ecd-card);color:var(--ecd-blue);font:inherit;font-size:13px;cursor:pointer}.ecd-suggestions button:hover,.ecd-suggestions button:focus-visible{border-color:var(--ecd-blue);outline:0}
+.ecd-hero p{color:var(--card-text-color-secondary,#747474)}
+.ecd-app .ecd-local,[data-scheme=&#34;dark&#34;] .ecd-app .ecd-local{padding:7px 11px;border:1px solid color-mix(in srgb,var(--ecd-blue) 34%,transparent);background:color-mix(in srgb,var(--ecd-blue) 18%,var(--ecd-card));color:var(--ecd-blue);box-shadow:inset 0 1px 0 rgba(255,255,255,.28);font-size:12px;font-weight:800}
 &lt;/style&gt;
 
 &lt;script&gt;
@@ -1674,7 +1683,7 @@
       &lt;div class=&#34;wid-kicker&#34;&gt;PAGE IMAGE HARVESTER&lt;/div&gt;
       &lt;p&gt;输入网页链接，先预览并挑选需要的图片，再保存到指定文件夹。文件夹授权在刷新页面前会一直保留。&lt;/p&gt;
     &lt;/div&gt;
-    &lt;span class=&#34;wid-badge&#34;&gt;本机直存&lt;/span&gt;
+    &lt;span class=&#34;wid-badge&#34;&gt;🌐 浏览器直连&lt;/span&gt;
   &lt;/section&gt;
 
   &lt;section class=&#34;wid-panel&#34;&gt;
@@ -1722,6 +1731,9 @@
 &lt;style&gt;
 .wid-app{--wid-accent:#5d8f84;--wid-deep:#426d65;--wid-soft:#edf4f1;--wid-hero:#dfece8;--wid-ink:#304842;--wid-muted:#71827e;--wid-line:#d4e1dd;--wid-card:var(--card-background,#fff);display:grid;gap:16px;margin:16px 0 96px;color:var(--card-text-color-main,var(--wid-ink));font-size:16px}.wid-app *,.wid-app *:before,.wid-app *:after{box-sizing:border-box}.wid-app [hidden]{display:none!important}.wid-hero,.wid-panel,.wid-results{border:1px solid var(--wid-line);border-radius:20px;background:var(--wid-card);box-shadow:0 8px 24px rgba(55,82,75,.06)}.wid-hero{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:23px;background:var(--wid-hero)}.wid-kicker{margin-bottom:7px;color:var(--wid-deep);font-size:12px;font-weight:850;letter-spacing:.13em}.wid-hero p{max-width:650px;margin:0;color:var(--wid-muted);font-size:13px;line-height:1.7}.wid-badge{flex:none;padding:7px 11px;border-radius:999px;background:#f5f9f7;color:var(--wid-deep);font-size:12px;font-weight:750}.wid-panel{display:grid;gap:17px;padding:21px}.wid-field{display:grid;gap:7px}.wid-field&gt;label{color:var(--wid-deep);font-size:13px;font-weight:800}.wid-field&gt;small{color:var(--wid-muted);font-size:12px}.wid-control{display:flex;align-items:center;gap:10px;height:49px;padding:0 13px;border:1.5px solid var(--wid-line);border-radius:13px;background:var(--wid-card)}.wid-control:focus-within{border-color:var(--wid-accent);box-shadow:0 0 0 3px rgba(93,143,132,.12)}.wid-control&gt;span{color:var(--wid-accent);font-size:18px}.wid-control input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:inherit;font:inherit;font-size:15px}.wid-clear{padding:2px 6px;border:0;background:transparent;color:var(--wid-muted);font:inherit;font-size:21px;cursor:pointer}.wid-folder{display:flex;align-items:center;gap:12px;width:100%;min-height:65px;padding:11px 13px;border:1.5px dashed #abc7c0;border-radius:14px;background:var(--wid-soft);color:inherit;text-align:left;cursor:pointer;font:inherit}.wid-folder:hover{border-color:var(--wid-accent)}.wid-folder-icon{display:grid;place-items:center;flex:none;width:39px;height:39px;border-radius:11px;background:var(--wid-accent);color:#fff;font-size:22px}.wid-folder&gt;span:nth-child(2){display:grid;min-width:0;gap:3px}.wid-folder b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px}.wid-folder small{color:var(--wid-muted);font-size:11px}.wid-folder em{margin-left:auto;color:var(--wid-accent);font-size:12px;font-style:normal;font-weight:800;white-space:nowrap}.wid-actions,.wid-selection,.wid-selection&gt;div{display:flex;align-items:center;justify-content:flex-end;gap:9px}.wid-primary,.wid-secondary,.wid-selection button{min-height:40px;padding:9px 15px;border-radius:11px;font:inherit;font-size:13px;font-weight:800;cursor:pointer}.wid-primary{border:0;background:var(--wid-accent);color:#fff;box-shadow:0 5px 13px rgba(93,143,132,.2)}.wid-primary:hover{background:var(--wid-deep)}.wid-primary:disabled,.wid-secondary:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}.wid-secondary{border:1px solid var(--wid-line);background:var(--wid-card);color:var(--wid-muted)}.wid-notice{padding:11px 13px;border-radius:11px;background:var(--wid-soft);color:var(--wid-deep);font-size:12px;line-height:1.55}.wid-notice.is-error{background:#fff0ef;color:#ad3636}.wid-notice.is-success{background:#e6f4ec;color:#397457}.wid-results{padding:19px}.wid-result-head,.wid-result-head&gt;div{display:flex;align-items:center;justify-content:space-between;gap:10px}.wid-result-head strong{font-size:14px}.wid-result-head span{color:var(--wid-muted);font-size:12px}.wid-spinner{width:17px;height:17px;border:2px solid var(--wid-line);border-top-color:var(--wid-accent);border-radius:50%;animation:wid-spin .7s linear infinite}.wid-progress{overflow:hidden;height:7px;margin:13px 0;border-radius:99px;background:var(--wid-soft)}.wid-progress i{display:block;width:0;height:100%;border-radius:inherit;background:var(--wid-accent);transition:width .2s}.wid-selection{justify-content:space-between;margin:13px 0}.wid-selection&gt;div:first-child button{min-height:32px;padding:5px 9px;border:0;background:transparent;color:var(--wid-accent)}.wid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;max-height:520px;overflow:auto}.wid-item{position:relative;display:grid;grid-template-rows:112px auto;overflow:hidden;min-width:0;border:1.5px solid var(--wid-line);border-radius:12px;background:var(--wid-card);cursor:pointer}.wid-item:has(input:checked){border-color:var(--wid-accent);box-shadow:0 0 0 2px rgba(93,143,132,.12)}.wid-item input{position:absolute;top:8px;right:8px;z-index:2;width:19px;height:19px;accent-color:var(--wid-accent)}.wid-thumb{display:grid;place-items:center;overflow:hidden;background:var(--wid-soft);color:var(--wid-accent);font-size:18px}.wid-thumb img{width:100%;height:100%;object-fit:cover}.wid-item&gt;span{display:grid;min-width:0;gap:2px;padding:8px}.wid-item b,.wid-item small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.wid-item b{font-size:11px}.wid-item small{color:var(--wid-muted);font-size:10px}.wid-item.is-failed{border-color:#efd1d1}.wid-foot{padding:0 4px;color:var(--wid-muted);font-size:11px;line-height:1.6}@keyframes wid-spin{to{transform:rotate(360deg)}}
 [data-scheme=&#34;dark&#34;] .wid-app{--wid-accent:#82b8ab;--wid-deep:#acd1c8;--wid-soft:#293b37;--wid-hero:#304641;--wid-muted:#b1c0bc;--wid-line:#4b615c}[data-scheme=&#34;dark&#34;] .wid-badge{background:#3d554f;color:#c7e1da}@media(max-width:620px){.wid-app{margin-bottom:88px}.wid-hero{display:block;padding:19px}.wid-badge{display:inline-block;margin-top:13px}.wid-panel{padding:15px}.wid-actions{display:grid}.wid-actions&gt;*{width:100%}.wid-folder em{display:none}.wid-selection{align-items:stretch;flex-direction:column}.wid-selection&gt;div{justify-content:space-between}.wid-selection&gt;div:last-child&gt;*{flex:1}.wid-grid{grid-template-columns:1fr 1fr}}@media(max-width:420px){.wid-grid{grid-template-columns:1fr}}
+.wid-hero p{color:var(--card-text-color-secondary,#747474)}
+.wid-badge,[data-scheme=&#34;dark&#34;] .wid-badge{padding:7px 11px;border:1px solid color-mix(in srgb,var(--wid-accent) 34%,transparent);background:color-mix(in srgb,var(--wid-accent) 18%,var(--wid-card));color:var(--wid-deep);box-shadow:inset 0 1px 0 rgba(255,255,255,.28);font-size:12px;font-weight:800}
+:root:not([data-scheme=&#34;dark&#34;]) .wid-badge{border-color:color-mix(in srgb,var(--wid-accent) 48%,transparent);background:color-mix(in srgb,var(--wid-accent) 24%,var(--wid-hero))}
 &lt;/style&gt;
 
 &lt;script&gt;
@@ -1751,6 +1763,84 @@
     async function downloadEntries(entries){if(state.running||!entries.length)return;if(!state.directory&amp;&amp;!(await chooseFolder()))return;try{if((await state.directory.queryPermission({mode:&#39;readwrite&#39;}))!==&#39;granted&#39;&amp;&amp;(await state.directory.requestPermission({mode:&#39;readwrite&#39;}))!==&#39;granted&#39;)throw new Error(&#39;文件夹写入权限已失效，请重新选择&#39;);state.targetDirectory=await state.directory.getDirectoryHandle(timestamp(),{create:true});state.controller=new AbortController();state.done=state.success=state.failed=0;setRunning(true,&#39;download&#39;);els.progressWrap.hidden=false;els.progress.style.width=&#39;0&#39;;els.title.textContent=&#39;正在下载 &#39;+entries.length+&#39; 张图片&#39;;updateProgress(entries.length);notify(&#39;正在保存到“&#39;+state.directory.name+&#39; / &#39;+state.targetDirectory.name+&#39;”…&#39;);const workers=Array.from({length:Math.min(4,entries.length)},async(_,worker)=&gt;{for(let i=worker;i&lt;entries.length;i+=4)await downloadOne(entries[i],entries.length);});await Promise.all(workers);els.title.textContent=&#39;下载完成&#39;;notify(&#39;已保存到“&#39;+state.targetDirectory.name+&#39;”：成功 &#39;+state.success+&#39; 张，失败 &#39;+state.failed+&#39; 张。&#39;,state.failed?&#39;&#39;:&#39;success&#39;);}catch(error){if(error.name===&#39;AbortError&#39;){els.title.textContent=&#39;已停止&#39;;notify(&#39;下载已停止，已经保存的图片会保留。&#39;);}else{els.title.textContent=&#39;下载失败&#39;;notify(error.message,&#39;error&#39;);}}finally{setRunning(false);state.controller=null;state.targetDirectory=null;}}
 
     els.folder.addEventListener(&#39;click&#39;,chooseFolder);els.retry.addEventListener(&#39;click&#39;,extract);els.cancel.addEventListener(&#39;click&#39;,()=&gt;state.controller&amp;&amp;state.controller.abort());els.clear.addEventListener(&#39;click&#39;,()=&gt;{els.url.value=&#39;&#39;;els.clear.hidden=true;els.url.focus();});els.url.addEventListener(&#39;input&#39;,()=&gt;els.clear.hidden=!els.url.value);els.url.addEventListener(&#39;keydown&#39;,event=&gt;{if(event.key===&#39;Enter&#39;){event.preventDefault();extract();}});els.url.addEventListener(&#39;paste&#39;,()=&gt;setTimeout(()=&gt;{els.clear.hidden=!els.url.value;if(validUrl())extract();else notify(&#39;粘贴的内容不是有效网页链接。&#39;,&#39;error&#39;);},0));els.grid.addEventListener(&#39;change&#39;,event=&gt;{const input=event.target.closest(&#39;[data-index]&#39;);if(!input)return;state.items[Number(input.dataset.index)].selected=input.checked;syncSelection();});els.selectAll.addEventListener(&#39;click&#39;,()=&gt;{state.items.forEach(item=&gt;item.selected=true);state.items.forEach((_,index)=&gt;renderItem(index));syncSelection();});els.selectNone.addEventListener(&#39;click&#39;,()=&gt;{state.items.forEach(item=&gt;item.selected=false);state.items.forEach((_,index)=&gt;renderItem(index));syncSelection();});els.downloadSelected.addEventListener(&#39;click&#39;,()=&gt;downloadEntries(selectedItems()));els.downloadAll.addEventListener(&#39;click&#39;,()=&gt;downloadEntries(state.items.map((item,index)=&gt;({item,index}))));
+  });
+})();
+&lt;/script&gt;
+
+&lt;h2 id=&#34;文本编码转换器&#34;&gt;文本编码转换器
+&lt;/h2&gt;&lt;div class=&#34;tc-app&#34; data-text-codec&gt;
+  &lt;section class=&#34;tc-hero&#34;&gt;
+    &lt;div&gt;
+      &lt;div class=&#34;tc-kicker&#34;&gt;TEXT · BYTE CONVERTER&lt;/div&gt;
+      &lt;p&gt;在 UTF-8 文本与常用字节表示之间双向转换。所有处理都在浏览器本地完成。&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;span class=&#34;tc-badge&#34;&gt;🔒 浏览器本地&lt;/span&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&#34;tc-panel&#34;&gt;
+    &lt;div class=&#34;tc-modes&#34; role=&#34;group&#34; aria-label=&#34;编码格式&#34;&gt;
+      &lt;button type=&#34;button&#34; data-format=&#34;hex&#34; aria-pressed=&#34;true&#34;&gt;16进制（Hex）&lt;/button&gt;
+      &lt;button type=&#34;button&#34; data-format=&#34;binary&#34; aria-pressed=&#34;false&#34;&gt;2进制（Binary）&lt;/button&gt;
+      &lt;button type=&#34;button&#34; data-format=&#34;decimal&#34; aria-pressed=&#34;false&#34;&gt;10进制（Decimal）&lt;/button&gt;
+      &lt;button type=&#34;button&#34; data-format=&#34;base64&#34; aria-pressed=&#34;false&#34;&gt;Base64&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;tc-workspace&#34;&gt;
+      &lt;label class=&#34;tc-field&#34;&gt;
+        &lt;span&gt;&lt;b data-source-label&gt;文本（String）&lt;/b&gt;&lt;small data-source-count&gt;0 字符&lt;/small&gt;&lt;/span&gt;
+        &lt;textarea data-source rows=&#34;7&#34; spellcheck=&#34;false&#34; placeholder=&#34;输入或粘贴文本&#34;&gt;&lt;/textarea&gt;
+      &lt;/label&gt;
+
+      &lt;div class=&#34;tc-center&#34;&gt;
+        &lt;button class=&#34;tc-swap&#34; data-swap type=&#34;button&#34; aria-label=&#34;交换转换方向&#34; title=&#34;交换转换方向&#34;&gt;&lt;span aria-hidden=&#34;true&#34;&gt;⇄&lt;/span&gt;&lt;b data-direction&gt;编码&lt;/b&gt;&lt;/button&gt;
+      &lt;/div&gt;
+
+      &lt;label class=&#34;tc-field&#34;&gt;
+        &lt;span&gt;&lt;b data-target-label&gt;16进制（Hex）&lt;/b&gt;&lt;small data-target-count&gt;0 字节&lt;/small&gt;&lt;/span&gt;
+        &lt;textarea data-target rows=&#34;7&#34; readonly spellcheck=&#34;false&#34; placeholder=&#34;转换结果会显示在这里&#34;&gt;&lt;/textarea&gt;
+      &lt;/label&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;tc-actions&#34;&gt;
+      &lt;span class=&#34;tc-status&#34; data-status role=&#34;status&#34; aria-live=&#34;polite&#34;&gt;输入内容后会自动转换&lt;/span&gt;
+      &lt;div&gt;&lt;button class=&#34;tc-secondary&#34; data-clear type=&#34;button&#34;&gt;清空&lt;/button&gt;&lt;button class=&#34;tc-primary&#34; data-copy type=&#34;button&#34; disabled&gt;复制结果&lt;/button&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;footer class=&#34;tc-foot&#34;&gt;Hex、Binary 与 Decimal 显示的是 UTF-8 字节；Base64 是编码格式，并不是一种进制。&lt;/footer&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.tc-app{--tc-accent:#bd4f72;--tc-deep:#8d3854;--tc-soft:#faedf1;--tc-hero:#f6e2e9;--tc-ink:#3d2930;--tc-muted:#7f6971;--tc-line:#ead5dc;--tc-card:var(--card-background,#fff);display:grid;gap:16px;margin:16px 0 96px;color:var(--card-text-color-main,var(--tc-ink));font-size:16px}.tc-app *,.tc-app *:before,.tc-app *:after{box-sizing:border-box}.tc-hero,.tc-panel{border:1px solid var(--tc-line);border-radius:20px;background:var(--tc-card);box-shadow:0 8px 24px rgba(102,51,68,.07)}.tc-hero{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:23px;background:var(--tc-hero)}.tc-kicker{margin-bottom:7px;color:var(--tc-deep);font-size:12px;font-weight:850;letter-spacing:.13em}.tc-hero p{max-width:650px;margin:0;color:var(--tc-muted);font-size:13px;line-height:1.7}.tc-badge{flex:none;padding:7px 11px;border-radius:999px;background:#fff7fa;color:var(--tc-deep);font-size:12px;font-weight:800}.tc-panel{display:grid;gap:18px;padding:21px}.tc-modes{display:flex;flex-wrap:wrap;gap:6px;padding:5px;border-radius:13px;background:var(--tc-soft)}.tc-modes button{flex:1;min-width:130px;padding:9px 11px;border:0;border-radius:9px;background:transparent;color:var(--tc-muted);font:inherit;font-size:13px;cursor:pointer}.tc-modes button[aria-pressed=true]{background:var(--tc-card);color:var(--tc-accent);font-weight:800;box-shadow:0 2px 8px rgba(102,51,68,.12)}.tc-workspace{display:grid;grid-template-columns:minmax(0,1fr) 48px minmax(0,1fr);gap:10px;align-items:center}.tc-field{display:grid;gap:8px;min-width:0}.tc-field&gt;span{display:flex;align-items:center;justify-content:space-between;gap:8px}.tc-field b{color:var(--tc-deep);font-size:13px}.tc-field small{color:var(--tc-muted);font-size:11px}.tc-field textarea{width:100%;min-height:180px;resize:vertical;padding:13px 14px;border:1.5px solid var(--tc-line);border-radius:14px;outline:0;background:var(--tc-card);color:inherit;font:14px/1.65 ui-monospace,SFMono-Regular,Consolas,&#34;Liberation Mono&#34;,monospace}.tc-field textarea:focus{border-color:var(--tc-accent);box-shadow:0 0 0 3px rgba(189,79,114,.12)}.tc-field textarea[readonly]{background:var(--tc-soft)}.tc-center{display:grid;place-items:center;padding-top:25px}.tc-swap{display:grid;place-items:center;gap:1px;width:44px;height:50px;border:1px solid var(--tc-line);border-radius:13px;background:var(--tc-card);color:var(--tc-accent);cursor:pointer}.tc-swap:hover{border-color:var(--tc-accent)}.tc-swap span{font-size:20px;line-height:1}.tc-swap b{font-size:10px}.tc-actions,.tc-actions&gt;div{display:flex;align-items:center;justify-content:space-between;gap:9px}.tc-status{color:var(--tc-muted);font-size:12px}.tc-status.is-error{color:#ad3636}.tc-primary,.tc-secondary{min-height:40px;padding:9px 15px;border-radius:11px;font:inherit;font-size:13px;font-weight:800;cursor:pointer}.tc-primary{border:0;background:var(--tc-accent);color:#fff;box-shadow:0 5px 13px rgba(189,79,114,.22)}.tc-primary:hover{background:var(--tc-deep)}.tc-primary:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}.tc-secondary{border:1px solid var(--tc-line);background:var(--tc-card);color:var(--tc-muted)}.tc-foot{padding:0 4px;color:var(--tc-muted);font-size:11px;line-height:1.6}[data-scheme=&#34;dark&#34;] .tc-app{--tc-accent:#ef9bb6;--tc-deep:#f6bdcf;--tc-soft:#422d35;--tc-hero:#4c303a;--tc-muted:#ccb5bd;--tc-line:#654b54}[data-scheme=&#34;dark&#34;] .tc-badge{background:#5a3945;color:#f8d5e0}@media(max-width:720px){.tc-workspace{grid-template-columns:1fr}.tc-center{padding:0}.tc-swap{width:100%;height:42px;grid-auto-flow:column;justify-content:center}.tc-swap span{transform:rotate(90deg)}.tc-actions{align-items:stretch;flex-direction:column}.tc-actions&gt;div{width:100%}.tc-actions button{flex:1}}@media(max-width:520px){.tc-app{margin-bottom:88px}.tc-hero{display:block;padding:19px}.tc-badge{display:inline-block;margin-top:13px}.tc-panel{padding:15px}.tc-modes button{min-width:calc(50% - 3px);font-size:12px}.tc-field textarea{min-height:145px}.tc-status{text-align:center}}
+.tc-hero p{color:var(--card-text-color-secondary,#747474)}
+.tc-badge,[data-scheme=&#34;dark&#34;] .tc-badge{padding:7px 11px;border:1px solid color-mix(in srgb,var(--tc-accent) 34%,transparent);background:color-mix(in srgb,var(--tc-accent) 18%,var(--tc-card));color:var(--tc-deep);box-shadow:inset 0 1px 0 rgba(255,255,255,.28);font-size:12px;font-weight:800}
+:root:not([data-scheme=&#34;dark&#34;]) .tc-badge{border-color:color-mix(in srgb,var(--tc-accent) 48%,transparent);background:color-mix(in srgb,var(--tc-accent) 24%,var(--tc-hero))}
+&lt;/style&gt;
+
+&lt;script&gt;
+(() =&gt; {
+  document.querySelectorAll(&#39;[data-text-codec]&#39;).forEach(root =&gt; {
+    if (root.dataset.ready) return;
+    root.dataset.ready = &#39;true&#39;;
+    const $ = selector =&gt; root.querySelector(selector);
+    const els = {source:$(&#39;[data-source]&#39;),target:$(&#39;[data-target]&#39;),sourceLabel:$(&#39;[data-source-label]&#39;),targetLabel:$(&#39;[data-target-label]&#39;),sourceCount:$(&#39;[data-source-count]&#39;),targetCount:$(&#39;[data-target-count]&#39;),direction:$(&#39;[data-direction]&#39;),status:$(&#39;[data-status]&#39;),copy:$(&#39;[data-copy]&#39;),clear:$(&#39;[data-clear]&#39;),swap:$(&#39;[data-swap]&#39;)};
+    const formats = {hex:&#39;16进制（Hex）&#39;,binary:&#39;2进制（Binary）&#39;,decimal:&#39;10进制（Decimal）&#39;,base64:&#39;Base64&#39;};
+    const encoder = new TextEncoder(), decoder = new TextDecoder(&#39;utf-8&#39;,{fatal:true});
+    let format = &#39;hex&#39;, reverse = false;
+
+    function encodeBase64(bytes){let binary=&#39;&#39;;for(let i=0;i&lt;bytes.length;i+=0x8000)binary+=String.fromCharCode(...bytes.subarray(i,i+0x8000));return btoa(binary);}
+    function decodeBase64(value){const clean=value.replace(/\s+/g,&#39;&#39;).replace(/-/g,&#39;+&#39;).replace(/_/g,&#39;/&#39;);if(!clean)return new Uint8Array();if(!/^[A-Za-z0-9+/]*={0,2}$/.test(clean)||clean.length%4===1)throw new Error(&#39;Base64 格式无效&#39;);let binary;try{binary=atob(clean.padEnd(Math.ceil(clean.length/4)*4,&#39;=&#39;));}catch(_){throw new Error(&#39;Base64 格式无效&#39;);}return Uint8Array.from(binary,ch=&gt;ch.charCodeAt(0));}
+    function encode(text){const bytes=encoder.encode(text);if(format===&#39;hex&#39;)return [...bytes].map(n=&gt;n.toString(16).padStart(2,&#39;0&#39;).toUpperCase()).join(&#39; &#39;);if(format===&#39;binary&#39;)return [...bytes].map(n=&gt;n.toString(2).padStart(8,&#39;0&#39;)).join(&#39; &#39;);if(format===&#39;decimal&#39;)return [...bytes].join(&#39; &#39;);return encodeBase64(bytes);}
+    function decode(value){let bytes;if(format===&#39;base64&#39;)bytes=decodeBase64(value);else{const clean=value.trim();if(!clean)return &#39;&#39;;let parts;if(format===&#39;hex&#39;){const normalized=clean.replace(/0x/gi,&#39;&#39;).replace(/[,_:;\-]/g,&#39; &#39;);if(/\s/.test(normalized))parts=normalized.split(/\s+/).filter(Boolean);else{if(normalized.length%2)throw new Error(&#39;Hex 每个字节需要 2 位字符&#39;);parts=normalized.match(/.{2}/g)||[];}if(parts.some(item=&gt;!/^[0-9a-fA-F]{2}$/.test(item)))throw new Error(&#39;Hex 只能包含 00–FF&#39;);bytes=Uint8Array.from(parts,item=&gt;parseInt(item,16));}else if(format===&#39;binary&#39;){const normalized=clean.replace(/0b/gi,&#39;&#39;).replace(/[,_:;\-]/g,&#39; &#39;);if(/\s/.test(normalized))parts=normalized.split(/\s+/).filter(Boolean);else{if(normalized.length%8)throw new Error(&#39;Binary 每个字节需要 8 位数字&#39;);parts=normalized.match(/.{8}/g)||[];}if(parts.some(item=&gt;!/^[01]{8}$/.test(item)))throw new Error(&#39;Binary 只能包含 8 位的 0 和 1&#39;);bytes=Uint8Array.from(parts,item=&gt;parseInt(item,2));}else{parts=clean.split(/[\s,;]+/).filter(Boolean);if(parts.some(item=&gt;!/^\d{1,3}$/.test(item)||Number(item)&gt;255))throw new Error(&#39;Decimal 字节必须在 0–255 之间&#39;);bytes=Uint8Array.from(parts,Number);}}try{return decoder.decode(bytes);}catch(_){throw new Error(&#39;这些字节不是有效的 UTF-8 文本&#39;);}}
+    function byteCount(value){try{return reverse?(format===&#39;base64&#39;?decodeBase64(value):encoder.encode(decode(value))).length:encoder.encode(value).length;}catch(_){return null;}}
+    function convert(){const value=els.source.value;els.sourceCount.textContent=reverse?((byteCount(value)??&#39;—&#39;)+&#39; 字节&#39;):(Array.from(value).length+&#39; 字符&#39;);if(!value){els.target.value=&#39;&#39;;els.targetCount.textContent=reverse?&#39;0 字符&#39;:&#39;0 字节&#39;;els.status.textContent=&#39;输入内容后会自动转换&#39;;els.status.className=&#39;tc-status&#39;;els.copy.disabled=true;return;}try{const result=reverse?decode(value):encode(value);els.target.value=result;els.targetCount.textContent=reverse?(Array.from(result).length+&#39; 字符&#39;):(encoder.encode(value).length+&#39; 字节&#39;);els.status.textContent=&#39;转换完成 · 内容未上传&#39;;els.status.className=&#39;tc-status&#39;;els.copy.disabled=false;}catch(error){els.target.value=&#39;&#39;;els.targetCount.textContent=&#39;—&#39;;els.status.textContent=error.message;els.status.className=&#39;tc-status is-error&#39;;els.copy.disabled=true;}}
+    function refresh(){const coded=formats[format];els.sourceLabel.textContent=reverse?coded:&#39;文本（String）&#39;;els.targetLabel.textContent=reverse?&#39;文本（String）&#39;:coded;els.source.placeholder=reverse?(&#39;粘贴&#39;+coded+&#39;内容&#39;):&#39;输入或粘贴文本&#39;;els.target.placeholder=reverse?&#39;解码后的文本会显示在这里&#39;:&#39;转换结果会显示在这里&#39;;els.direction.textContent=reverse?&#39;解码&#39;:&#39;编码&#39;;root.querySelectorAll(&#39;[data-format]&#39;).forEach(button=&gt;button.setAttribute(&#39;aria-pressed&#39;,String(button.dataset.format===format)));convert();}
+    root.querySelector(&#39;.tc-modes&#39;).addEventListener(&#39;click&#39;,event=&gt;{const button=event.target.closest(&#39;[data-format]&#39;);if(!button)return;format=button.dataset.format;refresh();});
+    els.source.addEventListener(&#39;input&#39;,convert);
+    els.swap.addEventListener(&#39;click&#39;,()=&gt;{const oldResult=els.target.value;reverse=!reverse;els.source.value=oldResult;refresh();els.source.focus();});
+    els.clear.addEventListener(&#39;click&#39;,()=&gt;{els.source.value=&#39;&#39;;convert();els.source.focus();});
+    els.copy.addEventListener(&#39;click&#39;,async()=&gt;{try{await navigator.clipboard.writeText(els.target.value);}catch(_){els.target.removeAttribute(&#39;readonly&#39;);els.target.select();document.execCommand(&#39;copy&#39;);els.target.setAttribute(&#39;readonly&#39;,&#39;&#39;);}const label=els.copy.textContent;els.copy.textContent=&#39;已复制&#39;;setTimeout(()=&gt;els.copy.textContent=label,1200);});
+    refresh();
   });
 })();
 &lt;/script&gt;

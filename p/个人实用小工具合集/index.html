@@ -10,7 +10,7 @@
 <meta property='og:description' content="~日常使用的实用小工具合集~">
 <meta property='og:url' content='https://sloth-cyx.github.io/p/%E4%B8%AA%E4%BA%BA%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/'>
 <meta property='og:site_name' content='怠惰的天秤-sloth'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-08-12T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-08-14T23:24:27&#43;08:00'/><meta property='og:image' content='https://sloth-cyx.github.io/images/consolidateTool/consolidateTool_bg.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-08-12T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-08-19T08:12:40&#43;08:00'/><meta property='og:image' content='https://sloth-cyx.github.io/images/consolidateTool/consolidateTool_bg.png' />
 <meta name="twitter:title" content="【个人】实用小工具合集">
 <meta name="twitter:description" content="~日常使用的实用小工具合集~"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://sloth-cyx.github.io/images/consolidateTool/consolidateTool_bg.png' />
@@ -509,6 +509,7 @@ post-sidebar">
     <li><a href="#图片隐私助手">图片隐私助手</a></li>
     <li><a href="#英汉--汉英词典">英汉 · 汉英词典</a></li>
     <li><a href="#网页图片提取器beta">网页图片提取器（Beta）</a></li>
+    <li><a href="#文本编码转换器">文本编码转换器</a></li>
   </ol>
 </nav>
         </div>
@@ -569,7 +570,7 @@ post-sidebar">
         
         <div style="display: flex; align-items: left; gap: 5px;">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 7v5l3 3" /></svg> 
-            <time class="article-time--lastmod">2026-08-14</time>
+            <time class="article-time--lastmod">2026-08-19</time>
         </div>
         
 
@@ -594,7 +595,7 @@ post-sidebar">
       <div class="rs-kicker">Receipt Splitter</div>
       <p>照片只在当前浏览器内处理，不会上传到服务器。OCR 结果可能有误，请在结算前核对商品和收费。</p>
     </div>
-    <span class="rs-privacy">🔒 本地处理</span>
+    <span class="rs-privacy">🔒 浏览器本地</span>
   </section>
 
   <section class="rs-panel rs-upload-panel">
@@ -888,15 +889,16 @@ post-sidebar">
 .rs-summary-details { padding:0 16px 12px; border-top:1px solid rgba(255,255,255,.13); }
 .rs-summary-details div { display:flex; justify-content:space-between; padding-top:8px; color:#d9e5f5; font-size:11px; }
 [data-scheme="dark"] .rs-app { --rs-border:#59616c; --rs-muted:#b1bac7; }
-[data-scheme="dark"] .rs-intro { background:#273b56; }
+[data-scheme="dark"] .rs-intro { background:#303b49; }
 [data-scheme="dark"] .rs-intro h3, [data-scheme="dark"] .rs-intro p { color:#edf3fa; }
-[data-scheme="dark"] .rs-upload-zone { background:#2c3848; color:#d8e8ff; }
+[data-scheme="dark"] .rs-upload-zone,
+[data-scheme="dark"] .rs-list-import,
+[data-scheme="dark"] .rs-source-toggle { background:#303b49; }
+[data-scheme="dark"] .rs-upload-zone { color:#d8e8ff; }
 [data-scheme="dark"] .rs-secondary-button { background:#3d4652; color:#fff; }
 [data-scheme="dark"] .rs-delete-item { background:#60343a; color:#ffd5d8; }
 [data-scheme="dark"] .rs-mode-button { background:#314359; color:#d8e8ff; }
 [data-scheme="dark"] .rs-mode-button[aria-pressed="true"] { background:#59482b; color:#ffe4a8; }
-[data-scheme="dark"] .rs-list-import { background:#2c3848; }
-[data-scheme="dark"] .rs-source-toggle { background:#2c3848; }
 @media (max-width:600px) {
   .rs-app { gap:12px; margin-bottom:88px; }
   .rs-panel { padding:15px; border-radius:15px; }
@@ -932,6 +934,9 @@ post-sidebar">
   .rs-quick-row { grid-template-columns:minmax(0,1fr) 102px; }
   .rs-quick-row .rs-delete-item { grid-column:2; justify-self:end; }
 }
+.rs-intro p,[data-scheme="dark"] .rs-intro p{color:var(--card-text-color-secondary,#747474)}
+.rs-privacy{padding:7px 11px;border:1px solid color-mix(in srgb,var(--rs-blue) 34%,transparent);background:color-mix(in srgb,var(--rs-blue) 18%,var(--rs-surface));color:var(--rs-blue);box-shadow:inset 0 1px 0 rgba(255,255,255,.28);font-size:12px;font-weight:800}
+[data-scheme="dark"] .rs-privacy{border-color:#5879a6;background:#3b4d66;color:#a9ccff;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@6.0.1/dist/tesseract.min.js"></script>
@@ -1913,7 +1918,7 @@ post-sidebar">
       <div class="ib-kicker">Image Privacy Editor</div>
       <p>框选需要隐藏的文字、人脸或其他隐私内容；图片只在当前浏览器内处理，不会上传到服务器。</p>
     </div>
-    <span class="ib-privacy">🔒 本地处理</span>
+    <span class="ib-privacy">🔒 浏览器本地</span>
   </section>
 
   <section class="ib-panel">
@@ -1977,8 +1982,11 @@ post-sidebar">
 .ib-stage{position:relative;overflow:hidden;border-radius:14px;background:repeating-conic-gradient(#232832 0 25%,#1d222b 0 50%) 50%/18px 18px;touch-action:none;user-select:none}.ib-stage canvas{display:block;width:100%;height:auto;cursor:crosshair}.ib-empty-tip{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);padding:7px 11px;border-radius:999px;background:rgba(18,23,31,.78);color:#fff;font-size:11px;pointer-events:none;white-space:nowrap}
 .ib-actions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;margin-top:12px}.ib-regions{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;padding-top:12px;border-top:1px solid var(--ib-border)}.ib-regions button{padding:6px 9px;border:1px solid #d8e0eb;border-radius:9px;background:#f8fafc;color:#536273;cursor:pointer;font:inherit;font-size:11px}.ib-regions button.is-selected{border-color:#a879ed;background:var(--ib-accent-soft);color:var(--ib-accent-dark)}
 .ib-message{margin-top:12px;padding:10px 12px;border-radius:10px;background:#f3edff;color:#6935aa;font-size:12px}.ib-message.is-error{background:#fff0f1;color:#ad2634}.ib-result{display:grid;place-items:center;overflow:hidden;max-height:70vh;border-radius:14px;background:#171b22}.ib-result img{display:block;max-width:100%;max-height:70vh}.ib-export-row{display:flex;align-items:flex-end;flex-wrap:wrap;gap:12px;margin-top:14px}.ib-export-row label{display:grid;gap:5px;color:var(--ib-muted);font-size:11px;font-weight:700}.ib-export-row select{height:40px;padding:0 10px;border:1px solid #cdd6e1;border-radius:9px;background:var(--ib-surface);color:inherit;font:inherit}.ib-export-row label:nth-child(2){display:flex;align-items:center;align-self:center}.ib-export-row .ib-primary{margin-left:auto}
-[data-scheme="dark"] .ib-intro{background:#392f4b}[data-scheme="dark"] .ib-intro p{color:#eee8f7}
+[data-scheme="dark"] .ib-intro{background:#3b3443}[data-scheme="dark"] .ib-intro p{color:#eee8f7}
 @media(max-width:640px){.ib-app{margin-bottom:88px}.ib-panel{padding:15px}.ib-intro{flex-direction:column}.ib-privacy{align-self:flex-start}.ib-strength{width:100%;margin-left:0}.ib-strength input{flex:1}.ib-actions>*{flex:1}.ib-export-row>*{width:100%}.ib-export-row .ib-primary{margin-left:0}.ib-filebar{align-items:flex-start;flex-direction:column}}
+.ib-intro p,[data-scheme="dark"] .ib-intro p{color:var(--card-text-color-secondary,#747474)}
+.ib-privacy{padding:7px 11px;border:1px solid color-mix(in srgb,var(--ib-accent) 34%,transparent);background:color-mix(in srgb,var(--ib-accent) 18%,var(--ib-surface));color:var(--ib-accent);box-shadow:inset 0 1px 0 rgba(255,255,255,.28);font-size:12px;font-weight:800}
+[data-scheme="dark"] .ib-privacy{border-color:#765aa0;background:#4b3d5d;color:#d8bdff;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
 </style>
 
 <script>
@@ -2051,7 +2059,7 @@ post-sidebar">
       <div class="ecd-kicker">LOCAL ENGLISH · CHINESE DICTIONARY</div>
       <p>输入英文或中文即可查询。词典按需载入浏览器，不上传查询内容，也没有广告。</p>
     </div>
-    <span class="ecd-local">◉ 本地查询</span>
+    <span class="ecd-local">🔒 浏览器本地</span>
   </section>
 
   <section class="ecd-search-panel">
@@ -2087,6 +2095,8 @@ post-sidebar">
 .ecd-app{--ecd-blue:#c65332;--ecd-blue-soft:#fff0e9;--ecd-muted:#6f625e;--ecd-line:#ead8d1;margin-bottom:96px;font-size:16px}.ecd-hero{background:#fff3ed}.ecd-kicker{font-size:12px}.ecd-hero p{font-size:13px}.ecd-local{font-size:13px}.ecd-direction button{font-size:14px}.ecd-search-box input{font-size:16px}.ecd-primary{font-size:16px;box-shadow:0 5px 14px rgba(198,83,50,.22)}.ecd-search-box:focus-within{box-shadow:0 0 0 3px rgba(198,83,50,.13)}.ecd-status{font-size:13px}.ecd-quick:before{font-size:13px}.ecd-quick button{font-size:13px}.ecd-word h4{font-size:22px}.ecd-phonetic{font-size:17px}.ecd-icon{width:40px;height:40px;font-size:18px}.ecd-translation{font-size:17px}.ecd-definition{padding:14px 16px;font-size:15px}.ecd-meta span{padding:5px 9px;font-size:12px}.ecd-empty,.ecd-empty b{font-size:15px}.ecd-footer{font-size:12px}[data-scheme="dark"] .ecd-app{--ecd-blue:#ff9b79;--ecd-blue-soft:#432c27;--ecd-muted:#c8b7b0;--ecd-line:#66504a}[data-scheme="dark"] .ecd-hero{background:#432f2a}@media(max-width:620px){.ecd-app{margin-bottom:88px;font-size:15px}.ecd-hero p{font-size:13px}.ecd-word h4{font-size:20px}.ecd-translation{font-size:16px}.ecd-definition{font-size:14px}}
 .ecd-search-box input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;display:none}
 .ecd-suggestions{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px;padding:11px 13px;border:1px solid var(--ecd-line);border-radius:12px;background:var(--ecd-blue-soft)}.ecd-suggestions:before{content:"建议：";align-self:center;color:var(--ecd-muted);font-size:13px}.ecd-suggestions button{padding:5px 10px;border:1px solid transparent;border-radius:999px;background:var(--ecd-card);color:var(--ecd-blue);font:inherit;font-size:13px;cursor:pointer}.ecd-suggestions button:hover,.ecd-suggestions button:focus-visible{border-color:var(--ecd-blue);outline:0}
+.ecd-hero p{color:var(--card-text-color-secondary,#747474)}
+.ecd-app .ecd-local,[data-scheme="dark"] .ecd-app .ecd-local{padding:7px 11px;border:1px solid color-mix(in srgb,var(--ecd-blue) 34%,transparent);background:color-mix(in srgb,var(--ecd-blue) 18%,var(--ecd-card));color:var(--ecd-blue);box-shadow:inset 0 1px 0 rgba(255,255,255,.28);font-size:12px;font-weight:800}
 </style>
 
 <script>
@@ -2248,7 +2258,7 @@ post-sidebar">
       <div class="wid-kicker">PAGE IMAGE HARVESTER</div>
       <p>输入网页链接，先预览并挑选需要的图片，再保存到指定文件夹。文件夹授权在刷新页面前会一直保留。</p>
     </div>
-    <span class="wid-badge">本机直存</span>
+    <span class="wid-badge">🌐 浏览器直连</span>
   </section>
 
   <section class="wid-panel">
@@ -2296,6 +2306,9 @@ post-sidebar">
 <style>
 .wid-app{--wid-accent:#5d8f84;--wid-deep:#426d65;--wid-soft:#edf4f1;--wid-hero:#dfece8;--wid-ink:#304842;--wid-muted:#71827e;--wid-line:#d4e1dd;--wid-card:var(--card-background,#fff);display:grid;gap:16px;margin:16px 0 96px;color:var(--card-text-color-main,var(--wid-ink));font-size:16px}.wid-app *,.wid-app *:before,.wid-app *:after{box-sizing:border-box}.wid-app [hidden]{display:none!important}.wid-hero,.wid-panel,.wid-results{border:1px solid var(--wid-line);border-radius:20px;background:var(--wid-card);box-shadow:0 8px 24px rgba(55,82,75,.06)}.wid-hero{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:23px;background:var(--wid-hero)}.wid-kicker{margin-bottom:7px;color:var(--wid-deep);font-size:12px;font-weight:850;letter-spacing:.13em}.wid-hero p{max-width:650px;margin:0;color:var(--wid-muted);font-size:13px;line-height:1.7}.wid-badge{flex:none;padding:7px 11px;border-radius:999px;background:#f5f9f7;color:var(--wid-deep);font-size:12px;font-weight:750}.wid-panel{display:grid;gap:17px;padding:21px}.wid-field{display:grid;gap:7px}.wid-field>label{color:var(--wid-deep);font-size:13px;font-weight:800}.wid-field>small{color:var(--wid-muted);font-size:12px}.wid-control{display:flex;align-items:center;gap:10px;height:49px;padding:0 13px;border:1.5px solid var(--wid-line);border-radius:13px;background:var(--wid-card)}.wid-control:focus-within{border-color:var(--wid-accent);box-shadow:0 0 0 3px rgba(93,143,132,.12)}.wid-control>span{color:var(--wid-accent);font-size:18px}.wid-control input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:inherit;font:inherit;font-size:15px}.wid-clear{padding:2px 6px;border:0;background:transparent;color:var(--wid-muted);font:inherit;font-size:21px;cursor:pointer}.wid-folder{display:flex;align-items:center;gap:12px;width:100%;min-height:65px;padding:11px 13px;border:1.5px dashed #abc7c0;border-radius:14px;background:var(--wid-soft);color:inherit;text-align:left;cursor:pointer;font:inherit}.wid-folder:hover{border-color:var(--wid-accent)}.wid-folder-icon{display:grid;place-items:center;flex:none;width:39px;height:39px;border-radius:11px;background:var(--wid-accent);color:#fff;font-size:22px}.wid-folder>span:nth-child(2){display:grid;min-width:0;gap:3px}.wid-folder b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px}.wid-folder small{color:var(--wid-muted);font-size:11px}.wid-folder em{margin-left:auto;color:var(--wid-accent);font-size:12px;font-style:normal;font-weight:800;white-space:nowrap}.wid-actions,.wid-selection,.wid-selection>div{display:flex;align-items:center;justify-content:flex-end;gap:9px}.wid-primary,.wid-secondary,.wid-selection button{min-height:40px;padding:9px 15px;border-radius:11px;font:inherit;font-size:13px;font-weight:800;cursor:pointer}.wid-primary{border:0;background:var(--wid-accent);color:#fff;box-shadow:0 5px 13px rgba(93,143,132,.2)}.wid-primary:hover{background:var(--wid-deep)}.wid-primary:disabled,.wid-secondary:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}.wid-secondary{border:1px solid var(--wid-line);background:var(--wid-card);color:var(--wid-muted)}.wid-notice{padding:11px 13px;border-radius:11px;background:var(--wid-soft);color:var(--wid-deep);font-size:12px;line-height:1.55}.wid-notice.is-error{background:#fff0ef;color:#ad3636}.wid-notice.is-success{background:#e6f4ec;color:#397457}.wid-results{padding:19px}.wid-result-head,.wid-result-head>div{display:flex;align-items:center;justify-content:space-between;gap:10px}.wid-result-head strong{font-size:14px}.wid-result-head span{color:var(--wid-muted);font-size:12px}.wid-spinner{width:17px;height:17px;border:2px solid var(--wid-line);border-top-color:var(--wid-accent);border-radius:50%;animation:wid-spin .7s linear infinite}.wid-progress{overflow:hidden;height:7px;margin:13px 0;border-radius:99px;background:var(--wid-soft)}.wid-progress i{display:block;width:0;height:100%;border-radius:inherit;background:var(--wid-accent);transition:width .2s}.wid-selection{justify-content:space-between;margin:13px 0}.wid-selection>div:first-child button{min-height:32px;padding:5px 9px;border:0;background:transparent;color:var(--wid-accent)}.wid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;max-height:520px;overflow:auto}.wid-item{position:relative;display:grid;grid-template-rows:112px auto;overflow:hidden;min-width:0;border:1.5px solid var(--wid-line);border-radius:12px;background:var(--wid-card);cursor:pointer}.wid-item:has(input:checked){border-color:var(--wid-accent);box-shadow:0 0 0 2px rgba(93,143,132,.12)}.wid-item input{position:absolute;top:8px;right:8px;z-index:2;width:19px;height:19px;accent-color:var(--wid-accent)}.wid-thumb{display:grid;place-items:center;overflow:hidden;background:var(--wid-soft);color:var(--wid-accent);font-size:18px}.wid-thumb img{width:100%;height:100%;object-fit:cover}.wid-item>span{display:grid;min-width:0;gap:2px;padding:8px}.wid-item b,.wid-item small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.wid-item b{font-size:11px}.wid-item small{color:var(--wid-muted);font-size:10px}.wid-item.is-failed{border-color:#efd1d1}.wid-foot{padding:0 4px;color:var(--wid-muted);font-size:11px;line-height:1.6}@keyframes wid-spin{to{transform:rotate(360deg)}}
 [data-scheme="dark"] .wid-app{--wid-accent:#82b8ab;--wid-deep:#acd1c8;--wid-soft:#293b37;--wid-hero:#304641;--wid-muted:#b1c0bc;--wid-line:#4b615c}[data-scheme="dark"] .wid-badge{background:#3d554f;color:#c7e1da}@media(max-width:620px){.wid-app{margin-bottom:88px}.wid-hero{display:block;padding:19px}.wid-badge{display:inline-block;margin-top:13px}.wid-panel{padding:15px}.wid-actions{display:grid}.wid-actions>*{width:100%}.wid-folder em{display:none}.wid-selection{align-items:stretch;flex-direction:column}.wid-selection>div{justify-content:space-between}.wid-selection>div:last-child>*{flex:1}.wid-grid{grid-template-columns:1fr 1fr}}@media(max-width:420px){.wid-grid{grid-template-columns:1fr}}
+.wid-hero p{color:var(--card-text-color-secondary,#747474)}
+.wid-badge,[data-scheme="dark"] .wid-badge{padding:7px 11px;border:1px solid color-mix(in srgb,var(--wid-accent) 34%,transparent);background:color-mix(in srgb,var(--wid-accent) 18%,var(--wid-card));color:var(--wid-deep);box-shadow:inset 0 1px 0 rgba(255,255,255,.28);font-size:12px;font-weight:800}
+:root:not([data-scheme="dark"]) .wid-badge{border-color:color-mix(in srgb,var(--wid-accent) 48%,transparent);background:color-mix(in srgb,var(--wid-accent) 24%,var(--wid-hero))}
 </style>
 
 <script>
@@ -2329,6 +2342,84 @@ post-sidebar">
 })();
 </script>
 
+<h2 id="文本编码转换器">文本编码转换器
+</h2><div class="tc-app" data-text-codec>
+  <section class="tc-hero">
+    <div>
+      <div class="tc-kicker">TEXT · BYTE CONVERTER</div>
+      <p>在 UTF-8 文本与常用字节表示之间双向转换。所有处理都在浏览器本地完成。</p>
+    </div>
+    <span class="tc-badge">🔒 浏览器本地</span>
+  </section>
+
+  <section class="tc-panel">
+    <div class="tc-modes" role="group" aria-label="编码格式">
+      <button type="button" data-format="hex" aria-pressed="true">16进制（Hex）</button>
+      <button type="button" data-format="binary" aria-pressed="false">2进制（Binary）</button>
+      <button type="button" data-format="decimal" aria-pressed="false">10进制（Decimal）</button>
+      <button type="button" data-format="base64" aria-pressed="false">Base64</button>
+    </div>
+
+    <div class="tc-workspace">
+      <label class="tc-field">
+        <span><b data-source-label>文本（String）</b><small data-source-count>0 字符</small></span>
+        <textarea data-source rows="7" spellcheck="false" placeholder="输入或粘贴文本"></textarea>
+      </label>
+
+      <div class="tc-center">
+        <button class="tc-swap" data-swap type="button" aria-label="交换转换方向" title="交换转换方向"><span aria-hidden="true">⇄</span><b data-direction>编码</b></button>
+      </div>
+
+      <label class="tc-field">
+        <span><b data-target-label>16进制（Hex）</b><small data-target-count>0 字节</small></span>
+        <textarea data-target rows="7" readonly spellcheck="false" placeholder="转换结果会显示在这里"></textarea>
+      </label>
+    </div>
+
+    <div class="tc-actions">
+      <span class="tc-status" data-status role="status" aria-live="polite">输入内容后会自动转换</span>
+      <div><button class="tc-secondary" data-clear type="button">清空</button><button class="tc-primary" data-copy type="button" disabled>复制结果</button></div>
+    </div>
+  </section>
+
+  <footer class="tc-foot">Hex、Binary 与 Decimal 显示的是 UTF-8 字节；Base64 是编码格式，并不是一种进制。</footer>
+</div>
+
+<style>
+.tc-app{--tc-accent:#bd4f72;--tc-deep:#8d3854;--tc-soft:#faedf1;--tc-hero:#f6e2e9;--tc-ink:#3d2930;--tc-muted:#7f6971;--tc-line:#ead5dc;--tc-card:var(--card-background,#fff);display:grid;gap:16px;margin:16px 0 96px;color:var(--card-text-color-main,var(--tc-ink));font-size:16px}.tc-app *,.tc-app *:before,.tc-app *:after{box-sizing:border-box}.tc-hero,.tc-panel{border:1px solid var(--tc-line);border-radius:20px;background:var(--tc-card);box-shadow:0 8px 24px rgba(102,51,68,.07)}.tc-hero{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:23px;background:var(--tc-hero)}.tc-kicker{margin-bottom:7px;color:var(--tc-deep);font-size:12px;font-weight:850;letter-spacing:.13em}.tc-hero p{max-width:650px;margin:0;color:var(--tc-muted);font-size:13px;line-height:1.7}.tc-badge{flex:none;padding:7px 11px;border-radius:999px;background:#fff7fa;color:var(--tc-deep);font-size:12px;font-weight:800}.tc-panel{display:grid;gap:18px;padding:21px}.tc-modes{display:flex;flex-wrap:wrap;gap:6px;padding:5px;border-radius:13px;background:var(--tc-soft)}.tc-modes button{flex:1;min-width:130px;padding:9px 11px;border:0;border-radius:9px;background:transparent;color:var(--tc-muted);font:inherit;font-size:13px;cursor:pointer}.tc-modes button[aria-pressed=true]{background:var(--tc-card);color:var(--tc-accent);font-weight:800;box-shadow:0 2px 8px rgba(102,51,68,.12)}.tc-workspace{display:grid;grid-template-columns:minmax(0,1fr) 48px minmax(0,1fr);gap:10px;align-items:center}.tc-field{display:grid;gap:8px;min-width:0}.tc-field>span{display:flex;align-items:center;justify-content:space-between;gap:8px}.tc-field b{color:var(--tc-deep);font-size:13px}.tc-field small{color:var(--tc-muted);font-size:11px}.tc-field textarea{width:100%;min-height:180px;resize:vertical;padding:13px 14px;border:1.5px solid var(--tc-line);border-radius:14px;outline:0;background:var(--tc-card);color:inherit;font:14px/1.65 ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace}.tc-field textarea:focus{border-color:var(--tc-accent);box-shadow:0 0 0 3px rgba(189,79,114,.12)}.tc-field textarea[readonly]{background:var(--tc-soft)}.tc-center{display:grid;place-items:center;padding-top:25px}.tc-swap{display:grid;place-items:center;gap:1px;width:44px;height:50px;border:1px solid var(--tc-line);border-radius:13px;background:var(--tc-card);color:var(--tc-accent);cursor:pointer}.tc-swap:hover{border-color:var(--tc-accent)}.tc-swap span{font-size:20px;line-height:1}.tc-swap b{font-size:10px}.tc-actions,.tc-actions>div{display:flex;align-items:center;justify-content:space-between;gap:9px}.tc-status{color:var(--tc-muted);font-size:12px}.tc-status.is-error{color:#ad3636}.tc-primary,.tc-secondary{min-height:40px;padding:9px 15px;border-radius:11px;font:inherit;font-size:13px;font-weight:800;cursor:pointer}.tc-primary{border:0;background:var(--tc-accent);color:#fff;box-shadow:0 5px 13px rgba(189,79,114,.22)}.tc-primary:hover{background:var(--tc-deep)}.tc-primary:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}.tc-secondary{border:1px solid var(--tc-line);background:var(--tc-card);color:var(--tc-muted)}.tc-foot{padding:0 4px;color:var(--tc-muted);font-size:11px;line-height:1.6}[data-scheme="dark"] .tc-app{--tc-accent:#ef9bb6;--tc-deep:#f6bdcf;--tc-soft:#422d35;--tc-hero:#4c303a;--tc-muted:#ccb5bd;--tc-line:#654b54}[data-scheme="dark"] .tc-badge{background:#5a3945;color:#f8d5e0}@media(max-width:720px){.tc-workspace{grid-template-columns:1fr}.tc-center{padding:0}.tc-swap{width:100%;height:42px;grid-auto-flow:column;justify-content:center}.tc-swap span{transform:rotate(90deg)}.tc-actions{align-items:stretch;flex-direction:column}.tc-actions>div{width:100%}.tc-actions button{flex:1}}@media(max-width:520px){.tc-app{margin-bottom:88px}.tc-hero{display:block;padding:19px}.tc-badge{display:inline-block;margin-top:13px}.tc-panel{padding:15px}.tc-modes button{min-width:calc(50% - 3px);font-size:12px}.tc-field textarea{min-height:145px}.tc-status{text-align:center}}
+.tc-hero p{color:var(--card-text-color-secondary,#747474)}
+.tc-badge,[data-scheme="dark"] .tc-badge{padding:7px 11px;border:1px solid color-mix(in srgb,var(--tc-accent) 34%,transparent);background:color-mix(in srgb,var(--tc-accent) 18%,var(--tc-card));color:var(--tc-deep);box-shadow:inset 0 1px 0 rgba(255,255,255,.28);font-size:12px;font-weight:800}
+:root:not([data-scheme="dark"]) .tc-badge{border-color:color-mix(in srgb,var(--tc-accent) 48%,transparent);background:color-mix(in srgb,var(--tc-accent) 24%,var(--tc-hero))}
+</style>
+
+<script>
+(() => {
+  document.querySelectorAll('[data-text-codec]').forEach(root => {
+    if (root.dataset.ready) return;
+    root.dataset.ready = 'true';
+    const $ = selector => root.querySelector(selector);
+    const els = {source:$('[data-source]'),target:$('[data-target]'),sourceLabel:$('[data-source-label]'),targetLabel:$('[data-target-label]'),sourceCount:$('[data-source-count]'),targetCount:$('[data-target-count]'),direction:$('[data-direction]'),status:$('[data-status]'),copy:$('[data-copy]'),clear:$('[data-clear]'),swap:$('[data-swap]')};
+    const formats = {hex:'16进制（Hex）',binary:'2进制（Binary）',decimal:'10进制（Decimal）',base64:'Base64'};
+    const encoder = new TextEncoder(), decoder = new TextDecoder('utf-8',{fatal:true});
+    let format = 'hex', reverse = false;
+
+    function encodeBase64(bytes){let binary='';for(let i=0;i<bytes.length;i+=0x8000)binary+=String.fromCharCode(...bytes.subarray(i,i+0x8000));return btoa(binary);}
+    function decodeBase64(value){const clean=value.replace(/\s+/g,'').replace(/-/g,'+').replace(/_/g,'/');if(!clean)return new Uint8Array();if(!/^[A-Za-z0-9+/]*={0,2}$/.test(clean)||clean.length%4===1)throw new Error('Base64 格式无效');let binary;try{binary=atob(clean.padEnd(Math.ceil(clean.length/4)*4,'='));}catch(_){throw new Error('Base64 格式无效');}return Uint8Array.from(binary,ch=>ch.charCodeAt(0));}
+    function encode(text){const bytes=encoder.encode(text);if(format==='hex')return [...bytes].map(n=>n.toString(16).padStart(2,'0').toUpperCase()).join(' ');if(format==='binary')return [...bytes].map(n=>n.toString(2).padStart(8,'0')).join(' ');if(format==='decimal')return [...bytes].join(' ');return encodeBase64(bytes);}
+    function decode(value){let bytes;if(format==='base64')bytes=decodeBase64(value);else{const clean=value.trim();if(!clean)return '';let parts;if(format==='hex'){const normalized=clean.replace(/0x/gi,'').replace(/[,_:;\-]/g,' ');if(/\s/.test(normalized))parts=normalized.split(/\s+/).filter(Boolean);else{if(normalized.length%2)throw new Error('Hex 每个字节需要 2 位字符');parts=normalized.match(/.{2}/g)||[];}if(parts.some(item=>!/^[0-9a-fA-F]{2}$/.test(item)))throw new Error('Hex 只能包含 00–FF');bytes=Uint8Array.from(parts,item=>parseInt(item,16));}else if(format==='binary'){const normalized=clean.replace(/0b/gi,'').replace(/[,_:;\-]/g,' ');if(/\s/.test(normalized))parts=normalized.split(/\s+/).filter(Boolean);else{if(normalized.length%8)throw new Error('Binary 每个字节需要 8 位数字');parts=normalized.match(/.{8}/g)||[];}if(parts.some(item=>!/^[01]{8}$/.test(item)))throw new Error('Binary 只能包含 8 位的 0 和 1');bytes=Uint8Array.from(parts,item=>parseInt(item,2));}else{parts=clean.split(/[\s,;]+/).filter(Boolean);if(parts.some(item=>!/^\d{1,3}$/.test(item)||Number(item)>255))throw new Error('Decimal 字节必须在 0–255 之间');bytes=Uint8Array.from(parts,Number);}}try{return decoder.decode(bytes);}catch(_){throw new Error('这些字节不是有效的 UTF-8 文本');}}
+    function byteCount(value){try{return reverse?(format==='base64'?decodeBase64(value):encoder.encode(decode(value))).length:encoder.encode(value).length;}catch(_){return null;}}
+    function convert(){const value=els.source.value;els.sourceCount.textContent=reverse?((byteCount(value)??'—')+' 字节'):(Array.from(value).length+' 字符');if(!value){els.target.value='';els.targetCount.textContent=reverse?'0 字符':'0 字节';els.status.textContent='输入内容后会自动转换';els.status.className='tc-status';els.copy.disabled=true;return;}try{const result=reverse?decode(value):encode(value);els.target.value=result;els.targetCount.textContent=reverse?(Array.from(result).length+' 字符'):(encoder.encode(value).length+' 字节');els.status.textContent='转换完成 · 内容未上传';els.status.className='tc-status';els.copy.disabled=false;}catch(error){els.target.value='';els.targetCount.textContent='—';els.status.textContent=error.message;els.status.className='tc-status is-error';els.copy.disabled=true;}}
+    function refresh(){const coded=formats[format];els.sourceLabel.textContent=reverse?coded:'文本（String）';els.targetLabel.textContent=reverse?'文本（String）':coded;els.source.placeholder=reverse?('粘贴'+coded+'内容'):'输入或粘贴文本';els.target.placeholder=reverse?'解码后的文本会显示在这里':'转换结果会显示在这里';els.direction.textContent=reverse?'解码':'编码';root.querySelectorAll('[data-format]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.format===format)));convert();}
+    root.querySelector('.tc-modes').addEventListener('click',event=>{const button=event.target.closest('[data-format]');if(!button)return;format=button.dataset.format;refresh();});
+    els.source.addEventListener('input',convert);
+    els.swap.addEventListener('click',()=>{const oldResult=els.target.value;reverse=!reverse;els.source.value=oldResult;refresh();els.source.focus();});
+    els.clear.addEventListener('click',()=>{els.source.value='';convert();els.source.focus();});
+    els.copy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(els.target.value);}catch(_){els.target.removeAttribute('readonly');els.target.select();document.execCommand('copy');els.target.setAttribute('readonly','');}const label=els.copy.textContent;els.copy.textContent='已复制';setTimeout(()=>els.copy.textContent=label,1200);});
+    refresh();
+  });
+})();
+</script>
+
 
 </section>
 
@@ -2350,7 +2441,7 @@ post-sidebar">
     <section class="article-lastmod">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 7v5l3 3" /></svg>
         <span>
-            最后更新于 2026-08-14
+            最后更新于 2026-08-19
         </span>
     </section></footer>
 
