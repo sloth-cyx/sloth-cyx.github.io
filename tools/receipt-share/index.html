@@ -26,10 +26,6 @@
     .heading { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:13px; }
     .heading strong { font-size:16px; }
     .count { color:var(--muted); font-size:11px; }
-    .user-totals { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:8px; margin-top:14px; }
-    .user-total { display:grid; gap:2px; padding:11px 12px; border:1px solid var(--line); border-radius:11px; background:var(--soft); }
-    .user-total span { color:var(--muted); font-size:10px; }
-    .user-total b { font-size:16px; }
     .receipts { display:grid; gap:10px; margin-top:14px; }
     .receipt { overflow:hidden; border:1px solid var(--line); border-radius:14px; background:var(--surface); }
     .receipt-toggle { display:flex; width:100%; padding:13px; border:0; background:var(--surface); color:inherit; align-items:center; justify-content:space-between; gap:12px; cursor:pointer; text-align:left; }
@@ -71,8 +67,8 @@
     .total { font-size:25px; font-weight:900; white-space:nowrap; }
     .breakdown { display:grid; grid-template-columns:repeat(auto-fit,minmax(90px,1fr)); gap:8px; padding:10px 16px 13px; border-top:1px solid rgba(255,255,255,.14); }
     .breakdown div { display:grid; gap:2px; }
-    .breakdown span { color:#bed0e9; font-size:9px; }
-    .breakdown b { font-size:11px; }
+    .breakdown span { color:#bed0e9; font-size:12px; }
+    .breakdown b { font-size:16px; }
     [hidden] { display:none!important; }
     @media (max-width:520px) {
       body { padding-top:14px; }
@@ -100,7 +96,6 @@
     <section class="panel" id="profilePanel" hidden>
       <div class="heading"><strong id="shareModeTitle">账单结算</strong><span class="count" id="receiptCount"></span></div>
       <p class="help" id="shareModeHelp"></p>
-      <div class="user-totals" id="userTotals" hidden></div>
       <div class="receipts" id="receipts"></div>
     </section>
 
@@ -126,7 +121,7 @@
     const els = {
       profileName: $('profileName'), profileDescription: $('profileDescription'), profilePanel: $('profilePanel'),
       shareModeTitle: $('shareModeTitle'), shareModeHelp: $('shareModeHelp'), receiptCount: $('receiptCount'),
-      userTotals: $('userTotals'), receipts: $('receipts'), errorPanel: $('errorPanel'), errorText: $('errorText'),
+      receipts: $('receipts'), errorPanel: $('errorPanel'), errorText: $('errorText'),
       summary: $('summary'), selectedCount: $('selectedCount'), summaryLabel: $('summaryLabel'), myTotal: $('myTotal'),
       breakdown: $('breakdown')
     };
@@ -365,14 +360,10 @@
         els.profileDescription.textContent = '分享者已经完成商品分配；下方显示每位用户的结算金额。';
         els.shareModeTitle.textContent = '结算结果';
         els.shareModeHelp.textContent = '收据默认收起。展开可以查看商品、价格及商品所属用户；内容无法修改。';
-        els.userTotals.hidden = false;
-        els.userTotals.innerHTML = state.users.map(user => `
-          <div class="user-total"><span>${escapeHtml(user.name)}</span><b>${money(userTotal(user.id))}</b></div>`).join('');
       } else {
         els.profileDescription.textContent = '勾选你的商品，金额会跨所有收据实时合计。';
         els.shareModeTitle.textContent = '待勾选账单';
         els.shareModeHelp.textContent = '收据默认收起。展开后勾选商品，需要分摊时可调整 Divide 除数。';
-        els.userTotals.hidden = true;
       }
       els.profilePanel.hidden = false;
       els.summary.hidden = false;
