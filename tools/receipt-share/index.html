@@ -26,7 +26,19 @@
     .heading { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:13px; }
     .heading strong { font-size:16px; }
     .count { color:var(--muted); font-size:11px; }
-    .items { display:grid; gap:10px; margin-top:14px; }
+    .user-totals { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:8px; margin-top:14px; }
+    .user-total { display:grid; gap:2px; padding:11px 12px; border:1px solid var(--line); border-radius:11px; background:var(--soft); }
+    .user-total span { color:var(--muted); font-size:10px; }
+    .user-total b { font-size:16px; }
+    .receipts { display:grid; gap:10px; margin-top:14px; }
+    .receipt { overflow:hidden; border:1px solid var(--line); border-radius:14px; background:var(--surface); }
+    .receipt-toggle { display:flex; width:100%; padding:13px; border:0; background:var(--surface); color:inherit; align-items:center; justify-content:space-between; gap:12px; cursor:pointer; text-align:left; }
+    .receipt-title { display:grid; gap:2px; }
+    .receipt-title strong { overflow-wrap:anywhere; font-size:14px; }
+    .receipt-title small { color:var(--muted); font-size:10px; }
+    .receipt-arrow { color:var(--blue); font-size:11px; font-weight:800; }
+    .receipt-body { padding:0 12px 12px; border-top:1px solid var(--line); }
+    .items { display:grid; gap:9px; padding-top:11px; }
     .item { overflow:hidden; border:1px solid var(--line); border-radius:14px; background:var(--surface); }
     .item.selected { border-color:#82a9e8; box-shadow:0 0 0 3px rgba(40,104,216,.08); }
     .item-main { display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:11px; padding:13px; }
@@ -35,6 +47,9 @@
     .item-copy { min-width:0; }
     .item-name { overflow-wrap:anywhere; font-weight:800; }
     .item-note { color:var(--muted); font-size:10px; }
+    .owners { display:flex; flex-wrap:wrap; gap:4px; margin-top:4px; }
+    .owner { padding:2px 6px; border-radius:999px; background:#e7f0ff; color:#285a9e; font-size:9px; font-weight:800; }
+    .owner.rs-unassigned { background:#f2f4f7; color:var(--muted); }
     .price { font-weight:850; white-space:nowrap; }
     .share-row { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 13px; border-top:1px solid var(--line); background:var(--soft); }
     .share-toggle { display:flex; align-items:center; gap:7px; cursor:pointer; font-size:12px; font-weight:750; }
@@ -54,7 +69,7 @@
     .summary-copy small { color:#bed0e9; font-size:10px; }
     .summary-copy strong { font-size:14px; }
     .total { font-size:25px; font-weight:900; white-space:nowrap; }
-    .breakdown { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; padding:10px 16px 13px; border-top:1px solid rgba(255,255,255,.14); }
+    .breakdown { display:grid; grid-template-columns:repeat(auto-fit,minmax(90px,1fr)); gap:8px; padding:10px 16px 13px; border-top:1px solid rgba(255,255,255,.14); }
     .breakdown div { display:grid; gap:2px; }
     .breakdown span { color:#bed0e9; font-size:9px; }
     .breakdown b { font-size:11px; }
@@ -67,7 +82,7 @@
       .panel { padding:14px; border-radius:15px; }
       .charges { grid-template-columns:1fr; }
       .summary { border-radius:14px; }
-      .breakdown { grid-template-columns:1fr 1fr 1fr; }
+      .breakdown { grid-template-columns:repeat(2,1fr); }
     }
   </style>
 </head>
@@ -76,21 +91,17 @@
     <header class="hero">
       <div>
         <div class="eyebrow">Receipt Splitter</div>
-        <h1>勾选你的商品</h1>
-        <p>商品和收费由分享者提供；选择后会实时计算你需要支付的金额。</p>
+        <h1 id="profileName">账单 Profile</h1>
+        <p id="profileDescription">由分享者提供的账单资料。</p>
       </div>
       <span class="readonly">🔒 只读账单</span>
     </header>
 
-    <section class="panel" id="receiptPanel" hidden>
-      <div class="heading"><strong>账单商品</strong><span class="count" id="itemCount"></span></div>
-      <p class="help">可以勾选商品，并按实际情况调整共享人数；商品名称、价格和收费无法修改。</p>
-      <div class="items" id="items"></div>
-      <div class="charges">
-        <div class="charge"><span>Service Charge</span><b id="serviceAmount">RM0.00</b></div>
-        <div class="charge"><span>SST / Tax</span><b id="sstAmount">RM0.00</b></div>
-        <div class="charge"><span>账单总额</span><b id="receiptTotal">RM0.00</b></div>
-      </div>
+    <section class="panel" id="profilePanel" hidden>
+      <div class="heading"><strong id="shareModeTitle">账单结算</strong><span class="count" id="receiptCount"></span></div>
+      <p class="help" id="shareModeHelp"></p>
+      <div class="user-totals" id="userTotals" hidden></div>
+      <div class="receipts" id="receipts"></div>
     </section>
 
     <section class="panel error" id="errorPanel" hidden>
@@ -101,134 +112,343 @@
 
   <aside class="summary" id="summary" hidden aria-live="polite">
     <div class="summary-main">
-      <span class="summary-copy"><small id="selectedCount">已选择 0 项</small><strong>我的总额</strong></span>
+      <span class="summary-copy"><small id="selectedCount">Profile 总计</small><strong id="summaryLabel">我的总额</strong></span>
       <span class="total" id="myTotal">RM0.00</span>
     </div>
-    <div class="breakdown">
-      <div><span>商品</span><b id="mySubtotal">RM0.00</b></div>
-      <div><span>Service Charge</span><b id="myService">RM0.00</b></div>
-      <div><span>SST / Tax</span><b id="mySst">RM0.00</b></div>
-    </div>
+    <div class="breakdown" id="breakdown"></div>
   </aside>
 
   <script>
-    (() => {
-      'use strict';
-      const $ = id => document.getElementById(id);
-      const els = {
-        receiptPanel: $('receiptPanel'), errorPanel: $('errorPanel'), errorText: $('errorText'), items: $('items'),
-        itemCount: $('itemCount'), serviceAmount: $('serviceAmount'), sstAmount: $('sstAmount'), receiptTotal: $('receiptTotal'),
-        summary: $('summary'), selectedCount: $('selectedCount'), myTotal: $('myTotal'), mySubtotal: $('mySubtotal'),
-        myService: $('myService'), mySst: $('mySst')
+  (() => {
+    'use strict';
+
+    const $ = id => document.getElementById(id);
+    const els = {
+      profileName: $('profileName'), profileDescription: $('profileDescription'), profilePanel: $('profilePanel'),
+      shareModeTitle: $('shareModeTitle'), shareModeHelp: $('shareModeHelp'), receiptCount: $('receiptCount'),
+      userTotals: $('userTotals'), receipts: $('receipts'), errorPanel: $('errorPanel'), errorText: $('errorText'),
+      summary: $('summary'), selectedCount: $('selectedCount'), summaryLabel: $('summaryLabel'), myTotal: $('myTotal'),
+      breakdown: $('breakdown')
+    };
+    const state = { mode: 'pick', profileName: '账单 Profile', users: [], receipts: [] };
+
+    function number(value, fallback) {
+      const parsed = Number(value);
+      return Number.isFinite(parsed) ? parsed : (fallback == null ? 0 : fallback);
+    }
+
+    function money(value) {
+      const safe = Math.abs(number(value)) < .0005 ? 0 : number(value);
+      return (safe < 0 ? '-RM' : 'RM') + Math.abs(safe).toFixed(2);
+    }
+
+    function decode(token) {
+      if (!token || token.length > 100000) throw new Error('分享链接无效或内容过长。');
+      const padded = token.replace(/-/g, '+').replace(/_/g, '/') + '==='.slice((token.length + 3) % 4);
+      const binary = atob(padded);
+      const bytes = Uint8Array.from(binary, character => character.charCodeAt(0));
+      return JSON.parse(new TextDecoder().decode(bytes));
+    }
+
+    function receiptSubtotal(receipt) {
+      return receipt.items.reduce((sum, item) => sum + item.price, 0);
+    }
+
+    function chargeAmount(receipt, key) {
+      const charge = receipt.charges[key];
+      return charge.mode === 'rate' ? receiptSubtotal(receipt) * charge.rate / 100 : charge.amount;
+    }
+
+    function receiptGross(receipt) {
+      return receiptSubtotal(receipt) + chargeAmount(receipt, 'service') + chargeAmount(receipt, 'sst');
+    }
+
+    function itemAmounts(receipt, item) {
+      const subtotal = receiptSubtotal(receipt);
+      const ratio = subtotal > 0 ? item.price / subtotal : 0;
+      const divisor = item.divideEnabled ? item.divisor : 1;
+      return {
+        base: item.price / divisor,
+        service: chargeAmount(receipt, 'service') * ratio / divisor,
+        sst: chargeAmount(receipt, 'sst') * ratio / divisor
       };
-      const state = { items: [], charges: { service: { rate:0, amount:0, mode:'rate' }, sst: { rate:0, amount:0, mode:'rate' } }, receiptTotal:null };
+    }
 
-      function number(value, fallback = 0) {
-        const parsed = Number(value);
-        return Number.isFinite(parsed) ? parsed : fallback;
+    function userTotal(userId) {
+      return state.receipts.reduce((profileSum, receipt) => profileSum + receipt.items.reduce((receiptSum, item) => {
+        if (!item.selectedBy.includes(userId)) return receiptSum;
+        const amounts = itemAmounts(receipt, item);
+        return receiptSum + amounts.base + amounts.service + amounts.sst;
+      }, 0), 0);
+    }
+
+    function pickerTotals() {
+      let count = 0;
+      let base = 0;
+      let service = 0;
+      let sst = 0;
+      state.receipts.forEach(receipt => receipt.items.forEach(item => {
+        if (!item.selected) return;
+        const amounts = itemAmounts(receipt, item);
+        count += 1;
+        base += amounts.base;
+        service += amounts.service;
+        sst += amounts.sst;
+      }));
+      return { count, base, service, sst, total: base + service + sst };
+    }
+
+    function calculate() {
+      if (state.mode === 'summary') {
+        const totals = state.users.map(user => ({ user, amount: userTotal(user.id) }));
+        const total = totals.reduce((sum, entry) => sum + entry.amount, 0);
+        els.selectedCount.textContent = state.receipts.length + ' 张收据';
+        els.summaryLabel.textContent = '已分配总额';
+        els.myTotal.textContent = money(total);
+        els.breakdown.innerHTML = totals.map(entry => `
+          <div><span>${escapeHtml(entry.user.name)}</span><b>${money(entry.amount)}</b></div>`).join('');
+        return;
       }
-      function money(value) {
-        const safe = Math.abs(number(value)) < .0005 ? 0 : number(value);
-        return (safe < 0 ? '-RM' : 'RM') + Math.abs(safe).toFixed(2);
+      const totals = pickerTotals();
+      els.selectedCount.textContent = '已选择 ' + totals.count + ' 项';
+      els.summaryLabel.textContent = '我的总额';
+      els.myTotal.textContent = money(totals.total);
+      els.breakdown.innerHTML = `
+        <div><span>商品</span><b>${money(totals.base)}</b></div>
+        <div><span>Service Charge</span><b>${money(totals.service)}</b></div>
+        <div><span>SST / Tax</span><b>${money(totals.sst)}</b></div>`;
+    }
+
+    function escapeHtml(value) {
+      return String(value == null ? '' : value)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+    }
+
+    function ownerMarkup(item) {
+      if (state.mode !== 'summary') return '';
+      const owners = state.users.filter(user => item.selectedBy.includes(user.id));
+      if (!owners.length) return '<div class="owners"><span class="owner rs-unassigned">未分配</span></div>';
+      return '<div class="owners">' + owners.map(user => '<span class="owner">' + escapeHtml(user.name) + '</span>').join('') + '</div>';
+    }
+
+    function renderItem(receipt, item, itemIndex) {
+      const card = document.createElement('article');
+      card.className = 'item';
+      const main = document.createElement('div');
+      main.className = 'item-main';
+      if (state.mode === 'pick') {
+        const pickLabel = document.createElement('label');
+        pickLabel.className = 'pick';
+        const pick = document.createElement('input');
+        pick.type = 'checkbox';
+        pick.checked = item.selected;
+        pick.setAttribute('aria-label', '选择 ' + item.name);
+        pick.addEventListener('change', () => {
+          item.selected = pick.checked;
+          card.classList.toggle('selected', item.selected);
+          calculate();
+        });
+        pickLabel.append(pick);
+        main.append(pickLabel);
+      } else {
+        const marker = document.createElement('span');
+        marker.className = 'pick';
+        marker.textContent = '•';
+        main.append(marker);
       }
-      function subtotal() { return state.items.reduce((sum,item) => sum + item.price, 0); }
-      function chargeAmount(key) {
-        const charge = state.charges[key];
-        return charge.mode === 'rate' ? subtotal() * charge.rate / 100 : charge.amount;
+      const copy = document.createElement('div');
+      copy.className = 'item-copy';
+      copy.innerHTML = `
+        <div class="item-name">${escapeHtml(item.name)}</div>
+        <div class="item-note">第 ${itemIndex + 1} 项${item.divideEnabled ? ' · Divide ÷ ' + item.divisor : ''}</div>
+        ${ownerMarkup(item)}`;
+      const price = document.createElement('div');
+      price.className = 'price';
+      price.textContent = money(item.price);
+      main.append(copy, price);
+      card.append(main);
+
+      if (state.mode === 'pick') {
+        const divideRow = document.createElement('div');
+        divideRow.className = 'share-row';
+        const divideLabel = document.createElement('label');
+        divideLabel.className = 'share-toggle';
+        const divideCheck = document.createElement('input');
+        divideCheck.type = 'checkbox';
+        divideCheck.checked = item.divideEnabled;
+        const divideText = document.createElement('span');
+        divideText.textContent = 'Divide';
+        divideLabel.append(divideCheck, divideText);
+        const controls = document.createElement('div');
+        controls.className = 'divisor';
+        controls.hidden = !item.divideEnabled;
+        const minus = document.createElement('button');
+        minus.type = 'button';
+        minus.textContent = '−';
+        minus.setAttribute('aria-label', '减少除数');
+        const output = document.createElement('output');
+        output.textContent = '÷ ' + item.divisor;
+        const plus = document.createElement('button');
+        plus.type = 'button';
+        plus.textContent = '＋';
+        plus.setAttribute('aria-label', '增加除数');
+        divideCheck.addEventListener('change', () => {
+          item.divideEnabled = divideCheck.checked;
+          controls.hidden = !item.divideEnabled;
+          calculate();
+        });
+        minus.addEventListener('click', () => {
+          item.divisor = Math.max(2, item.divisor - 1);
+          output.textContent = '÷ ' + item.divisor;
+          calculate();
+        });
+        plus.addEventListener('click', () => {
+          item.divisor = Math.min(99, item.divisor + 1);
+          output.textContent = '÷ ' + item.divisor;
+          calculate();
+        });
+        controls.append(minus, output, plus);
+        divideRow.append(divideLabel, controls);
+        card.append(divideRow);
       }
-      function decode(token) {
-        if (!token || token.length > 100000) throw new Error('分享链接无效或内容过长。');
-        const padded = token.replace(/-/g,'+').replace(/_/g,'/') + '==='.slice((token.length + 3) % 4);
-        const binary = atob(padded);
-        const bytes = Uint8Array.from(binary, character => character.charCodeAt(0));
-        return JSON.parse(new TextDecoder().decode(bytes));
+      return card;
+    }
+
+    function renderReceipt(receipt) {
+      const card = document.createElement('article');
+      card.className = 'receipt';
+      const assigned = state.mode === 'summary'
+        ? state.users.reduce((sum, user) => sum + receipt.items.reduce((itemSum, item) => {
+          if (!item.selectedBy.includes(user.id)) return itemSum;
+          const amounts = itemAmounts(receipt, item);
+          return itemSum + amounts.base + amounts.service + amounts.sst;
+        }, 0), 0)
+        : null;
+      const toggle = document.createElement('button');
+      toggle.className = 'receipt-toggle';
+      toggle.type = 'button';
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.innerHTML = `
+        <span class="receipt-title"><strong>${escapeHtml(receipt.name)}</strong><small>${receipt.items.length} 项 · 账单 ${money(receiptGross(receipt))}${assigned == null ? '' : ' · 已分配 ' + money(assigned)}</small></span>
+        <span class="receipt-arrow">展开 ↓</span>`;
+      const body = document.createElement('div');
+      body.className = 'receipt-body';
+      body.hidden = true;
+      const items = document.createElement('div');
+      items.className = 'items';
+      receipt.items.forEach((item, index) => items.append(renderItem(receipt, item, index)));
+      body.append(items);
+      const charges = document.createElement('div');
+      charges.className = 'charges';
+      charges.innerHTML = `
+        <div class="charge"><span>Service Charge</span><b>${money(chargeAmount(receipt, 'service'))}</b></div>
+        <div class="charge"><span>SST / Tax</span><b>${money(chargeAmount(receipt, 'sst'))}</b></div>
+        <div class="charge"><span>账单总额</span><b>${money(receipt.receiptTotal == null ? receiptGross(receipt) : receipt.receiptTotal)}</b></div>`;
+      body.append(charges);
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.querySelector('.receipt-arrow').textContent = expanded ? '展开 ↓' : '收起 ↑';
+        body.hidden = expanded;
+      });
+      card.append(toggle, body);
+      return card;
+    }
+
+    function render() {
+      els.profileName.textContent = state.profileName;
+      els.receiptCount.textContent = state.receipts.length + ' 张';
+      els.receipts.replaceChildren();
+      state.receipts.forEach(receipt => els.receipts.append(renderReceipt(receipt)));
+      if (state.mode === 'summary') {
+        els.profileDescription.textContent = '分享者已经完成商品分配；下方显示每位用户的结算金额。';
+        els.shareModeTitle.textContent = '结算结果';
+        els.shareModeHelp.textContent = '收据默认收起。展开可以查看商品、价格及商品所属用户；内容无法修改。';
+        els.userTotals.hidden = false;
+        els.userTotals.innerHTML = state.users.map(user => `
+          <div class="user-total"><span>${escapeHtml(user.name)}</span><b>${money(userTotal(user.id))}</b></div>`).join('');
+      } else {
+        els.profileDescription.textContent = '勾选你的商品，金额会跨所有收据实时合计。';
+        els.shareModeTitle.textContent = '待勾选账单';
+        els.shareModeHelp.textContent = '收据默认收起。展开后勾选商品，需要分摊时可调整 Divide 除数。';
+        els.userTotals.hidden = true;
       }
-      function itemAmounts(item) {
-        const allItems = subtotal();
-        const ratio = allItems > 0 ? item.price / allItems : 0;
-        const divisor = item.shareEnabled ? item.divisor : 1;
+      els.profilePanel.hidden = false;
+      els.summary.hidden = false;
+      calculate();
+    }
+
+    function parseCharge(entry) {
+      const charge = Array.isArray(entry) ? entry : [0, 0, 0];
+      return { rate: Math.max(0, number(charge[0])), amount: number(charge[1]), mode: charge[2] === 1 ? 'amount' : 'rate' };
+    }
+
+    function parseV2(data) {
+      if (!Array.isArray(data.r) || !data.r.length || data.r.length > 100) throw new Error('Profile 中没有可用收据。');
+      state.mode = data.m === 'summary' ? 'summary' : 'pick';
+      state.profileName = String(data.n || '账单 Profile').slice(0, 100);
+      state.users = state.mode === 'summary' && Array.isArray(data.u)
+        ? data.u.slice(0, 50).map(entry => ({ id: number(entry[0]), name: String(entry[1] || '用户').slice(0, 80) }))
+        : [];
+      state.receipts = data.r.map((entry, receiptIndex) => {
+        if (!Array.isArray(entry) || !Array.isArray(entry[1]) || !entry[1].length || entry[1].length > 300) throw new Error('Profile 中有无效收据。');
+        const charges = Array.isArray(entry[2]) ? entry[2] : [];
         return {
-          base: item.price / divisor,
-          service: chargeAmount('service') * ratio / divisor,
-          sst: chargeAmount('sst') * ratio / divisor
+          name: String(entry[0] || '收据 ' + (receiptIndex + 1)).slice(0, 100),
+          items: entry[1].map(itemEntry => {
+            if (!Array.isArray(itemEntry) || !String(itemEntry[0] || '').trim()) throw new Error('收据中有无效商品。');
+            const divisor = Math.max(1, Math.min(99, Math.floor(number(itemEntry[2], 1))));
+            return {
+              name: String(itemEntry[0]).slice(0, 200),
+              price: Math.max(0, number(itemEntry[1])),
+              divideEnabled: divisor > 1,
+              divisor: divisor > 1 ? divisor : 2,
+              selectedBy: Array.isArray(itemEntry[3]) ? itemEntry[3].map(number) : [],
+              selected: false
+            };
+          }),
+          charges: { service: parseCharge(charges[0]), sst: parseCharge(charges[1]) },
+          receiptTotal: entry[3] == null ? null : number(entry[3])
         };
-      }
-      function calculate() {
-        let count = 0, base = 0, service = 0, sst = 0;
-        state.items.forEach(item => {
-          if (!item.selected) return;
-          const values = itemAmounts(item);
-          count += 1; base += values.base; service += values.service; sst += values.sst;
-        });
-        els.selectedCount.textContent = '已选择 ' + count + ' 项';
-        els.mySubtotal.textContent = money(base);
-        els.myService.textContent = money(service);
-        els.mySst.textContent = money(sst);
-        els.myTotal.textContent = money(base + service + sst);
-      }
-      function render() {
-        els.items.replaceChildren();
-        state.items.forEach((item,index) => {
-          const card = document.createElement('article');
-          card.className = 'item';
-          const main = document.createElement('div'); main.className = 'item-main';
-          const pickLabel = document.createElement('label'); pickLabel.className = 'pick';
-          const pick = document.createElement('input'); pick.type = 'checkbox'; pick.setAttribute('aria-label','选择 ' + item.name); pickLabel.append(pick);
-          const copy = document.createElement('div'); copy.className = 'item-copy';
-          const name = document.createElement('div'); name.className = 'item-name'; name.textContent = item.name;
-          const note = document.createElement('div'); note.className = 'item-note'; note.textContent = '第 ' + (index + 1) + ' 项 · 价格由分享者提供';
-          copy.append(name,note);
-          const price = document.createElement('div'); price.className = 'price'; price.textContent = money(item.price);
-          main.append(pickLabel,copy,price);
+      });
+    }
 
-          const shareRow = document.createElement('div'); shareRow.className = 'share-row';
-          const shareLabel = document.createElement('label'); shareLabel.className = 'share-toggle';
-          const shareCheck = document.createElement('input'); shareCheck.type = 'checkbox'; shareCheck.checked = item.shareEnabled;
-          const shareText = document.createElement('span'); shareText.textContent = '共享商品'; shareLabel.append(shareCheck,shareText);
-          const controls = document.createElement('div'); controls.className = 'divisor'; controls.hidden = !item.shareEnabled;
-          const minus = document.createElement('button'); minus.type = 'button'; minus.textContent = '−'; minus.setAttribute('aria-label','减少共享人数');
-          const output = document.createElement('output'); output.textContent = '÷ ' + item.divisor;
-          const plus = document.createElement('button'); plus.type = 'button'; plus.textContent = '＋'; plus.setAttribute('aria-label','增加共享人数');
-          controls.append(minus,output,plus); shareRow.append(shareLabel,controls); card.append(main,shareRow); els.items.append(card);
+    function parseV1(data) {
+      if (!Array.isArray(data.i) || !data.i.length) throw new Error('账单资料格式不正确。');
+      const charges = Array.isArray(data.c) ? data.c : [];
+      state.mode = 'pick';
+      state.profileName = '分享账单';
+      state.users = [];
+      state.receipts = [{
+        name: '收据 1',
+        items: data.i.map(entry => {
+          const divisor = Math.max(1, Math.min(99, Math.floor(number(entry[2], 1))));
+          return { name: String(entry[0] || '商品'), price: Math.max(0, number(entry[1])), divideEnabled: divisor > 1, divisor: divisor > 1 ? divisor : 2, selectedBy: [], selected: false };
+        }),
+        charges: { service: parseCharge(charges[0]), sst: parseCharge(charges[1]) },
+        receiptTotal: data.r == null ? null : number(data.r)
+      }];
+    }
 
-          pick.addEventListener('change', () => { item.selected = pick.checked; card.classList.toggle('selected',item.selected); calculate(); });
-          shareCheck.addEventListener('change', () => { item.shareEnabled = shareCheck.checked; controls.hidden = !item.shareEnabled; calculate(); });
-          minus.addEventListener('click', () => { item.divisor = Math.max(2,item.divisor - 1); output.textContent = '÷ ' + item.divisor; calculate(); });
-          plus.addEventListener('click', () => { item.divisor = Math.min(99,item.divisor + 1); output.textContent = '÷ ' + item.divisor; calculate(); });
-        });
-        const service = chargeAmount('service'), sst = chargeAmount('sst');
-        els.itemCount.textContent = state.items.length + ' 项';
-        els.serviceAmount.textContent = money(service);
-        els.sstAmount.textContent = money(sst);
-        els.receiptTotal.textContent = money(state.receiptTotal == null ? subtotal() + service + sst : state.receiptTotal);
-        els.receiptPanel.hidden = false; els.summary.hidden = false; calculate();
+    function load() {
+      try {
+        const match = location.hash.match(/^#(?:profile|receipt)=([^&]+)/);
+        if (!match) throw new Error('链接中没有账单资料。');
+        const data = decode(match[1]);
+        if (data && data.v === 2) parseV2(data);
+        else if (data && data.v === 1) parseV1(data);
+        else throw new Error('账单资料版本不受支持。');
+        render();
+      } catch (error) {
+        els.errorText.textContent = error && error.message ? error.message : '请确认分享链接完整后再试。';
+        els.errorPanel.hidden = false;
       }
-      function load() {
-        try {
-          const match = location.hash.match(/^#receipt=([^&]+)/);
-          if (!match) throw new Error('链接中没有账单资料。');
-          const data = decode(match[1]);
-          if (!data || data.v !== 1 || !Array.isArray(data.i) || !data.i.length || data.i.length > 300) throw new Error('账单资料格式不正确。');
-          state.items = data.i.map(entry => {
-            if (!Array.isArray(entry) || !String(entry[0] || '').trim()) throw new Error('账单中有无效商品。');
-            const divisor = Math.max(1,Math.min(99,Math.floor(number(entry[2],1))));
-            return { name:String(entry[0]).slice(0,200), price:Math.max(0,number(entry[1])), selected:false, shareEnabled:divisor > 1, divisor:divisor > 1 ? divisor : 2 };
-          });
-          const charges = Array.isArray(data.c) ? data.c : [];
-          ['service','sst'].forEach((key,index) => {
-            const charge = Array.isArray(charges[index]) ? charges[index] : [0,0,0];
-            state.charges[key] = { rate:Math.max(0,number(charge[0])), amount:number(charge[1]), mode:charge[2] === 1 ? 'amount' : 'rate' };
-          });
-          state.receiptTotal = data.r == null ? null : number(data.r);
-          render();
-        } catch (error) {
-          els.errorText.textContent = error && error.message ? error.message : '请确认分享链接完整后再试。';
-          els.errorPanel.hidden = false;
-        }
-      }
-      window.addEventListener('hashchange', () => location.reload());
-      load();
-    })();
+    }
+
+    window.addEventListener('hashchange', () => location.reload());
+    load();
+  })();
   </script>
 </body>
 </html>

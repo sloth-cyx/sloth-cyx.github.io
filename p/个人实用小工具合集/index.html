@@ -598,6 +598,42 @@ post-sidebar">
     <span class="rs-privacy">🔒 浏览器本地</span>
   </section>
 
+  <section class="rs-panel rs-profile-panel">
+    <div class="rs-section-heading">
+      <div><span class="rs-profile-icon">👤</span><strong>Profile</strong></div>
+    </div>
+    <div class="rs-profile-name-row">
+      <label><span>Profile 名称</span><input id="rsProfileName" type="text" maxlength="80" value="我的账单 Profile"></label>
+    </div>
+    <div class="rs-users-heading">
+      <strong>参与用户</strong>
+      <div class="rs-user-heading-actions">
+        <button class="rs-text-button" id="rsAddUser" type="button">＋ 添加用户</button>
+        <button class="rs-text-button rs-delete-current-user" id="rsDeleteCurrentUser" type="button" disabled>删除当前用户</button>
+      </div>
+    </div>
+    <div class="rs-user-options" id="rsUserTabs" role="radiogroup" aria-label="切换当前用户"></div>
+    <div class="rs-user-create" id="rsUserCreate" hidden>
+      <input id="rsNewUserName" type="text" maxlength="80" placeholder="输入用户名称">
+      <button class="rs-primary-button" id="rsConfirmUser" type="button">添加</button>
+      <button class="rs-secondary-button" id="rsCancelUser" type="button">取消</button>
+    </div>
+  </section>
+
+  <section class="rs-panel rs-receipts-panel">
+    <div class="rs-section-heading">
+      <div><span class="rs-profile-icon">🧾</span><strong>收据</strong></div>
+      <div class="rs-receipt-heading-actions">
+        <span class="rs-charge-note" id="rsReceiptCount">1 张</span>
+        <button class="rs-primary-button rs-add-receipt" id="rsAddReceipt" type="button">＋ 添加收据</button>
+      </div>
+    </div>
+    <div class="rs-receipt-list" id="rsReceiptList"></div>
+  </section>
+
+  <div class="rs-editor-parking" id="rsEditorParking">
+  <div class="rs-receipt-editor" id="rsReceiptEditor">
+
   <section class="rs-panel rs-upload-panel">
     <div class="rs-section-heading">
       <div class="rs-upload-heading-main">
@@ -607,16 +643,18 @@ post-sidebar">
           <button type="button" data-source-mode="ocr" aria-pressed="false">OCR 扫描</button>
         </div>
       </div>
-      <button class="rs-text-button" id="rsResetButton" type="button">清空全部</button>
+      <button class="rs-text-button" id="rsResetButton" type="button">清空当前收据</button>
     </div>
 
     <div class="rs-source-panel" id="rsOcrPanel" hidden>
       <input id="rsReceiptInput" class="rs-file-input" type="file" accept="image/jpeg,image/png,image/webp,image/*">
+      <input id="rsCameraInput" class="rs-file-input" type="file" accept="image/*" capture="environment">
       <label class="rs-upload-zone" for="rsReceiptInput" id="rsUploadZone">
         <span class="rs-upload-icon">🖼️</span>
         <strong>上传收据照片</strong>
         <small>建议使用光线均匀、文字清晰且边缘完整的照片</small>
       </label>
+      <label class="rs-camera-button" for="rsCameraInput">📷 用手机拍照</label>
 
       <div class="rs-preview-wrap" id="rsPreviewWrap" hidden>
         <canvas id="rsPreviewCanvas" aria-label="收据照片预览"></canvas>
@@ -686,7 +724,7 @@ post-sidebar">
         <button class="rs-text-button" id="rsAddItem" type="button">＋ 手动添加</button>
       </div>
     </div>
-    <p class="rs-help">OCR 会把数量大于 1 的商品拆成多行。勾选属于你的商品；多人共享时开启 Share 并填写除数。</p>
+    <p class="rs-help">OCR 会把数量大于 1 的商品拆成多行。勾选属于当前用户的商品；需要分摊时开启 Divide 并填写除数。</p>
     <div class="rs-items-column">
       <div class="rs-empty" id="rsEmptyItems">
         <span>🧾</span>
@@ -723,6 +761,7 @@ post-sidebar">
   <section class="rs-panel rs-check-panel">
     <div class="rs-section-heading">
       <div><span class="rs-step">4</span><strong>收据校验</strong></div>
+      <button class="rs-text-button" id="rsCollapseReceipt" type="button">收起当前收据 ↑</button>
     </div>
     <div class="rs-check-grid">
       <label><span>收据最终总额（可修改）</span><div class="rs-money-input"><b>RM</b><input id="rsReceiptTotal" type="number" step="0.01" inputmode="decimal" placeholder="0.00"></div></label>
@@ -730,17 +769,18 @@ post-sidebar">
       <div class="rs-check-value"><span>差额</span><strong id="rsDifference">—</strong></div>
     </div>
   </section>
+  </div>
+  </div>
 
   <section class="rs-panel rs-share-panel">
     <div class="rs-section-heading">
       <div><span class="rs-step">5</span><strong>分享账单</strong></div>
       <span class="rs-charge-note">不会包含收据照片</span>
     </div>
-    <p class="rs-help">生成链接发送给朋友；对方打开后商品默认未勾选，可自行选择并计算金额。共享商品的除数会一起保留。</p>
+    <p class="rs-help">分享整个 Profile。可以发送已经分配好的结算结果，或让收件人自行勾选商品计算金额。</p>
     <div class="rs-share-actions">
-      <button class="rs-primary-button" id="rsShareReceipt" type="button" disabled>分享给朋友</button>
-      <button class="rs-secondary-button" id="rsCopyShareLink" type="button" disabled>复制分享链接</button>
-      <button class="rs-secondary-button" id="rsDownloadList" type="button" disabled>下载 JSON</button>
+      <button class="rs-primary-button" id="rsShareSummary" type="button" disabled>分享结算结果</button>
+      <button class="rs-secondary-button" id="rsSharePicker" type="button" disabled>分享待勾选账单</button>
     </div>
     <div class="rs-share-result" id="rsShareResult" hidden>
       <span>分享链接已生成</span>
@@ -752,14 +792,10 @@ post-sidebar">
 
   <div class="rs-summary" id="rsSummary" aria-live="polite">
     <button class="rs-summary-main" id="rsSummaryToggle" type="button" aria-expanded="false">
-      <span><small id="rsSelectedCount">已选择 0 项</small><strong>我的总额</strong></span>
+      <span><small id="rsSelectedCount">Profile 共 1 张收据</small><strong>所有用户总额</strong></span>
       <b id="rsMyTotal">RM0.00</b>
     </button>
-    <div class="rs-summary-details" id="rsSummaryDetails" hidden>
-      <div><span>所选商品（Share 后）</span><b id="rsSelectedSubtotal">RM0.00</b></div>
-      <div><span>Service Charge</span><b id="rsMyService">RM0.00</b></div>
-      <div><span>SST / Tax</span><b id="rsMySst">RM0.00</b></div>
-    </div>
+    <div class="rs-summary-details rs-profile-totals" id="rsSummaryDetails" hidden></div>
   </div>
 </div>
 
@@ -773,6 +809,40 @@ post-sidebar">
 .rs-intro p { margin:0; max-width:650px; color:#536273; font-size:13px; line-height:1.7; }
 .rs-kicker { color:var(--rs-blue); font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
 .rs-privacy { flex:0 0 auto; padding:7px 10px; border-radius:999px; background:#def7e9; color:#176442; font-size:12px; font-weight:700; }
+.rs-profile-icon { display:inline-grid; place-items:center; width:27px; height:27px; border-radius:9px; background:var(--rs-blue-soft); font-size:14px; }
+.rs-add-receipt { min-height:36px!important; padding:7px 11px!important; }
+.rs-profile-name-row label { display:grid; gap:5px; color:var(--rs-muted); font-size:11px; font-weight:700; }
+.rs-profile-name-row input { width:100%; height:42px; padding:0 11px; font-weight:800; }
+.rs-users-heading { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:15px; }
+.rs-users-heading strong { font-size:12px; }
+.rs-user-heading-actions { display:flex; align-items:center; gap:6px; }
+.rs-delete-current-user { color:var(--rs-red); }
+.rs-delete-current-user:disabled { opacity:.38; cursor:not-allowed; }
+.rs-user-options { display:flex; flex-wrap:wrap; gap:10px 16px; margin-top:10px; }
+.rs-user-create { display:grid; grid-template-columns:minmax(0,1fr) auto auto; gap:7px; margin-top:9px; }
+.rs-user-create input { height:40px; padding:0 10px; }
+.rs-user-create button { min-height:40px; padding:8px 12px; }
+.rs-user-radio { display:inline-flex; align-items:center; gap:6px; color:var(--rs-muted); cursor:pointer; font-size:12px; font-weight:800; }
+.rs-user-radio input { width:16px; height:16px; margin:0; accent-color:var(--rs-blue); cursor:pointer; }
+.rs-user-radio:has(input:checked) { color:var(--rs-blue); }
+.rs-receipt-heading-actions { justify-content:flex-end; }
+.rs-receipt-list { display:grid; gap:9px; }
+.rs-receipt-row { overflow:hidden; border:1px solid var(--rs-border); border-radius:13px; background:var(--rs-surface); }
+.rs-receipt-row.rs-active { border-color:#7ca6e7; box-shadow:0 0 0 3px rgba(39,103,216,.07); }
+.rs-receipt-row-main { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:10px; padding:11px 12px; cursor:pointer; }
+.rs-receipt-name-wrap { display:grid; gap:3px; }
+.rs-receipt-name-line { display:flex; min-width:0; align-items:center; gap:6px; }
+.rs-receipt-name-line strong { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.rs-receipt-edit { width:28px; height:28px; border:0; border-radius:7px; background:var(--rs-blue-soft); color:var(--rs-blue); cursor:pointer; font-size:12px; }
+.rs-receipt-name { width:100%; height:34px; padding:0 8px; font-weight:850!important; }
+.rs-receipt-mini { color:var(--rs-muted); font-size:10px; }
+.rs-receipt-actions { display:flex; align-items:center; gap:4px; }
+.rs-receipt-actions button { min-height:32px; padding:5px 8px; border:0; border-radius:8px; background:var(--rs-blue-soft); color:var(--rs-blue); cursor:pointer; font:inherit; font-size:10px; font-weight:800; }
+.rs-receipt-actions .rs-receipt-delete { background:#fff0f1; color:var(--rs-red); }
+.rs-editor-parking { display:contents; }
+.rs-receipt-row > .rs-receipt-editor { display:grid; gap:12px; padding:12px; border-top:1px solid var(--rs-border); background:rgba(123,145,176,.035); }
+.rs-receipt-row > .rs-receipt-editor .rs-panel { border-radius:14px; box-shadow:none; }
+.rs-receipt-editor { display:grid; gap:16px; }
 .rs-section-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px; }
 .rs-section-heading > div { display:flex; align-items:center; gap:9px; }
 .rs-step { display:inline-grid; place-items:center; width:27px; height:27px; border-radius:9px; background:var(--rs-blue); color:#fff; font-size:13px; font-weight:800; }
@@ -791,6 +861,7 @@ post-sidebar">
 .rs-upload-zone:hover { border-color:var(--rs-blue); background:#eef5ff; transform:translateY(-1px); }
 .rs-upload-zone small { color:#71829a; }
 .rs-upload-icon { font-size:32px; }
+.rs-camera-button { display:none; min-height:42px; margin-top:9px; padding:10px 14px; border:1px solid #afc6e8; border-radius:11px; background:#f3f7ff; color:#315f9e; align-items:center; justify-content:center; cursor:pointer; font-size:12px; font-weight:800; text-align:center; }
 .rs-preview-wrap { overflow:hidden; border-radius:14px; background:#161a20; }
 #rsPreviewCanvas { display:block; width:100%; max-height:560px; object-fit:contain; }
 .rs-preview-actions { display:flex; justify-content:center; flex-wrap:wrap; gap:8px; padding:10px; background:#252b34; }
@@ -888,6 +959,7 @@ post-sidebar">
 .rs-summary-main > b { font-size:24px; letter-spacing:-.03em; }
 .rs-summary-details { padding:0 16px 12px; border-top:1px solid rgba(255,255,255,.13); }
 .rs-summary-details div { display:flex; justify-content:space-between; padding-top:8px; color:#d9e5f5; font-size:11px; }
+.rs-profile-totals div[aria-current="true"] { color:#fff; font-weight:850; }
 [data-scheme="dark"] .rs-app { --rs-border:#59616c; --rs-muted:#b1bac7; }
 [data-scheme="dark"] .rs-intro { background:#303b49; }
 [data-scheme="dark"] .rs-intro h3, [data-scheme="dark"] .rs-intro p { color:#edf3fa; }
@@ -906,6 +978,9 @@ post-sidebar">
   .rs-intro h3 { font-size:19px; }
   .rs-privacy { justify-self:start; }
   .rs-scan-row { display:grid; }
+  .rs-camera-button { display:flex; }
+  .rs-users-heading { align-items:flex-start; }
+  .rs-user-heading-actions { flex-wrap:wrap; justify-content:flex-end; }
   .rs-primary-button { width:100%; }
   .rs-section-heading { align-items:flex-start; }
   .rs-upload-panel .rs-section-heading { align-items:center; flex-wrap:wrap; }
@@ -923,6 +998,10 @@ post-sidebar">
   .rs-toast.rs-toast-show { animation-name:rs-toast-life-mobile; }
   @keyframes rs-toast-life-mobile { 0% { opacity:0; transform:translate(50%,8px) scale(.96); } 12%,68% { opacity:1; transform:translate(50%,0) scale(1); } 100% { opacity:0; transform:translate(50%,-5px) scale(.98); } }
   .rs-item-body, .rs-charge-grid, .rs-check-grid { grid-template-columns:1fr; }
+  .rs-receipt-row-main { grid-template-columns:1fr; }
+  .rs-receipt-actions { justify-content:flex-end; }
+  .rs-user-create { grid-template-columns:1fr 1fr; }
+  .rs-user-create input { grid-column:1/-1; }
   .rs-field-row { grid-template-columns:1fr 1fr; }
   .rs-item-result { grid-template-columns:1fr 1fr; }
   .rs-summary { bottom:8px; border-radius:14px; }
@@ -950,8 +1029,12 @@ post-sidebar">
 
   const $ = id => root.querySelector('#' + id);
   const els = {
+    profileName: $('rsProfileName'), addReceipt: $('rsAddReceipt'), addUser: $('rsAddUser'), deleteCurrentUser: $('rsDeleteCurrentUser'), userTabs: $('rsUserTabs'),
+    userCreate: $('rsUserCreate'), newUserName: $('rsNewUserName'), confirmUser: $('rsConfirmUser'), cancelUser: $('rsCancelUser'),
+    receiptList: $('rsReceiptList'), receiptCount: $('rsReceiptCount'), receiptEditor: $('rsReceiptEditor'), editorParking: $('rsEditorParking'),
+    collapseReceipt: $('rsCollapseReceipt'), uploadPanel: root.querySelector('.rs-upload-panel'),
     sourceButtons: root.querySelectorAll('[data-source-mode]'), ocrPanel: $('rsOcrPanel'), importPanel: $('rsImportPanel'),
-    file: $('rsReceiptInput'), upload: $('rsUploadZone'), previewWrap: $('rsPreviewWrap'),
+    file: $('rsReceiptInput'), cameraFile: $('rsCameraInput'), upload: $('rsUploadZone'), previewWrap: $('rsPreviewWrap'),
     preview: $('rsPreviewCanvas'), rotateLeft: $('rsRotateLeft'), rotateRight: $('rsRotateRight'),
     language: $('rsLanguage'), preprocessMode: $('rsPreprocessMode'), scan: $('rsScanButton'), reset: $('rsResetButton'),
     progress: $('rsProgress'), progressBar: $('rsProgressBar'), progressText: $('rsProgressText'),
@@ -961,25 +1044,58 @@ post-sidebar">
     serviceRate: $('rsServiceRate'), serviceAmount: $('rsServiceAmount'), serviceMode: $('rsServiceMode'),
     sstRate: $('rsSstRate'), sstAmount: $('rsSstAmount'), sstMode: $('rsSstMode'),
     receiptTotal: $('rsReceiptTotal'), calculatedTotal: $('rsCalculatedReceiptTotal'), difference: $('rsDifference'),
-    selectedCount: $('rsSelectedCount'), myTotal: $('rsMyTotal'), selectedSubtotal: $('rsSelectedSubtotal'),
-    myService: $('rsMyService'), mySst: $('rsMySst'), summaryToggle: $('rsSummaryToggle'),
-    summaryDetails: $('rsSummaryDetails'), shareReceipt: $('rsShareReceipt'), copyShareLink: $('rsCopyShareLink'),
-    downloadList: $('rsDownloadList'), shareResult: $('rsShareResult'), shareLink: $('rsShareLink'), toast: $('rsToast')
+    selectedCount: $('rsSelectedCount'), myTotal: $('rsMyTotal'), summaryToggle: $('rsSummaryToggle'),
+    summaryDetails: $('rsSummaryDetails'), shareSummary: $('rsShareSummary'), sharePicker: $('rsSharePicker'),
+    shareResult: $('rsShareResult'), shareLink: $('rsShareLink'), toast: $('rsToast')
   };
 
   const state = {
-    sourceMode: 'import',
-    image: null,
-    rotation: 0,
-    quickEdit: false,
-    items: [],
-    nextId: 1,
-    receiptTotal: null,
-    charges: {
-      service: { rate: 0, amount: 0, mode: 'rate' },
-      sst: { rate: 0, amount: 0, mode: 'rate' }
-    }
+    profileName: '我的账单 Profile',
+    users: [{ id: 1, name: 'Raymond' }],
+    activeUserId: 1,
+    receipts: [],
+    activeReceiptId: null,
+    expandedReceiptId: null,
+    nextUserId: 2,
+    nextReceiptId: 1,
+    nextId: 1
   };
+
+  function createReceipt(name) {
+    const id = state.nextReceiptId++;
+    return {
+      id,
+      name: name || '收据 ' + id,
+      sourceMode: 'import',
+      image: null,
+      rotation: 0,
+      quickEdit: false,
+      hasData: false,
+      editingName: false,
+      importText: '',
+      items: [],
+      receiptTotal: null,
+      charges: {
+        service: { rate: 0, amount: 0, mode: 'rate' },
+        sst: { rate: 0, amount: 0, mode: 'rate' }
+      }
+    };
+  }
+
+  state.receipts.push(createReceipt('收据 1'));
+  state.activeReceiptId = state.receipts[0].id;
+  state.expandedReceiptId = state.receipts[0].id;
+
+  function activeReceipt() {
+    return state.receipts.find(receipt => receipt.id === state.activeReceiptId) || state.receipts[0];
+  }
+
+  ['sourceMode', 'image', 'rotation', 'quickEdit', 'items', 'receiptTotal', 'charges'].forEach(key => {
+    Object.defineProperty(state, key, {
+      get() { return activeReceipt()[key]; },
+      set(value) { activeReceipt()[key] = value; }
+    });
+  });
 
   const CHATGPT_PROMPT = `请直接分析我接下来上传的收据原图，并提取账单资料。不要只输出 OCR 原文。
 
@@ -989,10 +1105,12 @@ post-sidebar">
 3. quantity 保留收据数量；unit_price 是单件价格；line_total 是该行数量合计。无法确认单价时，用 line_total ÷ quantity。
 4. Service Charge 和 SST / GST / Tax 分开放进 charges。没有识别到时 rate 和 amount 都填 0。
 5. 金额只使用数字，不要包含 RM、逗号或货币符号。
-6. 必须只返回合法 JSON，不要 Markdown 代码块、解释或额外文字。
+6. receipt_name 使用商店名称；无法确认时使用“收据”。
+7. 必须只返回合法 JSON，不要 Markdown 代码块、解释或额外文字。
 
 严格使用以下格式：
 {
+  "receipt_name": "商店或收据名称",
   "currency": "MYR",
   "items": [
     {
@@ -1031,43 +1149,149 @@ post-sidebar">
       .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
   }
 
+  function receiptSubtotal(receipt) {
+    return receipt.items.reduce((sum, item) => sum + Math.max(0, number(item.price)), 0);
+  }
+
+  function receiptChargeAmount(receipt, key) {
+    const charge = receipt.charges[key];
+    return charge.mode === 'rate'
+      ? receiptSubtotal(receipt) * Math.max(0, number(charge.rate)) / 100
+      : number(charge.amount);
+  }
+
+  function receiptGross(receipt) {
+    return receiptSubtotal(receipt) + receiptChargeAmount(receipt, 'service') + receiptChargeAmount(receipt, 'sst');
+  }
+
+  function selectedFor(item, userId) {
+    return Array.isArray(item.selectedBy) && item.selectedBy.includes(userId);
+  }
+
+  function userReceiptTotal(userId, receipt) {
+    return receipt.items.reduce((sum, item) => {
+      if (!selectedFor(item, userId)) return sum;
+      return sum + itemBreakdown(item, receipt).mine;
+    }, 0);
+  }
+
+  function userProfileTotal(userId) {
+    return state.receipts.reduce((sum, receipt) => sum + userReceiptTotal(userId, receipt), 0);
+  }
+
+  function renderUsers() {
+    els.userTabs.innerHTML = state.users.map(user => `
+      <label class="rs-user-radio">
+        <input class="rs-user-radio-input" type="radio" name="rs-active-user" data-user-id="${user.id}" ${user.id === state.activeUserId ? 'checked' : ''}>
+        <span>${escapeHtml(user.name)}</span>
+      </label>`).join('');
+    els.deleteCurrentUser.disabled = state.users.length === 1;
+  }
+
+  function renderReceipts() {
+    if (els.receiptList.contains(els.receiptEditor)) els.editorParking.appendChild(els.receiptEditor);
+    els.receiptCount.textContent = state.receipts.length + ' 张';
+    els.receiptList.innerHTML = state.receipts.map(receipt => {
+      const expanded = receipt.id === state.expandedReceiptId;
+      const currentAmount = userReceiptTotal(state.activeUserId, receipt);
+      return `
+        <article class="rs-receipt-row ${expanded ? 'rs-active' : ''}" data-receipt-id="${receipt.id}">
+          <div class="rs-receipt-row-main" role="button" tabindex="0" aria-expanded="${expanded}">
+            <div class="rs-receipt-name-wrap">
+              ${receipt.editingName
+                ? `<input class="rs-receipt-name" type="text" maxlength="80" data-field="receipt-name" value="${escapeHtml(receipt.name)}" aria-label="收据名称">`
+                : `<div class="rs-receipt-name-line"><strong>${escapeHtml(receipt.name)}</strong><button class="rs-receipt-edit" type="button" data-action="edit-receipt-name" aria-label="重命名 ${escapeHtml(receipt.name)}">✎</button></div>`}
+              <span class="rs-receipt-mini">${receipt.items.length} 项 · 账单 ${money(receiptGross(receipt))} · 当前用户 ${money(currentAmount)}</span>
+            </div>
+            <div class="rs-receipt-actions">
+              ${expanded ? '<button class="rs-receipt-collapse" type="button" data-action="collapse-receipt">收起</button>' : ''}
+              <button class="rs-receipt-delete" type="button" data-action="delete-receipt" ${state.receipts.length === 1 ? 'disabled' : ''}>删除</button>
+            </div>
+          </div>
+        </article>`;
+    }).join('');
+    els.receiptEditor.hidden = state.expandedReceiptId == null;
+    if (state.expandedReceiptId != null) {
+      const activeRow = els.receiptList.querySelector('[data-receipt-id="' + state.expandedReceiptId + '"]');
+      if (activeRow) activeRow.appendChild(els.receiptEditor);
+    }
+    const editingInput = els.receiptList.querySelector('[data-field="receipt-name"]');
+    if (editingInput) {
+      editingInput.focus();
+      editingInput.select();
+    }
+  }
+
+  function syncEditorFromReceipt() {
+    const receipt = activeReceipt();
+    els.profileName.value = state.profileName;
+    els.receiptTotal.value = receipt.receiptTotal == null ? '' : receipt.receiptTotal.toFixed(2);
+    els.file.value = '';
+    els.cameraFile.value = '';
+    els.upload.hidden = !!receipt.image;
+    els.previewWrap.hidden = !receipt.image;
+    els.scan.disabled = !receipt.image;
+    els.progress.hidden = true;
+    els.rawResult.hidden = true;
+    els.uploadPanel.hidden = !!receipt.hasData;
+    els.listText.value = receipt.importText || '';
+    els.listFile.value = '';
+    setSourceMode(receipt.sourceMode);
+    setQuickEdit(receipt.quickEdit);
+    if (receipt.image) renderPreview();
+    syncCharges();
+    renderItems();
+    renderReceipts();
+  }
+
+  function selectReceipt(receiptId, expand) {
+    const receipt = state.receipts.find(entry => entry.id === receiptId);
+    if (!receipt) return;
+    state.activeReceiptId = receipt.id;
+    state.expandedReceiptId = expand === false ? null : receipt.id;
+    syncEditorFromReceipt();
+  }
+
   function subtotal() {
-    return state.items.reduce((sum, item) => sum + Math.max(0, number(item.price)), 0);
+    return receiptSubtotal(activeReceipt());
   }
 
   function chargeAmount(key) {
-    const charge = state.charges[key];
-    return charge.mode === 'rate' ? subtotal() * Math.max(0, number(charge.rate)) / 100 : number(charge.amount);
+    return receiptChargeAmount(activeReceipt(), key);
   }
 
-  function itemBreakdown(item) {
+  function itemBreakdown(item, receipt) {
+    const ownerReceipt = receipt || activeReceipt();
     const base = Math.max(0, number(item.price));
-    const allItems = subtotal();
+    const allItems = receiptSubtotal(ownerReceipt);
     const ratio = allItems > 0 ? base / allItems : 0;
-    const service = chargeAmount('service') * ratio;
-    const sst = chargeAmount('sst') * ratio;
-    const divisor = item.shareEnabled ? Math.max(2, Math.floor(number(item.divisor, 2))) : 1;
+    const service = receiptChargeAmount(ownerReceipt, 'service') * ratio;
+    const sst = receiptChargeAmount(ownerReceipt, 'sst') * ratio;
+    const divisor = item.divideEnabled ? Math.max(2, Math.floor(number(item.divisor, 2))) : 1;
     return { base, service, sst, divisor, gross: base + service + sst, mine: (base + service + sst) / divisor };
   }
 
   function newItem(name, price, origin) {
     return {
-      id: state.nextId++, name: name || '新商品', price: Math.max(0, number(price)), selected: false,
-      shareEnabled: false, divisor: 2, origin: origin || '手动添加'
+      id: state.nextId++, name: name || '新商品', price: Math.max(0, number(price)), selectedBy: [],
+      divideEnabled: false, divisor: 2, origin: origin || '手动添加'
     };
   }
 
   function renderItems() {
+    const activeUser = state.users.find(user => user.id === state.activeUserId);
     els.empty.hidden = state.items.length > 0;
     els.quickEdit.disabled = state.items.length === 0;
-    els.shareReceipt.disabled = state.items.length === 0;
-    els.copyShareLink.disabled = state.items.length === 0;
-    els.downloadList.disabled = state.items.length === 0;
+    const hasProfileItems = state.receipts.some(receipt => receipt.items.length > 0);
+    els.shareSummary.disabled = !hasProfileItems;
+    els.sharePicker.disabled = !hasProfileItems;
     els.itemList.innerHTML = state.items.map(item => {
       const calc = itemBreakdown(item);
       const shareDivisor = Math.max(2, Math.floor(number(item.divisor, 2)));
+      const selected = selectedFor(item, state.activeUserId);
+      const assignedNames = state.users.filter(user => selectedFor(item, user.id)).map(user => user.name);
       return `
-        <article class="rs-item-card ${item.selected ? 'rs-selected' : ''}" data-item-id="${item.id}">
+        <article class="rs-item-card ${selected ? 'rs-selected' : ''}" data-item-id="${item.id}">
           <div class="rs-quick-row">
             <input class="rs-item-name" type="text" data-field="name" value="${escapeHtml(item.name)}" aria-label="快速修正商品名称">
             <div class="rs-money-input"><b>RM</b><input type="number" min="0" step="0.01" inputmode="decimal" data-field="price" value="${calc.base.toFixed(2)}" aria-label="快速修正商品价格"></div>
@@ -1075,12 +1299,12 @@ post-sidebar">
           </div>
           <div class="rs-normal-item">
             <div class="rs-item-top">
-              <label class="rs-check" title="属于我的商品">
-                <input type="checkbox" data-field="selected" ${item.selected ? 'checked' : ''} aria-label="选择 ${escapeHtml(item.name)}">
+              <label class="rs-check" title="属于 ${escapeHtml(activeUser ? activeUser.name : '当前用户')} 的商品">
+                <input type="checkbox" data-field="selected" ${selected ? 'checked' : ''} aria-label="为 ${escapeHtml(activeUser ? activeUser.name : '当前用户')} 选择 ${escapeHtml(item.name)}">
               </label>
               <div class="rs-item-name-wrap">
                 <input class="rs-item-name" type="text" data-field="name" value="${escapeHtml(item.name)}" aria-label="商品名称">
-                <span class="rs-item-origin">${escapeHtml(item.origin)}</span>
+                <span class="rs-item-origin">${escapeHtml(item.origin)}${assignedNames.length ? ' · 已分配：' + escapeHtml(assignedNames.join('、')) : ' · 未分配'}</span>
               </div>
               <button class="rs-delete-item" type="button" data-action="delete" aria-label="删除商品">×</button>
             </div>
@@ -1089,8 +1313,8 @@ post-sidebar">
               <div class="rs-share-box">
                 <span>共享商品</span>
                 <div class="rs-share-line">
-                  <label class="rs-share-toggle"><input type="checkbox" data-field="shareEnabled" ${item.shareEnabled ? 'checked' : ''}><b>Share</b></label>
-                  <div class="rs-share-controls" ${item.shareEnabled ? '' : 'hidden'}>
+                  <label class="rs-share-toggle"><input type="checkbox" data-field="divideEnabled" ${item.divideEnabled ? 'checked' : ''}><b>Divide</b></label>
+                  <div class="rs-share-controls" ${item.divideEnabled ? '' : 'hidden'}>
                     <button type="button" data-action="minus" aria-label="减少共享人数">−</button>
                     <input type="number" min="2" step="1" inputmode="numeric" data-field="divisor" value="${shareDivisor}" aria-label="共享人数">
                     <button type="button" data-action="plus" aria-label="增加共享人数">＋</button>
@@ -1100,7 +1324,7 @@ post-sidebar">
             </div>
             <div class="rs-item-result">
               <div><span>含收费金额</span><b data-result="gross">${money(calc.gross)}</b></div>
-              <div class="rs-item-mine"><span>我的金额${item.shareEnabled ? '（÷ ' + calc.divisor + '）' : ''}</span><b data-result="mine">${money(calc.mine)}</b></div>
+              <div class="rs-item-mine"><span>${escapeHtml(activeUser ? activeUser.name : '当前用户')} 金额${item.divideEnabled ? '（÷ ' + calc.divisor + '）' : ''}</span><b data-result="mine">${money(calc.mine)}</b></div>
             </div>
           </div>
         </article>`;
@@ -1110,12 +1334,15 @@ post-sidebar">
 
   function refreshItemCard(card, item) {
     const calc = itemBreakdown(item);
-    card.classList.toggle('rs-selected', item.selected);
+    const activeUser = state.users.find(user => user.id === state.activeUserId);
+    const assignedNames = state.users.filter(user => selectedFor(item, user.id)).map(user => user.name);
+    card.classList.toggle('rs-selected', selectedFor(item, state.activeUserId));
     const controls = card.querySelector('.rs-share-controls');
-    controls.hidden = !item.shareEnabled;
+    controls.hidden = !item.divideEnabled;
     card.querySelector('[data-result="gross"]').textContent = money(calc.gross);
     card.querySelector('[data-result="mine"]').textContent = money(calc.mine);
-    card.querySelector('.rs-item-mine span').textContent = '我的金额' + (item.shareEnabled ? '（÷ ' + calc.divisor + '）' : '');
+    card.querySelector('.rs-item-mine span').textContent = (activeUser ? activeUser.name : '当前用户') + ' 金额' + (item.divideEnabled ? '（÷ ' + calc.divisor + '）' : '');
+    card.querySelector('.rs-item-origin').textContent = item.origin + (assignedNames.length ? ' · 已分配：' + assignedNames.join('、') : ' · 未分配');
   }
 
   function syncAllItemResults() {
@@ -1145,24 +1372,11 @@ post-sidebar">
       els.shareResult.hidden = true;
     }
     syncCharges(skipChargeInput);
-    let selectedBase = 0;
-    let selectedService = 0;
-    let selectedSst = 0;
-    let count = 0;
-    state.items.forEach(item => {
-      if (!item.selected) return;
-      const calc = itemBreakdown(item);
-      count += 1;
-      selectedBase += calc.base / calc.divisor;
-      selectedService += calc.service / calc.divisor;
-      selectedSst += calc.sst / calc.divisor;
-    });
-    const mine = selectedBase + selectedService + selectedSst;
-    els.selectedCount.textContent = '已选择 ' + count + ' 项';
-    els.myTotal.textContent = money(mine);
-    els.selectedSubtotal.textContent = money(selectedBase);
-    els.myService.textContent = money(selectedService);
-    els.mySst.textContent = money(selectedSst);
+    const profileAssignedTotal = state.users.reduce((sum, user) => sum + userProfileTotal(user.id), 0);
+    els.selectedCount.textContent = 'Profile 共 ' + state.receipts.length + ' 张收据';
+    els.myTotal.textContent = money(profileAssignedTotal);
+    els.summaryDetails.innerHTML = state.users.map(user => `
+      <div aria-current="${user.id === state.activeUserId}"><span>${escapeHtml(user.name)}</span><b>${money(userProfileTotal(user.id))}</b></div>`).join('');
 
     const calculatedReceipt = subtotal() + chargeAmount('service') + chargeAmount('sst');
     els.calculatedTotal.textContent = money(calculatedReceipt);
@@ -1174,6 +1388,7 @@ post-sidebar">
       els.difference.textContent = (diff > 0 ? '+' : '') + money(diff);
       els.difference.className = Math.abs(diff) < 0.01 ? 'rs-ok' : 'rs-bad';
     }
+    renderReceipts();
   }
 
   function showMessage(text, isError) {
@@ -1195,39 +1410,26 @@ post-sidebar">
     }, 2750);
   }
 
-  function exportReceiptData() {
-    return {
-      currency: 'MYR',
-      items: state.items.map(item => ({
-        name: item.name,
-        quantity: 1,
-        unit_price: Math.max(0, number(item.price)),
-        line_total: Math.max(0, number(item.price)),
-        share_by: item.shareEnabled ? Math.max(2, Math.floor(number(item.divisor, 2))) : 1,
-        modifiers: []
-      })),
-      charges: {
-        service_charge: { rate: Math.max(0, number(state.charges.service.rate)), amount: chargeAmount('service'), mode: state.charges.service.mode },
-        sst: { rate: Math.max(0, number(state.charges.sst.rate)), amount: chargeAmount('sst'), mode: state.charges.sst.mode }
-      },
-      subtotal: subtotal(),
-      grand_total: state.receiptTotal == null ? subtotal() + chargeAmount('service') + chargeAmount('sst') : state.receiptTotal
-    };
-  }
-
-  function encodeSharePayload() {
+  function encodeSharePayload(mode) {
     const compact = {
-      v: 1,
-      i: state.items.map(item => [
-        String(item.name || '').slice(0, 200),
-        Math.max(0, number(item.price)),
-        item.shareEnabled ? Math.max(2, Math.floor(number(item.divisor, 2))) : 1
-      ]),
-      c: [
-        [Math.max(0, number(state.charges.service.rate)), chargeAmount('service'), state.charges.service.mode === 'amount' ? 1 : 0],
-        [Math.max(0, number(state.charges.sst.rate)), chargeAmount('sst'), state.charges.sst.mode === 'amount' ? 1 : 0]
-      ],
-      r: state.receiptTotal
+      v: 2,
+      m: mode === 'summary' ? 'summary' : 'pick',
+      n: String(state.profileName || '账单 Profile').slice(0, 100),
+      u: mode === 'summary' ? state.users.map(user => [user.id, String(user.name || '').slice(0, 80)]) : [],
+      r: state.receipts.filter(receipt => receipt.items.length > 0).map(receipt => [
+        String(receipt.name || '收据').slice(0, 100),
+        receipt.items.map(item => [
+          String(item.name || '').slice(0, 200),
+          Math.max(0, number(item.price)),
+          item.divideEnabled ? Math.max(2, Math.floor(number(item.divisor, 2))) : 1,
+          mode === 'summary' ? (item.selectedBy || []).filter(userId => state.users.some(user => user.id === userId)) : []
+        ]),
+        [
+          [Math.max(0, number(receipt.charges.service.rate)), receiptChargeAmount(receipt, 'service'), receipt.charges.service.mode === 'amount' ? 1 : 0],
+          [Math.max(0, number(receipt.charges.sst.rate)), receiptChargeAmount(receipt, 'sst'), receipt.charges.sst.mode === 'amount' ? 1 : 0]
+        ],
+        receipt.receiptTotal
+      ])
     };
     const bytes = new TextEncoder().encode(JSON.stringify(compact));
     let binary = '';
@@ -1245,9 +1447,9 @@ post-sidebar">
     return JSON.parse(new TextDecoder().decode(bytes));
   }
 
-  function buildShareLink() {
-    if (!state.items.length) throw new Error('请先加入商品再生成分享链接。');
-    const link = STANDALONE_SHARE_URL + '#receipt=' + encodeSharePayload();
+  function buildShareLink(mode) {
+    if (!state.receipts.some(receipt => receipt.items.length > 0)) throw new Error('请先加入商品再生成分享链接。');
+    const link = STANDALONE_SHARE_URL + '#profile=' + encodeSharePayload(mode);
     els.shareLink.value = link;
     els.shareResult.hidden = false;
     return link;
@@ -1269,10 +1471,10 @@ post-sidebar">
   }
 
   function loadSharedReceipt() {
-    const match = window.location.hash.match(/^#receipt=([^&]+)/);
+    const match = window.location.hash.match(/^#(?:receipt|profile)=([^&]+)/);
     if (!match) return false;
     if (!window.location.pathname.replace(/\/+$/, '/').endsWith('/tools/receipt-share/')) {
-      window.location.replace(STANDALONE_SHARE_URL + window.location.hash);
+      window.location.replace(STANDALONE_SHARE_URL + window.location.hash.replace(/^#receipt=/, '#profile='));
       return true;
     }
     try {
@@ -1284,9 +1486,9 @@ post-sidebar">
         if (!Array.isArray(entry) || !String(entry[0] || '').trim()) throw new Error('分享资料中有无效商品。');
         const item = newItem(String(entry[0]).slice(0, 200), Math.max(0, number(entry[1])), '朋友分享 第 ' + (index + 1) + ' 项');
         const divisor = Math.max(1, Math.min(99, Math.floor(number(entry[2], 1))));
-        item.shareEnabled = divisor > 1;
+        item.divideEnabled = divisor > 1;
         item.divisor = divisor > 1 ? divisor : 2;
-        item.selected = false;
+        item.selectedBy = [];
         return item;
       });
       const charges = Array.isArray(data.c) ? data.c : [];
@@ -1428,8 +1630,8 @@ post-sidebar">
     els.quickEdit.setAttribute('aria-pressed', String(state.quickEdit));
     els.quickEdit.textContent = state.quickEdit ? '✓ 完成修正' : '✎ 快速修正';
     root.querySelector('.rs-items-panel .rs-help').textContent = state.quickEdit
-      ? '快速修正模式：对照原图集中修改商品名称和价格；完成后再勾选商品与设置 Share。'
-      : 'OCR 会把数量大于 1 的商品拆成多行。勾选属于你的商品；多人共享时开启 Share 并填写除数。';
+      ? '快速修正模式：对照原图集中修改商品名称和价格；完成后再勾选商品与设置 Divide。'
+      : 'OCR 会把数量大于 1 的商品拆成多行。勾选属于当前用户的商品；需要分摊时开启 Divide 并填写除数。';
   }
 
   function setSourceMode(mode) {
@@ -1494,6 +1696,7 @@ post-sidebar">
     };
     let receiptTotal = null;
     let pendingName = '';
+    let receiptName = '';
 
     lines.forEach((line, lineIndex) => {
       const lower = line.toLowerCase();
@@ -1529,7 +1732,10 @@ post-sidebar">
       }
       if (lastValue == null) {
         const candidate = usefulName(line);
-        if (candidate && !/\b\d{1,2}[\/:.-]\d{1,2}[\/:.-]\d{2,4}\b/.test(line)) pendingName = candidate;
+        if (candidate && !/\b\d{1,2}[\/:.-]\d{1,2}[\/:.-]\d{2,4}\b/.test(line)) {
+          if (!receiptName && lineIndex < 8 && !/invoice|receipt|cashier|tel/i.test(candidate)) receiptName = candidate;
+          pendingName = candidate;
+        }
         return;
       }
 
@@ -1563,7 +1769,7 @@ post-sidebar">
       if (charge.mode === 'rate') charge.amount = parsedSubtotal * charge.rate / 100;
       if (!charge.rate && charge.amount && parsedSubtotal) charge.rate = charge.amount / parsedSubtotal * 100;
     });
-    return { items, charges, receiptTotal, lines };
+    return { items, charges, receiptTotal, receiptName, lines };
   }
 
   function normalizedKey(value) {
@@ -1639,7 +1845,7 @@ post-sidebar">
         const item = newItem(name, unitPrice, quantity > 1
           ? '清单导入 数量拆分 ' + (quantityIndex + 1) + '/' + quantity
           : '清单导入 第 ' + (itemIndex + 1) + ' 项');
-        item.shareEnabled = shareBy > 1;
+        item.divideEnabled = shareBy > 1;
         item.divisor = shareBy > 1 ? shareBy : 2;
         items.push(item);
       }
@@ -1652,6 +1858,7 @@ post-sidebar">
     const serviceTop = pickValue(data, ['service_charge', 'serviceCharge', 'service', '服务费']);
     const sstTop = pickValue(data, ['sst', 'gst', 'tax', 'sales_tax', '销售税', '税']);
     const receiptTotalRaw = pickValue(data, ['grand_total', 'grandTotal', 'receipt_total', 'receiptTotal', 'total_due', 'final_total', '应付合计', '最终总额', '总额']);
+    const receiptNameRaw = pickValue(data, ['receipt_name', 'receiptName', 'store_name', 'storeName', 'merchant', '收据名称', '商店名称', '店名']);
 
     return {
       items,
@@ -1659,20 +1866,25 @@ post-sidebar">
         service: chargeFromImport(serviceRaw == null ? serviceTop : serviceRaw),
         sst: chargeFromImport(sstRaw == null ? sstTop : sstRaw)
       },
-      receiptTotal: receiptTotalRaw == null ? null : number(receiptTotalRaw)
+      receiptTotal: receiptTotalRaw == null ? null : number(receiptTotalRaw),
+      receiptName: receiptNameRaw == null ? '' : String(receiptNameRaw).trim()
     };
   }
 
   function applyImportedList(text) {
     const parsed = parseImportedList(text);
     setQuickEdit(false);
+    activeReceipt().hasData = true;
     state.items = parsed.items;
     state.charges.service = parsed.charges.service;
     state.charges.sst = parsed.charges.sst;
     state.receiptTotal = parsed.receiptTotal;
+    if (parsed.receiptName) activeReceipt().name = parsed.receiptName.slice(0, 80);
+    els.uploadPanel.hidden = true;
     els.receiptTotal.value = parsed.receiptTotal == null ? '' : parsed.receiptTotal.toFixed(2);
     syncCharges();
     renderItems();
+    renderReceipts();
     showMessage('清单导入完成：已填入 ' + parsed.items.length + ' 行商品。请使用快速修正确认名称和价格。', false);
     root.querySelector('.rs-items-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
@@ -1703,9 +1915,15 @@ post-sidebar">
       state.charges.service = parsed.charges.service;
       state.charges.sst = parsed.charges.sst;
       state.receiptTotal = parsed.receiptTotal;
+      if (parsed.receiptName) activeReceipt().name = parsed.receiptName.slice(0, 80);
+      if (parsed.items.length > 0) {
+        activeReceipt().hasData = true;
+        els.uploadPanel.hidden = true;
+      }
       els.receiptTotal.value = parsed.receiptTotal == null ? '' : parsed.receiptTotal.toFixed(2);
       syncCharges();
       renderItems();
+      renderReceipts();
       syncAllItemResults();
       updateProgress('识别完成', 1);
       const chargeCount = (parsed.charges.service.found ? 1 : 0) + (parsed.charges.sst.found ? 1 : 0);
@@ -1723,13 +1941,17 @@ post-sidebar">
     if (state.image && state.image.dataset.objectUrl) URL.revokeObjectURL(state.image.dataset.objectUrl);
     state.image = null;
     state.rotation = 0;
+    activeReceipt().hasData = false;
+    activeReceipt().importText = '';
     setQuickEdit(false);
     state.items = [];
     state.receiptTotal = null;
     state.charges.service = { rate: 0, amount: 0, mode: 'rate' };
     state.charges.sst = { rate: 0, amount: 0, mode: 'rate' };
     els.file.value = '';
+    els.cameraFile.value = '';
     els.upload.hidden = false;
+    els.uploadPanel.hidden = false;
     els.previewWrap.hidden = true;
     els.scan.disabled = true;
     els.progress.hidden = true;
@@ -1739,15 +1961,127 @@ post-sidebar">
     els.receiptTotal.value = '';
     els.shareLink.value = '';
     els.shareResult.hidden = true;
-    if (window.location.hash.startsWith('#receipt=')) {
+    if (window.location.hash.startsWith('#receipt=') || window.location.hash.startsWith('#profile=')) {
       window.history.replaceState(null, '', window.location.pathname + window.location.search);
     }
     showMessage('', false);
     syncCharges();
     renderItems();
+    renderReceipts();
   }
 
+  els.profileName.addEventListener('input', () => {
+    state.profileName = els.profileName.value.trimStart().slice(0, 80) || '我的账单 Profile';
+  });
+  els.addReceipt.addEventListener('click', () => {
+    const receipt = createReceipt('收据 ' + (state.receipts.length + 1));
+    state.receipts.push(receipt);
+    selectReceipt(receipt.id, true);
+    showMessage('', false);
+  });
+  els.collapseReceipt.addEventListener('click', () => {
+    state.expandedReceiptId = null;
+    renderReceipts();
+  });
+  els.addUser.addEventListener('click', () => {
+    els.userCreate.hidden = false;
+    els.newUserName.value = '用户 ' + (state.users.length + 1);
+    els.newUserName.focus();
+    els.newUserName.select();
+  });
+  function confirmNewUser() {
+    const suggested = '用户 ' + (state.users.length + 1);
+    const cleanName = els.newUserName.value.trim().slice(0, 80) || suggested;
+    const user = { id: state.nextUserId++, name: cleanName };
+    state.users.push(user);
+    state.activeUserId = user.id;
+    els.userCreate.hidden = true;
+    renderUsers();
+    renderItems();
+  }
+  els.confirmUser.addEventListener('click', confirmNewUser);
+  els.cancelUser.addEventListener('click', () => { els.userCreate.hidden = true; });
+  els.newUserName.addEventListener('keydown', event => {
+    if (event.key === 'Enter') confirmNewUser();
+    if (event.key === 'Escape') els.userCreate.hidden = true;
+  });
+  els.userTabs.addEventListener('change', event => {
+    const radio = event.target.closest('.rs-user-radio-input[data-user-id]');
+    if (!radio) return;
+    const userId = number(radio.dataset.userId);
+    state.activeUserId = userId;
+    renderUsers();
+    renderItems();
+  });
+  els.deleteCurrentUser.addEventListener('click', () => {
+    if (state.users.length === 1) return;
+    const userId = state.activeUserId;
+    state.users = state.users.filter(user => user.id !== userId);
+    state.receipts.forEach(receipt => receipt.items.forEach(item => {
+      item.selectedBy = (item.selectedBy || []).filter(id => id !== userId);
+    }));
+    state.activeUserId = state.users[0].id;
+    renderUsers();
+    renderItems();
+  });
+  els.receiptList.addEventListener('input', event => {
+    if (event.target.dataset.field !== 'receipt-name') return;
+    const row = event.target.closest('[data-receipt-id]');
+    const receipt = row && state.receipts.find(entry => entry.id === number(row.dataset.receiptId));
+    if (!receipt) return;
+    receipt.name = event.target.value.trimStart().slice(0, 80) || '收据 ' + receipt.id;
+  });
+  els.receiptList.addEventListener('focusout', event => {
+    if (event.target.dataset.field !== 'receipt-name') return;
+    const row = event.target.closest('[data-receipt-id]');
+    const receipt = row && state.receipts.find(entry => entry.id === number(row.dataset.receiptId));
+    if (!receipt) return;
+    receipt.editingName = false;
+    renderReceipts();
+  });
+  els.receiptList.addEventListener('keydown', event => {
+    const row = event.target.closest('[data-receipt-id]');
+    if (!row) return;
+    const receiptId = number(row.dataset.receiptId);
+    if (event.target.dataset.field === 'receipt-name') {
+      if (event.key === 'Enter' || event.key === 'Escape') event.target.blur();
+      return;
+    }
+    if (event.target.classList.contains('rs-receipt-row-main') && (event.key === 'Enter' || event.key === ' ')) {
+      event.preventDefault();
+      selectReceipt(receiptId, true);
+    }
+  });
+  els.receiptList.addEventListener('click', event => {
+    const row = event.target.closest('[data-receipt-id]');
+    if (!row) return;
+    if (event.target.closest('.rs-receipt-editor')) return;
+    if (event.target.closest('[data-field="receipt-name"]')) return;
+    const button = event.target.closest('button[data-action]');
+    const receiptId = number(row.dataset.receiptId);
+    if (button && button.dataset.action === 'edit-receipt-name') {
+      const receipt = state.receipts.find(entry => entry.id === receiptId);
+      if (receipt) receipt.editingName = true;
+      renderReceipts();
+      return;
+    }
+    if (button && button.dataset.action === 'collapse-receipt') {
+      state.expandedReceiptId = null;
+      renderReceipts();
+      return;
+    }
+    if (button && button.dataset.action === 'delete-receipt' && state.receipts.length > 1) {
+      const receipt = state.receipts.find(entry => entry.id === receiptId);
+      if (receipt && receipt.image && receipt.image.dataset.objectUrl) URL.revokeObjectURL(receipt.image.dataset.objectUrl);
+      state.receipts = state.receipts.filter(entry => entry.id !== receiptId);
+      const nextReceipt = state.receipts[0];
+      selectReceipt(nextReceipt.id, true);
+      return;
+    }
+    if (!button) selectReceipt(receiptId, true);
+  });
   els.file.addEventListener('change', event => loadFile(event.target.files && event.target.files[0]));
+  els.cameraFile.addEventListener('change', event => loadFile(event.target.files && event.target.files[0]));
   window.addEventListener('hashchange', loadSharedReceipt);
   els.sourceButtons.forEach(button => button.addEventListener('click', () => setSourceMode(button.dataset.sourceMode)));
   els.rotateLeft.addEventListener('click', () => { state.rotation = (state.rotation - 90 + 360) % 360; renderPreview(); });
@@ -1758,6 +2092,9 @@ post-sidebar">
   els.quickEdit.addEventListener('click', () => {
     setQuickEdit(!state.quickEdit);
     renderItems();
+  });
+  els.listText.addEventListener('input', () => {
+    activeReceipt().importText = els.listText.value;
   });
   els.importList.addEventListener('click', () => {
     try {
@@ -1776,6 +2113,7 @@ post-sidebar">
     try {
       const text = await file.text();
       els.listText.value = text;
+      activeReceipt().importText = text;
       applyImportedList(text);
     } catch (error) {
       showMessage(error.message || '无法读取这个清单文件。', true);
@@ -1786,12 +2124,15 @@ post-sidebar">
     showMessage('ChatGPT 收据扫描提示词已复制。上传照片给 ChatGPT 后贴上提示词，再把返回的 JSON 导入这里。', false);
   });
 
-  els.shareReceipt.addEventListener('click', async () => {
+  async function shareProfile(mode) {
     try {
-      const link = buildShareLink();
+      const link = buildShareLink(mode);
       if (navigator.share) {
         try {
-          await navigator.share({ title: '账单分摊', text: '打开账单后勾选你的商品，即可计算需要支付的金额。', url: link });
+          const text = mode === 'summary'
+            ? '这是已经分配好的账单结算结果。'
+            : '打开账单后勾选你的商品，即可计算需要支付的金额。';
+          await navigator.share({ title: state.profileName, text, url: link });
           showMessage('分享面板已打开。', false);
           return;
         } catch (error) {
@@ -1801,39 +2142,14 @@ post-sidebar">
       await copyText(link);
       showCopyToast();
       showMessage(link.length > 7500
-        ? '分享链接已复制，但账单较长；部分聊天软件可能截断链接，建议同时下载 JSON 发送。'
+        ? '分享链接已复制，但 Profile 较长；部分聊天软件可能截断链接。'
         : '分享链接已复制，可以直接发送给朋友。', false);
     } catch (error) {
       showMessage(error.message || '无法生成分享链接。', true);
     }
-  });
-
-  els.copyShareLink.addEventListener('click', async () => {
-    try {
-      const link = buildShareLink();
-      await copyText(link);
-      showCopyToast();
-      showMessage(link.length > 7500
-        ? '链接已复制，但内容较长，建议改用“下载 JSON”。'
-        : '分享链接已复制，可以发送给朋友。', false);
-    } catch (error) {
-      showMessage(error.message || '无法复制分享链接。', true);
-    }
-  });
-
-  els.downloadList.addEventListener('click', () => {
-    if (!state.items.length) return;
-    const blob = new Blob([JSON.stringify(exportReceiptData(), null, 2)], { type: 'application/json;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'receipt-splitter-' + new Date().toISOString().slice(0, 10) + '.json';
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    URL.revokeObjectURL(url);
-    showMessage('账单 JSON 已下载，可以把文件发送给朋友导入。', false);
-  });
+  }
+  els.shareSummary.addEventListener('click', () => shareProfile('summary'));
+  els.sharePicker.addEventListener('click', () => shareProfile('pick'));
 
   els.itemList.addEventListener('input', event => {
     const card = event.target.closest('[data-item-id]');
@@ -1841,9 +2157,15 @@ post-sidebar">
     if (!card || !field) return;
     const item = state.items.find(entry => entry.id === number(card.dataset.itemId));
     if (!item) return;
-    if (field === 'selected' || field === 'shareEnabled') {
-      item[field] = event.target.checked;
-      if (field === 'shareEnabled') {
+    if (field === 'selected') {
+      const selected = new Set(item.selectedBy || []);
+      if (event.target.checked) selected.add(state.activeUserId);
+      else selected.delete(state.activeUserId);
+      item.selectedBy = Array.from(selected);
+    }
+    else if (field === 'divideEnabled') {
+      item.divideEnabled = event.target.checked;
+      if (field === 'divideEnabled') {
         item.divisor = Math.max(2, Math.floor(number(item.divisor, 2)));
         const divisorInput = card.querySelector('[data-field="divisor"]');
         if (divisorInput) divisorInput.value = item.divisor;
@@ -1904,9 +2226,8 @@ post-sidebar">
     els.summaryDetails.hidden = expanded;
   });
 
-  setSourceMode('import');
-  syncCharges();
-  renderItems();
+  renderUsers();
+  syncEditorFromReceipt();
   loadSharedReceipt();
 })();
 </script>
