@@ -2166,6 +2166,227 @@
 })();
 &lt;/script&gt;
 
+&lt;h2 id=&#34;选择转盘&#34;&gt;选择转盘
+&lt;/h2&gt;&lt;div class=&#34;sw-app&#34; data-spin-wheel&gt;
+  &lt;section class=&#34;sw-hero&#34;&gt;
+    &lt;div&gt;
+      &lt;div class=&#34;sw-kicker&#34;&gt;Spin Wheel&lt;/div&gt;
+      &lt;p&gt;手动添加选项，转动转盘后随机选择一个结果。选项与抽取过程只保留在当前浏览器页面中。&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;span class=&#34;sw-badge&#34;&gt;🔒 浏览器本地&lt;/span&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&#34;sw-panel&#34;&gt;
+    &lt;div class=&#34;sw-layout&#34;&gt;
+      &lt;div class=&#34;sw-wheel-wrap&#34;&gt;
+        &lt;div class=&#34;sw-pointer&#34; aria-hidden=&#34;true&#34;&gt;&lt;/div&gt;
+        &lt;canvas class=&#34;sw-wheel&#34; data-wheel width=&#34;620&#34; height=&#34;620&#34; aria-label=&#34;随机选择转盘&#34;&gt;&lt;/canvas&gt;
+        &lt;button class=&#34;sw-spin&#34; data-spin type=&#34;button&#34;&gt;开始转动&lt;/button&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&#34;sw-editor&#34;&gt;
+        &lt;div class=&#34;sw-heading&#34;&gt;&lt;div&gt;&lt;span class=&#34;sw-step&#34;&gt;1&lt;/span&gt;&lt;strong&gt;添加选项&lt;/strong&gt;&lt;/div&gt;&lt;span data-count&gt;4 个选项&lt;/span&gt;&lt;/div&gt;
+        &lt;p class=&#34;sw-help&#34;&gt;至少添加 2 个选项才可转动；按 Enter 可快速添加，最多支持 24 个。&lt;/p&gt;
+        &lt;form class=&#34;sw-add&#34; data-form&gt;
+          &lt;input data-input type=&#34;text&#34; maxlength=&#34;40&#34; autocomplete=&#34;off&#34; placeholder=&#34;输入一个新选项&#34; aria-label=&#34;新选项&#34;&gt;
+          &lt;button class=&#34;sw-primary&#34; type=&#34;submit&#34;&gt;＋ 添加&lt;/button&gt;
+        &lt;/form&gt;
+        &lt;div class=&#34;sw-options&#34; data-options aria-label=&#34;当前选项&#34;&gt;&lt;/div&gt;
+        &lt;div class=&#34;sw-actions&#34;&gt;
+          &lt;button class=&#34;sw-secondary&#34; data-clear-all type=&#34;button&#34;&gt;清空选项&lt;/button&gt;
+          &lt;button class=&#34;sw-primary&#34; data-spin-secondary type=&#34;button&#34;&gt;转动转盘&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;sw-result&#34; data-result role=&#34;status&#34; aria-live=&#34;polite&#34;&gt;
+      &lt;span&gt;🎯&lt;/span&gt;&lt;div&gt;&lt;small&gt;等待抽取&lt;/small&gt;&lt;strong&gt;点击“开始转动”随机选择&lt;/strong&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.sw-app{--sw-accent:#d79512;--sw-deep:#76510a;--sw-soft:#fff6dc;--sw-hero:#f8edc8;--sw-muted:#756c59;--sw-line:#e7d8a9;--sw-card:var(--card-background,#fff);display:grid;gap:16px;margin:16px 0 96px;color:var(--card-text-color-main,#29261f);font-size:16px}.sw-app *,.sw-app *:before,.sw-app *:after{box-sizing:border-box}.sw-hero,.sw-panel{border:1px solid var(--sw-line);border-radius:20px;background:var(--sw-card);box-shadow:0 8px 24px rgba(91,70,25,.07)}.sw-hero{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:23px;background:var(--sw-hero)}.sw-kicker{margin-bottom:7px;color:var(--sw-deep);font-size:12px;font-weight:850;letter-spacing:.13em;text-transform:uppercase}.sw-hero p{max-width:650px;margin:0;color:var(--card-text-color-secondary,#747474);font-size:13px;line-height:1.7}.sw-badge{flex:none;padding:7px 11px;border:1px solid color-mix(in srgb,var(--sw-accent) 48%,transparent);border-radius:999px;background:color-mix(in srgb,var(--sw-accent) 25%,var(--sw-hero));color:var(--sw-deep);box-shadow:inset 0 1px 0 rgba(255,255,255,.28);font-size:12px;font-weight:800}.sw-panel{display:grid;gap:18px;padding:21px}.sw-layout{display:grid;grid-template-columns:minmax(260px,.9fr) minmax(280px,1.1fr);align-items:center;gap:28px}.sw-wheel-wrap{position:relative;width:min(100%,420px);margin:auto;aspect-ratio:1}.sw-wheel{display:block;width:100%;height:100%;filter:drop-shadow(0 10px 16px rgba(80,57,16,.16));transition:transform 5.2s cubic-bezier(.12,.72,.08,1)}.sw-pointer{position:absolute;z-index:2;top:-3px;left:50%;width:28px;height:38px;transform:translateX(-50%);clip-path:polygon(0 0,100% 0,50% 100%);background:var(--sw-deep);filter:drop-shadow(0 2px 2px rgba(0,0,0,.18))}.sw-spin{position:absolute;z-index:3;top:50%;left:50%;display:grid;place-items:center;width:88px;height:88px;padding:10px;transform:translate(-50%,-50%);border:7px solid var(--sw-card);border-radius:50%;background:var(--sw-accent);color:#2d2108;box-shadow:0 5px 16px rgba(75,52,10,.25);font:inherit;font-size:13px;font-weight:850;cursor:pointer}.sw-spin:hover{background:#e4a51e}.sw-spin:disabled{cursor:wait;opacity:.82}.sw-editor{min-width:0}.sw-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:7px}.sw-heading&gt;div{display:flex;align-items:center;gap:9px}.sw-heading&gt;span{color:var(--sw-muted);font-size:12px}.sw-step{display:inline-grid;place-items:center;width:27px;height:27px;border-radius:9px;background:var(--sw-accent);color:#2d2108;font-size:13px;font-weight:850}.sw-help{margin:0 0 14px;color:var(--card-text-color-secondary,#747474);font-size:12px;line-height:1.65}.sw-add{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}.sw-add input{min-width:0;height:42px;padding:0 12px;border:1.5px solid var(--sw-line);border-radius:11px;outline:0;background:var(--sw-card);color:inherit;font:inherit;font-size:14px}.sw-add input:focus{border-color:var(--sw-accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--sw-accent) 16%,transparent)}.sw-primary,.sw-secondary{min-height:40px;padding:9px 15px;border-radius:11px;font:inherit;font-size:13px;font-weight:800;cursor:pointer}.sw-primary{border:0;background:var(--sw-accent);color:#2d2108;box-shadow:0 5px 13px rgba(170,112,8,.2)}.sw-primary:hover{background:#e4a51e}.sw-primary:disabled,.sw-secondary:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}.sw-secondary{border:1px solid var(--sw-line);background:var(--sw-card);color:var(--sw-muted)}.sw-options{display:grid;gap:7px;max-height:252px;margin-top:13px;overflow:auto}.sw-option{display:grid;grid-template-columns:12px minmax(0,1fr) 34px;align-items:center;gap:9px;min-height:43px;padding:5px 6px 5px 11px;border:1px solid var(--sw-line);border-radius:11px;background:var(--sw-soft)}.sw-option i{width:10px;height:10px;border-radius:50%}.sw-option span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px}.sw-option button{display:grid;place-items:center;width:32px;height:32px;border:0;border-radius:8px;background:transparent;color:var(--sw-muted);font:inherit;font-size:18px;cursor:pointer}.sw-option button:hover{background:var(--sw-card);color:#ad3636}.sw-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}.sw-result{display:flex;align-items:center;gap:11px;min-height:66px;padding:11px 14px;border:1px solid var(--sw-line);border-radius:14px;background:var(--sw-soft)}.sw-result&gt;span{font-size:27px}.sw-result div{display:grid;gap:2px}.sw-result small{color:var(--sw-muted);font-size:11px}.sw-result strong{font-size:15px}.sw-result.is-picked{border-color:var(--sw-accent);background:color-mix(in srgb,var(--sw-accent) 17%,var(--sw-card))}[data-scheme=&#34;dark&#34;] .sw-app{--sw-accent:#d9ad55;--sw-deep:#f1d390;--sw-soft:#3d382d;--sw-hero:#474131;--sw-muted:#c6bcaa;--sw-line:#625944}[data-scheme=&#34;dark&#34;] .sw-badge{border-color:#8d7444;background:#554a34;color:#f4d998;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}[data-scheme=&#34;dark&#34;] .sw-spin,[data-scheme=&#34;dark&#34;] .sw-step,[data-scheme=&#34;dark&#34;] .sw-primary{color:#282116}@media(max-width:760px){.sw-layout{grid-template-columns:1fr}.sw-wheel-wrap{width:min(100%,360px)}}@media(max-width:520px){.sw-app{margin-bottom:88px}.sw-hero{flex-direction:column;padding:19px}.sw-badge{align-self:flex-start}.sw-panel{padding:15px}.sw-layout{gap:22px}.sw-spin{width:76px;height:76px;border-width:6px}.sw-add{grid-template-columns:1fr}.sw-add button{width:100%}.sw-actions&gt;*{flex:1}}
+.sw-empty{padding:22px 12px;border:1px dashed var(--sw-line);border-radius:11px;color:var(--sw-muted);font-size:12px;text-align:center}
+&lt;/style&gt;
+
+&lt;script&gt;
+(() =&gt; {
+  document.querySelectorAll(&#39;[data-spin-wheel]&#39;).forEach(root =&gt; {
+    if (root.dataset.ready) return;
+    root.dataset.ready = &#39;true&#39;;
+    const $ = selector =&gt; root.querySelector(selector);
+    const els = {canvas:$(&#39;[data-wheel]&#39;),spin:$(&#39;[data-spin]&#39;),spinSecondary:$(&#39;[data-spin-secondary]&#39;),form:$(&#39;[data-form]&#39;),input:$(&#39;[data-input]&#39;),options:$(&#39;[data-options]&#39;),count:$(&#39;[data-count]&#39;),clearAll:$(&#39;[data-clear-all]&#39;),result:$(&#39;[data-result]&#39;)};
+    const ctx = els.canvas.getContext(&#39;2d&#39;);
+    const samples = [&#39;今天吃火锅&#39;,&#39;去看电影&#39;,&#39;散步半小时&#39;,&#39;在家做饭&#39;];
+    const colors = [&#39;#e1a01a&#39;,&#39;#536caa&#39;,&#39;#c26b42&#39;,&#39;#5b9279&#39;,&#39;#a76091&#39;,&#39;#688ea0&#39;,&#39;#bf8148&#39;,&#39;#7b73a8&#39;];
+    let options = [...samples], rotation = 0, spinning = false;
+
+    function draw(){
+      const size=els.canvas.width,c=size/2,r=c-12,slice=Math.PI*2/options.length;
+      ctx.clearRect(0,0,size,size);ctx.save();ctx.translate(c,c);
+      options.forEach((label,index)=&gt;{const start=-Math.PI/2+index*slice;ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,r,start,start+slice);ctx.closePath();ctx.fillStyle=colors[index%colors.length];ctx.fill();ctx.strokeStyle=&#39;rgba(255,255,255,.72)&#39;;ctx.lineWidth=4;ctx.stroke();ctx.save();ctx.rotate(start+slice/2);ctx.textAlign=&#39;right&#39;;ctx.textBaseline=&#39;middle&#39;;ctx.fillStyle=&#39;#fff&#39;;ctx.shadowColor=&#39;rgba(0,0,0,.32)&#39;;ctx.shadowBlur=3;ctx.font=&#39;700 &#39;+Math.max(18,Math.min(27,180/options.length))+&#39;px system-ui,sans-serif&#39;;const text=label.length&gt;12?label.slice(0,11)+&#39;…&#39;:label;ctx.fillText(text,r-31,0);ctx.restore();});
+      ctx.beginPath();ctx.arc(0,0,r,0,Math.PI*2);ctx.strokeStyle=&#39;rgba(91,62,9,.3)&#39;;ctx.lineWidth=5;ctx.stroke();ctx.restore();
+    }
+    function render(){els.options.innerHTML=&#39;&#39;;options.forEach((label,index)=&gt;{const row=document.createElement(&#39;div&#39;);row.className=&#39;sw-option&#39;;const dot=document.createElement(&#39;i&#39;);dot.style.background=colors[index%colors.length];const text=document.createElement(&#39;span&#39;);text.textContent=label;const remove=document.createElement(&#39;button&#39;);remove.type=&#39;button&#39;;remove.dataset.remove=index;remove.setAttribute(&#39;aria-label&#39;,&#39;删除 &#39;+label);remove.textContent=&#39;×&#39;;row.append(dot,text,remove);els.options.append(row);});if(!options.length){const empty=document.createElement(&#39;div&#39;);empty.className=&#39;sw-empty&#39;;empty.textContent=&#39;暂无选项，请在上方添加&#39;;els.options.append(empty);}els.count.textContent=options.length+&#39; 个选项&#39;;els.spin.disabled=els.spinSecondary.disabled=options.length&lt;2;els.clearAll.disabled=!options.length;draw();}
+    function add(value){const clean=value.trim();if(!clean||options.length&gt;=24)return;options.push(clean);els.input.value=&#39;&#39;;render();els.input.focus();}
+    function spin(){if(spinning||options.length&lt;2)return;spinning=true;els.spin.disabled=els.spinSecondary.disabled=true;els.result.classList.remove(&#39;is-picked&#39;);els.result.querySelector(&#39;small&#39;).textContent=&#39;转盘转动中&#39;;els.result.querySelector(&#39;strong&#39;).textContent=&#39;正在随机选择…&#39;;const winner=Math.floor(Math.random()*options.length),slice=360/options.length,target=360-(winner+.5)*slice;rotation+=1800+((target-(rotation%360)+360)%360);els.canvas.style.transform=&#39;rotate(&#39;+rotation+&#39;deg)&#39;;setTimeout(()=&gt;{spinning=false;els.spin.disabled=els.spinSecondary.disabled=false;els.result.classList.add(&#39;is-picked&#39;);els.result.querySelector(&#39;small&#39;).textContent=&#39;本次选中&#39;;els.result.querySelector(&#39;strong&#39;).textContent=options[winner];},5300);}
+    els.form.addEventListener(&#39;submit&#39;,event=&gt;{event.preventDefault();add(els.input.value);});
+    els.options.addEventListener(&#39;click&#39;,event=&gt;{const button=event.target.closest(&#39;[data-remove]&#39;);if(!button||spinning)return;options.splice(Number(button.dataset.remove),1);if(options.length&lt;2){els.result.classList.remove(&#39;is-picked&#39;);els.result.querySelector(&#39;small&#39;).textContent=&#39;等待选项&#39;;els.result.querySelector(&#39;strong&#39;).textContent=&#39;至少添加 2 个选项后即可转动&#39;;}render();});
+    els.clearAll.addEventListener(&#39;click&#39;,()=&gt;{if(spinning)return;options=[];rotation=0;els.canvas.style.transition=&#39;none&#39;;els.canvas.style.transform=&#39;rotate(0deg)&#39;;requestAnimationFrame(()=&gt;requestAnimationFrame(()=&gt;els.canvas.style.transition=&#39;transform 5.2s cubic-bezier(.12,.72,.08,1)&#39;));els.result.classList.remove(&#39;is-picked&#39;);els.result.querySelector(&#39;small&#39;).textContent=&#39;等待选项&#39;;els.result.querySelector(&#39;strong&#39;).textContent=&#39;至少添加 2 个选项后即可转动&#39;;render();els.input.focus();});
+    els.spin.addEventListener(&#39;click&#39;,spin);els.spinSecondary.addEventListener(&#39;click&#39;,spin);render();
+  });
+})();
+&lt;/script&gt;
+
+&lt;h2 id=&#34;json-格式化与校验器&#34;&gt;JSON 格式化与校验器
+&lt;/h2&gt;&lt;div class=&#34;jb-app&#34; data-json-beautifier&gt;
+  &lt;section class=&#34;jb-hero&#34;&gt;
+    &lt;div&gt;
+      &lt;div class=&#34;jb-kicker&#34;&gt;JSON BEAUTIFIER · VALIDATOR&lt;/div&gt;
+      &lt;p&gt;粘贴或导入 JSON，即时校验并整理为清晰易读的结构；也可压缩、排序键名后复制或下载。&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;span class=&#34;jb-badge&#34;&gt;🔒 浏览器本地&lt;/span&gt;
+  &lt;/section&gt;
+
+  &lt;section class=&#34;jb-panel&#34;&gt;
+    &lt;div class=&#34;jb-toolbar&#34;&gt;
+      &lt;div class=&#34;jb-indent&#34; role=&#34;group&#34; aria-label=&#34;缩进方式&#34;&gt;
+        &lt;span&gt;缩进&lt;/span&gt;
+        &lt;button type=&#34;button&#34; data-indent=&#34;2&#34; aria-pressed=&#34;true&#34;&gt;2 空格&lt;/button&gt;
+        &lt;button type=&#34;button&#34; data-indent=&#34;4&#34; aria-pressed=&#34;false&#34;&gt;4 空格&lt;/button&gt;
+        &lt;button type=&#34;button&#34; data-indent=&#34;tab&#34; aria-pressed=&#34;false&#34;&gt;Tab&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;label class=&#34;jb-sort&#34;&gt;&lt;input type=&#34;checkbox&#34; data-sort&gt; 递归排序键名&lt;/label&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;jb-workspace&#34;&gt;
+      &lt;label class=&#34;jb-field&#34;&gt;
+        &lt;span&gt;&lt;b&gt;原始 JSON&lt;/b&gt;&lt;small data-source-count&gt;0 字符&lt;/small&gt;&lt;/span&gt;
+        &lt;textarea data-source rows=&#34;12&#34; spellcheck=&#34;false&#34; autocapitalize=&#34;off&#34; placeholder=&#39;粘贴 JSON，例如：{&#34;name&#34;:&#34;Codex&#34;,&#34;tools&#34;:[&#34;format&#34;,&#34;validate&#34;]}&#39;&gt;&lt;/textarea&gt;
+      &lt;/label&gt;
+
+      &lt;label class=&#34;jb-field&#34;&gt;
+        &lt;span&gt;&lt;b&gt;格式化结果&lt;/b&gt;&lt;small data-result-count&gt;0 行&lt;/small&gt;&lt;/span&gt;
+        &lt;textarea data-result rows=&#34;12&#34; readonly spellcheck=&#34;false&#34; placeholder=&#34;有效的 JSON 会显示在这里&#34;&gt;&lt;/textarea&gt;
+      &lt;/label&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;jb-status&#34; data-status role=&#34;status&#34; aria-live=&#34;polite&#34;&gt;
+      &lt;span class=&#34;jb-status-icon&#34; aria-hidden=&#34;true&#34;&gt;{ }&lt;/span&gt;
+      &lt;span data-status-text&gt;输入内容后会自动校验和美化&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&#34;jb-actions&#34;&gt;
+      &lt;div&gt;
+        &lt;label class=&#34;jb-secondary jb-file-button&#34;&gt;导入文件&lt;input data-file type=&#34;file&#34; accept=&#34;.json,.jsonl,.geojson,.txt,application/json,text/json,text/plain&#34;&gt;&lt;/label&gt;
+        &lt;button class=&#34;jb-secondary&#34; data-clear type=&#34;button&#34;&gt;清空&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;button class=&#34;jb-secondary&#34; data-minify type=&#34;button&#34; disabled&gt;压缩 JSON&lt;/button&gt;
+        &lt;button class=&#34;jb-primary&#34; data-copy type=&#34;button&#34; disabled&gt;复制结果&lt;/button&gt;
+        &lt;button class=&#34;jb-primary&#34; data-download type=&#34;button&#34; disabled&gt;下载 .json&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;footer class=&#34;jb-foot&#34;&gt;支持标准 JSON、GeoJSON、配置文件及 API 响应等 JSON 文本；内容不会离开当前浏览器。&lt;/footer&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.jb-app{--jb-tool-accent:#087f8c;--jb-tool-deep:#075e68;--jb-tool-soft:#eaf8f9;--jb-tool-hero:#d8f0f2;--jb-tool-muted:#5f7376;--jb-tool-line:#c9e0e3;--jb-tool-card:var(--card-background,#fff);--jb-tool-button:#08737e;display:grid;gap:16px;margin:16px 0 96px;color:var(--card-text-color-main,#203033);font-size:16px}.jb-app *,.jb-app *:before,.jb-app *:after{box-sizing:border-box}.jb-app [hidden]{display:none!important}.jb-hero,.jb-panel{border:1px solid var(--jb-tool-line);border-radius:20px;background:var(--jb-tool-card);box-shadow:0 8px 24px rgba(24,76,82,.07)}.jb-hero{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:23px;background:var(--jb-tool-hero)}.jb-kicker{margin-bottom:7px;color:var(--jb-tool-deep);font-size:12px;font-weight:850;letter-spacing:.13em}.jb-hero p{max-width:650px;margin:0;color:var(--card-text-color-secondary,#747474);font-size:13px;line-height:1.7}.jb-badge{flex:none;padding:7px 11px;border:1px solid #62aeb6;border-radius:999px;background:#a9dce0;color:#064f57;box-shadow:inset 0 1px 0 rgba(255,255,255,.32);font-size:12px;font-weight:800}.jb-panel{display:grid;gap:17px;padding:21px}.jb-toolbar,.jb-indent,.jb-actions,.jb-actions&gt;div{display:flex;align-items:center;gap:9px}.jb-toolbar{justify-content:space-between}.jb-indent{flex-wrap:wrap;padding:5px;border-radius:13px;background:var(--jb-tool-soft)}.jb-indent&gt;span{padding:0 6px;color:var(--jb-tool-muted);font-size:12px;font-weight:800}.jb-indent button{min-height:34px;padding:7px 11px;border:0;border-radius:9px;background:transparent;color:var(--jb-tool-muted);font:inherit;font-size:12px;cursor:pointer}.jb-indent button[aria-pressed=true]{background:var(--jb-tool-card);color:var(--jb-tool-deep);font-weight:800;box-shadow:0 2px 8px rgba(24,76,82,.13)}.jb-sort{display:flex;align-items:center;gap:7px;color:var(--jb-tool-muted);font-size:12px;font-weight:750;cursor:pointer}.jb-sort input{width:17px;height:17px;margin:0;accent-color:var(--jb-tool-accent)}.jb-workspace{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}.jb-field{display:grid;min-width:0;gap:8px}.jb-field&gt;span{display:flex;align-items:center;justify-content:space-between;gap:8px}.jb-field b{color:var(--jb-tool-deep);font-size:13px}.jb-field small{color:var(--jb-tool-muted);font-size:11px}.jb-field textarea{width:100%;min-height:285px;resize:vertical;padding:14px;border:1.5px solid var(--jb-tool-line);border-radius:14px;outline:0;background:var(--jb-tool-card);color:inherit;font:14px/1.65 ui-monospace,SFMono-Regular,Consolas,&#34;Liberation Mono&#34;,monospace;tab-size:4}.jb-field textarea:focus{border-color:var(--jb-tool-accent);box-shadow:0 0 0 3px rgba(8,127,140,.13)}.jb-field textarea[readonly]{background:var(--jb-tool-soft)}.jb-status{display:flex;align-items:flex-start;gap:9px;min-height:42px;padding:11px 13px;border:1px solid transparent;border-radius:11px;background:var(--jb-tool-soft);color:var(--jb-tool-muted);font-size:12px;line-height:1.55}.jb-status-icon{flex:none;color:var(--jb-tool-accent);font-weight:900}.jb-status.is-valid{border-color:#b8dec8;background:#e9f7ef;color:#326c4a}.jb-status.is-invalid{border-color:#efc4c4;background:#fff0ef;color:#a63232}.jb-actions{justify-content:space-between;flex-wrap:wrap}.jb-primary,.jb-secondary{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:9px 15px;border-radius:11px;font:inherit;font-size:13px;font-weight:800;cursor:pointer}.jb-primary{border:0;background:var(--jb-tool-button);color:#fff;box-shadow:0 5px 13px rgba(8,115,126,.23)}.jb-primary:hover{background:#055b64}.jb-secondary{border:1px solid var(--jb-tool-line);background:var(--jb-tool-card);color:var(--jb-tool-muted)}.jb-primary:disabled,.jb-secondary:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}.jb-file-button{position:relative;overflow:hidden}.jb-file-button input{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.jb-foot{padding:0 4px;color:var(--card-text-color-secondary,#747474);font-size:11px;line-height:1.6}[data-scheme=&#34;dark&#34;] .jb-app{--jb-tool-accent:#78b7bc;--jb-tool-deep:#b4d9dc;--jb-tool-soft:#293a3c;--jb-tool-hero:#304447;--jb-tool-muted:#b4c3c5;--jb-tool-line:#4d6063;--jb-tool-button:#176f78}[data-scheme=&#34;dark&#34;] .jb-primary:hover{background:#105d65}[data-scheme=&#34;dark&#34;] .jb-badge{border-color:#52777b;background:#334f52;color:#c5e8ea;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}[data-scheme=&#34;dark&#34;] .jb-status.is-valid{border-color:#3f6851;background:#263d31;color:#9ed6b6}[data-scheme=&#34;dark&#34;] .jb-status.is-invalid{border-color:#714a4a;background:#493030;color:#efaaaa}@media(max-width:760px){.jb-workspace{grid-template-columns:1fr}.jb-field textarea{min-height:210px}.jb-toolbar{align-items:flex-start;flex-direction:column}.jb-sort{padding-left:5px}.jb-actions{align-items:stretch;flex-direction:column}.jb-actions&gt;div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}.jb-actions&gt;div:last-child{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:520px){.jb-app{margin-bottom:88px}.jb-hero{flex-direction:column;padding:19px}.jb-badge{align-self:flex-start}.jb-panel{padding:15px}.jb-indent{display:grid;grid-template-columns:auto repeat(3,1fr);width:100%}.jb-indent button{padding-inline:7px}.jb-actions&gt;div:last-child{grid-template-columns:1fr}.jb-primary,.jb-secondary{width:100%}}
+&lt;/style&gt;
+
+&lt;script&gt;
+(() =&gt; {
+  document.querySelectorAll(&#39;[data-json-beautifier]&#39;).forEach(root =&gt; {
+    if (root.dataset.ready) return;
+    root.dataset.ready = &#39;true&#39;;
+    const $ = selector =&gt; root.querySelector(selector);
+    const els = {source:$(&#39;[data-source]&#39;),result:$(&#39;[data-result]&#39;),sourceCount:$(&#39;[data-source-count]&#39;),resultCount:$(&#39;[data-result-count]&#39;),status:$(&#39;[data-status]&#39;),statusText:$(&#39;[data-status-text]&#39;),sort:$(&#39;[data-sort]&#39;),file:$(&#39;[data-file]&#39;),clear:$(&#39;[data-clear]&#39;),minify:$(&#39;[data-minify]&#39;),copy:$(&#39;[data-copy]&#39;),download:$(&#39;[data-download]&#39;)};
+    let indent = 2;
+    let parsed = null;
+    let valid = false;
+
+    function sortKeys(value) {
+      if (Array.isArray(value)) return value.map(sortKeys);
+      if (value &amp;&amp; typeof value === &#39;object&#39;) return Object.keys(value).sort((a,b) =&gt; a.localeCompare(b)).reduce((out,key) =&gt; { out[key] = sortKeys(value[key]); return out; }, {});
+      return value;
+    }
+
+    function errorLocation(error, source) {
+      const match = String(error.message || &#39;&#39;).match(/position\s+(\d+)/i);
+      if (!match) return error.message || &#39;JSON 格式无效&#39;;
+      const position = Math.min(Number(match[1]), source.length);
+      const before = source.slice(0, position).split(/\r?\n/);
+      return `第 ${before.length} 行，第 ${before[before.length - 1].length + 1} 列：${error.message}`;
+    }
+
+    function setStatus(message, state) {
+      els.statusText.textContent = message;
+      els.status.className = &#39;jb-status&#39; + (state ? &#39; is-&#39; + state : &#39;&#39;);
+      els.status.querySelector(&#39;.jb-status-icon&#39;).textContent = state === &#39;valid&#39; ? &#39;✓&#39; : state === &#39;invalid&#39; ? &#39;!&#39; : &#39;{ }&#39;;
+    }
+
+    function format() {
+      const source = els.source.value;
+      els.sourceCount.textContent = Array.from(source).length + &#39; 字符&#39;;
+      if (!source.trim()) {
+        parsed = null; valid = false; els.result.value = &#39;&#39;; els.resultCount.textContent = &#39;0 行&#39;;
+        setStatus(&#39;输入内容后会自动校验和美化&#39;, &#39;&#39;);
+        els.minify.disabled = els.copy.disabled = els.download.disabled = true;
+        return;
+      }
+      try {
+        parsed = JSON.parse(source); valid = true;
+        const value = els.sort.checked ? sortKeys(parsed) : parsed;
+        els.result.value = JSON.stringify(value, null, indent);
+        const lines = els.result.value.split(&#39;\n&#39;).length;
+        els.resultCount.textContent = lines + &#39; 行 · &#39; + Array.from(els.result.value).length + &#39; 字符&#39;;
+        const kind = Array.isArray(parsed) ? `数组 · ${parsed.length} 项` : parsed &amp;&amp; typeof parsed === &#39;object&#39; ? `对象 · ${Object.keys(parsed).length} 个顶层键` : &#39;有效的 JSON 基础值&#39;;
+        setStatus(&#39;格式正确 · &#39; + kind + &#39; · 内容未上传&#39;, &#39;valid&#39;);
+        els.minify.disabled = els.copy.disabled = els.download.disabled = false;
+      } catch (error) {
+        parsed = null; valid = false; els.result.value = &#39;&#39;; els.resultCount.textContent = &#39;格式无效&#39;;
+        setStatus(errorLocation(error, source), &#39;invalid&#39;);
+        els.minify.disabled = els.copy.disabled = els.download.disabled = true;
+      }
+    }
+
+    async function copyText(text, button) {
+      try { await navigator.clipboard.writeText(text); }
+      catch (_) { els.result.removeAttribute(&#39;readonly&#39;); els.result.value = text; els.result.select(); document.execCommand(&#39;copy&#39;); els.result.setAttribute(&#39;readonly&#39;,&#39;&#39;); }
+      const label = button.textContent; button.textContent = &#39;已复制&#39;; setTimeout(() =&gt; button.textContent = label, 1200);
+    }
+
+    root.querySelector(&#39;.jb-indent&#39;).addEventListener(&#39;click&#39;, event =&gt; {
+      const button = event.target.closest(&#39;[data-indent]&#39;); if (!button) return;
+      indent = button.dataset.indent === &#39;tab&#39; ? &#39;\t&#39; : Number(button.dataset.indent);
+      root.querySelectorAll(&#39;[data-indent]&#39;).forEach(item =&gt; item.setAttribute(&#39;aria-pressed&#39;, String(item === button)));
+      format();
+    });
+    els.source.addEventListener(&#39;input&#39;, format);
+    els.sort.addEventListener(&#39;change&#39;, format);
+    els.clear.addEventListener(&#39;click&#39;, () =&gt; { els.source.value = &#39;&#39;; els.file.value = &#39;&#39;; format(); els.source.focus(); });
+    els.minify.addEventListener(&#39;click&#39;, () =&gt; { if (!valid) return; const value = els.sort.checked ? sortKeys(parsed) : parsed; els.result.value = JSON.stringify(value); els.resultCount.textContent = &#39;1 行 · &#39; + Array.from(els.result.value).length + &#39; 字符&#39;; setStatus(&#39;已压缩 · 内容未上传&#39;, &#39;valid&#39;); });
+    els.copy.addEventListener(&#39;click&#39;, () =&gt; copyText(els.result.value, els.copy));
+    els.download.addEventListener(&#39;click&#39;, () =&gt; {
+      if (!valid) return;
+      const blob = new Blob([els.result.value + &#39;\n&#39;], {type:&#39;application/json;charset=utf-8&#39;}), url = URL.createObjectURL(blob), link = document.createElement(&#39;a&#39;);
+      link.href = url; link.download = &#39;formatted.json&#39;; link.click(); setTimeout(() =&gt; URL.revokeObjectURL(url), 0);
+    });
+    els.file.addEventListener(&#39;change&#39;, () =&gt; {
+      const file = els.file.files &amp;&amp; els.file.files[0]; if (!file) return;
+      if (file.size &gt; 10 * 1024 * 1024) { setStatus(&#39;文件不能超过 10 MB。&#39;, &#39;invalid&#39;); return; }
+      const reader = new FileReader();
+      reader.onload = () =&gt; { els.source.value = String(reader.result || &#39;&#39;); format(); };
+      reader.onerror = () =&gt; setStatus(&#39;无法读取这个文件，请重试。&#39;, &#39;invalid&#39;);
+      reader.readAsText(file);
+    });
+    format();
+  });
+})();
+&lt;/script&gt;
+
 </description>
         </item>
         <item>
@@ -2957,7 +3178,7 @@
 👎 &lt;strong&gt;缺点&lt;/strong&gt;：明智扣分项，后面的剧情较为一般；整体偏刷，每天的安排很重要&lt;br&gt;
 💕 &lt;strong&gt;我推&lt;/strong&gt;：新岛真❤️，芳泽堇❤️&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;暗喻幻想&#34;&gt;暗喻幻想
+&lt;h3 id=&#34;暗喻幻想2周目&#34;&gt;暗喻幻想（2周目）
 &lt;/h3&gt;
 
 
@@ -3150,7 +3371,7 @@
 }
 &lt;/style&gt;
 &lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：除了阿特拉斯一贯的音乐和美术都很潮，还把很多P系列的小地方优化了：例如coop对话选择不绑定解锁进度，只影响mag获取量，还可以直接一键飞到coop身边；又比如面具不再需要复杂的合成公式，而是分成14种职业，简单明了很多&lt;br&gt;
-👎 &lt;strong&gt;缺点&lt;/strong&gt;：肝度没变，以前P系列只需要管主角面具，现在不用但是需要管队友解锁职业，因为终极武器是取决于队友职业解锁完成度，草；刷虽然容易了，但还是要刷；明明可以和三个妹子搞暧昧但是却没有恋爱可玩，给游戏性减个半分！&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：肝度没变，以前P系列只需要管主角面具，但现在需要管队友解锁职业，因为终极武器是取决于队友职业解锁完成度，草；刷虽然容易了，但还是要刷；明明可以和三个妹子搞暧昧但是却没有恋爱可玩，给游戏性减个半分！&lt;br&gt;
 💕 &lt;strong&gt;我推&lt;/strong&gt;：霍肯伯格❤️，凯瑟琳娜❤️&lt;br&gt;
 💬 &lt;strong&gt;其他&lt;/strong&gt;：&lt;br&gt;
 霍肯伯格过场2D动画露得比建模多多了&amp;hellip;&lt;/p&gt;

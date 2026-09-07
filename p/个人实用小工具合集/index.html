@@ -10,7 +10,7 @@
 <meta property='og:description' content="~日常使用的实用小工具合集~">
 <meta property='og:url' content='https://sloth-cyx.github.io/p/%E4%B8%AA%E4%BA%BA%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/'>
 <meta property='og:site_name' content='怠惰的天秤-sloth'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-08-12T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-08-19T08:12:40&#43;08:00'/><meta property='og:image' content='https://sloth-cyx.github.io/images/consolidateTool/consolidateTool_bg.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-08-12T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-09-07T21:33:22&#43;08:00'/><meta property='og:image' content='https://sloth-cyx.github.io/images/consolidateTool/consolidateTool_bg.png' />
 <meta name="twitter:title" content="【个人】实用小工具合集">
 <meta name="twitter:description" content="~日常使用的实用小工具合集~"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://sloth-cyx.github.io/images/consolidateTool/consolidateTool_bg.png' />
@@ -510,6 +510,8 @@ post-sidebar">
     <li><a href="#英汉--汉英词典">英汉 · 汉英词典</a></li>
     <li><a href="#网页图片提取器beta">网页图片提取器（Beta）</a></li>
     <li><a href="#文本编码转换器">文本编码转换器</a></li>
+    <li><a href="#选择转盘">选择转盘</a></li>
+    <li><a href="#json-格式化与校验器">JSON 格式化与校验器</a></li>
   </ol>
 </nav>
         </div>
@@ -570,7 +572,7 @@ post-sidebar">
         
         <div style="display: flex; align-items: left; gap: 5px;">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 7v5l3 3" /></svg> 
-            <time class="article-time--lastmod">2026-08-19</time>
+            <time class="article-time--lastmod">2026-09-07</time>
         </div>
         
 
@@ -2741,6 +2743,227 @@ post-sidebar">
 })();
 </script>
 
+<h2 id="选择转盘">选择转盘
+</h2><div class="sw-app" data-spin-wheel>
+  <section class="sw-hero">
+    <div>
+      <div class="sw-kicker">Spin Wheel</div>
+      <p>手动添加选项，转动转盘后随机选择一个结果。选项与抽取过程只保留在当前浏览器页面中。</p>
+    </div>
+    <span class="sw-badge">🔒 浏览器本地</span>
+  </section>
+
+  <section class="sw-panel">
+    <div class="sw-layout">
+      <div class="sw-wheel-wrap">
+        <div class="sw-pointer" aria-hidden="true"></div>
+        <canvas class="sw-wheel" data-wheel width="620" height="620" aria-label="随机选择转盘"></canvas>
+        <button class="sw-spin" data-spin type="button">开始转动</button>
+      </div>
+
+      <div class="sw-editor">
+        <div class="sw-heading"><div><span class="sw-step">1</span><strong>添加选项</strong></div><span data-count>4 个选项</span></div>
+        <p class="sw-help">至少添加 2 个选项才可转动；按 Enter 可快速添加，最多支持 24 个。</p>
+        <form class="sw-add" data-form>
+          <input data-input type="text" maxlength="40" autocomplete="off" placeholder="输入一个新选项" aria-label="新选项">
+          <button class="sw-primary" type="submit">＋ 添加</button>
+        </form>
+        <div class="sw-options" data-options aria-label="当前选项"></div>
+        <div class="sw-actions">
+          <button class="sw-secondary" data-clear-all type="button">清空选项</button>
+          <button class="sw-primary" data-spin-secondary type="button">转动转盘</button>
+        </div>
+      </div>
+    </div>
+    <div class="sw-result" data-result role="status" aria-live="polite">
+      <span>🎯</span><div><small>等待抽取</small><strong>点击“开始转动”随机选择</strong></div>
+    </div>
+  </section>
+</div>
+
+<style>
+.sw-app{--sw-accent:#d79512;--sw-deep:#76510a;--sw-soft:#fff6dc;--sw-hero:#f8edc8;--sw-muted:#756c59;--sw-line:#e7d8a9;--sw-card:var(--card-background,#fff);display:grid;gap:16px;margin:16px 0 96px;color:var(--card-text-color-main,#29261f);font-size:16px}.sw-app *,.sw-app *:before,.sw-app *:after{box-sizing:border-box}.sw-hero,.sw-panel{border:1px solid var(--sw-line);border-radius:20px;background:var(--sw-card);box-shadow:0 8px 24px rgba(91,70,25,.07)}.sw-hero{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:23px;background:var(--sw-hero)}.sw-kicker{margin-bottom:7px;color:var(--sw-deep);font-size:12px;font-weight:850;letter-spacing:.13em;text-transform:uppercase}.sw-hero p{max-width:650px;margin:0;color:var(--card-text-color-secondary,#747474);font-size:13px;line-height:1.7}.sw-badge{flex:none;padding:7px 11px;border:1px solid color-mix(in srgb,var(--sw-accent) 48%,transparent);border-radius:999px;background:color-mix(in srgb,var(--sw-accent) 25%,var(--sw-hero));color:var(--sw-deep);box-shadow:inset 0 1px 0 rgba(255,255,255,.28);font-size:12px;font-weight:800}.sw-panel{display:grid;gap:18px;padding:21px}.sw-layout{display:grid;grid-template-columns:minmax(260px,.9fr) minmax(280px,1.1fr);align-items:center;gap:28px}.sw-wheel-wrap{position:relative;width:min(100%,420px);margin:auto;aspect-ratio:1}.sw-wheel{display:block;width:100%;height:100%;filter:drop-shadow(0 10px 16px rgba(80,57,16,.16));transition:transform 5.2s cubic-bezier(.12,.72,.08,1)}.sw-pointer{position:absolute;z-index:2;top:-3px;left:50%;width:28px;height:38px;transform:translateX(-50%);clip-path:polygon(0 0,100% 0,50% 100%);background:var(--sw-deep);filter:drop-shadow(0 2px 2px rgba(0,0,0,.18))}.sw-spin{position:absolute;z-index:3;top:50%;left:50%;display:grid;place-items:center;width:88px;height:88px;padding:10px;transform:translate(-50%,-50%);border:7px solid var(--sw-card);border-radius:50%;background:var(--sw-accent);color:#2d2108;box-shadow:0 5px 16px rgba(75,52,10,.25);font:inherit;font-size:13px;font-weight:850;cursor:pointer}.sw-spin:hover{background:#e4a51e}.sw-spin:disabled{cursor:wait;opacity:.82}.sw-editor{min-width:0}.sw-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:7px}.sw-heading>div{display:flex;align-items:center;gap:9px}.sw-heading>span{color:var(--sw-muted);font-size:12px}.sw-step{display:inline-grid;place-items:center;width:27px;height:27px;border-radius:9px;background:var(--sw-accent);color:#2d2108;font-size:13px;font-weight:850}.sw-help{margin:0 0 14px;color:var(--card-text-color-secondary,#747474);font-size:12px;line-height:1.65}.sw-add{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}.sw-add input{min-width:0;height:42px;padding:0 12px;border:1.5px solid var(--sw-line);border-radius:11px;outline:0;background:var(--sw-card);color:inherit;font:inherit;font-size:14px}.sw-add input:focus{border-color:var(--sw-accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--sw-accent) 16%,transparent)}.sw-primary,.sw-secondary{min-height:40px;padding:9px 15px;border-radius:11px;font:inherit;font-size:13px;font-weight:800;cursor:pointer}.sw-primary{border:0;background:var(--sw-accent);color:#2d2108;box-shadow:0 5px 13px rgba(170,112,8,.2)}.sw-primary:hover{background:#e4a51e}.sw-primary:disabled,.sw-secondary:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}.sw-secondary{border:1px solid var(--sw-line);background:var(--sw-card);color:var(--sw-muted)}.sw-options{display:grid;gap:7px;max-height:252px;margin-top:13px;overflow:auto}.sw-option{display:grid;grid-template-columns:12px minmax(0,1fr) 34px;align-items:center;gap:9px;min-height:43px;padding:5px 6px 5px 11px;border:1px solid var(--sw-line);border-radius:11px;background:var(--sw-soft)}.sw-option i{width:10px;height:10px;border-radius:50%}.sw-option span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px}.sw-option button{display:grid;place-items:center;width:32px;height:32px;border:0;border-radius:8px;background:transparent;color:var(--sw-muted);font:inherit;font-size:18px;cursor:pointer}.sw-option button:hover{background:var(--sw-card);color:#ad3636}.sw-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}.sw-result{display:flex;align-items:center;gap:11px;min-height:66px;padding:11px 14px;border:1px solid var(--sw-line);border-radius:14px;background:var(--sw-soft)}.sw-result>span{font-size:27px}.sw-result div{display:grid;gap:2px}.sw-result small{color:var(--sw-muted);font-size:11px}.sw-result strong{font-size:15px}.sw-result.is-picked{border-color:var(--sw-accent);background:color-mix(in srgb,var(--sw-accent) 17%,var(--sw-card))}[data-scheme="dark"] .sw-app{--sw-accent:#d9ad55;--sw-deep:#f1d390;--sw-soft:#3d382d;--sw-hero:#474131;--sw-muted:#c6bcaa;--sw-line:#625944}[data-scheme="dark"] .sw-badge{border-color:#8d7444;background:#554a34;color:#f4d998;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}[data-scheme="dark"] .sw-spin,[data-scheme="dark"] .sw-step,[data-scheme="dark"] .sw-primary{color:#282116}@media(max-width:760px){.sw-layout{grid-template-columns:1fr}.sw-wheel-wrap{width:min(100%,360px)}}@media(max-width:520px){.sw-app{margin-bottom:88px}.sw-hero{flex-direction:column;padding:19px}.sw-badge{align-self:flex-start}.sw-panel{padding:15px}.sw-layout{gap:22px}.sw-spin{width:76px;height:76px;border-width:6px}.sw-add{grid-template-columns:1fr}.sw-add button{width:100%}.sw-actions>*{flex:1}}
+.sw-empty{padding:22px 12px;border:1px dashed var(--sw-line);border-radius:11px;color:var(--sw-muted);font-size:12px;text-align:center}
+</style>
+
+<script>
+(() => {
+  document.querySelectorAll('[data-spin-wheel]').forEach(root => {
+    if (root.dataset.ready) return;
+    root.dataset.ready = 'true';
+    const $ = selector => root.querySelector(selector);
+    const els = {canvas:$('[data-wheel]'),spin:$('[data-spin]'),spinSecondary:$('[data-spin-secondary]'),form:$('[data-form]'),input:$('[data-input]'),options:$('[data-options]'),count:$('[data-count]'),clearAll:$('[data-clear-all]'),result:$('[data-result]')};
+    const ctx = els.canvas.getContext('2d');
+    const samples = ['今天吃火锅','去看电影','散步半小时','在家做饭'];
+    const colors = ['#e1a01a','#536caa','#c26b42','#5b9279','#a76091','#688ea0','#bf8148','#7b73a8'];
+    let options = [...samples], rotation = 0, spinning = false;
+
+    function draw(){
+      const size=els.canvas.width,c=size/2,r=c-12,slice=Math.PI*2/options.length;
+      ctx.clearRect(0,0,size,size);ctx.save();ctx.translate(c,c);
+      options.forEach((label,index)=>{const start=-Math.PI/2+index*slice;ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,r,start,start+slice);ctx.closePath();ctx.fillStyle=colors[index%colors.length];ctx.fill();ctx.strokeStyle='rgba(255,255,255,.72)';ctx.lineWidth=4;ctx.stroke();ctx.save();ctx.rotate(start+slice/2);ctx.textAlign='right';ctx.textBaseline='middle';ctx.fillStyle='#fff';ctx.shadowColor='rgba(0,0,0,.32)';ctx.shadowBlur=3;ctx.font='700 '+Math.max(18,Math.min(27,180/options.length))+'px system-ui,sans-serif';const text=label.length>12?label.slice(0,11)+'…':label;ctx.fillText(text,r-31,0);ctx.restore();});
+      ctx.beginPath();ctx.arc(0,0,r,0,Math.PI*2);ctx.strokeStyle='rgba(91,62,9,.3)';ctx.lineWidth=5;ctx.stroke();ctx.restore();
+    }
+    function render(){els.options.innerHTML='';options.forEach((label,index)=>{const row=document.createElement('div');row.className='sw-option';const dot=document.createElement('i');dot.style.background=colors[index%colors.length];const text=document.createElement('span');text.textContent=label;const remove=document.createElement('button');remove.type='button';remove.dataset.remove=index;remove.setAttribute('aria-label','删除 '+label);remove.textContent='×';row.append(dot,text,remove);els.options.append(row);});if(!options.length){const empty=document.createElement('div');empty.className='sw-empty';empty.textContent='暂无选项，请在上方添加';els.options.append(empty);}els.count.textContent=options.length+' 个选项';els.spin.disabled=els.spinSecondary.disabled=options.length<2;els.clearAll.disabled=!options.length;draw();}
+    function add(value){const clean=value.trim();if(!clean||options.length>=24)return;options.push(clean);els.input.value='';render();els.input.focus();}
+    function spin(){if(spinning||options.length<2)return;spinning=true;els.spin.disabled=els.spinSecondary.disabled=true;els.result.classList.remove('is-picked');els.result.querySelector('small').textContent='转盘转动中';els.result.querySelector('strong').textContent='正在随机选择…';const winner=Math.floor(Math.random()*options.length),slice=360/options.length,target=360-(winner+.5)*slice;rotation+=1800+((target-(rotation%360)+360)%360);els.canvas.style.transform='rotate('+rotation+'deg)';setTimeout(()=>{spinning=false;els.spin.disabled=els.spinSecondary.disabled=false;els.result.classList.add('is-picked');els.result.querySelector('small').textContent='本次选中';els.result.querySelector('strong').textContent=options[winner];},5300);}
+    els.form.addEventListener('submit',event=>{event.preventDefault();add(els.input.value);});
+    els.options.addEventListener('click',event=>{const button=event.target.closest('[data-remove]');if(!button||spinning)return;options.splice(Number(button.dataset.remove),1);if(options.length<2){els.result.classList.remove('is-picked');els.result.querySelector('small').textContent='等待选项';els.result.querySelector('strong').textContent='至少添加 2 个选项后即可转动';}render();});
+    els.clearAll.addEventListener('click',()=>{if(spinning)return;options=[];rotation=0;els.canvas.style.transition='none';els.canvas.style.transform='rotate(0deg)';requestAnimationFrame(()=>requestAnimationFrame(()=>els.canvas.style.transition='transform 5.2s cubic-bezier(.12,.72,.08,1)'));els.result.classList.remove('is-picked');els.result.querySelector('small').textContent='等待选项';els.result.querySelector('strong').textContent='至少添加 2 个选项后即可转动';render();els.input.focus();});
+    els.spin.addEventListener('click',spin);els.spinSecondary.addEventListener('click',spin);render();
+  });
+})();
+</script>
+
+<h2 id="json-格式化与校验器">JSON 格式化与校验器
+</h2><div class="jb-app" data-json-beautifier>
+  <section class="jb-hero">
+    <div>
+      <div class="jb-kicker">JSON BEAUTIFIER · VALIDATOR</div>
+      <p>粘贴或导入 JSON，即时校验并整理为清晰易读的结构；也可压缩、排序键名后复制或下载。</p>
+    </div>
+    <span class="jb-badge">🔒 浏览器本地</span>
+  </section>
+
+  <section class="jb-panel">
+    <div class="jb-toolbar">
+      <div class="jb-indent" role="group" aria-label="缩进方式">
+        <span>缩进</span>
+        <button type="button" data-indent="2" aria-pressed="true">2 空格</button>
+        <button type="button" data-indent="4" aria-pressed="false">4 空格</button>
+        <button type="button" data-indent="tab" aria-pressed="false">Tab</button>
+      </div>
+      <label class="jb-sort"><input type="checkbox" data-sort> 递归排序键名</label>
+    </div>
+
+    <div class="jb-workspace">
+      <label class="jb-field">
+        <span><b>原始 JSON</b><small data-source-count>0 字符</small></span>
+        <textarea data-source rows="12" spellcheck="false" autocapitalize="off" placeholder='粘贴 JSON，例如：{"name":"Codex","tools":["format","validate"]}'></textarea>
+      </label>
+
+      <label class="jb-field">
+        <span><b>格式化结果</b><small data-result-count>0 行</small></span>
+        <textarea data-result rows="12" readonly spellcheck="false" placeholder="有效的 JSON 会显示在这里"></textarea>
+      </label>
+    </div>
+
+    <div class="jb-status" data-status role="status" aria-live="polite">
+      <span class="jb-status-icon" aria-hidden="true">{ }</span>
+      <span data-status-text>输入内容后会自动校验和美化</span>
+    </div>
+
+    <div class="jb-actions">
+      <div>
+        <label class="jb-secondary jb-file-button">导入文件<input data-file type="file" accept=".json,.jsonl,.geojson,.txt,application/json,text/json,text/plain"></label>
+        <button class="jb-secondary" data-clear type="button">清空</button>
+      </div>
+      <div>
+        <button class="jb-secondary" data-minify type="button" disabled>压缩 JSON</button>
+        <button class="jb-primary" data-copy type="button" disabled>复制结果</button>
+        <button class="jb-primary" data-download type="button" disabled>下载 .json</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="jb-foot">支持标准 JSON、GeoJSON、配置文件及 API 响应等 JSON 文本；内容不会离开当前浏览器。</footer>
+</div>
+
+<style>
+.jb-app{--jb-tool-accent:#087f8c;--jb-tool-deep:#075e68;--jb-tool-soft:#eaf8f9;--jb-tool-hero:#d8f0f2;--jb-tool-muted:#5f7376;--jb-tool-line:#c9e0e3;--jb-tool-card:var(--card-background,#fff);--jb-tool-button:#08737e;display:grid;gap:16px;margin:16px 0 96px;color:var(--card-text-color-main,#203033);font-size:16px}.jb-app *,.jb-app *:before,.jb-app *:after{box-sizing:border-box}.jb-app [hidden]{display:none!important}.jb-hero,.jb-panel{border:1px solid var(--jb-tool-line);border-radius:20px;background:var(--jb-tool-card);box-shadow:0 8px 24px rgba(24,76,82,.07)}.jb-hero{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:23px;background:var(--jb-tool-hero)}.jb-kicker{margin-bottom:7px;color:var(--jb-tool-deep);font-size:12px;font-weight:850;letter-spacing:.13em}.jb-hero p{max-width:650px;margin:0;color:var(--card-text-color-secondary,#747474);font-size:13px;line-height:1.7}.jb-badge{flex:none;padding:7px 11px;border:1px solid #62aeb6;border-radius:999px;background:#a9dce0;color:#064f57;box-shadow:inset 0 1px 0 rgba(255,255,255,.32);font-size:12px;font-weight:800}.jb-panel{display:grid;gap:17px;padding:21px}.jb-toolbar,.jb-indent,.jb-actions,.jb-actions>div{display:flex;align-items:center;gap:9px}.jb-toolbar{justify-content:space-between}.jb-indent{flex-wrap:wrap;padding:5px;border-radius:13px;background:var(--jb-tool-soft)}.jb-indent>span{padding:0 6px;color:var(--jb-tool-muted);font-size:12px;font-weight:800}.jb-indent button{min-height:34px;padding:7px 11px;border:0;border-radius:9px;background:transparent;color:var(--jb-tool-muted);font:inherit;font-size:12px;cursor:pointer}.jb-indent button[aria-pressed=true]{background:var(--jb-tool-card);color:var(--jb-tool-deep);font-weight:800;box-shadow:0 2px 8px rgba(24,76,82,.13)}.jb-sort{display:flex;align-items:center;gap:7px;color:var(--jb-tool-muted);font-size:12px;font-weight:750;cursor:pointer}.jb-sort input{width:17px;height:17px;margin:0;accent-color:var(--jb-tool-accent)}.jb-workspace{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}.jb-field{display:grid;min-width:0;gap:8px}.jb-field>span{display:flex;align-items:center;justify-content:space-between;gap:8px}.jb-field b{color:var(--jb-tool-deep);font-size:13px}.jb-field small{color:var(--jb-tool-muted);font-size:11px}.jb-field textarea{width:100%;min-height:285px;resize:vertical;padding:14px;border:1.5px solid var(--jb-tool-line);border-radius:14px;outline:0;background:var(--jb-tool-card);color:inherit;font:14px/1.65 ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;tab-size:4}.jb-field textarea:focus{border-color:var(--jb-tool-accent);box-shadow:0 0 0 3px rgba(8,127,140,.13)}.jb-field textarea[readonly]{background:var(--jb-tool-soft)}.jb-status{display:flex;align-items:flex-start;gap:9px;min-height:42px;padding:11px 13px;border:1px solid transparent;border-radius:11px;background:var(--jb-tool-soft);color:var(--jb-tool-muted);font-size:12px;line-height:1.55}.jb-status-icon{flex:none;color:var(--jb-tool-accent);font-weight:900}.jb-status.is-valid{border-color:#b8dec8;background:#e9f7ef;color:#326c4a}.jb-status.is-invalid{border-color:#efc4c4;background:#fff0ef;color:#a63232}.jb-actions{justify-content:space-between;flex-wrap:wrap}.jb-primary,.jb-secondary{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:9px 15px;border-radius:11px;font:inherit;font-size:13px;font-weight:800;cursor:pointer}.jb-primary{border:0;background:var(--jb-tool-button);color:#fff;box-shadow:0 5px 13px rgba(8,115,126,.23)}.jb-primary:hover{background:#055b64}.jb-secondary{border:1px solid var(--jb-tool-line);background:var(--jb-tool-card);color:var(--jb-tool-muted)}.jb-primary:disabled,.jb-secondary:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}.jb-file-button{position:relative;overflow:hidden}.jb-file-button input{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.jb-foot{padding:0 4px;color:var(--card-text-color-secondary,#747474);font-size:11px;line-height:1.6}[data-scheme="dark"] .jb-app{--jb-tool-accent:#78b7bc;--jb-tool-deep:#b4d9dc;--jb-tool-soft:#293a3c;--jb-tool-hero:#304447;--jb-tool-muted:#b4c3c5;--jb-tool-line:#4d6063;--jb-tool-button:#176f78}[data-scheme="dark"] .jb-primary:hover{background:#105d65}[data-scheme="dark"] .jb-badge{border-color:#52777b;background:#334f52;color:#c5e8ea;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}[data-scheme="dark"] .jb-status.is-valid{border-color:#3f6851;background:#263d31;color:#9ed6b6}[data-scheme="dark"] .jb-status.is-invalid{border-color:#714a4a;background:#493030;color:#efaaaa}@media(max-width:760px){.jb-workspace{grid-template-columns:1fr}.jb-field textarea{min-height:210px}.jb-toolbar{align-items:flex-start;flex-direction:column}.jb-sort{padding-left:5px}.jb-actions{align-items:stretch;flex-direction:column}.jb-actions>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}.jb-actions>div:last-child{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:520px){.jb-app{margin-bottom:88px}.jb-hero{flex-direction:column;padding:19px}.jb-badge{align-self:flex-start}.jb-panel{padding:15px}.jb-indent{display:grid;grid-template-columns:auto repeat(3,1fr);width:100%}.jb-indent button{padding-inline:7px}.jb-actions>div:last-child{grid-template-columns:1fr}.jb-primary,.jb-secondary{width:100%}}
+</style>
+
+<script>
+(() => {
+  document.querySelectorAll('[data-json-beautifier]').forEach(root => {
+    if (root.dataset.ready) return;
+    root.dataset.ready = 'true';
+    const $ = selector => root.querySelector(selector);
+    const els = {source:$('[data-source]'),result:$('[data-result]'),sourceCount:$('[data-source-count]'),resultCount:$('[data-result-count]'),status:$('[data-status]'),statusText:$('[data-status-text]'),sort:$('[data-sort]'),file:$('[data-file]'),clear:$('[data-clear]'),minify:$('[data-minify]'),copy:$('[data-copy]'),download:$('[data-download]')};
+    let indent = 2;
+    let parsed = null;
+    let valid = false;
+
+    function sortKeys(value) {
+      if (Array.isArray(value)) return value.map(sortKeys);
+      if (value && typeof value === 'object') return Object.keys(value).sort((a,b) => a.localeCompare(b)).reduce((out,key) => { out[key] = sortKeys(value[key]); return out; }, {});
+      return value;
+    }
+
+    function errorLocation(error, source) {
+      const match = String(error.message || '').match(/position\s+(\d+)/i);
+      if (!match) return error.message || 'JSON 格式无效';
+      const position = Math.min(Number(match[1]), source.length);
+      const before = source.slice(0, position).split(/\r?\n/);
+      return `第 ${before.length} 行，第 ${before[before.length - 1].length + 1} 列：${error.message}`;
+    }
+
+    function setStatus(message, state) {
+      els.statusText.textContent = message;
+      els.status.className = 'jb-status' + (state ? ' is-' + state : '');
+      els.status.querySelector('.jb-status-icon').textContent = state === 'valid' ? '✓' : state === 'invalid' ? '!' : '{ }';
+    }
+
+    function format() {
+      const source = els.source.value;
+      els.sourceCount.textContent = Array.from(source).length + ' 字符';
+      if (!source.trim()) {
+        parsed = null; valid = false; els.result.value = ''; els.resultCount.textContent = '0 行';
+        setStatus('输入内容后会自动校验和美化', '');
+        els.minify.disabled = els.copy.disabled = els.download.disabled = true;
+        return;
+      }
+      try {
+        parsed = JSON.parse(source); valid = true;
+        const value = els.sort.checked ? sortKeys(parsed) : parsed;
+        els.result.value = JSON.stringify(value, null, indent);
+        const lines = els.result.value.split('\n').length;
+        els.resultCount.textContent = lines + ' 行 · ' + Array.from(els.result.value).length + ' 字符';
+        const kind = Array.isArray(parsed) ? `数组 · ${parsed.length} 项` : parsed && typeof parsed === 'object' ? `对象 · ${Object.keys(parsed).length} 个顶层键` : '有效的 JSON 基础值';
+        setStatus('格式正确 · ' + kind + ' · 内容未上传', 'valid');
+        els.minify.disabled = els.copy.disabled = els.download.disabled = false;
+      } catch (error) {
+        parsed = null; valid = false; els.result.value = ''; els.resultCount.textContent = '格式无效';
+        setStatus(errorLocation(error, source), 'invalid');
+        els.minify.disabled = els.copy.disabled = els.download.disabled = true;
+      }
+    }
+
+    async function copyText(text, button) {
+      try { await navigator.clipboard.writeText(text); }
+      catch (_) { els.result.removeAttribute('readonly'); els.result.value = text; els.result.select(); document.execCommand('copy'); els.result.setAttribute('readonly',''); }
+      const label = button.textContent; button.textContent = '已复制'; setTimeout(() => button.textContent = label, 1200);
+    }
+
+    root.querySelector('.jb-indent').addEventListener('click', event => {
+      const button = event.target.closest('[data-indent]'); if (!button) return;
+      indent = button.dataset.indent === 'tab' ? '\t' : Number(button.dataset.indent);
+      root.querySelectorAll('[data-indent]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      format();
+    });
+    els.source.addEventListener('input', format);
+    els.sort.addEventListener('change', format);
+    els.clear.addEventListener('click', () => { els.source.value = ''; els.file.value = ''; format(); els.source.focus(); });
+    els.minify.addEventListener('click', () => { if (!valid) return; const value = els.sort.checked ? sortKeys(parsed) : parsed; els.result.value = JSON.stringify(value); els.resultCount.textContent = '1 行 · ' + Array.from(els.result.value).length + ' 字符'; setStatus('已压缩 · 内容未上传', 'valid'); });
+    els.copy.addEventListener('click', () => copyText(els.result.value, els.copy));
+    els.download.addEventListener('click', () => {
+      if (!valid) return;
+      const blob = new Blob([els.result.value + '\n'], {type:'application/json;charset=utf-8'}), url = URL.createObjectURL(blob), link = document.createElement('a');
+      link.href = url; link.download = 'formatted.json'; link.click(); setTimeout(() => URL.revokeObjectURL(url), 0);
+    });
+    els.file.addEventListener('change', () => {
+      const file = els.file.files && els.file.files[0]; if (!file) return;
+      if (file.size > 10 * 1024 * 1024) { setStatus('文件不能超过 10 MB。', 'invalid'); return; }
+      const reader = new FileReader();
+      reader.onload = () => { els.source.value = String(reader.result || ''); format(); };
+      reader.onerror = () => setStatus('无法读取这个文件，请重试。', 'invalid');
+      reader.readAsText(file);
+    });
+    format();
+  });
+})();
+</script>
+
 
 </section>
 
@@ -2762,7 +2985,7 @@ post-sidebar">
     <section class="article-lastmod">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 7v5l3 3" /></svg>
         <span>
-            最后更新于 2026-08-19
+            最后更新于 2026-09-07
         </span>
     </section></footer>
 
