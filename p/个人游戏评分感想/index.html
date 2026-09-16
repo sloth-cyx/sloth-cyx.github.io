@@ -639,6 +639,21 @@ post-sidebar">
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
 
@@ -653,48 +668,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 👑 神作，强烈推荐</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,45 289.90999999999997,88.3 289.688,180.464 249.9,263.6 150.1,263.6 99.101,183.022 110.09,88.3" />
 
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="45" r="4" /><circle cx="289.90999999999997" cy="88.3" r="4" />
+        <circle cx="289.688" cy="180.464" r="4" /><circle cx="249.9" cy="263.6" r="4" />
+        <circle cx="150.1" cy="263.6" r="4" /><circle cx="99.101" cy="183.022" r="4" />
+        <circle cx="110.09" cy="88.3" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4.5;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>5</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>5</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>4</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>5</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>5</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>4.5</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>5</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -735,46 +741,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -791,37 +815,36 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：拥有开放世界的自由感却也有高潮起伏的剧情；R星超强的流畅动作<br>
 👎 <strong>缺点</strong>：全收集有难度，逼死强迫症</p>
 <hr>
 <h3 id="黑神话悟空2周目">黑神话悟空（2周目）
 </h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -848,48 +871,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 👑 神作，强烈推荐</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,45 289.90999999999997,88.3 312.11,185.57999999999998 249.9,263.6 160.07999999999998,242.88 110.312,180.464 110.09,88.3" />
 
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="45" r="4" /><circle cx="289.90999999999997" cy="88.3" r="4" />
+        <circle cx="312.11" cy="185.57999999999998" r="4" /><circle cx="249.9" cy="263.6" r="4" />
+        <circle cx="160.07999999999998" cy="242.88" r="4" /><circle cx="110.312" cy="180.464" r="4" />
+        <circle cx="110.09" cy="88.3" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>5</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>5</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>5</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>5</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>4</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>4</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>5</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -930,46 +944,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -986,38 +1018,37 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：剧情美术牛逼；用中文语音和音乐，投入感一流；动作很丝滑，打架带感<br>
 👎 <strong>缺点</strong>：没有地图；空气墙有时候有，有时候没有；第六章很拉<br>
 💕 <strong>我推</strong>：四妹❤️</p>
 <hr>
 <h3 id="gta5">GTA5
 </h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1044,48 +1075,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 🌟 优秀，值得体验</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,91 289.90999999999997,88.3 256.055,172.79 239.92000000000002,242.88 150.1,263.6 87.89,185.57999999999998 110.09,88.3" />
 
-    <div class="game-score-row" style="--score: 2.5;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2.5</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="91" r="4" /><circle cx="289.90999999999997" cy="88.3" r="4" />
+        <circle cx="256.055" cy="172.79" r="4" /><circle cx="239.92000000000002" cy="242.88" r="4" />
+        <circle cx="150.1" cy="263.6" r="4" /><circle cx="87.89" cy="185.57999999999998" r="4" />
+        <circle cx="110.09" cy="88.3" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>3</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>5</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>2.5</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>4</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>5</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>5</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>5</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -1126,46 +1148,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -1182,37 +1222,36 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：自由度高，释放压力用；联机强；R星超强的流畅动作<br>
 👎 <strong>缺点</strong>：剧情一般</p>
 <hr>
 <h3 id="女神异闻录5皇家版2周目">女神异闻录5皇家版（2周目）
 </h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1239,48 +1278,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 🌟 优秀，值得体验</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,79.5 253.946,116.97999999999999 289.688,180.464 244.91,253.24 150.1,263.6 99.101,183.022 119.081,95.47" />
 
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="79.5" r="4" /><circle cx="253.946" cy="116.97999999999999" r="4" />
+        <circle cx="289.688" cy="180.464" r="4" /><circle cx="244.91" cy="253.24" r="4" />
+        <circle cx="150.1" cy="263.6" r="4" /><circle cx="99.101" cy="183.022" r="4" />
+        <circle cx="119.081" cy="95.47" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 4.5;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4.5;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4.5;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4.5</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>3.5</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>3</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>4</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>4.5</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>5</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>4.5</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>4.5</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -1321,46 +1351,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -1377,38 +1425,37 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：绑定日期的玩法新颖，很有充实感；音乐和美术都很潮；可以攻略不同类型的妹子<br>
 👎 <strong>缺点</strong>：明智扣分项，后面的剧情较为一般；整体偏刷，每天的安排很重要<br>
 💕 <strong>我推</strong>：新岛真❤️，芳泽堇❤️</p>
 <hr>
 <h3 id="暗喻幻想2周目">暗喻幻想（2周目）
 </h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1435,48 +1482,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 🌟 优秀，值得体验</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,79.5 253.946,116.97999999999999 278.477,177.906 244.91,253.24 150.1,263.6 110.312,180.464 110.09,88.3" />
 
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="79.5" r="4" /><circle cx="253.946" cy="116.97999999999999" r="4" />
+        <circle cx="278.477" cy="177.906" r="4" /><circle cx="244.91" cy="253.24" r="4" />
+        <circle cx="150.1" cy="263.6" r="4" /><circle cx="110.312" cy="180.464" r="4" />
+        <circle cx="110.09" cy="88.3" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 4.5;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>3.5</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>3</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>3.5</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>4.5</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>5</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>4</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>5</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -1517,46 +1555,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -1573,32 +1629,16 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：除了阿特拉斯一贯的音乐和美术都很潮，还把很多P系列的小地方优化了：例如coop对话选择不绑定解锁进度，只影响mag获取量，还可以直接一键飞到coop身边；又比如面具不再需要复杂的合成公式，而是分成14种职业，简单明了很多<br>
 👎 <strong>缺点</strong>：肝度没变，以前P系列只需要管主角面具，但现在需要管队友解锁职业，因为终极武器是取决于队友职业解锁完成度，草；刷虽然容易了，但还是要刷；明明可以和三个妹子搞暧昧但是却没有恋爱可玩，给游戏性减个半分！<br>
 💕 <strong>我推</strong>：霍肯伯格❤️，凯瑟琳娜❤️<br>
@@ -1619,6 +1659,21 @@ post-sidebar">
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
 
@@ -1633,48 +1688,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 🌟 优秀，值得体验</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,79.5 271.928,102.63999999999999 256.055,172.79 239.92000000000002,242.88 170.06,222.16 87.89,185.57999999999998 110.09,88.3" />
 
-    <div class="game-score-row" style="--score: 2.5;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2.5</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="79.5" r="4" /><circle cx="271.928" cy="102.63999999999999" r="4" />
+        <circle cx="256.055" cy="172.79" r="4" /><circle cx="239.92000000000002" cy="242.88" r="4" />
+        <circle cx="170.06" cy="222.16" r="4" /><circle cx="87.89" cy="185.57999999999998" r="4" />
+        <circle cx="110.09" cy="88.3" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>3.5</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>4</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>2.5</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>4</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>3</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>5</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>5</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -1715,46 +1761,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -1771,32 +1835,16 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：自由度极高，人物塑造好<br>
 👎 <strong>缺点</strong>：开荒（开塔和神庙略乏味），没有强引导导致一头雾水，有些关卡烧脑<br>
 💕 <strong>我推</strong>：米法❤️</p>
@@ -1815,6 +1863,21 @@ post-sidebar">
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
 
@@ -1829,48 +1892,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 🌟 优秀，值得体验</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,79.5 271.928,102.63999999999999 267.26599999999996,175.348 239.92000000000002,242.88 160.07999999999998,242.88 99.101,183.022 128.072,102.63999999999999" />
 
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="79.5" r="4" /><circle cx="271.928" cy="102.63999999999999" r="4" />
+        <circle cx="267.26599999999996" cy="175.348" r="4" /><circle cx="239.92000000000002" cy="242.88" r="4" />
+        <circle cx="160.07999999999998" cy="242.88" r="4" /><circle cx="99.101" cy="183.022" r="4" />
+        <circle cx="128.072" cy="102.63999999999999" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4.5;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>3.5</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>4</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>3</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>4</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>4</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>4.5</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>4</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -1911,46 +1965,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -1967,32 +2039,16 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：女主美，衣服多；风景优美，地图设计优秀，常常让人感叹原来这里链接这里；build多，非常有趣，而且轮椅巨多；非常完整的流程无赶工；结局也很多；保存退游戏再回来是当前位置而不是神龛<br>
 👎 <strong>缺点</strong>：成也地图，败也地图，太复杂了，得跟着攻略走；神龛太少；缺少动画转场，大多数都是加个上下黑框带过；npc基本无表情，太木了，建模不精细</p>
 <hr>
@@ -2010,6 +2066,21 @@ post-sidebar">
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
 
@@ -2024,48 +2095,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 🌟 优秀，值得体验</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,68 271.928,102.63999999999999 256.055,172.79 239.92000000000002,242.88 160.07999999999998,242.88 99.101,183.022 128.072,102.63999999999999" />
 
-    <div class="game-score-row" style="--score: 2.5;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2.5</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="68" r="4" /><circle cx="271.928" cy="102.63999999999999" r="4" />
+        <circle cx="256.055" cy="172.79" r="4" /><circle cx="239.92000000000002" cy="242.88" r="4" />
+        <circle cx="160.07999999999998" cy="242.88" r="4" /><circle cx="99.101" cy="183.022" r="4" />
+        <circle cx="128.072" cy="102.63999999999999" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4.5;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>4</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>4</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>2.5</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>4</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>4</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>4.5</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>4</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -2106,46 +2168,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -2162,32 +2242,16 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：剧情相对强，双视角很有意思；振刀好玩；没有暴君所以氛围没有很恐怖（艾达篇比较恐怖！）<br>
 👎 <strong>缺点</strong>：挺难的，沉浸感真的一般般，但是艾达篇沉浸感强一点，懂的都懂；爽的话有多周目需求（猫耳朵：1周目没有专家，二周目攒钱，三周目无限火箭筒5.5小时+&lt;15存档专家S+，四周目升满专家S+武器，五周目才能爽）<br>
 💕 <strong>我推</strong>：艾达王❤️</p>
@@ -2206,6 +2270,21 @@ post-sidebar">
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
 
@@ -2220,48 +2299,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 🌟 优秀，值得体验</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,68 262.937,109.81 256.055,172.79 229.94,222.16 150.1,263.6 99.101,183.022 119.081,95.47" />
 
-    <div class="game-score-row" style="--score: 2.5;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2.5</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="68" r="4" /><circle cx="262.937" cy="109.81" r="4" />
+        <circle cx="256.055" cy="172.79" r="4" /><circle cx="229.94" cy="222.16" r="4" />
+        <circle cx="150.1" cy="263.6" r="4" /><circle cx="99.101" cy="183.022" r="4" />
+        <circle cx="119.081" cy="95.47" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4.5;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4.5;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4.5</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>4</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>3.5</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>2.5</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>3</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>5</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>4.5</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>4.5</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -2302,46 +2372,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -2358,32 +2446,16 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：选择会影响有些任务的流程；剧情超长；流派玩法也很多<br>
 👎 <strong>缺点</strong>：动作僵硬，骑马和战斗都很别扭；支线太多，唯一没做完支线的游戏；美术有点灰蒙蒙的<br>
 💕 <strong>我推</strong>：叶奈法❤️</p>
@@ -2402,6 +2474,21 @@ post-sidebar">
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
 
@@ -2416,48 +2503,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 🌟 优秀，值得体验</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 4.5;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4.5</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,56.5 262.937,109.81 278.477,177.906 239.92000000000002,242.88 160.07999999999998,242.88 121.52300000000001,177.906 128.072,102.63999999999999" />
 
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="56.5" r="4" /><circle cx="262.937" cy="109.81" r="4" />
+        <circle cx="278.477" cy="177.906" r="4" /><circle cx="239.92000000000002" cy="242.88" r="4" />
+        <circle cx="160.07999999999998" cy="242.88" r="4" /><circle cx="121.52300000000001" cy="177.906" r="4" />
+        <circle cx="128.072" cy="102.63999999999999" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>4.5</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>3.5</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>3.5</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>4</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>4</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>3.5</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>4</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -2498,46 +2576,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -2554,38 +2650,37 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：战斗很帅，大场面好看；剧情结合小说很棒<br>
 👎 <strong>缺点</strong>：最终幻想一贯的除了战斗，动作都很别扭；可惜是半成品，真结局活在小说里<br>
 💕 <strong>我推</strong>：露娜弗蕾亚❤️</p>
 <hr>
 <h3 id="八方旅人2">八方旅人2
 </h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2612,48 +2707,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 🌟 优秀，值得体验</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 2.5;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2.5</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,45 244.95499999999998,124.15 278.477,177.906 239.92000000000002,242.88 155.09,253.24 121.52300000000001,177.906 137.06300000000002,109.81" />
 
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="45" r="4" /><circle cx="244.95499999999998" cy="124.15" r="4" />
+        <circle cx="278.477" cy="177.906" r="4" /><circle cx="239.92000000000002" cy="242.88" r="4" />
+        <circle cx="155.09" cy="253.24" r="4" /><circle cx="121.52300000000001" cy="177.906" r="4" />
+        <circle cx="137.06300000000002" cy="109.81" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4.5;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>5</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>2.5</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>3.5</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>4</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>4.5</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>3.5</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>3.5</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -2694,46 +2780,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -2750,32 +2854,16 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：继承1的优点，画风再升级；剧情爆炸反转；战斗速度*2是好评<br>
 👎 <strong>缺点</strong>：练级的过程还是和1代一样问题；有时候会掉帧<br>
 💕 <strong>我推</strong>：斯洛妮❤️<br>
@@ -2784,6 +2872,21 @@ post-sidebar">
 <hr>
 <h3 id="赛博朋克2077--dlc本体三周目dlc二周目">赛博朋克2077 + DLC（本体三周目，DLC二周目）
 </h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2810,48 +2913,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 🌟 优秀，值得体验</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 4.5;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4.5</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,79.5 280.919,95.47 267.26599999999996,175.348 239.92000000000002,242.88 170.06,222.16 110.312,180.464 128.072,102.63999999999999" />
 
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="79.5" r="4" /><circle cx="280.919" cy="95.47" r="4" />
+        <circle cx="267.26599999999996" cy="175.348" r="4" /><circle cx="239.92000000000002" cy="242.88" r="4" />
+        <circle cx="170.06" cy="222.16" r="4" /><circle cx="110.312" cy="180.464" r="4" />
+        <circle cx="128.072" cy="102.63999999999999" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>3.5</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>4.5</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>3</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>4</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>3</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>4</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>4</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -2892,46 +2986,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -2948,37 +3060,36 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：选择会影响有些任务的流程；流派玩法也很多；多结局；全程第一人称很带感<br>
 👎 <strong>缺点</strong>：流程相比巫师3会比较短，有点意犹未尽；优化有点拉</p>
 <hr>
 <h3 id="怪物猎人-荒野">怪物猎人 荒野
 </h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3005,48 +3116,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 🔥 推荐，整体表现出色</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 2;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,114 289.90999999999997,88.3 256.055,172.79 239.92000000000002,242.88 180.04,201.44 99.101,183.022 110.09,88.3" />
 
-    <div class="game-score-row" style="--score: 2.5;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2.5</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="114" r="4" /><circle cx="289.90999999999997" cy="88.3" r="4" />
+        <circle cx="256.055" cy="172.79" r="4" /><circle cx="239.92000000000002" cy="242.88" r="4" />
+        <circle cx="180.04" cy="201.44" r="4" /><circle cx="99.101" cy="183.022" r="4" />
+        <circle cx="110.09" cy="88.3" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 2;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4.5;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>2</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>5</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>2.5</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>4</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>2</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>4.5</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>5</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -3087,46 +3189,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -3143,32 +3263,16 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：战斗爽！丰富的生态环境和地图相得益彰，华丽的角力相杀为演出加分不少。最重要的是，我女儿捏得真好看，荒野暖暖也是动力之一，培养的角色毕业成就感满满！<br>
 👎 <strong>缺点</strong>：优化巨垃圾，倒不是说什么平常卡顿，因为关掉体积雾算蛮顺，但时不时地图就要卡爆需要大退真的恶心，而且每次更新都要渲染着色器！剧情问题倒是问题不大，毕竟怪猎也不是什么很依靠剧情的游戏<br>
 💕 <strong>我推</strong>：我女儿真好看❤️</p>
@@ -3187,6 +3291,21 @@ post-sidebar">
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
 
@@ -3201,48 +3320,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 🔥 推荐，整体表现出色</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,79.5 262.937,109.81 278.477,177.906 234.93,232.51999999999998 160.07999999999998,242.88 132.734,175.348 146.054,116.97999999999999" />
 
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="79.5" r="4" /><circle cx="262.937" cy="109.81" r="4" />
+        <circle cx="278.477" cy="177.906" r="4" /><circle cx="234.93" cy="232.51999999999998" r="4" />
+        <circle cx="160.07999999999998" cy="242.88" r="4" /><circle cx="132.734" cy="175.348" r="4" />
+        <circle cx="146.054" cy="116.97999999999999" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>3.5</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>3.5</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>3.5</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>3.5</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>4</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>3</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>3</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -3283,46 +3393,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -3339,32 +3467,16 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：衣服暴多，色色无敌；优化不错（虽然爆显存卡退过一次）；震刀手感不错；联动良心；线性流程设计不错；中文配音真的很可以<br>
 👎 <strong>缺点</strong>：收集任务（汽水&amp;拍照）无趣繁琐，收集全衣服要三周目，二周目就已经腻了；防御闪躲手感奇怪无比；boss多换皮怪；前半段地图风格大同小异，审美疲劳</p>
 <hr>
@@ -3382,6 +3494,21 @@ post-sidebar">
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
 
@@ -3396,48 +3523,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 🔥 推荐，整体表现出色</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,79.5 253.946,116.97999999999999 289.688,180.464 244.91,253.24 170.06,222.16 155.156,170.232 128.072,102.63999999999999" />
 
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="79.5" r="4" /><circle cx="253.946" cy="116.97999999999999" r="4" />
+        <circle cx="289.688" cy="180.464" r="4" /><circle cx="244.91" cy="253.24" r="4" />
+        <circle cx="170.06" cy="222.16" r="4" /><circle cx="155.156" cy="170.232" r="4" />
+        <circle cx="128.072" cy="102.63999999999999" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 4.5;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 2;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>3.5</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>3</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>4</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>4.5</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>3</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>2</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>4</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -3478,46 +3596,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -3534,32 +3670,16 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：美术很潮，战斗画面爽爆，音乐非常不错；剧情低开高走但也比较一般，个人感觉DLC的剧情比本体好，加上了厚度和反转<br>
 👎 <strong>缺点</strong>：捏面具和练级确实乏味，晚上只有两个coop不太合理；有时会掉帧而且不能开全特效（优化稀烂）；DLC85%时间都在爬塔，枯燥无比<br>
 💕 <strong>我推</strong>：由加莉❤️</p>
@@ -3578,6 +3698,21 @@ post-sidebar">
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
 
@@ -3592,48 +3727,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 🔥 推荐，整体表现出色</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 2.5;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2.5</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,68 244.95499999999998,124.15 278.477,177.906 229.94,222.16 150.1,263.6 132.734,175.348 146.054,116.97999999999999" />
 
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="68" r="4" /><circle cx="244.95499999999998" cy="124.15" r="4" />
+        <circle cx="278.477" cy="177.906" r="4" /><circle cx="229.94" cy="222.16" r="4" />
+        <circle cx="150.1" cy="263.6" r="4" /><circle cx="132.734" cy="175.348" r="4" />
+        <circle cx="146.054" cy="116.97999999999999" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>4</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>2.5</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>3.5</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>3</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>5</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>3</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>3</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -3674,46 +3800,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -3730,32 +3874,16 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：像素风，很新鲜好看；技能搭配很好玩<br>
 👎 <strong>缺点</strong>：要练级，不然有点难，但是练级的过程很枯燥，而且没有后台经验的关系，八个人的经验不是均衡的，要练很久<br>
 💕 <strong>我推</strong>：普莉姆萝洁❤️</p>
@@ -3774,6 +3902,21 @@ post-sidebar">
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
 
@@ -3788,48 +3931,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 🔥 推荐，整体表现出色</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,79.5 271.928,102.63999999999999 256.055,172.79 234.93,232.51999999999998 175.05,211.8 110.312,180.464 128.072,102.63999999999999" />
 
-    <div class="game-score-row" style="--score: 2.5;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2.5</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="79.5" r="4" /><circle cx="271.928" cy="102.63999999999999" r="4" />
+        <circle cx="256.055" cy="172.79" r="4" /><circle cx="234.93" cy="232.51999999999998" r="4" />
+        <circle cx="175.05" cy="211.8" r="4" /><circle cx="110.312" cy="180.464" r="4" />
+        <circle cx="128.072" cy="102.63999999999999" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 2.5;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>3.5</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>4</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>2.5</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>3.5</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>2.5</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>4</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>4</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -3870,46 +4004,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -3926,32 +4078,16 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：双视角分别采用生2，生4的玩法，集大成之作；优秀的沉浸感；无限子弹门槛降低<br>
 👎 <strong>缺点</strong>：流程短，剧情没惊喜；玩一会儿就会猛掉帧；没有艾达</p>
 <hr>
@@ -3969,6 +4105,21 @@ post-sidebar">
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
 
@@ -3983,48 +4134,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 🔥 推荐，整体表现出色</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,79.5 262.937,109.81 278.477,177.906 249.9,263.6 190.02,180.72 121.52300000000001,177.906 128.072,102.63999999999999" />
 
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="79.5" r="4" /><circle cx="262.937" cy="109.81" r="4" />
+        <circle cx="278.477" cy="177.906" r="4" /><circle cx="249.9" cy="263.6" r="4" />
+        <circle cx="190.02" cy="180.72" r="4" /><circle cx="121.52300000000001" cy="177.906" r="4" />
+        <circle cx="128.072" cy="102.63999999999999" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 1;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">1</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>3.5</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>3.5</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>3.5</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>5</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>1</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>3.5</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>4</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -4065,46 +4207,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -4121,32 +4281,16 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：大场面华丽史诗，战斗蛮带感的；上垒好评，美女多<br>
 👎 <strong>缺点</strong>：动作僵硬（ex：不能自己选择奔驰！）；支线多数不佳；优化垃圾，掉帧卡顿闪退应有尽有<br>
 💕 <strong>我推</strong>：吉尔❤️（希瓦），奥丁他妈❤️，艾达❤️（孕妇）</p>
@@ -4165,6 +4309,21 @@ post-sidebar">
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
 
@@ -4179,48 +4338,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 🔥 推荐，整体表现出色</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,91 262.937,109.81 278.477,177.906 244.91,253.24 170.06,222.16 121.52300000000001,177.906 146.054,116.97999999999999" />
 
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="91" r="4" /><circle cx="262.937" cy="109.81" r="4" />
+        <circle cx="278.477" cy="177.906" r="4" /><circle cx="244.91" cy="253.24" r="4" />
+        <circle cx="170.06" cy="222.16" r="4" /><circle cx="121.52300000000001" cy="177.906" r="4" />
+        <circle cx="146.054" cy="116.97999999999999" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 4.5;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>3</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>3.5</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>3.5</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>4.5</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>3</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>3.5</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>3</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -4261,46 +4411,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -4317,32 +4485,16 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：变成半开放世界后就多了很多探索；任务，小游戏，支线都不少；战斗优化得更有趣好玩；电影般的画面非常好看<br>
 👎 <strong>缺点</strong>：动作依旧算僵硬；烦人的小游戏多，探索重复性高，乐趣也一般般；优化真的垃圾（更新后好一点，但是过场动画会卡是真绷不住）；主线弱智情节不少，逻辑不通，剧情演出节奏拖沓，大多数时候需要按RT快进，只能勉强给个及格分，而且主线塞小游戏真的巨烦！越后期越玩不下去；而且有些情节强制操作某些角色，真的恶心<br>
 💕 <strong>我推</strong>：蒂法❤️，爱丽丝❤️，西斯妮❤️，艾丝特❤️</p>
@@ -4361,6 +4513,21 @@ post-sidebar">
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
 
@@ -4375,48 +4542,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 🔥 推荐，整体表现出色</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 2;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 4.5;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4.5</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,114 280.919,95.47 256.055,172.79 234.93,232.51999999999998 160.07999999999998,242.88 121.52300000000001,177.906 128.072,102.63999999999999" />
 
-    <div class="game-score-row" style="--score: 2.5;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2.5</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="114" r="4" /><circle cx="280.919" cy="95.47" r="4" />
+        <circle cx="256.055" cy="172.79" r="4" /><circle cx="234.93" cy="232.51999999999998" r="4" />
+        <circle cx="160.07999999999998" cy="242.88" r="4" /><circle cx="121.52300000000001" cy="177.906" r="4" />
+        <circle cx="128.072" cy="102.63999999999999" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>2</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>4.5</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>2.5</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>3.5</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>4</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>3.5</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>4</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -4457,46 +4615,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -4513,32 +4689,16 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：妹子好看；战斗爽；DLC出的新角色暗龙，贝熊，暗龙都挺好玩的，依旧保持不错的战斗水准；DLC的boss如世界很好玩，格挡反击太爽了，毕业因子难度大大降低<br>
 👎 <strong>缺点</strong>：刷子游戏，后期只能刷刷刷因子没事干了；DLC相对于本体肝度直线上升，而且不是因子方面而是msp；得一直刷一样的关卡超级无聊，没有本体那种属转+追击V+那种期待感；专精毕业后因子武器那些也相对容易所以后期容易无聊；DLC有些boss不好玩，指名天元<br>
 💕 <strong>我推</strong>：菲莉❤️，泽塔❤️，索恩❤️，娜露梅亚❤️，贝熊❤️，芙劳❤️</p>
@@ -4557,6 +4717,21 @@ post-sidebar">
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
 
@@ -4571,48 +4746,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 🔥 推荐，整体表现出色</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,79.5 262.937,109.81 256.055,172.79 234.93,232.51999999999998 160.07999999999998,242.88 121.52300000000001,177.906 146.054,116.97999999999999" />
 
-    <div class="game-score-row" style="--score: 2.5;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2.5</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="79.5" r="4" /><circle cx="262.937" cy="109.81" r="4" />
+        <circle cx="256.055" cy="172.79" r="4" /><circle cx="234.93" cy="232.51999999999998" r="4" />
+        <circle cx="160.07999999999998" cy="242.88" r="4" /><circle cx="121.52300000000001" cy="177.906" r="4" />
+        <circle cx="146.054" cy="116.97999999999999" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>3.5</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>3.5</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>2.5</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>3.5</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>4</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>3.5</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>3</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -4653,46 +4819,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -4709,32 +4893,16 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：虽然流程短但是蛮好玩的，解谜要素+恐怖氛围蛮有趣，双主角<br>
 👎 <strong>缺点</strong>：有点短，沉浸感一般</p>
 <hr>
@@ -4752,6 +4920,21 @@ post-sidebar">
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
 
@@ -4766,48 +4949,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 🔥 推荐，整体表现出色</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,91 262.937,109.81 278.477,177.906 239.92000000000002,242.88 165.07,232.51999999999998 132.734,175.348 146.054,116.97999999999999" />
 
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="91" r="4" /><circle cx="262.937" cy="109.81" r="4" />
+        <circle cx="278.477" cy="177.906" r="4" /><circle cx="239.92000000000002" cy="242.88" r="4" />
+        <circle cx="165.07" cy="232.51999999999998" r="4" /><circle cx="132.734" cy="175.348" r="4" />
+        <circle cx="146.054" cy="116.97999999999999" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>3</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>3.5</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>3.5</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>4</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>3.5</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>3</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>3</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -4848,46 +5022,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -4904,37 +5096,36 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：妳是拉毗，妳是2B，妳是石川由依；作战丰富度高，轮椅多；地图很漂亮，每一章的地图都很有特点，前期剧情轻松的时候地图大让玩家自由探索，随着剧情越来越紧凑，地图越来越线性和缩短，个人觉得这样的地图设计节奏很不错；探索和主线也有不错的引导；音乐蛮有剑星的感觉，还挺上耳；由于boss不难打所以还<del>挺有成就感</del>；没网传的那么无聊，但后期极其容易毕业<br>
 👎 <strong>缺点</strong>：视角很近（不能改！），导致探索需要频繁的转视角，会有点晕，习惯了就不会晕；闪避手感一坨，闪红光攻击容易但是反而闪不掉一般攻击；格挡手感也有点怪，有点前动作的惯性，不能马上格挡；画质中等偏下，材质的纹理很粗糙；优化一般，有些过场动画和游戏交互会掉帧（导致有些过场动画怪怪的，掉帧一下突然间主角就飞出去了，看得莫名其妙）；交互动作很慢，非常慢；boss大多是放大版的小怪，品种很少；前期的地图看似很大，实则有些地方有空气墙；有些对话是可以跳的，但是画面不会切，所以就算对话跳了但是画面也卡在那里一下，有点搞笑；大量的素材复用，如boss（前半段和后半段的boss重复），如CG（击杀boss的CG，休息至出发的CG），如节奏（打boss一阶段 -&gt; 二阶段 -&gt; 晕倒 -&gt; violet恢复些许记忆 -&gt; 早上醒来 -&gt; 休息至出发 -&gt; 和violet对话 -&gt; 出发当天（晚上）-&gt; 黑屏布拉德和苦无对话 -&gt; 早上艾玛和布拉德对话 -&gt; 新地图），由于CG大多不能跳过，偏偏剧情喜欢使用大量的CG慢慢说故事，导致二周目目前没计划（据说后续会优化），而且使用了大量的CG表现力和感染力也不足</p>
 <hr>
 <h3 id="生化危机3-重制版">生化危机3 重制版
 </h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4961,48 +5152,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 🔥 推荐，整体表现出色</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,91 262.937,109.81 256.055,172.79 234.93,232.51999999999998 160.07999999999998,242.88 121.52300000000001,177.906 146.054,116.97999999999999" />
 
-    <div class="game-score-row" style="--score: 2.5;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2.5</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="91" r="4" /><circle cx="262.937" cy="109.81" r="4" />
+        <circle cx="256.055" cy="172.79" r="4" /><circle cx="234.93" cy="232.51999999999998" r="4" />
+        <circle cx="160.07999999999998" cy="242.88" r="4" /><circle cx="121.52300000000001" cy="177.906" r="4" />
+        <circle cx="146.054" cy="116.97999999999999" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>3</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>3.5</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>2.5</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>3.5</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>4</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>3.5</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>3</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -5043,46 +5225,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -5099,37 +5299,36 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：和上一部基本一样，游戏性有保证<br>
 👎 <strong>缺点</strong>：变回单主角，而且吉尔不如克莱尔好看，单主角让主线更短了</p>
 <hr>
 <h3 id="符文工房3-豪华版">符文工房3 豪华版
 </h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5156,48 +5355,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 🔥 推荐，整体表现出色</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 2;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 2;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,114 235.964,131.32 244.844,170.232 229.94,222.16 150.1,263.6 110.312,180.464 128.072,102.63999999999999" />
 
-    <div class="game-score-row" style="--score: 2;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="114" r="4" /><circle cx="235.964" cy="131.32" r="4" />
+        <circle cx="244.844" cy="170.232" r="4" /><circle cx="229.94" cy="222.16" r="4" />
+        <circle cx="150.1" cy="263.6" r="4" /><circle cx="110.312" cy="180.464" r="4" />
+        <circle cx="128.072" cy="102.63999999999999" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 5;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">5</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>2</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>2</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>2</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>3</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>5</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>4</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>4</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -5238,46 +5428,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -5294,38 +5502,37 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：上头，务农，打怪融合得很好；恋爱候补很多，人设都不错，鲜明；有很多小技巧可以快速赚钱，从此无忧无虑<br>
 👎 <strong>缺点</strong>：有功利心会玩得很累；结婚后瞬间没动力；重制版并没有很好的把这个作品呈现得更好<br>
 💕 <strong>我推</strong>：托娜❤️，卡琳❤️，咲耶❤️</p>
 <hr>
 <h3 id="宝可梦传说-za本体二周目">宝可梦传说 ZA（本体二周目）
 </h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5352,48 +5559,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 🙂 一般，有一定亮点</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 2;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 2;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,114 235.964,131.32 244.844,170.232 229.94,222.16 160.07999999999998,242.88 110.312,180.464 137.06300000000002,109.81" />
 
-    <div class="game-score-row" style="--score: 2;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="114" r="4" /><circle cx="235.964" cy="131.32" r="4" />
+        <circle cx="244.844" cy="170.232" r="4" /><circle cx="229.94" cy="222.16" r="4" />
+        <circle cx="160.07999999999998" cy="242.88" r="4" /><circle cx="110.312" cy="180.464" r="4" />
+        <circle cx="137.06300000000002" cy="109.81" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>2</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>2</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>2</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>3</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>4</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>4</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>3.5</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -5434,46 +5632,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -5490,38 +5706,37 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：玩法改成实时对战，比较有趣味性；努力值王冠那些也比较简单；闪光机制好评；好看的衣服很多<br>
 👎 <strong>缺点</strong>：羸弱的剧情和劲敌塑造；支线通马桶<br>
 💕 <strong>我推</strong>：玳萝❤️，卡娜莉❤️</p>
 <hr>
 <h3 id="最终幻想7-重制版">最终幻想7 重制版
 </h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5548,48 +5763,39 @@ post-sidebar">
     <div class="game-score-total-comment"> 🙂 一般，有一定亮点</div>
   </div>
 
-  <div class="game-score-list">
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">🎭 剧情</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
+  <div class="game-score-radar">
+    <svg viewBox="0 0 400 330" role="img" aria-label="游戏七项评分雷达图">
+      <g class="game-score-radar-grid">
+        <polygon points="200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66" />
+        <polygon points="200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32" />
+        <polygon points="200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98" />
+        <polygon points="200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64" />
+        <polygon class="game-score-radar-edge" points="200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30" />
+        <path d="M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30" />
+      </g>
 
-    <div class="game-score-row" style="--score: 3.5;">
-      <div class="game-score-name">⚔️ 动作</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3.5</div>
-    </div>
+      <polygon class="game-score-radar-data" points="200,91 262.937,109.81 256.055,172.79 239.92000000000002,242.88 180.04,201.44 155.156,170.232 146.054,116.97999999999999" />
 
-    <div class="game-score-row" style="--score: 2.5;">
-      <div class="game-score-name">🎵 音乐</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2.5</div>
-    </div>
+      <g class="game-score-radar-points">
+        <circle cx="200" cy="91" r="4" /><circle cx="262.937" cy="109.81" r="4" />
+        <circle cx="256.055" cy="172.79" r="4" /><circle cx="239.92000000000002" cy="242.88" r="4" />
+        <circle cx="180.04" cy="201.44" r="4" /><circle cx="155.156" cy="170.232" r="4" />
+        <circle cx="146.054" cy="116.97999999999999" r="4" />
+      </g>
 
-    <div class="game-score-row" style="--score: 4;">
-      <div class="game-score-name">🎨 美术</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">4</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 2;">
-      <div class="game-score-name">⚙️ 优化</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 2;">
-      <div class="game-score-name">🎮 游戏性</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">2</div>
-    </div>
-
-    <div class="game-score-row" style="--score: 3;">
-      <div class="game-score-name">⏱️ 沉浸感</div>
-      <div class="game-score-bar"><span></span></div>
-      <div class="game-score-value">3</div>
-    </div>
+      <g class="game-score-radar-labels">
+        <text x="200" y="19" text-anchor="middle">剧情 <tspan>3</tspan></text>
+        <text x="303" y="72" text-anchor="start">动作 <tspan>3.5</tspan></text>
+        <text x="326" y="194" text-anchor="start">音乐 <tspan>2.5</tspan></text>
+        <text x="260" y="288" text-anchor="start">美术 <tspan>4</tspan></text>
+        <text x="140" y="288" text-anchor="end">优化 <tspan>2</tspan></text>
+        <text x="74" y="194" text-anchor="end">游戏性 <tspan>2</tspan></text>
+        <text x="97" y="72" text-anchor="end">沉浸感 <tspan>3</tspan></text>
+      </g>
+      <g class="game-score-radar-scale">
+        <text x="205" y="140">1</text><text x="205" y="117">2</text><text x="205" y="94">3</text><text x="205" y="71">4</text><text x="205" y="48">5</text>
+      </g>
+    </svg>
   </div>
 </div>
 
@@ -5630,46 +5836,64 @@ post-sidebar">
   line-height: 1.3;
 }
 
-.game-score-list {
-  display: flex;
-  flex-direction: column;
-  gap: .65rem;
-}
-
-.game-score-row {
-  display: grid;
-  grid-template-columns: 4fr 6fr 60px;
-  align-items: center;
-  gap: .9rem;
-  padding: .8rem 1rem;
-  border-radius: 14px;
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
   background: #f9fff1;
   border: 1px solid #175315;
 }
 
-.game-score-name {
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.game-score-bar {
-  height: 10px;
-  border-radius: 999px;
-  background: #d9e9b7;
-  overflow: hidden;
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
 }
 
-.game-score-bar span {
-  display: block;
-  height: 100%;
-  width: calc(var(--score) / 5 * 100%);
-  border-radius: 999px;
-  background: #7ca84d;
-}
-
-.game-score-value {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.05rem;
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
 }
 
 .game-score-total-comment{
@@ -5686,32 +5910,16 @@ post-sidebar">
 }
 
 @media (max-width: 600px) {
-
-  .game-score-row {
-    grid-template-columns: 1fr;
-    gap: .7rem;
-  }
-
-  .game-score-name {
-    text-align: left;
-  }
-
-  .game-score-bar {
-    width: 100%;
-  }
-
-  .game-score-value {
-    justify-self: center;
-    text-align: center;
-    width: 100%;
-    font-size: 1rem;
-  }
-
   .game-score-total-value {
     font-size: 1.7rem;
   }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
 }
 </style>
+
 <p>👍 <strong>优点</strong>：蒂法&amp;爱丽丝<br>
 👎 <strong>缺点</strong>：动作僵硬；支线也不佳；整体较为无趣<br>
 💕 <strong>我推</strong>：蒂法❤️，爱丽丝❤️</p>
