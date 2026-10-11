@@ -3428,6 +3428,210 @@
 💬 &lt;strong&gt;其他&lt;/strong&gt;：&lt;br&gt;
 霍肯伯格过场2D动画露得比建模多多了&amp;hellip;&lt;/p&gt;
 &lt;hr&gt;
+&lt;h3 id=&#34;最终幻想152周目玩皇家版&#34;&gt;最终幻想15（2周目玩皇家版）&lt;/h3&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+
+&lt;div class=&#34;game-score-card&#34;&gt;
+  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
+
+  &lt;div class=&#34;game-score-total&#34;&gt;
+    &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-value&#34;&gt;27.5 / 35&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐⭐⭐☆&lt;/div&gt;
+    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🌟 优秀，值得体验&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&#34;game-score-radar&#34;&gt;
+    &lt;svg viewBox=&#34;0 0 400 330&#34; role=&#34;img&#34; aria-label=&#34;游戏七项评分雷达图&#34;&gt;
+      &lt;g class=&#34;game-score-radar-grid&#34;&gt;
+        &lt;polygon points=&#34;200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66&#34; /&gt;
+        &lt;polygon points=&#34;200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32&#34; /&gt;
+        &lt;polygon points=&#34;200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98&#34; /&gt;
+        &lt;polygon points=&#34;200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64&#34; /&gt;
+        &lt;polygon class=&#34;game-score-radar-edge&#34; points=&#34;200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30&#34; /&gt;
+        &lt;path d=&#34;M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30&#34; /&gt;
+      &lt;/g&gt;
+
+      &lt;polygon class=&#34;game-score-radar-data&#34; points=&#34;200,56.5 262.937,109.81 278.477,177.906 239.92000000000002,242.88 170.06,222.16 110.312,180.464 110.09,88.3&#34; /&gt;
+
+      &lt;g class=&#34;game-score-radar-points&#34;&gt;
+        &lt;circle cx=&#34;200&#34; cy=&#34;56.5&#34; r=&#34;4&#34; /&gt;&lt;circle cx=&#34;262.937&#34; cy=&#34;109.81&#34; r=&#34;4&#34; /&gt;
+        &lt;circle cx=&#34;278.477&#34; cy=&#34;177.906&#34; r=&#34;4&#34; /&gt;&lt;circle cx=&#34;239.92000000000002&#34; cy=&#34;242.88&#34; r=&#34;4&#34; /&gt;
+        &lt;circle cx=&#34;170.06&#34; cy=&#34;222.16&#34; r=&#34;4&#34; /&gt;&lt;circle cx=&#34;110.312&#34; cy=&#34;180.464&#34; r=&#34;4&#34; /&gt;
+        &lt;circle cx=&#34;110.09&#34; cy=&#34;88.3&#34; r=&#34;4&#34; /&gt;
+      &lt;/g&gt;
+
+      &lt;g class=&#34;game-score-radar-labels&#34;&gt;
+        &lt;text x=&#34;200&#34; y=&#34;19&#34; text-anchor=&#34;middle&#34;&gt;剧情 &lt;tspan&gt;4.5&lt;/tspan&gt;&lt;/text&gt;
+        &lt;text x=&#34;303&#34; y=&#34;72&#34; text-anchor=&#34;start&#34;&gt;动作 &lt;tspan&gt;3.5&lt;/tspan&gt;&lt;/text&gt;
+        &lt;text x=&#34;326&#34; y=&#34;194&#34; text-anchor=&#34;start&#34;&gt;音乐 &lt;tspan&gt;3.5&lt;/tspan&gt;&lt;/text&gt;
+        &lt;text x=&#34;260&#34; y=&#34;288&#34; text-anchor=&#34;start&#34;&gt;美术 &lt;tspan&gt;4&lt;/tspan&gt;&lt;/text&gt;
+        &lt;text x=&#34;140&#34; y=&#34;288&#34; text-anchor=&#34;end&#34;&gt;优化 &lt;tspan&gt;3&lt;/tspan&gt;&lt;/text&gt;
+        &lt;text x=&#34;74&#34; y=&#34;194&#34; text-anchor=&#34;end&#34;&gt;游戏性 &lt;tspan&gt;4&lt;/tspan&gt;&lt;/text&gt;
+        &lt;text x=&#34;97&#34; y=&#34;72&#34; text-anchor=&#34;end&#34;&gt;沉浸感 &lt;tspan&gt;5&lt;/tspan&gt;&lt;/text&gt;
+      &lt;/g&gt;
+      &lt;g class=&#34;game-score-radar-scale&#34;&gt;
+        &lt;text x=&#34;205&#34; y=&#34;140&#34;&gt;1&lt;/text&gt;&lt;text x=&#34;205&#34; y=&#34;117&#34;&gt;2&lt;/text&gt;&lt;text x=&#34;205&#34; y=&#34;94&#34;&gt;3&lt;/text&gt;&lt;text x=&#34;205&#34; y=&#34;71&#34;&gt;4&lt;/text&gt;&lt;text x=&#34;205&#34; y=&#34;48&#34;&gt;5&lt;/text&gt;
+      &lt;/g&gt;
+    &lt;/svg&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.game-score-card {
+  margin: 1.5rem 0;
+  padding: 1.3rem;
+  border-radius: 20px;
+  background: #d8f3f8;
+  border: 2px solid #0c1642;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+  color:#222;
+}
+
+.game-score-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.game-score-total {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-total-label {
+  font-size: 1.25rem;
+  opacity: .75;
+}
+
+.game-score-total-value {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.game-score-radar {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: 16px;
+  background: #f9fff1;
+  border: 1px solid #175315;
+}
+
+.game-score-radar svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.game-score-radar-grid polygon,
+.game-score-radar-grid path {
+  fill: none;
+  stroke: #a9bf89;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-grid .game-score-radar-edge {
+  stroke: #6f8e4e;
+  stroke-width: 1.5;
+}
+
+.game-score-radar-data {
+  fill: rgba(85, 153, 64, .34);
+  stroke: #397b35;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-points circle {
+  fill: #397b35;
+  stroke: #f9fff1;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.game-score-radar-labels {
+  fill: #24351d;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.game-score-radar-labels tspan {
+  fill: #397b35;
+  font-weight: 900;
+}
+
+.game-score-radar-scale {
+  fill: #6f7f62;
+  font-size: 8px;
+}
+
+.game-score-total-comment{
+    margin-top:8px;
+    font-size:1.5rem;
+     
+     
+}
+
+.game-score-total-stars {
+  font-size: 1.25rem;
+  margin-top: .25rem;
+     
+}
+
+@media (max-width: 600px) {
+  .game-score-total-value {
+    font-size: 1.7rem;
+  }
+
+  .game-score-radar {
+    padding: .25rem;
+  }
+}
+&lt;/style&gt;
+
+&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：战斗很帅，大场面好看；剧情结合小说很棒；战斗很有深度，各种武器甚至真幻影剑都有各自的操作；支线很丰富，迷宫也不会太复杂；引导很强（不用动脑）；世界很大很美丽，练级也相对不难，有steam创意工坊的帮助，很多衣服几乎都是开挂级别&lt;br&gt;
+👎 &lt;strong&gt;缺点&lt;/strong&gt;：最终幻想一贯的除了战斗，动作都很别扭；建模表情互动等在2026的眼光来看算是很生硬的；虽然是开放世界，但是有时候有很多莫名其妙的空气墙比如灌木丛；剧情的节奏和编排是硬伤，在水都之前很臃肿的，各种支线冒出来，清完支线再去水都几乎满级了，然后水都过后一路都是主线，停不下来；最终幻想一贯的谜语人剧情，需要补各种dlc加深理解，可惜是半成品，真结局活在小说里；AP（技能点数）获取是真难，得刷死；优化一般，2016的游戏用4060+32gb ram竟然会卡顿，甚至有个迷宫打完了闪退，来不及保存，心态真炸（但是960+16gb ram也能玩）；迷宫内不能保存也是很值得吐槽&lt;br&gt;
+💕 &lt;strong&gt;我推&lt;/strong&gt;：露娜弗蕾亚❤️，阿拉尼雅❤️，莎拉❤️&lt;/p&gt;
+&lt;hr&gt;
 &lt;h3 id=&#34;塞尔达-荒野之息--dlc&#34;&gt;塞尔达 荒野之息 + DLC&lt;/h3&gt;
 
 
@@ -4242,210 +4446,6 @@
 &lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：选择会影响有些任务的流程；剧情超长；流派玩法也很多&lt;br&gt;
 👎 &lt;strong&gt;缺点&lt;/strong&gt;：动作僵硬，骑马和战斗都很别扭；支线太多，唯一没做完支线的游戏；美术有点灰蒙蒙的&lt;br&gt;
 💕 &lt;strong&gt;我推&lt;/strong&gt;：叶奈法❤️&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;最终幻想15&#34;&gt;最终幻想15&lt;/h3&gt;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-
-
-&lt;div class=&#34;game-score-card&#34;&gt;
-  &lt;div class=&#34;game-score-title&#34;&gt;🏆 个人向评分卡&lt;/div&gt;
-
-  &lt;div class=&#34;game-score-total&#34;&gt;
-    &lt;div class=&#34;game-score-total-label&#34;&gt;总分&lt;/div&gt;
-    &lt;div class=&#34;game-score-total-value&#34;&gt;27 / 35&lt;/div&gt;
-    &lt;div class=&#34;game-score-total-stars&#34;&gt; ⭐⭐⭐⭐☆&lt;/div&gt;
-    &lt;div class=&#34;game-score-total-comment&#34;&gt; 🌟 优秀，值得体验&lt;/div&gt;
-  &lt;/div&gt;
-
-  &lt;div class=&#34;game-score-radar&#34;&gt;
-    &lt;svg viewBox=&#34;0 0 400 330&#34; role=&#34;img&#34; aria-label=&#34;游戏七项评分雷达图&#34;&gt;
-      &lt;g class=&#34;game-score-radar-grid&#34;&gt;
-        &lt;polygon points=&#34;200,137 217.98,145.66 222.42,165.12 209.98,180.72 190.02,180.72 177.58,165.12 182.02,145.66&#34; /&gt;
-        &lt;polygon points=&#34;200,114 235.96,131.32 244.84,170.23 219.96,201.44 180.04,201.44 155.16,170.23 164.04,131.32&#34; /&gt;
-        &lt;polygon points=&#34;200,91 253.95,116.98 267.27,175.35 229.94,222.16 170.06,222.16 132.73,175.35 146.05,116.98&#34; /&gt;
-        &lt;polygon points=&#34;200,68 271.93,102.64 289.69,180.46 239.92,242.88 160.08,242.88 110.31,180.46 128.07,102.64&#34; /&gt;
-        &lt;polygon class=&#34;game-score-radar-edge&#34; points=&#34;200,45 289.91,88.30 312.11,185.58 249.90,263.60 150.10,263.60 87.89,185.58 110.09,88.30&#34; /&gt;
-        &lt;path d=&#34;M200 160V45 M200 160L289.91 88.30 M200 160L312.11 185.58 M200 160L249.90 263.60 M200 160L150.10 263.60 M200 160L87.89 185.58 M200 160L110.09 88.30&#34; /&gt;
-      &lt;/g&gt;
-
-      &lt;polygon class=&#34;game-score-radar-data&#34; points=&#34;200,56.5 262.937,109.81 278.477,177.906 239.92000000000002,242.88 160.07999999999998,242.88 121.52300000000001,177.906 128.072,102.63999999999999&#34; /&gt;
-
-      &lt;g class=&#34;game-score-radar-points&#34;&gt;
-        &lt;circle cx=&#34;200&#34; cy=&#34;56.5&#34; r=&#34;4&#34; /&gt;&lt;circle cx=&#34;262.937&#34; cy=&#34;109.81&#34; r=&#34;4&#34; /&gt;
-        &lt;circle cx=&#34;278.477&#34; cy=&#34;177.906&#34; r=&#34;4&#34; /&gt;&lt;circle cx=&#34;239.92000000000002&#34; cy=&#34;242.88&#34; r=&#34;4&#34; /&gt;
-        &lt;circle cx=&#34;160.07999999999998&#34; cy=&#34;242.88&#34; r=&#34;4&#34; /&gt;&lt;circle cx=&#34;121.52300000000001&#34; cy=&#34;177.906&#34; r=&#34;4&#34; /&gt;
-        &lt;circle cx=&#34;128.072&#34; cy=&#34;102.63999999999999&#34; r=&#34;4&#34; /&gt;
-      &lt;/g&gt;
-
-      &lt;g class=&#34;game-score-radar-labels&#34;&gt;
-        &lt;text x=&#34;200&#34; y=&#34;19&#34; text-anchor=&#34;middle&#34;&gt;剧情 &lt;tspan&gt;4.5&lt;/tspan&gt;&lt;/text&gt;
-        &lt;text x=&#34;303&#34; y=&#34;72&#34; text-anchor=&#34;start&#34;&gt;动作 &lt;tspan&gt;3.5&lt;/tspan&gt;&lt;/text&gt;
-        &lt;text x=&#34;326&#34; y=&#34;194&#34; text-anchor=&#34;start&#34;&gt;音乐 &lt;tspan&gt;3.5&lt;/tspan&gt;&lt;/text&gt;
-        &lt;text x=&#34;260&#34; y=&#34;288&#34; text-anchor=&#34;start&#34;&gt;美术 &lt;tspan&gt;4&lt;/tspan&gt;&lt;/text&gt;
-        &lt;text x=&#34;140&#34; y=&#34;288&#34; text-anchor=&#34;end&#34;&gt;优化 &lt;tspan&gt;4&lt;/tspan&gt;&lt;/text&gt;
-        &lt;text x=&#34;74&#34; y=&#34;194&#34; text-anchor=&#34;end&#34;&gt;游戏性 &lt;tspan&gt;3.5&lt;/tspan&gt;&lt;/text&gt;
-        &lt;text x=&#34;97&#34; y=&#34;72&#34; text-anchor=&#34;end&#34;&gt;沉浸感 &lt;tspan&gt;4&lt;/tspan&gt;&lt;/text&gt;
-      &lt;/g&gt;
-      &lt;g class=&#34;game-score-radar-scale&#34;&gt;
-        &lt;text x=&#34;205&#34; y=&#34;140&#34;&gt;1&lt;/text&gt;&lt;text x=&#34;205&#34; y=&#34;117&#34;&gt;2&lt;/text&gt;&lt;text x=&#34;205&#34; y=&#34;94&#34;&gt;3&lt;/text&gt;&lt;text x=&#34;205&#34; y=&#34;71&#34;&gt;4&lt;/text&gt;&lt;text x=&#34;205&#34; y=&#34;48&#34;&gt;5&lt;/text&gt;
-      &lt;/g&gt;
-    &lt;/svg&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;style&gt;
-.game-score-card {
-  margin: 1.5rem 0;
-  padding: 1.3rem;
-  border-radius: 20px;
-  background: #d8f3f8;
-  border: 2px solid #0c1642;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
-  color:#222;
-}
-
-.game-score-title {
-  font-size: 1.2rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-}
-
-.game-score-total {
-  text-align: center;
-  margin-bottom: 1.2rem;
-  padding: 1rem;
-  border-radius: 16px;
-  background: #f9fff1;
-  border: 1px solid #175315;
-}
-
-.game-score-total-label {
-  font-size: 1.25rem;
-  opacity: .75;
-}
-
-.game-score-total-value {
-  font-size: 2rem;
-  font-weight: 900;
-  line-height: 1.3;
-}
-
-.game-score-radar {
-  max-width: 620px;
-  margin: 0 auto;
-  padding: .5rem;
-  border-radius: 16px;
-  background: #f9fff1;
-  border: 1px solid #175315;
-}
-
-.game-score-radar svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  overflow: visible;
-}
-
-.game-score-radar-grid polygon,
-.game-score-radar-grid path {
-  fill: none;
-  stroke: #a9bf89;
-  stroke-width: 1;
-  vector-effect: non-scaling-stroke;
-}
-
-.game-score-radar-grid .game-score-radar-edge {
-  stroke: #6f8e4e;
-  stroke-width: 1.5;
-}
-
-.game-score-radar-data {
-  fill: rgba(85, 153, 64, .34);
-  stroke: #397b35;
-  stroke-width: 2.5;
-  stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
-}
-
-.game-score-radar-points circle {
-  fill: #397b35;
-  stroke: #f9fff1;
-  stroke-width: 1.5;
-  vector-effect: non-scaling-stroke;
-}
-
-.game-score-radar-labels {
-  fill: #24351d;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.game-score-radar-labels tspan {
-  fill: #397b35;
-  font-weight: 900;
-}
-
-.game-score-radar-scale {
-  fill: #6f7f62;
-  font-size: 8px;
-}
-
-.game-score-total-comment{
-    margin-top:8px;
-    font-size:1.5rem;
-     
-     
-}
-
-.game-score-total-stars {
-  font-size: 1.25rem;
-  margin-top: .25rem;
-     
-}
-
-@media (max-width: 600px) {
-  .game-score-total-value {
-    font-size: 1.7rem;
-  }
-
-  .game-score-radar {
-    padding: .25rem;
-  }
-}
-&lt;/style&gt;
-
-&lt;p&gt;👍 &lt;strong&gt;优点&lt;/strong&gt;：战斗很帅，大场面好看；剧情结合小说很棒&lt;br&gt;
-👎 &lt;strong&gt;缺点&lt;/strong&gt;：最终幻想一贯的除了战斗，动作都很别扭；可惜是半成品，真结局活在小说里&lt;br&gt;
-💕 &lt;strong&gt;我推&lt;/strong&gt;：露娜弗蕾亚❤️&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;八方旅人2&#34;&gt;八方旅人2&lt;/h3&gt;
 
