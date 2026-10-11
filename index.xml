@@ -7,6 +7,220 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>怠惰的天秤-sloth</copyright><atom:link href="https://sloth-cyx.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【咨讯】PotPlayer 设置要点与使用说明</title>
+        <link>https://sloth-cyx.github.io/p/%E5%92%A8%E8%AE%AFpotplayer-%E8%AE%BE%E7%BD%AE%E8%A6%81%E7%82%B9%E4%B8%8E%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</link>
+        <pubDate>Sun, 11 Oct 2026 00:00:00 +0000</pubDate>
+        
+        <guid>https://sloth-cyx.github.io/p/%E5%92%A8%E8%AE%AFpotplayer-%E8%AE%BE%E7%BD%AE%E8%A6%81%E7%82%B9%E4%B8%8E%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</guid>
+        <description>&lt;img src="https://sloth-cyx.github.io/images/potplayerSettings/potplayerSettings_bg.png" alt="Featured image of post 【咨讯】PotPlayer 设置要点与使用说明" /&gt;&lt;p&gt;本文使用AI根据 &lt;strong&gt;potplayer settings.txt&lt;/strong&gt; 整理并说明，由原作者调整文章结构和修改内容。&lt;/p&gt;
+&lt;h2 id=&#34;一原始笔记的设置清单&#34;&gt;一、原始笔记的设置清单
+&lt;/h2&gt;&lt;h3 id=&#34;video&#34;&gt;Video
+&lt;/h3&gt;&lt;h4 id=&#34;a-video&#34;&gt;A. Video
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;Video Renderer：&lt;code&gt;EVR Custom Preset&lt;/code&gt; 或 &lt;code&gt;Direct3D 11&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;Resizer：&lt;code&gt;Shader (2-Pass) Lanczos3&lt;/code&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;b-colourspace&#34;&gt;B. Colourspace
+&lt;/h4&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;勾选 &lt;code&gt;Multi-threaded conversion&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;勾选 &lt;code&gt;High quality YUY2/RGB24/32 conversion&lt;/code&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;c-effect暂不需要开启可能造成-4k-视频卡顿&#34;&gt;C. Effect（暂不需要开启，可能造成 4K 视频卡顿）
+&lt;/h4&gt;&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;勾选 &lt;code&gt;Deblock&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;勾选 &lt;code&gt;Deband&lt;/code&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;d-deinterlacing暂不需要开启&#34;&gt;D. Deinterlacing（暂不需要开启）
+&lt;/h4&gt;&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;Hardware Deinterlacing：&lt;code&gt;Force Bob&lt;/code&gt;（优化帧数从24-&amp;gt;48）。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;genaral&#34;&gt;Genaral
+&lt;/h3&gt;&lt;h4 id=&#34;a-skin-advanced&#34;&gt;A. Skin Advanced
+&lt;/h4&gt;&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;Method → &lt;code&gt;Enable Direct3D9 Mode&lt;/code&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;b-playback&#34;&gt;B. Playback
+&lt;/h4&gt;&lt;ol start=&#34;9&#34;&gt;
+&lt;li&gt;Time Jump 设为 &lt;code&gt;3 sec&lt;/code&gt;，取消 &lt;code&gt;Jump to keyframe&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;Default Windows Size：&lt;code&gt;960 × 520&lt;/code&gt; 或 &lt;code&gt;1280 × 700&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;开启 &lt;code&gt;Show thumbnail previews on nav bar&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;开启 &lt;code&gt;Auto load external audio&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;开启 &lt;code&gt;Remember Play Position&lt;/code&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;filter-control&#34;&gt;Filter Control
+&lt;/h3&gt;&lt;h4 id=&#34;a-video-decoder&#34;&gt;A. Video Decoder
+&lt;/h4&gt;&lt;ol start=&#34;14&#34;&gt;
+&lt;li&gt;Built-in Video Codec/DXVA Settings → 勾选 &lt;code&gt;Use DXVA&lt;/code&gt;；在 &lt;code&gt;DXVA2 copy-back settings&lt;/code&gt; 中选择独立显卡。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;audio&#34;&gt;Audio
+&lt;/h3&gt;&lt;h4 id=&#34;a-audio&#34;&gt;A. Audio
+&lt;/h4&gt;&lt;ol start=&#34;15&#34;&gt;
+&lt;li&gt;Audio Renderer：&lt;code&gt;Built-in WASAPI Audio Renderer&lt;/code&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;b-volume-control&#34;&gt;B. Volume Control
+&lt;/h4&gt;&lt;ol start=&#34;16&#34;&gt;
+&lt;li&gt;Startup volume 设为 &lt;code&gt;75&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;Max amplification 设为 &lt;code&gt;150&lt;/code&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;c-normalizer--freeverb&#34;&gt;C. Normalizer / Freeverb
+&lt;/h4&gt;&lt;ol start=&#34;18&#34;&gt;
+&lt;li&gt;禁用 &lt;code&gt;Normalizer（Auto Volume Control）&lt;/code&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;subtitles&#34;&gt;Subtitles
+&lt;/h3&gt;&lt;h4 id=&#34;a-font-style&#34;&gt;A. Font Style
+&lt;/h4&gt;&lt;ol start=&#34;19&#34;&gt;
+&lt;li&gt;默认字体 &lt;code&gt;KaiTi&lt;/code&gt;（楷体），字号 &lt;code&gt;14&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;Outline&lt;code&gt;设为&lt;/code&gt;3`。&lt;/li&gt;
+&lt;li&gt;Shadow的&lt;code&gt;透明度&lt;/code&gt;调到最大。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;b-languagessyncother&#34;&gt;B. Languages/Sync/Other
+&lt;/h4&gt;&lt;ol start=&#34;22&#34;&gt;
+&lt;li&gt;Preferred Languages 中填写&lt;code&gt;forced&amp;amp;chinese default&amp;amp;chinese chcc chi chs ch chinese&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;勾选 &lt;code&gt;Don&#39;t auto select non preferred subtitle languages&lt;/code&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;others&#34;&gt;Others
+&lt;/h3&gt;&lt;ol start=&#34;24&#34;&gt;
+&lt;li&gt;右键 → &lt;code&gt;Video&lt;/code&gt; → &lt;code&gt;Pixel Shader&lt;/code&gt; → &lt;code&gt;Pre-Resize Pixel Shaders&lt;/code&gt; → &lt;code&gt;SharpenComplex2&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;饱和度（Saturation） &lt;code&gt;48.3%&lt;/code&gt;，亮度（Brightness） &lt;code&gt;48%&lt;/code&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;hotkeys&#34;&gt;Hotkeys
+&lt;/h3&gt;&lt;ol start=&#34;26&#34;&gt;
+&lt;li&gt;系统音量快捷键：Ctrl + Shift + Alt + ↑ / ↓ 增减音量。&lt;/li&gt;
+&lt;li&gt;字幕位置快捷键：Alt + ↑ / ↓ 上下移动字幕。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;二原始要点逐项说明&#34;&gt;二、原始要点逐项说明
+&lt;/h2&gt;&lt;h3 id=&#34;12视频渲染器与-lanczos3-缩放&#34;&gt;1–2．视频渲染器与 Lanczos3 缩放
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;视频渲染器 Video Renderer&lt;/strong&gt;负责把解码后的画面送到屏幕，&lt;strong&gt;缩放算法 Resizer&lt;/strong&gt;负责在视频尺寸与播放区域不一致时重新采样。它们解决的是不同问题，选择 Direct3D 11 并不等于开启了硬件解码。&lt;/p&gt;
+&lt;p&gt;在可用的缩放选项中选择 &lt;strong&gt;Shader (2-Pass) Lanczos3&lt;/strong&gt;。Lanczos3 可以保留较鲜明的边缘，但高对比边缘也可能出现轻微光晕。它不会凭空恢复源文件没有的细节，低清片源放大后仍受原始质量限制。若对应渲染器不提供该算法，以当前可选项目为准。&lt;/p&gt;
+&lt;h3 id=&#34;34色彩空间转换&#34;&gt;3–4．色彩空间转换
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Multi-threaded conversion&lt;/strong&gt;：允许相关转换任务使用多线程。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;High quality YUY2/RGB24/32 conversion&lt;/strong&gt;：启用该转换路径提供的高质量处理。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这些选项针对相应的像素格式转换过程，不表示所有影片都会经过这条路径。硬件解码、解码器输出格式及渲染器会影响它们是否实际生效；开启后也不代表画面会明显更鲜艳。若画面正常，保持即可；若出现兼容问题，可分别取消勾选进行对比。&lt;/p&gt;
+&lt;h3 id=&#34;5-6deblock-与-deband需要时才开&#34;&gt;5-6．Deblock 与 Deband：需要时才开
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;默认关闭、必要时开启。&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Deblock（去块效应）&lt;/strong&gt;：尝试减轻压缩造成的方块边界，较适合块状失真明显的低码率片源。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Deband（去色带）&lt;/strong&gt;：尝试减轻天空、阴影等渐变区域的分层色带。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;它们不是越多越好的画质开关。过强的处理可能抹掉纹理或颗粒，也会增加处理负担。&lt;/p&gt;
+&lt;h3 id=&#34;7force-bob-与24--48-fps的区别&#34;&gt;7．Force Bob 与「24 → 48 fps」的区别
+&lt;/h3&gt;&lt;p&gt;这里必须区分&lt;strong&gt;反交错&lt;/strong&gt;和&lt;strong&gt;运动补帧&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;交错视频把画面分成场。Bob 属于反交错方法，用场信息重建逐行画面；微软的 DXVA 文档也将 Bob 归在反交错处理之下。&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/en-us/windows/win32/medfound/dxva-video-processing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;来源：Microsoft DXVA Video Processing&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;按场输出的反交错处理可以提高输出帧数，例如每秒 25 个交错帧包含 50 场时，可输出每秒 50 张逐行画面。具体是否倍帧取决于算法和输出模式；「每帧输出」与「每场输出」本身就是不同选择。&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://www.ffmpeg.org/doxygen/4.2/yadif_8h.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;参考：FFmpeg YADIF 模式定义&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;对于原本就是逐行扫描的 24 fps 影片，强制 Bob 不能创造真正的中间运动帧。&lt;/strong&gt; 即使输出统计显示 48 fps，也不等于获得了运动补偿插帧的效果，还可能损失垂直细节或引入闪烁。因此不把 Force Bob 推荐为普通电影的通用设置；应在确有交错内容、需要处理梳齿边缘时再考虑。&lt;/p&gt;
+&lt;h3 id=&#34;8skin的-direct3d9-模式&#34;&gt;8．Skin的 Direct3D9 模式
+&lt;/h3&gt;&lt;p&gt;这一项与第 1 项的视频渲染器不同，因此皮肤使用 Direct3D9、视频使用 Direct3D 11 并不矛盾。是否可选还取决于版本和皮肤；启用后若菜单闪烁、按钮显示异常或窗口操作不稳定，恢复原来的皮肤绘制方式即可。&lt;/p&gt;
+&lt;h3 id=&#34;9跳转-3-秒并取消跳到关键帧&#34;&gt;9．跳转 3 秒，并取消跳到关键帧
+&lt;/h3&gt;&lt;p&gt;在 &lt;code&gt;Playback&lt;/code&gt; → &lt;code&gt;Time Jump&lt;/code&gt; 中，把常用的短距离跳转间隔设为 &lt;strong&gt;3 秒&lt;/strong&gt;；如果界面提供多组跳转间隔，只修改所需的一组。取消勾选 &lt;strong&gt;Jump to keyframe&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;关键帧是解码时的重要定位点。启用关键帧跳转通常响应较快，但落点可能偏离想要的位置；取消后，播放器可能需要从前面的关键帧继续解码，才能到达更接近目标的时间。&lt;/p&gt;
+&lt;p&gt;这组设置适合反复听对白或看短片段。高码率、长关键帧间隔的视频可能因此跳转稍慢，不能把「3 秒」理解成任何格式下都精确到同一帧。&lt;/p&gt;
+&lt;h3 id=&#34;1013窗口大小预览外部音轨与续播&#34;&gt;10–13．窗口大小、预览、外部音轨与续播
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;第 10 项：默认窗口大小。&lt;/strong&gt; 在播放或窗口尺寸相关设置中选择自定义大小，填入 &lt;code&gt;960 × 520&lt;/code&gt; 或 &lt;code&gt;1280 × 700&lt;/code&gt;，两组数值是备选方案。前者占用桌面较少，后者便于观看。窗口包含皮肤与控制栏，不等于视频区域的精确尺寸，也不要求强行把影片拉伸成这个比例。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第 11 项：进度条缩略图。&lt;/strong&gt; 开启 &lt;code&gt;Show thumbnail previews on nav bar&lt;/code&gt; 后，可用鼠标悬停预览位置，寻找场景更方便。生成缩略图需要读取和处理画面，大文件或读取较慢的来源可能响应迟缓；关闭预览不会影响正常播放。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第 12 项：自动加载外部音轨。&lt;/strong&gt; 开启 &lt;code&gt;Auto load external audio&lt;/code&gt;，便于播放视频旁边的独立配音文件。识别结果受文件名、目录与自动加载规则影响；把相关文件放在一起并使用对应名称，有助于管理，但不能保证所有命名方式都会自动匹配。播放后仍应检查选中的音轨及同步情况。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第 13 项：记住播放位置。&lt;/strong&gt; 开启 &lt;code&gt;Remember Play Position&lt;/code&gt;，用于下次打开时继续观看。移动或重命名文件、清理播放记录，都可能影响续播；想重看时也要留意是否自动跳到了上次的位置。&lt;/p&gt;
+&lt;h3 id=&#34;14dxva-硬件解码与独立显卡&#34;&gt;14．DXVA 硬件解码与独立显卡
+&lt;/h3&gt;&lt;p&gt;DXVA 让支持的解码工作交给 GPU。PotPlayer 官方介绍也列出了 DXVA 等硬件加速支持，但能否用于某个文件仍受显卡、驱动、编码格式及位深等条件限制。&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://potplayer.tv/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;来源：PotPlayer 官方网站&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;copy-back&lt;/code&gt; 指硬件解码后的画面需要回传到系统内存；这与始终让画面留在 GPU 一侧的路径不同，可能增加数据传输开销。选择独显不保证一定比核显快，双显卡笔记本还要考虑功耗以及显示器连接在哪张显卡上。&lt;/p&gt;
+&lt;h3 id=&#34;1518wasapi音量与音效&#34;&gt;15–18．WASAPI、音量与音效
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;第 15 项：音频渲染器。&lt;/strong&gt; 在 &lt;code&gt;Audio&lt;/code&gt; 中选择 &lt;code&gt;Built-in WASAPI Audio Renderer&lt;/code&gt;。WASAPI 是 Windows 的音频接口；选择这个渲染器并不自动等于启用独占输出，也不自动保证音频未经处理。&lt;/p&gt;
+&lt;p&gt;如果进一步使用独占模式，播放器可能独占音频设备，使其他应用无法同时发声；共享模式则便于多个应用同时播放。需要听系统通知或边看视频边通话时，要留意这一差别。&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/en-us/windows/win32/coreaudio/exclusive-mode-streams&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;来源：Microsoft WASAPI 独占模式说明&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第 16 项：启动音量 75。&lt;/strong&gt; 在 &lt;code&gt;Volume Control&lt;/code&gt; 设置 &lt;code&gt;Startup volume: 75&lt;/code&gt;。这是播放器内的启动值，实际响度还受系统音量、声卡、耳机及片源影响，不能直接等同于固定声压或固定听感。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第 17 项：最大放大 150。&lt;/strong&gt; 设置 &lt;code&gt;Max amplification: 150&lt;/code&gt;，按当前界面单位理解其放大上限；它与启动音量是不同控制项。额外增益可用于声音偏小的片源，但可能造成削波、破音或噪声变明显。若听到失真，先降低放大和音量，不要继续叠加增益。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第 18 项：禁用 Normalizer（Auto Volume Control）。&lt;/strong&gt; 关闭自动音量调节，保留原版视频的声音强弱（如原片中对白、音乐、爆炸声的强弱差异会保留下来）。&lt;/p&gt;
+&lt;h3 id=&#34;1921字幕字体描边与阴影&#34;&gt;19–21．字幕字体、描边与阴影
+&lt;/h3&gt;&lt;p&gt;在 &lt;code&gt;Subtitles&lt;/code&gt; → &lt;code&gt;Font Style&lt;/code&gt; 中设置：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;默认字体 KaiTi（楷体），字号 14&lt;/strong&gt;：需确保系统已安装对应字体；相同字号在不同屏幕缩放、字幕渲染方式下可能看起来不同。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Outline 3&lt;/strong&gt;：给文字增加描边，以便在亮背景中辨认；若细笔画被吞掉，应减小描边。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Shadow 透明度最大&lt;/strong&gt;：按「透明度」的通常含义，即让阴影接近不可见。若界面显示的是「不透明度」，方向相反，应以预览确认。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这些设置主要影响播放器绘制的文字字幕。ASS/SSA 字幕可能自带字体、位置与特效，是否覆盖取决于字幕样式相关选项；PGS、VobSub 等图形字幕也不会因为更改默认字体就变成楷体。PotPlayer 官方列有多种文字和图形字幕支持。&lt;br&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://potplayer.tv/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;来源：PotPlayer 字幕格式介绍&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2223字幕语言优先级&#34;&gt;22–23．字幕语言优先级
+&lt;/h3&gt;&lt;p&gt;进入 &lt;code&gt;Subtitles&lt;/code&gt; → &lt;code&gt;Languages/Sync/Other&lt;/code&gt; → &lt;code&gt;Preferred Languages&lt;/code&gt;。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;forced&amp;amp;chinese default&amp;amp;chinese chcc chi chs ch chinese
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;原来的英文优先字符串为：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;forced&amp;amp;english default&amp;amp;english encc eng en english
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;这些内容体现了笔记希望优先匹配某种语言、并考虑 &lt;code&gt;forced&lt;/code&gt; 与 &lt;code&gt;default&lt;/code&gt; 标记的意图。&lt;code&gt;forced&lt;/code&gt; 通常指强制显示用途的字幕，例如外语对白或画面文字翻译；它未必包含完整对白。&lt;code&gt;default&lt;/code&gt; 则是轨道的默认标记，两者都不等于「最完整的字幕」。&lt;/p&gt;
+&lt;p&gt;设置后，用一个已知含中英文字幕的文件重新打开测试，检查实际自动选中的轨道。若第一项不匹配，可对照当前版本的字段提示检查 &lt;code&gt;chinese&lt;/code&gt; 是否应改为 &lt;code&gt;chines&lt;/code&gt;，一次只改一个条件，避免无法判断是哪里起作用。&lt;/p&gt;
+&lt;p&gt;勾选 &lt;strong&gt;Don&amp;rsquo;t auto select non preferred subtitle languages&lt;/strong&gt;，表示不希望自动选择不符合偏好的字幕。这也意味着：当文件里的中文轨道缺少正确语言信息时，可能没有字幕自动出现。遇到这种情况应先手动选择字幕轨道，再调整规则；不要误以为文件没有字幕。&lt;/p&gt;
+&lt;h3 id=&#34;24sharpencomplex2缩放前锐化&#34;&gt;24．SharpenComplex2：缩放前锐化
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;Pre-Resize&lt;/code&gt; 表示锐化发生在缩放之前。锐化会增强边缘反差，让画面看起来更利落，但也可能把压缩噪点、字幕边缘或轮廓光晕放大。与 Lanczos3 叠加后尤其要留意边缘是否过硬。&lt;/p&gt;
+&lt;p&gt;建议暂停在人物轮廓、头发或建筑边缘，切换着色器比较。出现明显白边、噪点增加或掉帧时，可关闭它；高质量片源不一定需要额外锐化。&lt;/p&gt;
+&lt;h3 id=&#34;25饱和度-483亮度-48&#34;&gt;25．饱和度 48.3%、亮度 48%
+&lt;/h3&gt;&lt;p&gt;不同显示器、片源、输出范围及 HDR 状态会改变观感，不能把这两个数字视作校准标准。可在画面色彩控制中尝试，但应先记下原值，并对比肤色、暗部层次以及白色区域；不合适就恢复。不同界面的数值刻度也可能不同，尤其不要把这里的百分比直接填进采用另一套刻度的控制项。&lt;/p&gt;
+&lt;h3 id=&#34;2627音量与字幕位置快捷键&#34;&gt;26–27．音量与字幕位置快捷键
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;操作&lt;/th&gt;
+&lt;th&gt;笔记中的快捷键&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;增加 / 减少系统音量&lt;/td&gt;
+&lt;td&gt;Ctrl + Shift + Alt + ↑ / ↓&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;字幕上移 / 下移&lt;/td&gt;
+&lt;td&gt;Alt + ↑ / ↓&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;这两组是&lt;strong&gt;原笔记记录的键位&lt;/strong&gt;，不保证属于所有版本的默认映射。可在选项里的快捷键设置或相应右键菜单中核对当前动作；如果实际对应系统音量放大、字幕字号或其他命令，应以当前映射为准，必要时自行绑定。&lt;/p&gt;
+&lt;p&gt;调整字幕位置后，检查窗口和全屏下是否都在可视范围内。带固定定位的 ASS 字幕以及图形字幕，可能不会完全遵循普通文字字幕的位置调整方式。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;三额外补充设置&#34;&gt;三、额外补充设置
+&lt;/h2&gt;&lt;h3 id=&#34;保存配置便于恢复&#34;&gt;保存配置，便于恢复
+&lt;/h3&gt;&lt;p&gt;批量调整前，先使用当前版本提供的设置导出或备份功能，保留一份可恢复的配置。若使用 INI 保存方式，应确认当前版本实际使用的文件位置再备份，不要只凭安装目录猜测。调整较多时记录改动项目，尤其是解码器、滤镜、渲染器和快捷键。&lt;/p&gt;
+&lt;h3 id=&#34;外挂字幕乱码与同步&#34;&gt;外挂字幕乱码与同步
+&lt;/h3&gt;&lt;p&gt;文字字幕乱码时，先检查字幕文件的编码和播放器的字符集解释；保存为 UTF-8 往往更便于跨设备使用，但转换前要正确识别原始编码。&lt;/p&gt;
+&lt;p&gt;如果字幕从头到尾都固定提前或落后，可调整字幕延迟；若偏差随播放时间增长，或只在某段突然变化，更可能是字幕对应的片源版本、帧率或剪辑不同，单一延迟值无法彻底解决。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;参考资料与核实范围&#34;&gt;参考资料与核实范围
+&lt;/h2&gt;&lt;p&gt;原始设置及个人数值来自 &lt;code&gt;potplayer settings.txt&lt;/code&gt;；链接用于说明技术机制，不表示来源逐项推荐了本文的全部设置。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://potplayer.tv/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;PotPlayer 官方网站：硬件加速与字幕支持&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/en-us/windows/win32/medfound/dxva-video-processing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Microsoft：DXVA 视频处理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://learn.microsoft.com/en-us/windows/win32/coreaudio/exclusive-mode-streams&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Microsoft：WASAPI 独占模式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://support.microsoft.com/en-us/windows/hardware/display-graphics/hdr-settings-in-windows&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Microsoft：Windows HDR 设置&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.ffmpeg.org/doxygen/4.2/yadif_8h.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;FFmpeg：YADIF 反交错的逐帧与逐场输出定义&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>【个人】实用小工具合集</title>
         <link>https://sloth-cyx.github.io/p/%E4%B8%AA%E4%BA%BA%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7%E5%90%88%E9%9B%86/</link>
         <pubDate>Wed, 12 Aug 2026 00:00:00 +0000</pubDate>
