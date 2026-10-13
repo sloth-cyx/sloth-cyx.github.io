@@ -7,6 +7,163 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>怠惰的天秤-sloth</copyright><atom:link href="https://sloth-cyx.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【咨讯】Windows 实用应用推荐</title>
+        <link>https://sloth-cyx.github.io/p/%E5%92%A8%E8%AE%AFwindows-%E5%AE%9E%E7%94%A8%E5%BA%94%E7%94%A8%E6%8E%A8%E8%8D%90/</link>
+        <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
+        
+        <guid>https://sloth-cyx.github.io/p/%E5%92%A8%E8%AE%AFwindows-%E5%AE%9E%E7%94%A8%E5%BA%94%E7%94%A8%E6%8E%A8%E8%8D%90/</guid>
+        <description>&lt;img src="https://sloth-cyx.github.io/images/windowsApps/windowsApps_bg.png" alt="Featured image of post 【咨讯】Windows 实用应用推荐" /&gt;&lt;h2 id=&#34;subtitleedit&#34;&gt;SubtitleEdit
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;用来开MP3+vtt的文件，&lt;del&gt;比如dlsite&lt;/del&gt;，也可以用于调整字幕的应用（毕竟本身是个字母编辑器）。&lt;/li&gt;
+&lt;li&gt;官方网址：&lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.nikse.dk/subtitleedit&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.nikse.dk/subtitleedit&lt;/a&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;选择File → Open → .vtt文件即可，同名mp3会自动加载。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;locale-emulator&#34;&gt;Locale Emulator
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;有些中文exe开启时会呈现乱码，这是很典型的Windows非Unicode程序编码不匹配。&lt;/li&gt;
+&lt;li&gt;有时会看到正常中文+乱码，那部分可能使用Unicode字体/文本组件；标题和按钮却可能是ANSI字符串，所以出现「一部分正常、一部分乱码」。&lt;/li&gt;
+&lt;li&gt;此应用可以让exe以简体中文运行，不影响其他路软件。&lt;/li&gt;
+&lt;li&gt;官方网址：&lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/xupefei/Locale-Emulator&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/xupefei/Locale-Emulator&lt;/a&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;安装后，右键exe → 显示更多选项 → Locale Emulator → Modify Application Profile&lt;br&gt;
+&lt;img src=&#34;https://sloth-cyx.github.io/images/windowsApps/localEmulator.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;LocalEmulator&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;li&gt;然后右键exe → 显示更多选项 → Locale Emulator → Run with Application Profile&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;bililive-go&#34;&gt;bililive-go
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;免费的录屏软件，因为种种限制已经换取付费olivedPro。&lt;/li&gt;
+&lt;li&gt;官方网址：&lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/hr3lxphr6j/bililive-go/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/hr3lxphr6j/bililive-go/releases&lt;/a&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;一些教程：&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1Na25Y3EHe&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;【bililive-go2】全网直播！任意录制？！{如何录制抖音直播间？}{如何录制虎牙直播间？}{如何录制斗鱼直播间？}{如何录制CC直播间？}&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1GSzJYUEcS&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Bililive-go画质低解决方案&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;bulk-rename-utility&#34;&gt;Bulk Rename Utility
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;解决文件批量命名的难题，例如统一已下载番剧的名字。&lt;/li&gt;
+&lt;li&gt;官方网址：&lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bulkrenameutility.co.uk/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.bulkrenameutility.co.uk/&lt;/a&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;示例图：&lt;br&gt;
+&lt;img src=&#34;https://sloth-cyx.github.io/images/windowsApps/bulkRenameUtility.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;BulkRenameUtility&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;baregrep&#34;&gt;Baregrep
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;文件内容搜索工具，可以快速搜索多个文件中的指定文字或关键词，不过无法搜索中文。&lt;/li&gt;
+&lt;li&gt;官方网址：&lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.baremetalsoft.com/baregrep/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.baremetalsoft.com/baregrep/&lt;/a&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;示例图：&lt;br&gt;
+&lt;img src=&#34;https://sloth-cyx.github.io/images/windowsApps/bareGrep.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;BareGrep&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;everything&#34;&gt;Everything
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Windows 文件搜索工具，通过文件名快速定位电脑中的文件和文件夹，搜索速度极快。&lt;/li&gt;
+&lt;li&gt;右键搜索到的文件 → Open Path → 快速打开文件所在文件夹&lt;/li&gt;
+&lt;li&gt;官方网址：&lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.voidtools.com/support/everything/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.voidtools.com/support/everything/&lt;/a&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;示例图：&lt;br&gt;
+&lt;img src=&#34;https://sloth-cyx.github.io/images/windowsApps/everything.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Everthing&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;winmerge&#34;&gt;WinMerge
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;文件与文件夹比较工具，可以找出两个文件或文件夹之间的差异，并支持合并修改。&lt;/li&gt;
+&lt;li&gt;Ctrl+N 快速打开新的对比板块，可以拖拽文件至左右对比。&lt;/li&gt;
+&lt;li&gt;官方网址：&lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://winmerge.org/?lang=en&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://winmerge.org/?lang=en&lt;/a&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;示例图：&lt;br&gt;
+&lt;img src=&#34;https://sloth-cyx.github.io/images/windowsApps/winMerge.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;WinMerge&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;spacesniffer&#34;&gt;SpaceSniffer
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;硬盘空间分析工具，以可视化方块图展示文件和文件夹的占用空间，方便找出占空间的大文件。&lt;/li&gt;
+&lt;li&gt;官方网址：&lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://space-sniffer.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://space-sniffer.com/&lt;/a&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;示例图：&lt;br&gt;
+&lt;img src=&#34;https://sloth-cyx.github.io/images/windowsApps/spaceSniffer.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;SpaceSniffer&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;geek-uninstaller&#34;&gt;Geek Uninstaller
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;软件卸载工具，可以卸载程序并扫描清理残留文件、文件夹和注册表项目（registry）。&lt;/li&gt;
+&lt;li&gt;官方网址：&lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://geekuninstaller.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://geekuninstaller.com/&lt;/a&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;示例图：&lt;br&gt;
+&lt;img src=&#34;https://sloth-cyx.github.io/images/windowsApps/geekUninstaller.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Geek Uninstaller&#34;
+	
+	
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;anydesk&#34;&gt;AnyDesk
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;远程桌面控制工具，可以通过网络连接并操作其他电脑，适合远程协助、技术支持及文件传输。&lt;/li&gt;
+&lt;li&gt;TeamViewer的替代品，稳定性和速度与其媲美。&lt;/li&gt;
+&lt;li&gt;官方网址：&lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://anydesk.com/en&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://anydesk.com/en&lt;/a&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>【咨讯】PotPlayer 设置要点与使用说明</title>
         <link>https://sloth-cyx.github.io/p/%E5%92%A8%E8%AE%AFpotplayer-%E8%AE%BE%E7%BD%AE%E8%A6%81%E7%82%B9%E4%B8%8E%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</link>
         <pubDate>Sun, 11 Oct 2026 00:00:00 +0000</pubDate>
