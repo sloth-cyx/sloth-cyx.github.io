@@ -68,7 +68,7 @@
 	
 &gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;baregrep&#34;&gt;Baregrep
+&lt;h2 id=&#34;baregrep替代dngrep&#34;&gt;Baregrep（替代：dnGrep）
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;文件内容搜索工具，可以快速搜索多个文件中的指定文字或关键词，不过无法搜索中文。&lt;/li&gt;
 &lt;li&gt;官方网址：&lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.baremetalsoft.com/baregrep/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
