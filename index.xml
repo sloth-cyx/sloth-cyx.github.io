@@ -67,7 +67,7 @@
 	
 &gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;baregrep替代dngrep&#34;&gt;Baregrep（替代：dnGrep）
+&lt;h2 id=&#34;baregrep-alt-dngrep&#34;&gt;Baregrep (Alt: dnGrep)
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;文件内容搜索工具，可以快速搜索多个文件中的指定文字或关键词，不过无法搜索中文。&lt;/li&gt;
 &lt;li&gt;官方网址：&lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.baremetalsoft.com/baregrep/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -168,6 +168,19 @@
 &lt;li&gt;故缺点为不能指定想要的国家节点。&lt;/li&gt;
 &lt;li&gt;官方网址：&lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://protonvpn.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://protonvpn.com/&lt;/a&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;mremoteng&#34;&gt;mRemoteNG
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;多功能远程连接管理工具，支持 RDP、SSH、VNC 等协议，可以集中管理多台电脑和服务器的远程连接。&lt;/li&gt;
+&lt;li&gt;官方网址：&lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://mremoteng.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://mremoteng.org/&lt;/a&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;logexpert&#34;&gt;LogExpert
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;日志（Log）文件查看与分析工具，支持实时监控日志更新、关键词搜索、过滤及高亮显示，适合排查软件和系统问题。&lt;/li&gt;
+&lt;li&gt;Baretail Pro的替代品，免费开源但是相较付费的Baretaik Pro限制也比较多。&lt;/li&gt;
+&lt;li&gt;官方网址：&lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/LogExperts/LogExpert/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/LogExperts/LogExpert/releases&lt;/a&gt;&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>
