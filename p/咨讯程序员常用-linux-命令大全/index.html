@@ -1,0 +1,3450 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="~从文件、日志与 Vim，到系统资源、Java 诊断与内存泄漏排查的命令速查~">
+<title>【咨讯】程序员常用 Linux 命令大全</title>
+
+<link rel='canonical' href='https://sloth-cyx.github.io/p/%E5%92%A8%E8%AE%AF%E7%A8%8B%E5%BA%8F%E5%91%98%E5%B8%B8%E7%94%A8-linux-%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/'>
+
+<link rel="stylesheet" href="/scss/style.min.8d6e7c59f80ad513fa3c42b45c22c43bb0ccb9d4ed4e958da321c5e33249e077.css"><meta property='og:title' content="【咨讯】程序员常用 Linux 命令大全">
+<meta property='og:description' content="~从文件、日志与 Vim，到系统资源、Java 诊断与内存泄漏排查的命令速查~">
+<meta property='og:url' content='https://sloth-cyx.github.io/p/%E5%92%A8%E8%AE%AF%E7%A8%8B%E5%BA%8F%E5%91%98%E5%B8%B8%E7%94%A8-linux-%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/'>
+<meta property='og:site_name' content='怠惰的天秤-sloth'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2026-10-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-10-25T21:25:20&#43;08:00'/><meta property='og:image' content='https://sloth-cyx.github.io/images/linuxCommands/linuxCommands_bg.png' />
+<meta name="twitter:title" content="【咨讯】程序员常用 Linux 命令大全">
+<meta name="twitter:description" content="~从文件、日志与 Vim，到系统资源、Java 诊断与内存泄漏排查的命令速查~"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://sloth-cyx.github.io/images/linuxCommands/linuxCommands_bg.png' />
+    <link rel="shortcut icon" href="/libra.ico" />
+
+  
+
+<div class="loading">
+    
+    <div class="loading-bg"></div>
+
+    <div class="sharingon">
+        <div class="ring">
+            <div class="to"></div>
+            <div class="to"></div>
+            <div class="to"></div>
+            <div class="circle"></div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .loading {
+        position: fixed;
+         
+         
+         
+        display: none;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        zoom: 3.0;
+        overflow: hidden;
+    }
+
+     
+    .loading-bg {
+        position: absolute;
+        inset: 0;
+
+        background: #000;
+
+        z-index: 0;
+    }
+
+     
+    .bgFadeout {
+        animation: bgFadeOut 1.5s forwards;
+    }
+
+    @keyframes bgFadeOut {
+        0% {
+            transform: scale(1);
+            opacity: 0.6;
+        }
+        90% {
+            opacity: 0.6;
+        }
+        100% {
+            transform: scale(1.5);
+            opacity: 0;
+        }
+    }
+    
+     
+    .loader-spin-out {
+         
+        animation: spinAndShrink 1.5s forwards ease-in-out !important;
+    }
+
+    @keyframes spinAndShrink {
+        0% {
+            transform: rotate(0deg) scale(1);
+            opacity: 1;
+        }
+
+        70% {
+             
+            transform: rotate(-1080deg) scale(1);
+            opacity: 1;
+        }
+
+        100% {
+             
+            transform: scale(1.5);
+            opacity: 0;
+        }
+    }
+
+     
+    .sharingon {
+        position: relative;
+        z-index: 1;
+        width: 6em;
+        height: 6em;
+        background-color: red;
+        border: 6px solid rgb(0, 0, 0);
+         
+         
+         
+        box-shadow:
+            0 0 25px rgba(255, 0, 0, 0.4),
+            0 0 60px rgba(255, 0, 0, 0.2);
+        border-radius: 50%;
+        animation: rot 1s linear infinite;  
+    }
+
+    .ring {
+        position: absolute;
+        content: "";
+        left: 50%;
+        top: 50%;
+        width: 3.5em;
+        height: 3.5em;
+        border: 4px solid rgb(110, 13 ,13 ,0.5);
+        transform: translate(-50%,-50%);
+    }
+
+    .sharingon, .ring, .to,.circle {
+        border-radius: 50%;
+    }
+
+    .to,.circle {
+        position: absolute;
+        content: "";
+        width: 0.9em;
+        height: 0.9em;
+        background-color: black;
+    }
+
+    .to:nth-child(1) {
+        top: -0.5em;
+        left: 50%;
+        transform: translate(-40%);
+    }
+
+    .to::before {
+        content: "";
+        position: absolute;
+        top: -0.5em;
+        right: -0.2em;
+        width: 1.1em;
+        height: 0.9em;
+        box-sizing: border-box;
+        border-left: 16px solid black;
+        border-radius: 100% 0 0;
+    }
+
+    .to:nth-child(2) {
+        bottom: 0.5em;
+        left: -0.35em;
+        transform: rotate(-120deg);
+    }
+
+    .to:nth-child(3) {
+        bottom: 0.5em;
+        right: -0.35em;
+        transform: rotate(120deg);
+    }
+
+    .circle {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background: black;
+        box-shadow:
+            0 0 10px rgba(255, 0, 0, 0.7),
+            0 0 20px rgba(255, 0, 0, 0.4);
+        width: 1em;
+        height: 1em;
+    }
+
+    @keyframes rot {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<script>    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    function initLoading() {
+        const isFirstVisit = !sessionStorage.getItem('visited');
+        if (isFirstVisit) {
+            let loading = document.querySelector(".loading");
+            loading.style.display = "flex";
+            document.addEventListener('DOMContentLoaded', function() {
+                
+                loadFinish();
+                
+                setTimeout(() => {
+                    loading.style.display = "none";
+                }, 1500)
+                sessionStorage.setItem('visited', 'true');
+            });
+        }
+    }
+    
+    function loadFinish() {
+        
+        let sharingon = document.querySelector(".sharingon");
+        sharingon.classList.add("loader-spin-out");
+        
+        
+        let loading = document.querySelector(".loading-bg");
+        loading.classList.add("bgFadeout");
+    }
+    
+    initLoading();
+</script>
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky 
+
+post-sidebar">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar2_hu3260391422873070556.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🫰</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">怠惰的天秤-sloth</a></h1>
+            <h2 class="site-description">让你事故死哦~Baby！</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://space.bilibili.com/197975297'
+                        target="_blank"
+                        title="Bilibili"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-bilibili"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 10a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4v-6" /><path d="M8 3l2 3" /><path d="M16 3l-2 3" /><path d="M9 13v-2" /><path d="M15 11v2" /></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/sloth-cyx'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.lofter.com/blog/raymondchua'
+                        target="_blank"
+                        title="Lofter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-letter-l"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M7 4v16h10" /></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#1-每天最常用目录文件与帮助">1. 每天最常用：目录、文件与帮助</a>
+      <ol>
+        <li><a href="#11-查看位置和文件">1.1 查看位置和文件</a></li>
+        <li><a href="#12-创建复制移动与删除">1.2 创建、复制、移动与删除</a></li>
+        <li><a href="#13-查询命令历史与终端快捷键">1.3 查询命令、历史与终端快捷键</a></li>
+      </ol>
+    </li>
+    <li><a href="#2-日志查看grep管道与重定向">2. 日志查看、grep、管道与重定向</a>
+      <ol>
+        <li><a href="#21-catlesstailhead">2.1 cat、less、tail、head</a></li>
+        <li><a href="#22-grep按内容搜索">2.2 grep：按内容搜索</a></li>
+        <li><a href="#23-管道--到底是什么">2.3 管道 | 到底是什么</a></li>
+        <li><a href="#24-21tee">2.4 &gt;、&raquo;、2&gt;&amp;1、tee、&amp;&amp;</a></li>
+      </ol>
+    </li>
+    <li><a href="#3-进程线程与后台任务">3. 进程、线程与后台任务</a>
+      <ol>
+        <li><a href="#31-找-pid-和查看进程">3.1 找 PID 和查看进程</a></li>
+        <li><a href="#32-停止进程与发送信号">3.2 停止进程与发送信号</a></li>
+        <li><a href="#33-后台nohupjobstmux">3.3 后台、nohup、jobs、tmux</a></li>
+      </ol>
+    </li>
+    <li><a href="#4-linux-系统资源磁盘内存cpu-与-io">4. Linux 系统资源：磁盘、内存、CPU 与 I/O</a>
+      <ol>
+        <li><a href="#41-df--h文件系统空间du目录占用">4.1 df -h：文件系统空间，du：目录占用</a></li>
+        <li><a href="#42-free--h系统-ram-与-swap">4.2 free -h：系统 RAM 与 Swap</a></li>
+        <li><a href="#43-查询每个-process-使用多少-memory">4.3 查询每个 process 使用多少 memory</a></li>
+        <li><a href="#44-procpmapsmem进一步拆内存">4.4 /proc、pmap、smem：进一步拆内存</a></li>
+        <li><a href="#45-cpu负载与-io">4.5 CPU、负载与 I/O</a></li>
+        <li><a href="#46-oom内核日志与容器内存">4.6 OOM、内核日志与容器内存</a></li>
+      </ol>
+    </li>
+    <li><a href="#5-java-常用命令与-jvm-诊断">5. Java 常用命令与 JVM 诊断</a>
+      <ol>
+        <li><a href="#51-javajcmdjps版本进程和启动信息">5.1 java、jcmd、jps：版本、进程和启动信息</a></li>
+        <li><a href="#52-查-heap-memoryjcmd-与-jstat">5.2 查 heap memory：jcmd 与 jstat</a></li>
+        <li><a href="#53-查线程jcmd-threadprintjstack">5.3 查线程：jcmd Thread.print、jstack</a></li>
+        <li><a href="#54-java-cpu-很高从线程-id-对到堆栈">5.4 Java CPU 很高：从线程 ID 对到堆栈</a></li>
+        <li><a href="#55-对象直方图和-heap-dump疑似堆泄漏时再用">5.5 对象直方图和 heap dump：疑似堆泄漏时再用</a></li>
+        <li><a href="#56-native-memory堆外线程栈metaspace">5.6 native memory：堆外、线程栈、Metaspace</a></li>
+        <li><a href="#57-jfr需要更完整时间线时">5.7 JFR：需要更完整时间线时</a></li>
+        <li><a href="#58-启动时保留-gc-与-oom-现场">5.8 启动时保留 GC 与 OOM 现场</a></li>
+      </ol>
+    </li>
+    <li><a href="#6-实战分类如何排查-memory-leak">6. 实战分类：如何排查 memory leak</a>
+      <ol>
+        <li><a href="#61-第一步先分清哪一种内存问题">6.1 第一步：先分清“哪一种内存问题”</a></li>
+        <li><a href="#62-第二步连续采样而不是只截一张图">6.2 第二步：连续采样，而不是只截一张图</a></li>
+        <li><a href="#63-第三步按证据深入">6.3 第三步：按证据深入</a></li>
+      </ol>
+    </li>
+    <li><a href="#7-vi--vim-与相关编辑命令">7. vi / Vim 与相关编辑命令</a>
+      <ol>
+        <li><a href="#71-先掌握模式保存与退出">7.1 先掌握模式、保存与退出</a></li>
+        <li><a href="#72-移动搜索与跳转">7.2 移动、搜索与跳转</a></li>
+        <li><a href="#73-删除复制撤销和批量修改">7.3 删除、复制、撤销和批量修改</a></li>
+        <li><a href="#74-多文件分屏比较与宏">7.4 多文件、分屏、比较与宏</a></li>
+      </ol>
+    </li>
+    <li><a href="#8-网络端口http-与远程连接">8. 网络、端口、HTTP 与远程连接</a>
+      <ol>
+        <li><a href="#81-查端口和连接">8.1 查端口和连接</a></li>
+        <li><a href="#82-curlpingdns路由">8.2 curl、ping、DNS、路由</a></li>
+        <li><a href="#83-sshscprsync">8.3 SSH、scp、rsync</a></li>
+        <li><a href="#84-较少用的网络诊断">8.4 较少用的网络诊断</a></li>
+      </ol>
+    </li>
+    <li><a href="#9-文件查找文本处理与数据转换">9. 文件查找、文本处理与数据转换</a>
+      <ol>
+        <li><a href="#91-findrglocate">9.1 find、rg、locate</a></li>
+        <li><a href="#92-awksedsortuniqcut">9.2 awk、sed、sort、uniq、cut</a></li>
+        <li><a href="#93-jq压缩日志与编码">9.3 jq、压缩日志与编码</a></li>
+      </ol>
+    </li>
+    <li><a href="#10-权限用户环境变量与系统信息">10. 权限、用户、环境变量与系统信息</a>
+      <ol>
+        <li><a href="#101-权限与身份">10.1 权限与身份</a></li>
+        <li><a href="#102-环境时间与版本">10.2 环境、时间与版本</a></li>
+      </ol>
+    </li>
+    <li><a href="#11-服务日志定时任务与软件包">11. 服务、日志、定时任务与软件包</a>
+      <ol>
+        <li><a href="#111-systemctl-与-journalctl">11.1 systemctl 与 journalctl</a></li>
+        <li><a href="#112-cron-和-timer">11.2 cron 和 timer</a></li>
+        <li><a href="#113-安装和查询工具">11.3 安装和查询工具</a></li>
+      </ol>
+    </li>
+    <li><a href="#12-压缩传输校验与构建相关命令">12. 压缩、传输校验与构建相关命令</a></li>
+    <li><a href="#13-shell-脚本常用组合">13. Shell 脚本常用组合</a>
+      <ol>
+        <li><a href="#131-引号变量退出状态">13.1 引号、变量、退出状态</a></li>
+        <li><a href="#132-循环超时和互斥">13.2 循环、超时和互斥</a></li>
+      </ol>
+    </li>
+    <li><a href="#14-较少用深入性能限制与-native-诊断">14. 较少用：深入性能、限制与 native 诊断</a>
+      <ol>
+        <li><a href="#141-文件句柄线程与资源限制">14.1 文件句柄、线程与资源限制</a></li>
+        <li><a href="#142-straceperfnative-泄漏工具">14.2 strace、perf、native 泄漏工具</a></li>
+        <li><a href="#143-内核硬件与文件系统补充">14.3 内核、硬件与文件系统补充</a></li>
+      </ol>
+    </li>
+    <li><a href="#15-遇到问题时的最短命令路线">15. 遇到问题时的最短命令路线</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E5%92%A8%E8%AE%AF%E7%A8%8B%E5%BA%8F%E5%91%98%E5%B8%B8%E7%94%A8-linux-%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/">
+                
+                    <img src="/images/linuxCommands/linuxCommands_bg.png" loading="lazy" alt="Featured image of post 【咨讯】程序员常用 Linux 命令大全" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+
+    <div class="article-title-wrapper" style="text-align: center;">
+        <h2 class="article-title">
+            <a href="/p/%E5%92%A8%E8%AE%AF%E7%A8%8B%E5%BA%8F%E5%91%98%E5%B8%B8%E7%94%A8-linux-%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/">【咨讯】程序员常用 Linux 命令大全</a>
+        </h2>
+
+        
+        <h3 class="article-subtitle">
+            ~从文件、日志与 Vim，到系统资源、Java 诊断与内存泄漏排查的命令速查~
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time" style="display: flex; flex-direction: row; justify-content: left; align-items: left; gap: 15px;">
+        
+        
+        <div style="display: flex; align-items: left; gap: 5px;">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+            <time class="article-time--published">2026-10-23</time>
+        </div>
+        
+
+        
+        <div style="display: flex; align-items: left; gap: 5px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 7v5l3 3" /></svg> 
+            <time class="article-time--lastmod">2026-10-25</time>
+        </div>
+        
+
+        
+        
+    </footer>
+    
+
+    
+
+    
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    <blockquote>
+<p>[!NOTE]</p>
+<ul>
+<li>本文章为codex制作，无任何手动介入。</li>
+</ul>
+</blockquote>
+<p>这篇按程序员日常开发、部署和排障的使用频率，整理 Linux 常用命令。<strong>各分类及分类内的条目，大致由常用到较少用排列</strong>；实际频率会随工作变化，可以通过文章目录直接跳到需要的部分。</p>
+<p>示例以 <strong>Linux + Bash + GNU 工具 + procps-ng</strong> 为主，Java 部分以 HotSpot JVM 为主。BusyBox、Alpine、不同 JDK 和发行版的参数可能不同，先用 <code>命令 --help</code>、<code>man 命令</code> 或 <code>jcmd PID help</code> 确认。表中的一行通常是一个独立示例，不需要整表顺序执行。</p>
+<p>文中的 <code>12345</code>、<code>app.service</code>、<code>app.jar</code>、<code>/srv/app</code>、<code>user@server</code> 都是需要替换的示例值。<code>sudo</code> 仅在权限不足时使用；Java 诊断工具通常应以目标 JVM 的运行用户执行。</p>
+<h2 id="1-每天最常用目录文件与帮助">1. 每天最常用：目录、文件与帮助
+</h2><h3 id="11-查看位置和文件">1.1 查看位置和文件
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途与常用参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pwd</code></td>
+<td>显示当前目录的绝对路径</td>
+</tr>
+<tr>
+<td><code>ls</code></td>
+<td>列出目录内容</td>
+</tr>
+<tr>
+<td><code>ls -lah</code></td>
+<td>详细列表，包含隐藏文件，大小便于阅读</td>
+</tr>
+<tr>
+<td><code>ls -lt</code></td>
+<td>按修改时间排序，新的在前</td>
+</tr>
+<tr>
+<td><code>ls -lhS</code></td>
+<td>按文件大小排序，大的在前</td>
+</tr>
+<tr>
+<td><code>cd /srv/app</code></td>
+<td>切换目录</td>
+</tr>
+<tr>
+<td><code>cd ..</code></td>
+<td>返回上一级</td>
+</tr>
+<tr>
+<td><code>cd ~</code></td>
+<td>返回当前用户主目录</td>
+</tr>
+<tr>
+<td><code>cd -</code></td>
+<td>切回上一次所在的目录</td>
+</tr>
+<tr>
+<td><code>file app.jar</code></td>
+<td>判断文件类型</td>
+</tr>
+<tr>
+<td><code>stat app.log</code></td>
+<td>查看大小、权限、inode、时间等详细信息</td>
+</tr>
+<tr>
+<td><code>readlink -f ./current</code></td>
+<td>解析符号链接并得到规范化绝对路径</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="12-创建复制移动与删除">1.2 创建、复制、移动与删除
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途与注意点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mkdir -p /srv/app/logs</code></td>
+<td>创建多级目录，已存在时不报错</td>
+</tr>
+<tr>
+<td><code>cp app.conf app.conf.bak</code></td>
+<td>复制文件；目标存在时可能覆盖</td>
+</tr>
+<tr>
+<td><code>cp -a app/ app-backup/</code></td>
+<td>递归复制并尽量保留权限、时间和链接等属性</td>
+</tr>
+<tr>
+<td><code>cp -i app.conf /srv/app/</code></td>
+<td>覆盖前询问</td>
+</tr>
+<tr>
+<td><code>mv -i old.conf new.conf</code></td>
+<td>移动或重命名，覆盖前询问</td>
+</tr>
+<tr>
+<td><code>touch notes.txt</code></td>
+<td>文件不存在时创建空文件，否则更新时间戳</td>
+</tr>
+<tr>
+<td><code>rm -i old.log</code></td>
+<td>删除前询问</td>
+</tr>
+<tr>
+<td><code>rm -r old-directory/</code></td>
+<td>递归删除目录，执行前核对路径</td>
+</tr>
+<tr>
+<td><code>rmdir empty-directory/</code></td>
+<td>只删除空目录</td>
+</tr>
+<tr>
+<td><code>ln -s /srv/releases/v1 /srv/current</code></td>
+<td>创建符号链接，目标链接路径应事先不存在</td>
+</tr>
+</tbody>
+</table></div>
+<p>删除通常无法通过终端撤销。尤其不要在变量为空、当前目录不确定时直接执行 <code>rm -rf</code>。</p>
+<h3 id="13-查询命令历史与终端快捷键">1.3 查询命令、历史与终端快捷键
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令或按键</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>command --help</code></td>
+<td>查看命令帮助，将 command 换成实际命令</td>
+</tr>
+<tr>
+<td><code>man ps</code></td>
+<td>阅读手册；<code>/关键词</code> 搜索，<code>n</code> 下一处，<code>q</code> 退出</td>
+</tr>
+<tr>
+<td><code>type java</code></td>
+<td>判断命令是别名、函数、内置命令还是文件</td>
+</tr>
+<tr>
+<td><code>command -v java</code></td>
+<td>查看当前会调用的命令路径</td>
+</tr>
+<tr>
+<td><code>history</code></td>
+<td>查看 Shell 历史</td>
+</tr>
+<tr>
+<td><code>Ctrl + R</code></td>
+<td>反向搜索历史命令</td>
+</tr>
+<tr>
+<td><code>Tab</code></td>
+<td>补全命令、文件名、目录名</td>
+</tr>
+<tr>
+<td><code>Ctrl + C</code></td>
+<td>中断前台任务</td>
+</tr>
+<tr>
+<td><code>Ctrl + A</code> / <code>Ctrl + E</code></td>
+<td>Bash 默认 Emacs 模式下移到行首／行尾</td>
+</tr>
+<tr>
+<td><code>Ctrl + U</code> / <code>Ctrl + K</code></td>
+<td>删除光标前到行首／光标后到行尾的内容</td>
+</tr>
+<tr>
+<td><code>Ctrl + L</code></td>
+<td>清屏，保留终端滚动历史</td>
+</tr>
+<tr>
+<td><code>clear</code></td>
+<td>清理终端显示</td>
+</tr>
+<tr>
+<td><code>reset</code></td>
+<td>终端显示混乱时重新初始化</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="2-日志查看grep管道与重定向">2. 日志查看、grep、管道与重定向
+</h2><h3 id="21-catlesstailhead">2.1 cat、less、tail、head
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tail -n 100 app.log</code></td>
+<td>最后 100 行</td>
+</tr>
+<tr>
+<td><code>tail -f app.log</code></td>
+<td>持续跟踪新日志</td>
+</tr>
+<tr>
+<td><code>tail -F app.log</code></td>
+<td>按文件名持续跟踪，适合日志轮转后的重新打开</td>
+</tr>
+<tr>
+<td><code>less app.log</code></td>
+<td>分页阅读大文件，避免一次输出全部内容</td>
+</tr>
+<tr>
+<td><code>less +G app.log</code></td>
+<td>打开后跳到末尾</td>
+</tr>
+<tr>
+<td><code>head -n 50 app.log</code></td>
+<td>前 50 行</td>
+</tr>
+<tr>
+<td><code>cat app.conf</code></td>
+<td>输出较短文件的全部内容</td>
+</tr>
+<tr>
+<td><code>cat -n app.conf</code></td>
+<td>输出内容并显示行号</td>
+</tr>
+<tr>
+<td><code>sed -n '100,160p' app.log</code></td>
+<td>查看第 100～160 行</td>
+</tr>
+<tr>
+<td><code>wc -l app.log</code></td>
+<td>统计换行符数量，常用于估算行数</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>less</code> 内常用：<code>/关键词</code> 向后搜索、<code>?关键词</code> 向前搜索、<code>n</code> 下一处、<code>N</code> 上一处、<code>g</code> 文件开头、<code>G</code> 文件末尾、<code>Shift + F</code> 跟踪新增内容、<code>q</code> 退出。跟踪时先 <code>Ctrl + C</code> 再 <code>q</code>。</p>
+<h3 id="22-grep按内容搜索">2.2 grep：按内容搜索
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>grep 'ERROR' app.log</code></td>
+<td>查找包含 ERROR 的行，默认区分大小写</td>
+</tr>
+<tr>
+<td><code>grep -n 'ERROR' app.log</code></td>
+<td>显示行号</td>
+</tr>
+<tr>
+<td><code>grep -i 'error' app.log</code></td>
+<td>忽略大小写</td>
+</tr>
+<tr>
+<td><code>grep -C 5 'Exception' app.log</code></td>
+<td>同时显示前后各 5 行；<code>-A</code> 只看后面，<code>-B</code> 只看前面</td>
+</tr>
+<tr>
+<td><code>grep -v 'healthcheck' app.log</code></td>
+<td>排除匹配行</td>
+</tr>
+<tr>
+<td><code>grep -E 'ERROR|WARN' app.log</code></td>
+<td>扩展正则，匹配 ERROR 或 WARN</td>
+</tr>
+<tr>
+<td><code>grep -F 'a.b[0]' app.log</code></td>
+<td>按固定字符串匹配，避免点号和方括号被解释为正则</td>
+</tr>
+<tr>
+<td><code>grep -w 'java' processes.txt</code></td>
+<td>按单词边界匹配</td>
+</tr>
+<tr>
+<td><code>grep -c 'ERROR' app.log</code></td>
+<td>统计匹配行数，一行多次出现仍算一行</td>
+</tr>
+<tr>
+<td><code>grep -o 'ERROR' app.log</code></td>
+<td>只输出每次匹配到的内容</td>
+</tr>
+<tr>
+<td><code>grep -RIn --include='*.java' 'TODO' src/</code></td>
+<td>递归查 Java 文件并显示文件名、行号，跳过二进制文件</td>
+</tr>
+<tr>
+<td><code>grep -rl 'old-url' config/</code></td>
+<td>递归查找，只输出匹配的文件名</td>
+</tr>
+<tr>
+<td><code>zgrep -n 'Exception' app.log.gz</code></td>
+<td>搜索 gzip 压缩日志</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>表格中正则里的竖线是 Markdown 转义显示；在终端实际输入 <code>grep -E 'ERROR|WARN' app.log</code>。</p>
+</blockquote>
+<p>实时过滤日志：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tail -F app.log <span class="p">|</span> grep --line-buffered -i <span class="s1">&#39;error&#39;</span>
+</span></span><span class="line"><span class="cl">tail -F app.log <span class="p">|</span> grep --line-buffered -E <span class="s1">&#39;ERROR|WARN|Exception&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>--line-buffered</code> 用于减少管道过滤时的输出等待。日志级别匹配只是一种筛选方式，多行异常堆栈还应结合上下文或完整日志阅读。</p>
+<h3 id="23-管道--到底是什么">2.3 管道 | 到底是什么
+</h3><p><code>|</code> 将左边命令的<strong>标准输出</strong>交给右边命令的<strong>标准输入</strong>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 常见写法：先列进程，再过滤含 java 的行</span>
+</span></span><span class="line"><span class="cl">ps -ef <span class="p">|</span> grep java
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 排除 grep 自身：正则 [j]ava 匹配 java，但不匹配 grep 参数中的 [j]ava</span>
+</span></span><span class="line"><span class="cl">ps -ef <span class="p">|</span> grep <span class="s1">&#39;[j]ava&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 更直接：按完整命令行找进程，同时显示 PID</span>
+</span></span><span class="line"><span class="cl">pgrep -af java
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 日志里出现最多的 20 种完整 ERROR 行</span>
+</span></span><span class="line"><span class="cl">grep <span class="s1">&#39;ERROR&#39;</span> app.log <span class="p">|</span> sort <span class="p">|</span> uniq -c <span class="p">|</span> sort -nr <span class="p">|</span> head -n <span class="m">20</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>ps grep | java</code> 并不能表达“找 Java 进程”；日常要写的是 <code>ps -ef | grep java</code>。匹配结果也可能包含名字带 java 的其他程序，操作前应核对 PID 和完整命令行。</p>
+<h3 id="24-21tee">2.4 &gt;、&raquo;、2&gt;&amp;1、tee、&amp;&amp;
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>写法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>command &gt; out.log</code></td>
+<td>标准输出写入文件，覆盖原内容</td>
+</tr>
+<tr>
+<td><code>command &gt;&gt; out.log</code></td>
+<td>标准输出追加到文件</td>
+</tr>
+<tr>
+<td><code>command 2&gt; err.log</code></td>
+<td>标准错误写入文件</td>
+</tr>
+<tr>
+<td><code>command &gt; all.log 2&gt;&amp;1</code></td>
+<td>标准输出和标准错误都写入 all.log</td>
+</tr>
+<tr>
+<td><code>command 2&gt;&amp;1 | tee all.log</code></td>
+<td>两种输出合并后，同时显示并保存；tee 默认覆盖</td>
+</tr>
+<tr>
+<td><code>command | tee -a out.log</code></td>
+<td>同时显示并追加标准输出</td>
+</tr>
+<tr>
+<td><code>command &lt; input.txt</code></td>
+<td>从文件读取标准输入</td>
+</tr>
+<tr>
+<td><code>command &gt;/dev/null 2&gt;&amp;1</code></td>
+<td>丢弃两种输出，排障时慎用</td>
+</tr>
+<tr>
+<td><code>command1 &amp;&amp; command2</code></td>
+<td>前者成功才执行后者</td>
+</tr>
+<tr>
+<td><code>command1 || command2</code></td>
+<td>前者失败才执行后者</td>
+</tr>
+<tr>
+<td><code>command1; command2</code></td>
+<td>不论前者是否成功，都执行后者</td>
+</tr>
+</tbody>
+</table></div>
+<p>重定向顺序有意义：<code>command 2&gt;&amp;1 &gt; out.log</code> 会先让标准错误指向当时的标准输出，通常仍是终端，再单独重定向标准输出。</p>
+<p>Bash 默认用管道最后一个命令的退出状态作为整个管道状态。脚本需要发现前面命令失败时，可使用 <code>set -o pipefail</code>；但 <code>grep</code> 未匹配返回 1，<code>head</code> 提前退出也可能使上游收到 SIGPIPE，需要结合具体流程处理。</p>
+<h2 id="3-进程线程与后台任务">3. 进程、线程与后台任务
+</h2><h3 id="31-找-pid-和查看进程">3.1 找 PID 和查看进程
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ps -ef</code></td>
+<td>查看所有进程及父 PID、完整命令等</td>
+</tr>
+<tr>
+<td><code>ps aux</code></td>
+<td>BSD 风格输出，包含 CPU、内存等；这里不写成 <code>ps -aux</code></td>
+</tr>
+<tr>
+<td><code>pgrep -af java</code></td>
+<td>按完整命令行搜索进程</td>
+</tr>
+<tr>
+<td><code>pgrep -ax java</code></td>
+<td>精确匹配进程名 java，再显示命令行</td>
+</tr>
+<tr>
+<td><code>ps -p 12345 -o pid,ppid,user,etime,%cpu,%mem,rss,vsz,args</code></td>
+<td>查看一个进程的运行时间、CPU、内存和命令</td>
+</tr>
+<tr>
+<td><code>ps -eo pid,ppid,stat,comm --forest</code></td>
+<td>以树形方式显示进程关系</td>
+</tr>
+<tr>
+<td><code>pstree -ap 12345</code></td>
+<td>查看指定进程的子进程树，需安装 psmisc</td>
+</tr>
+<tr>
+<td><code>top -p 12345</code></td>
+<td>持续观察指定进程</td>
+</tr>
+<tr>
+<td><code>top -H -p 12345</code></td>
+<td>查看该进程内的线程</td>
+</tr>
+<tr>
+<td><code>ps -L -p 12345 -o pid,tid,pcpu,stat,comm</code></td>
+<td>列出线程 ID、CPU 与状态</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>top</code> 中常用 <code>P</code> 按 CPU 排序、<code>M</code> 按内存排序、<code>1</code> 切换各 CPU 核心显示、<code>q</code> 退出。<code>ps %CPU</code> 通常是进程整个生存期的平均比例，<code>top</code> 更适合观察当前采样区间；多线程进程可能超过 100%。</p>
+<p>常见进程状态：<code>R</code> 正在运行或可运行、<code>S</code> 可中断睡眠、<code>D</code> 不可中断睡眠（常与 I/O 等待有关）、<code>T</code> 停止、<code>Z</code> 僵尸。僵尸进程已经退出，需要父进程回收其状态，继续对它 <code>kill -9</code> 无法解决。</p>
+<h3 id="32-停止进程与发送信号">3.2 停止进程与发送信号
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 先确认 PID 和命令，再请求正常结束</span>
+</span></span><span class="line"><span class="cl">ps -p <span class="m">12345</span> -o pid,user,args
+</span></span><span class="line"><span class="cl"><span class="nb">kill</span> -TERM <span class="m">12345</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 仅在正常结束失败且确认后果后使用，无法运行清理逻辑</span>
+</span></span><span class="line"><span class="cl"><span class="nb">kill</span> -KILL <span class="m">12345</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 核对服务归属后，受 systemd 管理的服务优先通过服务管理器停止</span>
+</span></span><span class="line"><span class="cl">sudo systemctl stop app.service
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>kill</code> 默认发 <code>SIGTERM</code>，并非默认强制杀死。<code>pkill -f</code> 会按完整命令行批量匹配，范围很容易超过预期；先用相同条件的 <code>pgrep -af</code> 检查。</p>
+<h3 id="33-后台nohupjobstmux">3.3 后台、nohup、jobs、tmux
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>command &amp;</code></td>
+<td>放到当前 Shell 后台执行，退出会话后是否继续受会话与程序行为影响</td>
+</tr>
+<tr>
+<td><code>jobs -l</code></td>
+<td>查看当前 Shell 的后台任务</td>
+</tr>
+<tr>
+<td><code>fg %1</code></td>
+<td>将作业 1 切回前台</td>
+</tr>
+<tr>
+<td><code>bg %1</code></td>
+<td>让停止的作业 1 在后台继续</td>
+</tr>
+<tr>
+<td><code>Ctrl + Z</code></td>
+<td>暂停前台作业，再决定 fg 或 bg</td>
+</tr>
+<tr>
+<td><code>nohup java -jar app.jar &gt;app.log 2&gt;&amp;1 &amp;</code></td>
+<td>忽略挂断信号并在后台启动；正式服务宜交给 systemd 等管理</td>
+</tr>
+<tr>
+<td><code>echo $!</code></td>
+<td>当前 Shell 最近一次后台任务的 PID</td>
+</tr>
+<tr>
+<td><code>wait &quot;$job_pid&quot;</code></td>
+<td>等待指定子任务结束，并返回其退出状态</td>
+</tr>
+<tr>
+<td><code>tmux new -s debug</code></td>
+<td>新建持久终端会话，需要 tmux</td>
+</tr>
+<tr>
+<td><code>tmux attach -t debug</code></td>
+<td>重新连接会话</td>
+</tr>
+<tr>
+<td><code>tmux ls</code></td>
+<td>列出会话</td>
+</tr>
+</tbody>
+</table></div>
+<p>tmux 中先按 <code>Ctrl + B</code> 再按 <code>D</code> 可分离会话，让任务继续运行。</p>
+<h2 id="4-linux-系统资源磁盘内存cpu-与-io">4. Linux 系统资源：磁盘、内存、CPU 与 I/O
+</h2><h3 id="41-df--h文件系统空间du目录占用">4.1 df -h：文件系统空间，du：目录占用
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>df -h</code></td>
+<td>查看各文件系统的容量、已用、可用和使用率</td>
+</tr>
+<tr>
+<td><code>df -h /srv/app</code></td>
+<td>查看这个路径所在的文件系统</td>
+</tr>
+<tr>
+<td><code>df -i</code></td>
+<td>查看 inode 使用率，大量小文件可能把 inode 用尽</td>
+</tr>
+<tr>
+<td><code>du -sh /srv/app</code></td>
+<td>统计目录总占用，扫描大目录可能较慢</td>
+</tr>
+<tr>
+<td><code>du -xhd1 /srv/app | sort -h</code></td>
+<td>查看下一层目录的占用，限制在同一文件系统</td>
+</tr>
+<tr>
+<td><code>lsblk -f</code></td>
+<td>查看块设备、文件系统和挂载点</td>
+</tr>
+<tr>
+<td><code>findmnt /srv/app</code></td>
+<td>查看路径对应的挂载信息</td>
+</tr>
+<tr>
+<td><code>sudo lsof +L1</code></td>
+<td>查找已删除但仍被进程打开的文件</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong><code>df -h</code> 查的是磁盘空间，不是 RAM。</strong> <code>df</code> 是文件系统视角，<code>du</code> 是扫描目录树的视角，因此两者不一定相等。常见原因包括已删除但未关闭的文件、挂载点遮住的内容、文件系统元数据和权限不足。</p>
+<p>磁盘满时先定位目录和大文件，再决定轮转、归档或释放。直接删除进程仍打开的日志，空间可能要等进程关闭该文件后才真正释放。</p>
+<h3 id="42-free--h系统-ram-与-swap">4.2 free -h：系统 RAM 与 Swap
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">free -h
+</span></span><span class="line"><span class="cl">free -m
+</span></span><span class="line"><span class="cl">watch -n <span class="m">2</span> free -h
+</span></span><span class="line"><span class="cl">grep -E <span class="s1">&#39;MemTotal|MemAvailable|Cached|SwapTotal|SwapFree&#39;</span> /proc/meminfo
+</span></span><span class="line"><span class="cl">swapon --show
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>优先看 <code>available</code>，它估算在不发生交换的情况下还能供新应用使用的内存。Linux 会用空闲内存做缓存，<code>free</code> 较小不必然意味着缺内存；还要看可用内存趋势、Swap 活跃程度和应用延迟。不同 procps 版本的 <code>used</code> 计算方式可能有差异。</p>
+<h3 id="43-查询每个-process-使用多少-memory">4.3 查询每个 process 使用多少 memory
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 所有进程：RSS 从大到小；RSS、VSZ 通常以 KiB 显示</span>
+</span></span><span class="line"><span class="cl">ps -eo pid,ppid,user,%mem,rss,vsz,comm --sort<span class="o">=</span>-rss
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 只看最大的 20 个进程（加一行表头）</span>
+</span></span><span class="line"><span class="cl">ps -eo pid,user,%mem,rss,vsz,args --sort<span class="o">=</span>-rss <span class="p">|</span> head -n <span class="m">21</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 只看一个进程</span>
+</span></span><span class="line"><span class="cl">ps -p <span class="m">12345</span> -o pid,etime,%mem,rss,vsz,args
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 持续观察</span>
+</span></span><span class="line"><span class="cl">top -p <span class="m">12345</span>
+</span></span><span class="line"><span class="cl">watch -n <span class="m">2</span> <span class="s1">&#39;ps -p 12345 -o pid,etime,%mem,rss,vsz,args&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 明确转换成 MiB，保留单个进程的完整命令行</span>
+</span></span><span class="line"><span class="cl">ps -p <span class="m">12345</span> -o <span class="nv">rss</span><span class="o">=</span> <span class="p">|</span> awk <span class="s1">&#39;{printf &#34;RSS: %.1f MiB\n&#34;, $1/1024}&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>指标</th>
+<th>含义</th>
+<th>排查时怎么用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RSS / RES</td>
+<td>当前驻留在物理内存中的页，包含共享页</td>
+<td>找占用大的进程、观察趋势；逐进程相加会重复计算共享部分</td>
+</tr>
+<tr>
+<td>VSZ / VIRT</td>
+<td>虚拟地址空间大小</td>
+<td>可能包含尚未驻留的映射或预留空间，不能等同实际 RAM</td>
+</tr>
+<tr>
+<td><code>%MEM</code></td>
+<td>通常按 RSS 占机器物理内存比例计算</td>
+<td>容器里可能不反映该容器的 limit</td>
+</tr>
+<tr>
+<td>PSS</td>
+<td>将共享页按共享进程数量分摊后的占用</td>
+<td>比较多个进程的实际分摊占用</td>
+</tr>
+<tr>
+<td>USS</td>
+<td>进程独占的驻留内存，常由工具根据私有页汇总</td>
+<td>判断独占占用，具体口径应看工具说明</td>
+</tr>
+<tr>
+<td>JVM heap used</td>
+<td>JVM 堆里已使用的空间</td>
+<td>判断 Java 对象占用，还要观察 GC 后存活量</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>RSS 不是 Java heap。</strong> 一个进程还可能包含线程栈、Metaspace、JIT 代码、直接内存、native 库、文件映射及共享内存等。<code>ps</code> 与 <code>/proc/PID/status</code> 的部分内存计数是近似值，进一步核对可读 <code>smaps_rollup</code>。</p>
+<h3 id="44-procpmapsmem进一步拆内存">4.4 /proc、pmap、smem：进一步拆内存
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 快速看 RSS、匿名页、文件页、峰值、线程数等</span>
+</span></span><span class="line"><span class="cl">grep -E <span class="s1">&#39;VmRSS|VmHWM|VmSize|VmSwap|RssAnon|RssFile|RssShmem|Threads&#39;</span> /proc/12345/status
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 汇总各映射的精细内存信息，通常比 status 更费时，需要读取权限</span>
+</span></span><span class="line"><span class="cl">cat /proc/12345/smaps_rollup
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看内存映射，重点找持续增长的匿名映射等</span>
+</span></span><span class="line"><span class="cl">pmap -x <span class="m">12345</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 非默认工具：按 PSS 排序显示系统进程，查看其他用户通常需 sudo</span>
+</span></span><span class="line"><span class="cl">sudo smem -k -s pss -r
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>smaps_rollup</code> 需要内核支持；查看其他用户的 <code>/proc</code> 信息还可能受 <code>hidepid</code>、ptrace 权限和容器隔离限制。它能展示内存分布，但不会直接指出“哪一行代码泄漏”。</p>
+<h3 id="45-cpu负载与-io">4.5 CPU、负载与 I/O
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途与解读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>top</code></td>
+<td>实时看 CPU、内存和进程</td>
+</tr>
+<tr>
+<td><code>htop</code></td>
+<td>交互式进程查看器，需要额外安装</td>
+</tr>
+<tr>
+<td><code>uptime</code></td>
+<td>运行时间与最近 1、5、15 分钟 load average</td>
+</tr>
+<tr>
+<td><code>nproc</code></td>
+<td>当前进程可用的处理单元数量；容器配额需额外核对</td>
+</tr>
+<tr>
+<td><code>lscpu</code></td>
+<td>CPU 架构、核心与线程信息</td>
+</tr>
+<tr>
+<td><code>vmstat 1 10</code></td>
+<td>每秒采样一次，共 10 次；常看 r、b、si、so、wa</td>
+</tr>
+<tr>
+<td><code>pidstat -p 12345 -u -r -d 1 10</code></td>
+<td>按进程采样 CPU、内存、I/O，来自 sysstat</td>
+</tr>
+<tr>
+<td><code>iostat -xz 1 10</code></td>
+<td>查看设备吞吐、延迟与队列，来自 sysstat</td>
+</tr>
+<tr>
+<td><code>mpstat -P ALL 1 10</code></td>
+<td>每个 CPU 的使用率，来自 sysstat</td>
+</tr>
+<tr>
+<td><code>sudo iotop -o</code></td>
+<td>交互查看活跃 I/O 任务，需安装并满足内核与权限条件</td>
+</tr>
+<tr>
+<td><code>sar -r 1 10</code></td>
+<td>内存采样；历史数据需预先启用 sysstat 收集</td>
+</tr>
+</tbody>
+</table></div>
+<p>Linux 的 load average 同时涉及可运行任务和不可中断睡眠任务，负载高可能与 CPU 或 I/O 有关。<code>vmstat</code> 的第一行通常是启动以来的平均值，后续才是采样区间数据；<code>si/so</code> 持续活跃可能表明交换压力。不要只凭一个 <code>%util</code>、<code>wa</code> 或 load 数字判定瓶颈。</p>
+<h3 id="46-oom内核日志与容器内存">4.6 OOM、内核日志与容器内存
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># systemd 系统：本次启动的内核日志</span>
+</span></span><span class="line"><span class="cl">sudo journalctl -k -b --since <span class="s1">&#39;1 hour ago&#39;</span> <span class="p">|</span> grep -Ei <span class="s1">&#39;oom|out of memory|killed process&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 无 journal 时，可查看内核环形缓冲区；权限和日志保留受系统设置影响</span>
+</span></span><span class="line"><span class="cl">sudo dmesg -T <span class="p">|</span> grep -Ei <span class="s1">&#39;oom|out of memory|killed process&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Docker 内的资源占用和状态</span>
+</span></span><span class="line"><span class="cl">docker stats --no-stream
+</span></span><span class="line"><span class="cl">docker inspect --format <span class="s1">&#39;{{.State.OOMKilled}} {{.State.ExitCode}}&#39;</span> app
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 确认进程所在 cgroup；从宿主机定位时，结合 cgroup 挂载点解析路径</span>
+</span></span><span class="line"><span class="cl">cat /proc/12345/cgroup
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 若当前容器的 cgroup v2 根就映射在 /sys/fs/cgroup，可直接读取：</span>
+</span></span><span class="line"><span class="cl">cat /sys/fs/cgroup/memory.current
+</span></span><span class="line"><span class="cl">cat /sys/fs/cgroup/memory.max
+</span></span><span class="line"><span class="cl">cat /sys/fs/cgroup/memory.events
+</span></span><span class="line"><span class="cl">cat /sys/fs/cgroup/memory.stat
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>cgroup v2 的 <code>memory.current</code> 与 <code>memory.max</code> 以字节计，<code>max</code> 表示该层未设数值上限，但仍可能受祖先层限制。<code>memory.events</code> 中的 <code>oom</code>、<code>oom_kill</code> 是累计事件，应比较变化。宿主机中读取 <code>/sys/fs/cgroup</code> 根目录通常不是目标容器所在组，要依据 <code>/proc/PID/cgroup</code> 定位；cgroup v1 的路径和文件名不同。</p>
+<p>容器 memory 统计还可能包括同组其他进程和文件缓存。宿主机 RAM 有余量，容器仍可能碰到自身限制。退出码 137 常与 SIGKILL 有关，<strong>单独看到 137 不足以证明 OOM</strong>，要结合状态与内核／编排平台记录。</p>
+<h2 id="5-java-常用命令与-jvm-诊断">5. Java 常用命令与 JVM 诊断
+</h2><h3 id="51-javajcmdjps版本进程和启动信息">5.1 java、jcmd、jps：版本、进程和启动信息
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">java -version
+</span></span><span class="line"><span class="cl">javac -version
+</span></span><span class="line"><span class="cl"><span class="nb">command</span> -v java
+</span></span><span class="line"><span class="cl">readlink -f <span class="s2">&#34;</span><span class="k">$(</span><span class="nb">command</span> -v java<span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 列出可见 JVM；容器或权限隔离下可能看不全</span>
+</span></span><span class="line"><span class="cl">jcmd -l
+</span></span><span class="line"><span class="cl">jps -lv
+</span></span><span class="line"><span class="cl">pgrep -af java
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 指定目标 PID，先看它实际支持什么</span>
+</span></span><span class="line"><span class="cl">jcmd <span class="m">12345</span> <span class="nb">help</span>
+</span></span><span class="line"><span class="cl">jcmd <span class="m">12345</span> VM.version
+</span></span><span class="line"><span class="cl">jcmd <span class="m">12345</span> VM.command_line
+</span></span><span class="line"><span class="cl">jcmd <span class="m">12345</span> VM.flags
+</span></span><span class="line"><span class="cl">jcmd <span class="m">12345</span> VM.system_properties
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>jcmd</code>、<code>jps</code>、<code>jstat</code> 等通常需要完整 JDK 或对应诊断包，精简 JRE／容器镜像可能没有。尽量使用与目标 JVM 同版本、同发行版的工具，并以目标用户执行；Attach 被禁用、PID 命名空间不同或权限不足时也可能无法连接。不要把 PID 写成 <code>0</code>，它可能将命令发给所有可见 JVM。</p>
+<p>命令行、系统属性与 dump 可能含连接串、令牌或业务数据，分享前应检查内容。命令及影响等级可查 <a class="link" href="https://docs.oracle.com/en/java/javase/25/docs/specs/man/jcmd.html"  target="_blank" rel="noopener"
+    >Oracle jcmd 文档</a>，实际支持情况以目标 JVM 的 <code>help</code> 为准。</p>
+<h3 id="52-查-heap-memoryjcmd-与-jstat">5.2 查 heap memory：jcmd 与 jstat
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 当前堆概况；具体字段取决于 GC 和 JDK</span>
+</span></span><span class="line"><span class="cl">jcmd <span class="m">12345</span> GC.heap_info
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 每秒一次，共 20 次，观察各代／空间使用与 GC 计数、耗时</span>
+</span></span><span class="line"><span class="cl">jstat -gc <span class="m">12345</span> <span class="m">1000</span> <span class="m">20</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 百分比视角</span>
+</span></span><span class="line"><span class="cl">jstat -gcutil <span class="m">12345</span> <span class="m">1000</span> <span class="m">20</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 增加运行时间，每 10 行重复表头</span>
+</span></span><span class="line"><span class="cl">jstat -gcutil -t -h <span class="m">10</span> <span class="m">12345</span> <span class="m">1000</span> <span class="m">30</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>堆的 <strong>used</strong> 是已用量，<strong>committed</strong> 是当前已提交容量，<strong>max</strong> 是允许增长到的上限；不同工具不一定同时显示三者。<code>-Xmx</code> 是堆上限，不是整个 Java 进程内存上限。</p>
+<p><code>jstat -gc</code> 的常见容量／使用量列如 <code>EC/EU</code>、<code>OC/OU</code> 通常以 KB 表示，<code>-gcutil</code> 则显示各空间使用比例；<code>YGC/FGC</code> 是计数，<code>YGCT/FGCT/GCT</code> 是累计耗时。列名、可用性和解释随 JDK 与收集器变化，ZGC、Shenandoah 等不能机械套用传统分代口径。<code>jstat</code> 属于实验性工具，不宜写依赖固定列号的长期脚本。参见 <a class="link" href="https://docs.oracle.com/en/java/javase/25/docs/specs/man/jstat.html"  target="_blank" rel="noopener"
+    >jstat 手册</a>。</p>
+<p>看到 heap 锯齿式上涨、GC 后回落通常是正常现象。更值得追踪的是：在相近负载下，<strong>多次可比 GC 后的存活对象基线持续抬升</strong>，而非单次 heap 使用率很高。</p>
+<h3 id="53-查线程jcmd-threadprintjstack">5.3 查线程：jcmd Thread.print、jstack
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">jcmd <span class="m">12345</span> Thread.print -l &gt; threads-01.txt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 旧工具替代写法，实际支持取决于 JDK</span>
+</span></span><span class="line"><span class="cl">jstack -l <span class="m">12345</span> &gt; threads-02.txt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 每隔 10 秒保存一份，共 3 份，判断同一位置是否持续阻塞</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> i in <span class="m">1</span> <span class="m">2</span> 3<span class="p">;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">  jcmd <span class="m">12345</span> Thread.print -l &gt; <span class="s2">&#34;threads-</span><span class="k">$(</span>date +%Y%m%d-%H%M%S<span class="k">)</span><span class="s2">-</span><span class="nv">$i</span><span class="s2">.txt&#34;</span>
+</span></span><span class="line"><span class="cl">  sleep <span class="m">10</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>重点看死锁报告、持续 RUNNABLE 的热点、BLOCKED 的锁竞争和线程数量变化。大量 WAITING／TIMED_WAITING 在线程池中可能正常，不能只看状态就判断异常。现代 JDK 的虚拟线程诊断方式可能不同，可先检查 <code>jcmd PID help Thread.dump_to_file</code>，传统 OS 线程视图无法完整反映所有虚拟线程。</p>
+<h3 id="54-java-cpu-很高从线程-id-对到堆栈">5.4 Java CPU 很高：从线程 ID 对到堆栈
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 1. 找到忙的 OS 线程，记下十进制 TID</span>
+</span></span><span class="line"><span class="cl">top -H -p <span class="m">12345</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 2. 假设 TID 为 23456，转换为十六进制</span>
+</span></span><span class="line"><span class="cl"><span class="nb">printf</span> <span class="s1">&#39;%x\n&#39;</span> <span class="m">23456</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 3. 保存线程栈，搜索对应 nid，例如输出为 5ba0</span>
+</span></span><span class="line"><span class="cl">jcmd <span class="m">12345</span> Thread.print -l &gt; threads.txt
+</span></span><span class="line"><span class="cl">grep -A <span class="m">30</span> <span class="s1">&#39;nid=0x5ba0&#39;</span> threads.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这是 HotSpot 平台线程的常见定位方法。多次采样同一线程，看它是否一直落在同一调用链；单个瞬间的栈只能提供线索。虚拟线程或不同 JVM 实现应使用对应工具。</p>
+<h3 id="55-对象直方图和-heap-dump疑似堆泄漏时再用">5.5 对象直方图和 heap dump：疑似堆泄漏时再用
+</h3><p><strong>这类操作可能明显停顿应用、触发 GC 或产生很大的文件。</strong> 先读目标 JVM 的帮助，确认磁盘空间、文件权限与可接受的停顿窗口，再执行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">jcmd <span class="m">12345</span> <span class="nb">help</span> GC.class_histogram
+</span></span><span class="line"><span class="cl">jcmd <span class="m">12345</span> <span class="nb">help</span> GC.heap_dump
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 按类统计对象数量和字节数：可能触发 GC，成本取决于堆大小等因素</span>
+</span></span><span class="line"><span class="cl">jcmd <span class="m">12345</span> GC.class_histogram &gt; histogram-01.txt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 路径是目标 JVM 可访问的路径，应使用新文件名，避免覆盖已有现场</span>
+</span></span><span class="line"><span class="cl">df -h /srv/diagnostics
+</span></span><span class="line"><span class="cl">jcmd <span class="m">12345</span> GC.heap_dump /srv/diagnostics/heap-20261023-01.hprof
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>两个时间点的 histogram 可用于找增长明显的类，但浅大小、对象数量与真实保留大小不同。真正定位泄漏通常需要在 Eclipse MAT 等工具里分析 <strong>Dominator Tree、Retained Heap、Path to GC Roots</strong>，弄清对象被谁长期引用；<code>byte[]</code> 或 <code>String</code> 占用大本身不能证明泄漏。</p>
+<p>部分版本提供 <code>-all</code> 等参数，其 GC 行为与是否包含不可达对象不同；使用前以 <code>jcmd PID help GC.heap_dump</code> 为准。旧工具常见等价方向如下，需核对版本：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">jmap -histo <span class="m">12345</span>
+</span></span><span class="line"><span class="cl">jmap -dump:live,format<span class="o">=</span>b,file<span class="o">=</span>/srv/diagnostics/heap-legacy-01.hprof <span class="m">12345</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中 <code>live</code> 通常涉及 Full GC；不要把它作为无成本的日常监控。Oracle 推荐优先使用 <code>jcmd</code>，旧工具的可用性和支持程度见 <a class="link" href="https://docs.oracle.com/en/java/javase/25/troubleshoot/diagnostic-tools.html"  target="_blank" rel="noopener"
+    >Java 诊断工具说明</a>。</p>
+<h3 id="56-native-memory堆外线程栈metaspace">5.6 native memory：堆外、线程栈、Metaspace
+</h3><p>如果 RSS 上升而 heap 较稳定，需要进一步看线程、Metaspace、直接缓冲区、native 库和 mmap。HotSpot 的 NMT 需要启动时启用；普通未启用 NMT 的 JVM 不能靠事后执行查询补出历史。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 下次受控启动时添加；summary/detail 会带来额外开销</span>
+</span></span><span class="line"><span class="cl">java -XX:NativeMemoryTracking<span class="o">=</span>summary -jar app.jar
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 已启用 NMT 的 JVM：查看汇总</span>
+</span></span><span class="line"><span class="cl">jcmd <span class="m">12345</span> VM.native_memory summary <span class="nv">scale</span><span class="o">=</span>MB
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 应用预热稳定后建立基线，过一段时间对比</span>
+</span></span><span class="line"><span class="cl">jcmd <span class="m">12345</span> VM.native_memory baseline
+</span></span><span class="line"><span class="cl">jcmd <span class="m">12345</span> VM.native_memory summary.diff <span class="nv">scale</span><span class="o">=</span>MB
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 同时检查线程数量和进程映射</span>
+</span></span><span class="line"><span class="cl">grep -E <span class="s1">&#39;Threads|VmRSS|RssAnon|RssFile&#39;</span> /proc/12345/status
+</span></span><span class="line"><span class="cl">pmap -x <span class="m">12345</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>NMT 的 <code>reserved</code> 是预留地址空间，<code>committed</code> 是已提交量，二者都不能直接等同 RSS。NMT 主要跟踪 HotSpot 内部内存，<strong>不覆盖所有第三方 native 分配，也不能完整替代进程内存统计</strong>。<code>Thread</code> 增长时检查线程数和线程池；<code>Class/Metaspace</code> 增长时检查类加载器和动态生成类；直接缓冲区可结合 JMX 的 <code>java.nio:type=BufferPool,name=direct</code> 的 MemoryUsed、TotalCapacity、Count 观察。其口径也不等同全部堆外内存。</p>
+<h3 id="57-jfr需要更完整时间线时">5.7 JFR：需要更完整时间线时
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 先核对目标支持情况</span>
+</span></span><span class="line"><span class="cl">jcmd <span class="m">12345</span> <span class="nb">help</span> JFR.start
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 录制 2 分钟；profile 相比 default 通常收集更多信息，开销也更高</span>
+</span></span><span class="line"><span class="cl">jcmd <span class="m">12345</span> JFR.start <span class="nv">name</span><span class="o">=</span>investigation <span class="nv">settings</span><span class="o">=</span>profile <span class="nv">duration</span><span class="o">=</span>2m <span class="nv">filename</span><span class="o">=</span>/srv/diagnostics/app-01.jfr
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">jcmd <span class="m">12345</span> JFR.check
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 如需在录制结束前导出当前数据</span>
+</span></span><span class="line"><span class="cl">jcmd <span class="m">12345</span> JFR.dump <span class="nv">name</span><span class="o">=</span>investigation <span class="nv">filename</span><span class="o">=</span>/srv/diagnostics/app-snapshot-01.jfr
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>用 JDK Mission Control 等工具分析 CPU 采样、GC、分配和锁事件。可用事件依赖 JDK 和录制配置；分配速率高与对象长期存活是两件事，泄漏分析还要结合存活与引用链证据。</p>
+<h3 id="58-启动时保留-gc-与-oom-现场">5.8 启动时保留 GC 与 OOM 现场
+</h3><p>下面是 <strong>JDK 9+ HotSpot</strong> 的启动示例，需要预先创建可写目录，并按磁盘预算调整日志数量和大小：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">java <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  <span class="s1">&#39;-Xlog:gc*,safepoint:file=/srv/diagnostics/gc-%p.log:time,uptime,level,tags:filecount=5,filesize=20M&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -XX:+HeapDumpOnOutOfMemoryError <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -XX:HeapDumpPath<span class="o">=</span>/srv/diagnostics <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -jar app.jar
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>JVM 抛出相应 OOM 时才有机会写 dump。进程被内核或容器 OOM killer 直接 SIGKILL 时，JVM 通常来不及生成它。JDK 8 使用不同 GC 日志参数，不能原样套用以上 <code>-Xlog</code>。</p>
+<h2 id="6-实战分类如何排查-memory-leak">6. 实战分类：如何排查 memory leak
+</h2><h3 id="61-第一步先分清哪一种内存问题">6.1 第一步：先分清“哪一种内存问题”
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>现象</th>
+<th>先看什么</th>
+<th>下一步</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>系统 available 持续降低</td>
+<td><code>free -h</code>、RSS 排名、cgroup</td>
+<td>判断是哪一个进程、文件缓存或组内占用增长</td>
+</tr>
+<tr>
+<td>单进程 RSS 持续上涨</td>
+<td><code>ps</code>、<code>smaps_rollup</code>、heap</td>
+<td>区分堆内对象、匿名页、映射和共享页</td>
+</tr>
+<tr>
+<td>Java heap GC 后基线持续上涨</td>
+<td><code>jstat</code>、GC 日志、业务负载</td>
+<td>对象直方图、heap dump 与引用链</td>
+</tr>
+<tr>
+<td>heap 稳定但 RSS 上涨</td>
+<td>NMT、线程数、BufferPool、pmap</td>
+<td>检查 native、线程栈、直接内存、映射</td>
+</tr>
+<tr>
+<td><code>OutOfMemoryError: Java heap space</code></td>
+<td>堆限制、存活对象、瞬时分配</td>
+<td>可能是泄漏，也可能是负载或堆容量不足</td>
+</tr>
+<tr>
+<td><code>OutOfMemoryError: Metaspace</code></td>
+<td>类数量、类加载器、Metaspace</td>
+<td>检查动态类生成、热部署和类加载器释放</td>
+</tr>
+<tr>
+<td><code>unable to create native thread</code></td>
+<td>线程数、用户限制、cgroup pids、内存</td>
+<td>不应只增加 Xmx；更大堆还可能挤压 native 空间</td>
+</tr>
+<tr>
+<td><code>Direct buffer memory</code></td>
+<td>BufferPool、直接内存限制、缓冲区生命周期</td>
+<td>排查缓冲区积压与回收</td>
+</tr>
+<tr>
+<td>容器 OOMKilled，无 Java OOM</td>
+<td>容器限制、memory.events、平台日志</td>
+<td>核对整个 cgroup 总占用和峰值</td>
+</tr>
+<tr>
+<td><code>df -h</code> 满或日志无法写入</td>
+<td>磁盘与 inode</td>
+<td>属于存储问题，可能同时影响 dump 和日志留存</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="62-第二步连续采样而不是只截一张图">6.2 第二步：连续采样，而不是只截一张图
+</h3><p>下面脚本只采集进程内存快照，不主动触发 GC。示例持续约 10 分钟，每 10 秒一次，保存到一个新日志文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/usr/bin/env bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="nv">pid</span><span class="o">=</span><span class="m">12345</span>
+</span></span><span class="line"><span class="cl"><span class="nv">out</span><span class="o">=</span><span class="s2">&#34;memory-</span><span class="si">${</span><span class="nv">pid</span><span class="si">}</span><span class="s2">-</span><span class="k">$(</span>date +%Y%m%d-%H%M%S<span class="k">)</span><span class="s2">.log&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="o">((</span><span class="nv">i</span><span class="o">=</span>0<span class="p">;</span> i&lt;60<span class="p">;</span> i++<span class="o">))</span><span class="p">;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># 进程退出就结束；采样期间也应留意 PID 被重用的可能</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> ! ps -p <span class="s2">&#34;</span><span class="nv">$pid</span><span class="s2">&#34;</span> &gt;/dev/null<span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">break</span>
+</span></span><span class="line"><span class="cl">  <span class="k">fi</span>
+</span></span><span class="line"><span class="cl">  <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    date -Is
+</span></span><span class="line"><span class="cl">    ps -p <span class="s2">&#34;</span><span class="nv">$pid</span><span class="s2">&#34;</span> -o pid,etime,%cpu,%mem,rss,vsz,nlwp,args
+</span></span><span class="line"><span class="cl">    grep -E <span class="s1">&#39;VmRSS|VmSwap|RssAnon|RssFile|Threads&#39;</span> <span class="s2">&#34;/proc/</span><span class="nv">$pid</span><span class="s2">/status&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">printf</span> <span class="s1">&#39;\n&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span> &gt;&gt; <span class="s2">&#34;</span><span class="nv">$out</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">  sleep <span class="m">10</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span><span class="line"><span class="cl"><span class="nb">printf</span> <span class="s1">&#39;Saved: %s\n&#39;</span> <span class="s2">&#34;</span><span class="nv">$out</span><span class="s2">&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Java 另开终端采样：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">jstat -gcutil -t <span class="m">12345</span> <span class="m">10000</span> <span class="m">60</span> &gt; gc-trend-01.log
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>同时记录吞吐量、并发请求、队列长度、缓存条目、部署时间和定时任务。进程重启后需重建基线；预热、缓存填充、流量高峰和堆扩容都可能带来正常增长。</p>
+<h3 id="63-第三步按证据深入">6.3 第三步：按证据深入
+</h3><ol>
+<li><strong>GC 后存活量增长</strong>：在相近业务状态下采集两个时间点的对象分布，必要时获得 dump，找被长期持有的集合、缓存、队列、ThreadLocal 或类加载器引用。</li>
+<li><strong>线程数增长</strong>：比较线程栈，检查每次请求创建线程、线程池无上限、任务堵塞等情况；线程栈也消耗 native 内存。</li>
+<li><strong>heap 稳定，匿名 RSS 增长</strong>：结合 NMT 差值、BufferPool、native 分配工具和库行为调查。NMT 未能解释的增长仍可能来自 native 库或分配器保留内存。</li>
+<li><strong>文件映射／缓存增长</strong>：检查 mmap、大文件访问和容器 memory.stat；进程 RSS、cgroup 文件缓存与 heap 的口径不同。</li>
+<li><strong>修复后重复同一工作负载</strong>：确认内存随负载进入稳定区间，GC 后基线不再持续抬升，而不是只看重启后降下来了。</li>
+</ol>
+<p>“GC 后没有立即归还操作系统”“RSS 高于 Xmx”“缓存增长”都不能单独证明泄漏。对象长期无用却仍被引用、native 分配未释放等，需要通过时间趋势与保留链或分配证据确认。也不要为了观察而反复执行 <code>jcmd PID GC.run</code>；主动 GC 会改变现场并可能造成停顿。</p>
+<h2 id="7-vi--vim-与相关编辑命令">7. vi / Vim 与相关编辑命令
+</h2><h3 id="71-先掌握模式保存与退出">7.1 先掌握模式、保存与退出
+</h3><p><code>vi</code> 是编辑器家族／兼容接口，机器上的 <code>vi</code> 可能链接到 Vim 或其他实现。<strong>下面主要按 Vim 写</strong>；Neovim 用 <code>nvim</code> 启动，基础操作相近，但插件和配置方式不同，精简 vi 不一定支持全部命令。</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令／按键</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vi app.conf</code> / <code>vim app.conf</code></td>
+<td>打开或新建文件</td>
+</tr>
+<tr>
+<td><code>vim +120 app.log</code></td>
+<td>打开并跳到第 120 行</td>
+</tr>
+<tr>
+<td><code>view app.conf</code> / <code>vim -R app.conf</code></td>
+<td>以只读模式打开；并非权限级保护</td>
+</tr>
+<tr>
+<td><code>i</code></td>
+<td>在光标前进入插入模式</td>
+</tr>
+<tr>
+<td><code>a</code> / <code>A</code></td>
+<td>光标后／行尾插入</td>
+</tr>
+<tr>
+<td><code>o</code> / <code>O</code></td>
+<td>下方／上方新建一行并插入</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td>回到普通模式</td>
+</tr>
+<tr>
+<td><code>:w</code></td>
+<td>保存</td>
+</tr>
+<tr>
+<td><code>:q</code></td>
+<td>退出；未保存修改时会阻止退出</td>
+</tr>
+<tr>
+<td><code>:wq</code> / <code>:x</code></td>
+<td>保存并退出；<code>:x</code> 在有修改时才写入</td>
+</tr>
+<tr>
+<td><code>:q!</code></td>
+<td>放弃未保存修改并退出</td>
+</tr>
+<tr>
+<td><code>:w new.conf</code></td>
+<td>将当前缓冲区另存到指定文件</td>
+</tr>
+<tr>
+<td><code>:help</code> / <code>:help :substitute</code></td>
+<td>打开帮助／替换命令帮助</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="72-移动搜索与跳转">7.2 移动、搜索与跳转
+</h3><p>以下除 <code>:</code> 命令外，均在普通模式下操作。</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>按键</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>h j k l</code></td>
+<td>左、下、上、右</td>
+</tr>
+<tr>
+<td><code>w</code> / <code>b</code> / <code>e</code></td>
+<td>下一个词首／上一个词首／词尾</td>
+</tr>
+<tr>
+<td><code>0</code> / <code>^</code> / <code>$</code></td>
+<td>行首／第一个非空白字符／行尾</td>
+</tr>
+<tr>
+<td><code>gg</code> / <code>G</code></td>
+<td>文件开头／末尾</td>
+</tr>
+<tr>
+<td><code>120G</code> / <code>:120</code></td>
+<td>跳到第 120 行</td>
+</tr>
+<tr>
+<td><code>Ctrl + D</code> / <code>Ctrl + U</code></td>
+<td>下／上滚半屏</td>
+</tr>
+<tr>
+<td><code>Ctrl + F</code> / <code>Ctrl + B</code></td>
+<td>下／上翻一屏</td>
+</tr>
+<tr>
+<td><code>/ERROR</code></td>
+<td>向后搜索 ERROR，Enter 确认</td>
+</tr>
+<tr>
+<td><code>?ERROR</code></td>
+<td>向前搜索</td>
+</tr>
+<tr>
+<td><code>n</code> / <code>N</code></td>
+<td>沿搜索方向下一处／反方向上一处</td>
+</tr>
+<tr>
+<td><code>*</code> / <code>#</code></td>
+<td>向后／向前搜索光标处单词</td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>跳转到匹配的括号</td>
+</tr>
+<tr>
+<td><code>:set number</code> / <code>:set nonumber</code></td>
+<td>显示／隐藏行号</td>
+</tr>
+<tr>
+<td><code>:set hlsearch</code> / <code>:noh</code></td>
+<td>开启匹配高亮／清除当前高亮</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="73-删除复制撤销和批量修改">7.3 删除、复制、撤销和批量修改
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>按键</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>u</code> / <code>Ctrl + R</code></td>
+<td>撤销／重做</td>
+</tr>
+<tr>
+<td><code>dd</code> / <code>5dd</code></td>
+<td>删除一行／从当前行开始删除 5 行</td>
+</tr>
+<tr>
+<td><code>yy</code> / <code>5yy</code></td>
+<td>复制一行／5 行到寄存器</td>
+</tr>
+<tr>
+<td><code>p</code> / <code>P</code></td>
+<td>在后面／前面粘贴，位置取决于寄存器是行还是字符</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>删除当前字符</td>
+</tr>
+<tr>
+<td><code>dw</code> / <code>cw</code></td>
+<td>删除到下一词位置／修改一个词</td>
+</tr>
+<tr>
+<td><code>ciw</code></td>
+<td>修改光标所在的整个词</td>
+</tr>
+<tr>
+<td><code>D</code> / <code>C</code></td>
+<td>删除／修改到行尾</td>
+</tr>
+<tr>
+<td><code>v</code> / <code>V</code> / <code>Ctrl + V</code></td>
+<td>字符选择／整行选择／块选择</td>
+</tr>
+<tr>
+<td><code>&gt;</code> / <code>&lt;</code></td>
+<td>对选中的内容增加／减少缩进</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>重复上一次修改</td>
+</tr>
+<tr>
+<td><code>:%s/old/new/gc</code></td>
+<td>全文替换，每行全部匹配，逐个确认</td>
+</tr>
+<tr>
+<td><code>:10,30s/old/new/g</code></td>
+<td>只替换第 10～30 行</td>
+</tr>
+<tr>
+<td><code>:%s#old/path#new/path#gc</code></td>
+<td>路径带斜杠时换分隔符</td>
+</tr>
+</tbody>
+</table></div>
+<p>Vim 的搜索和替换默认使用其正则语法；要按字面搜索可用 <code>\V</code>，例如 <code>/\Va.b[0]</code>。<code>yy</code> 复制到 Vim 寄存器，系统剪贴板通常需要支持 <code>+clipboard</code> 才能使用 <code>&quot;+yy</code>。</p>
+<h3 id="74-多文件分屏比较与宏">7.4 多文件、分屏、比较与宏
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令／按键</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:e other.conf</code></td>
+<td>编辑另一个文件，当前修改需先处理</td>
+</tr>
+<tr>
+<td><code>:ls</code> / <code>:b 2</code></td>
+<td>列出缓冲区／切到缓冲区 2</td>
+</tr>
+<tr>
+<td><code>:bn</code> / <code>:bp</code></td>
+<td>下一个／上一个缓冲区</td>
+</tr>
+<tr>
+<td><code>:split other.conf</code></td>
+<td>上下分屏</td>
+</tr>
+<tr>
+<td><code>:vsplit other.conf</code></td>
+<td>左右分屏</td>
+</tr>
+<tr>
+<td><code>Ctrl + W</code> 然后 <code>W</code></td>
+<td>在窗口间切换</td>
+</tr>
+<tr>
+<td><code>vimdiff old.conf new.conf</code></td>
+<td>并排比较两个文件</td>
+</tr>
+<tr>
+<td><code>]c</code> / <code>[c</code></td>
+<td>diff 模式下跳到下一／上一处差异</td>
+</tr>
+<tr>
+<td><code>qa</code> → 操作 → <code>q</code></td>
+<td>将一系列操作录入寄存器 a</td>
+</tr>
+<tr>
+<td><code>@a</code> / <code>10@a</code></td>
+<td>回放一次／10 次宏</td>
+</tr>
+<tr>
+<td><code>vim -r app.conf</code></td>
+<td>尝试从交换文件恢复，需要先确认没有其他编辑会话</td>
+</tr>
+</tbody>
+</table></div>
+<p>宏和批量替换先在少量内容上验证，再扩大范围。不要在未确认内容已经恢复前直接删除 <code>.swp</code>。完整按键见 <a class="link" href="https://vimhelp.org/quickref.txt.html"  target="_blank" rel="noopener"
+    >Vim 官方帮助速查</a>。</p>
+<h2 id="8-网络端口http-与远程连接">8. 网络、端口、HTTP 与远程连接
+</h2><h3 id="81-查端口和连接">8.1 查端口和连接
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ss -lntp</code></td>
+<td>TCP 监听端口和进程；其他用户的进程信息可能需 sudo</td>
+</tr>
+<tr>
+<td><code>sudo ss -lntp 'sport = :8080'</code></td>
+<td>找监听 8080 的进程</td>
+</tr>
+<tr>
+<td><code>ss -ant</code></td>
+<td>所有 TCP 连接，使用数字地址</td>
+</tr>
+<tr>
+<td><code>ss -s</code></td>
+<td>socket 汇总</td>
+</tr>
+<tr>
+<td><code>ss -lunp</code></td>
+<td>UDP 监听及进程</td>
+</tr>
+<tr>
+<td><code>sudo lsof -nP -iTCP:8080 -sTCP:LISTEN</code></td>
+<td>通过 lsof 查 TCP 监听进程</td>
+</tr>
+<tr>
+<td><code>lsof -p 12345</code></td>
+<td>查看进程打开的文件与 socket，可能输出很多</td>
+</tr>
+<tr>
+<td><code>netstat -lntp</code></td>
+<td>老系统常见写法，需 net-tools；新系统通常用 ss</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="82-curlpingdns路由">8.2 curl、ping、DNS、路由
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># HTTP 请求；--fail 使 HTTP 4xx/5xx 返回失败状态，仍可能看到服务返回差异</span>
+</span></span><span class="line"><span class="cl">curl --fail --show-error --silent --connect-timeout <span class="m">3</span> --max-time <span class="m">10</span> http://127.0.0.1:8080/health
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 看响应头；-I 发的是 HEAD，服务可能与 GET 的行为不同</span>
+</span></span><span class="line"><span class="cl">curl -I https://example.com
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 调试连接、TLS、请求和响应头，输出可能包含敏感信息</span>
+</span></span><span class="line"><span class="cl">curl -v --connect-timeout <span class="m">3</span> --max-time <span class="m">10</span> https://example.com
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># JSON POST</span>
+</span></span><span class="line"><span class="cl">curl --fail --show-error --connect-timeout <span class="m">3</span> --max-time <span class="m">10</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -H <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -d <span class="s1">&#39;{&#34;name&#34;:&#34;demo&#34;}&#39;</span> http://127.0.0.1:8080/api/items
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 下载：显式指定文件名，跟随重定向</span>
+</span></span><span class="line"><span class="cl">curl -fL -o package.tar.gz https://example.com/package.tar.gz
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 连通性、DNS 和路由</span>
+</span></span><span class="line"><span class="cl">ping -c <span class="m">4</span> example.com
+</span></span><span class="line"><span class="cl">getent hosts example.com
+</span></span><span class="line"><span class="cl">dig example.com A
+</span></span><span class="line"><span class="cl">dig @1.1.1.1 example.com A
+</span></span><span class="line"><span class="cl">ip addr
+</span></span><span class="line"><span class="cl">ip route
+</span></span><span class="line"><span class="cl">ip route get 1.1.1.1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 测试 TCP 端口；netcat 各实现的参数可能不同</span>
+</span></span><span class="line"><span class="cl">nc -vz -w <span class="m">3</span> example.com <span class="m">443</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>ping</code> 走 ICMP，能 ping 不代表 HTTP 正常，ping 不通也可能只是 ICMP 被禁。<code>dig</code> 查 DNS，<code>getent</code> 更接近系统名称解析配置。不要用 <code>curl -k</code> 当作 TLS 错误的常规修复；应检查证书、主机名、信任链与系统时间。</p>
+<h3 id="83-sshscprsync">8.3 SSH、scp、rsync
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ssh user@server</code></td>
+<td>远程登录</td>
+</tr>
+<tr>
+<td><code>ssh -p 2222 user@server</code></td>
+<td>指定端口</td>
+</tr>
+<tr>
+<td><code>ssh -i ~/.ssh/id_ed25519 user@server</code></td>
+<td>指定私钥</td>
+</tr>
+<tr>
+<td><code>ssh -v user@server</code></td>
+<td>调试连接和认证</td>
+</tr>
+<tr>
+<td><code>ssh user@server 'df -h'</code></td>
+<td>在远程执行命令</td>
+</tr>
+<tr>
+<td><code>scp app.jar user@server:/srv/app/</code></td>
+<td>上传文件，注意目标同名文件会覆盖</td>
+</tr>
+<tr>
+<td><code>scp -P 2222 user@server:/srv/app/app.log ./</code></td>
+<td>下载文件；scp 的端口参数是大写 P</td>
+</tr>
+<tr>
+<td><code>rsync -avn ./app/ user@server:/srv/app/</code></td>
+<td>先预览同步结果，<code>-n</code> 是 dry-run</td>
+</tr>
+<tr>
+<td><code>rsync -av ./app/ user@server:/srv/app/</code></td>
+<td>实际同步；目标同名文件可能被更新</td>
+</tr>
+<tr>
+<td><code>ssh -N -L 127.0.0.1:18080:127.0.0.1:8080 user@server</code></td>
+<td>本地 18080 转发到远端视角的 127.0.0.1:8080</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>rsync</code> 源路径 <code>app/</code> 表示目录内容，<code>app</code> 会影响目标目录层级。<code>--delete</code> 会删除目标端多余内容，使用前先加 <code>-n</code> 核对。首次连接的主机密钥应通过可信渠道验证。</p>
+<h3 id="84-较少用的网络诊断">8.4 较少用的网络诊断
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>traceroute example.com</code></td>
+<td>查看路径节点，需安装；中间节点可能不响应</td>
+</tr>
+<tr>
+<td><code>mtr -rw -c 20 example.com</code></td>
+<td>多次探测路径，需安装；单个中间节点丢包不一定代表端到端丢包</td>
+</tr>
+<tr>
+<td><code>openssl s_client -connect example.com:443 -servername example.com -verify_return_error &lt;/dev/null</code></td>
+<td>查看 TLS 握手与证书验证；需要时另加主机名校验参数</td>
+</tr>
+<tr>
+<td><code>sudo tcpdump -ni any -c 100 'tcp port 8080'</code></td>
+<td>抓取最多 100 个相关包，需要权限；内容可能涉及业务数据</td>
+</tr>
+<tr>
+<td><code>sudo tcpdump -ni any -c 100 -w capture-01.pcap 'tcp port 8080'</code></td>
+<td>保存抓包以便后续分析</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="9-文件查找文本处理与数据转换">9. 文件查找、文本处理与数据转换
+</h2><h3 id="91-findrglocate">9.1 find、rg、locate
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find /srv/app -type f -name <span class="s1">&#39;*.log&#39;</span>
+</span></span><span class="line"><span class="cl">find /srv/app -type f -iname <span class="s1">&#39;*error*&#39;</span>
+</span></span><span class="line"><span class="cl">find /srv/app -type f -size +100M
+</span></span><span class="line"><span class="cl">find /srv/app -type f -mmin -30
+</span></span><span class="line"><span class="cl">find /srv/app -type f -mtime +7 -print
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 文件名可能带空格／换行时，使用 -exec 或 NUL 分隔</span>
+</span></span><span class="line"><span class="cl">find /srv/app -type f -name <span class="s1">&#39;*.log&#39;</span> -exec ls -lh -- <span class="o">{}</span> +
+</span></span><span class="line"><span class="cl">find /srv/app -type f -name <span class="s1">&#39;*.log&#39;</span> -print0 <span class="p">|</span> xargs -0 -r wc -l
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># ripgrep 需额外安装，常用于代码仓库搜索</span>
+</span></span><span class="line"><span class="cl">rg -n <span class="s1">&#39;TODO|FIXME&#39;</span> src/
+</span></span><span class="line"><span class="cl">rg -F <span class="s1">&#39;a.b[0]&#39;</span> .
+</span></span><span class="line"><span class="cl">rg -n --hidden -g <span class="s1">&#39;!.git/**&#39;</span> <span class="s1">&#39;server.port&#39;</span> .
+</span></span><span class="line"><span class="cl">rg --files -g <span class="s1">&#39;*.java&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># locate 依赖预先构建的索引，结果可能不是实时的</span>
+</span></span><span class="line"><span class="cl">locate app.conf
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>find -mtime +7</code> 按整段 24 小时取整后的比较规则匹配，不应当作精确的“当前时刻减 7 天”。删文件前先 <code>-print</code> 核对，不要直接把查找示例改成批量删除。<code>rg</code> 默认遵循忽略文件规则并跳过隐藏文件，<code>--hidden</code> 也不会自动取消所有 ignore 规则。</p>
+<h3 id="92-awksedsortuniqcut">9.2 awk、sed、sort、uniq、cut
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>awk '{print $1, $3}' data.txt</code></td>
+<td>默认按空白切字段，输出第 1 和第 3 列</td>
+</tr>
+<tr>
+<td><code>awk -F ':' '{print $1}' /etc/passwd</code></td>
+<td>按冒号分隔取第 1 列</td>
+</tr>
+<tr>
+<td><code>awk '{sum += $1} END {print sum}' numbers.txt</code></td>
+<td>累加第 1 列数字</td>
+</tr>
+<tr>
+<td><code>sed -n '20,40p' app.log</code></td>
+<td>打印指定行范围</td>
+</tr>
+<tr>
+<td><code>sed 's/old/new/g' app.conf</code></td>
+<td>替换后输出到终端，原文件不变</td>
+</tr>
+<tr>
+<td><code>sed -i.bak 's/old/new/g' app.conf</code></td>
+<td>GNU sed 原地替换，并生成 .bak；已有备份可能被覆盖</td>
+</tr>
+<tr>
+<td><code>sort names.txt</code></td>
+<td>排序，受 locale 影响</td>
+</tr>
+<tr>
+<td><code>sort -n numbers.txt</code></td>
+<td>按数值排序</td>
+</tr>
+<tr>
+<td><code>sort -h sizes.txt</code></td>
+<td>GNU sort，识别人类可读大小后缀</td>
+</tr>
+<tr>
+<td><code>sort names.txt | uniq -c | sort -nr</code></td>
+<td>统计频率，最多的在前；uniq 只合并相邻重复行</td>
+</tr>
+<tr>
+<td><code>cut -d ':' -f 1 /etc/passwd</code></td>
+<td>按单字符分隔符取列</td>
+</tr>
+<tr>
+<td><code>tr '[:lower:]' '[:upper:]' &lt; names.txt</code></td>
+<td>字母转大写，受 locale 影响</td>
+</tr>
+<tr>
+<td><code>tr -d '\r' &lt; windows.txt &gt; unix.txt</code></td>
+<td>删除 CR 字符，输出到另一个文件</td>
+</tr>
+<tr>
+<td><code>diff -u old.conf new.conf</code></td>
+<td>查看文本差异；有差异时退出状态为 1</td>
+</tr>
+<tr>
+<td><code>cmp file1.bin file2.bin</code></td>
+<td>逐字节比较</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>awk -F ','</code> 和 <code>cut -d ','</code> 不能正确解析所有带引号、嵌入逗号或换行的 CSV；此时应使用真正的 CSV 解析器。</p>
+<h3 id="93-jq压缩日志与编码">9.3 jq、压缩日志与编码
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># jq 需额外安装</span>
+</span></span><span class="line"><span class="cl">jq <span class="s1">&#39;.&#39;</span> response.json
+</span></span><span class="line"><span class="cl">jq -r <span class="s1">&#39;.data.id&#39;</span> response.json
+</span></span><span class="line"><span class="cl">jq <span class="s1">&#39;.items[] | select(.status == &#34;FAILED&#34;)&#39;</span> response.json
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 阅读压缩日志，无需先写出完整解压文件</span>
+</span></span><span class="line"><span class="cl">zless app.log.gz
+</span></span><span class="line"><span class="cl">gzip -dc app.log.gz <span class="p">|</span> grep -n <span class="s1">&#39;ERROR&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 编码转换，源编码必须按实际文件填写</span>
+</span></span><span class="line"><span class="cl">iconv -f GB18030 -t UTF-8 input.txt &gt; output-utf8.txt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 二进制查看</span>
+</span></span><span class="line"><span class="cl">xxd -l <span class="m">128</span> file.bin
+</span></span><span class="line"><span class="cl">od -An -tx1 -N64 file.bin
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="10-权限用户环境变量与系统信息">10. 权限、用户、环境变量与系统信息
+</h2><h3 id="101-权限与身份">10.1 权限与身份
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>whoami</code> / <code>id</code></td>
+<td>当前身份／UID、GID 和所属组</td>
+</tr>
+<tr>
+<td><code>ls -l app.conf</code></td>
+<td>查看属主、属组和权限</td>
+</tr>
+<tr>
+<td><code>chmod u+x start.sh</code></td>
+<td>为属主添加执行权限</td>
+</tr>
+<tr>
+<td><code>chmod 640 app.conf</code></td>
+<td>属主读写、属组只读、其他人无权限</td>
+</tr>
+<tr>
+<td><code>chmod 750 /srv/app</code></td>
+<td>属主完整权限，属组可读和进入，其他人无权限</td>
+</tr>
+<tr>
+<td><code>sudo chown appuser:appgroup app.conf</code></td>
+<td>修改属主与属组</td>
+</tr>
+<tr>
+<td><code>sudo -u appuser jcmd 12345 GC.heap_info</code></td>
+<td>以目标用户执行诊断</td>
+</tr>
+<tr>
+<td><code>sudo -l</code></td>
+<td>查看当前用户被允许的 sudo 操作</td>
+</tr>
+<tr>
+<td><code>umask</code></td>
+<td>查看新文件默认权限的屏蔽设置</td>
+</tr>
+<tr>
+<td><code>namei -l /srv/app/config/app.conf</code></td>
+<td>沿路径检查每级目录的属主和权限</td>
+</tr>
+<tr>
+<td><code>getfacl app.conf</code></td>
+<td>查看 ACL，需相应工具与文件系统支持</td>
+</tr>
+</tbody>
+</table></div>
+<p>目录的 <code>x</code> 表示可穿越／进入。不要因为“Permission denied”就直接 <code>chmod -R 777</code>；应检查路径每一层、实际运行用户、ACL，以及必要时的 SELinux／AppArmor 策略。</p>
+<h3 id="102-环境时间与版本">10.2 环境、时间与版本
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>printf '%s\n' &quot;$PATH&quot;</code></td>
+<td>查看命令搜索路径</td>
+</tr>
+<tr>
+<td><code>printenv JAVA_HOME</code></td>
+<td>查看指定环境变量</td>
+</tr>
+<tr>
+<td><code>export APP_ENV=dev</code></td>
+<td>为当前 Shell 及之后启动的子进程设置环境变量</td>
+</tr>
+<tr>
+<td><code>APP_ENV=dev ./start.sh</code></td>
+<td>只给这次启动设置变量</td>
+</tr>
+<tr>
+<td><code>unset APP_ENV</code></td>
+<td>从当前 Shell 移除变量</td>
+</tr>
+<tr>
+<td><code>uname -a</code></td>
+<td>内核与系统信息</td>
+</tr>
+<tr>
+<td><code>cat /etc/os-release</code></td>
+<td>发行版信息</td>
+</tr>
+<tr>
+<td><code>hostname</code></td>
+<td>主机名</td>
+</tr>
+<tr>
+<td><code>date -Is</code> / <code>date -u</code></td>
+<td>ISO 时间／UTC 时间</td>
+</tr>
+<tr>
+<td><code>timedatectl status</code></td>
+<td>systemd 系统的时间、时区与同步状态</td>
+</tr>
+<tr>
+<td><code>locale</code></td>
+<td>当前语言与字符编码配置</td>
+</tr>
+<tr>
+<td><code>getconf LONG_BIT</code></td>
+<td>当前用户空间位数</td>
+</tr>
+</tbody>
+</table></div>
+<p>父进程的环境不会被已运行的子进程重新读取；执行 <code>export</code> 后，既有服务不会自动改变。<code>env</code>／<code>printenv</code> 全量输出可能暴露凭证，排查时优先查指定变量。</p>
+<h2 id="11-服务日志定时任务与软件包">11. 服务、日志、定时任务与软件包
+</h2><h3 id="111-systemctl-与-journalctl">11.1 systemctl 与 journalctl
+</h3><p>以下适用于使用 systemd 的系统，精简容器和其他 init 系统可能没有。</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>systemctl status app.service --no-pager -l</code></td>
+<td>查看服务状态和最近日志</td>
+</tr>
+<tr>
+<td><code>journalctl -u app.service -n 100 --no-pager</code></td>
+<td>服务最后 100 条日志</td>
+</tr>
+<tr>
+<td><code>journalctl -u app.service -f</code></td>
+<td>跟踪服务日志</td>
+</tr>
+<tr>
+<td><code>journalctl -u app.service --since '30 minutes ago'</code></td>
+<td>按时间查询</td>
+</tr>
+<tr>
+<td><code>journalctl -u app.service -b -p warning</code></td>
+<td>本次启动 warning 及更严重的服务日志</td>
+</tr>
+<tr>
+<td><code>systemctl cat app.service</code></td>
+<td>查看 unit 文件与 drop-in 配置</td>
+</tr>
+<tr>
+<td><code>systemctl show app.service -p MainPID -p MemoryCurrent -p MemoryMax</code></td>
+<td>查看主 PID、内存统计和限制；统计依赖配置</td>
+</tr>
+<tr>
+<td><code>sudo systemctl restart app.service</code></td>
+<td>重启服务，会中断现有实例</td>
+</tr>
+<tr>
+<td><code>sudo systemctl reload app.service</code></td>
+<td>请求服务重载，需要服务支持</td>
+</tr>
+<tr>
+<td><code>sudo systemctl daemon-reload</code></td>
+<td>unit 配置改动后让 systemd 重读，不会自动重启服务</td>
+</tr>
+<tr>
+<td><code>systemctl is-enabled app.service</code></td>
+<td>查询是否配置开机启动</td>
+</tr>
+<tr>
+<td><code>sudo systemctl enable app.service</code></td>
+<td>配置开机启动，不等于立即启动</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="112-cron-和-timer">11.2 cron 和 timer
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">crontab -l
+</span></span><span class="line"><span class="cl">crontab -e
+</span></span><span class="line"><span class="cl">systemctl list-timers --all
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>用户 crontab 例子，每 5 分钟执行一次：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">*/5 * * * * /srv/app/check.sh &gt;&gt; /srv/app/check.log 2&gt;&amp;1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>cron 的 PATH、工作目录和交互登录环境不同，脚本宜使用绝对路径并明确依赖。任务超过间隔时可能重叠；需要时使用 <code>flock</code> 等互斥机制。系统级 <code>/etc/crontab</code> 还包含用户字段，不能直接与用户 crontab 混用。</p>
+<h3 id="113-安装和查询工具">11.3 安装和查询工具
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>发行版</th>
+<th>查询</th>
+<th>安装示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Debian / Ubuntu</td>
+<td><code>dpkg -l</code>、<code>apt search sysstat</code></td>
+<td><code>sudo apt update</code> 后 <code>sudo apt install sysstat lsof</code></td>
+</tr>
+<tr>
+<td>Fedora / RHEL 系</td>
+<td><code>rpm -qa</code>、<code>dnf search sysstat</code></td>
+<td><code>sudo dnf install sysstat lsof</code></td>
+</tr>
+<tr>
+<td>Alpine</td>
+<td><code>apk info</code>、<code>apk search sysstat</code></td>
+<td><code>sudo apk add sysstat lsof</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>常见额外工具：<code>sysstat</code> 提供 pidstat／iostat／mpstat／sar，<code>lsof</code> 查打开文件，<code>procps</code>／<code>procps-ng</code> 提供 ps／top／free 等，<code>iproute2</code> 提供 ip／ss。包名和仓库可用性以发行版为准，Alpine 镜像也可能默认没有 Bash 或 sudo。</p>
+<h2 id="12-压缩传输校验与构建相关命令">12. 压缩、传输校验与构建相关命令
+</h2><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tar -tzf app.tar.gz</code></td>
+<td>先查看归档内容</td>
+</tr>
+<tr>
+<td><code>tar -czf app-backup-01.tar.gz app/</code></td>
+<td>创建 gzip 压缩 tar 包，输出文件应放在被归档目录外</td>
+</tr>
+<tr>
+<td><code>mkdir -p unpacked &amp;&amp; tar -xzf app.tar.gz -C unpacked</code></td>
+<td>解压到专用目录，先核对来源与内容，避免覆盖</td>
+</tr>
+<tr>
+<td><code>unzip -l app.zip</code></td>
+<td>查看 ZIP 内容</td>
+</tr>
+<tr>
+<td><code>unzip app.zip -d unpacked</code></td>
+<td>解压到指定目录，可能询问覆盖</td>
+</tr>
+<tr>
+<td><code>gzip -k app.log</code></td>
+<td>压缩并保留原文件，具体实现需支持 -k</td>
+</tr>
+<tr>
+<td><code>sha256sum app.jar</code></td>
+<td>计算 SHA-256，用于比较传输前后内容</td>
+</tr>
+<tr>
+<td><code>sha256sum -c checksums.sha256</code></td>
+<td>按校验文件验证</td>
+</tr>
+<tr>
+<td><code>jar tf app.jar</code></td>
+<td>列出 JAR 内容</td>
+</tr>
+<tr>
+<td><code>jar tf app.jar | grep 'application'</code></td>
+<td>找 JAR 内配置等文件路径</td>
+</tr>
+<tr>
+<td><code>./mvnw test</code> / <code>mvn test</code></td>
+<td>Maven Wrapper／系统 Maven 执行测试</td>
+</tr>
+<tr>
+<td><code>./gradlew test</code></td>
+<td>使用项目 Gradle Wrapper 执行测试</td>
+</tr>
+<tr>
+<td><code>time ./mvnw package</code></td>
+<td>查看构建耗时，time 的具体输出随 Shell／实现变化</td>
+</tr>
+</tbody>
+</table></div>
+<p>哈希相同能证明内容一致；要确认来源真实性，还需要从可信渠道取得校验值或验证签名。</p>
+<h2 id="13-shell-脚本常用组合">13. Shell 脚本常用组合
+</h2><h3 id="131-引号变量退出状态">13.1 引号、变量、退出状态
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">app_dir</span><span class="o">=</span><span class="s1">&#39;/srv/my app&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">printf</span> <span class="s1">&#39;%s\n&#39;</span> <span class="s2">&#34;</span><span class="nv">$app_dir</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> -- <span class="s2">&#34;</span><span class="nv">$app_dir</span><span class="s2">&#34;</span> <span class="o">||</span> <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 保存命令结果，保留引用以避免空格拆词</span>
+</span></span><span class="line"><span class="cl"><span class="nv">stamp</span><span class="o">=</span><span class="k">$(</span>date +%Y%m%d-%H%M%S<span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">printf</span> <span class="s1">&#39;Now: %s\n&#39;</span> <span class="s2">&#34;</span><span class="nv">$stamp</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 退出状态要紧接着检查；下一条命令会改写 $?</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> grep -q <span class="s1">&#39;ERROR&#39;</span> app.log<span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">printf</span> <span class="s1">&#39;Found ERROR\n&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 检查依赖</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> ! <span class="nb">command</span> -v jcmd &gt;/dev/null 2&gt;<span class="p">&amp;</span>1<span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">printf</span> <span class="s1">&#39;jcmd not found\n&#39;</span> &gt;<span class="p">&amp;</span><span class="m">2</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>变量展开通常写 <code>&quot;$var&quot;</code>，防止空格拆词和通配符展开；单引号保留字面内容，双引号允许变量展开。用 <code>printf '%s\n' &quot;$value&quot;</code> 比把变量直接当格式字符串更稳妥。</p>
+<h3 id="132-循环超时和互斥">13.2 循环、超时和互斥
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 当前目录的 .log 文件，正确处理空格</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> log in ./*.log<span class="p">;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span> -f <span class="s2">&#34;</span><span class="nv">$log</span><span class="s2">&#34;</span> <span class="o">]</span> <span class="o">||</span> <span class="k">continue</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">printf</span> <span class="s1">&#39;Checking: %s\n&#39;</span> <span class="s2">&#34;</span><span class="nv">$log</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">  grep -n <span class="s1">&#39;ERROR&#39;</span> <span class="s2">&#34;</span><span class="nv">$log</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 给外部命令加时间限制，超时会发信号，需确认命令可被中断</span>
+</span></span><span class="line"><span class="cl">timeout 10s curl --connect-timeout <span class="m">3</span> --max-time <span class="m">8</span> http://127.0.0.1:8080/health
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 防止同一巡检任务重叠，flock 来自 util-linux</span>
+</span></span><span class="line"><span class="cl">flock -n /srv/app/check.lock /srv/app/check.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>set -euo pipefail</code> 是 Bash 常见组合，但 <code>-e</code> 的例外语义、未匹配 grep、可选变量等都需要明确处理，不能把加上它视作脚本必然正确。Bash 专有语法应配 <code>#!/usr/bin/env bash</code>，并确保环境中确实有 Bash。</p>
+<h2 id="14-较少用深入性能限制与-native-诊断">14. 较少用：深入性能、限制与 native 诊断
+</h2><h3 id="141-文件句柄线程与资源限制">14.1 文件句柄、线程与资源限制
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 当前 Shell 的限制，不一定等于已经运行的服务</span>
+</span></span><span class="line"><span class="cl"><span class="nb">ulimit</span> -n
+</span></span><span class="line"><span class="cl"><span class="nb">ulimit</span> -a
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 实际目标进程的限制</span>
+</span></span><span class="line"><span class="cl">cat /proc/12345/limits
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 打开的文件描述符数量与线程数量，权限不足时结果不可据此判断</span>
+</span></span><span class="line"><span class="cl">find /proc/12345/fd -mindepth <span class="m">1</span> -maxdepth <span class="m">1</span> -type l <span class="p">|</span> wc -l
+</span></span><span class="line"><span class="cl">ps -p <span class="m">12345</span> -o pid,nlwp,args
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># systemd 服务限制</span>
+</span></span><span class="line"><span class="cl">systemctl show app.service -p LimitNOFILE -p TasksCurrent -p TasksMax
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>Too many open files</code> 应结合句柄是否持续增长、具体打开了什么、实际限制来定位；单纯调大限制可能只延后故障。线程创建失败也可能撞上 cgroup pids 或用户限制。</p>
+<h3 id="142-straceperfnative-泄漏工具">14.2 strace、perf、native 泄漏工具
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途与成本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sudo strace -f -tt -T -p 12345 -o trace-01.log</code></td>
+<td>跟踪系统调用，Ctrl + C 结束附加；可能明显拖慢目标，日志增长快</td>
+</tr>
+<tr>
+<td><code>sudo strace -f -c -p 12345</code></td>
+<td>汇总系统调用次数和耗时，短时采样后结束</td>
+</tr>
+<tr>
+<td><code>sudo perf stat -p 12345 -- sleep 10</code></td>
+<td>采集 10 秒性能计数，受 perf 权限限制</td>
+</tr>
+<tr>
+<td><code>sudo perf record -F 99 -g -p 12345 -- sleep 30</code></td>
+<td>采集调用栈；符号、栈展开与 JVM 配置影响结果，会写 perf.data</td>
+</tr>
+<tr>
+<td><code>perf report</code></td>
+<td>查看已记录的性能数据</td>
+</tr>
+<tr>
+<td><code>valgrind --leak-check=full --show-leak-kinds=definite ./native-app</code></td>
+<td>在测试环境启动 native 程序进行泄漏检查，开销通常很高</td>
+</tr>
+</tbody>
+</table></div>
+<p>这些工具依赖安装、内核功能和权限。Valgrind 适合相应 native 程序，不应直接当作 Java 对象泄漏分析器；C/C++ 项目还可在测试构建中使用 AddressSanitizer／LeakSanitizer。eBPF 内存跟踪也需要选对分配路径、符号和采样方案，不能只凭一条通用命令就覆盖全部 native 泄漏。</p>
+<h3 id="143-内核硬件与文件系统补充">14.3 内核、硬件与文件系统补充
+</h3><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sysctl vm.swappiness</code></td>
+<td>查询内核参数；修改需理解系统影响</td>
+</tr>
+<tr>
+<td><code>cat /proc/pressure/memory</code></td>
+<td>PSI 内存压力指标，需内核支持</td>
+</tr>
+<tr>
+<td><code>cat /proc/pressure/io</code></td>
+<td>PSI I/O 压力指标</td>
+</tr>
+<tr>
+<td><code>slabtop</code></td>
+<td>观察内核 slab 缓存，通常需权限</td>
+</tr>
+<tr>
+<td><code>lsmod</code></td>
+<td>已加载内核模块</td>
+</tr>
+<tr>
+<td><code>lspci</code> / <code>lsusb</code></td>
+<td>PCI／USB 设备，需对应工具</td>
+</tr>
+<tr>
+<td><code>sudo smartctl -a /dev/sda</code></td>
+<td>查询支持设备的健康信息；设备路径按实际替换</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="15-遇到问题时的最短命令路线">15. 遇到问题时的最短命令路线
+</h2><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>常见排查顺序</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>服务无法访问</td>
+<td><code>systemctl status</code> → <code>journalctl</code> → <code>ss -lntp</code> → 本机 curl → DNS／网络路径</td>
+</tr>
+<tr>
+<td>磁盘满</td>
+<td><code>df -h</code> → <code>df -i</code> → <code>du -xhd1</code> → <code>find -size</code> → <code>lsof +L1</code></td>
+</tr>
+<tr>
+<td>系统内存不足</td>
+<td><code>free -h</code> → RSS 排名 → <code>vmstat</code> → <code>/proc</code> → cgroup／OOM 日志</td>
+</tr>
+<tr>
+<td>Java heap 疑似泄漏</td>
+<td><code>jcmd GC.heap_info</code> → <code>jstat</code>／GC 日志趋势 → histogram → dump → MAT 引用链</td>
+</tr>
+<tr>
+<td>Java heap 正常但 RSS 涨</td>
+<td><code>/proc/status</code> → <code>smaps_rollup</code> → NMT diff → 线程／BufferPool／native 映射</td>
+</tr>
+<tr>
+<td>Java CPU 高</td>
+<td><code>top</code> → <code>top -H -p PID</code> → TID 转十六进制 → Thread.print → 多次采样／JFR</td>
+</tr>
+<tr>
+<td>程序卡住</td>
+<td>日志 → 进程状态 → 多份线程栈 → 锁／I/O／外部依赖 → 必要时 strace</td>
+</tr>
+<tr>
+<td>运行一段时间才坏</td>
+<td>连续采样内存／线程／句柄／队列，关联请求量与定时任务</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="参考资料">参考资料
+</h2><p>命令以本机手册和目标版本帮助为准，以下是进一步核对语义的来源。</p>
+<ul>
+<li><a class="link" href="https://www.gnu.org/software/coreutils/manual/coreutils.html"  target="_blank" rel="noopener"
+    >GNU Coreutils 手册：文件、大小、排序、校验等</a></li>
+<li><a class="link" href="https://www.gnu.org/software/bash/manual/bash.html"  target="_blank" rel="noopener"
+    >GNU Bash 手册</a></li>
+<li><a class="link" href="https://www.gnu.org/software/grep/manual/grep.html"  target="_blank" rel="noopener"
+    >GNU grep 手册</a></li>
+<li><a class="link" href="https://www.gnu.org/software/findutils/manual/html_mono/find.html"  target="_blank" rel="noopener"
+    >GNU Findutils 手册</a></li>
+<li><a class="link" href="https://gitlab.com/procps-ng/procps"  target="_blank" rel="noopener"
+    >procps-ng 项目</a></li>
+<li><a class="link" href="https://man7.org/linux/man-pages/man1/ps.1.html"  target="_blank" rel="noopener"
+    >ps 手册：字段与内存口径</a></li>
+<li><a class="link" href="https://man7.org/linux/man-pages/man1/free.1.html"  target="_blank" rel="noopener"
+    >free 手册：available 与缓存</a></li>
+<li><a class="link" href="https://www.kernel.org/doc/html/latest/filesystems/proc.html"  target="_blank" rel="noopener"
+    >Linux 内核：/proc 与 smaps</a></li>
+<li><a class="link" href="https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v2.html"  target="_blank" rel="noopener"
+    >Linux 内核：cgroup v2 内存控制</a></li>
+<li><a class="link" href="https://docs.oracle.com/en/java/javase/25/docs/specs/man/jcmd.html"  target="_blank" rel="noopener"
+    >Oracle：jcmd</a></li>
+<li><a class="link" href="https://docs.oracle.com/en/java/javase/25/docs/specs/man/jstat.html"  target="_blank" rel="noopener"
+    >Oracle：jstat</a></li>
+<li><a class="link" href="https://docs.oracle.com/en/java/javase/25/troubleshoot/diagnostic-tools.html"  target="_blank" rel="noopener"
+    >Oracle：Java 诊断工具、NMT、JFR</a></li>
+<li><a class="link" href="https://vimhelp.org/quickref.txt.html"  target="_blank" rel="noopener"
+    >Vim 帮助速查</a></li>
+<li><a class="link" href="https://www.freedesktop.org/software/systemd/man/latest/systemctl.html"  target="_blank" rel="noopener"
+    >systemctl 官方手册</a></li>
+<li><a class="link" href="https://www.freedesktop.org/software/systemd/man/latest/journalctl.html"  target="_blank" rel="noopener"
+    >journalctl 官方手册</a></li>
+<li><a class="link" href="https://curl.se/docs/manpage.html"  target="_blank" rel="noopener"
+    >curl 官方手册</a></li>
+<li><a class="link" href="https://help.eclipse.org/latest/topic/org.eclipse.mat.ui.help/welcome.html"  target="_blank" rel="noopener"
+    >Eclipse MAT 文档</a></li>
+</ul>
+
+</section>
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>禁止转载。如需引用，请注明文章链接。</span>
+    </section>
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clock"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 7v5l3 3" /></svg>
+        <span>
+            最后更新于 2026-10-25
+        </span>
+    </section></footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%92%A8%E8%AE%AFwindows-%E5%AE%9E%E7%94%A8%E5%BA%94%E7%94%A8%E6%8E%A8%E8%8D%90/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/images/windowsApps/windowsApps_bg.png" loading="lazy" data-key="" data-hash="/images/windowsApps/windowsApps_bg.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【咨讯】Windows 实用应用推荐</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%92%A8%E8%AE%AFpotplayer-%E8%AE%BE%E7%BD%AE%E8%A6%81%E7%82%B9%E4%B8%8E%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/images/potplayerSettings/potplayerSettings_bg.png" loading="lazy" data-key="" data-hash="/images/potplayerSettings/potplayerSettings_bg.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【咨讯】PotPlayer 设置要点与使用说明</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%92%A8%E8%AE%AFcodex-cli-%E4%B8%8E-desktop-app-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/images/codexUserGuide/codexUserGuide_bg.png" loading="lazy" data-key="" data-hash="/images/codexUserGuide/codexUserGuide_bg.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【咨讯】Codex CLI 与 Desktop App 使用指南</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%92%A8%E8%AE%AFmd%E5%86%99%E6%B3%95%E7%A4%BA%E4%BE%8B/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/images/mdWritting/mdWritting_bg.png" loading="lazy" data-key="" data-hash="/images/mdWritting/mdWritting_bg.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【咨讯】MD写法示例</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/%E5%92%A8%E8%AE%AF%E6%96%87%E7%AB%A0%E5%88%9B%E4%BD%9C%E4%B8%8E%E9%83%A8%E7%BD%B2/">
+        
+        
+            <div class="article-image">
+                
+                    <img src="/images/articleCreationDeployment/articleCreationDeployment_bg.png" loading="lazy" data-key="" data-hash="/images/articleCreationDeployment/articleCreationDeployment_bg.png"/>
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【咨讯】文章创作与部署</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2026 怠惰的天秤-sloth
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.26.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+
+
+
+
+
+<div id="particles-js"></div>
+
+<style>
+    #particles-js {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    #TableOfContents>ul,
+    ol {
+
+        ul,
+        ol {
+            display: none;
+        }
+
+        .open {
+            display: block;
+        }
+    }
+
+    #backTopBtn {
+        display: none;
+        position: fixed;
+        bottom: 30px;
+        z-index: 99;
+        cursor: pointer;
+        width: 35px;
+        height: 35px;
+        background-image: url('https://sloth-cyx.github.io/icons/backTop.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        transition: transform 0.2s ease;
+    }
+
+    #backTopBtn:hover {
+        transform: translateY(-3px);
+    }
+</style>
+
+<script src="https://sloth-cyx.github.io/background/sakura.js"></script>
+<script src="https://sloth-cyx.github.io/background/particles.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        
+        
+        function initParticles() {
+            
+            const container = document.getElementById('particles-js');
+            if (container && container.childNodes.length === 0) {
+                if (typeof particlesJS !== "undefined") {
+                    particlesJS.load('particles-js', 'https:\/\/sloth-cyx.github.io\/background\/particlesjs-config.json', function () {});
+                }
+            }
+        }
+
+        function checkBackground() {
+            const isDark = document.documentElement.getAttribute('data-scheme') === 'dark';
+            
+            
+            if (isDark) {
+                initParticles();
+            }
+        }
+
+        
+        window.addEventListener('load', () => {
+            
+            if (typeof Sakura !== "undefined") new Sakura('body');
+            
+            checkBackground();
+        });
+
+        
+        const observer = new MutationObserver(checkBackground);
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-scheme'] });
+            
+        
+        let toc = document.querySelector(".widget--toc");
+        if (toc) {
+            window.addEventListener('scroll', function () {
+                let openUl = document.querySelectorAll(".open");
+                if (openUl.length > 0) { openUl.forEach((ul) => { ul.classList.remove("open") }) }
+                let currentLi = document.querySelector(".active-class");
+                if (!currentLi) return;
+                if (currentLi.children.length > 1) { currentLi.children[1].classList.add("open") }
+                let ul = currentLi.parentElement;
+                do {
+                    ul.classList.add("open");
+                    ul = ul.parentElement.parentElement
+                } while (ul !== undefined && (ul.localName === 'ul' || ul.localName === 'ol'))
+            });
+        }
+
+        
+        let rightSideBar = document.querySelector(".right-sidebar");
+        if (rightSideBar) {
+            let btn = document.createElement("div");
+            btn.id = "backTopBtn";
+            btn.onclick = function () { window.scrollTo({ top: 0, behavior: "smooth" }); };
+            rightSideBar.appendChild(btn);
+            window.addEventListener('scroll', function () {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) { btn.style.display = "block"; }
+                else { btn.style.display = "none"; }
+            });
+        }
+
+        
+        let blockquotes = document.querySelectorAll("blockquote");
+        blockquotes.forEach(function (bq) {
+            
+            let text = bq.textContent || bq.innerText;
+            let alertType = "";
+
+            
+            if (text.includes("[!NOTE]")) { alertType = "note"; }
+            else if (text.includes("[!TIP]")) { alertType = "tip"; }
+            else if (text.includes("[!WARN]")) { alertType = "warn"; }
+            else if (text.includes("[!ERROR]")) { alertType = "error"; }
+            else if (text.includes("[!VIOLET]")) { alertType = "violet"; }
+
+            if (alertType) {
+                
+                bq.classList.add("alert", "alert-" + alertType);
+
+                
+                let pTag = bq.querySelector("p");
+                if (pTag) {
+                    
+                    let token = "[!" + alertType.toUpperCase() + "]";
+                    if (pTag.innerText.startsWith(token)) {
+                        pTag.innerText = pTag.innerText.substring(token.length).trim();
+                    } else {
+                        
+                        pTag.innerText = pTag.innerText.replace(/\[!(NOTE|TIP|WARN|ERROR|VIOLET)\]/g, "").trim();
+                    }
+                }
+            }
+        });
+    });
+</script>
+    </body>
+</html>

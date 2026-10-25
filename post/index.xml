@@ -7,7 +7,2370 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>怠惰的天秤-sloth</copyright>
-        <lastBuildDate>Tue, 13 Oct 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://sloth-cyx.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 23 Oct 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://sloth-cyx.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【咨讯】程序员常用 Linux 命令大全</title>
+        <link>https://sloth-cyx.github.io/p/%E5%92%A8%E8%AE%AF%E7%A8%8B%E5%BA%8F%E5%91%98%E5%B8%B8%E7%94%A8-linux-%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/</link>
+        <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
+        
+        <guid>https://sloth-cyx.github.io/p/%E5%92%A8%E8%AE%AF%E7%A8%8B%E5%BA%8F%E5%91%98%E5%B8%B8%E7%94%A8-linux-%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/</guid>
+        <description>&lt;img src="https://sloth-cyx.github.io/images/linuxCommands/linuxCommands_bg.png" alt="Featured image of post 【咨讯】程序员常用 Linux 命令大全" /&gt;&lt;blockquote&gt;
+&lt;p&gt;[!NOTE]&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;本文章为codex制作，无任何手动介入。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这篇按程序员日常开发、部署和排障的使用频率，整理 Linux 常用命令。&lt;strong&gt;各分类及分类内的条目，大致由常用到较少用排列&lt;/strong&gt;；实际频率会随工作变化，可以通过文章目录直接跳到需要的部分。&lt;/p&gt;
+&lt;p&gt;示例以 &lt;strong&gt;Linux + Bash + GNU 工具 + procps-ng&lt;/strong&gt; 为主，Java 部分以 HotSpot JVM 为主。BusyBox、Alpine、不同 JDK 和发行版的参数可能不同，先用 &lt;code&gt;命令 --help&lt;/code&gt;、&lt;code&gt;man 命令&lt;/code&gt; 或 &lt;code&gt;jcmd PID help&lt;/code&gt; 确认。表中的一行通常是一个独立示例，不需要整表顺序执行。&lt;/p&gt;
+&lt;p&gt;文中的 &lt;code&gt;12345&lt;/code&gt;、&lt;code&gt;app.service&lt;/code&gt;、&lt;code&gt;app.jar&lt;/code&gt;、&lt;code&gt;/srv/app&lt;/code&gt;、&lt;code&gt;user@server&lt;/code&gt; 都是需要替换的示例值。&lt;code&gt;sudo&lt;/code&gt; 仅在权限不足时使用；Java 诊断工具通常应以目标 JVM 的运行用户执行。&lt;/p&gt;
+&lt;h2 id=&#34;1-每天最常用目录文件与帮助&#34;&gt;1. 每天最常用：目录、文件与帮助
+&lt;/h2&gt;&lt;h3 id=&#34;11-查看位置和文件&#34;&gt;1.1 查看位置和文件
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;用途与常用参数&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;pwd&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;显示当前目录的绝对路径&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ls&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;列出目录内容&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ls -lah&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;详细列表，包含隐藏文件，大小便于阅读&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ls -lt&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;按修改时间排序，新的在前&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ls -lhS&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;按文件大小排序，大的在前&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cd /srv/app&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;切换目录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cd ..&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;返回上一级&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cd ~&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;返回当前用户主目录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cd -&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;切回上一次所在的目录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;file app.jar&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;判断文件类型&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;stat app.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看大小、权限、inode、时间等详细信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;readlink -f ./current&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;解析符号链接并得到规范化绝对路径&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;12-创建复制移动与删除&#34;&gt;1.2 创建、复制、移动与删除
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;用途与注意点&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;mkdir -p /srv/app/logs&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;创建多级目录，已存在时不报错&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cp app.conf app.conf.bak&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;复制文件；目标存在时可能覆盖&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cp -a app/ app-backup/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;递归复制并尽量保留权限、时间和链接等属性&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cp -i app.conf /srv/app/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;覆盖前询问&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;mv -i old.conf new.conf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;移动或重命名，覆盖前询问&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;touch notes.txt&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;文件不存在时创建空文件，否则更新时间戳&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;rm -i old.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;删除前询问&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;rm -r old-directory/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;递归删除目录，执行前核对路径&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;rmdir empty-directory/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;只删除空目录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ln -s /srv/releases/v1 /srv/current&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;创建符号链接，目标链接路径应事先不存在&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;删除通常无法通过终端撤销。尤其不要在变量为空、当前目录不确定时直接执行 &lt;code&gt;rm -rf&lt;/code&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;13-查询命令历史与终端快捷键&#34;&gt;1.3 查询命令、历史与终端快捷键
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令或按键&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;command --help&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看命令帮助，将 command 换成实际命令&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;man ps&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;阅读手册；&lt;code&gt;/关键词&lt;/code&gt; 搜索，&lt;code&gt;n&lt;/code&gt; 下一处，&lt;code&gt;q&lt;/code&gt; 退出&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;type java&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;判断命令是别名、函数、内置命令还是文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;command -v java&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看当前会调用的命令路径&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;history&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看 Shell 历史&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl + R&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;反向搜索历史命令&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Tab&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;补全命令、文件名、目录名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl + C&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;中断前台任务&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl + A&lt;/code&gt; / &lt;code&gt;Ctrl + E&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Bash 默认 Emacs 模式下移到行首／行尾&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl + U&lt;/code&gt; / &lt;code&gt;Ctrl + K&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;删除光标前到行首／光标后到行尾的内容&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl + L&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;清屏，保留终端滚动历史&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;clear&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;清理终端显示&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;reset&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;终端显示混乱时重新初始化&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;2-日志查看grep管道与重定向&#34;&gt;2. 日志查看、grep、管道与重定向
+&lt;/h2&gt;&lt;h3 id=&#34;21-catlesstailhead&#34;&gt;2.1 cat、less、tail、head
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tail -n 100 app.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;最后 100 行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tail -f app.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;持续跟踪新日志&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tail -F app.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;按文件名持续跟踪，适合日志轮转后的重新打开&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;less app.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;分页阅读大文件，避免一次输出全部内容&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;less +G app.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;打开后跳到末尾&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;head -n 50 app.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;前 50 行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cat app.conf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;输出较短文件的全部内容&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cat -n app.conf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;输出内容并显示行号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sed -n &#39;100,160p&#39; app.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看第 100～160 行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;wc -l app.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;统计换行符数量，常用于估算行数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;code&gt;less&lt;/code&gt; 内常用：&lt;code&gt;/关键词&lt;/code&gt; 向后搜索、&lt;code&gt;?关键词&lt;/code&gt; 向前搜索、&lt;code&gt;n&lt;/code&gt; 下一处、&lt;code&gt;N&lt;/code&gt; 上一处、&lt;code&gt;g&lt;/code&gt; 文件开头、&lt;code&gt;G&lt;/code&gt; 文件末尾、&lt;code&gt;Shift + F&lt;/code&gt; 跟踪新增内容、&lt;code&gt;q&lt;/code&gt; 退出。跟踪时先 &lt;code&gt;Ctrl + C&lt;/code&gt; 再 &lt;code&gt;q&lt;/code&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;22-grep按内容搜索&#34;&gt;2.2 grep：按内容搜索
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;grep &#39;ERROR&#39; app.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查找包含 ERROR 的行，默认区分大小写&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;grep -n &#39;ERROR&#39; app.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;显示行号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;grep -i &#39;error&#39; app.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;忽略大小写&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;grep -C 5 &#39;Exception&#39; app.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;同时显示前后各 5 行；&lt;code&gt;-A&lt;/code&gt; 只看后面，&lt;code&gt;-B&lt;/code&gt; 只看前面&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;grep -v &#39;healthcheck&#39; app.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;排除匹配行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;grep -E &#39;ERROR|WARN&#39; app.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;扩展正则，匹配 ERROR 或 WARN&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;grep -F &#39;a.b[0]&#39; app.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;按固定字符串匹配，避免点号和方括号被解释为正则&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;grep -w &#39;java&#39; processes.txt&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;按单词边界匹配&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;grep -c &#39;ERROR&#39; app.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;统计匹配行数，一行多次出现仍算一行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;grep -o &#39;ERROR&#39; app.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;只输出每次匹配到的内容&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;grep -RIn --include=&#39;*.java&#39; &#39;TODO&#39; src/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;递归查 Java 文件并显示文件名、行号，跳过二进制文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;grep -rl &#39;old-url&#39; config/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;递归查找，只输出匹配的文件名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;zgrep -n &#39;Exception&#39; app.log.gz&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;搜索 gzip 压缩日志&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;表格中正则里的竖线是 Markdown 转义显示；在终端实际输入 &lt;code&gt;grep -E &#39;ERROR|WARN&#39; app.log&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;实时过滤日志：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tail -F app.log &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep --line-buffered -i &lt;span class=&#34;s1&#34;&gt;&amp;#39;error&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;tail -F app.log &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep --line-buffered -E &lt;span class=&#34;s1&#34;&gt;&amp;#39;ERROR|WARN|Exception&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;--line-buffered&lt;/code&gt; 用于减少管道过滤时的输出等待。日志级别匹配只是一种筛选方式，多行异常堆栈还应结合上下文或完整日志阅读。&lt;/p&gt;
+&lt;h3 id=&#34;23-管道--到底是什么&#34;&gt;2.3 管道 | 到底是什么
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;|&lt;/code&gt; 将左边命令的&lt;strong&gt;标准输出&lt;/strong&gt;交给右边命令的&lt;strong&gt;标准输入&lt;/strong&gt;。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 常见写法：先列进程，再过滤含 java 的行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ps -ef &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep java
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 排除 grep 自身：正则 [j]ava 匹配 java，但不匹配 grep 参数中的 [j]ava&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ps -ef &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep &lt;span class=&#34;s1&#34;&gt;&amp;#39;[j]ava&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 更直接：按完整命令行找进程，同时显示 PID&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pgrep -af java
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 日志里出现最多的 20 种完整 ERROR 行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;grep &lt;span class=&#34;s1&#34;&gt;&amp;#39;ERROR&amp;#39;&lt;/span&gt; app.log &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; sort &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; uniq -c &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; sort -nr &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; head -n &lt;span class=&#34;m&#34;&gt;20&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;ps grep | java&lt;/code&gt; 并不能表达“找 Java 进程”；日常要写的是 &lt;code&gt;ps -ef | grep java&lt;/code&gt;。匹配结果也可能包含名字带 java 的其他程序，操作前应核对 PID 和完整命令行。&lt;/p&gt;
+&lt;h3 id=&#34;24-21tee&#34;&gt;2.4 &amp;gt;、&amp;raquo;、2&amp;gt;&amp;amp;1、tee、&amp;amp;&amp;amp;
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;写法&lt;/th&gt;
+&lt;th&gt;含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;command &amp;gt; out.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;标准输出写入文件，覆盖原内容&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;command &amp;gt;&amp;gt; out.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;标准输出追加到文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;command 2&amp;gt; err.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;标准错误写入文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;command &amp;gt; all.log 2&amp;gt;&amp;amp;1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;标准输出和标准错误都写入 all.log&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;command 2&amp;gt;&amp;amp;1 | tee all.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;两种输出合并后，同时显示并保存；tee 默认覆盖&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;command | tee -a out.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;同时显示并追加标准输出&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;command &amp;lt; input.txt&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;从文件读取标准输入&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;command &amp;gt;/dev/null 2&amp;gt;&amp;amp;1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;丢弃两种输出，排障时慎用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;command1 &amp;amp;&amp;amp; command2&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;前者成功才执行后者&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;command1 || command2&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;前者失败才执行后者&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;command1; command2&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;不论前者是否成功，都执行后者&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;重定向顺序有意义：&lt;code&gt;command 2&amp;gt;&amp;amp;1 &amp;gt; out.log&lt;/code&gt; 会先让标准错误指向当时的标准输出，通常仍是终端，再单独重定向标准输出。&lt;/p&gt;
+&lt;p&gt;Bash 默认用管道最后一个命令的退出状态作为整个管道状态。脚本需要发现前面命令失败时，可使用 &lt;code&gt;set -o pipefail&lt;/code&gt;；但 &lt;code&gt;grep&lt;/code&gt; 未匹配返回 1，&lt;code&gt;head&lt;/code&gt; 提前退出也可能使上游收到 SIGPIPE，需要结合具体流程处理。&lt;/p&gt;
+&lt;h2 id=&#34;3-进程线程与后台任务&#34;&gt;3. 进程、线程与后台任务
+&lt;/h2&gt;&lt;h3 id=&#34;31-找-pid-和查看进程&#34;&gt;3.1 找 PID 和查看进程
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ps -ef&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看所有进程及父 PID、完整命令等&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ps aux&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;BSD 风格输出，包含 CPU、内存等；这里不写成 &lt;code&gt;ps -aux&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;pgrep -af java&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;按完整命令行搜索进程&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;pgrep -ax java&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;精确匹配进程名 java，再显示命令行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ps -p 12345 -o pid,ppid,user,etime,%cpu,%mem,rss,vsz,args&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看一个进程的运行时间、CPU、内存和命令&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ps -eo pid,ppid,stat,comm --forest&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;以树形方式显示进程关系&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;pstree -ap 12345&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看指定进程的子进程树，需安装 psmisc&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;top -p 12345&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;持续观察指定进程&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;top -H -p 12345&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看该进程内的线程&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ps -L -p 12345 -o pid,tid,pcpu,stat,comm&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;列出线程 ID、CPU 与状态&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;code&gt;top&lt;/code&gt; 中常用 &lt;code&gt;P&lt;/code&gt; 按 CPU 排序、&lt;code&gt;M&lt;/code&gt; 按内存排序、&lt;code&gt;1&lt;/code&gt; 切换各 CPU 核心显示、&lt;code&gt;q&lt;/code&gt; 退出。&lt;code&gt;ps %CPU&lt;/code&gt; 通常是进程整个生存期的平均比例，&lt;code&gt;top&lt;/code&gt; 更适合观察当前采样区间；多线程进程可能超过 100%。&lt;/p&gt;
+&lt;p&gt;常见进程状态：&lt;code&gt;R&lt;/code&gt; 正在运行或可运行、&lt;code&gt;S&lt;/code&gt; 可中断睡眠、&lt;code&gt;D&lt;/code&gt; 不可中断睡眠（常与 I/O 等待有关）、&lt;code&gt;T&lt;/code&gt; 停止、&lt;code&gt;Z&lt;/code&gt; 僵尸。僵尸进程已经退出，需要父进程回收其状态，继续对它 &lt;code&gt;kill -9&lt;/code&gt; 无法解决。&lt;/p&gt;
+&lt;h3 id=&#34;32-停止进程与发送信号&#34;&gt;3.2 停止进程与发送信号
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 先确认 PID 和命令，再请求正常结束&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ps -p &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; -o pid,user,args
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;kill&lt;/span&gt; -TERM &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 仅在正常结束失败且确认后果后使用，无法运行清理逻辑&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;kill&lt;/span&gt; -KILL &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 核对服务归属后，受 systemd 管理的服务优先通过服务管理器停止&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo systemctl stop app.service
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;kill&lt;/code&gt; 默认发 &lt;code&gt;SIGTERM&lt;/code&gt;，并非默认强制杀死。&lt;code&gt;pkill -f&lt;/code&gt; 会按完整命令行批量匹配，范围很容易超过预期；先用相同条件的 &lt;code&gt;pgrep -af&lt;/code&gt; 检查。&lt;/p&gt;
+&lt;h3 id=&#34;33-后台nohupjobstmux&#34;&gt;3.3 后台、nohup、jobs、tmux
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;command &amp;amp;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;放到当前 Shell 后台执行，退出会话后是否继续受会话与程序行为影响&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;jobs -l&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看当前 Shell 的后台任务&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;fg %1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;将作业 1 切回前台&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;bg %1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;让停止的作业 1 在后台继续&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl + Z&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;暂停前台作业，再决定 fg 或 bg&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;nohup java -jar app.jar &amp;gt;app.log 2&amp;gt;&amp;amp;1 &amp;amp;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;忽略挂断信号并在后台启动；正式服务宜交给 systemd 等管理&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;echo $!&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;当前 Shell 最近一次后台任务的 PID&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;wait &amp;quot;$job_pid&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;等待指定子任务结束，并返回其退出状态&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tmux new -s debug&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;新建持久终端会话，需要 tmux&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tmux attach -t debug&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;重新连接会话&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tmux ls&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;列出会话&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;tmux 中先按 &lt;code&gt;Ctrl + B&lt;/code&gt; 再按 &lt;code&gt;D&lt;/code&gt; 可分离会话，让任务继续运行。&lt;/p&gt;
+&lt;h2 id=&#34;4-linux-系统资源磁盘内存cpu-与-io&#34;&gt;4. Linux 系统资源：磁盘、内存、CPU 与 I/O
+&lt;/h2&gt;&lt;h3 id=&#34;41-df--h文件系统空间du目录占用&#34;&gt;4.1 df -h：文件系统空间，du：目录占用
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;df -h&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看各文件系统的容量、已用、可用和使用率&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;df -h /srv/app&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看这个路径所在的文件系统&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;df -i&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看 inode 使用率，大量小文件可能把 inode 用尽&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;du -sh /srv/app&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;统计目录总占用，扫描大目录可能较慢&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;du -xhd1 /srv/app | sort -h&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看下一层目录的占用，限制在同一文件系统&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;lsblk -f&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看块设备、文件系统和挂载点&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;findmnt /srv/app&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看路径对应的挂载信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sudo lsof +L1&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查找已删除但仍被进程打开的文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;df -h&lt;/code&gt; 查的是磁盘空间，不是 RAM。&lt;/strong&gt; &lt;code&gt;df&lt;/code&gt; 是文件系统视角，&lt;code&gt;du&lt;/code&gt; 是扫描目录树的视角，因此两者不一定相等。常见原因包括已删除但未关闭的文件、挂载点遮住的内容、文件系统元数据和权限不足。&lt;/p&gt;
+&lt;p&gt;磁盘满时先定位目录和大文件，再决定轮转、归档或释放。直接删除进程仍打开的日志，空间可能要等进程关闭该文件后才真正释放。&lt;/p&gt;
+&lt;h3 id=&#34;42-free--h系统-ram-与-swap&#34;&gt;4.2 free -h：系统 RAM 与 Swap
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;free -h
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;free -m
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;watch -n &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; free -h
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;grep -E &lt;span class=&#34;s1&#34;&gt;&amp;#39;MemTotal|MemAvailable|Cached|SwapTotal|SwapFree&amp;#39;&lt;/span&gt; /proc/meminfo
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;swapon --show
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;优先看 &lt;code&gt;available&lt;/code&gt;，它估算在不发生交换的情况下还能供新应用使用的内存。Linux 会用空闲内存做缓存，&lt;code&gt;free&lt;/code&gt; 较小不必然意味着缺内存；还要看可用内存趋势、Swap 活跃程度和应用延迟。不同 procps 版本的 &lt;code&gt;used&lt;/code&gt; 计算方式可能有差异。&lt;/p&gt;
+&lt;h3 id=&#34;43-查询每个-process-使用多少-memory&#34;&gt;4.3 查询每个 process 使用多少 memory
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 所有进程：RSS 从大到小；RSS、VSZ 通常以 KiB 显示&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ps -eo pid,ppid,user,%mem,rss,vsz,comm --sort&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;-rss
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 只看最大的 20 个进程（加一行表头）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ps -eo pid,user,%mem,rss,vsz,args --sort&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;-rss &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; head -n &lt;span class=&#34;m&#34;&gt;21&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 只看一个进程&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ps -p &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; -o pid,etime,%mem,rss,vsz,args
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 持续观察&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;top -p &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;watch -n &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;ps -p 12345 -o pid,etime,%mem,rss,vsz,args&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 明确转换成 MiB，保留单个进程的完整命令行&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ps -p &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; -o &lt;span class=&#34;nv&#34;&gt;rss&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; awk &lt;span class=&#34;s1&#34;&gt;&amp;#39;{printf &amp;#34;RSS: %.1f MiB\n&amp;#34;, $1/1024}&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;指标&lt;/th&gt;
+&lt;th&gt;含义&lt;/th&gt;
+&lt;th&gt;排查时怎么用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;RSS / RES&lt;/td&gt;
+&lt;td&gt;当前驻留在物理内存中的页，包含共享页&lt;/td&gt;
+&lt;td&gt;找占用大的进程、观察趋势；逐进程相加会重复计算共享部分&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;VSZ / VIRT&lt;/td&gt;
+&lt;td&gt;虚拟地址空间大小&lt;/td&gt;
+&lt;td&gt;可能包含尚未驻留的映射或预留空间，不能等同实际 RAM&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%MEM&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;通常按 RSS 占机器物理内存比例计算&lt;/td&gt;
+&lt;td&gt;容器里可能不反映该容器的 limit&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;PSS&lt;/td&gt;
+&lt;td&gt;将共享页按共享进程数量分摊后的占用&lt;/td&gt;
+&lt;td&gt;比较多个进程的实际分摊占用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;USS&lt;/td&gt;
+&lt;td&gt;进程独占的驻留内存，常由工具根据私有页汇总&lt;/td&gt;
+&lt;td&gt;判断独占占用，具体口径应看工具说明&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;JVM heap used&lt;/td&gt;
+&lt;td&gt;JVM 堆里已使用的空间&lt;/td&gt;
+&lt;td&gt;判断 Java 对象占用，还要观察 GC 后存活量&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;RSS 不是 Java heap。&lt;/strong&gt; 一个进程还可能包含线程栈、Metaspace、JIT 代码、直接内存、native 库、文件映射及共享内存等。&lt;code&gt;ps&lt;/code&gt; 与 &lt;code&gt;/proc/PID/status&lt;/code&gt; 的部分内存计数是近似值，进一步核对可读 &lt;code&gt;smaps_rollup&lt;/code&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;44-procpmapsmem进一步拆内存&#34;&gt;4.4 /proc、pmap、smem：进一步拆内存
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 快速看 RSS、匿名页、文件页、峰值、线程数等&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;grep -E &lt;span class=&#34;s1&#34;&gt;&amp;#39;VmRSS|VmHWM|VmSize|VmSwap|RssAnon|RssFile|RssShmem|Threads&amp;#39;&lt;/span&gt; /proc/12345/status
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 汇总各映射的精细内存信息，通常比 status 更费时，需要读取权限&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cat /proc/12345/smaps_rollup
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 查看内存映射，重点找持续增长的匿名映射等&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pmap -x &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 非默认工具：按 PSS 排序显示系统进程，查看其他用户通常需 sudo&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo smem -k -s pss -r
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;smaps_rollup&lt;/code&gt; 需要内核支持；查看其他用户的 &lt;code&gt;/proc&lt;/code&gt; 信息还可能受 &lt;code&gt;hidepid&lt;/code&gt;、ptrace 权限和容器隔离限制。它能展示内存分布，但不会直接指出“哪一行代码泄漏”。&lt;/p&gt;
+&lt;h3 id=&#34;45-cpu负载与-io&#34;&gt;4.5 CPU、负载与 I/O
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;用途与解读&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;top&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;实时看 CPU、内存和进程&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;htop&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;交互式进程查看器，需要额外安装&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;uptime&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;运行时间与最近 1、5、15 分钟 load average&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;nproc&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;当前进程可用的处理单元数量；容器配额需额外核对&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;lscpu&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;CPU 架构、核心与线程信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;vmstat 1 10&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;每秒采样一次，共 10 次；常看 r、b、si、so、wa&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;pidstat -p 12345 -u -r -d 1 10&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;按进程采样 CPU、内存、I/O，来自 sysstat&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;iostat -xz 1 10&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看设备吞吐、延迟与队列，来自 sysstat&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;mpstat -P ALL 1 10&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;每个 CPU 的使用率，来自 sysstat&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sudo iotop -o&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;交互查看活跃 I/O 任务，需安装并满足内核与权限条件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sar -r 1 10&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;内存采样；历史数据需预先启用 sysstat 收集&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Linux 的 load average 同时涉及可运行任务和不可中断睡眠任务，负载高可能与 CPU 或 I/O 有关。&lt;code&gt;vmstat&lt;/code&gt; 的第一行通常是启动以来的平均值，后续才是采样区间数据；&lt;code&gt;si/so&lt;/code&gt; 持续活跃可能表明交换压力。不要只凭一个 &lt;code&gt;%util&lt;/code&gt;、&lt;code&gt;wa&lt;/code&gt; 或 load 数字判定瓶颈。&lt;/p&gt;
+&lt;h3 id=&#34;46-oom内核日志与容器内存&#34;&gt;4.6 OOM、内核日志与容器内存
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# systemd 系统：本次启动的内核日志&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo journalctl -k -b --since &lt;span class=&#34;s1&#34;&gt;&amp;#39;1 hour ago&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep -Ei &lt;span class=&#34;s1&#34;&gt;&amp;#39;oom|out of memory|killed process&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 无 journal 时，可查看内核环形缓冲区；权限和日志保留受系统设置影响&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo dmesg -T &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep -Ei &lt;span class=&#34;s1&#34;&gt;&amp;#39;oom|out of memory|killed process&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Docker 内的资源占用和状态&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker stats --no-stream
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker inspect --format &lt;span class=&#34;s1&#34;&gt;&amp;#39;{{.State.OOMKilled}} {{.State.ExitCode}}&amp;#39;&lt;/span&gt; app
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 确认进程所在 cgroup；从宿主机定位时，结合 cgroup 挂载点解析路径&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cat /proc/12345/cgroup
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 若当前容器的 cgroup v2 根就映射在 /sys/fs/cgroup，可直接读取：&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cat /sys/fs/cgroup/memory.current
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cat /sys/fs/cgroup/memory.max
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cat /sys/fs/cgroup/memory.events
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cat /sys/fs/cgroup/memory.stat
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;cgroup v2 的 &lt;code&gt;memory.current&lt;/code&gt; 与 &lt;code&gt;memory.max&lt;/code&gt; 以字节计，&lt;code&gt;max&lt;/code&gt; 表示该层未设数值上限，但仍可能受祖先层限制。&lt;code&gt;memory.events&lt;/code&gt; 中的 &lt;code&gt;oom&lt;/code&gt;、&lt;code&gt;oom_kill&lt;/code&gt; 是累计事件，应比较变化。宿主机中读取 &lt;code&gt;/sys/fs/cgroup&lt;/code&gt; 根目录通常不是目标容器所在组，要依据 &lt;code&gt;/proc/PID/cgroup&lt;/code&gt; 定位；cgroup v1 的路径和文件名不同。&lt;/p&gt;
+&lt;p&gt;容器 memory 统计还可能包括同组其他进程和文件缓存。宿主机 RAM 有余量，容器仍可能碰到自身限制。退出码 137 常与 SIGKILL 有关，&lt;strong&gt;单独看到 137 不足以证明 OOM&lt;/strong&gt;，要结合状态与内核／编排平台记录。&lt;/p&gt;
+&lt;h2 id=&#34;5-java-常用命令与-jvm-诊断&#34;&gt;5. Java 常用命令与 JVM 诊断
+&lt;/h2&gt;&lt;h3 id=&#34;51-javajcmdjps版本进程和启动信息&#34;&gt;5.1 java、jcmd、jps：版本、进程和启动信息
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;java -version
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;javac -version
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;command&lt;/span&gt; -v java
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;readlink -f &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;command&lt;/span&gt; -v java&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 列出可见 JVM；容器或权限隔离下可能看不全&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jcmd -l
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jps -lv
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pgrep -af java
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 指定目标 PID，先看它实际支持什么&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jcmd &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;help&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jcmd &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; VM.version
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jcmd &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; VM.command_line
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jcmd &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; VM.flags
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jcmd &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; VM.system_properties
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;jcmd&lt;/code&gt;、&lt;code&gt;jps&lt;/code&gt;、&lt;code&gt;jstat&lt;/code&gt; 等通常需要完整 JDK 或对应诊断包，精简 JRE／容器镜像可能没有。尽量使用与目标 JVM 同版本、同发行版的工具，并以目标用户执行；Attach 被禁用、PID 命名空间不同或权限不足时也可能无法连接。不要把 PID 写成 &lt;code&gt;0&lt;/code&gt;，它可能将命令发给所有可见 JVM。&lt;/p&gt;
+&lt;p&gt;命令行、系统属性与 dump 可能含连接串、令牌或业务数据，分享前应检查内容。命令及影响等级可查 &lt;a class=&#34;link&#34; href=&#34;https://docs.oracle.com/en/java/javase/25/docs/specs/man/jcmd.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Oracle jcmd 文档&lt;/a&gt;，实际支持情况以目标 JVM 的 &lt;code&gt;help&lt;/code&gt; 为准。&lt;/p&gt;
+&lt;h3 id=&#34;52-查-heap-memoryjcmd-与-jstat&#34;&gt;5.2 查 heap memory：jcmd 与 jstat
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 当前堆概况；具体字段取决于 GC 和 JDK&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jcmd &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; GC.heap_info
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 每秒一次，共 20 次，观察各代／空间使用与 GC 计数、耗时&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jstat -gc &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1000&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;20&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 百分比视角&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jstat -gcutil &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1000&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;20&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 增加运行时间，每 10 行重复表头&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jstat -gcutil -t -h &lt;span class=&#34;m&#34;&gt;10&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1000&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;30&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;堆的 &lt;strong&gt;used&lt;/strong&gt; 是已用量，&lt;strong&gt;committed&lt;/strong&gt; 是当前已提交容量，&lt;strong&gt;max&lt;/strong&gt; 是允许增长到的上限；不同工具不一定同时显示三者。&lt;code&gt;-Xmx&lt;/code&gt; 是堆上限，不是整个 Java 进程内存上限。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;jstat -gc&lt;/code&gt; 的常见容量／使用量列如 &lt;code&gt;EC/EU&lt;/code&gt;、&lt;code&gt;OC/OU&lt;/code&gt; 通常以 KB 表示，&lt;code&gt;-gcutil&lt;/code&gt; 则显示各空间使用比例；&lt;code&gt;YGC/FGC&lt;/code&gt; 是计数，&lt;code&gt;YGCT/FGCT/GCT&lt;/code&gt; 是累计耗时。列名、可用性和解释随 JDK 与收集器变化，ZGC、Shenandoah 等不能机械套用传统分代口径。&lt;code&gt;jstat&lt;/code&gt; 属于实验性工具，不宜写依赖固定列号的长期脚本。参见 &lt;a class=&#34;link&#34; href=&#34;https://docs.oracle.com/en/java/javase/25/docs/specs/man/jstat.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;jstat 手册&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;看到 heap 锯齿式上涨、GC 后回落通常是正常现象。更值得追踪的是：在相近负载下，&lt;strong&gt;多次可比 GC 后的存活对象基线持续抬升&lt;/strong&gt;，而非单次 heap 使用率很高。&lt;/p&gt;
+&lt;h3 id=&#34;53-查线程jcmd-threadprintjstack&#34;&gt;5.3 查线程：jcmd Thread.print、jstack
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jcmd &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; Thread.print -l &amp;gt; threads-01.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 旧工具替代写法，实际支持取决于 JDK&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jstack -l &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; &amp;gt; threads-02.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 每隔 10 秒保存一份，共 3 份，判断同一位置是否持续阻塞&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; i in &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; 3&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  jcmd &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; Thread.print -l &amp;gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;threads-&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;date +%Y%m%d-%H%M%S&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;.txt&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  sleep &lt;span class=&#34;m&#34;&gt;10&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;重点看死锁报告、持续 RUNNABLE 的热点、BLOCKED 的锁竞争和线程数量变化。大量 WAITING／TIMED_WAITING 在线程池中可能正常，不能只看状态就判断异常。现代 JDK 的虚拟线程诊断方式可能不同，可先检查 &lt;code&gt;jcmd PID help Thread.dump_to_file&lt;/code&gt;，传统 OS 线程视图无法完整反映所有虚拟线程。&lt;/p&gt;
+&lt;h3 id=&#34;54-java-cpu-很高从线程-id-对到堆栈&#34;&gt;5.4 Java CPU 很高：从线程 ID 对到堆栈
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 1. 找到忙的 OS 线程，记下十进制 TID&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;top -H -p &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 2. 假设 TID 为 23456，转换为十六进制&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;printf&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;%x\n&amp;#39;&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;23456&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 3. 保存线程栈，搜索对应 nid，例如输出为 5ba0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jcmd &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; Thread.print -l &amp;gt; threads.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;grep -A &lt;span class=&#34;m&#34;&gt;30&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;nid=0x5ba0&amp;#39;&lt;/span&gt; threads.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;这是 HotSpot 平台线程的常见定位方法。多次采样同一线程，看它是否一直落在同一调用链；单个瞬间的栈只能提供线索。虚拟线程或不同 JVM 实现应使用对应工具。&lt;/p&gt;
+&lt;h3 id=&#34;55-对象直方图和-heap-dump疑似堆泄漏时再用&#34;&gt;5.5 对象直方图和 heap dump：疑似堆泄漏时再用
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;这类操作可能明显停顿应用、触发 GC 或产生很大的文件。&lt;/strong&gt; 先读目标 JVM 的帮助，确认磁盘空间、文件权限与可接受的停顿窗口，再执行。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jcmd &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;help&lt;/span&gt; GC.class_histogram
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jcmd &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;help&lt;/span&gt; GC.heap_dump
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 按类统计对象数量和字节数：可能触发 GC，成本取决于堆大小等因素&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jcmd &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; GC.class_histogram &amp;gt; histogram-01.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 路径是目标 JVM 可访问的路径，应使用新文件名，避免覆盖已有现场&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;df -h /srv/diagnostics
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jcmd &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; GC.heap_dump /srv/diagnostics/heap-20261023-01.hprof
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;两个时间点的 histogram 可用于找增长明显的类，但浅大小、对象数量与真实保留大小不同。真正定位泄漏通常需要在 Eclipse MAT 等工具里分析 &lt;strong&gt;Dominator Tree、Retained Heap、Path to GC Roots&lt;/strong&gt;，弄清对象被谁长期引用；&lt;code&gt;byte[]&lt;/code&gt; 或 &lt;code&gt;String&lt;/code&gt; 占用大本身不能证明泄漏。&lt;/p&gt;
+&lt;p&gt;部分版本提供 &lt;code&gt;-all&lt;/code&gt; 等参数，其 GC 行为与是否包含不可达对象不同；使用前以 &lt;code&gt;jcmd PID help GC.heap_dump&lt;/code&gt; 为准。旧工具常见等价方向如下，需核对版本：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jmap -histo &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jmap -dump:live,format&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;b,file&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/srv/diagnostics/heap-legacy-01.hprof &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;其中 &lt;code&gt;live&lt;/code&gt; 通常涉及 Full GC；不要把它作为无成本的日常监控。Oracle 推荐优先使用 &lt;code&gt;jcmd&lt;/code&gt;，旧工具的可用性和支持程度见 &lt;a class=&#34;link&#34; href=&#34;https://docs.oracle.com/en/java/javase/25/troubleshoot/diagnostic-tools.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Java 诊断工具说明&lt;/a&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;56-native-memory堆外线程栈metaspace&#34;&gt;5.6 native memory：堆外、线程栈、Metaspace
+&lt;/h3&gt;&lt;p&gt;如果 RSS 上升而 heap 较稳定，需要进一步看线程、Metaspace、直接缓冲区、native 库和 mmap。HotSpot 的 NMT 需要启动时启用；普通未启用 NMT 的 JVM 不能靠事后执行查询补出历史。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 下次受控启动时添加；summary/detail 会带来额外开销&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;java -XX:NativeMemoryTracking&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;summary -jar app.jar
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 已启用 NMT 的 JVM：查看汇总&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jcmd &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; VM.native_memory summary &lt;span class=&#34;nv&#34;&gt;scale&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;MB
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 应用预热稳定后建立基线，过一段时间对比&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jcmd &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; VM.native_memory baseline
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jcmd &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; VM.native_memory summary.diff &lt;span class=&#34;nv&#34;&gt;scale&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;MB
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 同时检查线程数量和进程映射&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;grep -E &lt;span class=&#34;s1&#34;&gt;&amp;#39;Threads|VmRSS|RssAnon|RssFile&amp;#39;&lt;/span&gt; /proc/12345/status
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pmap -x &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;NMT 的 &lt;code&gt;reserved&lt;/code&gt; 是预留地址空间，&lt;code&gt;committed&lt;/code&gt; 是已提交量，二者都不能直接等同 RSS。NMT 主要跟踪 HotSpot 内部内存，&lt;strong&gt;不覆盖所有第三方 native 分配，也不能完整替代进程内存统计&lt;/strong&gt;。&lt;code&gt;Thread&lt;/code&gt; 增长时检查线程数和线程池；&lt;code&gt;Class/Metaspace&lt;/code&gt; 增长时检查类加载器和动态生成类；直接缓冲区可结合 JMX 的 &lt;code&gt;java.nio:type=BufferPool,name=direct&lt;/code&gt; 的 MemoryUsed、TotalCapacity、Count 观察。其口径也不等同全部堆外内存。&lt;/p&gt;
+&lt;h3 id=&#34;57-jfr需要更完整时间线时&#34;&gt;5.7 JFR：需要更完整时间线时
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 先核对目标支持情况&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jcmd &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;help&lt;/span&gt; JFR.start
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 录制 2 分钟；profile 相比 default 通常收集更多信息，开销也更高&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jcmd &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; JFR.start &lt;span class=&#34;nv&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;investigation &lt;span class=&#34;nv&#34;&gt;settings&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;profile &lt;span class=&#34;nv&#34;&gt;duration&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;2m &lt;span class=&#34;nv&#34;&gt;filename&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/srv/diagnostics/app-01.jfr
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jcmd &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; JFR.check
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 如需在录制结束前导出当前数据&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jcmd &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; JFR.dump &lt;span class=&#34;nv&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;investigation &lt;span class=&#34;nv&#34;&gt;filename&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/srv/diagnostics/app-snapshot-01.jfr
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;用 JDK Mission Control 等工具分析 CPU 采样、GC、分配和锁事件。可用事件依赖 JDK 和录制配置；分配速率高与对象长期存活是两件事，泄漏分析还要结合存活与引用链证据。&lt;/p&gt;
+&lt;h3 id=&#34;58-启动时保留-gc-与-oom-现场&#34;&gt;5.8 启动时保留 GC 与 OOM 现场
+&lt;/h3&gt;&lt;p&gt;下面是 &lt;strong&gt;JDK 9+ HotSpot&lt;/strong&gt; 的启动示例，需要预先创建可写目录，并按磁盘预算调整日志数量和大小：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;java &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;s1&#34;&gt;&amp;#39;-Xlog:gc*,safepoint:file=/srv/diagnostics/gc-%p.log:time,uptime,level,tags:filecount=5,filesize=20M&amp;#39;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  -XX:+HeapDumpOnOutOfMemoryError &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  -XX:HeapDumpPath&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/srv/diagnostics &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  -jar app.jar
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;JVM 抛出相应 OOM 时才有机会写 dump。进程被内核或容器 OOM killer 直接 SIGKILL 时，JVM 通常来不及生成它。JDK 8 使用不同 GC 日志参数，不能原样套用以上 &lt;code&gt;-Xlog&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;6-实战分类如何排查-memory-leak&#34;&gt;6. 实战分类：如何排查 memory leak
+&lt;/h2&gt;&lt;h3 id=&#34;61-第一步先分清哪一种内存问题&#34;&gt;6.1 第一步：先分清“哪一种内存问题”
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;现象&lt;/th&gt;
+&lt;th&gt;先看什么&lt;/th&gt;
+&lt;th&gt;下一步&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;系统 available 持续降低&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;free -h&lt;/code&gt;、RSS 排名、cgroup&lt;/td&gt;
+&lt;td&gt;判断是哪一个进程、文件缓存或组内占用增长&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;单进程 RSS 持续上涨&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;ps&lt;/code&gt;、&lt;code&gt;smaps_rollup&lt;/code&gt;、heap&lt;/td&gt;
+&lt;td&gt;区分堆内对象、匿名页、映射和共享页&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Java heap GC 后基线持续上涨&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;jstat&lt;/code&gt;、GC 日志、业务负载&lt;/td&gt;
+&lt;td&gt;对象直方图、heap dump 与引用链&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;heap 稳定但 RSS 上涨&lt;/td&gt;
+&lt;td&gt;NMT、线程数、BufferPool、pmap&lt;/td&gt;
+&lt;td&gt;检查 native、线程栈、直接内存、映射&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;OutOfMemoryError: Java heap space&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;堆限制、存活对象、瞬时分配&lt;/td&gt;
+&lt;td&gt;可能是泄漏，也可能是负载或堆容量不足&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;OutOfMemoryError: Metaspace&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;类数量、类加载器、Metaspace&lt;/td&gt;
+&lt;td&gt;检查动态类生成、热部署和类加载器释放&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;unable to create native thread&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;线程数、用户限制、cgroup pids、内存&lt;/td&gt;
+&lt;td&gt;不应只增加 Xmx；更大堆还可能挤压 native 空间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Direct buffer memory&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;BufferPool、直接内存限制、缓冲区生命周期&lt;/td&gt;
+&lt;td&gt;排查缓冲区积压与回收&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;容器 OOMKilled，无 Java OOM&lt;/td&gt;
+&lt;td&gt;容器限制、memory.events、平台日志&lt;/td&gt;
+&lt;td&gt;核对整个 cgroup 总占用和峰值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;df -h&lt;/code&gt; 满或日志无法写入&lt;/td&gt;
+&lt;td&gt;磁盘与 inode&lt;/td&gt;
+&lt;td&gt;属于存储问题，可能同时影响 dump 和日志留存&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;62-第二步连续采样而不是只截一张图&#34;&gt;6.2 第二步：连续采样，而不是只截一张图
+&lt;/h3&gt;&lt;p&gt;下面脚本只采集进程内存快照，不主动触发 GC。示例持续约 10 分钟，每 10 秒一次，保存到一个新日志文件：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/usr/bin/env bash
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;pid&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;memory-&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;pid&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;date +%Y%m%d-%H%M%S&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;.log&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;0&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; i&amp;lt;60&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; i++&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;c1&#34;&gt;# 进程退出就结束；采样期间也应留意 PID 被重用的可能&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; ! ps -p &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$pid&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt; &amp;gt;/dev/null&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;break&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    date -Is
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    ps -p &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$pid&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt; -o pid,etime,%cpu,%mem,rss,vsz,nlwp,args
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    grep -E &lt;span class=&#34;s1&#34;&gt;&amp;#39;VmRSS|VmSwap|RssAnon|RssFile|Threads&amp;#39;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;/proc/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$pid&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;/status&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;printf&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;\n&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt; &amp;gt;&amp;gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$out&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  sleep &lt;span class=&#34;m&#34;&gt;10&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;printf&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Saved: %s\n&amp;#39;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$out&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Java 另开终端采样：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jstat -gcutil -t &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;10000&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;60&lt;/span&gt; &amp;gt; gc-trend-01.log
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;同时记录吞吐量、并发请求、队列长度、缓存条目、部署时间和定时任务。进程重启后需重建基线；预热、缓存填充、流量高峰和堆扩容都可能带来正常增长。&lt;/p&gt;
+&lt;h3 id=&#34;63-第三步按证据深入&#34;&gt;6.3 第三步：按证据深入
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;GC 后存活量增长&lt;/strong&gt;：在相近业务状态下采集两个时间点的对象分布，必要时获得 dump，找被长期持有的集合、缓存、队列、ThreadLocal 或类加载器引用。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;线程数增长&lt;/strong&gt;：比较线程栈，检查每次请求创建线程、线程池无上限、任务堵塞等情况；线程栈也消耗 native 内存。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;heap 稳定，匿名 RSS 增长&lt;/strong&gt;：结合 NMT 差值、BufferPool、native 分配工具和库行为调查。NMT 未能解释的增长仍可能来自 native 库或分配器保留内存。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;文件映射／缓存增长&lt;/strong&gt;：检查 mmap、大文件访问和容器 memory.stat；进程 RSS、cgroup 文件缓存与 heap 的口径不同。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;修复后重复同一工作负载&lt;/strong&gt;：确认内存随负载进入稳定区间，GC 后基线不再持续抬升，而不是只看重启后降下来了。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;“GC 后没有立即归还操作系统”“RSS 高于 Xmx”“缓存增长”都不能单独证明泄漏。对象长期无用却仍被引用、native 分配未释放等，需要通过时间趋势与保留链或分配证据确认。也不要为了观察而反复执行 &lt;code&gt;jcmd PID GC.run&lt;/code&gt;；主动 GC 会改变现场并可能造成停顿。&lt;/p&gt;
+&lt;h2 id=&#34;7-vi--vim-与相关编辑命令&#34;&gt;7. vi / Vim 与相关编辑命令
+&lt;/h2&gt;&lt;h3 id=&#34;71-先掌握模式保存与退出&#34;&gt;7.1 先掌握模式、保存与退出
+&lt;/h3&gt;&lt;p&gt;&lt;code&gt;vi&lt;/code&gt; 是编辑器家族／兼容接口，机器上的 &lt;code&gt;vi&lt;/code&gt; 可能链接到 Vim 或其他实现。&lt;strong&gt;下面主要按 Vim 写&lt;/strong&gt;；Neovim 用 &lt;code&gt;nvim&lt;/code&gt; 启动，基础操作相近，但插件和配置方式不同，精简 vi 不一定支持全部命令。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令／按键&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;vi app.conf&lt;/code&gt; / &lt;code&gt;vim app.conf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;打开或新建文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;vim +120 app.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;打开并跳到第 120 行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;view app.conf&lt;/code&gt; / &lt;code&gt;vim -R app.conf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;以只读模式打开；并非权限级保护&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;i&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在光标前进入插入模式&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;a&lt;/code&gt; / &lt;code&gt;A&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;光标后／行尾插入&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;o&lt;/code&gt; / &lt;code&gt;O&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;下方／上方新建一行并插入&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Esc&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;回到普通模式&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;:w&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;保存&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;:q&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;退出；未保存修改时会阻止退出&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;:wq&lt;/code&gt; / &lt;code&gt;:x&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;保存并退出；&lt;code&gt;:x&lt;/code&gt; 在有修改时才写入&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;:q!&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;放弃未保存修改并退出&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;:w new.conf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;将当前缓冲区另存到指定文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;:help&lt;/code&gt; / &lt;code&gt;:help :substitute&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;打开帮助／替换命令帮助&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;72-移动搜索与跳转&#34;&gt;7.2 移动、搜索与跳转
+&lt;/h3&gt;&lt;p&gt;以下除 &lt;code&gt;:&lt;/code&gt; 命令外，均在普通模式下操作。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;按键&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;h j k l&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;左、下、上、右&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;w&lt;/code&gt; / &lt;code&gt;b&lt;/code&gt; / &lt;code&gt;e&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;下一个词首／上一个词首／词尾&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;0&lt;/code&gt; / &lt;code&gt;^&lt;/code&gt; / &lt;code&gt;$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;行首／第一个非空白字符／行尾&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;gg&lt;/code&gt; / &lt;code&gt;G&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;文件开头／末尾&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;120G&lt;/code&gt; / &lt;code&gt;:120&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;跳到第 120 行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl + D&lt;/code&gt; / &lt;code&gt;Ctrl + U&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;下／上滚半屏&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl + F&lt;/code&gt; / &lt;code&gt;Ctrl + B&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;下／上翻一屏&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/ERROR&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;向后搜索 ERROR，Enter 确认&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;?ERROR&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;向前搜索&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;n&lt;/code&gt; / &lt;code&gt;N&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;沿搜索方向下一处／反方向上一处&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;*&lt;/code&gt; / &lt;code&gt;#&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;向后／向前搜索光标处单词&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;跳转到匹配的括号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;:set number&lt;/code&gt; / &lt;code&gt;:set nonumber&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;显示／隐藏行号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;:set hlsearch&lt;/code&gt; / &lt;code&gt;:noh&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;开启匹配高亮／清除当前高亮&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;73-删除复制撤销和批量修改&#34;&gt;7.3 删除、复制、撤销和批量修改
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;按键&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;u&lt;/code&gt; / &lt;code&gt;Ctrl + R&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;撤销／重做&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;dd&lt;/code&gt; / &lt;code&gt;5dd&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;删除一行／从当前行开始删除 5 行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;yy&lt;/code&gt; / &lt;code&gt;5yy&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;复制一行／5 行到寄存器&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;p&lt;/code&gt; / &lt;code&gt;P&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在后面／前面粘贴，位置取决于寄存器是行还是字符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;x&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;删除当前字符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;dw&lt;/code&gt; / &lt;code&gt;cw&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;删除到下一词位置／修改一个词&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ciw&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;修改光标所在的整个词&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;D&lt;/code&gt; / &lt;code&gt;C&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;删除／修改到行尾&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;v&lt;/code&gt; / &lt;code&gt;V&lt;/code&gt; / &lt;code&gt;Ctrl + V&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;字符选择／整行选择／块选择&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&amp;gt;&lt;/code&gt; / &lt;code&gt;&amp;lt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;对选中的内容增加／减少缩进&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;.&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;重复上一次修改&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;:%s/old/new/gc&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;全文替换，每行全部匹配，逐个确认&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;:10,30s/old/new/g&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;只替换第 10～30 行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;:%s#old/path#new/path#gc&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;路径带斜杠时换分隔符&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Vim 的搜索和替换默认使用其正则语法；要按字面搜索可用 &lt;code&gt;\V&lt;/code&gt;，例如 &lt;code&gt;/\Va.b[0]&lt;/code&gt;。&lt;code&gt;yy&lt;/code&gt; 复制到 Vim 寄存器，系统剪贴板通常需要支持 &lt;code&gt;+clipboard&lt;/code&gt; 才能使用 &lt;code&gt;&amp;quot;+yy&lt;/code&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;74-多文件分屏比较与宏&#34;&gt;7.4 多文件、分屏、比较与宏
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令／按键&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;:e other.conf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;编辑另一个文件，当前修改需先处理&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;:ls&lt;/code&gt; / &lt;code&gt;:b 2&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;列出缓冲区／切到缓冲区 2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;:bn&lt;/code&gt; / &lt;code&gt;:bp&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;下一个／上一个缓冲区&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;:split other.conf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;上下分屏&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;:vsplit other.conf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;左右分屏&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Ctrl + W&lt;/code&gt; 然后 &lt;code&gt;W&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在窗口间切换&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;vimdiff old.conf new.conf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;并排比较两个文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;]c&lt;/code&gt; / &lt;code&gt;[c&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;diff 模式下跳到下一／上一处差异&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;qa&lt;/code&gt; → 操作 → &lt;code&gt;q&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;将一系列操作录入寄存器 a&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;@a&lt;/code&gt; / &lt;code&gt;10@a&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;回放一次／10 次宏&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;vim -r app.conf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;尝试从交换文件恢复，需要先确认没有其他编辑会话&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;宏和批量替换先在少量内容上验证，再扩大范围。不要在未确认内容已经恢复前直接删除 &lt;code&gt;.swp&lt;/code&gt;。完整按键见 &lt;a class=&#34;link&#34; href=&#34;https://vimhelp.org/quickref.txt.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Vim 官方帮助速查&lt;/a&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;8-网络端口http-与远程连接&#34;&gt;8. 网络、端口、HTTP 与远程连接
+&lt;/h2&gt;&lt;h3 id=&#34;81-查端口和连接&#34;&gt;8.1 查端口和连接
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ss -lntp&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;TCP 监听端口和进程；其他用户的进程信息可能需 sudo&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sudo ss -lntp &#39;sport = :8080&#39;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;找监听 8080 的进程&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ss -ant&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;所有 TCP 连接，使用数字地址&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ss -s&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;socket 汇总&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ss -lunp&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UDP 监听及进程&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sudo lsof -nP -iTCP:8080 -sTCP:LISTEN&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;通过 lsof 查 TCP 监听进程&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;lsof -p 12345&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看进程打开的文件与 socket，可能输出很多&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;netstat -lntp&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;老系统常见写法，需 net-tools；新系统通常用 ss&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;82-curlpingdns路由&#34;&gt;8.2 curl、ping、DNS、路由
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# HTTP 请求；--fail 使 HTTP 4xx/5xx 返回失败状态，仍可能看到服务返回差异&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl --fail --show-error --silent --connect-timeout &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt; --max-time &lt;span class=&#34;m&#34;&gt;10&lt;/span&gt; http://127.0.0.1:8080/health
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 看响应头；-I 发的是 HEAD，服务可能与 GET 的行为不同&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl -I https://example.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 调试连接、TLS、请求和响应头，输出可能包含敏感信息&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl -v --connect-timeout &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt; --max-time &lt;span class=&#34;m&#34;&gt;10&lt;/span&gt; https://example.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# JSON POST&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl --fail --show-error --connect-timeout &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt; --max-time &lt;span class=&#34;m&#34;&gt;10&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  -H &lt;span class=&#34;s1&#34;&gt;&amp;#39;Content-Type: application/json&amp;#39;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  -d &lt;span class=&#34;s1&#34;&gt;&amp;#39;{&amp;#34;name&amp;#34;:&amp;#34;demo&amp;#34;}&amp;#39;&lt;/span&gt; http://127.0.0.1:8080/api/items
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 下载：显式指定文件名，跟随重定向&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;curl -fL -o package.tar.gz https://example.com/package.tar.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 连通性、DNS 和路由&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ping -c &lt;span class=&#34;m&#34;&gt;4&lt;/span&gt; example.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;getent hosts example.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dig example.com A
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dig @1.1.1.1 example.com A
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ip addr
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ip route
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ip route get 1.1.1.1
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 测试 TCP 端口；netcat 各实现的参数可能不同&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;nc -vz -w &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt; example.com &lt;span class=&#34;m&#34;&gt;443&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;ping&lt;/code&gt; 走 ICMP，能 ping 不代表 HTTP 正常，ping 不通也可能只是 ICMP 被禁。&lt;code&gt;dig&lt;/code&gt; 查 DNS，&lt;code&gt;getent&lt;/code&gt; 更接近系统名称解析配置。不要用 &lt;code&gt;curl -k&lt;/code&gt; 当作 TLS 错误的常规修复；应检查证书、主机名、信任链与系统时间。&lt;/p&gt;
+&lt;h3 id=&#34;83-sshscprsync&#34;&gt;8.3 SSH、scp、rsync
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ssh user@server&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;远程登录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ssh -p 2222 user@server&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;指定端口&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ssh -i ~/.ssh/id_ed25519 user@server&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;指定私钥&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ssh -v user@server&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;调试连接和认证&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ssh user@server &#39;df -h&#39;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在远程执行命令&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;scp app.jar user@server:/srv/app/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;上传文件，注意目标同名文件会覆盖&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;scp -P 2222 user@server:/srv/app/app.log ./&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;下载文件；scp 的端口参数是大写 P&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;rsync -avn ./app/ user@server:/srv/app/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;先预览同步结果，&lt;code&gt;-n&lt;/code&gt; 是 dry-run&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;rsync -av ./app/ user@server:/srv/app/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;实际同步；目标同名文件可能被更新&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ssh -N -L 127.0.0.1:18080:127.0.0.1:8080 user@server&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;本地 18080 转发到远端视角的 127.0.0.1:8080&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;code&gt;rsync&lt;/code&gt; 源路径 &lt;code&gt;app/&lt;/code&gt; 表示目录内容，&lt;code&gt;app&lt;/code&gt; 会影响目标目录层级。&lt;code&gt;--delete&lt;/code&gt; 会删除目标端多余内容，使用前先加 &lt;code&gt;-n&lt;/code&gt; 核对。首次连接的主机密钥应通过可信渠道验证。&lt;/p&gt;
+&lt;h3 id=&#34;84-较少用的网络诊断&#34;&gt;8.4 较少用的网络诊断
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;traceroute example.com&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看路径节点，需安装；中间节点可能不响应&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;mtr -rw -c 20 example.com&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;多次探测路径，需安装；单个中间节点丢包不一定代表端到端丢包&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;openssl s_client -connect example.com:443 -servername example.com -verify_return_error &amp;lt;/dev/null&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看 TLS 握手与证书验证；需要时另加主机名校验参数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sudo tcpdump -ni any -c 100 &#39;tcp port 8080&#39;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;抓取最多 100 个相关包，需要权限；内容可能涉及业务数据&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sudo tcpdump -ni any -c 100 -w capture-01.pcap &#39;tcp port 8080&#39;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;保存抓包以便后续分析&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;9-文件查找文本处理与数据转换&#34;&gt;9. 文件查找、文本处理与数据转换
+&lt;/h2&gt;&lt;h3 id=&#34;91-findrglocate&#34;&gt;9.1 find、rg、locate
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;find /srv/app -type f -name &lt;span class=&#34;s1&#34;&gt;&amp;#39;*.log&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;find /srv/app -type f -iname &lt;span class=&#34;s1&#34;&gt;&amp;#39;*error*&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;find /srv/app -type f -size +100M
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;find /srv/app -type f -mmin -30
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;find /srv/app -type f -mtime +7 -print
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 文件名可能带空格／换行时，使用 -exec 或 NUL 分隔&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;find /srv/app -type f -name &lt;span class=&#34;s1&#34;&gt;&amp;#39;*.log&amp;#39;&lt;/span&gt; -exec ls -lh -- &lt;span class=&#34;o&#34;&gt;{}&lt;/span&gt; +
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;find /srv/app -type f -name &lt;span class=&#34;s1&#34;&gt;&amp;#39;*.log&amp;#39;&lt;/span&gt; -print0 &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; xargs -0 -r wc -l
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# ripgrep 需额外安装，常用于代码仓库搜索&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rg -n &lt;span class=&#34;s1&#34;&gt;&amp;#39;TODO|FIXME&amp;#39;&lt;/span&gt; src/
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rg -F &lt;span class=&#34;s1&#34;&gt;&amp;#39;a.b[0]&amp;#39;&lt;/span&gt; .
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rg -n --hidden -g &lt;span class=&#34;s1&#34;&gt;&amp;#39;!.git/**&amp;#39;&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;server.port&amp;#39;&lt;/span&gt; .
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rg --files -g &lt;span class=&#34;s1&#34;&gt;&amp;#39;*.java&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# locate 依赖预先构建的索引，结果可能不是实时的&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;locate app.conf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;find -mtime +7&lt;/code&gt; 按整段 24 小时取整后的比较规则匹配，不应当作精确的“当前时刻减 7 天”。删文件前先 &lt;code&gt;-print&lt;/code&gt; 核对，不要直接把查找示例改成批量删除。&lt;code&gt;rg&lt;/code&gt; 默认遵循忽略文件规则并跳过隐藏文件，&lt;code&gt;--hidden&lt;/code&gt; 也不会自动取消所有 ignore 规则。&lt;/p&gt;
+&lt;h3 id=&#34;92-awksedsortuniqcut&#34;&gt;9.2 awk、sed、sort、uniq、cut
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;awk &#39;{print $1, $3}&#39; data.txt&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;默认按空白切字段，输出第 1 和第 3 列&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;awk -F &#39;:&#39; &#39;{print $1}&#39; /etc/passwd&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;按冒号分隔取第 1 列&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;awk &#39;{sum += $1} END {print sum}&#39; numbers.txt&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;累加第 1 列数字&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sed -n &#39;20,40p&#39; app.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;打印指定行范围&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sed &#39;s/old/new/g&#39; app.conf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;替换后输出到终端，原文件不变&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sed -i.bak &#39;s/old/new/g&#39; app.conf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;GNU sed 原地替换，并生成 .bak；已有备份可能被覆盖&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sort names.txt&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;排序，受 locale 影响&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sort -n numbers.txt&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;按数值排序&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sort -h sizes.txt&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;GNU sort，识别人类可读大小后缀&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sort names.txt | uniq -c | sort -nr&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;统计频率，最多的在前；uniq 只合并相邻重复行&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cut -d &#39;:&#39; -f 1 /etc/passwd&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;按单字符分隔符取列&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tr &#39;[:lower:]&#39; &#39;[:upper:]&#39; &amp;lt; names.txt&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;字母转大写，受 locale 影响&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tr -d &#39;\r&#39; &amp;lt; windows.txt &amp;gt; unix.txt&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;删除 CR 字符，输出到另一个文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;diff -u old.conf new.conf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看文本差异；有差异时退出状态为 1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cmp file1.bin file2.bin&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;逐字节比较&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;code&gt;awk -F &#39;,&#39;&lt;/code&gt; 和 &lt;code&gt;cut -d &#39;,&#39;&lt;/code&gt; 不能正确解析所有带引号、嵌入逗号或换行的 CSV；此时应使用真正的 CSV 解析器。&lt;/p&gt;
+&lt;h3 id=&#34;93-jq压缩日志与编码&#34;&gt;9.3 jq、压缩日志与编码
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# jq 需额外安装&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jq &lt;span class=&#34;s1&#34;&gt;&amp;#39;.&amp;#39;&lt;/span&gt; response.json
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jq -r &lt;span class=&#34;s1&#34;&gt;&amp;#39;.data.id&amp;#39;&lt;/span&gt; response.json
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jq &lt;span class=&#34;s1&#34;&gt;&amp;#39;.items[] | select(.status == &amp;#34;FAILED&amp;#34;)&amp;#39;&lt;/span&gt; response.json
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 阅读压缩日志，无需先写出完整解压文件&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;zless app.log.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gzip -dc app.log.gz &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep -n &lt;span class=&#34;s1&#34;&gt;&amp;#39;ERROR&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 编码转换，源编码必须按实际文件填写&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;iconv -f GB18030 -t UTF-8 input.txt &amp;gt; output-utf8.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 二进制查看&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;xxd -l &lt;span class=&#34;m&#34;&gt;128&lt;/span&gt; file.bin
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;od -An -tx1 -N64 file.bin
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;10-权限用户环境变量与系统信息&#34;&gt;10. 权限、用户、环境变量与系统信息
+&lt;/h2&gt;&lt;h3 id=&#34;101-权限与身份&#34;&gt;10.1 权限与身份
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;whoami&lt;/code&gt; / &lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;当前身份／UID、GID 和所属组&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ls -l app.conf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看属主、属组和权限&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;chmod u+x start.sh&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;为属主添加执行权限&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;chmod 640 app.conf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;属主读写、属组只读、其他人无权限&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;chmod 750 /srv/app&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;属主完整权限，属组可读和进入，其他人无权限&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sudo chown appuser:appgroup app.conf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;修改属主与属组&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sudo -u appuser jcmd 12345 GC.heap_info&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;以目标用户执行诊断&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sudo -l&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看当前用户被允许的 sudo 操作&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;umask&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看新文件默认权限的屏蔽设置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;namei -l /srv/app/config/app.conf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;沿路径检查每级目录的属主和权限&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;getfacl app.conf&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看 ACL，需相应工具与文件系统支持&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;目录的 &lt;code&gt;x&lt;/code&gt; 表示可穿越／进入。不要因为“Permission denied”就直接 &lt;code&gt;chmod -R 777&lt;/code&gt;；应检查路径每一层、实际运行用户、ACL，以及必要时的 SELinux／AppArmor 策略。&lt;/p&gt;
+&lt;h3 id=&#34;102-环境时间与版本&#34;&gt;10.2 环境、时间与版本
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;printf &#39;%s\n&#39; &amp;quot;$PATH&amp;quot;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看命令搜索路径&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;printenv JAVA_HOME&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看指定环境变量&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;export APP_ENV=dev&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;为当前 Shell 及之后启动的子进程设置环境变量&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;APP_ENV=dev ./start.sh&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;只给这次启动设置变量&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;unset APP_ENV&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;从当前 Shell 移除变量&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;uname -a&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;内核与系统信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cat /etc/os-release&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;发行版信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;hostname&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;主机名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;date -Is&lt;/code&gt; / &lt;code&gt;date -u&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;ISO 时间／UTC 时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;timedatectl status&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;systemd 系统的时间、时区与同步状态&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;locale&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;当前语言与字符编码配置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;getconf LONG_BIT&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;当前用户空间位数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;父进程的环境不会被已运行的子进程重新读取；执行 &lt;code&gt;export&lt;/code&gt; 后，既有服务不会自动改变。&lt;code&gt;env&lt;/code&gt;／&lt;code&gt;printenv&lt;/code&gt; 全量输出可能暴露凭证，排查时优先查指定变量。&lt;/p&gt;
+&lt;h2 id=&#34;11-服务日志定时任务与软件包&#34;&gt;11. 服务、日志、定时任务与软件包
+&lt;/h2&gt;&lt;h3 id=&#34;111-systemctl-与-journalctl&#34;&gt;11.1 systemctl 与 journalctl
+&lt;/h3&gt;&lt;p&gt;以下适用于使用 systemd 的系统，精简容器和其他 init 系统可能没有。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;systemctl status app.service --no-pager -l&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看服务状态和最近日志&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;journalctl -u app.service -n 100 --no-pager&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;服务最后 100 条日志&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;journalctl -u app.service -f&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;跟踪服务日志&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;journalctl -u app.service --since &#39;30 minutes ago&#39;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;按时间查询&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;journalctl -u app.service -b -p warning&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;本次启动 warning 及更严重的服务日志&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;systemctl cat app.service&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看 unit 文件与 drop-in 配置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;systemctl show app.service -p MainPID -p MemoryCurrent -p MemoryMax&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看主 PID、内存统计和限制；统计依赖配置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sudo systemctl restart app.service&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;重启服务，会中断现有实例&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sudo systemctl reload app.service&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;请求服务重载，需要服务支持&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sudo systemctl daemon-reload&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;unit 配置改动后让 systemd 重读，不会自动重启服务&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;systemctl is-enabled app.service&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查询是否配置开机启动&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sudo systemctl enable app.service&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;配置开机启动，不等于立即启动&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;112-cron-和-timer&#34;&gt;11.2 cron 和 timer
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;crontab -l
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;crontab -e
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl list-timers --all
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;用户 crontab 例子，每 5 分钟执行一次：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*/5 * * * * /srv/app/check.sh &amp;gt;&amp;gt; /srv/app/check.log 2&amp;gt;&amp;amp;1
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;cron 的 PATH、工作目录和交互登录环境不同，脚本宜使用绝对路径并明确依赖。任务超过间隔时可能重叠；需要时使用 &lt;code&gt;flock&lt;/code&gt; 等互斥机制。系统级 &lt;code&gt;/etc/crontab&lt;/code&gt; 还包含用户字段，不能直接与用户 crontab 混用。&lt;/p&gt;
+&lt;h3 id=&#34;113-安装和查询工具&#34;&gt;11.3 安装和查询工具
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;发行版&lt;/th&gt;
+&lt;th&gt;查询&lt;/th&gt;
+&lt;th&gt;安装示例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Debian / Ubuntu&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;dpkg -l&lt;/code&gt;、&lt;code&gt;apt search sysstat&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;sudo apt update&lt;/code&gt; 后 &lt;code&gt;sudo apt install sysstat lsof&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Fedora / RHEL 系&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;rpm -qa&lt;/code&gt;、&lt;code&gt;dnf search sysstat&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;sudo dnf install sysstat lsof&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Alpine&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;apk info&lt;/code&gt;、&lt;code&gt;apk search sysstat&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;sudo apk add sysstat lsof&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;常见额外工具：&lt;code&gt;sysstat&lt;/code&gt; 提供 pidstat／iostat／mpstat／sar，&lt;code&gt;lsof&lt;/code&gt; 查打开文件，&lt;code&gt;procps&lt;/code&gt;／&lt;code&gt;procps-ng&lt;/code&gt; 提供 ps／top／free 等，&lt;code&gt;iproute2&lt;/code&gt; 提供 ip／ss。包名和仓库可用性以发行版为准，Alpine 镜像也可能默认没有 Bash 或 sudo。&lt;/p&gt;
+&lt;h2 id=&#34;12-压缩传输校验与构建相关命令&#34;&gt;12. 压缩、传输校验与构建相关命令
+&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tar -tzf app.tar.gz&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;先查看归档内容&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tar -czf app-backup-01.tar.gz app/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;创建 gzip 压缩 tar 包，输出文件应放在被归档目录外&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;mkdir -p unpacked &amp;amp;&amp;amp; tar -xzf app.tar.gz -C unpacked&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;解压到专用目录，先核对来源与内容，避免覆盖&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;unzip -l app.zip&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看 ZIP 内容&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;unzip app.zip -d unpacked&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;解压到指定目录，可能询问覆盖&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;gzip -k app.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;压缩并保留原文件，具体实现需支持 -k&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sha256sum app.jar&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;计算 SHA-256，用于比较传输前后内容&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sha256sum -c checksums.sha256&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;按校验文件验证&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;jar tf app.jar&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;列出 JAR 内容&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;jar tf app.jar | grep &#39;application&#39;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;找 JAR 内配置等文件路径&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;./mvnw test&lt;/code&gt; / &lt;code&gt;mvn test&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Maven Wrapper／系统 Maven 执行测试&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;./gradlew test&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;使用项目 Gradle Wrapper 执行测试&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;time ./mvnw package&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看构建耗时，time 的具体输出随 Shell／实现变化&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;哈希相同能证明内容一致；要确认来源真实性，还需要从可信渠道取得校验值或验证签名。&lt;/p&gt;
+&lt;h2 id=&#34;13-shell-脚本常用组合&#34;&gt;13. Shell 脚本常用组合
+&lt;/h2&gt;&lt;h3 id=&#34;131-引号变量退出状态&#34;&gt;13.1 引号、变量、退出状态
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;app_dir&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;/srv/my app&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;printf&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;%s\n&amp;#39;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$app_dir&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; -- &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$app_dir&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;exit&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 保存命令结果，保留引用以避免空格拆词&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;stamp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;date +%Y%m%d-%H%M%S&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;printf&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Now: %s\n&amp;#39;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$stamp&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 退出状态要紧接着检查；下一条命令会改写 $?&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; grep -q &lt;span class=&#34;s1&#34;&gt;&amp;#39;ERROR&amp;#39;&lt;/span&gt; app.log&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nb&#34;&gt;printf&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Found ERROR\n&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 检查依赖&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; ! &lt;span class=&#34;nb&#34;&gt;command&lt;/span&gt; -v jcmd &amp;gt;/dev/null 2&amp;gt;&lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;1&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nb&#34;&gt;printf&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;jcmd not found\n&amp;#39;&lt;/span&gt; &amp;gt;&lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nb&#34;&gt;exit&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;变量展开通常写 &lt;code&gt;&amp;quot;$var&amp;quot;&lt;/code&gt;，防止空格拆词和通配符展开；单引号保留字面内容，双引号允许变量展开。用 &lt;code&gt;printf &#39;%s\n&#39; &amp;quot;$value&amp;quot;&lt;/code&gt; 比把变量直接当格式字符串更稳妥。&lt;/p&gt;
+&lt;h3 id=&#34;132-循环超时和互斥&#34;&gt;13.2 循环、超时和互斥
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 当前目录的 .log 文件，正确处理空格&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; log in ./*.log&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; -f &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$log&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;continue&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nb&#34;&gt;printf&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Checking: %s\n&amp;#39;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$log&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  grep -n &lt;span class=&#34;s1&#34;&gt;&amp;#39;ERROR&amp;#39;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$log&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 给外部命令加时间限制，超时会发信号，需确认命令可被中断&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;timeout 10s curl --connect-timeout &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt; --max-time &lt;span class=&#34;m&#34;&gt;8&lt;/span&gt; http://127.0.0.1:8080/health
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 防止同一巡检任务重叠，flock 来自 util-linux&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;flock -n /srv/app/check.lock /srv/app/check.sh
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;set -euo pipefail&lt;/code&gt; 是 Bash 常见组合，但 &lt;code&gt;-e&lt;/code&gt; 的例外语义、未匹配 grep、可选变量等都需要明确处理，不能把加上它视作脚本必然正确。Bash 专有语法应配 &lt;code&gt;#!/usr/bin/env bash&lt;/code&gt;，并确保环境中确实有 Bash。&lt;/p&gt;
+&lt;h2 id=&#34;14-较少用深入性能限制与-native-诊断&#34;&gt;14. 较少用：深入性能、限制与 native 诊断
+&lt;/h2&gt;&lt;h3 id=&#34;141-文件句柄线程与资源限制&#34;&gt;14.1 文件句柄、线程与资源限制
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 当前 Shell 的限制，不一定等于已经运行的服务&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;ulimit&lt;/span&gt; -n
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;ulimit&lt;/span&gt; -a
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 实际目标进程的限制&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cat /proc/12345/limits
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 打开的文件描述符数量与线程数量，权限不足时结果不可据此判断&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;find /proc/12345/fd -mindepth &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; -maxdepth &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; -type l &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; wc -l
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ps -p &lt;span class=&#34;m&#34;&gt;12345&lt;/span&gt; -o pid,nlwp,args
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# systemd 服务限制&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;systemctl show app.service -p LimitNOFILE -p TasksCurrent -p TasksMax
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;code&gt;Too many open files&lt;/code&gt; 应结合句柄是否持续增长、具体打开了什么、实际限制来定位；单纯调大限制可能只延后故障。线程创建失败也可能撞上 cgroup pids 或用户限制。&lt;/p&gt;
+&lt;h3 id=&#34;142-straceperfnative-泄漏工具&#34;&gt;14.2 strace、perf、native 泄漏工具
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;用途与成本&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sudo strace -f -tt -T -p 12345 -o trace-01.log&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;跟踪系统调用，Ctrl + C 结束附加；可能明显拖慢目标，日志增长快&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sudo strace -f -c -p 12345&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;汇总系统调用次数和耗时，短时采样后结束&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sudo perf stat -p 12345 -- sleep 10&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;采集 10 秒性能计数，受 perf 权限限制&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sudo perf record -F 99 -g -p 12345 -- sleep 30&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;采集调用栈；符号、栈展开与 JVM 配置影响结果，会写 perf.data&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;perf report&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查看已记录的性能数据&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;valgrind --leak-check=full --show-leak-kinds=definite ./native-app&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;在测试环境启动 native 程序进行泄漏检查，开销通常很高&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;这些工具依赖安装、内核功能和权限。Valgrind 适合相应 native 程序，不应直接当作 Java 对象泄漏分析器；C/C++ 项目还可在测试构建中使用 AddressSanitizer／LeakSanitizer。eBPF 内存跟踪也需要选对分配路径、符号和采样方案，不能只凭一条通用命令就覆盖全部 native 泄漏。&lt;/p&gt;
+&lt;h3 id=&#34;143-内核硬件与文件系统补充&#34;&gt;14.3 内核、硬件与文件系统补充
+&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;命令&lt;/th&gt;
+&lt;th&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sysctl vm.swappiness&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查询内核参数；修改需理解系统影响&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cat /proc/pressure/memory&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;PSI 内存压力指标，需内核支持&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cat /proc/pressure/io&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;PSI I/O 压力指标&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;slabtop&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;观察内核 slab 缓存，通常需权限&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;lsmod&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;已加载内核模块&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;lspci&lt;/code&gt; / &lt;code&gt;lsusb&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;PCI／USB 设备，需对应工具&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;sudo smartctl -a /dev/sda&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;查询支持设备的健康信息；设备路径按实际替换&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;15-遇到问题时的最短命令路线&#34;&gt;15. 遇到问题时的最短命令路线
+&lt;/h2&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;问题&lt;/th&gt;
+&lt;th&gt;常见排查顺序&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;服务无法访问&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;systemctl status&lt;/code&gt; → &lt;code&gt;journalctl&lt;/code&gt; → &lt;code&gt;ss -lntp&lt;/code&gt; → 本机 curl → DNS／网络路径&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;磁盘满&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;df -h&lt;/code&gt; → &lt;code&gt;df -i&lt;/code&gt; → &lt;code&gt;du -xhd1&lt;/code&gt; → &lt;code&gt;find -size&lt;/code&gt; → &lt;code&gt;lsof +L1&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;系统内存不足&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;free -h&lt;/code&gt; → RSS 排名 → &lt;code&gt;vmstat&lt;/code&gt; → &lt;code&gt;/proc&lt;/code&gt; → cgroup／OOM 日志&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Java heap 疑似泄漏&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;jcmd GC.heap_info&lt;/code&gt; → &lt;code&gt;jstat&lt;/code&gt;／GC 日志趋势 → histogram → dump → MAT 引用链&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Java heap 正常但 RSS 涨&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;/proc/status&lt;/code&gt; → &lt;code&gt;smaps_rollup&lt;/code&gt; → NMT diff → 线程／BufferPool／native 映射&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Java CPU 高&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;top&lt;/code&gt; → &lt;code&gt;top -H -p PID&lt;/code&gt; → TID 转十六进制 → Thread.print → 多次采样／JFR&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;程序卡住&lt;/td&gt;
+&lt;td&gt;日志 → 进程状态 → 多份线程栈 → 锁／I/O／外部依赖 → 必要时 strace&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;运行一段时间才坏&lt;/td&gt;
+&lt;td&gt;连续采样内存／线程／句柄／队列，关联请求量与定时任务&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料
+&lt;/h2&gt;&lt;p&gt;命令以本机手册和目标版本帮助为准，以下是进一步核对语义的来源。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.gnu.org/software/coreutils/manual/coreutils.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;GNU Coreutils 手册：文件、大小、排序、校验等&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.gnu.org/software/bash/manual/bash.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;GNU Bash 手册&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.gnu.org/software/grep/manual/grep.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;GNU grep 手册&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.gnu.org/software/findutils/manual/html_mono/find.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;GNU Findutils 手册&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://gitlab.com/procps-ng/procps&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;procps-ng 项目&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://man7.org/linux/man-pages/man1/ps.1.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ps 手册：字段与内存口径&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://man7.org/linux/man-pages/man1/free.1.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;free 手册：available 与缓存&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.kernel.org/doc/html/latest/filesystems/proc.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Linux 内核：/proc 与 smaps&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v2.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Linux 内核：cgroup v2 内存控制&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.oracle.com/en/java/javase/25/docs/specs/man/jcmd.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Oracle：jcmd&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.oracle.com/en/java/javase/25/docs/specs/man/jstat.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Oracle：jstat&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.oracle.com/en/java/javase/25/troubleshoot/diagnostic-tools.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Oracle：Java 诊断工具、NMT、JFR&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://vimhelp.org/quickref.txt.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Vim 帮助速查&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.freedesktop.org/software/systemd/man/latest/systemctl.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;systemctl 官方手册&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.freedesktop.org/software/systemd/man/latest/journalctl.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;journalctl 官方手册&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://curl.se/docs/manpage.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;curl 官方手册&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://help.eclipse.org/latest/topic/org.eclipse.mat.ui.help/welcome.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Eclipse MAT 文档&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>【咨讯】Windows 实用应用推荐</title>
         <link>https://sloth-cyx.github.io/p/%E5%92%A8%E8%AE%AFwindows-%E5%AE%9E%E7%94%A8%E5%BA%94%E7%94%A8%E6%8E%A8%E8%8D%90/</link>
         <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
