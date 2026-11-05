@@ -2430,7 +2430,7 @@
 	
 &gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;baregrep-alt-dngrep&#34;&gt;Baregrep (Alt: dnGrep)
+&lt;h2 id=&#34;baregrep-alt-dngrep-grepwin&#34;&gt;Baregrep (Alt: dnGrep， grepWin)
 &lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;文件内容搜索工具，可以快速搜索多个文件中的指定文字或关键词，不过无法搜索中文。&lt;/li&gt;
 &lt;li&gt;官方网址：&lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.baremetalsoft.com/baregrep/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -2544,6 +2544,13 @@
 &lt;li&gt;Baretail Pro的替代品，免费开源但是相较付费的Baretaik Pro限制也比较多。&lt;/li&gt;
 &lt;li&gt;官方网址：&lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/LogExperts/LogExpert/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/LogExperts/LogExpert/releases&lt;/a&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;jd-gui&#34;&gt;JD-GUI
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;免费开源的 Java 反编译工具，可以查看 &lt;code&gt;.class&lt;/code&gt; 文件反编译后的 Java 代码，方便阅读程序逻辑、查找类中的方法与字段。&lt;/li&gt;
+&lt;li&gt;选择 File → Open File&amp;hellip; 或直接拖入文件，即可浏览反编译结果。&lt;/li&gt;
+&lt;li&gt;官方网址：&lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/java-decompiler/jd-gui/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/java-decompiler/jd-gui/releases&lt;/a&gt;&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         </item>
